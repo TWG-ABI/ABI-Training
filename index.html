@@ -1,0 +1,871 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>MyProject — Open Source Docs</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,600;1,8..60,300&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --cream: #f2f6f8;
+      --warm-white: #f7fafb;
+      --parchment: #e2eaed;
+      --tan: #b8cdd4;
+      --sienna: #3b6371;
+      --rust: #2a8099;
+      --brown: #2c4f5c;
+      --dark: #132028;
+      --muted: #5a7d89;
+      --ink: #1e3540;
+      --highlight: #7ecfdf;
+      --sidebar-w: 260px;
+      --topbar-h: 56px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Source Serif 4', Georgia, serif;
+      background: var(--cream);
+      color: var(--ink);
+      min-height: 100vh;
+      font-size: 17px;
+      line-height: 1.75;
+    }
+
+    /* ── TOP BAR ── */
+    #topbar {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      height: var(--topbar-h);
+      background: var(--brown);
+      display: flex; align-items: center; gap: 1rem;
+      padding: 0 1.5rem;
+      box-shadow: 0 2px 12px rgba(19,32,40,.35);
+    }
+
+    #topbar .logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--highlight);
+      letter-spacing: -.01em;
+      white-space: nowrap;
+      text-decoration: none;
+    }
+
+    #topbar nav {
+      display: flex; gap: .15rem; margin-left: .5rem;
+    }
+    #topbar nav a {
+      color: #a8c8d4;
+      text-decoration: none;
+      font-size: .82rem;
+      font-family: 'Source Serif 4', serif;
+      letter-spacing: .04em;
+      text-transform: uppercase;
+      padding: .35rem .7rem;
+      border-radius: 4px;
+      transition: background .18s, color .18s;
+    }
+    #topbar nav a:hover, #topbar nav a.active {
+      background: rgba(126,207,223,.15);
+      color: var(--highlight);
+    }
+
+    /* Search */
+    #search-wrap {
+      margin-left: auto;
+      position: relative;
+      flex-shrink: 0;
+    }
+    #search-input {
+      background: rgba(255,255,255,.1);
+      border: 1px solid rgba(255,255,255,.2);
+      border-radius: 20px;
+      color: #fff;
+      padding: .38rem 1rem .38rem 2.2rem;
+      font-family: 'Source Serif 4', serif;
+      font-size: .85rem;
+      width: 220px;
+      outline: none;
+      transition: background .2s, width .3s;
+    }
+    #search-input::placeholder { color: rgba(255,255,255,.4); }
+    #search-input:focus {
+      background: rgba(255,255,255,.18);
+      border-color: var(--highlight);
+      width: 280px;
+    }
+    .search-icon {
+      position: absolute; left: .7rem; top: 50%; transform: translateY(-50%);
+      color: rgba(255,255,255,.45); pointer-events: none; font-size: .9rem;
+    }
+    #search-results {
+      display: none;
+      position: absolute; top: calc(100% + 8px); right: 0;
+      background: var(--warm-white);
+      border: 1px solid var(--tan);
+      border-radius: 8px;
+      width: 320px;
+      box-shadow: 0 8px 30px rgba(19,32,40,.18);
+      overflow: hidden;
+      z-index: 200;
+    }
+    #search-results.open { display: block; }
+    .sr-item {
+      padding: .7rem 1rem;
+      border-bottom: 1px solid var(--parchment);
+      cursor: pointer;
+      transition: background .15s;
+    }
+    .sr-item:last-child { border-bottom: none; }
+    .sr-item:hover { background: var(--parchment); }
+    .sr-item .sr-title { font-weight: 600; color: var(--brown); font-size: .9rem; }
+    .sr-item .sr-section { font-size: .75rem; color: var(--muted); margin-top: .1rem; }
+    .sr-empty { padding: 1rem; color: var(--muted); font-size: .88rem; text-align: center; }
+
+    /* Hamburger */
+    #menu-btn {
+      display: none;
+      background: none; border: none; cursor: pointer;
+      color: var(--highlight); font-size: 1.4rem; padding: .2rem;
+    }
+
+    /* ── LAYOUT ── */
+    #shell {
+      display: flex;
+      padding-top: var(--topbar-h);
+      min-height: 100vh;
+    }
+
+    /* ── SIDEBAR ── */
+    #sidebar {
+      width: var(--sidebar-w);
+      flex-shrink: 0;
+      position: sticky;
+      top: var(--topbar-h);
+      height: calc(100vh - var(--topbar-h));
+      overflow-y: auto;
+      background: var(--warm-white);
+      border-right: 1px solid var(--tan);
+      padding: 1.5rem 0 2rem;
+      scrollbar-width: thin;
+      scrollbar-color: var(--tan) transparent;
+    }
+
+    .sidebar-section { margin-bottom: 1.6rem; }
+    .sidebar-heading {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: .68rem;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--sienna);
+      padding: 0 1.2rem .5rem;
+      border-bottom: 1px solid var(--parchment);
+      margin-bottom: .4rem;
+    }
+    .sidebar-link {
+      display: block;
+      padding: .38rem 1.2rem .38rem 1.4rem;
+      color: var(--ink);
+      text-decoration: none;
+      font-size: .88rem;
+      border-left: 3px solid transparent;
+      transition: background .15s, border-color .15s, color .15s;
+      line-height: 1.4;
+    }
+    .sidebar-link:hover {
+      background: var(--parchment);
+      color: var(--rust);
+    }
+    .sidebar-link.active {
+      border-left-color: var(--rust);
+      color: var(--rust);
+      background: rgba(42,128,153,.08);
+      font-weight: 600;
+    }
+    .sidebar-sub {
+      padding-left: 2rem;
+      font-size: .83rem;
+      color: var(--muted);
+    }
+    .sidebar-sub.active { color: var(--rust); }
+
+    /* ── MAIN ── */
+    #main {
+      flex: 1;
+      min-width: 0;
+      padding: 3rem 4rem 5rem;
+      max-width: 820px;
+    }
+
+    /* Page sections */
+    .page { display: none; }
+    .page.active { display: block; animation: fadeUp .35s ease both; }
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(14px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Hero */
+    .hero {
+      border-bottom: 2px solid var(--tan);
+      padding-bottom: 2.5rem;
+      margin-bottom: 3rem;
+    }
+    .hero-eyebrow {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: .75rem;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--sienna);
+      margin-bottom: .6rem;
+    }
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 3rem;
+      font-weight: 700;
+      line-height: 1.15;
+      color: var(--dark);
+      margin-bottom: 1rem;
+    }
+    .hero h1 em { font-style: italic; color: var(--rust); }
+    .hero p {
+      font-size: 1.1rem;
+      color: var(--muted);
+      max-width: 560px;
+      font-weight: 300;
+    }
+    .hero-actions { margin-top: 1.8rem; display: flex; gap: .8rem; flex-wrap: wrap; }
+    .btn {
+      display: inline-block;
+      padding: .6rem 1.4rem;
+      border-radius: 4px;
+      font-family: 'Source Serif 4', serif;
+      font-size: .9rem;
+      font-weight: 600;
+      text-decoration: none;
+      cursor: pointer;
+      border: none;
+      transition: transform .15s, box-shadow .15s;
+    }
+    .btn:hover { transform: translateY(-2px); box-shadow: 0 4px 14px rgba(19,32,40,.15); }
+    .btn-primary { background: var(--rust); color: #fff; }
+    .btn-outline { background: transparent; color: var(--brown); border: 2px solid var(--brown); }
+
+    /* Feature cards */
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+      gap: 1.2rem;
+      margin: 2rem 0;
+    }
+    .card {
+      background: var(--warm-white);
+      border: 1px solid var(--tan);
+      border-radius: 8px;
+      padding: 1.3rem 1.2rem;
+      transition: box-shadow .2s, transform .2s;
+    }
+    .card:hover { box-shadow: 0 6px 20px rgba(19,32,40,.1); transform: translateY(-3px); }
+    .card-icon { font-size: 1.6rem; margin-bottom: .6rem; }
+    .card h3 { font-family: 'Playfair Display', serif; font-size: 1rem; color: var(--dark); margin-bottom: .3rem; }
+    .card p { font-size: .83rem; color: var(--muted); line-height: 1.5; }
+
+    /* Sections inside a page */
+    .doc-section { margin-bottom: 3.5rem; }
+    .doc-section h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.75rem;
+      color: var(--dark);
+      margin-bottom: .6rem;
+      padding-bottom: .5rem;
+      border-bottom: 1px solid var(--parchment);
+    }
+    .doc-section h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.2rem;
+      color: var(--brown);
+      margin: 1.4rem 0 .5rem;
+    }
+    .doc-section p { margin-bottom: .9rem; color: #1e3d4d; }
+    .doc-section ul, .doc-section ol {
+      padding-left: 1.5rem;
+      margin-bottom: 1rem;
+      color: #1e3d4d;
+    }
+    .doc-section li { margin-bottom: .35rem; }
+
+    /* Code */
+    pre {
+      background: var(--dark);
+      color: #e8d8c4;
+      border-radius: 6px;
+      padding: 1.2rem 1.4rem;
+      overflow-x: auto;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: .82rem;
+      line-height: 1.65;
+      margin: 1rem 0 1.4rem;
+      border-left: 3px solid var(--rust);
+    }
+    code {
+      font-family: 'JetBrains Mono', monospace;
+      background: var(--parchment);
+      color: var(--rust);
+      padding: .1em .35em;
+      border-radius: 3px;
+      font-size: .85em;
+    }
+    pre code { background: none; color: inherit; padding: 0; font-size: inherit; }
+
+    /* Callout */
+    .callout {
+      background: rgba(59,99,113,.07);
+      border-left: 4px solid var(--sienna);
+      border-radius: 0 6px 6px 0;
+      padding: 1rem 1.2rem;
+      margin: 1.2rem 0;
+      font-size: .92rem;
+      color: var(--brown);
+    }
+    .callout strong { color: var(--sienna); }
+
+    /* Project cards */
+    .project-card {
+      display: flex; gap: 1.2rem;
+      background: var(--warm-white);
+      border: 1px solid var(--tan);
+      border-radius: 10px;
+      padding: 1.4rem 1.5rem;
+      margin-bottom: 1.2rem;
+      transition: box-shadow .2s, transform .2s;
+      text-decoration: none;
+    }
+    .project-card:hover { box-shadow: 0 8px 24px rgba(19,32,40,.1); transform: translateY(-3px); }
+    .project-badge {
+      width: 48px; height: 48px; border-radius: 8px;
+      background: var(--parchment);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.5rem; flex-shrink: 0;
+    }
+    .project-info h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.05rem;
+      color: var(--dark);
+      margin-bottom: .25rem;
+    }
+    .project-info p { font-size: .85rem; color: var(--muted); margin: 0; line-height: 1.5; }
+    .project-tags { display: flex; gap: .4rem; margin-top: .5rem; flex-wrap: wrap; }
+    .tag {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: .68rem;
+      padding: .15rem .55rem;
+      border-radius: 20px;
+      background: var(--parchment);
+      color: var(--sienna);
+      letter-spacing: .04em;
+    }
+
+    /* TOC */
+    .toc {
+      background: var(--warm-white);
+      border: 1px solid var(--tan);
+      border-radius: 8px;
+      padding: 1rem 1.3rem;
+      margin-bottom: 2rem;
+      font-size: .88rem;
+    }
+    .toc-title {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: .7rem;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--sienna);
+      margin-bottom: .5rem;
+    }
+    .toc ol { padding-left: 1.2rem; }
+    .toc li { margin-bottom: .2rem; }
+    .toc a { color: var(--brown); text-decoration: none; transition: color .15s; }
+    .toc a:hover { color: var(--rust); }
+
+    /* About */
+    .about-hero {
+      display: flex; gap: 2rem; align-items: flex-start;
+      margin-bottom: 2.5rem;
+    }
+    .about-avatar {
+      width: 90px; height: 90px; border-radius: 50%;
+      background: linear-gradient(135deg, var(--sienna), var(--rust));
+      flex-shrink: 0;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 2.2rem;
+    }
+    .about-bio h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem; color: var(--dark); margin-bottom: .4rem;
+    }
+    .about-bio p { font-size: .95rem; color: var(--muted); }
+    .stat-row { display: flex; gap: 1.5rem; flex-wrap: wrap; margin: 1.5rem 0; }
+    .stat { text-align: center; }
+    .stat .num { font-family: 'Playfair Display', serif; font-size: 2rem; color: var(--rust); font-weight: 700; }
+    .stat .label { font-size: .75rem; color: var(--muted); letter-spacing: .06em; text-transform: uppercase; }
+
+    /* Breadcrumb */
+    .breadcrumb {
+      font-size: .8rem;
+      color: var(--muted);
+      margin-bottom: 1.8rem;
+      font-family: 'JetBrains Mono', monospace;
+      letter-spacing: .02em;
+    }
+    .breadcrumb span { color: var(--tan); margin: 0 .4rem; }
+
+    /* Responsive */
+    @media (max-width: 900px) {
+      #main { padding: 2rem 2rem 4rem; }
+    }
+    @media (max-width: 680px) {
+      #menu-btn { display: block; }
+      #sidebar {
+        position: fixed; left: 0; top: var(--topbar-h);
+        height: calc(100vh - var(--topbar-h));
+        transform: translateX(-100%);
+        transition: transform .28s ease;
+        z-index: 90;
+        box-shadow: 4px 0 24px rgba(19,32,40,.15);
+      }
+      #sidebar.open { transform: translateX(0); }
+      #main { padding: 1.5rem 1.2rem 3rem; }
+      .hero h1 { font-size: 2.1rem; }
+      #search-input { width: 140px; }
+      #search-input:focus { width: 180px; }
+      #topbar nav { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- TOP BAR -->
+<header id="topbar">
+  <button id="menu-btn" aria-label="Toggle menu">☰</button>
+  <a class="logo" href="#" onclick="showPage('home')">✦ MyProject</a>
+  <nav>
+    <a href="#" class="active" onclick="showPage('home');setNav(this)">Home</a>
+    <a href="#" onclick="showPage('docs');setNav(this)">Docs</a>
+    <a href="#" onclick="showPage('projects');setNav(this)">Projects</a>
+    <a href="#" onclick="showPage('about');setNav(this)">About</a>
+  </nav>
+  <div id="search-wrap">
+    <span class="search-icon">🔍</span>
+    <input id="search-input" type="text" placeholder="Search docs…" autocomplete="off" />
+    <div id="search-results"></div>
+  </div>
+</header>
+
+<div id="shell">
+
+<!-- SIDEBAR -->
+<aside id="sidebar">
+
+  <div class="sidebar-section" id="sb-home" style="display:none">
+    <div class="sidebar-heading">Overview</div>
+    <a class="sidebar-link" href="#" onclick="scrollTo('home-intro')">Introduction</a>
+    <a class="sidebar-link" href="#" onclick="scrollTo('home-features')">Features</a>
+    <a class="sidebar-link" href="#" onclick="scrollTo('home-quickstart')">Quick Start</a>
+  </div>
+
+  <div class="sidebar-section" id="sb-docs" style="display:none">
+    <div class="sidebar-heading">Getting Started</div>
+    <a class="sidebar-link" href="#" onclick="scrollTo('doc-install')">Installation</a>
+    <a class="sidebar-link sidebar-sub" href="#" onclick="scrollTo('doc-install')">Requirements</a>
+    <a class="sidebar-link sidebar-sub" href="#" onclick="scrollTo('doc-install')">npm / yarn</a>
+    <a class="sidebar-link" href="#" onclick="scrollTo('doc-config')">Configuration</a>
+    <div class="sidebar-heading" style="margin-top:1rem">Guides</div>
+    <a class="sidebar-link" href="#" onclick="scrollTo('doc-usage')">Basic Usage</a>
+    <a class="sidebar-link" href="#" onclick="scrollTo('doc-advanced')">Advanced Patterns</a>
+    <a class="sidebar-link" href="#" onclick="scrollTo('doc-api')">API Reference</a>
+    <div class="sidebar-heading" style="margin-top:1rem">Help</div>
+    <a class="sidebar-link" href="#" onclick="scrollTo('doc-faq')">FAQ</a>
+    <a class="sidebar-link" href="#" onclick="scrollTo('doc-contrib')">Contributing</a>
+  </div>
+
+  <div class="sidebar-section" id="sb-projects" style="display:none">
+    <div class="sidebar-heading">Projects</div>
+    <a class="sidebar-link" href="#" onclick="scrollTo('proj-main')">Core Library</a>
+    <a class="sidebar-link" href="#" onclick="scrollTo('proj-plugins')">Plugins</a>
+    <a class="sidebar-link" href="#" onclick="scrollTo('proj-examples')">Examples</a>
+    <a class="sidebar-link" href="#" onclick="scrollTo('proj-roadmap')">Roadmap</a>
+  </div>
+
+  <div class="sidebar-section" id="sb-about" style="display:none">
+    <div class="sidebar-heading">About</div>
+    <a class="sidebar-link" href="#" onclick="scrollTo('about-mission')">Mission</a>
+    <a class="sidebar-link" href="#" onclick="scrollTo('about-team')">Team</a>
+    <a class="sidebar-link" href="#" onclick="scrollTo('about-license')">License</a>
+    <a class="sidebar-link" href="#" onclick="scrollTo('about-contact')">Contact</a>
+  </div>
+
+</aside>
+
+<!-- MAIN CONTENT -->
+<main id="main">
+
+  <!-- HOME -->
+  <section class="page active" id="page-home">
+    <div class="hero" id="home-intro">
+      <div class="hero-eyebrow">Open Source · v2.4.1</div>
+      <h1>Build things that<br><em>actually</em> last.</h1>
+      <p>MyProject is a lightweight, composable toolkit for modern applications. Thoughtfully designed, meticulously documented, and built to grow with you.</p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="#" onclick="showPage('docs');setNavByPage('docs')">Read the Docs</a>
+        <a class="btn btn-outline" href="https://github.com" target="_blank">View on GitHub ↗</a>
+      </div>
+    </div>
+
+    <div id="home-features">
+      <div class="doc-section">
+        <h2>Why MyProject?</h2>
+        <p>Designed for clarity and longevity, MyProject gives your team a solid foundation without locking you into opinions you didn't choose.</p>
+      </div>
+      <div class="card-grid">
+        <div class="card"><div class="card-icon">⚡</div><h3>Fast by default</h3><p>Zero-cost abstractions and tree-shaking keep bundles lean.</p></div>
+        <div class="card"><div class="card-icon">🧩</div><h3>Composable</h3><p>Mix and match modules. Use what you need, leave the rest.</p></div>
+        <div class="card"><div class="card-icon">📖</div><h3>Well documented</h3><p>Every API, pattern, and gotcha covered with real examples.</p></div>
+        <div class="card"><div class="card-icon">🔒</div><h3>Type-safe</h3><p>First-class TypeScript support across the entire surface.</p></div>
+      </div>
+    </div>
+
+    <div class="doc-section" id="home-quickstart">
+      <h2>Quick Start</h2>
+      <p>Get up and running in under two minutes:</p>
+      <pre><code># Install via npm
+npm install myproject
+
+# or yarn
+yarn add myproject</code></pre>
+      <pre><code>import { create } from 'myproject'
+
+const app = create({ theme: 'warm' })
+app.run()</code></pre>
+      <div class="callout"><strong>Tip:</strong> For a complete walkthrough, head to the <a href="#" onclick="showPage('docs');setNavByPage('docs')" style="color:var(--rust)">Documentation</a> section.</div>
+    </div>
+  </section>
+
+  <!-- DOCS -->
+  <section class="page" id="page-docs">
+    <div class="breadcrumb">Docs</div>
+
+    <div class="toc">
+      <div class="toc-title">On this page</div>
+      <ol>
+        <li><a href="#" onclick="scrollTo('doc-install')">Installation</a></li>
+        <li><a href="#" onclick="scrollTo('doc-config')">Configuration</a></li>
+        <li><a href="#" onclick="scrollTo('doc-usage')">Basic Usage</a></li>
+        <li><a href="#" onclick="scrollTo('doc-advanced')">Advanced Patterns</a></li>
+        <li><a href="#" onclick="scrollTo('doc-api')">API Reference</a></li>
+        <li><a href="#" onclick="scrollTo('doc-faq')">FAQ</a></li>
+        <li><a href="#" onclick="scrollTo('doc-contrib')">Contributing</a></li>
+      </ol>
+    </div>
+
+    <div class="doc-section" id="doc-install">
+      <h2>Installation</h2>
+      <h3>Requirements</h3>
+      <p>MyProject requires <code>Node.js ≥ 18</code> and a modern package manager. It runs in browser and server environments.</p>
+      <h3>npm / yarn / pnpm</h3>
+      <pre><code>npm install myproject        # npm
+yarn add myproject           # yarn
+pnpm add myproject           # pnpm</code></pre>
+      <p>For a CDN-based setup (no bundler required):</p>
+      <pre><code>&lt;script type="module"&gt;
+  import { create } from 'https://cdn.jsdelivr.net/npm/myproject/+esm'
+&lt;/script&gt;</code></pre>
+    </div>
+
+    <div class="doc-section" id="doc-config">
+      <h2>Configuration</h2>
+      <p>Create a <code>myproject.config.js</code> in your project root:</p>
+      <pre><code>export default {
+  theme: 'warm',        // 'warm' | 'cool' | 'neutral'
+  plugins: [],          // array of plugin instances
+  debug: false,         // enable verbose logging
+  output: './dist',     // build output directory
+}</code></pre>
+      <div class="callout"><strong>Note:</strong> All config keys are optional — MyProject ships with sensible defaults for every option.</div>
+    </div>
+
+    <div class="doc-section" id="doc-usage">
+      <h2>Basic Usage</h2>
+      <h3>Creating an instance</h3>
+      <p>Import <code>create</code> and pass your config. The returned instance exposes the full API.</p>
+      <pre><code>import { create } from 'myproject'
+
+const app = create({ theme: 'warm' })
+
+// Register a handler
+app.on('ready', () => console.log('App is ready'))
+
+// Start the app
+await app.run()</code></pre>
+      <h3>Working with data</h3>
+      <p>Use the <code>store</code> module for reactive state:</p>
+      <pre><code>import { store } from 'myproject'
+
+const state = store({ count: 0 })
+
+state.subscribe(s => console.log('count:', s.count))
+state.set({ count: state.get().count + 1 })</code></pre>
+    </div>
+
+    <div class="doc-section" id="doc-advanced">
+      <h2>Advanced Patterns</h2>
+      <h3>Plugin authoring</h3>
+      <p>Plugins are plain objects with a <code>name</code> and <code>setup</code> function. The setup function receives the app instance and can hook into any lifecycle event.</p>
+      <pre><code>const myPlugin = {
+  name: 'my-plugin',
+  setup(app) {
+    app.on('ready', () => {
+      // plugin logic here
+    })
+  }
+}
+
+const app = create({ plugins: [myPlugin] })</code></pre>
+      <h3>Code splitting</h3>
+      <p>MyProject supports lazy module loading out of the box. Use <code>app.lazy()</code> to defer expensive imports:</p>
+      <pre><code>const heavyModule = await app.lazy(() => import('./heavy'))</code></pre>
+    </div>
+
+    <div class="doc-section" id="doc-api">
+      <h2>API Reference</h2>
+      <ul>
+        <li><code>create(config?)</code> — Creates and returns a new app instance.</li>
+        <li><code>app.run()</code> — Starts the application. Returns a Promise.</li>
+        <li><code>app.on(event, handler)</code> — Registers a lifecycle event handler.</li>
+        <li><code>app.off(event, handler)</code> — Removes a lifecycle event handler.</li>
+        <li><code>app.lazy(loader)</code> — Lazily imports a module.</li>
+        <li><code>store(initial)</code> — Creates a reactive store with <code>get</code>, <code>set</code>, <code>subscribe</code>.</li>
+      </ul>
+    </div>
+
+    <div class="doc-section" id="doc-faq">
+      <h2>FAQ</h2>
+      <h3>Does it work with React / Vue?</h3>
+      <p>Yes. MyProject is framework-agnostic. Official adapters exist for React, Vue 3, and Svelte — see the <a href="#" style="color:var(--rust)" onclick="showPage('projects');setNavByPage('projects')">Projects</a> page.</p>
+      <h3>Is it production ready?</h3>
+      <p>Absolutely. MyProject is used in production by dozens of teams. The core API has been stable since v2.0.</p>
+    </div>
+
+    <div class="doc-section" id="doc-contrib">
+      <h2>Contributing</h2>
+      <p>We welcome contributions of all sizes — bug reports, documentation improvements, or new features. Please read our contributing guide before opening a pull request.</p>
+      <ol>
+        <li>Fork the repository and create a feature branch.</li>
+        <li>Run <code>npm test</code> to ensure all tests pass.</li>
+        <li>Open a pull request with a clear description of your changes.</li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section class="page" id="page-projects">
+    <div class="breadcrumb">Projects</div>
+
+    <div class="doc-section" id="proj-main">
+      <h2>Core Library</h2>
+      <p>The heart of the ecosystem — a small, stable, well-tested core that everything else builds on.</p>
+    </div>
+
+    <div class="doc-section" id="proj-plugins">
+      <h2>Official Plugins</h2>
+      <a class="project-card" href="#">
+        <div class="project-badge">⚛️</div>
+        <div class="project-info">
+          <h3>myproject-react</h3>
+          <p>React hooks and context for seamless integration with React 18+.</p>
+          <div class="project-tags"><span class="tag">react</span><span class="tag">hooks</span><span class="tag">typescript</span></div>
+        </div>
+      </a>
+      <a class="project-card" href="#">
+        <div class="project-badge">💚</div>
+        <div class="project-info">
+          <h3>myproject-vue</h3>
+          <p>Composables and plugin for Vue 3 with full reactivity support.</p>
+          <div class="project-tags"><span class="tag">vue3</span><span class="tag">composables</span></div>
+        </div>
+      </a>
+      <a class="project-card" href="#">
+        <div class="project-badge">🔶</div>
+        <div class="project-info">
+          <h3>myproject-svelte</h3>
+          <p>Svelte stores and actions for effortless state synchronisation.</p>
+          <div class="project-tags"><span class="tag">svelte</span><span class="tag">stores</span></div>
+        </div>
+      </a>
+    </div>
+
+    <div class="doc-section" id="proj-examples">
+      <h2>Example Apps</h2>
+      <a class="project-card" href="#">
+        <div class="project-badge">📋</div>
+        <div class="project-info">
+          <h3>Todo App</h3>
+          <p>Classic to-do list demonstrating store, events, and plugin patterns.</p>
+          <div class="project-tags"><span class="tag">example</span><span class="tag">beginner</span></div>
+        </div>
+      </a>
+      <a class="project-card" href="#">
+        <div class="project-badge">📊</div>
+        <div class="project-info">
+          <h3>Dashboard Starter</h3>
+          <p>Full dashboard template with charts, data fetching, and auth scaffolding.</p>
+          <div class="project-tags"><span class="tag">example</span><span class="tag">intermediate</span></div>
+        </div>
+      </a>
+    </div>
+
+    <div class="doc-section" id="proj-roadmap">
+      <h2>Roadmap</h2>
+      <ul>
+        <li>✅ v2.4 — Plugin API stabilised</li>
+        <li>✅ v2.4.1 — Performance improvements</li>
+        <li>🔄 v2.5 — Dev tools browser extension</li>
+        <li>⏳ v3.0 — Full async plugin lifecycle</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="page" id="page-about">
+    <div class="breadcrumb">About</div>
+
+    <div class="about-hero" id="about-mission">
+      <div class="about-avatar">🌿</div>
+      <div class="about-bio">
+        <h2>Built with care, shared freely.</h2>
+        <p>MyProject started as an internal tool and grew into a community-maintained library used around the world. Our goal is simple: make good software easier to build.</p>
+      </div>
+    </div>
+
+    <div class="stat-row">
+      <div class="stat"><div class="num">12k</div><div class="label">GitHub Stars</div></div>
+      <div class="stat"><div class="num">340</div><div class="label">Contributors</div></div>
+      <div class="stat"><div class="num">4M</div><div class="label">Downloads / mo</div></div>
+      <div class="stat"><div class="num">MIT</div><div class="label">License</div></div>
+    </div>
+
+    <div class="doc-section" id="about-team">
+      <h2>Core Team</h2>
+      <div class="card-grid">
+        <div class="card"><div class="card-icon">👩‍💻</div><h3>Alice Chen</h3><p>Core architecture & performance.</p></div>
+        <div class="card"><div class="card-icon">👨‍🎨</div><h3>Mateo García</h3><p>API design & developer experience.</p></div>
+        <div class="card"><div class="card-icon">👩‍🔬</div><h3>Priya Nair</h3><p>Testing, CI, and release process.</p></div>
+      </div>
+    </div>
+
+    <div class="doc-section" id="about-license">
+      <h2>License</h2>
+      <p>MyProject is released under the <strong>MIT License</strong>. You are free to use, modify, and distribute it in any project — personal or commercial — with no restrictions beyond attribution.</p>
+    </div>
+
+    <div class="doc-section" id="about-contact">
+      <h2>Contact & Community</h2>
+      <ul>
+        <li>💬 <a href="https://github.com" target="_blank" style="color:var(--rust)">GitHub Discussions</a> — questions, ideas, and show-and-tells.</li>
+        <li>🐛 <a href="https://github.com" target="_blank" style="color:var(--rust)">Issue Tracker</a> — bug reports and feature requests.</li>
+        <li>📬 <a href="/cdn-cgi/l/email-protection#48202d242427082531383a27222d2b3c662c2d3e" style="color:var(--rust)"><span class="__cf_email__" data-cfemail="abc3cec7c7c4ebc6d2dbd9c4c1cec8df85cfcedd">[email&#160;protected]</span></a> — for everything else.</li>
+      </ul>
+    </div>
+  </section>
+
+</main>
+</div>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+  // ── SEARCH INDEX ──
+  const INDEX = [
+    { title: 'Installation', section: 'Docs', page: 'docs', anchor: 'doc-install' },
+    { title: 'Configuration', section: 'Docs', page: 'docs', anchor: 'doc-config' },
+    { title: 'Basic Usage', section: 'Docs', page: 'docs', anchor: 'doc-usage' },
+    { title: 'Advanced Patterns', section: 'Docs', page: 'docs', anchor: 'doc-advanced' },
+    { title: 'API Reference', section: 'Docs', page: 'docs', anchor: 'doc-api' },
+    { title: 'FAQ', section: 'Docs', page: 'docs', anchor: 'doc-faq' },
+    { title: 'Contributing', section: 'Docs', page: 'docs', anchor: 'doc-contrib' },
+    { title: 'Quick Start', section: 'Home', page: 'home', anchor: 'home-quickstart' },
+    { title: 'Core Library', section: 'Projects', page: 'projects', anchor: 'proj-main' },
+    { title: 'Plugins', section: 'Projects', page: 'projects', anchor: 'proj-plugins' },
+    { title: 'Roadmap', section: 'Projects', page: 'projects', anchor: 'proj-roadmap' },
+    { title: 'Mission', section: 'About', page: 'about', anchor: 'about-mission' },
+    { title: 'Team', section: 'About', page: 'about', anchor: 'about-team' },
+    { title: 'License', section: 'About', page: 'about', anchor: 'about-license' },
+    { title: 'Contact', section: 'About', page: 'about', anchor: 'about-contact' },
+  ];
+
+  const searchInput = document.getElementById('search-input');
+  const searchResults = document.getElementById('search-results');
+
+  searchInput.addEventListener('input', () => {
+    const q = searchInput.value.trim().toLowerCase();
+    if (!q) { searchResults.classList.remove('open'); return; }
+    const hits = INDEX.filter(i => i.title.toLowerCase().includes(q) || i.section.toLowerCase().includes(q));
+    if (hits.length === 0) {
+      searchResults.innerHTML = '<div class="sr-empty">No results found.</div>';
+    } else {
+      searchResults.innerHTML = hits.slice(0, 6).map(h =>
+        `<div class="sr-item" onclick="goTo('${h.page}','${h.anchor}')">
+          <div class="sr-title">${h.title}</div>
+          <div class="sr-section">${h.section}</div>
+        </div>`
+      ).join('');
+    }
+    searchResults.classList.add('open');
+  });
+
+  document.addEventListener('click', e => {
+    if (!document.getElementById('search-wrap').contains(e.target)) {
+      searchResults.classList.remove('open');
+    }
+  });
+
+  function goTo(page, anchor) {
+    showPage(page);
+    setNavByPage(page);
+    searchResults.classList.remove('open');
+    searchInput.value = '';
+    setTimeout(() => scrollTo(anchor), 60);
+  }
+
+  // ── PAGE SWITCHING ──
+  function showPage(id) {
+    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+    document.getElementById('page-' + id).classList.add('active');
+    ['home','docs','projects','about'].forEach(s => {
+      const el = document.getElementById('sb-' + s);
+      if (el) el.style.display = (s === id) ? 'block' : 'none';
+    });
+    window.scrollTo(0, 0);
+    closeSidebar();
+  }
+
+  function setNav(el) {
+    document.querySelectorAll('#topbar nav a').forEach(a => a.classList.remove('active'));
+    el.classList.add('active');
+  }
+
+  function setNavByPage(page) {
+    const links = document.querySelectorAll('#topbar nav a');
+    const order = ['home','docs','projects','about'];
+    links.forEach((a, i) => a.classList.toggle('active', order[i] === page));
+  }
+
+  function scrollTo(id) {
+    const el = document.getElementById(id);
+    if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+
+  // ── SIDEBAR MOBILE ──
+  document.getElementById('menu-btn').addEventListener('click', () =
