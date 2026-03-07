@@ -1,67 +1,29 @@
 ---
 title: "About"
-description: "The story behind MyProject."
+description: "The ABI Training Working Group"
 toc: true
 ---
 
-## Mission
-
-Built with care, shared freely.
-
-MyProject started as an internal tool and grew into a community-maintained library used around the world. Our goal is simple: make good software easier to build — without imposing unnecessary complexity or vendor lock-in.
-
-::: {.stat-row}
-::: {}
-::: {.stat-num}12k:::
-::: {.stat-label}GitHub Stars:::
-:::
-::: {}
-::: {.stat-num}340:::
-::: {.stat-label}Contributors:::
-:::
-::: {}
-::: {.stat-num}4M:::
-::: {.stat-label}Downloads / mo:::
-:::
-::: {}
-::: {.stat-num}MIT:::
-::: {.stat-label}License:::
-:::
-:::
+## The ABI Training Working Group
 
 ---
 
 ## Core Team
 
-**Alice Chen** — Core architecture & performance.
+**Verena Ras** — Training Coordination and Development
 
-**Mateo García** — API design & developer experience.
+**Shaun Aron** — Training Coordination and Development
 
-**Priya Nair** — Testing, CI, and release process.
+**Melek Chaouch** — Training Coordination and Development
 
-We're a small, fully remote team distributed across three continents. Contributions from the wider community are what make MyProject what it is.
 
 ---
 
 ## License
 
-MyProject is released under the **MIT License**. You are free to use, modify, and distribute it in any project — personal or commercial — with no restrictions beyond attribution.
+MyProject is released under the Creative Commons Attribution (CC BY). 
 
 ```
-MIT License
-
-Copyright (c) 2025 MyProject Contributors
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software...
-```
-
-[View full license on GitHub →](https://github.com/your-username/your-repo/blob/main/LICENSE)
-
----
 
 ## Contact & Community
-
-- 💬 [GitHub Discussions](https://github.com/your-username/your-repo/discussions) — questions, ideas, and show-and-tells.
-- 🐛 [Issue Tracker](https://github.com/your-username/your-repo/issues) — bug reports and feature requests.
-- 📬 [hello@myproject.dev](mailto:hello@myproject.dev) — for everything else.
+- 📬 [info@bioinformaticsinstitute.africa](mailto:info@bioinformaticsinstitute.africa — for any questions.
