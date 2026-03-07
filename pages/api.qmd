@@ -1,0 +1,87 @@
+---
+title: "API Reference"
+description: "Full reference for every function and method in MyProject."
+---
+
+## `create(config?)`
+
+Creates and returns a new app instance.
+
+```ts
+function create(config?: AppConfig): App
+```
+
+**Parameters**
+
+- `config` *(optional)* — A partial `AppConfig` object. Defaults are applied for any missing keys.
+
+**Returns** — An `App` instance.
+
+---
+
+## `app.run()`
+
+Starts the application. Fires the `init` then `ready` lifecycle events.
+
+```ts
+app.run(): Promise<void>
+```
+
+---
+
+## `app.on(event, handler)`
+
+Registers a lifecycle event handler.
+
+```ts
+app.on(event: string, handler: Function): void
+```
+
+---
+
+## `app.off(event, handler)`
+
+Removes a previously registered handler.
+
+```ts
+app.off(event: string, handler: Function): void
+```
+
+---
+
+## `app.once(event, handler)`
+
+Registers a one-time handler that removes itself after firing.
+
+```ts
+app.once(event: string, handler: Function): void
+```
+
+---
+
+## `app.lazy(loader)`
+
+Lazily imports a module. Returns a Promise that resolves to the module.
+
+```ts
+app.lazy(loader: () => Promise<unknown>): Promise<unknown>
+```
+
+---
+
+## `store(initial)`
+
+Creates a reactive store.
+
+```ts
+function store<T>(initial: T): Store<T>
+```
+
+### Store methods
+
+| Method | Description |
+|--------|-------------|
+| `store.get()` | Returns the current state |
+| `store.set(partial)` | Merges `partial` into state and notifies subscribers |
+| `store.subscribe(fn)` | Registers a subscriber; returns an unsubscribe function |
+| `store.reset()` | Resets state to the initial value |

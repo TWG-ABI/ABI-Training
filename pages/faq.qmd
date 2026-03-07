@@ -1,0 +1,28 @@
+---
+title: "FAQ"
+description: "Frequently asked questions about MyProject."
+---
+
+## Does it work with React / Vue?
+
+Yes. MyProject is framework-agnostic. Official adapters exist for React, Vue 3, and Svelte — see the [Projects](../projects.qmd) page for links.
+
+## Is it production ready?
+
+Absolutely. MyProject is used in production by dozens of teams. The core API has been stable since v2.0, and breaking changes follow a deprecation period of at least one major version.
+
+## Does it work server-side (Node.js / Deno / Bun)?
+
+Yes, MyProject is isomorphic. The core library and `store` module work in any JS runtime. Some browser-specific plugins (e.g. DOM adapters) will only work in browser environments.
+
+## How do I report a bug?
+
+Open an issue on [GitHub](https://github.com/your-username/your-repo/issues). Please include your Node version, MyProject version, and a minimal reproduction.
+
+## Is there a changelog?
+
+Yes — see [CHANGELOG.md](https://github.com/your-username/your-repo/blob/main/CHANGELOG.md) on GitHub for a full history of releases.
+
+## Can I use it without a bundler?
+
+Yes, via the CDN build — see [Installation](installation.qmd#cdn-no-bundler). For production we recommend using a bundler to benefit from tree-shaking.

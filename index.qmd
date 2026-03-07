@@ -1,0 +1,73 @@
+---
+title: ""
+page-layout: full
+toc: false
+---
+
+::: {.hero-banner}
+::: {.hero-eyebrow}
+Open Source · v2.4.1
+:::
+
+# Build things that *actually* last.
+
+A lightweight, composable toolkit for modern applications. Thoughtfully designed, meticulously documented, and built to grow with you.
+
+<br>
+
+[Read the Docs](docs/installation.qmd){.btn .btn-primary .me-2}
+[View on GitHub](https://github.com/your-username/your-repo){.btn .btn-outline-light}
+:::
+
+## Why MyProject?
+
+Designed for clarity and longevity, MyProject gives your team a solid foundation without locking you into opinions you didn't choose.
+
+::: {.feature-grid}
+::: {.feature-card}
+::: {.feature-icon}⚡:::
+**Fast by default**  
+Zero-cost abstractions and tree-shaking keep bundles lean.
+:::
+
+::: {.feature-card}
+::: {.feature-icon}🧩:::
+**Composable**  
+Mix and match modules. Use what you need, leave the rest.
+:::
+
+::: {.feature-card}
+::: {.feature-icon}📖:::
+**Well documented**  
+Every API, pattern, and gotcha covered with real examples.
+:::
+
+::: {.feature-card}
+::: {.feature-icon}🔒:::
+**Type-safe**  
+First-class TypeScript support across the entire surface.
+:::
+:::
+
+## Quick Start
+
+Get up and running in under two minutes:
+
+```bash
+# Install via npm
+npm install myproject
+
+# or yarn
+yarn add myproject
+```
+
+```js
+import { create } from 'myproject'
+
+const app = create({ theme: 'warm' })
+app.run()
+```
+
+::: {.callout-tip}
+For a complete walkthrough, head to the [Documentation](docs/installation.qmd) section.
+:::
