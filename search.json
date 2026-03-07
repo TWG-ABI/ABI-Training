@@ -1,110 +1,86 @@
 [
   {
-    "objectID": "pages/usage.html",
-    "href": "pages/usage.html",
-    "title": "Basic Usage",
+    "objectID": "pages/faq.html",
+    "href": "pages/faq.html",
+    "title": "FAQ",
     "section": "",
-    "text": "Import create and pass your config. The returned instance exposes the full API.\nimport { create } from 'myproject'\n\nconst app = create({ theme: 'warm' })\n\n// Register a handler\napp.on('ready', () =&gt; console.log('App is ready'))\n\n// Start the app\nawait app.run()",
+    "text": "Yes. MyProject is framework-agnostic. Official adapters exist for React, Vue 3, and Svelte — see the Projects page for links.",
     "crumbs": [
       "Docs",
-      "Guides",
-      "Basic Usage"
+      "Help",
+      "FAQ"
     ]
   },
   {
-    "objectID": "pages/usage.html#creating-an-instance",
-    "href": "pages/usage.html#creating-an-instance",
-    "title": "Basic Usage",
+    "objectID": "pages/faq.html#does-it-work-with-react-vue",
+    "href": "pages/faq.html#does-it-work-with-react-vue",
+    "title": "FAQ",
     "section": "",
-    "text": "Import create and pass your config. The returned instance exposes the full API.\nimport { create } from 'myproject'\n\nconst app = create({ theme: 'warm' })\n\n// Register a handler\napp.on('ready', () =&gt; console.log('App is ready'))\n\n// Start the app\nawait app.run()",
+    "text": "Yes. MyProject is framework-agnostic. Official adapters exist for React, Vue 3, and Svelte — see the Projects page for links.",
     "crumbs": [
       "Docs",
-      "Guides",
-      "Basic Usage"
+      "Help",
+      "FAQ"
     ]
   },
   {
-    "objectID": "pages/usage.html#working-with-data",
-    "href": "pages/usage.html#working-with-data",
-    "title": "Basic Usage",
-    "section": "Working with data",
-    "text": "Working with data\nUse the store module for reactive state:\nimport { store } from 'myproject'\n\nconst state = store({ count: 0 })\n\nstate.subscribe(s =&gt; console.log('count:', s.count))\nstate.set({ count: state.get().count + 1 })",
+    "objectID": "pages/faq.html#is-it-production-ready",
+    "href": "pages/faq.html#is-it-production-ready",
+    "title": "FAQ",
+    "section": "Is it production ready?",
+    "text": "Is it production ready?\nAbsolutely. MyProject is used in production by dozens of teams. The core API has been stable since v2.0, and breaking changes follow a deprecation period of at least one major version.",
     "crumbs": [
       "Docs",
-      "Guides",
-      "Basic Usage"
+      "Help",
+      "FAQ"
     ]
   },
   {
-    "objectID": "pages/usage.html#lifecycle-events",
-    "href": "pages/usage.html#lifecycle-events",
-    "title": "Basic Usage",
-    "section": "Lifecycle events",
-    "text": "Lifecycle events\nMyProject emits the following events you can hook into with app.on():\n\n\n\nEvent\nWhen it fires\n\n\n\n\ninit\nAfter the instance is created\n\n\nready\nAfter app.run() completes\n\n\nerror\nWhen an unhandled error occurs\n\n\ndestroy\nBefore the instance is torn down\n\n\n\n\n\n\n\n\n\nTip\n\n\n\nYou can also use app.once() for one-time event handlers that auto-remove themselves after firing.",
+    "objectID": "pages/faq.html#does-it-work-server-side-node.js-deno-bun",
+    "href": "pages/faq.html#does-it-work-server-side-node.js-deno-bun",
+    "title": "FAQ",
+    "section": "Does it work server-side (Node.js / Deno / Bun)?",
+    "text": "Does it work server-side (Node.js / Deno / Bun)?\nYes, MyProject is isomorphic. The core library and store module work in any JS runtime. Some browser-specific plugins (e.g. DOM adapters) will only work in browser environments.",
     "crumbs": [
       "Docs",
-      "Guides",
-      "Basic Usage"
+      "Help",
+      "FAQ"
     ]
   },
   {
-    "objectID": "pages/advanced.html",
-    "href": "pages/advanced.html",
-    "title": "Advanced Patterns",
-    "section": "",
-    "text": "Plugins are plain objects with a name and setup function. The setup function receives the app instance and can hook into any lifecycle event.\nconst myPlugin = {\n  name: 'my-plugin',\n  setup(app) {\n    app.on('ready', () =&gt; {\n      // plugin logic here\n    })\n  }\n}\n\nconst app = create({ plugins: [myPlugin] })\n\n\nPass options to your plugin by wrapping it in a factory function:\nconst myPlugin = (options = {}) =&gt; ({\n  name: 'my-plugin',\n  setup(app) {\n    console.log('options:', options)\n  }\n})\n\nconst app = create({ plugins: [myPlugin({ verbose: true })] })",
+    "objectID": "pages/faq.html#how-do-i-report-a-bug",
+    "href": "pages/faq.html#how-do-i-report-a-bug",
+    "title": "FAQ",
+    "section": "How do I report a bug?",
+    "text": "How do I report a bug?\nOpen an issue on GitHub. Please include your Node version, MyProject version, and a minimal reproduction.",
     "crumbs": [
       "Docs",
-      "Guides",
-      "Advanced Patterns"
+      "Help",
+      "FAQ"
     ]
   },
   {
-    "objectID": "pages/advanced.html#plugin-authoring",
-    "href": "pages/advanced.html#plugin-authoring",
-    "title": "Advanced Patterns",
-    "section": "",
-    "text": "Plugins are plain objects with a name and setup function. The setup function receives the app instance and can hook into any lifecycle event.\nconst myPlugin = {\n  name: 'my-plugin',\n  setup(app) {\n    app.on('ready', () =&gt; {\n      // plugin logic here\n    })\n  }\n}\n\nconst app = create({ plugins: [myPlugin] })\n\n\nPass options to your plugin by wrapping it in a factory function:\nconst myPlugin = (options = {}) =&gt; ({\n  name: 'my-plugin',\n  setup(app) {\n    console.log('options:', options)\n  }\n})\n\nconst app = create({ plugins: [myPlugin({ verbose: true })] })",
+    "objectID": "pages/faq.html#is-there-a-changelog",
+    "href": "pages/faq.html#is-there-a-changelog",
+    "title": "FAQ",
+    "section": "Is there a changelog?",
+    "text": "Is there a changelog?\nYes — see CHANGELOG.md on GitHub for a full history of releases.",
     "crumbs": [
       "Docs",
-      "Guides",
-      "Advanced Patterns"
+      "Help",
+      "FAQ"
     ]
   },
   {
-    "objectID": "pages/advanced.html#code-splitting",
-    "href": "pages/advanced.html#code-splitting",
-    "title": "Advanced Patterns",
-    "section": "Code splitting",
-    "text": "Code splitting\nMyProject supports lazy module loading out of the box. Use app.lazy() to defer expensive imports:\nconst heavyModule = await app.lazy(() =&gt; import('./heavy'))",
+    "objectID": "pages/faq.html#can-i-use-it-without-a-bundler",
+    "href": "pages/faq.html#can-i-use-it-without-a-bundler",
+    "title": "FAQ",
+    "section": "Can I use it without a bundler?",
+    "text": "Can I use it without a bundler?\nYes, via the CDN build — see Installation. For production we recommend using a bundler to benefit from tree-shaking.",
     "crumbs": [
       "Docs",
-      "Guides",
-      "Advanced Patterns"
-    ]
-  },
-  {
-    "objectID": "pages/advanced.html#error-handling",
-    "href": "pages/advanced.html#error-handling",
-    "title": "Advanced Patterns",
-    "section": "Error handling",
-    "text": "Error handling\nCatch errors globally with the error lifecycle event:\napp.on('error', (err) =&gt; {\n  console.error('Caught:', err.message)\n  // send to your error tracking service\n})\n\n\n\n\n\n\nWarning\n\n\n\nUnhandled errors inside async plugin setup functions will not automatically trigger the error event. Wrap async code in try/catch within your plugin.",
-    "crumbs": [
-      "Docs",
-      "Guides",
-      "Advanced Patterns"
-    ]
-  },
-  {
-    "objectID": "pages/advanced.html#typescript",
-    "href": "pages/advanced.html#typescript",
-    "title": "Advanced Patterns",
-    "section": "TypeScript",
-    "text": "TypeScript\nMyProject ships with full TypeScript types. No @types package needed:\nimport { create, AppConfig } from 'myproject'\n\nconst config: AppConfig = {\n  theme: 'cool',\n  debug: true,\n}\n\nconst app = create(config)",
-    "crumbs": [
-      "Docs",
-      "Guides",
-      "Advanced Patterns"
+      "Help",
+      "FAQ"
     ]
   },
   {
@@ -252,25 +228,64 @@
     ]
   },
   {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "Build things that actually last.",
+    "objectID": "pages/advanced.html",
+    "href": "pages/advanced.html",
+    "title": "Advanced Patterns",
     "section": "",
-    "text": "Open Source · v2.4.1\n\n\n\nA lightweight, composable toolkit for modern applications. Thoughtfully designed, meticulously documented, and built to grow with you.\n\nRead the Docs View on GitHub"
+    "text": "Plugins are plain objects with a name and setup function. The setup function receives the app instance and can hook into any lifecycle event.\nconst myPlugin = {\n  name: 'my-plugin',\n  setup(app) {\n    app.on('ready', () =&gt; {\n      // plugin logic here\n    })\n  }\n}\n\nconst app = create({ plugins: [myPlugin] })\n\n\nPass options to your plugin by wrapping it in a factory function:\nconst myPlugin = (options = {}) =&gt; ({\n  name: 'my-plugin',\n  setup(app) {\n    console.log('options:', options)\n  }\n})\n\nconst app = create({ plugins: [myPlugin({ verbose: true })] })",
+    "crumbs": [
+      "Docs",
+      "Guides",
+      "Advanced Patterns"
+    ]
   },
   {
-    "objectID": "index.html#why-myproject",
-    "href": "index.html#why-myproject",
-    "title": "Build things that actually last.",
-    "section": "Why MyProject?",
-    "text": "Why MyProject?\nDesigned for clarity and longevity, MyProject gives your team a solid foundation without locking you into opinions you didn’t choose.\n\n\n::: {.feature-icon}⚡::: Fast by default\nZero-cost abstractions and tree-shaking keep bundles lean.\n\n\n::: {.feature-icon}🧩::: Composable\nMix and match modules. Use what you need, leave the rest.\n\n\n::: {.feature-icon}📖::: Well documented\nEvery API, pattern, and gotcha covered with real examples.\n\n\n::: {.feature-icon}🔒::: Type-safe\nFirst-class TypeScript support across the entire surface."
+    "objectID": "pages/advanced.html#plugin-authoring",
+    "href": "pages/advanced.html#plugin-authoring",
+    "title": "Advanced Patterns",
+    "section": "",
+    "text": "Plugins are plain objects with a name and setup function. The setup function receives the app instance and can hook into any lifecycle event.\nconst myPlugin = {\n  name: 'my-plugin',\n  setup(app) {\n    app.on('ready', () =&gt; {\n      // plugin logic here\n    })\n  }\n}\n\nconst app = create({ plugins: [myPlugin] })\n\n\nPass options to your plugin by wrapping it in a factory function:\nconst myPlugin = (options = {}) =&gt; ({\n  name: 'my-plugin',\n  setup(app) {\n    console.log('options:', options)\n  }\n})\n\nconst app = create({ plugins: [myPlugin({ verbose: true })] })",
+    "crumbs": [
+      "Docs",
+      "Guides",
+      "Advanced Patterns"
+    ]
   },
   {
-    "objectID": "index.html#quick-start",
-    "href": "index.html#quick-start",
-    "title": "Build things that actually last.",
-    "section": "Quick Start",
-    "text": "Quick Start\nGet up and running in under two minutes:\n# Install via npm\nnpm install myproject\n\n# or yarn\nyarn add myproject\nimport { create } from 'myproject'\n\nconst app = create({ theme: 'warm' })\napp.run()\n\n\n\n\n\n\nTip\n\n\n\nFor a complete walkthrough, head to the Documentation section."
+    "objectID": "pages/advanced.html#code-splitting",
+    "href": "pages/advanced.html#code-splitting",
+    "title": "Advanced Patterns",
+    "section": "Code splitting",
+    "text": "Code splitting\nMyProject supports lazy module loading out of the box. Use app.lazy() to defer expensive imports:\nconst heavyModule = await app.lazy(() =&gt; import('./heavy'))",
+    "crumbs": [
+      "Docs",
+      "Guides",
+      "Advanced Patterns"
+    ]
+  },
+  {
+    "objectID": "pages/advanced.html#error-handling",
+    "href": "pages/advanced.html#error-handling",
+    "title": "Advanced Patterns",
+    "section": "Error handling",
+    "text": "Error handling\nCatch errors globally with the error lifecycle event:\napp.on('error', (err) =&gt; {\n  console.error('Caught:', err.message)\n  // send to your error tracking service\n})\n\n\n\n\n\n\nWarning\n\n\n\nUnhandled errors inside async plugin setup functions will not automatically trigger the error event. Wrap async code in try/catch within your plugin.",
+    "crumbs": [
+      "Docs",
+      "Guides",
+      "Advanced Patterns"
+    ]
+  },
+  {
+    "objectID": "pages/advanced.html#typescript",
+    "href": "pages/advanced.html#typescript",
+    "title": "Advanced Patterns",
+    "section": "TypeScript",
+    "text": "TypeScript\nMyProject ships with full TypeScript types. No @types package needed:\nimport { create, AppConfig } from 'myproject'\n\nconst config: AppConfig = {\n  theme: 'cool',\n  debug: true,\n}\n\nconst app = create(config)",
+    "crumbs": [
+      "Docs",
+      "Guides",
+      "Advanced Patterns"
+    ]
   },
   {
     "objectID": "projects.html",
@@ -306,6 +321,27 @@
     "title": "Projects",
     "section": "Roadmap",
     "text": "Roadmap\n\n\n\nVersion\nStatus\nWhat’s included\n\n\n\n\nv2.4\n✅ Released\nPlugin API stabilised\n\n\nv2.4.1\n✅ Released\nPerformance improvements\n\n\nv2.5\n🔄 In progress\nDev tools browser extension\n\n\nv3.0\n⏳ Planned\nFull async plugin lifecycle\n\n\n\nHave a feature request? Open a discussion on GitHub."
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Build things that actually last.",
+    "section": "",
+    "text": "Open Source · v2.4.1\n\n\n\nA lightweight, composable toolkit for modern applications. Thoughtfully designed, meticulously documented, and built to grow with you.\n\nRead the Docs View on GitHub"
+  },
+  {
+    "objectID": "index.html#why-myproject",
+    "href": "index.html#why-myproject",
+    "title": "Build things that actually last.",
+    "section": "Why MyProject?",
+    "text": "Why MyProject?\nDesigned for clarity and longevity, MyProject gives your team a solid foundation without locking you into opinions you didn’t choose.\n\n\n::: {.feature-icon}⚡::: Fast by default\nZero-cost abstractions and tree-shaking keep bundles lean.\n\n\n::: {.feature-icon}🧩::: Composable\nMix and match modules. Use what you need, leave the rest.\n\n\n::: {.feature-icon}📖::: Well documented\nEvery API, pattern, and gotcha covered with real examples.\n\n\n::: {.feature-icon}🔒::: Type-safe\nFirst-class TypeScript support across the entire surface."
+  },
+  {
+    "objectID": "index.html#quick-start",
+    "href": "index.html#quick-start",
+    "title": "Build things that actually last.",
+    "section": "Quick Start",
+    "text": "Quick Start\nGet up and running in under two minutes:\n# Install via npm\nnpm install myproject\n\n# or yarn\nyarn add myproject\nimport { create } from 'myproject'\n\nconst app = create({ theme: 'warm' })\napp.run()\n\n\n\n\n\n\nTip\n\n\n\nFor a complete walkthrough, head to the Documentation section."
   },
   {
     "objectID": "about.html",
@@ -415,87 +451,51 @@
     ]
   },
   {
-    "objectID": "pages/faq.html",
-    "href": "pages/faq.html",
-    "title": "FAQ",
+    "objectID": "pages/usage.html",
+    "href": "pages/usage.html",
+    "title": "Basic Usage",
     "section": "",
-    "text": "Yes. MyProject is framework-agnostic. Official adapters exist for React, Vue 3, and Svelte — see the Projects page for links.",
+    "text": "Import create and pass your config. The returned instance exposes the full API.\nimport { create } from 'myproject'\n\nconst app = create({ theme: 'warm' })\n\n// Register a handler\napp.on('ready', () =&gt; console.log('App is ready'))\n\n// Start the app\nawait app.run()",
     "crumbs": [
       "Docs",
-      "Help",
-      "FAQ"
+      "Guides",
+      "Basic Usage"
     ]
   },
   {
-    "objectID": "pages/faq.html#does-it-work-with-react-vue",
-    "href": "pages/faq.html#does-it-work-with-react-vue",
-    "title": "FAQ",
+    "objectID": "pages/usage.html#creating-an-instance",
+    "href": "pages/usage.html#creating-an-instance",
+    "title": "Basic Usage",
     "section": "",
-    "text": "Yes. MyProject is framework-agnostic. Official adapters exist for React, Vue 3, and Svelte — see the Projects page for links.",
+    "text": "Import create and pass your config. The returned instance exposes the full API.\nimport { create } from 'myproject'\n\nconst app = create({ theme: 'warm' })\n\n// Register a handler\napp.on('ready', () =&gt; console.log('App is ready'))\n\n// Start the app\nawait app.run()",
     "crumbs": [
       "Docs",
-      "Help",
-      "FAQ"
+      "Guides",
+      "Basic Usage"
     ]
   },
   {
-    "objectID": "pages/faq.html#is-it-production-ready",
-    "href": "pages/faq.html#is-it-production-ready",
-    "title": "FAQ",
-    "section": "Is it production ready?",
-    "text": "Is it production ready?\nAbsolutely. MyProject is used in production by dozens of teams. The core API has been stable since v2.0, and breaking changes follow a deprecation period of at least one major version.",
+    "objectID": "pages/usage.html#working-with-data",
+    "href": "pages/usage.html#working-with-data",
+    "title": "Basic Usage",
+    "section": "Working with data",
+    "text": "Working with data\nUse the store module for reactive state:\nimport { store } from 'myproject'\n\nconst state = store({ count: 0 })\n\nstate.subscribe(s =&gt; console.log('count:', s.count))\nstate.set({ count: state.get().count + 1 })",
     "crumbs": [
       "Docs",
-      "Help",
-      "FAQ"
+      "Guides",
+      "Basic Usage"
     ]
   },
   {
-    "objectID": "pages/faq.html#does-it-work-server-side-node.js-deno-bun",
-    "href": "pages/faq.html#does-it-work-server-side-node.js-deno-bun",
-    "title": "FAQ",
-    "section": "Does it work server-side (Node.js / Deno / Bun)?",
-    "text": "Does it work server-side (Node.js / Deno / Bun)?\nYes, MyProject is isomorphic. The core library and store module work in any JS runtime. Some browser-specific plugins (e.g. DOM adapters) will only work in browser environments.",
+    "objectID": "pages/usage.html#lifecycle-events",
+    "href": "pages/usage.html#lifecycle-events",
+    "title": "Basic Usage",
+    "section": "Lifecycle events",
+    "text": "Lifecycle events\nMyProject emits the following events you can hook into with app.on():\n\n\n\nEvent\nWhen it fires\n\n\n\n\ninit\nAfter the instance is created\n\n\nready\nAfter app.run() completes\n\n\nerror\nWhen an unhandled error occurs\n\n\ndestroy\nBefore the instance is torn down\n\n\n\n\n\n\n\n\n\nTip\n\n\n\nYou can also use app.once() for one-time event handlers that auto-remove themselves after firing.",
     "crumbs": [
       "Docs",
-      "Help",
-      "FAQ"
-    ]
-  },
-  {
-    "objectID": "pages/faq.html#how-do-i-report-a-bug",
-    "href": "pages/faq.html#how-do-i-report-a-bug",
-    "title": "FAQ",
-    "section": "How do I report a bug?",
-    "text": "How do I report a bug?\nOpen an issue on GitHub. Please include your Node version, MyProject version, and a minimal reproduction.",
-    "crumbs": [
-      "Docs",
-      "Help",
-      "FAQ"
-    ]
-  },
-  {
-    "objectID": "pages/faq.html#is-there-a-changelog",
-    "href": "pages/faq.html#is-there-a-changelog",
-    "title": "FAQ",
-    "section": "Is there a changelog?",
-    "text": "Is there a changelog?\nYes — see CHANGELOG.md on GitHub for a full history of releases.",
-    "crumbs": [
-      "Docs",
-      "Help",
-      "FAQ"
-    ]
-  },
-  {
-    "objectID": "pages/faq.html#can-i-use-it-without-a-bundler",
-    "href": "pages/faq.html#can-i-use-it-without-a-bundler",
-    "title": "FAQ",
-    "section": "Can I use it without a bundler?",
-    "text": "Can I use it without a bundler?\nYes, via the CDN build — see Installation. For production we recommend using a bundler to benefit from tree-shaking.",
-    "crumbs": [
-      "Docs",
-      "Help",
-      "FAQ"
+      "Guides",
+      "Basic Usage"
     ]
   },
   {
