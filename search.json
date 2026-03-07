@@ -337,39 +337,25 @@
     "text": "Upcoming Training Events:\nAfrican Bioinformatics Institute - Bioinformatics Summer School\nApply to the Bioinformatics Summer School\n\n\n\n\n\n\nTip\n\n\n\nPlease get your managers/supervisors approval ahead of applying to ABI events."
   },
   {
-    "objectID": "about.html",
-    "href": "about.html",
-    "title": "About",
-    "section": "",
-    "text": "Built with care, shared freely.\nMyProject started as an internal tool and grew into a community-maintained library used around the world. Our goal is simple: make good software easier to build — without imposing unnecessary complexity or vendor lock-in.\n\n\n::: {.stat-num}12k::: ::: {.stat-label}GitHub Stars:::\n\n\n::: {.stat-num}340::: ::: {.stat-label}Contributors:::\n\n\n::: {.stat-num}4M::: ::: {.stat-label}Downloads / mo:::\n\n\n::: {.stat-num}MIT::: ::: {.stat-label}License:::"
-  },
-  {
-    "objectID": "about.html#mission",
-    "href": "about.html#mission",
-    "title": "About",
-    "section": "",
-    "text": "Built with care, shared freely.\nMyProject started as an internal tool and grew into a community-maintained library used around the world. Our goal is simple: make good software easier to build — without imposing unnecessary complexity or vendor lock-in.\n\n\n::: {.stat-num}12k::: ::: {.stat-label}GitHub Stars:::\n\n\n::: {.stat-num}340::: ::: {.stat-label}Contributors:::\n\n\n::: {.stat-num}4M::: ::: {.stat-label}Downloads / mo:::\n\n\n::: {.stat-num}MIT::: ::: {.stat-label}License:::"
-  },
-  {
     "objectID": "about.html#core-team",
     "href": "about.html#core-team",
     "title": "About",
     "section": "Core Team",
-    "text": "Core Team\nAlice Chen — Core architecture & performance.\nMateo García — API design & developer experience.\nPriya Nair — Testing, CI, and release process.\nWe’re a small, fully remote team distributed across three continents. Contributions from the wider community are what make MyProject what it is."
+    "text": "Core Team\nVerena Ras — Training Coordination and Development\nShaun Aron — Training Coordination and Development\nMelek Chaouch — Training Coordination and Development"
   },
   {
     "objectID": "about.html#license",
     "href": "about.html#license",
     "title": "About",
     "section": "License",
-    "text": "License\nMyProject is released under the MIT License. You are free to use, modify, and distribute it in any project — personal or commercial — with no restrictions beyond attribution.\nMIT License\n\nCopyright (c) 2025 MyProject Contributors\n\nPermission is hereby granted, free of charge, to any person obtaining a copy\nof this software...\nView full license on GitHub →"
+    "text": "License\nMyProject is released under the Creative Commons Attribution (CC BY).\n```"
   },
   {
     "objectID": "about.html#contact-community",
     "href": "about.html#contact-community",
     "title": "About",
     "section": "Contact & Community",
-    "text": "Contact & Community\n\n💬 GitHub Discussions — questions, ideas, and show-and-tells.\n🐛 Issue Tracker — bug reports and feature requests.\n📬 hello@myproject.dev — for everything else."
+    "text": "Contact & Community\n\n📬 [info@bioinformaticsinstitute.africa](mailto:info@bioinformaticsinstitute.africa — for any questions."
   },
   {
     "objectID": "pages/contributing.html",
