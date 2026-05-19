@@ -6,8 +6,6 @@ website:
   title: "ABI-ITWG"
   description: "A base for training content from the ABI Interim Training Working Group"
   favicon: ""
-  repo-url: Interim-Training-Working-Group-ABI
-  repo-actions: [edit, issue]
 
   navbar:
     logo: "✦"
@@ -21,9 +19,6 @@ website:
         href: projects.qmd
       - text: "About"
         href: about.qmd
-    right:
-      - icon: github
-        href: 
 
   sidebar:
     - title: "Documentation"
@@ -46,11 +41,7 @@ website:
             - pages/contributing.qmd
 
   page-footer:
-    left: "© 2026 ABI-ITWG. CC 0."
-    right:
-      - text: "GitHub"
-        href: https://github.com/Interim-Training-Working-Group-ABI
-
+    left: "© 2026 ABI-ITWG. CC BY"
 
 format:
   html:
