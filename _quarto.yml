@@ -3,15 +3,15 @@ project:
   output-dir: docs
 
 website:
-  title: "MyProject"
-  description: "A lightweight, composable toolkit for modern applications."
+  title: "ABI-ITWG"
+  description: "A base for training content from the ABI Interim Training Working Group"
   favicon: ""
-  repo-url: https://github.com/your-username/your-repo
+  repo-url: Interim-Training-Working-Group-ABI
   repo-actions: [edit, issue]
 
   navbar:
     logo: "✦"
-    title: "MyProject"
+    title: "ABI-ITWG"
     left:
       - text: "Home"
         href: index.qmd
@@ -23,9 +23,7 @@ website:
         href: about.qmd
     right:
       - icon: github
-        href: https://github.com/your-username/your-repo
-      - icon: search
-        href: search.qmd
+        href: 
 
   sidebar:
     - title: "Documentation"
@@ -48,14 +46,11 @@ website:
             - pages/contributing.qmd
 
   page-footer:
-    left: "© 2025 MyProject. CC BY License."
+    left: "© 2026 ABI-ITWG. CC 0."
     right:
       - text: "GitHub"
-        href: https://github.com/your-username/your-repo
+        href: https://github.com/Interim-Training-Working-Group-ABI
 
-  search:
-    location: navbar
-    type: overlay
 
 format:
   html:
