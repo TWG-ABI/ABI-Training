@@ -28,18 +28,18 @@
     "text": "Trainer Info\n\n\n\n\n\n\n\n\n\nName\nAffiliation\nRole\nStream\n\n\n\n\nGloria Nakabiri\nAfrican Center of Excellence in Bioinformatics and Data Intensive Sciences\nLead trainer\nUnix\n\n\nPeter van Heusden\nSouth African National Bioinformatics Institute (SANBI)\nLead trainer\nR\n\n\nIan Wasukira\nAfrican Center of Excellence in Bioinformatics and Data-Intensive Sciences\nLead Trainer\nUnix/HPC\n\n\nRonald Galiwango\nAfrican Center of Excellence in Bioinformatics and Data-Intensive Sciences\nLead trainer\nR\n\n\nMusalula Sinkala\nUniversity of Cape Town\nLead trainer\nHuman Genomics\n\n\nDayna Adrienne Croock\nStellenbosch University\nLead trainer\nHuman Genomics\n\n\nJohn Juma\nInternational Livestock Research Institute (ILRI)\nLead trainer\nPathogen Genomics\n\n\nDamien Tully\nMRC/UVRI & LSHTM Uganda Research Unit\nLead Trainer\nPathogen Genomics\n\n\nAlfred Ssekagiri\nUganda Virus Research Institute\nLead trainer\nMetagenomics\n\n\nYohannes Gedamu Gebre\nBio and Emerging Technology Institute (BETin); former Ethiopia Biotechnology Institute (EBTi)\nCo-trainer\nUnix/R/Pathogen Genomics\n\n\nKeaghan Brown\nPHA4GE\nCo-trainer\nPathogen Genomics\n\n\nAmadou Diallo\nPioneer Bio-Analytics\nCo-trainer\nMetagenomics\n\n\nEphifania Geza\nUniversity of Cape Town\nLead trainer\nMetagenomics\n\n\nPatricia Nabisubi\nThe African Centre of Excellence in Bioinformatics and Data Intensive Sciences\nCo-trainer\nUnix/R/NGS basics\n\n\nTrushar Shah\nInternational Livestock Research Institute (Kenya)\nCo-trainer\nHuman Genomics/Unix\n\n\nDaria Sokolova\nEuropean Bioinformatics Institute (EBI)\nCore organiser/support\n\n\n\nGrace Kebirungi\nAfrican Center of Excellence in Bioinformatics and Data-Intensive Sciences\nCore organiser/support\n\n\n\nDavid Twesigomwe\nMRC/UVRI & LSHTM Uganda Research Unit\nCore organiser/support\n\n\n\nVerena Ras\nAfrican Bioinformatics Institute / University of Cape Town\nCore organiser/support\n\n\n\nShaun Aron\nSydney Brenner Institute for Molecular Bioscience (SBIMB) / University of Witwatersrand\nCore organiser/support\n\n\n\nMelek Chaouch\nInstitut Pasteur, Tunis\nCore organiser/support\n\n\n\nJorge da Rocha\nEuropean Bioinformatics Institute (EBI)\nCore organiser/support"
   },
   {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "Training coordinated by the African Bioinformatics Insitute.",
+    "objectID": "moduletemplate.html",
+    "href": "moduletemplate.html",
+    "title": "Module Title",
     "section": "",
-    "text": "African Bioinformatics Institute Interim Training Working Group\n\n\n\nThis site is hosted by the Interim ABI Training Working Group. It hosts course and training materials \nAfrican Bioinformatics Institute Homepage About the ABI"
+    "text": "Content Link 1\n\n\n\nContent Link 1"
   },
   {
-    "objectID": "index.html#training-events",
-    "href": "index.html#training-events",
-    "title": "Training coordinated by the African Bioinformatics Insitute.",
-    "section": "Training Events:",
-    "text": "Training Events:\nABI Bioinformatics Summer School Uganda 2026\n\n\n\n\n\n\nTip\n\n\n\nBioinformatics is the art of answering biological questions with computational tools. Practice your skills well and leave no question unexplored."
+    "objectID": "moduletemplate.html#module-content",
+    "href": "moduletemplate.html#module-content",
+    "title": "Module Title",
+    "section": "",
+    "text": "Content Link 1\n\n\n\nContent Link 1"
   },
   {
     "objectID": "about.html#core-team",
@@ -61,6 +61,20 @@
     "title": "About",
     "section": "Contact & Community",
     "text": "Contact & Community\n\n📬 info@bioinformaticsinstitute.africa — for any questions."
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Training coordinated by the African Bioinformatics Insitute.",
+    "section": "",
+    "text": "African Bioinformatics Institute Interim Training Working Group\n\n\n\nThis site is hosted by the Interim ABI Training Working Group. It hosts course and training materials \nAfrican Bioinformatics Institute Homepage About the ABI"
+  },
+  {
+    "objectID": "index.html#training-events",
+    "href": "index.html#training-events",
+    "title": "Training coordinated by the African Bioinformatics Insitute.",
+    "section": "Training Events:",
+    "text": "Training Events:\nABI Bioinformatics Summer School Uganda 2026\n\n\n\n\n\n\nTip\n\n\n\nBioinformatics is the art of answering biological questions with computational tools. Practice your skills well and leave no question unexplored."
   },
   {
     "objectID": "projects.html",
