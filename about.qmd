@@ -16,6 +16,10 @@ toc: true
 
 **Melek Chaouch** — Training Coordination and Development
 
+### Assisting team
+
+**Jorge Batista da Rocha** - Site setup and training support
+
 
 ---
 
@@ -23,7 +27,6 @@ toc: true
 
 MyProject is released under the Creative Commons Attribution (CC BY). 
 
-```
 
 ## Contact & Community
-- 📬 [info@bioinformaticsinstitute.africa](mailto:info@bioinformaticsinstitute.africa — for any questions.
+- 📬 [info@bioinformaticsinstitute.africa](mailto:info@bioinformaticsinstitute.africa) — for any questions.
