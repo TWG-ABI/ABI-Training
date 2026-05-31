@@ -1,0 +1,54 @@
+---
+title: "ABI Summer School 2026"
+description: "Materials for the Summer School 08 - 19 June 2026"
+toc: true
+---
+
+## ABI Summer School 2026
+The aim is to provide comprehensive training on bioinformatics computational resources, and domain-specific tools and workflows to improve participants' proficiency in executing, interpreting, and communicating analyses for major bioinformatics studies, with a special focus on genomics.
+
+---
+
+## Course Content:
+
+### Week 1: 
+
+#### Linux 
+[Linux Content Link 1](insertlinkhere)
+
+#### R coding content
+
+#### Intro to NGS
+
+
+
+---
+
+### Week 2 
+
+#### R/Biology Streams
+
+#### Human Genomics
+
+#### Pathogen Genomics
+
+#### Metabolomics
+
+
+
+---
+
+## Trainer Info
+
+| Trainer | Institute | Module |
+|---------|--------|-----------------|
+| Trainer 1 | Institute 1 | Module 1 |
+| Trainer 1 | Institute 1 | Module 1 |
+| Trainer 1 | Institute 1 | Module 1 |
+| Trainer 1 | Institute 1 | Module 1 |
+| Trainer 1 | Institute 1 | Module 1 |
+| Trainer 1 | Institute 1 | Module 1 |
+| Trainer 1 | Institute 1 | Module 1 |
+
+
+
