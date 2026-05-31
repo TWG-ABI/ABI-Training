@@ -25,7 +25,7 @@ toc: true
 
 ## License
 
-MyProject is released under the Creative Commons Attribution (CC BY). 
+This site and training content are released under the Creative Commons Attribution (CC BY). 
 
 
 ## Contact & Community
