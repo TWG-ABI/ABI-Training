@@ -19,12 +19,10 @@ This site is hosted by the Interim ABI Training Working Group. It hosts course a
 :::
 
 
-## Upcoming Training Events:
+## Training Events:
 
-African Bioinformatics Institute - Bioinformatics Summer School
-
-[Bioinformatics Summer School](linkplaceholder)
+[ABI Bioinformatics Summer School Uganda 2026](https://interim-training-working-group-abi.github.io/ABI-Training/abisumschool26.html)
 
 ::: {.callout-tip}
-Please get your managers/supervisors approval ahead of applying to ABI events.
+Bioinformatics is the art of answering biological questions with computational tools. Practice your skills well and leave no question unexplored. 
 :::
