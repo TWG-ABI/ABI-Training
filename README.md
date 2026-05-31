@@ -1,6 +1,6 @@
 # Base repo for ABI Training content
 
-Content saved here is synchronised automatically to https://interim-training-working-group-abi.github.io/ABI-Training/ 
+Content saved here is synchronised automatically to https://twg-abi.github.io/ABI-Training/ 
 
 You must add and link it in to a hyperlink on an indexed page
 
