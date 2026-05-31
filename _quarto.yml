@@ -13,32 +13,10 @@ website:
     left:
       - text: "Home"
         href: index.qmd
-      - text: "Docs"
-        href: pages/installation.qmd
-      - text: "Projects"
+      - text: "Training Materials"
         href: projects.qmd
       - text: "About"
         href: about.qmd
-
-  sidebar:
-    - title: "Documentation"
-      style: "docked"
-      search: true
-      collapse-level: 2
-      contents:
-        - section: "Getting Started"
-          contents:
-            - pages/installation.qmd
-            - pages/configuration.qmd
-        - section: "Guides"
-          contents:
-            - pages/usage.qmd
-            - pages/advanced.qmd
-            - pages/api.qmd
-        - section: "Help"
-          contents:
-            - pages/faq.qmd
-            - pages/contributing.qmd
 
   page-footer:
     left: "© 2026 ABI-ITWG. CC BY"
