@@ -4,7 +4,7 @@ description: "Materials for the Summer School 08 - 19 June 2026"
 toc: true
 ---
 
-## ABI Summer School 2026
+## About the event:
 The aim is to provide comprehensive training on bioinformatics computational resources, and domain-specific tools and workflows to improve participants' proficiency in executing, interpreting, and communicating analyses for major bioinformatics studies, with a special focus on genomics.
 
 ---
@@ -40,15 +40,30 @@ The aim is to provide comprehensive training on bioinformatics computational res
 
 ## Trainer Info
 
-| Trainer | Institute | Module |
-|---------|--------|-----------------|
-| Trainer 1 | Institute 1 | Module 1 |
-| Trainer 1 | Institute 1 | Module 1 |
-| Trainer 1 | Institute 1 | Module 1 |
-| Trainer 1 | Institute 1 | Module 1 |
-| Trainer 1 | Institute 1 | Module 1 |
-| Trainer 1 | Institute 1 | Module 1 |
-| Trainer 1 | Institute 1 | Module 1 |
+| Name | Affiliation | Role | Stream |
+|------|-------------|------|--------|
+| Gloria Nakabiri | African Center of Excellence in Bioinformatics and Data Intensive Sciences | Lead trainer | Unix |
+| Peter van Heusden | South African National Bioinformatics Institute (SANBI) | Lead trainer | R |
+| Ian Wasukira | African Center of Excellence in Bioinformatics and Data-Intensive Sciences | Lead Trainer | Unix/HPC |
+| Ronald Galiwango | African Center of Excellence in Bioinformatics and Data-Intensive Sciences | Lead trainer | R |
+| Musalula Sinkala | University of Cape Town | Lead trainer | Human Genomics |
+| Dayna Adrienne Croock | Stellenbosch University | Lead trainer | Human Genomics |
+| John Juma | International Livestock Research Institute (ILRI) | Lead trainer | Pathogen Genomics |
+| Damien Tully | MRC/UVRI & LSHTM Uganda Research Unit | Lead Trainer | Pathogen Genomics |
+| Alfred Ssekagiri | Uganda Virus Research Institute | Lead trainer | Metagenomics |
+| Yohannes Gedamu Gebre | Bio and Emerging Technology Institute (BETin); former Ethiopia Biotechnology Institute (EBTi) | Co-trainer | Unix/R/Pathogen Genomics |
+| Keaghan Brown | PHA4GE | Co-trainer | Pathogen Genomics |
+| Amadou Diallo | Pioneer Bio-Analytics | Co-trainer | Metagenomics |
+| Ephifania Geza | University of Cape Town | Lead trainer | Metagenomics |
+| Patricia Nabisubi | The African Centre of Excellence in Bioinformatics and Data Intensive Sciences | Co-trainer | Unix/R/NGS basics |
+| Trushar Shah | International Livestock Research Institute (Kenya) | Co-trainer | Human Genomics/Unix |
+| Daria Sokolova | European Bioinformatics Institute (EBI) | Core organiser/support | |
+| Grace Kebirungi | African Center of Excellence in Bioinformatics and Data-Intensive Sciences | Core organiser/support | |
+| David Twesigomwe | MRC/UVRI & LSHTM Uganda Research Unit | Core organiser/support | |
+| Verena Ras | African Bioinformatics Institute / University of Cape Town | Core organiser/support | |
+| Shaun Aron | Sydney Brenner Institute for Molecular Bioscience (SBIMB) / University of Witwatersrand | Core organiser/support | |
+| Melek Chaouch | Institut Pasteur, Tunis | Core organiser/support | |
+| Jorge da Rocha | European Bioinformatics Institute (EBI) | Core organiser/support | |
 
 
 
