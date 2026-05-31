@@ -28,6 +28,90 @@
     "text": "Trainer Info\n\n\n\n\n\n\n\n\n\nName\nAffiliation\nRole\nStream\n\n\n\n\nGloria Nakabiri\nAfrican Center of Excellence in Bioinformatics and Data Intensive Sciences\nLead trainer\nUnix\n\n\nPeter van Heusden\nSouth African National Bioinformatics Institute (SANBI)\nLead trainer\nR\n\n\nIan Wasukira\nAfrican Center of Excellence in Bioinformatics and Data-Intensive Sciences\nLead Trainer\nUnix/HPC\n\n\nRonald Galiwango\nAfrican Center of Excellence in Bioinformatics and Data-Intensive Sciences\nLead trainer\nR\n\n\nMusalula Sinkala\nUniversity of Cape Town\nLead trainer\nHuman Genomics\n\n\nDayna Adrienne Croock\nStellenbosch University\nLead trainer\nHuman Genomics\n\n\nJohn Juma\nInternational Livestock Research Institute (ILRI)\nLead trainer\nPathogen Genomics\n\n\nDamien Tully\nMRC/UVRI & LSHTM Uganda Research Unit\nLead Trainer\nPathogen Genomics\n\n\nAlfred Ssekagiri\nUganda Virus Research Institute\nLead trainer\nMetagenomics\n\n\nYohannes Gedamu Gebre\nBio and Emerging Technology Institute (BETin); former Ethiopia Biotechnology Institute (EBTi)\nCo-trainer\nUnix/R/Pathogen Genomics\n\n\nKeaghan Brown\nPHA4GE\nCo-trainer\nPathogen Genomics\n\n\nAmadou Diallo\nPioneer Bio-Analytics\nCo-trainer\nMetagenomics\n\n\nEphifania Geza\nUniversity of Cape Town\nLead trainer\nMetagenomics\n\n\nPatricia Nabisubi\nThe African Centre of Excellence in Bioinformatics and Data Intensive Sciences\nCo-trainer\nUnix/R/NGS basics\n\n\nTrushar Shah\nInternational Livestock Research Institute (Kenya)\nCo-trainer\nHuman Genomics/Unix\n\n\nDaria Sokolova\nEuropean Bioinformatics Institute (EBI)\nCore organiser/support\n\n\n\nGrace Kebirungi\nAfrican Center of Excellence in Bioinformatics and Data-Intensive Sciences\nCore organiser/support\n\n\n\nDavid Twesigomwe\nMRC/UVRI & LSHTM Uganda Research Unit\nCore organiser/support\n\n\n\nVerena Ras\nAfrican Bioinformatics Institute / University of Cape Town\nCore organiser/support\n\n\n\nShaun Aron\nSydney Brenner Institute for Molecular Bioscience (SBIMB) / University of Witwatersrand\nCore organiser/support\n\n\n\nMelek Chaouch\nInstitut Pasteur, Tunis\nCore organiser/support\n\n\n\nJorge da Rocha\nEuropean Bioinformatics Institute (EBI)\nCore organiser/support"
   },
   {
+    "objectID": "week1/file-processing-sed.html",
+    "href": "week1/file-processing-sed.html",
+    "title": "File processing: Part 1 (using sed)",
+    "section": "",
+    "text": "sed allows us to automate pattern substitutions (usually line-by-line). The name sed is an abbreviation of stream editor.\nChange to the workshop1 directory within ABI_summer_school_project1 as it will be your working directory for this tutorial.\n\n\nReplace the fasta pattern in each line of the file sample_manifest2.tsv with fastq\nsed 's/fasta/fastq/' sample_manifest2.tsv\nTo save the output to a new file:\nsed 's/fasta/fastq/' sample_manifest2.tsv &gt; sample_manifest2_fastq.tsv\nTo make the replacement within the primary file (use with caution):\nsed -i 's/fasta/fastq/' sample_manifest2.tsv\nNotice that the fasta pattern after Plasmodium_falciparum_ was not replaced by the previous command. Why is this?\nWrite the sed command(s) to replace both occurrences of fasta in each line of sample_manifest2.tsv with fastq. Save the output to sample_manifest2_fastq_2.tsv\n\nWith the same syntax, sed can be used to remove unwanted patterns within each line of a given file. Use sed to remove all occurrences of fastq in the sample_manifest2_fastq_2.tsv file. Save the output to sample_manifest3.tsv\n\nExercise: Use sed to replace the ftp://ftp.sra.ebi.ac.uk/vol1/run/ERR323/ string in each line of the file named file_paths.txt.\nsed can also be used to replace patterns shared across files simultaneously. As an example, replace Kampala with Entebbe in all the .tsv files currently in workshop1\nsed -i 's/Kampala/Entebbe/g' *.tsv\nUsing similar syntax for replacing patterns, sed can be used to change file delimiters/separators. As a test case, use sed to convert sample_manifest3.tsv into a .csv file named sample_manifest3.csv.\n\nTry converting sample_manifest3.csv into a space-delimited file.\n\n\n\n\nSometimes, it’s helpful to replace patterns only in lines that meet a certain condition. As a test case, change the read_length for the Kisumu samples in sample_manifest3.tsv from 150 to 100.\nsed '/Kisumu/s/150/100/' sample_manifest3.tsv\n\n\n\nAdd the model numbers of the Illumina_NextSeq and Illumina_MiSeq platforms so that they read Illumina_NextSeq_2000 and Illumina_MiSeq_100, respectively.\n\nAdd an extra column (at the end) to the contents of sample_manifest3.tsv with the heading file_size and the column values all .\n\nAdd a project_id column (make it the first column) to sample_manifest3.tsv. Use Pf_AMR as the values for each row under this column.\n\n\n\n\n\n\nsed -n '1p' sample_manifest3.tsv \n\n\n\nsed -n '/PATTERN/p' file.txt  \nExample:\nsed -n '/TRUE/p' sample_manifest3.tsv \n\n\n\n\n\n\n\nUsing file1.txt as a testcase, remove all empty lines.\n\nUsing a similar syntax, sed can be used as an alternative to grep to remove lines containing certain patterns. Use sed to remove the header lines (only the ones starting with ##) from the SAMPLE_001.vcf file. Save the output to a new file SAMPLE_001_v2.vcf so that we can reuse the SAMPLE_001.vcf file, if needed.\n\nUse sed to remove empty lines from file1.txt and the line containing the heading i.e. sample_id, in one command.\n\n\n\n\nUsing sample_manifest3.tsv as a test case, extract the metadata lines of samples 004 through 008 i.e. from line containing SAMPLE_004 to the one containing SAMPLE_008.\nsed -n '/SAMPLE_004/,/SAMPLE_008/p' sample_manifest3.tsv"
+  },
+  {
+    "objectID": "week1/file-processing-sed.html#replacing-simple-patterns-with-sed",
+    "href": "week1/file-processing-sed.html#replacing-simple-patterns-with-sed",
+    "title": "File processing: Part 1 (using sed)",
+    "section": "",
+    "text": "Replace the fasta pattern in each line of the file sample_manifest2.tsv with fastq\nsed 's/fasta/fastq/' sample_manifest2.tsv\nTo save the output to a new file:\nsed 's/fasta/fastq/' sample_manifest2.tsv &gt; sample_manifest2_fastq.tsv\nTo make the replacement within the primary file (use with caution):\nsed -i 's/fasta/fastq/' sample_manifest2.tsv\nNotice that the fasta pattern after Plasmodium_falciparum_ was not replaced by the previous command. Why is this?\nWrite the sed command(s) to replace both occurrences of fasta in each line of sample_manifest2.tsv with fastq. Save the output to sample_manifest2_fastq_2.tsv\n\nWith the same syntax, sed can be used to remove unwanted patterns within each line of a given file. Use sed to remove all occurrences of fastq in the sample_manifest2_fastq_2.tsv file. Save the output to sample_manifest3.tsv\n\nExercise: Use sed to replace the ftp://ftp.sra.ebi.ac.uk/vol1/run/ERR323/ string in each line of the file named file_paths.txt.\nsed can also be used to replace patterns shared across files simultaneously. As an example, replace Kampala with Entebbe in all the .tsv files currently in workshop1\nsed -i 's/Kampala/Entebbe/g' *.tsv\nUsing similar syntax for replacing patterns, sed can be used to change file delimiters/separators. As a test case, use sed to convert sample_manifest3.tsv into a .csv file named sample_manifest3.csv.\n\nTry converting sample_manifest3.csv into a space-delimited file."
+  },
+  {
+    "objectID": "week1/file-processing-sed.html#conditional-substitutions-with-sed",
+    "href": "week1/file-processing-sed.html#conditional-substitutions-with-sed",
+    "title": "File processing: Part 1 (using sed)",
+    "section": "",
+    "text": "Sometimes, it’s helpful to replace patterns only in lines that meet a certain condition. As a test case, change the read_length for the Kisumu samples in sample_manifest3.tsv from 150 to 100.\nsed '/Kisumu/s/150/100/' sample_manifest3.tsv"
+  },
+  {
+    "objectID": "week1/file-processing-sed.html#adding-simple-patterns-to-a-file-using-sed",
+    "href": "week1/file-processing-sed.html#adding-simple-patterns-to-a-file-using-sed",
+    "title": "File processing: Part 1 (using sed)",
+    "section": "",
+    "text": "Add the model numbers of the Illumina_NextSeq and Illumina_MiSeq platforms so that they read Illumina_NextSeq_2000 and Illumina_MiSeq_100, respectively.\n\nAdd an extra column (at the end) to the contents of sample_manifest3.tsv with the heading file_size and the column values all .\n\nAdd a project_id column (make it the first column) to sample_manifest3.tsv. Use Pf_AMR as the values for each row under this column."
+  },
+  {
+    "objectID": "week1/file-processing-sed.html#other-use-cases-of-sed-in-cleaningpre-processing-files",
+    "href": "week1/file-processing-sed.html#other-use-cases-of-sed-in-cleaningpre-processing-files",
+    "title": "File processing: Part 1 (using sed)",
+    "section": "",
+    "text": "sed -n '1p' sample_manifest3.tsv \n\n\n\nsed -n '/PATTERN/p' file.txt  \nExample:\nsed -n '/TRUE/p' sample_manifest3.tsv \n\n\n\n\n\n\n\nUsing file1.txt as a testcase, remove all empty lines.\n\nUsing a similar syntax, sed can be used as an alternative to grep to remove lines containing certain patterns. Use sed to remove the header lines (only the ones starting with ##) from the SAMPLE_001.vcf file. Save the output to a new file SAMPLE_001_v2.vcf so that we can reuse the SAMPLE_001.vcf file, if needed.\n\nUse sed to remove empty lines from file1.txt and the line containing the heading i.e. sample_id, in one command.\n\n\n\n\nUsing sample_manifest3.tsv as a test case, extract the metadata lines of samples 004 through 008 i.e. from line containing SAMPLE_004 to the one containing SAMPLE_008.\nsed -n '/SAMPLE_004/,/SAMPLE_008/p' sample_manifest3.tsv"
+  },
+  {
+    "objectID": "moduletemplate.html",
+    "href": "moduletemplate.html",
+    "title": "Module Title",
+    "section": "",
+    "text": "Content Link 1\n\n\n\nContent Link 1"
+  },
+  {
+    "objectID": "moduletemplate.html#module-content",
+    "href": "moduletemplate.html#module-content",
+    "title": "Module Title",
+    "section": "",
+    "text": "Content Link 1\n\n\n\nContent Link 1"
+  },
+  {
+    "objectID": "about.html#core-team",
+    "href": "about.html#core-team",
+    "title": "About",
+    "section": "Core Team",
+    "text": "Core Team\nVerena Ras — Training Coordination and Development\nShaun Aron — Training Coordination and Development\nMelek Chaouch — Training Coordination and Development\n\nAssisting team\nJorge Batista da Rocha - Site setup and training support"
+  },
+  {
+    "objectID": "about.html#license",
+    "href": "about.html#license",
+    "title": "About",
+    "section": "License",
+    "text": "License\nThis site and training content are released under the Creative Commons Attribution (CC BY)."
+  },
+  {
+    "objectID": "about.html#contact-community",
+    "href": "about.html#contact-community",
+    "title": "About",
+    "section": "Contact & Community",
+    "text": "Contact & Community\n\n📬 info@bioinformaticsinstitute.africa — for any questions."
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Training coordinated by the African Bioinformatics Insitute.",
+    "section": "",
+    "text": "African Bioinformatics Institute Interim Training Working Group\n\n\n\nThis site is hosted by the Interim ABI Training Working Group. It hosts course and training materials \nAfrican Bioinformatics Institute Homepage About the ABI"
+  },
+  {
+    "objectID": "index.html#training-events",
+    "href": "index.html#training-events",
+    "title": "Training coordinated by the African Bioinformatics Insitute.",
+    "section": "Training Events:",
+    "text": "Training Events:\nABI Bioinformatics Summer School Uganda 2026\n\n\n\n\n\n\nTip\n\n\n\nBioinformatics is the art of answering biological questions with computational tools. Practice your skills well and leave no question unexplored."
+  },
+  {
     "objectID": "projects.html",
     "href": "projects.html",
     "title": "Projects",
@@ -61,55 +145,6 @@
     "title": "Projects",
     "section": "Roadmap",
     "text": "Roadmap\n\n\n\nVersion\nStatus\nWhat’s included\n\n\n\n\nv2.4\n✅ Released\nPlugin API stabilised\n\n\nv2.4.1\n✅ Released\nPerformance improvements\n\n\nv2.5\n🔄 In progress\nDev tools browser extension\n\n\nv3.0\n⏳ Planned\nFull async plugin lifecycle\n\n\n\nHave a feature request? Open a discussion on GitHub."
-  },
-  {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "Training coordinated by the African Bioinformatics Insitute.",
-    "section": "",
-    "text": "African Bioinformatics Institute Interim Training Working Group\n\n\n\nThis site is hosted by the Interim ABI Training Working Group. It hosts course and training materials \nAfrican Bioinformatics Institute Homepage About the ABI"
-  },
-  {
-    "objectID": "index.html#training-events",
-    "href": "index.html#training-events",
-    "title": "Training coordinated by the African Bioinformatics Insitute.",
-    "section": "Training Events:",
-    "text": "Training Events:\nABI Bioinformatics Summer School Uganda 2026\n\n\n\n\n\n\nTip\n\n\n\nBioinformatics is the art of answering biological questions with computational tools. Practice your skills well and leave no question unexplored."
-  },
-  {
-    "objectID": "about.html#core-team",
-    "href": "about.html#core-team",
-    "title": "About",
-    "section": "Core Team",
-    "text": "Core Team\nVerena Ras — Training Coordination and Development\nShaun Aron — Training Coordination and Development\nMelek Chaouch — Training Coordination and Development\n\nAssisting team\nJorge Batista da Rocha - Site setup and training support"
-  },
-  {
-    "objectID": "about.html#license",
-    "href": "about.html#license",
-    "title": "About",
-    "section": "License",
-    "text": "License\nThis site and training content are released under the Creative Commons Attribution (CC BY)."
-  },
-  {
-    "objectID": "about.html#contact-community",
-    "href": "about.html#contact-community",
-    "title": "About",
-    "section": "Contact & Community",
-    "text": "Contact & Community\n\n📬 info@bioinformaticsinstitute.africa — for any questions."
-  },
-  {
-    "objectID": "moduletemplate.html",
-    "href": "moduletemplate.html",
-    "title": "Module Title",
-    "section": "",
-    "text": "Content Link 1\n\n\n\nContent Link 1"
-  },
-  {
-    "objectID": "moduletemplate.html#module-content",
-    "href": "moduletemplate.html#module-content",
-    "title": "Module Title",
-    "section": "",
-    "text": "Content Link 1\n\n\n\nContent Link 1"
   },
   {
     "objectID": "week1/base.html",
