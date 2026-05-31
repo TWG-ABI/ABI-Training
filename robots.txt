@@ -1,1 +1,1 @@
-Sitemap: https://Interim-Training-Working-Group-ABI.github.io/ABI-Training/sitemap.xml
+Sitemap: https://TWG-ABI.github.io/ABI-Training/sitemap.xml
