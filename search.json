@@ -1,129 +1,192 @@
 [
   {
-    "objectID": "projects.html",
-    "href": "projects.html",
-    "title": "Projects",
+    "objectID": "abisumschool26.html",
+    "href": "abisumschool26.html",
+    "title": "ABI Summer School 2026",
     "section": "",
-    "text": "The heart of the ecosystem — a small, stable, well-tested core that everything else builds on. The core library is intentionally minimal so it can be used in any environment without assumptions about your framework or build tool.\nView on GitHub"
+    "text": "The aim is to provide comprehensive training on bioinformatics computational resources, and domain-specific tools and workflows to improve participants’ proficiency in executing, interpreting, and communicating analyses for major bioinformatics studies, with a special focus on genomics."
   },
   {
-    "objectID": "projects.html#core-library",
-    "href": "projects.html#core-library",
-    "title": "Projects",
+    "objectID": "abisumschool26.html#abi-summer-school-2026",
+    "href": "abisumschool26.html#abi-summer-school-2026",
+    "title": "ABI Summer School 2026",
     "section": "",
-    "text": "The heart of the ecosystem — a small, stable, well-tested core that everything else builds on. The core library is intentionally minimal so it can be used in any environment without assumptions about your framework or build tool.\nView on GitHub"
+    "text": "The aim is to provide comprehensive training on bioinformatics computational resources, and domain-specific tools and workflows to improve participants’ proficiency in executing, interpreting, and communicating analyses for major bioinformatics studies, with a special focus on genomics."
   },
   {
-    "objectID": "projects.html#official-plugins",
-    "href": "projects.html#official-plugins",
-    "title": "Projects",
-    "section": "Official Plugins",
-    "text": "Official Plugins\n\nmyproject-react\nReact hooks and context for seamless integration with React 18+.\nnpm install @myproject/react\nuseState-style hooks, &lt;Provider&gt; component, and full TypeScript support.\nGitHub · react hooks typescript\n\n\n\nmyproject-vue\nComposables and plugin for Vue 3 with full reactivity support.\nnpm install @myproject/vue\nUses Vue’s ref and computed under the hood for zero-overhead reactivity.\nGitHub · vue3 composables\n\n\n\nmyproject-svelte\nSvelte stores and actions for effortless state synchronisation.\nnpm install @myproject/svelte\nWraps store as a native Svelte writable so you can use the $ prefix syntax.\nGitHub · svelte stores"
+    "objectID": "abisumschool26.html#course-content",
+    "href": "abisumschool26.html#course-content",
+    "title": "ABI Summer School 2026",
+    "section": "Course Content:",
+    "text": "Course Content:\n\nWeek 1:\n\nLinux\nLinux Content Link 1\n\n\nR coding content\n\n\nIntro to NGS\n\n\n\n\nWeek 2\n\nR/Biology Streams\n\n\nHuman Genomics\n\n\nPathogen Genomics\n\n\nMetabolomics"
   },
   {
-    "objectID": "projects.html#example-apps",
-    "href": "projects.html#example-apps",
-    "title": "Projects",
-    "section": "Example Apps",
-    "text": "Example Apps\n\nTodo App\nClassic to-do list demonstrating store, events, and plugin patterns.\nGreat starting point for beginners.\nView example →\n\n\nDashboard Starter\nFull dashboard template with charts, data fetching, and auth scaffolding.\nView example →"
+    "objectID": "abisumschool26.html#trainer-info",
+    "href": "abisumschool26.html#trainer-info",
+    "title": "ABI Summer School 2026",
+    "section": "Trainer Info",
+    "text": "Trainer Info\n\n\n\nTrainer\nInstitute\nModule\n\n\n\n\nTrainer 1\nInstitute 1\nModule 1\n\n\nTrainer 1\nInstitute 1\nModule 1\n\n\nTrainer 1\nInstitute 1\nModule 1\n\n\nTrainer 1\nInstitute 1\nModule 1\n\n\nTrainer 1\nInstitute 1\nModule 1\n\n\nTrainer 1\nInstitute 1\nModule 1\n\n\nTrainer 1\nInstitute 1\nModule 1"
   },
   {
-    "objectID": "projects.html#roadmap",
-    "href": "projects.html#roadmap",
-    "title": "Projects",
-    "section": "Roadmap",
-    "text": "Roadmap\n\n\n\nVersion\nStatus\nWhat’s included\n\n\n\n\nv2.4\n✅ Released\nPlugin API stabilised\n\n\nv2.4.1\n✅ Released\nPerformance improvements\n\n\nv2.5\n🔄 In progress\nDev tools browser extension\n\n\nv3.0\n⏳ Planned\nFull async plugin lifecycle\n\n\n\nHave a feature request? Open a discussion on GitHub."
-  },
-  {
-    "objectID": "about.html#core-team",
-    "href": "about.html#core-team",
-    "title": "About",
-    "section": "Core Team",
-    "text": "Core Team\nVerena Ras — Training Coordination and Development\nShaun Aron — Training Coordination and Development\nMelek Chaouch — Training Coordination and Development"
-  },
-  {
-    "objectID": "about.html#license",
-    "href": "about.html#license",
-    "title": "About",
-    "section": "License",
-    "text": "License\nMyProject is released under the Creative Commons Attribution (CC BY).\n```"
-  },
-  {
-    "objectID": "about.html#contact-community",
-    "href": "about.html#contact-community",
-    "title": "About",
-    "section": "Contact & Community",
-    "text": "Contact & Community\n\n📬 [info@bioinformaticsinstitute.africa](mailto:info@bioinformaticsinstitute.africa — for any questions."
-  },
-  {
-    "objectID": "pages/installation.html",
-    "href": "pages/installation.html",
-    "title": "Installation",
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Training coordinated by the African Bioinformatics Insitute.",
     "section": "",
-    "text": "MyProject requires Node.js ≥ 18 and a modern package manager. It runs in both browser and server environments."
+    "text": "African Bioinformatics Institute Interim Training Working Group\n\n\n\nThis site is hosted by the Interim ABI Training Working Group. It hosts course and training materials \nAfrican Bioinformatics Institute Homepage About the ABI"
   },
   {
-    "objectID": "pages/installation.html#requirements",
-    "href": "pages/installation.html#requirements",
-    "title": "Installation",
+    "objectID": "index.html#upcoming-training-events",
+    "href": "index.html#upcoming-training-events",
+    "title": "Training coordinated by the African Bioinformatics Insitute.",
+    "section": "Upcoming Training Events:",
+    "text": "Upcoming Training Events:\nAfrican Bioinformatics Institute - Bioinformatics Summer School\nBioinformatics Summer School\n\n\n\n\n\n\nTip\n\n\n\nPlease get your managers/supervisors approval ahead of applying to ABI events."
+  },
+  {
+    "objectID": "pages/contributing.html",
+    "href": "pages/contributing.html",
+    "title": "Contributing",
     "section": "",
-    "text": "MyProject requires Node.js ≥ 18 and a modern package manager. It runs in both browser and server environments."
+    "text": "We welcome contributions of all sizes — bug reports, documentation improvements, or new features."
   },
   {
-    "objectID": "pages/installation.html#npm-yarn-pnpm",
-    "href": "pages/installation.html#npm-yarn-pnpm",
-    "title": "Installation",
-    "section": "npm / yarn / pnpm",
-    "text": "npm / yarn / pnpm\nnpm install myproject        # npm\nyarn add myproject           # yarn\npnpm add myproject           # pnpm"
+    "objectID": "pages/contributing.html#getting-started",
+    "href": "pages/contributing.html#getting-started",
+    "title": "Contributing",
+    "section": "Getting started",
+    "text": "Getting started\n\nFork the repository on GitHub and clone your fork locally.\nInstall dependencies with npm install.\nCreate a feature branch: git checkout -b feat/my-feature."
   },
   {
-    "objectID": "pages/installation.html#cdn-no-bundler",
-    "href": "pages/installation.html#cdn-no-bundler",
-    "title": "Installation",
-    "section": "CDN (no bundler)",
-    "text": "CDN (no bundler)\nFor quick prototyping without a build step:\n&lt;script type=\"module\"&gt;\n  import { create } from 'https://cdn.jsdelivr.net/npm/myproject/+esm'\n&lt;/script&gt;\n\n\n\n\n\n\nNote\n\n\n\nCDN builds are not recommended for production. Use a bundler for tree-shaking and optimal bundle size."
+    "objectID": "pages/contributing.html#development-workflow",
+    "href": "pages/contributing.html#development-workflow",
+    "title": "Contributing",
+    "section": "Development workflow",
+    "text": "Development workflow\nnpm run dev      # start the dev server with hot reload\nnpm test         # run the full test suite\nnpm run lint     # check code style\nnpm run build    # build for production\n\n\n\n\n\n\nImportant\n\n\n\nPlease ensure all tests pass (npm test) before opening a pull request."
   },
   {
-    "objectID": "pages/installation.html#verify-the-installation",
-    "href": "pages/installation.html#verify-the-installation",
-    "title": "Installation",
-    "section": "Verify the installation",
-    "text": "Verify the installation\nimport { create } from 'myproject'\nconsole.log(create.version) // e.g. \"2.4.1\"\nIf you see a version number, you’re good to go. Head to Configuration next."
+    "objectID": "pages/contributing.html#pull-request-guidelines",
+    "href": "pages/contributing.html#pull-request-guidelines",
+    "title": "Contributing",
+    "section": "Pull request guidelines",
+    "text": "Pull request guidelines\n\nKeep PRs focused — one feature or fix per PR.\nWrite or update tests for any changed behaviour.\nUpdate the relevant documentation in the docs/ folder.\nUse a clear, descriptive PR title (e.g. feat: add lazy() timeout option)."
   },
   {
-    "objectID": "pages/advanced.html",
-    "href": "pages/advanced.html",
-    "title": "Advanced Patterns",
+    "objectID": "pages/contributing.html#commit-style",
+    "href": "pages/contributing.html#commit-style",
+    "title": "Contributing",
+    "section": "Commit style",
+    "text": "Commit style\nWe follow Conventional Commits:\n\n\n\nPrefix\nUse for\n\n\n\n\nfeat:\nNew features\n\n\nfix:\nBug fixes\n\n\ndocs:\nDocumentation only\n\n\nchore:\nTooling, CI, dependencies\n\n\nrefactor:\nCode changes with no behaviour change"
+  },
+  {
+    "objectID": "pages/contributing.html#code-of-conduct",
+    "href": "pages/contributing.html#code-of-conduct",
+    "title": "Contributing",
+    "section": "Code of conduct",
+    "text": "Code of conduct\nThis project follows the Contributor Covenant. Be kind and constructive."
+  },
+  {
+    "objectID": "pages/configuration.html",
+    "href": "pages/configuration.html",
+    "title": "Configuration",
     "section": "",
-    "text": "Plugins are plain objects with a name and setup function. The setup function receives the app instance and can hook into any lifecycle event.\nconst myPlugin = {\n  name: 'my-plugin',\n  setup(app) {\n    app.on('ready', () =&gt; {\n      // plugin logic here\n    })\n  }\n}\n\nconst app = create({ plugins: [myPlugin] })\n\n\nPass options to your plugin by wrapping it in a factory function:\nconst myPlugin = (options = {}) =&gt; ({\n  name: 'my-plugin',\n  setup(app) {\n    console.log('options:', options)\n  }\n})\n\nconst app = create({ plugins: [myPlugin({ verbose: true })] })"
+    "text": "Create a myproject.config.js in your project root:\nexport default {\n  theme: 'warm',        // 'warm' | 'cool' | 'neutral'\n  plugins: [],          // array of plugin instances\n  debug: false,         // enable verbose logging\n  output: './dist',     // build output directory\n}\n\n\n\n\n\n\nTip\n\n\n\nAll config keys are optional — MyProject ships with sensible defaults for every option."
   },
   {
-    "objectID": "pages/advanced.html#plugin-authoring",
-    "href": "pages/advanced.html#plugin-authoring",
-    "title": "Advanced Patterns",
+    "objectID": "pages/configuration.html#config-file",
+    "href": "pages/configuration.html#config-file",
+    "title": "Configuration",
     "section": "",
-    "text": "Plugins are plain objects with a name and setup function. The setup function receives the app instance and can hook into any lifecycle event.\nconst myPlugin = {\n  name: 'my-plugin',\n  setup(app) {\n    app.on('ready', () =&gt; {\n      // plugin logic here\n    })\n  }\n}\n\nconst app = create({ plugins: [myPlugin] })\n\n\nPass options to your plugin by wrapping it in a factory function:\nconst myPlugin = (options = {}) =&gt; ({\n  name: 'my-plugin',\n  setup(app) {\n    console.log('options:', options)\n  }\n})\n\nconst app = create({ plugins: [myPlugin({ verbose: true })] })"
+    "text": "Create a myproject.config.js in your project root:\nexport default {\n  theme: 'warm',        // 'warm' | 'cool' | 'neutral'\n  plugins: [],          // array of plugin instances\n  debug: false,         // enable verbose logging\n  output: './dist',     // build output directory\n}\n\n\n\n\n\n\nTip\n\n\n\nAll config keys are optional — MyProject ships with sensible defaults for every option."
   },
   {
-    "objectID": "pages/advanced.html#code-splitting",
-    "href": "pages/advanced.html#code-splitting",
-    "title": "Advanced Patterns",
-    "section": "Code splitting",
-    "text": "Code splitting\nMyProject supports lazy module loading out of the box. Use app.lazy() to defer expensive imports:\nconst heavyModule = await app.lazy(() =&gt; import('./heavy'))"
+    "objectID": "pages/configuration.html#options-reference",
+    "href": "pages/configuration.html#options-reference",
+    "title": "Configuration",
+    "section": "Options reference",
+    "text": "Options reference\n\n\n\nKey\nType\nDefault\nDescription\n\n\n\n\ntheme\nstring\n'neutral'\nVisual theme preset\n\n\nplugins\narray\n[]\nPlugin instances to load\n\n\ndebug\nboolean\nfalse\nEnable verbose console output\n\n\noutput\nstring\n'./dist'\nBuild output directory"
   },
   {
-    "objectID": "pages/advanced.html#error-handling",
-    "href": "pages/advanced.html#error-handling",
-    "title": "Advanced Patterns",
-    "section": "Error handling",
-    "text": "Error handling\nCatch errors globally with the error lifecycle event:\napp.on('error', (err) =&gt; {\n  console.error('Caught:', err.message)\n  // send to your error tracking service\n})\n\n\n\n\n\n\nWarning\n\n\n\nUnhandled errors inside async plugin setup functions will not automatically trigger the error event. Wrap async code in try/catch within your plugin."
+    "objectID": "pages/configuration.html#environment-variables",
+    "href": "pages/configuration.html#environment-variables",
+    "title": "Configuration",
+    "section": "Environment variables",
+    "text": "Environment variables\nYou can also configure MyProject via environment variables, which take precedence over the config file:\nMYPROJECT_THEME=cool\nMYPROJECT_DEBUG=true"
   },
   {
-    "objectID": "pages/advanced.html#typescript",
-    "href": "pages/advanced.html#typescript",
-    "title": "Advanced Patterns",
-    "section": "TypeScript",
-    "text": "TypeScript\nMyProject ships with full TypeScript types. No @types package needed:\nimport { create, AppConfig } from 'myproject'\n\nconst config: AppConfig = {\n  theme: 'cool',\n  debug: true,\n}\n\nconst app = create(config)"
+    "objectID": "pages/usage.html",
+    "href": "pages/usage.html",
+    "title": "Basic Usage",
+    "section": "",
+    "text": "Import create and pass your config. The returned instance exposes the full API.\nimport { create } from 'myproject'\n\nconst app = create({ theme: 'warm' })\n\n// Register a handler\napp.on('ready', () =&gt; console.log('App is ready'))\n\n// Start the app\nawait app.run()"
+  },
+  {
+    "objectID": "pages/usage.html#creating-an-instance",
+    "href": "pages/usage.html#creating-an-instance",
+    "title": "Basic Usage",
+    "section": "",
+    "text": "Import create and pass your config. The returned instance exposes the full API.\nimport { create } from 'myproject'\n\nconst app = create({ theme: 'warm' })\n\n// Register a handler\napp.on('ready', () =&gt; console.log('App is ready'))\n\n// Start the app\nawait app.run()"
+  },
+  {
+    "objectID": "pages/usage.html#working-with-data",
+    "href": "pages/usage.html#working-with-data",
+    "title": "Basic Usage",
+    "section": "Working with data",
+    "text": "Working with data\nUse the store module for reactive state:\nimport { store } from 'myproject'\n\nconst state = store({ count: 0 })\n\nstate.subscribe(s =&gt; console.log('count:', s.count))\nstate.set({ count: state.get().count + 1 })"
+  },
+  {
+    "objectID": "pages/usage.html#lifecycle-events",
+    "href": "pages/usage.html#lifecycle-events",
+    "title": "Basic Usage",
+    "section": "Lifecycle events",
+    "text": "Lifecycle events\nMyProject emits the following events you can hook into with app.on():\n\n\n\nEvent\nWhen it fires\n\n\n\n\ninit\nAfter the instance is created\n\n\nready\nAfter app.run() completes\n\n\nerror\nWhen an unhandled error occurs\n\n\ndestroy\nBefore the instance is torn down\n\n\n\n\n\n\n\n\n\nTip\n\n\n\nYou can also use app.once() for one-time event handlers that auto-remove themselves after firing."
+  },
+  {
+    "objectID": "pages/faq.html",
+    "href": "pages/faq.html",
+    "title": "FAQ",
+    "section": "",
+    "text": "Yes. MyProject is framework-agnostic. Official adapters exist for React, Vue 3, and Svelte — see the Projects page for links."
+  },
+  {
+    "objectID": "pages/faq.html#does-it-work-with-react-vue",
+    "href": "pages/faq.html#does-it-work-with-react-vue",
+    "title": "FAQ",
+    "section": "",
+    "text": "Yes. MyProject is framework-agnostic. Official adapters exist for React, Vue 3, and Svelte — see the Projects page for links."
+  },
+  {
+    "objectID": "pages/faq.html#is-it-production-ready",
+    "href": "pages/faq.html#is-it-production-ready",
+    "title": "FAQ",
+    "section": "Is it production ready?",
+    "text": "Is it production ready?\nAbsolutely. MyProject is used in production by dozens of teams. The core API has been stable since v2.0, and breaking changes follow a deprecation period of at least one major version."
+  },
+  {
+    "objectID": "pages/faq.html#does-it-work-server-side-node.js-deno-bun",
+    "href": "pages/faq.html#does-it-work-server-side-node.js-deno-bun",
+    "title": "FAQ",
+    "section": "Does it work server-side (Node.js / Deno / Bun)?",
+    "text": "Does it work server-side (Node.js / Deno / Bun)?\nYes, MyProject is isomorphic. The core library and store module work in any JS runtime. Some browser-specific plugins (e.g. DOM adapters) will only work in browser environments."
+  },
+  {
+    "objectID": "pages/faq.html#how-do-i-report-a-bug",
+    "href": "pages/faq.html#how-do-i-report-a-bug",
+    "title": "FAQ",
+    "section": "How do I report a bug?",
+    "text": "How do I report a bug?\nOpen an issue on GitHub. Please include your Node version, MyProject version, and a minimal reproduction."
+  },
+  {
+    "objectID": "pages/faq.html#is-there-a-changelog",
+    "href": "pages/faq.html#is-there-a-changelog",
+    "title": "FAQ",
+    "section": "Is there a changelog?",
+    "text": "Is there a changelog?\nYes — see CHANGELOG.md on GitHub for a full history of releases."
+  },
+  {
+    "objectID": "pages/faq.html#can-i-use-it-without-a-bundler",
+    "href": "pages/faq.html#can-i-use-it-without-a-bundler",
+    "title": "FAQ",
+    "section": "Can I use it without a bundler?",
+    "text": "Can I use it without a bundler?\nYes, via the CDN build — see Installation. For production we recommend using a bundler to benefit from tree-shaking."
   },
   {
     "objectID": "pages/api.html",
@@ -182,164 +245,129 @@
     "text": "store(initial)\nCreates a reactive store.\nfunction store&lt;T&gt;(initial: T): Store&lt;T&gt;\n\nStore methods\n\n\n\n\n\n\n\nMethod\nDescription\n\n\n\n\nstore.get()\nReturns the current state\n\n\nstore.set(partial)\nMerges partial into state and notifies subscribers\n\n\nstore.subscribe(fn)\nRegisters a subscriber; returns an unsubscribe function\n\n\nstore.reset()\nResets state to the initial value"
   },
   {
-    "objectID": "pages/faq.html",
-    "href": "pages/faq.html",
-    "title": "FAQ",
+    "objectID": "pages/advanced.html",
+    "href": "pages/advanced.html",
+    "title": "Advanced Patterns",
     "section": "",
-    "text": "Yes. MyProject is framework-agnostic. Official adapters exist for React, Vue 3, and Svelte — see the Projects page for links."
+    "text": "Plugins are plain objects with a name and setup function. The setup function receives the app instance and can hook into any lifecycle event.\nconst myPlugin = {\n  name: 'my-plugin',\n  setup(app) {\n    app.on('ready', () =&gt; {\n      // plugin logic here\n    })\n  }\n}\n\nconst app = create({ plugins: [myPlugin] })\n\n\nPass options to your plugin by wrapping it in a factory function:\nconst myPlugin = (options = {}) =&gt; ({\n  name: 'my-plugin',\n  setup(app) {\n    console.log('options:', options)\n  }\n})\n\nconst app = create({ plugins: [myPlugin({ verbose: true })] })"
   },
   {
-    "objectID": "pages/faq.html#does-it-work-with-react-vue",
-    "href": "pages/faq.html#does-it-work-with-react-vue",
-    "title": "FAQ",
+    "objectID": "pages/advanced.html#plugin-authoring",
+    "href": "pages/advanced.html#plugin-authoring",
+    "title": "Advanced Patterns",
     "section": "",
-    "text": "Yes. MyProject is framework-agnostic. Official adapters exist for React, Vue 3, and Svelte — see the Projects page for links."
+    "text": "Plugins are plain objects with a name and setup function. The setup function receives the app instance and can hook into any lifecycle event.\nconst myPlugin = {\n  name: 'my-plugin',\n  setup(app) {\n    app.on('ready', () =&gt; {\n      // plugin logic here\n    })\n  }\n}\n\nconst app = create({ plugins: [myPlugin] })\n\n\nPass options to your plugin by wrapping it in a factory function:\nconst myPlugin = (options = {}) =&gt; ({\n  name: 'my-plugin',\n  setup(app) {\n    console.log('options:', options)\n  }\n})\n\nconst app = create({ plugins: [myPlugin({ verbose: true })] })"
   },
   {
-    "objectID": "pages/faq.html#is-it-production-ready",
-    "href": "pages/faq.html#is-it-production-ready",
-    "title": "FAQ",
-    "section": "Is it production ready?",
-    "text": "Is it production ready?\nAbsolutely. MyProject is used in production by dozens of teams. The core API has been stable since v2.0, and breaking changes follow a deprecation period of at least one major version."
+    "objectID": "pages/advanced.html#code-splitting",
+    "href": "pages/advanced.html#code-splitting",
+    "title": "Advanced Patterns",
+    "section": "Code splitting",
+    "text": "Code splitting\nMyProject supports lazy module loading out of the box. Use app.lazy() to defer expensive imports:\nconst heavyModule = await app.lazy(() =&gt; import('./heavy'))"
   },
   {
-    "objectID": "pages/faq.html#does-it-work-server-side-node.js-deno-bun",
-    "href": "pages/faq.html#does-it-work-server-side-node.js-deno-bun",
-    "title": "FAQ",
-    "section": "Does it work server-side (Node.js / Deno / Bun)?",
-    "text": "Does it work server-side (Node.js / Deno / Bun)?\nYes, MyProject is isomorphic. The core library and store module work in any JS runtime. Some browser-specific plugins (e.g. DOM adapters) will only work in browser environments."
+    "objectID": "pages/advanced.html#error-handling",
+    "href": "pages/advanced.html#error-handling",
+    "title": "Advanced Patterns",
+    "section": "Error handling",
+    "text": "Error handling\nCatch errors globally with the error lifecycle event:\napp.on('error', (err) =&gt; {\n  console.error('Caught:', err.message)\n  // send to your error tracking service\n})\n\n\n\n\n\n\nWarning\n\n\n\nUnhandled errors inside async plugin setup functions will not automatically trigger the error event. Wrap async code in try/catch within your plugin."
   },
   {
-    "objectID": "pages/faq.html#how-do-i-report-a-bug",
-    "href": "pages/faq.html#how-do-i-report-a-bug",
-    "title": "FAQ",
-    "section": "How do I report a bug?",
-    "text": "How do I report a bug?\nOpen an issue on GitHub. Please include your Node version, MyProject version, and a minimal reproduction."
+    "objectID": "pages/advanced.html#typescript",
+    "href": "pages/advanced.html#typescript",
+    "title": "Advanced Patterns",
+    "section": "TypeScript",
+    "text": "TypeScript\nMyProject ships with full TypeScript types. No @types package needed:\nimport { create, AppConfig } from 'myproject'\n\nconst config: AppConfig = {\n  theme: 'cool',\n  debug: true,\n}\n\nconst app = create(config)"
   },
   {
-    "objectID": "pages/faq.html#is-there-a-changelog",
-    "href": "pages/faq.html#is-there-a-changelog",
-    "title": "FAQ",
-    "section": "Is there a changelog?",
-    "text": "Is there a changelog?\nYes — see CHANGELOG.md on GitHub for a full history of releases."
-  },
-  {
-    "objectID": "pages/faq.html#can-i-use-it-without-a-bundler",
-    "href": "pages/faq.html#can-i-use-it-without-a-bundler",
-    "title": "FAQ",
-    "section": "Can I use it without a bundler?",
-    "text": "Can I use it without a bundler?\nYes, via the CDN build — see Installation. For production we recommend using a bundler to benefit from tree-shaking."
-  },
-  {
-    "objectID": "pages/usage.html",
-    "href": "pages/usage.html",
-    "title": "Basic Usage",
+    "objectID": "pages/installation.html",
+    "href": "pages/installation.html",
+    "title": "Installation",
     "section": "",
-    "text": "Import create and pass your config. The returned instance exposes the full API.\nimport { create } from 'myproject'\n\nconst app = create({ theme: 'warm' })\n\n// Register a handler\napp.on('ready', () =&gt; console.log('App is ready'))\n\n// Start the app\nawait app.run()"
+    "text": "MyProject requires Node.js ≥ 18 and a modern package manager. It runs in both browser and server environments."
   },
   {
-    "objectID": "pages/usage.html#creating-an-instance",
-    "href": "pages/usage.html#creating-an-instance",
-    "title": "Basic Usage",
+    "objectID": "pages/installation.html#requirements",
+    "href": "pages/installation.html#requirements",
+    "title": "Installation",
     "section": "",
-    "text": "Import create and pass your config. The returned instance exposes the full API.\nimport { create } from 'myproject'\n\nconst app = create({ theme: 'warm' })\n\n// Register a handler\napp.on('ready', () =&gt; console.log('App is ready'))\n\n// Start the app\nawait app.run()"
+    "text": "MyProject requires Node.js ≥ 18 and a modern package manager. It runs in both browser and server environments."
   },
   {
-    "objectID": "pages/usage.html#working-with-data",
-    "href": "pages/usage.html#working-with-data",
-    "title": "Basic Usage",
-    "section": "Working with data",
-    "text": "Working with data\nUse the store module for reactive state:\nimport { store } from 'myproject'\n\nconst state = store({ count: 0 })\n\nstate.subscribe(s =&gt; console.log('count:', s.count))\nstate.set({ count: state.get().count + 1 })"
+    "objectID": "pages/installation.html#npm-yarn-pnpm",
+    "href": "pages/installation.html#npm-yarn-pnpm",
+    "title": "Installation",
+    "section": "npm / yarn / pnpm",
+    "text": "npm / yarn / pnpm\nnpm install myproject        # npm\nyarn add myproject           # yarn\npnpm add myproject           # pnpm"
   },
   {
-    "objectID": "pages/usage.html#lifecycle-events",
-    "href": "pages/usage.html#lifecycle-events",
-    "title": "Basic Usage",
-    "section": "Lifecycle events",
-    "text": "Lifecycle events\nMyProject emits the following events you can hook into with app.on():\n\n\n\nEvent\nWhen it fires\n\n\n\n\ninit\nAfter the instance is created\n\n\nready\nAfter app.run() completes\n\n\nerror\nWhen an unhandled error occurs\n\n\ndestroy\nBefore the instance is torn down\n\n\n\n\n\n\n\n\n\nTip\n\n\n\nYou can also use app.once() for one-time event handlers that auto-remove themselves after firing."
+    "objectID": "pages/installation.html#cdn-no-bundler",
+    "href": "pages/installation.html#cdn-no-bundler",
+    "title": "Installation",
+    "section": "CDN (no bundler)",
+    "text": "CDN (no bundler)\nFor quick prototyping without a build step:\n&lt;script type=\"module\"&gt;\n  import { create } from 'https://cdn.jsdelivr.net/npm/myproject/+esm'\n&lt;/script&gt;\n\n\n\n\n\n\nNote\n\n\n\nCDN builds are not recommended for production. Use a bundler for tree-shaking and optimal bundle size."
   },
   {
-    "objectID": "pages/configuration.html",
-    "href": "pages/configuration.html",
-    "title": "Configuration",
+    "objectID": "pages/installation.html#verify-the-installation",
+    "href": "pages/installation.html#verify-the-installation",
+    "title": "Installation",
+    "section": "Verify the installation",
+    "text": "Verify the installation\nimport { create } from 'myproject'\nconsole.log(create.version) // e.g. \"2.4.1\"\nIf you see a version number, you’re good to go. Head to Configuration next."
+  },
+  {
+    "objectID": "about.html#core-team",
+    "href": "about.html#core-team",
+    "title": "About",
+    "section": "Core Team",
+    "text": "Core Team\nVerena Ras — Training Coordination and Development\nShaun Aron — Training Coordination and Development\nMelek Chaouch — Training Coordination and Development"
+  },
+  {
+    "objectID": "about.html#license",
+    "href": "about.html#license",
+    "title": "About",
+    "section": "License",
+    "text": "License\nMyProject is released under the Creative Commons Attribution (CC BY).\n```"
+  },
+  {
+    "objectID": "about.html#contact-community",
+    "href": "about.html#contact-community",
+    "title": "About",
+    "section": "Contact & Community",
+    "text": "Contact & Community\n\n📬 [info@bioinformaticsinstitute.africa](mailto:info@bioinformaticsinstitute.africa — for any questions."
+  },
+  {
+    "objectID": "projects.html",
+    "href": "projects.html",
+    "title": "Projects",
     "section": "",
-    "text": "Create a myproject.config.js in your project root:\nexport default {\n  theme: 'warm',        // 'warm' | 'cool' | 'neutral'\n  plugins: [],          // array of plugin instances\n  debug: false,         // enable verbose logging\n  output: './dist',     // build output directory\n}\n\n\n\n\n\n\nTip\n\n\n\nAll config keys are optional — MyProject ships with sensible defaults for every option."
+    "text": "The heart of the ecosystem — a small, stable, well-tested core that everything else builds on. The core library is intentionally minimal so it can be used in any environment without assumptions about your framework or build tool.\nView on GitHub"
   },
   {
-    "objectID": "pages/configuration.html#config-file",
-    "href": "pages/configuration.html#config-file",
-    "title": "Configuration",
+    "objectID": "projects.html#core-library",
+    "href": "projects.html#core-library",
+    "title": "Projects",
     "section": "",
-    "text": "Create a myproject.config.js in your project root:\nexport default {\n  theme: 'warm',        // 'warm' | 'cool' | 'neutral'\n  plugins: [],          // array of plugin instances\n  debug: false,         // enable verbose logging\n  output: './dist',     // build output directory\n}\n\n\n\n\n\n\nTip\n\n\n\nAll config keys are optional — MyProject ships with sensible defaults for every option."
+    "text": "The heart of the ecosystem — a small, stable, well-tested core that everything else builds on. The core library is intentionally minimal so it can be used in any environment without assumptions about your framework or build tool.\nView on GitHub"
   },
   {
-    "objectID": "pages/configuration.html#options-reference",
-    "href": "pages/configuration.html#options-reference",
-    "title": "Configuration",
-    "section": "Options reference",
-    "text": "Options reference\n\n\n\nKey\nType\nDefault\nDescription\n\n\n\n\ntheme\nstring\n'neutral'\nVisual theme preset\n\n\nplugins\narray\n[]\nPlugin instances to load\n\n\ndebug\nboolean\nfalse\nEnable verbose console output\n\n\noutput\nstring\n'./dist'\nBuild output directory"
+    "objectID": "projects.html#official-plugins",
+    "href": "projects.html#official-plugins",
+    "title": "Projects",
+    "section": "Official Plugins",
+    "text": "Official Plugins\n\nmyproject-react\nReact hooks and context for seamless integration with React 18+.\nnpm install @myproject/react\nuseState-style hooks, &lt;Provider&gt; component, and full TypeScript support.\nGitHub · react hooks typescript\n\n\n\nmyproject-vue\nComposables and plugin for Vue 3 with full reactivity support.\nnpm install @myproject/vue\nUses Vue’s ref and computed under the hood for zero-overhead reactivity.\nGitHub · vue3 composables\n\n\n\nmyproject-svelte\nSvelte stores and actions for effortless state synchronisation.\nnpm install @myproject/svelte\nWraps store as a native Svelte writable so you can use the $ prefix syntax.\nGitHub · svelte stores"
   },
   {
-    "objectID": "pages/configuration.html#environment-variables",
-    "href": "pages/configuration.html#environment-variables",
-    "title": "Configuration",
-    "section": "Environment variables",
-    "text": "Environment variables\nYou can also configure MyProject via environment variables, which take precedence over the config file:\nMYPROJECT_THEME=cool\nMYPROJECT_DEBUG=true"
+    "objectID": "projects.html#example-apps",
+    "href": "projects.html#example-apps",
+    "title": "Projects",
+    "section": "Example Apps",
+    "text": "Example Apps\n\nTodo App\nClassic to-do list demonstrating store, events, and plugin patterns.\nGreat starting point for beginners.\nView example →\n\n\nDashboard Starter\nFull dashboard template with charts, data fetching, and auth scaffolding.\nView example →"
   },
   {
-    "objectID": "pages/contributing.html",
-    "href": "pages/contributing.html",
-    "title": "Contributing",
-    "section": "",
-    "text": "We welcome contributions of all sizes — bug reports, documentation improvements, or new features."
-  },
-  {
-    "objectID": "pages/contributing.html#getting-started",
-    "href": "pages/contributing.html#getting-started",
-    "title": "Contributing",
-    "section": "Getting started",
-    "text": "Getting started\n\nFork the repository on GitHub and clone your fork locally.\nInstall dependencies with npm install.\nCreate a feature branch: git checkout -b feat/my-feature."
-  },
-  {
-    "objectID": "pages/contributing.html#development-workflow",
-    "href": "pages/contributing.html#development-workflow",
-    "title": "Contributing",
-    "section": "Development workflow",
-    "text": "Development workflow\nnpm run dev      # start the dev server with hot reload\nnpm test         # run the full test suite\nnpm run lint     # check code style\nnpm run build    # build for production\n\n\n\n\n\n\nImportant\n\n\n\nPlease ensure all tests pass (npm test) before opening a pull request."
-  },
-  {
-    "objectID": "pages/contributing.html#pull-request-guidelines",
-    "href": "pages/contributing.html#pull-request-guidelines",
-    "title": "Contributing",
-    "section": "Pull request guidelines",
-    "text": "Pull request guidelines\n\nKeep PRs focused — one feature or fix per PR.\nWrite or update tests for any changed behaviour.\nUpdate the relevant documentation in the docs/ folder.\nUse a clear, descriptive PR title (e.g. feat: add lazy() timeout option)."
-  },
-  {
-    "objectID": "pages/contributing.html#commit-style",
-    "href": "pages/contributing.html#commit-style",
-    "title": "Contributing",
-    "section": "Commit style",
-    "text": "Commit style\nWe follow Conventional Commits:\n\n\n\nPrefix\nUse for\n\n\n\n\nfeat:\nNew features\n\n\nfix:\nBug fixes\n\n\ndocs:\nDocumentation only\n\n\nchore:\nTooling, CI, dependencies\n\n\nrefactor:\nCode changes with no behaviour change"
-  },
-  {
-    "objectID": "pages/contributing.html#code-of-conduct",
-    "href": "pages/contributing.html#code-of-conduct",
-    "title": "Contributing",
-    "section": "Code of conduct",
-    "text": "Code of conduct\nThis project follows the Contributor Covenant. Be kind and constructive."
-  },
-  {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "Training coordinated by the African Bioinformatics Insitute.",
-    "section": "",
-    "text": "African Bioinformatics Institute Interim Training Working Group\n\n\n\nThis site is hosted by the Interim ABI Training Working Group. It hosts course and training materials \nAfrican Bioinformatics Institute Homepage About the ABI"
-  },
-  {
-    "objectID": "index.html#upcoming-training-events",
-    "href": "index.html#upcoming-training-events",
-    "title": "Training coordinated by the African Bioinformatics Insitute.",
-    "section": "Upcoming Training Events:",
-    "text": "Upcoming Training Events:\nAfrican Bioinformatics Institute - Bioinformatics Summer School\nBioinformatics Summer School\n\n\n\n\n\n\nTip\n\n\n\nPlease get your managers/supervisors approval ahead of applying to ABI events."
+    "objectID": "projects.html#roadmap",
+    "href": "projects.html#roadmap",
+    "title": "Projects",
+    "section": "Roadmap",
+    "text": "Roadmap\n\n\n\nVersion\nStatus\nWhat’s included\n\n\n\n\nv2.4\n✅ Released\nPlugin API stabilised\n\n\nv2.4.1\n✅ Released\nPerformance improvements\n\n\nv2.5\n🔄 In progress\nDev tools browser extension\n\n\nv3.0\n⏳ Planned\nFull async plugin lifecycle\n\n\n\nHave a feature request? Open a discussion on GitHub."
   }
 ]
