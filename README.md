@@ -35,3 +35,7 @@ You must add and link it in to a hyperlink on an indexed page
 ABI Bioinformatics Summer School 2026
 Course overview/description: The African Bioinformatics Institute will be hosting a Summer School from 08 - 19 June 2026 at the African Center of Excellence in Bioinformatics and Data Intensive Sciences (ACE-Uganda), in partnership with the Uganda Virus Research Institute (UVRI), and the MRC/UVRI & LSHTM Uganda Research Unit. The aim is to provide comprehensive training on bioinformatics computational resources, and domain-specific tools and workflows to improve participants' proficiency in executing, interpreting, and communicating analyses for major bioinformatics studies, with a special focus on genomics.
 
+## Running locally for previewing the site
+
+If you have [pixi](https://pixi.prefix.dev/latest/) you can serve the site locally by running `pixi run quarto preview`. Then navigate to http://localhost:5606/ to access the page.
+

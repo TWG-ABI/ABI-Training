@@ -1,0 +1,11 @@
+[workspace]
+authors = ["Peter van Heusden <pvanheusden@uwc.ac.za>"]
+channels = ["conda-forge", "bioconda"]
+name = "ABI-Training"
+platforms = ["linux-64"]
+version = "0.1.0"
+
+[tasks]
+
+[dependencies]
+quarto = ">=1.9.38,<2"
