@@ -14,7 +14,8 @@ The aim is to provide comprehensive training on bioinformatics computational res
 ### Week 1: 
 
 #### Linux 
-[File Processing with sed](week1/file-processing-sed.md)
+[File processing with sed](week1/file-processing-sed.md)
+[File processing with awk](week1/file-processing-awk.md)
 
 #### R coding content
 
