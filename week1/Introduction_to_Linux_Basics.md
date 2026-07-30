@@ -43,7 +43,7 @@
 ::: {.callout-note collapse="true"}
 ## Show answer
 
-```bash
+```
 wget https://github.com/TWG-ABI/ABI-Training/raw/refs/heads/main/week1/ABI_summer_school_project.zip
 ```
 
@@ -54,7 +54,7 @@ wget https://github.com/TWG-ABI/ABI-Training/raw/refs/heads/main/week1/ABI_summe
 ::: {.callout-note collapse="true"}
 ## Show answer
 
-```bash
+```
 ls -lh
 ```
 
@@ -73,7 +73,7 @@ ls -lh
 ::: {.callout-note collapse="true"}
 ## Show answer
 
-```bash
+```
 unzip ABI_summer_school_project.zip
 ```
 
@@ -90,7 +90,7 @@ unzip ABI_summer_school_project.zip
 ::: {.callout-note collapse="true"}
 ## Show answer
 
-```bash
+```
 pwd
 ```
 
@@ -103,7 +103,7 @@ pwd
 ::: {.callout-note collapse="true"}
 ## Show answer
 
-```bash
+```
 cd ABI_summer_school_project
 pwd
 ```
@@ -121,7 +121,7 @@ pwd
 ::: {.callout-note collapse="true"}
 ## Show answer
 
-```bash
+```
 ls -lh
 ```
 
@@ -134,7 +134,7 @@ ls -lh
 ::: {.callout-note collapse="true"}
 ## Show answer
 
-```bash
+```
 ls -1
 ```
 
@@ -147,7 +147,7 @@ ls -1
 ::: {.callout-note collapse="true"}
 ## Show answer
 
-```bash
+```
 ls -lt
 ```
 
@@ -160,7 +160,7 @@ ls -lt
 ::: {.callout-note collapse="true"}
 ## Show answer
 
-```bash
+```
 ls -lhR
 ```
 
@@ -173,7 +173,7 @@ ls -lhR
 ::: {.callout-note collapse="true"}
 ## Show answer
 
-```bash
+```
 cat README.txt
 ```
 
@@ -190,7 +190,7 @@ cat README.txt
 ::: {.callout-note collapse="true"}
 ## Show answer
 
-```bash
+```
 cd raw_data
 pwd
 ```
@@ -202,7 +202,7 @@ pwd
 ::: {.callout-note collapse="true"}
 ## Show answer
 
-```bash
+```
 cd ..
 ```
 
@@ -215,7 +215,7 @@ cd ..
 ::: {.callout-note collapse="true"}
 ## Show answer
 
-```bash
+```
 cd ~
 ```
 
@@ -228,7 +228,7 @@ cd ~
 ::: {.callout-note collapse="true"}
 ## Show answer
 
-```bash
+```
 cd /home/username/ABI_summer_school_project/reference
 ```
 
@@ -241,7 +241,7 @@ cd /home/username/ABI_summer_school_project/reference
 ::: {.callout-note collapse="true"}
 ## Show answer
 
-```bash
+```
 cd -
 ```
 
@@ -260,7 +260,7 @@ cd -
 ::: {.callout-note collapse="true"}
 ## Show answer
 
-```bash
+```
 cat raw_data/sample_manifest.tsv
 ```
 
@@ -271,7 +271,7 @@ cat raw_data/sample_manifest.tsv
 ::: {.callout-note collapse="true"}
 ## Show answer
 
-```bash
+```
 cat raw_data/sample_manifest.tsv raw_data/coverage_report.tsv
 ```
 
@@ -284,7 +284,7 @@ cat raw_data/sample_manifest.tsv raw_data/coverage_report.tsv
 ::: {.callout-note collapse="true"}
 ## Show answer
 
-```bash
+```
 head -n 4 raw_data/sample_manifest.tsv
 ```
 
@@ -295,7 +295,7 @@ head -n 4 raw_data/sample_manifest.tsv
 ::: {.callout-note collapse="true"}
 ## Show answer
 
-```bash
+```
 tail -n 3 raw_data/sample_manifest.tsv
 ```
 
@@ -306,7 +306,7 @@ tail -n 3 raw_data/sample_manifest.tsv
 ::: {.callout-note collapse="true"}
 ## Show answer
 
-```bash
+```
 cd reference
 less Pfalciparum_3D7.fasta
 ```
@@ -320,7 +320,7 @@ less Pfalciparum_3D7.fasta
 ::: {.callout-note collapse="true"}
 ## Show answer
 
-```bash
+```
 head -n 8 ../raw_data/SAMPLE_001.fastq
 ```
 
@@ -333,7 +333,7 @@ head -n 8 ../raw_data/SAMPLE_001.fastq
 ::: {.callout-note collapse="true"}
 ## Show answer
 
-```bash
+```
 tail -n 8 ../raw_data/SAMPLE_001.fastq
 ```
 
@@ -350,7 +350,7 @@ tail -n 8 ../raw_data/SAMPLE_001.fastq
 ::: {.callout-note collapse="true"}
 ## Show answer
 
-```bash
+```
 cd raw_data
 ls -lh *.fastq
 ```
@@ -364,7 +364,7 @@ ls -lh *.fastq
 ::: {.callout-note collapse="true"}
 ## Show answer
 
-```bash
+```
 ls -lh ../variants/*.vcf
 ```
 
@@ -375,7 +375,7 @@ ls -lh ../variants/*.vcf
 ::: {.callout-note collapse="true"}
 ## Show answer
 
-```bash
+```
 cd ../results/qc
 ls -lh ../../reference/Pf*
 ```
@@ -387,7 +387,7 @@ ls -lh ../../reference/Pf*
 ::: {.callout-note collapse="true"}
 ## Show answer
 
-```bash
+```
 cd ../../
 ls raw_data/*SAMPLE*
 ```
@@ -407,7 +407,7 @@ ls raw_data/*SAMPLE*
 ::: {.callout-note collapse="true"}
 ## Show answer
 
-```bash
+```
 ls -a raw_data/
 ```
 
@@ -420,7 +420,7 @@ ls -a raw_data/
 ::: {.callout-note collapse="true"}
 ## Show answer
 
-```bash
+```
 ls -lha raw_data/
 ```
 
@@ -431,7 +431,7 @@ ls -lha raw_data/
 ::: {.callout-note collapse="true"}
 ## Show answer
 
-```bash
+```
 cat raw_data/.hidden_note.txt
 ```
 
@@ -442,7 +442,7 @@ cat raw_data/.hidden_note.txt
 ::: {.callout-note collapse="true"}
 ## Show answer
 
-```bash
+```
 ls -la
 ```
 
@@ -461,7 +461,7 @@ ls -la
 ::: {.callout-note collapse="true"}
 ## Show answer
 
-```bash
+```
 mkdir results/qc
 ```
 
@@ -472,7 +472,7 @@ mkdir results/qc
 ::: {.callout-note collapse="true"}
 ## Show answer
 
-```bash
+```
 mkdir results/alignments results/variants
 ```
 
@@ -485,7 +485,7 @@ mkdir results/alignments results/variants
 ::: {.callout-note collapse="true"}
 ## Show answer
 
-```bash
+```
 mkdir -p results/reports/archive
 ```
 
@@ -504,7 +504,7 @@ mkdir -p results/reports/archive
 ::: {.callout-note collapse="true"}
 ## Show answer
 
-```bash
+```
 cd results/reports
 touch analysis_notes.txt
 ```
@@ -518,7 +518,7 @@ touch analysis_notes.txt
 ::: {.callout-note collapse="true"}
 ## Show answer
 
-```bash
+```
 nano analysis_notes.txt
 ```
 Type some contents in the file and save it
@@ -532,7 +532,7 @@ Type some contents in the file and save it
 ::: {.callout-note collapse="true"}
 ## Show answer
 
-```bash
+```
 cat analysis_notes.txt
 ```
 
@@ -543,7 +543,7 @@ cat analysis_notes.txt
 ::: {.callout-note collapse="true"}
 ## Show answer
 
-```bash
+```
 cd archive
 touch ../../../results/qc/sample_001_qc.txt ../../../results/qc/sample_002_qc.txt ../../../results/qc/sample_003_qc.txt
 ```
@@ -563,7 +563,7 @@ touch ../../../results/qc/sample_001_qc.txt ../../../results/qc/sample_002_qc.tx
 ::: {.callout-note collapse="true"}
 ## Show answer
 
-```bash
+```
 cd ..
 cp ../../raw_data/sample_manifest.tsv .
 ```
@@ -575,7 +575,7 @@ cp ../../raw_data/sample_manifest.tsv .
 ::: {.callout-note collapse="true"}
 ## Show answer
 
-```bash
+```
 ls -lh raw_data/sample_manifest.tsv results/reports/sample_manifest.tsv
 ```
 
@@ -586,7 +586,7 @@ ls -lh raw_data/sample_manifest.tsv results/reports/sample_manifest.tsv
 ::: {.callout-note collapse="true"}
 ## Show answer
 
-```bash
+```
 cd ../qc
 cp ../../raw_data/SAMPLE_001.fastq ./SAMPLE_001_backup.fastq
 ```
@@ -600,7 +600,7 @@ cp ../../raw_data/SAMPLE_001.fastq ./SAMPLE_001_backup.fastq
 ::: {.callout-note collapse="true"}
 ## Show answer
 
-```bash
+```
 cp -r ../../logs ../logs_backup/
 ls -lh ../logs_backup/
 ```
@@ -614,7 +614,7 @@ ls -lh ../logs_backup/
 ::: {.callout-note collapse="true"}
 ## Show answer
 
-```bash
+```
 cd ../../
 cp -i raw_data/SAMPLE_002.fastq results/qc/
 ```
@@ -635,7 +635,7 @@ find the right way of using this command is cp -i ; the comand given above is wr
 ::: {.callout-note collapse="true"}
 ## Show answer
 
-```bash
+```
 ln -s ../reference/Pfalciparum_3D7.fasta results/ref_index
 ```
 
@@ -648,7 +648,7 @@ ln -s ../reference/Pfalciparum_3D7.fasta results/ref_index
 ::: {.callout-note collapse="true"}
 ## Show answer
 
-```bash
+```
 ls -lh results/
 ```
 
@@ -661,7 +661,7 @@ ls -lh results/
 ::: {.callout-note collapse="true"}
 ## Show answer
 
-```bash
+```
 cd results/reports
 ln -s ../../raw_data/sample_manifest.tsv manifest_link.tsv
 ```
@@ -679,7 +679,7 @@ ln -s ../../raw_data/sample_manifest.tsv manifest_link.tsv
 ::: {.callout-note collapse="true"}
 ## Show answer
 
-```bash
+```
 cd ../../raw_data
 mkdir trimmed
 ```
@@ -691,7 +691,7 @@ mkdir trimmed
 ::: {.callout-note collapse="true"}
 ## Show answer
 
-```bash
+```
 mv SAMPLE_003.fastq SAMPLE_003_trimmed.fastq
 ```
 
@@ -702,7 +702,7 @@ mv SAMPLE_003.fastq SAMPLE_003_trimmed.fastq
 ::: {.callout-note collapse="true"}
 ## Show answer
 
-```bash
+```
 mv SAMPLE_003_trimmed.fastq trimmed/
 ```
 
@@ -713,7 +713,7 @@ mv SAMPLE_003_trimmed.fastq trimmed/
 ::: {.callout-note collapse="true"}
 ## Show answer
 
-```bash
+```
 cd ../results/reports
 mv ../../raw_data/batch1_samples.txt ../../raw_data/batch2_samples.txt .
 ```
@@ -726,7 +726,7 @@ mv ../../raw_data/batch1_samples.txt ../../raw_data/batch2_samples.txt .
 ::: {.callout-note collapse="true"}
 ## Show answer
 
-```bash
+```
 cd ../../
 mv scripts/ results/
 ```
@@ -740,7 +740,7 @@ mv scripts/ results/
 ::: {.callout-note collapse="true"}
 ## Show answer
 
-```bash
+```
 mv results/logs_backup/ results/archive/
 ```
 
@@ -759,7 +759,7 @@ mv results/logs_backup/ results/archive/
 ::: {.callout-note collapse="true"}
 ## Show answer
 
-```bash
+```
 rm raw_data/SAMPLE_008.fastq
 ```
 
@@ -770,7 +770,7 @@ rm raw_data/SAMPLE_008.fastq
 ::: {.callout-note collapse="true"}
 ## Show answer
 
-```bash
+```
 rm raw_data/SAMPLE_009.fastq raw_data/SAMPLE_010.fastq
 ```
 
@@ -783,7 +783,7 @@ rm raw_data/SAMPLE_009.fastq raw_data/SAMPLE_010.fastq
 ::: {.callout-note collapse="true"}
 ## Show answer
 
-```bash
+```
 rm results/qc/sample_*_qc.txt
 ```
 
@@ -794,7 +794,7 @@ rm results/qc/sample_*_qc.txt
 ::: {.callout-note collapse="true"}
 ## Show answer
 
-```bash
+```
 rm -r results/archive/
 ```
 
@@ -807,7 +807,7 @@ rm -r results/archive/
 ::: {.callout-note collapse="true"}
 ## Show answer
 
-```bash
+```
 ls -lh raw_data/*.fastq
 ```
 
@@ -826,7 +826,7 @@ ls -lh raw_data/*.fastq
 ::: {.callout-note collapse="true"}
 ## Show answer
 
-```bash
+```
 cat results/reports/batch2_samples.txt
 ```
 
@@ -837,7 +837,7 @@ cat results/reports/batch2_samples.txt
 ::: {.callout-note collapse="true"}
 ## Show answer
 
-```bash
+```
 sort results/reports/batch1_samples.txt
 ```
 
@@ -848,7 +848,7 @@ sort results/reports/batch1_samples.txt
 ::: {.callout-note collapse="true"}
 ## Show answer
 
-```bash
+```
 sort results/reports/batch1_samples.txt > results/reports/batch1_sorted.txt
 ```
 
@@ -859,7 +859,7 @@ sort results/reports/batch1_samples.txt > results/reports/batch1_sorted.txt
 ::: {.callout-note collapse="true"}
 ## Show answer
 
-```bash
+```
 sort -k3 raw_data/sample_manifest.tsv
 ```
 
@@ -872,7 +872,7 @@ sort -k3 raw_data/sample_manifest.tsv
 ::: {.callout-note collapse="true"}
 ## Show answer
 
-```bash
+```
 sort -k4 -r raw_data/sample_manifest.tsv
 ```
 
@@ -892,7 +892,7 @@ sort -k4 -r raw_data/sample_manifest.tsv
 ## Show answer
  
 
-```bash
+```
 comm results/reports/batch1_sorted.txt results/reports/batch2_samples.txt
 ```
 
@@ -905,7 +905,7 @@ comm results/reports/batch1_sorted.txt results/reports/batch2_samples.txt
 ::: {.callout-note collapse="true"}
 ## Show answer
 
-```bash
+```
 comm -12 results/reports/batch1_sorted.txt results/reports/batch2_samples.txt
 ```
 
@@ -918,7 +918,7 @@ comm -12 results/reports/batch1_sorted.txt results/reports/batch2_samples.txt
 ::: {.callout-note collapse="true"}
 ## Show answer
 
-```bash
+```
 comm -23 results/reports/batch1_sorted.txt results/reports/batch2_samples.txt
 ```
 
@@ -931,7 +931,7 @@ comm -23 results/reports/batch1_sorted.txt results/reports/batch2_samples.txt
 ::: {.callout-note collapse="true"}
 ## Show answer
 
-```bash
+```
 comm -13 results/reports/batch1_sorted.txt results/reports/batch2_samples.txt
 ```
 
@@ -950,7 +950,7 @@ comm -13 results/reports/batch1_sorted.txt results/reports/batch2_samples.txt
 ::: {.callout-note collapse="true"}
 ## Show answer
 
-```bash
+```
 sort -k1 raw_data/sample_manifest.tsv > manifest_sorted.tsv
 sort -k1 raw_data/coverage_report.tsv > coverage_sorted.tsv
 ```
@@ -964,7 +964,7 @@ sort -k1 raw_data/coverage_report.tsv > coverage_sorted.tsv
 ::: {.callout-note collapse="true"}
 ## Show answer
 
-```bash
+```
 join manifest_sorted.tsv coverage_sorted.tsv
 ```
 
@@ -977,7 +977,7 @@ join manifest_sorted.tsv coverage_sorted.tsv
 ::: {.callout-note collapse="true"}
 ## Show answer
 
-```bash
+```
 join -a1 manifest_sorted.tsv coverage_sorted.tsv
 ```
 
@@ -996,7 +996,7 @@ join -a1 manifest_sorted.tsv coverage_sorted.tsv
 ::: {.callout-note collapse="true"}
 ## Show answer
 
-```bash
+```
 find . -name '*.fastq'
 ```
 
@@ -1007,7 +1007,7 @@ find . -name '*.fastq'
 ::: {.callout-note collapse="true"}
 ## Show answer
 
-```bash
+```
 find . -name '*.vcf'
 ```
 
@@ -1018,7 +1018,7 @@ find . -name '*.vcf'
 ::: {.callout-note collapse="true"}
 ## Show answer
 
-```bash
+```
 find . -name '.*' -type f
 ```
 
@@ -1029,7 +1029,7 @@ find . -name '.*' -type f
 ::: {.callout-note collapse="true"}
 ## Show answer
 
-```bash
+```
 find . -type d
 ```
 
@@ -1040,7 +1040,7 @@ find . -type d
 ::: {.callout-note collapse="true"}
 ## Show answer
 
-```bash
+```
 find . -size +1k -type f
 ```
 
@@ -1051,7 +1051,7 @@ find . -size +1k -type f
 ::: {.callout-note collapse="true"}
 ## Show answer
 
-```bash
+```
 find . -mtime -1 -type f
 ```
 
@@ -1064,7 +1064,7 @@ find . -mtime -1 -type f
 ::: {.callout-note collapse="true"}
 ## Show answer
 
-```bash
+```
 find . -name 'SAMPLE*.fastq'
 ```
 
@@ -1081,7 +1081,7 @@ find . -name 'SAMPLE*.fastq'
 ::: {.callout-note collapse="true"}
 ## Show answer
 
-```bash
+```
 wc -l raw_data/sample_manifest.tsv
 ```
 
@@ -1094,7 +1094,7 @@ wc -l raw_data/sample_manifest.tsv
 ::: {.callout-note collapse="true"}
 ## Show answer
 
-```bash
+```
 wc -l raw_data/SAMPLE_001.fastq
 ```
 
@@ -1107,7 +1107,7 @@ wc -l raw_data/SAMPLE_001.fastq
 ::: {.callout-note collapse="true"}
 ## Show answer
 
-```bash
+```
 wc -l raw_data/*.fastq
 ```
 
@@ -1120,7 +1120,7 @@ wc -l raw_data/*.fastq
 ::: {.callout-note collapse="true"}
 ## Show answer
 
-```bash
+```
 wc -l variants/*.vcf
 ```
 
@@ -1137,7 +1137,7 @@ wc -l variants/*.vcf
 ::: {.callout-note collapse="true"}
 ## Show answer
 
-```bash
+```
 grep 'PASS' variants/SAMPLE_001.vcf
 ```
 
@@ -1148,7 +1148,7 @@ grep 'PASS' variants/SAMPLE_001.vcf
 ::: {.callout-note collapse="true"}
 ## Show answer
 
-```bash
+```
 grep -c 'PASS' variants/SAMPLE_001.vcf
 ```
 
@@ -1161,7 +1161,7 @@ grep -c 'PASS' variants/SAMPLE_001.vcf
 ::: {.callout-note collapse="true"}
 ## Show answer
 
-```bash
+```
 grep -v '^#' variants/SAMPLE_001.vcf
 ```
 
@@ -1174,7 +1174,7 @@ grep -v '^#' variants/SAMPLE_001.vcf
 ::: {.callout-note collapse="true"}
 ## Show answer
 
-```bash
+```
 grep -vc '^#' variants/SAMPLE_001.vcf
 ```
 
@@ -1187,7 +1187,7 @@ grep -vc '^#' variants/SAMPLE_001.vcf
 ::: {.callout-note collapse="true"}
 ## Show answer
 
-```bash
+```
 grep -n 'WARNING' logs/pipeline.log
 ```
 
@@ -1200,7 +1200,7 @@ grep -n 'WARNING' logs/pipeline.log
 ::: {.callout-note collapse="true"}
 ## Show answer
 
-```bash
+```
 grep -i 'failed' logs/pipeline.log
 ```
 
@@ -1213,7 +1213,7 @@ grep -i 'failed' logs/pipeline.log
 ::: {.callout-note collapse="true"}
 ## Show answer
 
-```bash
+```
 grep -c '^>' reference/Pfalciparum_3D7.fasta
 ```
 
@@ -1226,7 +1226,7 @@ grep -c '^>' reference/Pfalciparum_3D7.fasta
 ::: {.callout-note collapse="true"}
 ## Show answer
 
-```bash
+```
 grep -r 'SAMPLE_008' .
 ```
 
@@ -1239,7 +1239,7 @@ grep -r 'SAMPLE_008' .
 ::: {.callout-note collapse="true"}
 ## Show answer
 
-```bash
+```
 grep -rn 'ERROR' logs/
 ```
 
@@ -1258,7 +1258,7 @@ grep -rn 'ERROR' logs/
 ::: {.callout-note collapse="true"}
 ## Show answer
 
-```bash
+```
 cut -f1 raw_data/sample_manifest.tsv
 ```
 
@@ -1269,7 +1269,7 @@ cut -f1 raw_data/sample_manifest.tsv
 ::: {.callout-note collapse="true"}
 ## Show answer
 
-```bash
+```
 cut -f3 raw_data/sample_manifest.tsv
 ```
 
@@ -1280,7 +1280,7 @@ cut -f3 raw_data/sample_manifest.tsv
 ::: {.callout-note collapse="true"}
 ## Show answer
 
-```bash
+```
 cut -f1,8 raw_data/sample_manifest.tsv
 ```
 
@@ -1291,7 +1291,7 @@ cut -f1,8 raw_data/sample_manifest.tsv
 ::: {.callout-note collapse="true"}
 ## Show answer
 
-```bash
+```
 cut -f1-4 raw_data/sample_manifest.tsv
 ```
 
@@ -1310,7 +1310,7 @@ cut -f1-4 raw_data/sample_manifest.tsv
 ::: {.callout-note collapse="true"}
 ## Show answer
 
-```bash
+```
 paste results/reports/batch1_sorted.txt results/reports/batch2_samples.txt
 ```
 
@@ -1323,7 +1323,7 @@ paste results/reports/batch1_sorted.txt results/reports/batch2_samples.txt
 ::: {.callout-note collapse="true"}
 ## Show answer
 
-```bash
+```
 paste -d',' results/reports/batch1_sorted.txt results/reports/batch2_samples.txt
 ```
 
