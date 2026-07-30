@@ -14,7 +14,6 @@ The aim is to provide comprehensive training on bioinformatics computational res
 ### Week 1: 
 
 #### Linux 
-[Introduction to Linux basics](https://github.com/TWG-ABI/ABI-Training/blob/main/week1/INTRODUCTION%20TO%20LINUX%20BASICS.md)
 [File processing with sed](week1/file-processing-sed.md)
 [File processing with awk](week1/file-processing-awk.md)
 
