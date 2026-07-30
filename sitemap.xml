@@ -2,34 +2,38 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://TWG-ABI.github.io/ABI-Training/moduletemplate.html</loc>
-    <lastmod>2026-07-30T14:28:24.408Z</lastmod>
+    <lastmod>2026-07-30T14:32:31.329Z</lastmod>
   </url>
   <url>
     <loc>https://TWG-ABI.github.io/ABI-Training/index.html</loc>
-    <lastmod>2026-07-30T14:28:24.408Z</lastmod>
+    <lastmod>2026-07-30T14:32:31.329Z</lastmod>
   </url>
   <url>
     <loc>https://TWG-ABI.github.io/ABI-Training/week1/file-processing-sed.html</loc>
-    <lastmod>2026-07-30T14:28:24.416Z</lastmod>
-  </url>
-  <url>
-    <loc>https://TWG-ABI.github.io/ABI-Training/week1/file-processing-awk.html</loc>
-    <lastmod>2026-07-30T14:28:24.416Z</lastmod>
-  </url>
-  <url>
-    <loc>https://TWG-ABI.github.io/ABI-Training/about.html</loc>
-    <lastmod>2026-07-30T14:28:24.408Z</lastmod>
+    <lastmod>2026-07-30T14:32:31.335Z</lastmod>
   </url>
   <url>
     <loc>https://TWG-ABI.github.io/ABI-Training/week1/base.html</loc>
-    <lastmod>2026-07-30T14:28:24.416Z</lastmod>
+    <lastmod>2026-07-30T14:32:31.335Z</lastmod>
+  </url>
+  <url>
+    <loc>https://TWG-ABI.github.io/ABI-Training/about.html</loc>
+    <lastmod>2026-07-30T14:32:31.329Z</lastmod>
+  </url>
+  <url>
+    <loc>https://TWG-ABI.github.io/ABI-Training/week1/file-processing-awk.html</loc>
+    <lastmod>2026-07-30T14:32:31.335Z</lastmod>
+  </url>
+  <url>
+    <loc>https://TWG-ABI.github.io/ABI-Training/week1/Introduction_to_Linux_Basics.html</loc>
+    <lastmod>2026-07-30T14:32:31.335Z</lastmod>
   </url>
   <url>
     <loc>https://TWG-ABI.github.io/ABI-Training/abisumschool26.html</loc>
-    <lastmod>2026-07-30T14:28:24.408Z</lastmod>
+    <lastmod>2026-07-30T14:32:31.329Z</lastmod>
   </url>
   <url>
     <loc>https://TWG-ABI.github.io/ABI-Training/projects.html</loc>
-    <lastmod>2026-07-30T14:28:24.408Z</lastmod>
+    <lastmod>2026-07-30T14:32:31.329Z</lastmod>
   </url>
 </urlset>
