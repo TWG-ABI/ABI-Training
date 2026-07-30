@@ -15,8 +15,9 @@ The aim is to provide comprehensive training on bioinformatics computational res
 
 #### Linux 
 1. [Introduction to Linux Basics](week1/Introduction_to_Linux_Basics.md)
-2. [File processing with sed](week1/file-processing-sed.md)
-3. [File processing with awk](week1/file-processing-awk.md)
+2. [Introduction to Linux Basics II](week1/Introduction_to_Linux_Basics_II.md)
+3. [File processing with sed](week1/file-processing-sed.md)
+4. [File processing with awk](week1/file-processing-awk.md)
 
 #### R coding content
 
