@@ -8,7 +8,6 @@ MAG quality/taxonomy summaries, COG functional category distributions, pathway h
 and AMR gene breakdowns — and closes with a template participants adapt for their own
 mini-project datasets.
 
-
 ## 1. MAG Quality Summary
 
 ```r
@@ -72,8 +71,9 @@ ggplot(checkm, aes(x=Contamination, y=Completeness, color=Quality, size=Genome_S
   labs(title="MAG Quality Assessment (CheckM2)",
        subtitle="Dashed lines = MIMAG thresholds (50/90% completeness, 5/10% contamination)",
        x="Contamination (%)", y="Completeness (%)", size="Genome Size (bp)") +
-  annotate("text", x=0.5, y=93, label="High Quality", ...) +
-  annotate("text", x=0.5, y=53, label="Medium Quality", ...)
+  annotate("text", x=0.5, y=93, label="High Quality", color="#1A936F", hjust=0, size=3.5, fontface="bold") +
+  annotate("text", x=0.5, y=53, label="Medium Quality", color="#0096C7", hjust=0, size=3.5) +
+  theme(legend.position="right")
 ```
 A completeness-vs-contamination scatter plot — the standard way to visualise MAG quality —
 with each point sized by genome size (larger points = bigger recovered genomes) and
@@ -97,7 +97,12 @@ if (file.exists(gtdbtk_file)) {
     select(user_genome, Phylum, classification)
 } else {
   # Simulated taxonomy
-  ...
+  gtdb <- data.frame(
+    user_genome = paste0("bin.", 1:15),
+    Phylum = sample(c("Proteobacteria","Actinobacteriota","Firmicutes_A",
+                      "Bacteroidota","Chloroflexota","Acidobacteriota"), 15, replace=TRUE),
+    stringsAsFactors = FALSE
+  )
 }
 ```
 GTDB-Tk's `classification` column is a single semicolon-delimited string (e.g.
@@ -137,7 +142,10 @@ if (file.exists(eggnog_file)) {
   cog_data <- egg[[cog_col]]
 } else {
   # Simulated COG categories
-  ...
+  set.seed(42)
+  cog_letters <- c("J","K","L","M","N","O","P","C","G","E","F","H","I","Q","R","S","T","U","V","W","X","Y","Z")
+  cog_data <- sample(cog_letters, 1000, replace=TRUE,
+                     prob=c(0.08,0.06,0.05,0.07,0.02,0.05,0.06,0.08,0.07,0.09,0.03,0.04,0.04,0.02,0.06,0.08,0.04,0.02,0.03,0.01,0.01,0.01,0.01))
 }
 ```
 Reads the real eggNOG-mapper annotation table from Day 5 Part 1 if present. Because
@@ -150,7 +158,11 @@ versions. `comment.char="#"` skips the file's metadata header lines.
 cog_labels <- c(
   J="Translation", K="Transcription", L="DNA replication/repair",
   M="Cell wall/membrane", N="Cell motility", O="Post-translational mod.",
-  ...
+  P="Ion transport/metab.", C="Energy production", G="Carbohydrate metab.",
+  E="Amino acid metab.", F="Nucleotide metab.", H="Coenzyme metab.",
+  I="Lipid metab.", Q="Secondary metabolites", R="General function",
+  S="Function unknown", T="Signal transduction", U="Secretion/trafficking",
+  V="Defense mechanisms", W="Extracellular structures"
 )
 
 cog_counts <- table(unlist(strsplit(paste(cog_data, collapse=""), "")))
@@ -201,7 +213,18 @@ scannable ranked bar chart.
 # Simulate HUMAnN3 pathway data for multiple samples
 # Replace with: read.table("day5_results/humann3/.../pathabundance.tsv", ...)
 
-pathways <- c("PWY-6609: adenine and adenosine salvage III", ...)
+pathways <- c(
+  "PWY-6609: adenine and adenosine salvage III",
+  "PWY-7229: superpathway of GDP-mannose-derived O-antigen building blocks biosynthesis",
+  "GLYCOLYSIS: glycolysis I (from glucose 6-phosphate)",
+  "TCA: TCA cycle VII (acetate-producers)",
+  "COMPLETE-ARO-PWY: superpathway of phenylalanine biosynthesis",
+  "ARGSYNBSUB-PWY: arginine biosynthesis IV",
+  "PWY0-1586: peptidoglycan maturation",
+  "COA-PWY: coenzyme A biosynthesis I",
+  "FASYN-ELONG-PWY: fatty acid elongation — saturated",
+  "NONOXIPENT-PWY: pentose phosphate pathway (non-oxidative branch)"
+)
 samples  <- paste0("Sample_", c("Forest1","Forest2","Forest3","Agri1","Agri2","Agri3"))
 land_use <- c("Forest","Forest","Forest","Agriculture","Agriculture","Agriculture")
 ```
@@ -325,11 +348,49 @@ protection/alteration) for each.
 
 ## 5. Mini-Project Template
 
+This chunk's header is `` ```{r mini-project-template, eval=FALSE} `` — the `eval=FALSE`
+chunk option means it is never executed when the notebook is knit:
+
 ```r
-eval=FALSE
+# ═══════════════════════════════════════════════════════════
+# MINI-PROJECT TEMPLATE
+# Forest vs Agricultural Soil — Microbial Community Analysis
+# ═══════════════════════════════════════════════════════════
+
+# 1. Load your data
+# meta <- read.table("mini_project/metadata.tsv", header=TRUE, sep="\t", row.names=1)
+# otu  <- read.table("mini_project/feature_table.tsv", header=TRUE, sep="\t", skip=1, row.names=1)
+
+# 2. Build phyloseq object
+# ps <- phyloseq(otu_table(as.matrix(otu), taxa_are_rows=TRUE), sample_data(meta))
+
+# 3. Alpha diversity
+# alpha <- estimate_richness(ps, measures=c("Shannon","Observed","Chao1"))
+# ggplot(alpha, aes(x=group, y=Shannon)) + geom_boxplot() + geom_jitter()
+
+# 4. Beta diversity PCoA
+# dist <- phyloseq::distance(ps, "bray")
+# ord  <- ordinate(ps, "PCoA", distance=dist)
+# plot_ordination(ps, ord, color="group")
+
+# 5. PERMANOVA
+# adonis2(dist ~ group, data=as.data.frame(sample_data(ps)))
+
+# 6. Taxonomy bar plot
+# ps_rel <- transform_sample_counts(ps, function(x) x/sum(x))
+# ps_phy <- tax_glom(ps_rel, "Phylum")
+# plot_bar(ps_phy, fill="Phylum")
+
+# 7. Differential abundance
+# library(ANCOMBC)
+# res <- ancombc2(data=ps, fix_formula="group")
+
+# 8. Save figures
+# ggsave("figures/alpha_diversity.pdf", width=8, height=5)
+# ggsave("figures/beta_diversity_PCoA.pdf", width=7, height=5)
+# ggsave("figures/taxonomy_barplot.pdf", width=12, height=6)
 ```
-This entire chunk is marked `eval=FALSE` — it is never executed when the notebook is
-knit. It exists purely as **copy-paste scaffolding**: a condensed, commented skeleton of
+It exists purely as **copy-paste scaffolding**: a condensed, commented skeleton of
 the full Day 2 diversity workflow (load data → build phyloseq → alpha diversity → beta
 diversity/PCoA → PERMANOVA → taxonomy bar plot → differential abundance → save figures)
 that participants copy into their own mini-project notebook and uncomment/adapt with
