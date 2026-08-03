@@ -42,7 +42,7 @@ The aim is to provide comprehensive training on bioinformatics computational res
 4. [Shotgun Metagenomics](week2/metagenomics/shortgun-metagenomics.md)
 5. [Metagenome-Assembled Genomes](week2/metagenomics/metagenome-assembled-genomes.md)
 6. [Functional Analysis](week2/metagenomics/functional-analysis.md)
-7. [Visualisation & Mini-Project(week2/metagenomics/functional-analysis-visualisation.md)
+7. [Visualisation & Mini-Project](week2/metagenomics/functional-analysis-visualisation.md)
 
 ---
 
