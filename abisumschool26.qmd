@@ -35,9 +35,14 @@ The aim is to provide comprehensive training on bioinformatics computational res
 
 #### Pathogen Genomics
 
-#### Metabolomics
-
-
+#### Metagenomics
+1. [Quality Control](week2/metagenomics/qc.md)
+2. [Amplicon Data Analysis](week2/metagenomics/qiime2-amplicon.md)
+3. [Diversity Analysis](week2/metagenomics/diversity-analysis.md)
+4. [Shotgun Metagenomics](week2/metagenomics/shortgun-metagenomics.md)
+5. [Metagenome-Assembled Genomes](week2/metagenomics/metagenome-assembled-genomes.md)
+6. [Functional Analysis](week2/metagenomics/functional-analysis.md)
+7. [Visualisation & Mini-Project(week2/metagenomics/functional-analysis-visualisation.md)
 
 ---
 
