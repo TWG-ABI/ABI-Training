@@ -28,146 +28,6 @@
     "text": "Training Events:\nABI Bioinformatics Summer School Uganda 2026\n\n\n\n\n\n\nTip\n\n\n\nBioinformatics is the art of answering biological questions with computational tools. Practice your skills well and leave no question unexplored."
   },
   {
-    "objectID": "abisumschool26.html",
-    "href": "abisumschool26.html",
-    "title": "ABI Summer School 2026",
-    "section": "",
-    "text": "The aim is to provide comprehensive training on bioinformatics computational resources, and domain-specific tools and workflows to improve participants’ proficiency in executing, interpreting, and communicating analyses for major bioinformatics studies, with a special focus on genomics."
-  },
-  {
-    "objectID": "abisumschool26.html#about-the-event",
-    "href": "abisumschool26.html#about-the-event",
-    "title": "ABI Summer School 2026",
-    "section": "",
-    "text": "The aim is to provide comprehensive training on bioinformatics computational resources, and domain-specific tools and workflows to improve participants’ proficiency in executing, interpreting, and communicating analyses for major bioinformatics studies, with a special focus on genomics."
-  },
-  {
-    "objectID": "abisumschool26.html#course-content",
-    "href": "abisumschool26.html#course-content",
-    "title": "ABI Summer School 2026",
-    "section": "Course Content:",
-    "text": "Course Content:\n\nWeek 1:\n\nLinux\n\nIntroduction to Linux Basics\nIntroduction to Linux Basics II\nFile processing with sed\nFile processing with awk\n\n\n\nR coding content\n\n\nIntro to NGS\n\n\n\n\nWeek 2\n\nR/Biology Streams\n\n\nHuman Genomics\n\n\nPathogen Genomics\n\n\nMetabolomics"
-  },
-  {
-    "objectID": "abisumschool26.html#trainer-info",
-    "href": "abisumschool26.html#trainer-info",
-    "title": "ABI Summer School 2026",
-    "section": "Trainer Info",
-    "text": "Trainer Info\n\n\n\n\n\n\n\n\n\nName\nAffiliation\nRole\nStream\n\n\n\n\nGloria Nakabiri\nAfrican Center of Excellence in Bioinformatics and Data Intensive Sciences\nLead trainer\nUnix\n\n\nPeter van Heusden\nSouth African National Bioinformatics Institute (SANBI)\nLead trainer\nR\n\n\nIan Wasukira\nAfrican Center of Excellence in Bioinformatics and Data-Intensive Sciences\nLead Trainer\nUnix/HPC\n\n\nRonald Galiwango\nAfrican Center of Excellence in Bioinformatics and Data-Intensive Sciences\nLead trainer\nR\n\n\nMusalula Sinkala\nUniversity of Cape Town\nLead trainer\nHuman Genomics\n\n\nDayna Adrienne Croock\nStellenbosch University\nLead trainer\nHuman Genomics\n\n\nJohn Juma\nInternational Livestock Research Institute (ILRI)\nLead trainer\nPathogen Genomics\n\n\nDamien Tully\nMRC/UVRI & LSHTM Uganda Research Unit\nLead Trainer\nPathogen Genomics\n\n\nAlfred Ssekagiri\nUganda Virus Research Institute\nLead trainer\nMetagenomics\n\n\nYohannes Gedamu Gebre\nBio and Emerging Technology Institute (BETin); former Ethiopia Biotechnology Institute (EBTi)\nCo-trainer\nUnix/R/Pathogen Genomics\n\n\nKeaghan Brown\nPHA4GE\nCo-trainer\nPathogen Genomics\n\n\nAmadou Diallo\nPioneer Bio-Analytics\nCo-trainer\nMetagenomics\n\n\nEphifania Geza\nUniversity of Cape Town\nLead trainer\nMetagenomics\n\n\nPatricia Nabisubi\nThe African Centre of Excellence in Bioinformatics and Data Intensive Sciences\nCo-trainer\nUnix/R/NGS basics\n\n\nTrushar Shah\nInternational Livestock Research Institute (Kenya)\nCo-trainer\nHuman Genomics/Unix\n\n\nDaria Sokolova\nEuropean Bioinformatics Institute (EBI)\nCore organiser/support\n\n\n\nGrace Kebirungi\nAfrican Center of Excellence in Bioinformatics and Data-Intensive Sciences\nCore organiser/support\n\n\n\nDavid Twesigomwe\nMRC/UVRI & LSHTM Uganda Research Unit\nCore organiser/support\n\n\n\nVerena Ras\nAfrican Bioinformatics Institute / University of Cape Town\nCore organiser/support\n\n\n\nShaun Aron\nSydney Brenner Institute for Molecular Bioscience (SBIMB) / University of Witwatersrand\nCore organiser/support\n\n\n\nMelek Chaouch\nInstitut Pasteur, Tunis\nCore organiser/support\n\n\n\nJorge da Rocha\nEuropean Bioinformatics Institute (EBI)\nCore organiser/support"
-  },
-  {
-    "objectID": "week1/Introduction_to_Linux_Basics.html#you-made-it",
-    "href": "week1/Introduction_to_Linux_Basics.html#you-made-it",
-    "title": "ABI Summer School 2026 · WEEK 1: Linux / HPC",
-    "section": "YOU MADE IT!",
-    "text": "YOU MADE IT!\nYou made it through the entire project directory. The folder is organised, the data is interrogated, and the meeting is saved.\n\n\nCommands used today\n\n\n\n\n\n\n\nCategory\nCommands & options\n\n\n\n\nDownload & extract\nwget · unzip\n\n\nLocation\npwd\n\n\nNavigation\ncd · cd .. · cd ~ · cd -\n\n\nListing\nls -l · ls -lh · ls -1 · ls -t · ls -lt · ls -a · ls -lha · ls -R · ls -lhR\n\n\nViewing files\ncat · head -n · tail -n · less\n\n\nWildcards\n*.fastq · *.vcf · Pf* · *SAMPLE* · SAMPLE*.fastq\n\n\nCreating directories\nmkdir · mkdir -p\n\n\nCreating files\ntouch · nano\n\n\nCopying\ncp · cp -r · cp -i\n\n\nSymbolic links\nln -s\n\n\nMoving & renaming\nmv\n\n\nDeleting\nrm · rm -r\n\n\nSorting\nsort · sort -k · sort -r\n\n\nComparing\ncomm · comm -12 · comm -23 · comm -13\n\n\nJoining\njoin · join -a1\n\n\nFinding\nfind -name · find -type · find -size · find -mtime\n\n\nCounting\nwc -l\n\n\nSearching\ngrep · grep -c · grep -v · grep -vc · grep -n · grep -i · grep -r · grep -rn\n\n\nExtracting columns\ncut -f · cut -f1-4\n\n\nCombining files\npaste · paste -d\n\n\n\n\nABI Summer School 2026 · Week 1: Linux / HPC"
-  },
-  {
-    "objectID": "week1/file-processing-awk.html",
-    "href": "week1/file-processing-awk.html",
-    "title": "File processing: Part 2 (using awk)",
-    "section": "",
-    "text": "AWK is a programming language named after its three developers: Alfred Aho, Peter J Weinberger and Brian KernIghan. AWK is useful for processing text files and extracting data, particularly when a file is split into columns or delimited by a specific character (e.g. a tab, comma). The awk command/script reads a file line by line and splits each line into columns according to a delimiter character. The default output delimiter is a single space character.\nFor this tutorial, the workind directory will be the workshop1 directory within ABI_summer_school_project1.\n\n\nUse the awk command to print the first column of the SAMPLE_001.vcf file\nawk -F'\\t' '{print $1}' SAMPLE_001.vcf\nAlternatively:\nawk 'BEGIN {FS=\"\\t\"} {print $1}' SAMPLE_001.vcf   # Notice the difference in inner vs outer quotation marks\nIn case you want to skip the header row:\nawk 'BEGIN {FS=\"\\t\"} NR&gt;1 {print $1}' SAMPLE_001.vcf \nIn case you want to extract only the header row:\nawk 'NR==1 {print $0}' SAMPLE_001.vcf  \n\n\ne.g. extracting all contents of the file SAMPLE_001.vcf but skipping the record with position 1024:\nawk -F'\\t' '!/1024/ {print $0}' SAMPLE_001.vcf \nThis is also helpful when skipping multiple header lines:\nawk -F'\\t' '!/#/ {print $0}' SAMPLE_001.vcf \n\n\n\nExtract the first 5 columns and the 10th column in SAMPLE_001.vcf using awk\nawk 'BEGIN {FS=\"\\t\"} {print $1,$2,$3,$4,$5,$10}' SAMPLE_001.vcf\nNote that the delimiter in the output is now a single space character (the default for awk). How can we maintain tab as the delimiter?\n\nWhat if we do not want to write $1,$2,$3,$4,$5 in the print function above, how can we specify this range?\nawk 'BEGIN {FS=OFS=\"\\t\"} {for (i=1; i&lt;=5; i++) printf \"%s%s\", $i, OFS ; print $10}' SAMPLE_001.vcf\nPractice: Extract the first 8 columns in SAMPLE_001.vcf using awk; be sure to try both approaches above to specify the range of columns 1-8.\nApproach 1:\n\nApproach 2:\n\n\n\n\nConvert the delimiter of the file to a comma and save the output as SAMPLE_001.csv\n\n\n\n\nUse awk to determine the number of columns in SAMPLE_001.vcf\nawk -F'\\t' 'NR==1{print NF}' SAMPLE_001.vcf\n\n\n\nUse awk to extract records for participants from YRI in the file 1000G_2504_high_coverage.sequence.index.txt\nStep 1:\nDetermine the column number for POPULATION using sed and/or grep\n\nStep two:\nawk -F'\\t' '${col_number}==\"YRI\"' 1000G_2504_high_coverage.sequence.index.txt\nDetour: Compare with the sed approach"
-  },
-  {
-    "objectID": "week1/file-processing-awk.html#starter-commands-with-awk",
-    "href": "week1/file-processing-awk.html#starter-commands-with-awk",
-    "title": "File processing: Part 2 (using awk)",
-    "section": "",
-    "text": "Use the awk command to print the first column of the SAMPLE_001.vcf file\nawk -F'\\t' '{print $1}' SAMPLE_001.vcf\nAlternatively:\nawk 'BEGIN {FS=\"\\t\"} {print $1}' SAMPLE_001.vcf   # Notice the difference in inner vs outer quotation marks\nIn case you want to skip the header row:\nawk 'BEGIN {FS=\"\\t\"} NR&gt;1 {print $1}' SAMPLE_001.vcf \nIn case you want to extract only the header row:\nawk 'NR==1 {print $0}' SAMPLE_001.vcf  \n\n\ne.g. extracting all contents of the file SAMPLE_001.vcf but skipping the record with position 1024:\nawk -F'\\t' '!/1024/ {print $0}' SAMPLE_001.vcf \nThis is also helpful when skipping multiple header lines:\nawk -F'\\t' '!/#/ {print $0}' SAMPLE_001.vcf \n\n\n\nExtract the first 5 columns and the 10th column in SAMPLE_001.vcf using awk\nawk 'BEGIN {FS=\"\\t\"} {print $1,$2,$3,$4,$5,$10}' SAMPLE_001.vcf\nNote that the delimiter in the output is now a single space character (the default for awk). How can we maintain tab as the delimiter?\n\nWhat if we do not want to write $1,$2,$3,$4,$5 in the print function above, how can we specify this range?\nawk 'BEGIN {FS=OFS=\"\\t\"} {for (i=1; i&lt;=5; i++) printf \"%s%s\", $i, OFS ; print $10}' SAMPLE_001.vcf\nPractice: Extract the first 8 columns in SAMPLE_001.vcf using awk; be sure to try both approaches above to specify the range of columns 1-8.\nApproach 1:\n\nApproach 2:\n\n\n\n\nConvert the delimiter of the file to a comma and save the output as SAMPLE_001.csv\n\n\n\n\nUse awk to determine the number of columns in SAMPLE_001.vcf\nawk -F'\\t' 'NR==1{print NF}' SAMPLE_001.vcf\n\n\n\nUse awk to extract records for participants from YRI in the file 1000G_2504_high_coverage.sequence.index.txt\nStep 1:\nDetermine the column number for POPULATION using sed and/or grep\n\nStep two:\nawk -F'\\t' '${col_number}==\"YRI\"' 1000G_2504_high_coverage.sequence.index.txt\nDetour: Compare with the sed approach"
-  },
-  {
-    "objectID": "about.html#core-team",
-    "href": "about.html#core-team",
-    "title": "About",
-    "section": "Core Team",
-    "text": "Core Team\nVerena Ras — Training Coordination and Development\nShaun Aron — Training Coordination and Development\nMelek Chaouch — Training Coordination and Development\n\nAssisting team\nJorge Batista da Rocha - Site setup and training support"
-  },
-  {
-    "objectID": "about.html#license",
-    "href": "about.html#license",
-    "title": "About",
-    "section": "License",
-    "text": "License\nThis site and training content are released under the Creative Commons Attribution (CC BY)."
-  },
-  {
-    "objectID": "about.html#contact-community",
-    "href": "about.html#contact-community",
-    "title": "About",
-    "section": "Contact & Community",
-    "text": "Contact & Community\n\n📬 info@bioinformaticsinstitute.africa — for any questions."
-  },
-  {
-    "objectID": "week1/Introduction_to_Linux_Basics_II.html#brace-expansion",
-    "href": "week1/Introduction_to_Linux_Basics_II.html#brace-expansion",
-    "title": "ABI Summer School 2026 · WEEK 1: Linux / HPC",
-    "section": "Brace Expansion",
-    "text": "Brace Expansion\nTyping out long lists of files or repetitive folder names is prone to typos. Learn to expand them automatically.\n\n\nStep 1 : Creating bulk directories\nQ1: From the project root, create four directories inside results/ at once using brace expansion: fastqc, trimmomatic, bwa, and gatk.\n\n\n\n\n\n\nNoteShow answer\n\n\n\n\n\nmkdir -p results/{fastqc,trimmomatic,bwa,gatk}\n\nTip: Do not put spaces after the commas in brace expansion! {a,b} works, {a, b} does not.\n\n\n\n\n\n\n\nStep 2 : Creating sequential files\nQ1: Create five empty log files in logs/ named run_day_1.log through run_day_5.log using brace expansion.\n\n\n\n\n\n\nNoteShow answer\n\n\n\n\n\ntouch logs/run_day_{1..5}.log\n\n\n\n\n\n\nStep 3 : The backup shortcut\nA quick trick to make backups without typing a filename twice.\nQ1: Navigate to raw_data/. Copy sample_manifest.tsv to a new file called sample_manifest.tsv.backup using the {,.backup} trick.\n\n\n\n\n\n\nNoteShow answer\n\n\n\n\n\ncd ../raw_data\ncp sample_manifest.tsv{,.backup}\n\nThis expands to cp sample_manifest.tsv sample_manifest.tsv.backup. It works because the first item in the brace is completely empty!"
-  },
-  {
-    "objectID": "week1/Introduction_to_Linux_Basics_II.html#the-power-of-pipes",
-    "href": "week1/Introduction_to_Linux_Basics_II.html#the-power-of-pipes",
-    "title": "ABI Summer School 2026 · WEEK 1: Linux / HPC",
-    "section": "The Power of Pipes (|)",
-    "text": "The Power of Pipes (|)\nPrograms in Linux are designed to do one thing well. The pipe operator (|) takes the standard output of one command and feeds it directly into the standard input of the next.\n\n\nStep 4 : Piping to grep, less and wc\nQ1: Go back to the project root. You want to view all lines in pipeline.log that contain the word WARNING. Use grep to find them, and pipe the output to less so you can scroll through them safely.\n\n\n\n\n\n\nNoteShow answer\n\n\n\n\n\ncd ..\ngrep \"WARNING\" logs/pipeline.log | less\n\n\n\nQ2: Navigate into variants/. Search for all lines in SAMPLE_001.vcf that DO NOT start with # (the data lines) using grep -v.\n\n\n\n\n\n\nNoteShow answer\n\n\n\n\n\ncd variants\ngrep -v \"^#\" SAMPLE_001.vcf\n\n^ inside grep means “starts with”.\n\n\n\n\nQ3: Pipe that output into another grep to find only the variants marked as PASS.\n\n\n\n\n\n\nNoteShow answer\n\n\n\n\n\ngrep -v \"^#\" SAMPLE_001.vcf | grep \"PASS\"\n\n\n\nQ4: Pipe that final output into wc -l to count exactly how many PASS variants this sample has.\n\n\n\n\n\n\nNoteShow answer\n\n\n\n\n\ngrep -v \"^#\" SAMPLE_001.vcf | grep \"PASS\" | wc -l"
-  },
-  {
-    "objectID": "week1/Introduction_to_Linux_Basics_II.html#advanced-combinations",
-    "href": "week1/Introduction_to_Linux_Basics_II.html#advanced-combinations",
-    "title": "ABI Summer School 2026 · WEEK 1: Linux / HPC",
-    "section": "Advanced Combinations",
-    "text": "Advanced Combinations\nPutting everything together into powerful one-liners.\n\n\nStep 6 : find + Pipes\nQ1: Go back to the project root. Use find to list all .fastq files anywhere in the project, and pipe the output to wc -l to count how many FASTQ files exist.\n\n\n\n\n\n\nNoteShow answer\n\n\n\n\n\ncd ..\nfind . -name \"*.fastq\" | wc -l\n\n\n\n\n\n\nStep 7 : Brace Expansion + Pipes\nQ1: From the project root, search for the sequence ATG across specifically SAMPLE_001.fastq, SAMPLE_002.fastq, and SAMPLE_003.fastq in the raw_data/ folder using brace expansion.\n\n\n\n\n\n\nNoteShow answer\n\n\n\n\n\ngrep \"ATG\" raw_data/SAMPLE_{001,002,003}.fastq\n\nAlternatively, raw_data/SAMPLE_00{1..3}.fastq also works!\n\n\n\n\nQ2: Pipe that search into wc -l to count how many total times ATG appears across all three files combined.\n\n\n\n\n\n\nNoteShow answer\n\n\n\n\n\ngrep \"ATG\" raw_data/SAMPLE_{001..003}.fastq | wc -l"
-  },
-  {
-    "objectID": "week1/Introduction_to_Linux_Basics_II.html#you-made-it",
-    "href": "week1/Introduction_to_Linux_Basics_II.html#you-made-it",
-    "title": "ABI Summer School 2026 · WEEK 1: Linux / HPC",
-    "section": "YOU MADE IT!",
-    "text": "YOU MADE IT!\nYou have mastered the pipe and the brace.\n\n\nCommands used today\n\n\n\nCategory\nCommands & operators\n\n\n\n\nBrace Expansion (Lists)\n{name1,name2,name3}\n\n\nBrace Expansion (Ranges)\n{1..5} · {a..z}\n\n\nBrace Expansion (Append)\n{,.bak}\n\n\nThe Pipe\n|\n\n\nViewing\nless\n\n\nCounting\nwc -l\n\n\nFiltering\ngrep · grep -v\n\n\nFinding\nfind -name\n\n\n\n\nABI Summer School 2026 · Week 1: Linux / HPC"
-  },
-  {
-    "objectID": "week1/base.html",
-    "href": "week1/base.html",
-    "title": "ABI-ITWG",
-    "section": "",
-    "text": "a base for week 1 content"
-  },
-  {
-    "objectID": "week1/file-processing-sed.html",
-    "href": "week1/file-processing-sed.html",
-    "title": "File processing: Part 1 (using sed)",
-    "section": "",
-    "text": "sed allows us to automate pattern substitutions (usually line-by-line). The name sed is an abbreviation of stream editor.\nChange to the workshop1 directory within ABI_summer_school_project1 as it will be your working directory for this tutorial.\n\n\nReplace the fasta pattern in each line of the file sample_manifest2.tsv with fastq\nsed 's/fasta/fastq/' sample_manifest2.tsv\nTo save the output to a new file:\nsed 's/fasta/fastq/' sample_manifest2.tsv &gt; sample_manifest2_fastq.tsv\nTo make the replacement within the primary file (use with caution):\nsed -i 's/fasta/fastq/' sample_manifest2.tsv\nNotice that the fasta pattern after Plasmodium_falciparum_ was not replaced by the previous command. Why is this?\nWrite the sed command(s) to replace both occurrences of fasta in each line of sample_manifest2.tsv with fastq. Save the output to sample_manifest2_fastq_2.tsv\n\nWith the same syntax, sed can be used to remove unwanted patterns within each line of a given file. Use sed to remove all occurrences of fastq in the sample_manifest2_fastq_2.tsv file. Save the output to sample_manifest3.tsv\n\nExercise: Use sed to replace the ftp://ftp.sra.ebi.ac.uk/vol1/run/ERR323/ string in each line of the file named file_paths.txt.\nsed can also be used to replace patterns shared across files simultaneously. As an example, replace Kampala with Entebbe in all the .tsv files currently in workshop1\nsed -i 's/Kampala/Entebbe/g' *.tsv\nUsing similar syntax for replacing patterns, sed can be used to change file delimiters/separators. As a test case, use sed to convert sample_manifest3.tsv into a .csv file named sample_manifest3.csv.\n\nTry converting sample_manifest3.csv into a space-delimited file.\n\n\n\n\nSometimes, it’s helpful to replace patterns only in lines that meet a certain condition. As a test case, change the read_length for the Kisumu samples in sample_manifest3.tsv from 150 to 100.\nsed '/Kisumu/s/150/100/' sample_manifest3.tsv\n\n\n\nAdd the model numbers of the Illumina_NextSeq and Illumina_MiSeq platforms so that they read Illumina_NextSeq_2000 and Illumina_MiSeq_100, respectively.\n\nAdd an extra column (at the end) to the contents of sample_manifest3.tsv with the heading file_size and the column values all .\n\nAdd a project_id column (make it the first column) to sample_manifest3.tsv. Use Pf_AMR as the values for each row under this column.\n\n\n\n\n\n\nsed -n '1p' sample_manifest3.tsv \n\n\n\nsed -n '/PATTERN/p' file.txt  \nExample:\nsed -n '/TRUE/p' sample_manifest3.tsv \n\n\n\n\n\n\n\nUsing file1.txt as a testcase, remove all empty lines.\n\nUsing a similar syntax, sed can be used as an alternative to grep to remove lines containing certain patterns. Use sed to remove the header lines (only the ones starting with ##) from the SAMPLE_001.vcf file. Save the output to a new file SAMPLE_001_v2.vcf so that we can reuse the SAMPLE_001.vcf file, if needed.\n\nUse sed to remove empty lines from file1.txt and the line containing the heading i.e. sample_id, in one command.\n\n\n\n\nUsing sample_manifest3.tsv as a test case, extract the metadata lines of samples 004 through 008 i.e. from line containing SAMPLE_004 to the one containing SAMPLE_008.\nsed -n '/SAMPLE_004/,/SAMPLE_008/p' sample_manifest3.tsv"
-  },
-  {
-    "objectID": "week1/file-processing-sed.html#replacing-simple-patterns-with-sed",
-    "href": "week1/file-processing-sed.html#replacing-simple-patterns-with-sed",
-    "title": "File processing: Part 1 (using sed)",
-    "section": "",
-    "text": "Replace the fasta pattern in each line of the file sample_manifest2.tsv with fastq\nsed 's/fasta/fastq/' sample_manifest2.tsv\nTo save the output to a new file:\nsed 's/fasta/fastq/' sample_manifest2.tsv &gt; sample_manifest2_fastq.tsv\nTo make the replacement within the primary file (use with caution):\nsed -i 's/fasta/fastq/' sample_manifest2.tsv\nNotice that the fasta pattern after Plasmodium_falciparum_ was not replaced by the previous command. Why is this?\nWrite the sed command(s) to replace both occurrences of fasta in each line of sample_manifest2.tsv with fastq. Save the output to sample_manifest2_fastq_2.tsv\n\nWith the same syntax, sed can be used to remove unwanted patterns within each line of a given file. Use sed to remove all occurrences of fastq in the sample_manifest2_fastq_2.tsv file. Save the output to sample_manifest3.tsv\n\nExercise: Use sed to replace the ftp://ftp.sra.ebi.ac.uk/vol1/run/ERR323/ string in each line of the file named file_paths.txt.\nsed can also be used to replace patterns shared across files simultaneously. As an example, replace Kampala with Entebbe in all the .tsv files currently in workshop1\nsed -i 's/Kampala/Entebbe/g' *.tsv\nUsing similar syntax for replacing patterns, sed can be used to change file delimiters/separators. As a test case, use sed to convert sample_manifest3.tsv into a .csv file named sample_manifest3.csv.\n\nTry converting sample_manifest3.csv into a space-delimited file."
-  },
-  {
-    "objectID": "week1/file-processing-sed.html#conditional-substitutions-with-sed",
-    "href": "week1/file-processing-sed.html#conditional-substitutions-with-sed",
-    "title": "File processing: Part 1 (using sed)",
-    "section": "",
-    "text": "Sometimes, it’s helpful to replace patterns only in lines that meet a certain condition. As a test case, change the read_length for the Kisumu samples in sample_manifest3.tsv from 150 to 100.\nsed '/Kisumu/s/150/100/' sample_manifest3.tsv"
-  },
-  {
-    "objectID": "week1/file-processing-sed.html#adding-simple-patterns-to-a-file-using-sed",
-    "href": "week1/file-processing-sed.html#adding-simple-patterns-to-a-file-using-sed",
-    "title": "File processing: Part 1 (using sed)",
-    "section": "",
-    "text": "Add the model numbers of the Illumina_NextSeq and Illumina_MiSeq platforms so that they read Illumina_NextSeq_2000 and Illumina_MiSeq_100, respectively.\n\nAdd an extra column (at the end) to the contents of sample_manifest3.tsv with the heading file_size and the column values all .\n\nAdd a project_id column (make it the first column) to sample_manifest3.tsv. Use Pf_AMR as the values for each row under this column."
-  },
-  {
-    "objectID": "week1/file-processing-sed.html#other-use-cases-of-sed-in-cleaningpre-processing-files",
-    "href": "week1/file-processing-sed.html#other-use-cases-of-sed-in-cleaningpre-processing-files",
-    "title": "File processing: Part 1 (using sed)",
-    "section": "",
-    "text": "sed -n '1p' sample_manifest3.tsv \n\n\n\nsed -n '/PATTERN/p' file.txt  \nExample:\nsed -n '/TRUE/p' sample_manifest3.tsv \n\n\n\n\n\n\n\nUsing file1.txt as a testcase, remove all empty lines.\n\nUsing a similar syntax, sed can be used as an alternative to grep to remove lines containing certain patterns. Use sed to remove the header lines (only the ones starting with ##) from the SAMPLE_001.vcf file. Save the output to a new file SAMPLE_001_v2.vcf so that we can reuse the SAMPLE_001.vcf file, if needed.\n\nUse sed to remove empty lines from file1.txt and the line containing the heading i.e. sample_id, in one command.\n\n\n\n\nUsing sample_manifest3.tsv as a test case, extract the metadata lines of samples 004 through 008 i.e. from line containing SAMPLE_004 to the one containing SAMPLE_008.\nsed -n '/SAMPLE_004/,/SAMPLE_008/p' sample_manifest3.tsv"
-  },
-  {
     "objectID": "week2/metagenomics/qc.html",
     "href": "week2/metagenomics/qc.html",
     "title": "Day 1 Practical — Part 1: Quality Control with FastQC & SeqKit",
@@ -229,6 +89,237 @@
     "title": "Day 1 Practical — Part 1: Quality Control with FastQC & SeqKit",
     "section": "",
     "text": "What is the average read length? Is this expected for V4 amplicons?\nAre there any samples with poor quality? How would you identify them?\nIs there significant adapter contamination?\nWhat does the GC content plot look like? Any outliers?"
+  },
+  {
+    "objectID": "week1/file-processing-sed.html",
+    "href": "week1/file-processing-sed.html",
+    "title": "File processing: Part 1 (using sed)",
+    "section": "",
+    "text": "sed allows us to automate pattern substitutions (usually line-by-line). The name sed is an abbreviation of stream editor.\nChange to the workshop1 directory within ABI_summer_school_project1 as it will be your working directory for this tutorial.\n\n\nReplace the fasta pattern in each line of the file sample_manifest2.tsv with fastq\nsed 's/fasta/fastq/' sample_manifest2.tsv\nTo save the output to a new file:\nsed 's/fasta/fastq/' sample_manifest2.tsv &gt; sample_manifest2_fastq.tsv\nTo make the replacement within the primary file (use with caution):\nsed -i 's/fasta/fastq/' sample_manifest2.tsv\nNotice that the fasta pattern after Plasmodium_falciparum_ was not replaced by the previous command. Why is this?\nWrite the sed command(s) to replace both occurrences of fasta in each line of sample_manifest2.tsv with fastq. Save the output to sample_manifest2_fastq_2.tsv\n\nWith the same syntax, sed can be used to remove unwanted patterns within each line of a given file. Use sed to remove all occurrences of fastq in the sample_manifest2_fastq_2.tsv file. Save the output to sample_manifest3.tsv\n\nExercise: Use sed to replace the ftp://ftp.sra.ebi.ac.uk/vol1/run/ERR323/ string in each line of the file named file_paths.txt.\nsed can also be used to replace patterns shared across files simultaneously. As an example, replace Kampala with Entebbe in all the .tsv files currently in workshop1\nsed -i 's/Kampala/Entebbe/g' *.tsv\nUsing similar syntax for replacing patterns, sed can be used to change file delimiters/separators. As a test case, use sed to convert sample_manifest3.tsv into a .csv file named sample_manifest3.csv.\n\nTry converting sample_manifest3.csv into a space-delimited file.\n\n\n\n\nSometimes, it’s helpful to replace patterns only in lines that meet a certain condition. As a test case, change the read_length for the Kisumu samples in sample_manifest3.tsv from 150 to 100.\nsed '/Kisumu/s/150/100/' sample_manifest3.tsv\n\n\n\nAdd the model numbers of the Illumina_NextSeq and Illumina_MiSeq platforms so that they read Illumina_NextSeq_2000 and Illumina_MiSeq_100, respectively.\n\nAdd an extra column (at the end) to the contents of sample_manifest3.tsv with the heading file_size and the column values all .\n\nAdd a project_id column (make it the first column) to sample_manifest3.tsv. Use Pf_AMR as the values for each row under this column.\n\n\n\n\n\n\nsed -n '1p' sample_manifest3.tsv \n\n\n\nsed -n '/PATTERN/p' file.txt  \nExample:\nsed -n '/TRUE/p' sample_manifest3.tsv \n\n\n\n\n\n\n\nUsing file1.txt as a testcase, remove all empty lines.\n\nUsing a similar syntax, sed can be used as an alternative to grep to remove lines containing certain patterns. Use sed to remove the header lines (only the ones starting with ##) from the SAMPLE_001.vcf file. Save the output to a new file SAMPLE_001_v2.vcf so that we can reuse the SAMPLE_001.vcf file, if needed.\n\nUse sed to remove empty lines from file1.txt and the line containing the heading i.e. sample_id, in one command.\n\n\n\n\nUsing sample_manifest3.tsv as a test case, extract the metadata lines of samples 004 through 008 i.e. from line containing SAMPLE_004 to the one containing SAMPLE_008.\nsed -n '/SAMPLE_004/,/SAMPLE_008/p' sample_manifest3.tsv"
+  },
+  {
+    "objectID": "week1/file-processing-sed.html#replacing-simple-patterns-with-sed",
+    "href": "week1/file-processing-sed.html#replacing-simple-patterns-with-sed",
+    "title": "File processing: Part 1 (using sed)",
+    "section": "",
+    "text": "Replace the fasta pattern in each line of the file sample_manifest2.tsv with fastq\nsed 's/fasta/fastq/' sample_manifest2.tsv\nTo save the output to a new file:\nsed 's/fasta/fastq/' sample_manifest2.tsv &gt; sample_manifest2_fastq.tsv\nTo make the replacement within the primary file (use with caution):\nsed -i 's/fasta/fastq/' sample_manifest2.tsv\nNotice that the fasta pattern after Plasmodium_falciparum_ was not replaced by the previous command. Why is this?\nWrite the sed command(s) to replace both occurrences of fasta in each line of sample_manifest2.tsv with fastq. Save the output to sample_manifest2_fastq_2.tsv\n\nWith the same syntax, sed can be used to remove unwanted patterns within each line of a given file. Use sed to remove all occurrences of fastq in the sample_manifest2_fastq_2.tsv file. Save the output to sample_manifest3.tsv\n\nExercise: Use sed to replace the ftp://ftp.sra.ebi.ac.uk/vol1/run/ERR323/ string in each line of the file named file_paths.txt.\nsed can also be used to replace patterns shared across files simultaneously. As an example, replace Kampala with Entebbe in all the .tsv files currently in workshop1\nsed -i 's/Kampala/Entebbe/g' *.tsv\nUsing similar syntax for replacing patterns, sed can be used to change file delimiters/separators. As a test case, use sed to convert sample_manifest3.tsv into a .csv file named sample_manifest3.csv.\n\nTry converting sample_manifest3.csv into a space-delimited file."
+  },
+  {
+    "objectID": "week1/file-processing-sed.html#conditional-substitutions-with-sed",
+    "href": "week1/file-processing-sed.html#conditional-substitutions-with-sed",
+    "title": "File processing: Part 1 (using sed)",
+    "section": "",
+    "text": "Sometimes, it’s helpful to replace patterns only in lines that meet a certain condition. As a test case, change the read_length for the Kisumu samples in sample_manifest3.tsv from 150 to 100.\nsed '/Kisumu/s/150/100/' sample_manifest3.tsv"
+  },
+  {
+    "objectID": "week1/file-processing-sed.html#adding-simple-patterns-to-a-file-using-sed",
+    "href": "week1/file-processing-sed.html#adding-simple-patterns-to-a-file-using-sed",
+    "title": "File processing: Part 1 (using sed)",
+    "section": "",
+    "text": "Add the model numbers of the Illumina_NextSeq and Illumina_MiSeq platforms so that they read Illumina_NextSeq_2000 and Illumina_MiSeq_100, respectively.\n\nAdd an extra column (at the end) to the contents of sample_manifest3.tsv with the heading file_size and the column values all .\n\nAdd a project_id column (make it the first column) to sample_manifest3.tsv. Use Pf_AMR as the values for each row under this column."
+  },
+  {
+    "objectID": "week1/file-processing-sed.html#other-use-cases-of-sed-in-cleaningpre-processing-files",
+    "href": "week1/file-processing-sed.html#other-use-cases-of-sed-in-cleaningpre-processing-files",
+    "title": "File processing: Part 1 (using sed)",
+    "section": "",
+    "text": "sed -n '1p' sample_manifest3.tsv \n\n\n\nsed -n '/PATTERN/p' file.txt  \nExample:\nsed -n '/TRUE/p' sample_manifest3.tsv \n\n\n\n\n\n\n\nUsing file1.txt as a testcase, remove all empty lines.\n\nUsing a similar syntax, sed can be used as an alternative to grep to remove lines containing certain patterns. Use sed to remove the header lines (only the ones starting with ##) from the SAMPLE_001.vcf file. Save the output to a new file SAMPLE_001_v2.vcf so that we can reuse the SAMPLE_001.vcf file, if needed.\n\nUse sed to remove empty lines from file1.txt and the line containing the heading i.e. sample_id, in one command.\n\n\n\n\nUsing sample_manifest3.tsv as a test case, extract the metadata lines of samples 004 through 008 i.e. from line containing SAMPLE_004 to the one containing SAMPLE_008.\nsed -n '/SAMPLE_004/,/SAMPLE_008/p' sample_manifest3.tsv"
+  },
+  {
+    "objectID": "week1/base.html",
+    "href": "week1/base.html",
+    "title": "ABI-ITWG",
+    "section": "",
+    "text": "a base for week 1 content"
+  },
+  {
+    "objectID": "week1/Introduction_to_Linux_Basics_II.html#brace-expansion",
+    "href": "week1/Introduction_to_Linux_Basics_II.html#brace-expansion",
+    "title": "ABI Summer School 2026 · WEEK 1: Linux / HPC",
+    "section": "Brace Expansion",
+    "text": "Brace Expansion\nTyping out long lists of files or repetitive folder names is prone to typos. Learn to expand them automatically.\n\n\nStep 1 : Creating bulk directories\nQ1: From the project root, create four directories inside results/ at once using brace expansion: fastqc, trimmomatic, bwa, and gatk.\n\n\n\n\n\n\nNoteShow answer\n\n\n\n\n\nmkdir -p results/{fastqc,trimmomatic,bwa,gatk}\n\nTip: Do not put spaces after the commas in brace expansion! {a,b} works, {a, b} does not.\n\n\n\n\n\n\n\nStep 2 : Creating sequential files\nQ1: Create five empty log files in logs/ named run_day_1.log through run_day_5.log using brace expansion.\n\n\n\n\n\n\nNoteShow answer\n\n\n\n\n\ntouch logs/run_day_{1..5}.log\n\n\n\n\n\n\nStep 3 : The backup shortcut\nA quick trick to make backups without typing a filename twice.\nQ1: Navigate to raw_data/. Copy sample_manifest.tsv to a new file called sample_manifest.tsv.backup using the {,.backup} trick.\n\n\n\n\n\n\nNoteShow answer\n\n\n\n\n\ncd ../raw_data\ncp sample_manifest.tsv{,.backup}\n\nThis expands to cp sample_manifest.tsv sample_manifest.tsv.backup. It works because the first item in the brace is completely empty!"
+  },
+  {
+    "objectID": "week1/Introduction_to_Linux_Basics_II.html#the-power-of-pipes",
+    "href": "week1/Introduction_to_Linux_Basics_II.html#the-power-of-pipes",
+    "title": "ABI Summer School 2026 · WEEK 1: Linux / HPC",
+    "section": "The Power of Pipes (|)",
+    "text": "The Power of Pipes (|)\nPrograms in Linux are designed to do one thing well. The pipe operator (|) takes the standard output of one command and feeds it directly into the standard input of the next.\n\n\nStep 4 : Piping to grep, less and wc\nQ1: Go back to the project root. You want to view all lines in pipeline.log that contain the word WARNING. Use grep to find them, and pipe the output to less so you can scroll through them safely.\n\n\n\n\n\n\nNoteShow answer\n\n\n\n\n\ncd ..\ngrep \"WARNING\" logs/pipeline.log | less\n\n\n\nQ2: Navigate into variants/. Search for all lines in SAMPLE_001.vcf that DO NOT start with # (the data lines) using grep -v.\n\n\n\n\n\n\nNoteShow answer\n\n\n\n\n\ncd variants\ngrep -v \"^#\" SAMPLE_001.vcf\n\n^ inside grep means “starts with”.\n\n\n\n\nQ3: Pipe that output into another grep to find only the variants marked as PASS.\n\n\n\n\n\n\nNoteShow answer\n\n\n\n\n\ngrep -v \"^#\" SAMPLE_001.vcf | grep \"PASS\"\n\n\n\nQ4: Pipe that final output into wc -l to count exactly how many PASS variants this sample has.\n\n\n\n\n\n\nNoteShow answer\n\n\n\n\n\ngrep -v \"^#\" SAMPLE_001.vcf | grep \"PASS\" | wc -l"
+  },
+  {
+    "objectID": "week1/Introduction_to_Linux_Basics_II.html#advanced-combinations",
+    "href": "week1/Introduction_to_Linux_Basics_II.html#advanced-combinations",
+    "title": "ABI Summer School 2026 · WEEK 1: Linux / HPC",
+    "section": "Advanced Combinations",
+    "text": "Advanced Combinations\nPutting everything together into powerful one-liners.\n\n\nStep 6 : find + Pipes\nQ1: Go back to the project root. Use find to list all .fastq files anywhere in the project, and pipe the output to wc -l to count how many FASTQ files exist.\n\n\n\n\n\n\nNoteShow answer\n\n\n\n\n\ncd ..\nfind . -name \"*.fastq\" | wc -l\n\n\n\n\n\n\nStep 7 : Brace Expansion + Pipes\nQ1: From the project root, search for the sequence ATG across specifically SAMPLE_001.fastq, SAMPLE_002.fastq, and SAMPLE_003.fastq in the raw_data/ folder using brace expansion.\n\n\n\n\n\n\nNoteShow answer\n\n\n\n\n\ngrep \"ATG\" raw_data/SAMPLE_{001,002,003}.fastq\n\nAlternatively, raw_data/SAMPLE_00{1..3}.fastq also works!\n\n\n\n\nQ2: Pipe that search into wc -l to count how many total times ATG appears across all three files combined.\n\n\n\n\n\n\nNoteShow answer\n\n\n\n\n\ngrep \"ATG\" raw_data/SAMPLE_{001..003}.fastq | wc -l"
+  },
+  {
+    "objectID": "week1/Introduction_to_Linux_Basics_II.html#you-made-it",
+    "href": "week1/Introduction_to_Linux_Basics_II.html#you-made-it",
+    "title": "ABI Summer School 2026 · WEEK 1: Linux / HPC",
+    "section": "YOU MADE IT!",
+    "text": "YOU MADE IT!\nYou have mastered the pipe and the brace.\n\n\nCommands used today\n\n\n\nCategory\nCommands & operators\n\n\n\n\nBrace Expansion (Lists)\n{name1,name2,name3}\n\n\nBrace Expansion (Ranges)\n{1..5} · {a..z}\n\n\nBrace Expansion (Append)\n{,.bak}\n\n\nThe Pipe\n|\n\n\nViewing\nless\n\n\nCounting\nwc -l\n\n\nFiltering\ngrep · grep -v\n\n\nFinding\nfind -name\n\n\n\n\nABI Summer School 2026 · Week 1: Linux / HPC"
+  },
+  {
+    "objectID": "about.html#core-team",
+    "href": "about.html#core-team",
+    "title": "About",
+    "section": "Core Team",
+    "text": "Core Team\nVerena Ras — Training Coordination and Development\nShaun Aron — Training Coordination and Development\nMelek Chaouch — Training Coordination and Development\n\nAssisting team\nJorge Batista da Rocha - Site setup and training support"
+  },
+  {
+    "objectID": "about.html#license",
+    "href": "about.html#license",
+    "title": "About",
+    "section": "License",
+    "text": "License\nThis site and training content are released under the Creative Commons Attribution (CC BY)."
+  },
+  {
+    "objectID": "about.html#contact-community",
+    "href": "about.html#contact-community",
+    "title": "About",
+    "section": "Contact & Community",
+    "text": "Contact & Community\n\n📬 info@bioinformaticsinstitute.africa — for any questions."
+  },
+  {
+    "objectID": "week1/file-processing-awk.html",
+    "href": "week1/file-processing-awk.html",
+    "title": "File processing: Part 2 (using awk)",
+    "section": "",
+    "text": "AWK is a programming language named after its three developers: Alfred Aho, Peter J Weinberger and Brian KernIghan. AWK is useful for processing text files and extracting data, particularly when a file is split into columns or delimited by a specific character (e.g. a tab, comma). The awk command/script reads a file line by line and splits each line into columns according to a delimiter character. The default output delimiter is a single space character.\nFor this tutorial, the workind directory will be the workshop1 directory within ABI_summer_school_project1.\n\n\nUse the awk command to print the first column of the SAMPLE_001.vcf file\nawk -F'\\t' '{print $1}' SAMPLE_001.vcf\nAlternatively:\nawk 'BEGIN {FS=\"\\t\"} {print $1}' SAMPLE_001.vcf   # Notice the difference in inner vs outer quotation marks\nIn case you want to skip the header row:\nawk 'BEGIN {FS=\"\\t\"} NR&gt;1 {print $1}' SAMPLE_001.vcf \nIn case you want to extract only the header row:\nawk 'NR==1 {print $0}' SAMPLE_001.vcf  \n\n\ne.g. extracting all contents of the file SAMPLE_001.vcf but skipping the record with position 1024:\nawk -F'\\t' '!/1024/ {print $0}' SAMPLE_001.vcf \nThis is also helpful when skipping multiple header lines:\nawk -F'\\t' '!/#/ {print $0}' SAMPLE_001.vcf \n\n\n\nExtract the first 5 columns and the 10th column in SAMPLE_001.vcf using awk\nawk 'BEGIN {FS=\"\\t\"} {print $1,$2,$3,$4,$5,$10}' SAMPLE_001.vcf\nNote that the delimiter in the output is now a single space character (the default for awk). How can we maintain tab as the delimiter?\n\nWhat if we do not want to write $1,$2,$3,$4,$5 in the print function above, how can we specify this range?\nawk 'BEGIN {FS=OFS=\"\\t\"} {for (i=1; i&lt;=5; i++) printf \"%s%s\", $i, OFS ; print $10}' SAMPLE_001.vcf\nPractice: Extract the first 8 columns in SAMPLE_001.vcf using awk; be sure to try both approaches above to specify the range of columns 1-8.\nApproach 1:\n\nApproach 2:\n\n\n\n\nConvert the delimiter of the file to a comma and save the output as SAMPLE_001.csv\n\n\n\n\nUse awk to determine the number of columns in SAMPLE_001.vcf\nawk -F'\\t' 'NR==1{print NF}' SAMPLE_001.vcf\n\n\n\nUse awk to extract records for participants from YRI in the file 1000G_2504_high_coverage.sequence.index.txt\nStep 1:\nDetermine the column number for POPULATION using sed and/or grep\n\nStep two:\nawk -F'\\t' '${col_number}==\"YRI\"' 1000G_2504_high_coverage.sequence.index.txt\nDetour: Compare with the sed approach"
+  },
+  {
+    "objectID": "week1/file-processing-awk.html#starter-commands-with-awk",
+    "href": "week1/file-processing-awk.html#starter-commands-with-awk",
+    "title": "File processing: Part 2 (using awk)",
+    "section": "",
+    "text": "Use the awk command to print the first column of the SAMPLE_001.vcf file\nawk -F'\\t' '{print $1}' SAMPLE_001.vcf\nAlternatively:\nawk 'BEGIN {FS=\"\\t\"} {print $1}' SAMPLE_001.vcf   # Notice the difference in inner vs outer quotation marks\nIn case you want to skip the header row:\nawk 'BEGIN {FS=\"\\t\"} NR&gt;1 {print $1}' SAMPLE_001.vcf \nIn case you want to extract only the header row:\nawk 'NR==1 {print $0}' SAMPLE_001.vcf  \n\n\ne.g. extracting all contents of the file SAMPLE_001.vcf but skipping the record with position 1024:\nawk -F'\\t' '!/1024/ {print $0}' SAMPLE_001.vcf \nThis is also helpful when skipping multiple header lines:\nawk -F'\\t' '!/#/ {print $0}' SAMPLE_001.vcf \n\n\n\nExtract the first 5 columns and the 10th column in SAMPLE_001.vcf using awk\nawk 'BEGIN {FS=\"\\t\"} {print $1,$2,$3,$4,$5,$10}' SAMPLE_001.vcf\nNote that the delimiter in the output is now a single space character (the default for awk). How can we maintain tab as the delimiter?\n\nWhat if we do not want to write $1,$2,$3,$4,$5 in the print function above, how can we specify this range?\nawk 'BEGIN {FS=OFS=\"\\t\"} {for (i=1; i&lt;=5; i++) printf \"%s%s\", $i, OFS ; print $10}' SAMPLE_001.vcf\nPractice: Extract the first 8 columns in SAMPLE_001.vcf using awk; be sure to try both approaches above to specify the range of columns 1-8.\nApproach 1:\n\nApproach 2:\n\n\n\n\nConvert the delimiter of the file to a comma and save the output as SAMPLE_001.csv\n\n\n\n\nUse awk to determine the number of columns in SAMPLE_001.vcf\nawk -F'\\t' 'NR==1{print NF}' SAMPLE_001.vcf\n\n\n\nUse awk to extract records for participants from YRI in the file 1000G_2504_high_coverage.sequence.index.txt\nStep 1:\nDetermine the column number for POPULATION using sed and/or grep\n\nStep two:\nawk -F'\\t' '${col_number}==\"YRI\"' 1000G_2504_high_coverage.sequence.index.txt\nDetour: Compare with the sed approach"
+  },
+  {
+    "objectID": "week1/Introduction_to_Linux_Basics.html#you-made-it",
+    "href": "week1/Introduction_to_Linux_Basics.html#you-made-it",
+    "title": "ABI Summer School 2026 · WEEK 1: Linux / HPC",
+    "section": "YOU MADE IT!",
+    "text": "YOU MADE IT!\nYou made it through the entire project directory. The folder is organised, the data is interrogated, and the meeting is saved.\n\n\nCommands used today\n\n\n\n\n\n\n\nCategory\nCommands & options\n\n\n\n\nDownload & extract\nwget · unzip\n\n\nLocation\npwd\n\n\nNavigation\ncd · cd .. · cd ~ · cd -\n\n\nListing\nls -l · ls -lh · ls -1 · ls -t · ls -lt · ls -a · ls -lha · ls -R · ls -lhR\n\n\nViewing files\ncat · head -n · tail -n · less\n\n\nWildcards\n*.fastq · *.vcf · Pf* · *SAMPLE* · SAMPLE*.fastq\n\n\nCreating directories\nmkdir · mkdir -p\n\n\nCreating files\ntouch · nano\n\n\nCopying\ncp · cp -r · cp -i\n\n\nSymbolic links\nln -s\n\n\nMoving & renaming\nmv\n\n\nDeleting\nrm · rm -r\n\n\nSorting\nsort · sort -k · sort -r\n\n\nComparing\ncomm · comm -12 · comm -23 · comm -13\n\n\nJoining\njoin · join -a1\n\n\nFinding\nfind -name · find -type · find -size · find -mtime\n\n\nCounting\nwc -l\n\n\nSearching\ngrep · grep -c · grep -v · grep -vc · grep -n · grep -i · grep -r · grep -rn\n\n\nExtracting columns\ncut -f · cut -f1-4\n\n\nCombining files\npaste · paste -d\n\n\n\n\nABI Summer School 2026 · Week 1: Linux / HPC"
+  },
+  {
+    "objectID": "abisumschool26.html",
+    "href": "abisumschool26.html",
+    "title": "ABI Summer School 2026",
+    "section": "",
+    "text": "The aim is to provide comprehensive training on bioinformatics computational resources, and domain-specific tools and workflows to improve participants’ proficiency in executing, interpreting, and communicating analyses for major bioinformatics studies, with a special focus on genomics."
+  },
+  {
+    "objectID": "abisumschool26.html#about-the-event",
+    "href": "abisumschool26.html#about-the-event",
+    "title": "ABI Summer School 2026",
+    "section": "",
+    "text": "The aim is to provide comprehensive training on bioinformatics computational resources, and domain-specific tools and workflows to improve participants’ proficiency in executing, interpreting, and communicating analyses for major bioinformatics studies, with a special focus on genomics."
+  },
+  {
+    "objectID": "abisumschool26.html#course-content",
+    "href": "abisumschool26.html#course-content",
+    "title": "ABI Summer School 2026",
+    "section": "Course Content:",
+    "text": "Course Content:\n\nWeek 1:\n\nLinux\n\nIntroduction to Linux Basics\nIntroduction to Linux Basics II\nFile processing with sed\nFile processing with awk\n\n\n\nR coding content\n\n\nIntro to NGS\n\n\n\n\nWeek 2\n\nR/Biology Streams\n\n\nHuman Genomics\n\n\nPathogen Genomics\n\n\nMetabolomics"
+  },
+  {
+    "objectID": "abisumschool26.html#trainer-info",
+    "href": "abisumschool26.html#trainer-info",
+    "title": "ABI Summer School 2026",
+    "section": "Trainer Info",
+    "text": "Trainer Info\n\n\n\n\n\n\n\n\n\nName\nAffiliation\nRole\nStream\n\n\n\n\nGloria Nakabiri\nAfrican Center of Excellence in Bioinformatics and Data Intensive Sciences\nLead trainer\nUnix\n\n\nPeter van Heusden\nSouth African National Bioinformatics Institute (SANBI)\nLead trainer\nR\n\n\nIan Wasukira\nAfrican Center of Excellence in Bioinformatics and Data-Intensive Sciences\nLead Trainer\nUnix/HPC\n\n\nRonald Galiwango\nAfrican Center of Excellence in Bioinformatics and Data-Intensive Sciences\nLead trainer\nR\n\n\nMusalula Sinkala\nUniversity of Cape Town\nLead trainer\nHuman Genomics\n\n\nDayna Adrienne Croock\nStellenbosch University\nLead trainer\nHuman Genomics\n\n\nJohn Juma\nInternational Livestock Research Institute (ILRI)\nLead trainer\nPathogen Genomics\n\n\nDamien Tully\nMRC/UVRI & LSHTM Uganda Research Unit\nLead Trainer\nPathogen Genomics\n\n\nAlfred Ssekagiri\nUganda Virus Research Institute\nLead trainer\nMetagenomics\n\n\nYohannes Gedamu Gebre\nBio and Emerging Technology Institute (BETin); former Ethiopia Biotechnology Institute (EBTi)\nCo-trainer\nUnix/R/Pathogen Genomics\n\n\nKeaghan Brown\nPHA4GE\nCo-trainer\nPathogen Genomics\n\n\nAmadou Diallo\nPioneer Bio-Analytics\nCo-trainer\nMetagenomics\n\n\nEphifania Geza\nUniversity of Cape Town\nLead trainer\nMetagenomics\n\n\nPatricia Nabisubi\nThe African Centre of Excellence in Bioinformatics and Data Intensive Sciences\nCo-trainer\nUnix/R/NGS basics\n\n\nTrushar Shah\nInternational Livestock Research Institute (Kenya)\nCo-trainer\nHuman Genomics/Unix\n\n\nDaria Sokolova\nEuropean Bioinformatics Institute (EBI)\nCore organiser/support\n\n\n\nGrace Kebirungi\nAfrican Center of Excellence in Bioinformatics and Data-Intensive Sciences\nCore organiser/support\n\n\n\nDavid Twesigomwe\nMRC/UVRI & LSHTM Uganda Research Unit\nCore organiser/support\n\n\n\nVerena Ras\nAfrican Bioinformatics Institute / University of Cape Town\nCore organiser/support\n\n\n\nShaun Aron\nSydney Brenner Institute for Molecular Bioscience (SBIMB) / University of Witwatersrand\nCore organiser/support\n\n\n\nMelek Chaouch\nInstitut Pasteur, Tunis\nCore organiser/support\n\n\n\nJorge da Rocha\nEuropean Bioinformatics Institute (EBI)\nCore organiser/support"
+  },
+  {
+    "objectID": "week2/metagenomics/qiime2-amplicon.html",
+    "href": "week2/metagenomics/qiime2-amplicon.html",
+    "title": "Day 1 Practical — Part 2: QIIME2 Amplicon Analysis Pipeline",
+    "section": "",
+    "text": "This practical takes the QC-passed reads from Part 1 through a complete amplicon sequence variant (ASV) workflow in QIIME2: importing paired-end reads, denoising with DADA2, building a phylogenetic tree, assigning taxonomy, and exporting everything for downstream diversity analysis in R (Day 2).\n\n\n\nset -euo pipefail\n\nDATA_DIR=\"../../data/amplicon/gut\"\nREF_DIR=\"../../data/reference\"\nOUT_DIR=\"day1_results/qiime2\"\nMANIFEST=\"manifest.tsv\"\nMETADATA=\"metadata.tsv\"\nCLASSIFIER=\"${REF_DIR}/silva-138-99-seqs-515-806-classifier.qza\"\nTHREADS=4\nPaths and the SILVA classifier location are defined up front.\nif [ ! -f \"${CLASSIFIER}\" ]; then\n    echo \"ERROR: SILVA classifier not found...\"\n    exit 1\nfi\nThe script fails fast with a clear message (and the download URL) if the pre-trained taxonomy classifier hasn’t been downloaded yet, rather than running for an hour and failing at Step 6.\n\n\n\n\nif [ ! -f \"${MANIFEST}\" ]; then\n    echo -e \"sample-id\\tforward-absolute-filepath\\treverse-absolute-filepath\" &gt; ${MANIFEST}\n    for R1 in ${DATA_DIR}/*_R1.fastq.gz; do\n        SAMPLE=$(basename ${R1} _R1.fastq.gz)\n        R2=\"${DATA_DIR}/${SAMPLE}_R2.fastq.gz\"\n        if [ -f \"${R2}\" ]; then\n            echo -e \"${SAMPLE}\\t$(realpath ${R1})\\t$(realpath ${R2})\" &gt;&gt; ${MANIFEST}\n        fi\n    done\nfi\nQIIME2 needs a manifest file mapping each sample ID to the absolute paths of its forward/reverse FASTQ files. This block auto-generates that manifest by pairing up _R1/_R2 files, but only if a manifest doesn’t already exist — so you can hand-edit it once and re-run the script without it being overwritten.\nqiime tools import \\\n    --type 'SampleData[PairedEndSequencesWithQuality]' \\\n    --input-path ${MANIFEST} \\\n    --output-path ${OUT_DIR}/paired-end-demux.qza \\\n    --input-format PairedEndFastqManifestPhred33V2\nThis imports the raw reads into QIIME2’s native .qza (QIIME Zipped Artifact) format, using the manifest to associate files with sample IDs. PairedEndFastqManifestPhred33V2 specifies both the manifest format version and that quality scores use the standard Phred+33 encoding.\n\n\n\n\nqiime demux summarize \\\n    --i-data ${OUT_DIR}/paired-end-demux.qza \\\n    --o-visualization ${OUT_DIR}/demux-summary.qzv\nProduces a .qzv (QIIME Zipped Visualization) with interactive per-base quality plots for forward and reverse reads. This is the step that determines the truncation lengths used in DADA2 below — you inspect where quality drops off and truncate before that point. View any .qzv file at https://view.qiime2.org by uploading it.\n\n\n\n\nqiime dada2 denoise-paired \\\n    --i-demultiplexed-seqs ${OUT_DIR}/paired-end-demux.qza \\\n    --p-trim-left-f 0 \\\n    --p-trim-left-r 0 \\\n    --p-trunc-len-f 240 \\\n    --p-trunc-len-r 200 \\\n    --p-n-threads ${THREADS} \\\n    --o-table ${OUT_DIR}/table.qza \\\n    --o-representative-sequences ${OUT_DIR}/rep-seqs.qza \\\n    --o-denoising-stats ${OUT_DIR}/dada2-stats.qza \\\n    --verbose\nDADA2 models the error profile of the sequencing run to correct errors and infer exact amplicon sequence variants (ASVs) — a higher-resolution alternative to OTU clustering — and removes chimeric sequences.\n\n--p-trim-left-f/-r 0: bases to trim from the 5′ end (e.g. primers); set to 0 here because primers were presumably already removed, or none are present.\n--p-trunc-len-f 240 / --p-trunc-len-r 200: truncate forward reads at 240 bp and reverse reads at 200 bp, based on where quality drops in the Step 2 plots. Reverse reads typically degrade faster, hence the shorter truncation length.\nOutputs: a feature table (table.qza, ASV × sample counts), representative sequences (rep-seqs.qza, one sequence per ASV), and denoising stats (read counts retained at each filtering stage).\n\nqiime metadata tabulate \\\n    --m-input-file ${OUT_DIR}/dada2-stats.qza \\\n    --o-visualization ${OUT_DIR}/dada2-stats.qzv\nTurns the denoising stats artifact into a browsable table — check what fraction of raw reads survived filtering, denoising, merging, and chimera removal at each stage.\n\n\n\n\nqiime feature-table summarize \\\n    --i-table ${OUT_DIR}/table.qza \\\n    --o-visualization ${OUT_DIR}/table-summary.qzv \\\n    --m-sample-metadata-file ${METADATA}\n\nqiime feature-table tabulate-seqs \\\n    --i-data ${OUT_DIR}/rep-seqs.qza \\\n    --o-visualization ${OUT_DIR}/rep-seqs.qzv\nfeature-table summarize reports the number of ASVs, per-sample read count distribution, and frequency histograms — useful for spotting samples with very low sequencing depth that may need to be excluded before rarefaction. tabulate-seqs lists each ASV’s sequence and length, with a BLAST link for quick identification.\n\n\n\n\nqiime phylogeny align-to-tree-mafft-fasttree \\\n    --i-sequences ${OUT_DIR}/rep-seqs.qza \\\n    --o-alignment ${OUT_DIR}/aligned-rep-seqs.qza \\\n    --o-masked-alignment ${OUT_DIR}/masked-aligned-rep-seqs.qza \\\n    --o-tree ${OUT_DIR}/unrooted-tree.qza \\\n    --o-rooted-tree ${OUT_DIR}/rooted-tree.qza \\\n    --p-n-threads ${THREADS}\nThis convenience action chains four steps: MAFFT multiple sequence alignment of all ASVs, masking of highly variable/uninformative alignment columns, FastTree construction of an unrooted tree, and midpoint rooting to produce a rooted tree. The rooted tree is required for phylogenetically-aware beta diversity metrics (e.g. weighted/unweighted UniFrac) used in Day 2.\n\n\n\n\nqiime feature-classifier classify-sklearn \\\n    --i-classifier ${CLASSIFIER} \\\n    --i-reads ${OUT_DIR}/rep-seqs.qza \\\n    --o-classification ${OUT_DIR}/taxonomy.qza \\\n    --p-n-jobs ${THREADS}\nUses a pre-trained naive Bayes classifier (trained on the SILVA 138.1 database, restricted to the 515F/806R V4 primer region) to assign taxonomy to each ASV.\nqiime metadata tabulate \\\n    --m-input-file ${OUT_DIR}/taxonomy.qza \\\n    --o-visualization ${OUT_DIR}/taxonomy.qzv\nMakes the taxonomy assignments browsable alongside each ASV’s confidence score.\n\n\n\n\nqiime taxa barplot \\\n    --i-table ${OUT_DIR}/table.qza \\\n    --i-taxonomy ${OUT_DIR}/taxonomy.qza \\\n    --m-metadata-file ${METADATA} \\\n    --o-visualization ${OUT_DIR}/taxa-bar-plots.qzv\nGenerates an interactive stacked bar plot of relative taxonomic composition per sample, adjustable to any taxonomic level (Phylum, Family, Genus, etc.) directly in the qiime2 viewer.\n\n\n\n\nmkdir -p ${OUT_DIR}/exported\n\nqiime tools export --input-path ${OUT_DIR}/table.qza \\\n    --output-path ${OUT_DIR}/exported/feature_table\nbiom convert -i ${OUT_DIR}/exported/feature_table/feature-table.biom \\\n    -o ${OUT_DIR}/exported/feature_table/feature-table.tsv --to-tsv\n\nqiime tools export --input-path ${OUT_DIR}/taxonomy.qza \\\n    --output-path ${OUT_DIR}/exported/taxonomy\n\nqiime tools export --input-path ${OUT_DIR}/rooted-tree.qza \\\n    --output-path ${OUT_DIR}/exported/tree\nQIIME2 artifacts (.qza) are opaque zip containers — R packages like phyloseq need plain-text/BIOM inputs. This block exports the feature table (converting the binary BIOM format to TSV with biom convert), taxonomy table, and phylogenetic tree (Newick format) into exported/, which is exactly what Day 2’s phyloseq workflow loads.\n\n\n\n\n\n\n\n\n\n\n\nOutput\nPath\n\n\n\n\nQuality check\n${OUT_DIR}/demux-summary.qzv\n\n\nDADA2 stats\n${OUT_DIR}/dada2-stats.qzv\n\n\nFeature table summary\n${OUT_DIR}/table-summary.qzv\n\n\nTaxonomy bar plots\n${OUT_DIR}/taxa-bar-plots.qzv\n\n\nExported for Day 2\n${OUT_DIR}/exported/ (feature table, taxonomy, tree)\n\n\n\n\n\n\n\nHow many ASVs were detected? How does this compare to OTU-based methods?\nWhat fraction of reads passed DADA2 filtering? Is this expected?\nWhat are the dominant phyla in the gut samples?\nAre there differences between samples visible in the bar plot?"
+  },
+  {
+    "objectID": "week2/metagenomics/qiime2-amplicon.html#purpose",
+    "href": "week2/metagenomics/qiime2-amplicon.html#purpose",
+    "title": "Day 1 Practical — Part 2: QIIME2 Amplicon Analysis Pipeline",
+    "section": "",
+    "text": "This practical takes the QC-passed reads from Part 1 through a complete amplicon sequence variant (ASV) workflow in QIIME2: importing paired-end reads, denoising with DADA2, building a phylogenetic tree, assigning taxonomy, and exporting everything for downstream diversity analysis in R (Day 2)."
+  },
+  {
+    "objectID": "week2/metagenomics/qiime2-amplicon.html#setup-and-pre-flight-check",
+    "href": "week2/metagenomics/qiime2-amplicon.html#setup-and-pre-flight-check",
+    "title": "Day 1 Practical — Part 2: QIIME2 Amplicon Analysis Pipeline",
+    "section": "",
+    "text": "set -euo pipefail\n\nDATA_DIR=\"../../data/amplicon/gut\"\nREF_DIR=\"../../data/reference\"\nOUT_DIR=\"day1_results/qiime2\"\nMANIFEST=\"manifest.tsv\"\nMETADATA=\"metadata.tsv\"\nCLASSIFIER=\"${REF_DIR}/silva-138-99-seqs-515-806-classifier.qza\"\nTHREADS=4\nPaths and the SILVA classifier location are defined up front.\nif [ ! -f \"${CLASSIFIER}\" ]; then\n    echo \"ERROR: SILVA classifier not found...\"\n    exit 1\nfi\nThe script fails fast with a clear message (and the download URL) if the pre-trained taxonomy classifier hasn’t been downloaded yet, rather than running for an hour and failing at Step 6."
+  },
+  {
+    "objectID": "week2/metagenomics/qiime2-amplicon.html#step-1-import-paired-end-reads-into-qiime2",
+    "href": "week2/metagenomics/qiime2-amplicon.html#step-1-import-paired-end-reads-into-qiime2",
+    "title": "Day 1 Practical — Part 2: QIIME2 Amplicon Analysis Pipeline",
+    "section": "",
+    "text": "if [ ! -f \"${MANIFEST}\" ]; then\n    echo -e \"sample-id\\tforward-absolute-filepath\\treverse-absolute-filepath\" &gt; ${MANIFEST}\n    for R1 in ${DATA_DIR}/*_R1.fastq.gz; do\n        SAMPLE=$(basename ${R1} _R1.fastq.gz)\n        R2=\"${DATA_DIR}/${SAMPLE}_R2.fastq.gz\"\n        if [ -f \"${R2}\" ]; then\n            echo -e \"${SAMPLE}\\t$(realpath ${R1})\\t$(realpath ${R2})\" &gt;&gt; ${MANIFEST}\n        fi\n    done\nfi\nQIIME2 needs a manifest file mapping each sample ID to the absolute paths of its forward/reverse FASTQ files. This block auto-generates that manifest by pairing up _R1/_R2 files, but only if a manifest doesn’t already exist — so you can hand-edit it once and re-run the script without it being overwritten.\nqiime tools import \\\n    --type 'SampleData[PairedEndSequencesWithQuality]' \\\n    --input-path ${MANIFEST} \\\n    --output-path ${OUT_DIR}/paired-end-demux.qza \\\n    --input-format PairedEndFastqManifestPhred33V2\nThis imports the raw reads into QIIME2’s native .qza (QIIME Zipped Artifact) format, using the manifest to associate files with sample IDs. PairedEndFastqManifestPhred33V2 specifies both the manifest format version and that quality scores use the standard Phred+33 encoding."
+  },
+  {
+    "objectID": "week2/metagenomics/qiime2-amplicon.html#step-2-visualise-demultiplexed-read-quality",
+    "href": "week2/metagenomics/qiime2-amplicon.html#step-2-visualise-demultiplexed-read-quality",
+    "title": "Day 1 Practical — Part 2: QIIME2 Amplicon Analysis Pipeline",
+    "section": "",
+    "text": "qiime demux summarize \\\n    --i-data ${OUT_DIR}/paired-end-demux.qza \\\n    --o-visualization ${OUT_DIR}/demux-summary.qzv\nProduces a .qzv (QIIME Zipped Visualization) with interactive per-base quality plots for forward and reverse reads. This is the step that determines the truncation lengths used in DADA2 below — you inspect where quality drops off and truncate before that point. View any .qzv file at https://view.qiime2.org by uploading it."
+  },
+  {
+    "objectID": "week2/metagenomics/qiime2-amplicon.html#step-3-dada2-denoising-error-correction-chimera-removal",
+    "href": "week2/metagenomics/qiime2-amplicon.html#step-3-dada2-denoising-error-correction-chimera-removal",
+    "title": "Day 1 Practical — Part 2: QIIME2 Amplicon Analysis Pipeline",
+    "section": "",
+    "text": "qiime dada2 denoise-paired \\\n    --i-demultiplexed-seqs ${OUT_DIR}/paired-end-demux.qza \\\n    --p-trim-left-f 0 \\\n    --p-trim-left-r 0 \\\n    --p-trunc-len-f 240 \\\n    --p-trunc-len-r 200 \\\n    --p-n-threads ${THREADS} \\\n    --o-table ${OUT_DIR}/table.qza \\\n    --o-representative-sequences ${OUT_DIR}/rep-seqs.qza \\\n    --o-denoising-stats ${OUT_DIR}/dada2-stats.qza \\\n    --verbose\nDADA2 models the error profile of the sequencing run to correct errors and infer exact amplicon sequence variants (ASVs) — a higher-resolution alternative to OTU clustering — and removes chimeric sequences.\n\n--p-trim-left-f/-r 0: bases to trim from the 5′ end (e.g. primers); set to 0 here because primers were presumably already removed, or none are present.\n--p-trunc-len-f 240 / --p-trunc-len-r 200: truncate forward reads at 240 bp and reverse reads at 200 bp, based on where quality drops in the Step 2 plots. Reverse reads typically degrade faster, hence the shorter truncation length.\nOutputs: a feature table (table.qza, ASV × sample counts), representative sequences (rep-seqs.qza, one sequence per ASV), and denoising stats (read counts retained at each filtering stage).\n\nqiime metadata tabulate \\\n    --m-input-file ${OUT_DIR}/dada2-stats.qza \\\n    --o-visualization ${OUT_DIR}/dada2-stats.qzv\nTurns the denoising stats artifact into a browsable table — check what fraction of raw reads survived filtering, denoising, merging, and chimera removal at each stage."
+  },
+  {
+    "objectID": "week2/metagenomics/qiime2-amplicon.html#step-4-feature-table-summary",
+    "href": "week2/metagenomics/qiime2-amplicon.html#step-4-feature-table-summary",
+    "title": "Day 1 Practical — Part 2: QIIME2 Amplicon Analysis Pipeline",
+    "section": "",
+    "text": "qiime feature-table summarize \\\n    --i-table ${OUT_DIR}/table.qza \\\n    --o-visualization ${OUT_DIR}/table-summary.qzv \\\n    --m-sample-metadata-file ${METADATA}\n\nqiime feature-table tabulate-seqs \\\n    --i-data ${OUT_DIR}/rep-seqs.qza \\\n    --o-visualization ${OUT_DIR}/rep-seqs.qzv\nfeature-table summarize reports the number of ASVs, per-sample read count distribution, and frequency histograms — useful for spotting samples with very low sequencing depth that may need to be excluded before rarefaction. tabulate-seqs lists each ASV’s sequence and length, with a BLAST link for quick identification."
+  },
+  {
+    "objectID": "week2/metagenomics/qiime2-amplicon.html#step-5-phylogenetic-tree-needed-for-unifrac-on-day-2",
+    "href": "week2/metagenomics/qiime2-amplicon.html#step-5-phylogenetic-tree-needed-for-unifrac-on-day-2",
+    "title": "Day 1 Practical — Part 2: QIIME2 Amplicon Analysis Pipeline",
+    "section": "",
+    "text": "qiime phylogeny align-to-tree-mafft-fasttree \\\n    --i-sequences ${OUT_DIR}/rep-seqs.qza \\\n    --o-alignment ${OUT_DIR}/aligned-rep-seqs.qza \\\n    --o-masked-alignment ${OUT_DIR}/masked-aligned-rep-seqs.qza \\\n    --o-tree ${OUT_DIR}/unrooted-tree.qza \\\n    --o-rooted-tree ${OUT_DIR}/rooted-tree.qza \\\n    --p-n-threads ${THREADS}\nThis convenience action chains four steps: MAFFT multiple sequence alignment of all ASVs, masking of highly variable/uninformative alignment columns, FastTree construction of an unrooted tree, and midpoint rooting to produce a rooted tree. The rooted tree is required for phylogenetically-aware beta diversity metrics (e.g. weighted/unweighted UniFrac) used in Day 2."
+  },
+  {
+    "objectID": "week2/metagenomics/qiime2-amplicon.html#step-6-taxonomy-assignment-with-the-silva-classifier",
+    "href": "week2/metagenomics/qiime2-amplicon.html#step-6-taxonomy-assignment-with-the-silva-classifier",
+    "title": "Day 1 Practical — Part 2: QIIME2 Amplicon Analysis Pipeline",
+    "section": "",
+    "text": "qiime feature-classifier classify-sklearn \\\n    --i-classifier ${CLASSIFIER} \\\n    --i-reads ${OUT_DIR}/rep-seqs.qza \\\n    --o-classification ${OUT_DIR}/taxonomy.qza \\\n    --p-n-jobs ${THREADS}\nUses a pre-trained naive Bayes classifier (trained on the SILVA 138.1 database, restricted to the 515F/806R V4 primer region) to assign taxonomy to each ASV.\nqiime metadata tabulate \\\n    --m-input-file ${OUT_DIR}/taxonomy.qza \\\n    --o-visualization ${OUT_DIR}/taxonomy.qzv\nMakes the taxonomy assignments browsable alongside each ASV’s confidence score."
+  },
+  {
+    "objectID": "week2/metagenomics/qiime2-amplicon.html#step-7-taxonomy-bar-plots",
+    "href": "week2/metagenomics/qiime2-amplicon.html#step-7-taxonomy-bar-plots",
+    "title": "Day 1 Practical — Part 2: QIIME2 Amplicon Analysis Pipeline",
+    "section": "",
+    "text": "qiime taxa barplot \\\n    --i-table ${OUT_DIR}/table.qza \\\n    --i-taxonomy ${OUT_DIR}/taxonomy.qza \\\n    --m-metadata-file ${METADATA} \\\n    --o-visualization ${OUT_DIR}/taxa-bar-plots.qzv\nGenerates an interactive stacked bar plot of relative taxonomic composition per sample, adjustable to any taxonomic level (Phylum, Family, Genus, etc.) directly in the qiime2 viewer."
+  },
+  {
+    "objectID": "week2/metagenomics/qiime2-amplicon.html#export-preparing-artifacts-for-r-analysis-day-2",
+    "href": "week2/metagenomics/qiime2-amplicon.html#export-preparing-artifacts-for-r-analysis-day-2",
+    "title": "Day 1 Practical — Part 2: QIIME2 Amplicon Analysis Pipeline",
+    "section": "",
+    "text": "mkdir -p ${OUT_DIR}/exported\n\nqiime tools export --input-path ${OUT_DIR}/table.qza \\\n    --output-path ${OUT_DIR}/exported/feature_table\nbiom convert -i ${OUT_DIR}/exported/feature_table/feature-table.biom \\\n    -o ${OUT_DIR}/exported/feature_table/feature-table.tsv --to-tsv\n\nqiime tools export --input-path ${OUT_DIR}/taxonomy.qza \\\n    --output-path ${OUT_DIR}/exported/taxonomy\n\nqiime tools export --input-path ${OUT_DIR}/rooted-tree.qza \\\n    --output-path ${OUT_DIR}/exported/tree\nQIIME2 artifacts (.qza) are opaque zip containers — R packages like phyloseq need plain-text/BIOM inputs. This block exports the feature table (converting the binary BIOM format to TSV with biom convert), taxonomy table, and phylogenetic tree (Newick format) into exported/, which is exactly what Day 2’s phyloseq workflow loads."
+  },
+  {
+    "objectID": "week2/metagenomics/qiime2-amplicon.html#key-outputs",
+    "href": "week2/metagenomics/qiime2-amplicon.html#key-outputs",
+    "title": "Day 1 Practical — Part 2: QIIME2 Amplicon Analysis Pipeline",
+    "section": "",
+    "text": "Output\nPath\n\n\n\n\nQuality check\n${OUT_DIR}/demux-summary.qzv\n\n\nDADA2 stats\n${OUT_DIR}/dada2-stats.qzv\n\n\nFeature table summary\n${OUT_DIR}/table-summary.qzv\n\n\nTaxonomy bar plots\n${OUT_DIR}/taxa-bar-plots.qzv\n\n\nExported for Day 2\n${OUT_DIR}/exported/ (feature table, taxonomy, tree)"
+  },
+  {
+    "objectID": "week2/metagenomics/qiime2-amplicon.html#discussion-questions",
+    "href": "week2/metagenomics/qiime2-amplicon.html#discussion-questions",
+    "title": "Day 1 Practical — Part 2: QIIME2 Amplicon Analysis Pipeline",
+    "section": "",
+    "text": "How many ASVs were detected? How does this compare to OTU-based methods?\nWhat fraction of reads passed DADA2 filtering? Is this expected?\nWhat are the dominant phyla in the gut samples?\nAre there differences between samples visible in the bar plot?"
   },
   {
     "objectID": "projects.html",
