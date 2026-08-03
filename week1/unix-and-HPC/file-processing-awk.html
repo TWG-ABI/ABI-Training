@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>file-processing-sed – ABI-ITWG</title>
+<title>file-processing-awk – ABI-ITWG</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -29,23 +29,23 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="../site_libs/quarto-nav/headroom.min.js"></script>
-<script src="../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="../site_libs/quarto-search/fuse.min.js"></script>
-<script src="../site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="../">
-<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
-<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="../site_libs/quarto-html/popper.min.js"></script>
-<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="../site_libs/quarto-html/anchor.min.js"></script>
-<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-bb62276ab45c84d9efd712f51ff97b5a.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-cf2abc19ec09823c931a54267571c7dc.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-bb62276ab45c84d9efd712f51ff97b5a.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-cf2abc19ec09823c931a54267571c7dc.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -76,7 +76,7 @@ ul.task-list li input[type="checkbox"] {
 <style>html{ scroll-behavior: smooth; }</style>
 
 
-<link rel="stylesheet" href="../styles.css">
+<link rel="stylesheet" href="../../styles.css">
 </head>
 
 <body class="nav-fixed quarto-light">
@@ -86,11 +86,11 @@ ul.task-list li input[type="checkbox"] {
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a href="../index.html" class="navbar-brand navbar-brand-logo">
-    <img src="../✦" alt="" class="navbar-logo light-content">
-    <img src="../✦" alt="" class="navbar-logo dark-content">
+    <a href="../../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../../✦" alt="" class="navbar-logo light-content">
+    <img src="../../✦" alt="" class="navbar-logo dark-content">
     </a>
-    <a class="navbar-brand" href="../index.html">
+    <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">ABI-ITWG</span>
     </a>
   </div>
@@ -101,15 +101,15 @@ ul.task-list li input[type="checkbox"] {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../index.html"> 
+    <a class="nav-link" href="../../index.html"> 
 <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../abisumschool26.html"> 
+    <a class="nav-link" href="../../abisumschool26.html"> 
 <span class="menu-text">Training Materials</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../about.html"> 
+    <a class="nav-link" href="../../about.html"> 
 <span class="menu-text">About</span></a>
   </li>  
 </ul>
@@ -128,18 +128,15 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#file-processing-part-1-using-sed" id="toc-file-processing-part-1-using-sed" class="nav-link active" data-scroll-target="#file-processing-part-1-using-sed">File processing: Part 1 (using sed)</a>
+  <li><a href="#file-processing-part-2-using-awk" id="toc-file-processing-part-2-using-awk" class="nav-link active" data-scroll-target="#file-processing-part-2-using-awk">File processing: Part 2 (using awk)</a>
   <ul class="collapse">
-  <li><a href="#replacing-simple-patterns-with-sed" id="toc-replacing-simple-patterns-with-sed" class="nav-link" data-scroll-target="#replacing-simple-patterns-with-sed">Replacing simple patterns with sed</a></li>
-  <li><a href="#conditional-substitutions-with-sed" id="toc-conditional-substitutions-with-sed" class="nav-link" data-scroll-target="#conditional-substitutions-with-sed">Conditional substitutions with sed</a></li>
-  <li><a href="#adding-simple-patterns-to-a-file-using-sed" id="toc-adding-simple-patterns-to-a-file-using-sed" class="nav-link" data-scroll-target="#adding-simple-patterns-to-a-file-using-sed">Adding simple patterns to a file using sed</a></li>
-  <li><a href="#other-use-cases-of-sed-in-cleaningpre-processing-files" id="toc-other-use-cases-of-sed-in-cleaningpre-processing-files" class="nav-link" data-scroll-target="#other-use-cases-of-sed-in-cleaningpre-processing-files">Other use cases of sed in cleaning/pre-processing files</a>
+  <li><a href="#starter-commands-with-awk" id="toc-starter-commands-with-awk" class="nav-link" data-scroll-target="#starter-commands-with-awk">Starter commands with awk</a>
   <ul class="collapse">
-  <li><a href="#obtaining-the-header-line-of-a-file" id="toc-obtaining-the-header-line-of-a-file" class="nav-link" data-scroll-target="#obtaining-the-header-line-of-a-file">Obtaining the header line of a file</a></li>
-  <li><a href="#extracting-lines-with-a-specific-pattern" id="toc-extracting-lines-with-a-specific-pattern" class="nav-link" data-scroll-target="#extracting-lines-with-a-specific-pattern">Extracting line(s) with a specific pattern</a></li>
-  <li><a href="#counting-number-of-columns-in-a-file" id="toc-counting-number-of-columns-in-a-file" class="nav-link" data-scroll-target="#counting-number-of-columns-in-a-file">Counting number of columns in a file</a></li>
-  <li><a href="#removing-empty-lines-from-a-file" id="toc-removing-empty-lines-from-a-file" class="nav-link" data-scroll-target="#removing-empty-lines-from-a-file">Removing (empty) lines from a file</a></li>
-  <li><a href="#extracting-text-blocks-from-a-file" id="toc-extracting-text-blocks-from-a-file" class="nav-link" data-scroll-target="#extracting-text-blocks-from-a-file">Extracting text blocks from a file</a></li>
+  <li><a href="#removingskipping-a-line-with-a-specific-pattern" id="toc-removingskipping-a-line-with-a-specific-pattern" class="nav-link" data-scroll-target="#removingskipping-a-line-with-a-specific-pattern">Removing/Skipping a line with a specific pattern</a></li>
+  <li><a href="#extracting-more-than-one-column" id="toc-extracting-more-than-one-column" class="nav-link" data-scroll-target="#extracting-more-than-one-column">Extracting more than one column</a></li>
+  <li><a href="#converting-file-delimiter" id="toc-converting-file-delimiter" class="nav-link" data-scroll-target="#converting-file-delimiter">Converting file delimiter</a></li>
+  <li><a href="#determining-number-of-columns-in-a-file" id="toc-determining-number-of-columns-in-a-file" class="nav-link" data-scroll-target="#determining-number-of-columns-in-a-file">Determining number of columns in a file</a></li>
+  <li><a href="#extracting-specific-rows-and-columns" id="toc-extracting-specific-rows-and-columns" class="nav-link" data-scroll-target="#extracting-specific-rows-and-columns">Extracting specific rows and columns</a></li>
   </ul></li>
   </ul></li>
   </ul>
@@ -151,74 +148,60 @@ ul.task-list li input[type="checkbox"] {
 
 
 
-<section id="file-processing-part-1-using-sed" class="level1">
-<h1>File processing: Part 1 (using sed)</h1>
-<p><strong>sed</strong> allows us to automate pattern substitutions (usually line-by-line). The name <strong>sed</strong> is an abbreviation of <strong>stream editor</strong>.</p>
-<p>Change to the <code>workshop1</code> directory within <code>ABI_summer_school_project1</code> as it will be your working directory for this tutorial.</p>
-<section id="replacing-simple-patterns-with-sed" class="level2">
-<h2 class="anchored" data-anchor-id="replacing-simple-patterns-with-sed">Replacing simple patterns with sed</h2>
-<p>Replace the <strong>fasta</strong> pattern in each line of the file <code>sample_manifest2.tsv</code> with <strong>fastq</strong></p>
-<pre><code>sed 's/fasta/fastq/' sample_manifest2.tsv</code></pre>
-<p>To save the output to a new file:</p>
-<pre><code>sed 's/fasta/fastq/' sample_manifest2.tsv &gt; sample_manifest2_fastq.tsv</code></pre>
-<p>To make the replacement within the primary file (use with caution):</p>
-<pre><code>sed -i 's/fasta/fastq/' sample_manifest2.tsv</code></pre>
-<p>Notice that the <strong>fasta</strong> pattern after <strong>Plasmodium_falciparum_</strong> was not replaced by the previous command. Why is this?</p>
-<p>Write the <strong>sed</strong> command(s) to replace both occurrences of <strong>fasta</strong> in each line of <code>sample_manifest2.tsv</code> with <strong>fastq</strong>. Save the output to <code>sample_manifest2_fastq_2.tsv</code></p>
+<section id="file-processing-part-2-using-awk" class="level1">
+<h1>File processing: Part 2 (using awk)</h1>
+<p><strong>AWK</strong> is a programming language named after its three developers: Alfred Aho, Peter J Weinberger and Brian KernIghan. AWK is useful for processing text files and extracting data, particularly when a file is <strong>split into columns</strong> or <strong>delimited by a specific character</strong> (e.g.&nbsp;a tab, comma). The <strong>awk</strong> command/script reads a file line by line and splits each line into columns according to a delimiter character. The default output delimiter is a single space character.</p>
+<p>For this tutorial, the workind directory will be the <code>workshop1</code> directory within <code>ABI_summer_school_project1</code>.</p>
+<section id="starter-commands-with-awk" class="level2">
+<h2 class="anchored" data-anchor-id="starter-commands-with-awk">Starter commands with awk</h2>
+<p>Use the awk command to print the first column of the <code>SAMPLE_001.vcf</code> file</p>
+<pre><code>awk -F'\t' '{print $1}' SAMPLE_001.vcf</code></pre>
+<p>Alternatively:</p>
+<pre><code>awk 'BEGIN {FS="\t"} {print $1}' SAMPLE_001.vcf   # Notice the difference in inner vs outer quotation marks</code></pre>
+<p>In case you want to skip the header row:</p>
+<pre><code>awk 'BEGIN {FS="\t"} NR&gt;1 {print $1}' SAMPLE_001.vcf </code></pre>
+<p>In case you want to extract only the header row:</p>
+<pre><code>awk 'NR==1 {print $0}' SAMPLE_001.vcf  </code></pre>
+<section id="removingskipping-a-line-with-a-specific-pattern" class="level3">
+<h3 class="anchored" data-anchor-id="removingskipping-a-line-with-a-specific-pattern">Removing/Skipping a line with a specific pattern</h3>
+<p>e.g.&nbsp;extracting all contents of the file <code>SAMPLE_001.vcf</code> but skipping the record with <strong>position 1024</strong>:</p>
+<pre><code>awk -F'\t' '!/1024/ {print $0}' SAMPLE_001.vcf </code></pre>
+<p>This is also helpful when skipping multiple header lines:</p>
+<pre><code>awk -F'\t' '!/#/ {print $0}' SAMPLE_001.vcf </code></pre>
+</section>
+<section id="extracting-more-than-one-column" class="level3">
+<h3 class="anchored" data-anchor-id="extracting-more-than-one-column">Extracting more than one column</h3>
+<p>Extract the first 5 columns and the 10th column in <code>SAMPLE_001.vcf</code> using awk</p>
+<pre><code>awk 'BEGIN {FS="\t"} {print $1,$2,$3,$4,$5,$10}' SAMPLE_001.vcf</code></pre>
+<p>Note that the delimiter in the output is now a single space character (the default for awk). How can we maintain <strong>tab</strong> as the delimiter?</p>
 <pre><code></code></pre>
-<p>With the same syntax, sed can be used to <strong>remove</strong> unwanted patterns within each line of a given file. Use <strong>sed</strong> to remove all occurrences of <strong>fastq</strong> in the <code>sample_manifest2_fastq_2.tsv</code> file. Save the output to <code>sample_manifest3.tsv</code></p>
+<p>What if we do not want to write <code>$1,$2,$3,$4,$5</code> in the print function above, how can we specify this range?</p>
+<pre><code>awk 'BEGIN {FS=OFS="\t"} {for (i=1; i&lt;=5; i++) printf "%s%s", $i, OFS ; print $10}' SAMPLE_001.vcf</code></pre>
+<p><strong>Practice</strong>: Extract the first 8 columns in <code>SAMPLE_001.vcf</code> using <strong>awk</strong>; be sure to try both approaches above to specify the range of columns 1-8.</p>
+<p>Approach 1:</p>
 <pre><code></code></pre>
-<p><strong>Exercise</strong>: Use <strong>sed</strong> to replace the <code>ftp://ftp.sra.ebi.ac.uk/vol1/run/ERR323/</code> string in each line of the file named <code>file_paths.txt</code>.</p>
-<p><strong>sed</strong> can also be used to replace patterns shared across files simultaneously. As an example, replace <strong>Kampala</strong> with <strong>Entebbe</strong> in all the <code>.tsv</code> files currently in <code>workshop1</code></p>
-<pre><code>sed -i 's/Kampala/Entebbe/g' *.tsv</code></pre>
-<p>Using similar syntax for replacing patterns, <strong>sed</strong> can be used to change file delimiters/separators. As a test case, use <strong>sed</strong> to convert <code>sample_manifest3.tsv</code> into a <code>.csv</code> file named <code>sample_manifest3.csv</code>.</p>
-<pre><code></code></pre>
-<p>Try converting <code>sample_manifest3.csv</code> into a <strong>space-delimited</strong> file.</p>
+<p>Approach 2:</p>
 <pre><code></code></pre>
 </section>
-<section id="conditional-substitutions-with-sed" class="level2">
-<h2 class="anchored" data-anchor-id="conditional-substitutions-with-sed">Conditional substitutions with sed</h2>
-<p>Sometimes, it’s helpful to replace patterns only in lines that meet a certain condition. As a test case, change the read_length for the Kisumu samples in <code>sample_manifest3.tsv</code> from 150 to 100.</p>
-<pre><code>sed '/Kisumu/s/150/100/' sample_manifest3.tsv</code></pre>
-</section>
-<section id="adding-simple-patterns-to-a-file-using-sed" class="level2">
-<h2 class="anchored" data-anchor-id="adding-simple-patterns-to-a-file-using-sed">Adding simple patterns to a file using sed</h2>
-<p>Add the model numbers of the <code>Illumina_NextSeq</code> and <code>Illumina_MiSeq</code> platforms so that they read <code>Illumina_NextSeq_2000</code> and <code>Illumina_MiSeq_100</code>, respectively.</p>
-<pre><code></code></pre>
-<p>Add an extra column (at the end) to the contents of <code>sample_manifest3.tsv</code> with the heading <code>file_size</code> and the column values all <code>.</code></p>
-<pre><code></code></pre>
-<p>Add a <code>project_id</code> column (make it the first column) to <code>sample_manifest3.tsv</code>. Use <strong>Pf_AMR</strong> as the values for each row under this column.</p>
+<section id="converting-file-delimiter" class="level3">
+<h3 class="anchored" data-anchor-id="converting-file-delimiter">Converting file delimiter</h3>
+<p>Convert the delimiter of the file to a comma and save the output as <code>SAMPLE_001.csv</code></p>
 <pre><code></code></pre>
 </section>
-<section id="other-use-cases-of-sed-in-cleaningpre-processing-files" class="level2">
-<h2 class="anchored" data-anchor-id="other-use-cases-of-sed-in-cleaningpre-processing-files">Other use cases of sed in cleaning/pre-processing files</h2>
-<section id="obtaining-the-header-line-of-a-file" class="level3">
-<h3 class="anchored" data-anchor-id="obtaining-the-header-line-of-a-file">Obtaining the header line of a file</h3>
-<pre><code>sed -n '1p' sample_manifest3.tsv </code></pre>
+<section id="determining-number-of-columns-in-a-file" class="level3">
+<h3 class="anchored" data-anchor-id="determining-number-of-columns-in-a-file">Determining number of columns in a file</h3>
+<p>Use awk to determine the number of columns in <code>SAMPLE_001.vcf</code></p>
+<pre><code>awk -F'\t' 'NR==1{print NF}' SAMPLE_001.vcf</code></pre>
 </section>
-<section id="extracting-lines-with-a-specific-pattern" class="level3">
-<h3 class="anchored" data-anchor-id="extracting-lines-with-a-specific-pattern">Extracting line(s) with a specific pattern</h3>
-<pre><code>sed -n '/PATTERN/p' file.txt  </code></pre>
-<p>Example:</p>
-<pre><code>sed -n '/TRUE/p' sample_manifest3.tsv </code></pre>
-</section>
-<section id="counting-number-of-columns-in-a-file" class="level3">
-<h3 class="anchored" data-anchor-id="counting-number-of-columns-in-a-file">Counting number of columns in a file</h3>
+<section id="extracting-specific-rows-and-columns" class="level3">
+<h3 class="anchored" data-anchor-id="extracting-specific-rows-and-columns">Extracting specific rows and columns</h3>
+<p>Use awk to extract records for participants from YRI in the file <code>1000G_2504_high_coverage.sequence.index.txt</code></p>
+<p>Step 1:</p>
+<p>Determine the column number for <code>POPULATION</code> using <strong>sed</strong> and/or <strong>grep</strong></p>
 <pre><code></code></pre>
-</section>
-<section id="removing-empty-lines-from-a-file" class="level3">
-<h3 class="anchored" data-anchor-id="removing-empty-lines-from-a-file">Removing (empty) lines from a file</h3>
-<p>Using <code>file1.txt</code> as a testcase, remove all empty lines.</p>
-<pre><code></code></pre>
-<p>Using a similar syntax, <strong>sed</strong> can be used as an alternative to <strong>grep</strong> to remove lines containing certain patterns. Use <strong>sed</strong> to remove the header lines (only the ones starting with <em>##</em>) from the <code>SAMPLE_001.vcf</code> file. Save the output to a new file <code>SAMPLE_001_v2.vcf</code> so that we can reuse the <code>SAMPLE_001.vcf</code> file, if needed.</p>
-<pre><code></code></pre>
-<p>Use sed to remove empty lines from <code>file1.txt</code> and the line containing the heading i.e.&nbsp;<code>sample_id</code>, in one command.</p>
-<pre><code></code></pre>
-</section>
-<section id="extracting-text-blocks-from-a-file" class="level3">
-<h3 class="anchored" data-anchor-id="extracting-text-blocks-from-a-file">Extracting text blocks from a file</h3>
-<p>Using <code>sample_manifest3.tsv</code> as a test case, extract the metadata lines of samples <strong>004</strong> through <strong>008</strong> i.e.&nbsp;from line containing <code>SAMPLE_004</code> to the one containing <code>SAMPLE_008</code>.</p>
-<pre><code>sed -n '/SAMPLE_004/,/SAMPLE_008/p' sample_manifest3.tsv</code></pre>
+<p>Step two:</p>
+<pre><code>awk -F'\t' '${col_number}=="YRI"' 1000G_2504_high_coverage.sequence.index.txt</code></pre>
+<p><strong>Detour</strong>: Compare with the <strong>sed</strong> approach</p>
 
 
 </section>
@@ -644,5 +627,5 @@ ul.task-list li input[type="checkbox"] {
 
 
 
-<script src="../site_libs/quarto-html/zenscroll-min.js"></script>
+<script src="../../site_libs/quarto-html/zenscroll-min.js"></script>
 </body></html>
