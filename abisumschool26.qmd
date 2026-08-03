@@ -14,8 +14,10 @@ The aim is to provide comprehensive training on bioinformatics computational res
 ### Week 1: 
 
 #### Linux 
-[File processing with sed](week1/file-processing-sed.md)
-[File processing with awk](week1/file-processing-awk.md)
+1. [Introduction to Linux Basics](week1/Introduction_to_Linux_Basics.md)
+2. [Introduction to Linux Basics II](week1/Introduction_to_Linux_Basics_II.md)
+3. [File processing with sed](week1/file-processing-sed.md)
+4. [File processing with awk](week1/file-processing-awk.md)
 
 #### R coding content
 
@@ -33,9 +35,14 @@ The aim is to provide comprehensive training on bioinformatics computational res
 
 #### Pathogen Genomics
 
-#### Metabolomics
-
-
+#### Metagenomics
+1. [Quality Control](week2/metagenomics/qc.md)
+2. [Amplicon Data Analysis](week2/metagenomics/qiime2-amplicon.md)
+3. [Diversity Analysis](week2/metagenomics/diversity-analysis.md)
+4. [Shotgun Metagenomics](week2/metagenomics/shortgun-metagenomics.md)
+5. [Metagenome-Assembled Genomes](week2/metagenomics/metagenome-assembled-genomes.md)
+6. [Functional Analysis](week2/metagenomics/functional-analysis.md)
+7. [Visualisation & Mini-Project](week2/metagenomics/functional-analysis-visualisation.md)
 
 ---
 
