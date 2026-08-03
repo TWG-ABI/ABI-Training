@@ -1,0 +1,751 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.10.18">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>qc – ABI-ITWG</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-bb62276ab45c84d9efd712f51ff97b5a.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-cf2abc19ec09823c931a54267571c7dc.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<style>html{ scroll-behavior: smooth; }</style>
+
+
+<link rel="stylesheet" href="../../styles.css">
+</head>
+
+<body class="nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="../../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../../✦" alt="" class="navbar-logo light-content">
+    <img src="../../✦" alt="" class="navbar-logo dark-content">
+    </a>
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">ABI-ITWG</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../abisumschool26.html"> 
+<span class="menu-text">Training Materials</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../about.html"> 
+<span class="menu-text">About</span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#day-1-practical-part-1-quality-control-with-fastqc-seqkit" id="toc-day-1-practical-part-1-quality-control-with-fastqc-seqkit" class="nav-link active" data-scroll-target="#day-1-practical-part-1-quality-control-with-fastqc-seqkit">Day 1 Practical — Part 1: Quality Control with FastQC &amp; SeqKit</a>
+  <ul class="collapse">
+  <li><a href="#purpose" id="toc-purpose" class="nav-link" data-scroll-target="#purpose">Purpose</a></li>
+  <li><a href="#setup" id="toc-setup" class="nav-link" data-scroll-target="#setup">Setup</a></li>
+  <li><a href="#section-1-seqkit-exploring-your-fastq-files" id="toc-section-1-seqkit-exploring-your-fastq-files" class="nav-link" data-scroll-target="#section-1-seqkit-exploring-your-fastq-files">Section 1 — SeqKit: Exploring your FASTQ files</a>
+  <ul class="collapse">
+  <li><a href="#a.-summary-statistics-for-all-samples" id="toc-a.-summary-statistics-for-all-samples" class="nav-link" data-scroll-target="#a.-summary-statistics-for-all-samples">1a. Summary statistics for all samples</a></li>
+  <li><a href="#b.-gc-content-per-file" id="toc-b.-gc-content-per-file" class="nav-link" data-scroll-target="#b.-gc-content-per-file">1b. GC content per file</a></li>
+  <li><a href="#c.-read-length-distribution-first-sample" id="toc-c.-read-length-distribution-first-sample" class="nav-link" data-scroll-target="#c.-read-length-distribution-first-sample">1c. Read length distribution (first sample)</a></li>
+  <li><a href="#d.-subsampling-for-the-fastqc-demo" id="toc-d.-subsampling-for-the-fastqc-demo" class="nav-link" data-scroll-target="#d.-subsampling-for-the-fastqc-demo">1d. Subsampling for the FastQC demo</a></li>
+  </ul></li>
+  <li><a href="#section-2-fastqc-per-sample-quality-reports" id="toc-section-2-fastqc-per-sample-quality-reports" class="nav-link" data-scroll-target="#section-2-fastqc-per-sample-quality-reports">Section 2 — FastQC: Per-sample quality reports</a></li>
+  <li><a href="#section-3-multiqc-aggregating-fastqc-reports" id="toc-section-3-multiqc-aggregating-fastqc-reports" class="nav-link" data-scroll-target="#section-3-multiqc-aggregating-fastqc-reports">Section 3 — MultiQC: Aggregating FastQC reports</a></li>
+  <li><a href="#section-4-seqkit-advanced-filtering-and-manipulation" id="toc-section-4-seqkit-advanced-filtering-and-manipulation" class="nav-link" data-scroll-target="#section-4-seqkit-advanced-filtering-and-manipulation">Section 4 — SeqKit: Advanced filtering and manipulation</a>
+  <ul class="collapse">
+  <li><a href="#a.-filter-reads-below-a-minimum-length" id="toc-a.-filter-reads-below-a-minimum-length" class="nav-link" data-scroll-target="#a.-filter-reads-below-a-minimum-length">4a. Filter reads below a minimum length</a></li>
+  <li><a href="#b.-count-filtered-reads" id="toc-b.-count-filtered-reads" class="nav-link" data-scroll-target="#b.-count-filtered-reads">4b. Count filtered reads</a></li>
+  <li><a href="#c.-convert-fastq-to-fasta" id="toc-c.-convert-fastq-to-fasta" class="nav-link" data-scroll-target="#c.-convert-fastq-to-fasta">4c. Convert FASTQ to FASTA</a></li>
+  </ul></li>
+  <li><a href="#key-outputs" id="toc-key-outputs" class="nav-link" data-scroll-target="#key-outputs">Key Outputs</a></li>
+  <li><a href="#discussion-questions" id="toc-discussion-questions" class="nav-link" data-scroll-target="#discussion-questions">Discussion Questions</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
+
+
+
+
+<section id="day-1-practical-part-1-quality-control-with-fastqc-seqkit" class="level1">
+<h1>Day 1 Practical — Part 1: Quality Control with FastQC &amp; SeqKit</h1>
+<section id="purpose" class="level2">
+<h2 class="anchored" data-anchor-id="purpose">Purpose</h2>
+<p>Before any downstream analysis (denoising, assembly, taxonomic classification), raw sequencing reads must be inspected for quality, length distribution, and composition. This practical introduces two complementary QC tools:</p>
+<ul>
+<li><strong>SeqKit</strong> — a fast command-line toolkit for FASTA/FASTQ manipulation and summary statistics</li>
+<li><strong>FastQC / MultiQC</strong> — per-base quality visualisation and aggregated reporting across samples</li>
+</ul>
+<p>By the end of this session you should be able to explain <em>why</em> a dataset does or doesn’t need trimming, and <em>where</em> to look for adapter contamination or low-quality tails.</p>
+</section>
+<section id="setup" class="level2">
+<h2 class="anchored" data-anchor-id="setup">Setup</h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="bu">set</span> <span class="at">-euo</span> pipefail</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><code>set -euo pipefail</code> makes the script stop immediately on any error (<code>-e</code>), treat unset variables as errors (<code>-u</code>), and fail if any command in a pipe fails (<code>-o pipefail</code>) — good practice for reproducible pipelines.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="va">DATA_DIR</span><span class="op">=</span><span class="st">"data/amplicon/gut"</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="va">OUT_DIR</span><span class="op">=</span><span class="st">"day1_results/qc"</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="va">THREADS</span><span class="op">=</span>4</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Paths and thread count are defined once at the top so they’re easy to adjust for a different dataset or machine.</p>
+<hr>
+</section>
+<section id="section-1-seqkit-exploring-your-fastq-files" class="level2">
+<h2 class="anchored" data-anchor-id="section-1-seqkit-exploring-your-fastq-files">Section 1 — SeqKit: Exploring your FASTQ files</h2>
+<section id="a.-summary-statistics-for-all-samples" class="level3">
+<h3 class="anchored" data-anchor-id="a.-summary-statistics-for-all-samples">1a. Summary statistics for all samples</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">seqkit</span> stats <span class="at">--all</span> <span class="at">--tabular</span> <span class="at">--threads</span> <span class="va">${THREADS}</span> <span class="va">${DATA_DIR}</span>/<span class="pp">*</span>.fastq.gz <span class="dt">\</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    <span class="op">&gt;</span> <span class="va">${OUT_DIR}</span>/seqkit_stats.tsv</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<ul>
+<li><code>--all</code> reports extended stats (min/avg/max length, N50, GC%, Q20/Q30 rates) rather than just read counts.</li>
+<li><code>--tabular</code> outputs machine-readable TSV instead of a formatted table — useful for downstream parsing in R or Excel.</li>
+<li>Running this across <code>*.fastq.gz</code> in one call lets SeqKit process all samples in a single pass rather than looping manually.</li>
+</ul>
+<p><strong>What to look for:</strong> number of reads per sample (are libraries balanced?), average read length (does it match the expected amplicon/read length?), and Q20/Q30 percentages (a rough proxy for overall quality before you even open FastQC).</p>
+</section>
+<section id="b.-gc-content-per-file" class="level3">
+<h3 class="anchored" data-anchor-id="b.-gc-content-per-file">1b. GC content per file</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">seqkit</span> fx2tab <span class="at">--name</span> <span class="at">--gc</span> <span class="va">${DATA_DIR}</span>/<span class="pp">*</span>.fastq.gz <span class="kw">|</span> <span class="dt">\</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">awk</span> <span class="st">'{sum+=$3; n++} END {printf "Mean GC: %.1f%%\n", sum/n}'</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><code>fx2tab</code> converts FASTQ/FASTA records to a simple tabular format; here <code>--gc</code> adds a GC% column per read. The <code>awk</code> command averages that column across all reads to give a single mean GC% for the dataset — a quick sanity check (e.g.&nbsp;gut 16S amplicons are typically in the 45–55% GC range; strong deviations can indicate contamination or the wrong reference).</p>
+</section>
+<section id="c.-read-length-distribution-first-sample" class="level3">
+<h3 class="anchored" data-anchor-id="c.-read-length-distribution-first-sample">1c. Read length distribution (first sample)</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="va">FIRST_SAMPLE</span><span class="op">=</span><span class="va">$(</span><span class="fu">ls</span> <span class="va">${DATA_DIR}</span>/<span class="pp">*</span>.fastq.gz <span class="kw">|</span> <span class="fu">head</span> <span class="at">-1</span><span class="va">)</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="ex">seqkit</span> fx2tab <span class="at">--name</span> <span class="at">--length</span> <span class="va">${FIRST_SAMPLE}</span> <span class="kw">|</span> <span class="dt">\</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">awk</span> <span class="st">'{len[$2]++} END {for (l in len) print l"\t"len[l]}'</span> <span class="kw">|</span> <span class="dt">\</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">sort</span> <span class="at">-n</span> <span class="kw">|</span> <span class="dt">\</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">awk</span> <span class="st">'{printf "Length %s bp: %d reads\n", $1, $2}'</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>This builds a histogram of read lengths for one representative sample: <code>fx2tab --length</code> adds a length column, the first <code>awk</code> tallies how many reads fall at each length, and the final <code>sort</code>/<code>awk</code> pair prints it in ascending, human-readable order. For amplicon data you generally expect a tight peak at the expected amplicon length (e.g.&nbsp;~250 bp for V4 16S); a broad or bimodal distribution can flag primer-trimming issues.</p>
+</section>
+<section id="d.-subsampling-for-the-fastqc-demo" class="level3">
+<h3 class="anchored" data-anchor-id="d.-subsampling-for-the-fastqc-demo">1d. Subsampling for the FastQC demo</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="ex">seqkit</span> sample <span class="at">--proportion</span> 0.1 <span class="at">--rand-seed</span> 42 <span class="va">${FIRST_SAMPLE}</span> <span class="dt">\</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>    <span class="at">--out-file</span> <span class="va">${OUT_DIR}</span>/demo_sample_sub.fastq.gz</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><code>--proportion 0.1</code> randomly keeps ~10% of reads; <code>--rand-seed 42</code> makes the subsampling reproducible. This is purely a <em>teaching convenience</em> to make FastQC run quickly during the course — in a real analysis you would run FastQC on the full file.</p>
+<hr>
+</section>
+</section>
+<section id="section-2-fastqc-per-sample-quality-reports" class="level2">
+<h2 class="anchored" data-anchor-id="section-2-fastqc-per-sample-quality-reports">Section 2 — FastQC: Per-sample quality reports</h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="ex">fastqc</span> <span class="at">--outdir</span> <span class="va">${OUT_DIR}</span>/fastqc <span class="at">--threads</span> <span class="va">${THREADS}</span> <span class="at">--quiet</span> <span class="va">${DATA_DIR}</span>/<span class="pp">*</span>.fastq.gz</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>FastQC generates an HTML report per FASTQ file covering per-base quality scores, GC content distribution, sequence duplication levels, adapter content, and overrepresented sequences. <code>--quiet</code> suppresses per-file progress messages so the log stays readable when processing many samples at once.</p>
+<hr>
+</section>
+<section id="section-3-multiqc-aggregating-fastqc-reports" class="level2">
+<h2 class="anchored" data-anchor-id="section-3-multiqc-aggregating-fastqc-reports">Section 3 — MultiQC: Aggregating FastQC reports</h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="ex">multiqc</span> <span class="va">${OUT_DIR}</span>/fastqc/ <span class="at">--outdir</span> <span class="va">${OUT_DIR}</span>/multiqc <span class="dt">\</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>    <span class="at">--filename</span> <span class="st">"multiqc_day1_amplicon"</span> <span class="at">--quiet</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>MultiQC scans a directory of tool outputs (here, all the FastQC reports) and produces a single interactive HTML dashboard. This is essential once you have more than a handful of samples — comparing 20 separate FastQC pages by eye doesn’t scale, but MultiQC overlays all per-base quality curves and duplication rates on one page.</p>
+<hr>
+</section>
+<section id="section-4-seqkit-advanced-filtering-and-manipulation" class="level2">
+<h2 class="anchored" data-anchor-id="section-4-seqkit-advanced-filtering-and-manipulation">Section 4 — SeqKit: Advanced filtering and manipulation</h2>
+<section id="a.-filter-reads-below-a-minimum-length" class="level3">
+<h3 class="anchored" data-anchor-id="a.-filter-reads-below-a-minimum-length">4a. Filter reads below a minimum length</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="ex">seqkit</span> seq <span class="at">--min-len</span> 200 <span class="va">${FIRST_SAMPLE}</span> <span class="at">--out-file</span> <span class="va">${OUT_DIR}</span>/filtered_min200.fastq.gz</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><code>seqkit seq</code> is a general sequence-filtering command; <code>--min-len 200</code> discards any read shorter than 200 bp. Short fragments are often adapter dimers or degraded reads that add noise to downstream clustering/denoising.</p>
+</section>
+<section id="b.-count-filtered-reads" class="level3">
+<h3 class="anchored" data-anchor-id="b.-count-filtered-reads">4b. Count filtered reads</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="va">ORIG</span><span class="op">=</span><span class="va">$(</span><span class="ex">seqkit</span> stats <span class="va">${FIRST_SAMPLE}</span> <span class="kw">|</span> <span class="fu">awk</span> <span class="st">'NR==2{print $4}'</span><span class="va">)</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="va">FILT</span><span class="op">=</span><span class="va">$(</span><span class="ex">seqkit</span> stats <span class="va">${OUT_DIR}</span>/filtered_min200.fastq.gz <span class="kw">|</span> <span class="fu">awk</span> <span class="st">'NR==2{print $4}'</span><span class="va">)</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"Original reads: </span><span class="va">${ORIG}</span><span class="st">"</span></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"After length filter (≥200 bp): </span><span class="va">${FILT}</span><span class="st">"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><code>seqkit stats</code> without <code>--tabular</code> prints a formatted table; column 4 (<code>NR==2</code>, i.e.&nbsp;the first data row) is the read count. Comparing before/after gives a quick sense of how much data the length filter removes.</p>
+</section>
+<section id="c.-convert-fastq-to-fasta" class="level3">
+<h3 class="anchored" data-anchor-id="c.-convert-fastq-to-fasta">4c. Convert FASTQ to FASTA</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="ex">seqkit</span> fq2fa <span class="va">${FIRST_SAMPLE}</span> <span class="at">--out-file</span> <span class="va">${OUT_DIR}</span>/demo_sample.fasta.gz</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Some downstream tools (e.g.&nbsp;certain taxonomy classifiers, BLAST-based searches) require FASTA rather than FASTQ input, since they don’t use quality scores. <code>fq2fa</code> strips the quality lines and keeps only sequence + header.</p>
+<hr>
+</section>
+</section>
+<section id="key-outputs" class="level2">
+<h2 class="anchored" data-anchor-id="key-outputs">Key Outputs</h2>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Output</th>
+<th>Path</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>SeqKit stats</td>
+<td><code>${OUT_DIR}/seqkit_stats.tsv</code></td>
+</tr>
+<tr class="even">
+<td>FastQC reports</td>
+<td><code>${OUT_DIR}/fastqc/</code></td>
+</tr>
+<tr class="odd">
+<td>MultiQC report</td>
+<td><code>${OUT_DIR}/multiqc/multiqc_day1_amplicon.html</code> — open in a browser</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="discussion-questions" class="level2">
+<h2 class="anchored" data-anchor-id="discussion-questions">Discussion Questions</h2>
+<ol type="1">
+<li>What is the average read length? Is this expected for V4 amplicons?</li>
+<li>Are there any samples with poor quality? How would you identify them?</li>
+<li>Is there significant adapter contamination?</li>
+<li>What does the GC content plot look like? Any outliers?</li>
+</ol>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/TWG-ABI\.github\.io\/ABI-Training\/");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>© 2026 ABI-ITWG. CC BY</p>
+</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    </div>
+    <div class="nav-footer-right">
+      &nbsp;
+    </div>
+  </div>
+</footer>
+
+
+
+
+<script src="../../site_libs/quarto-html/zenscroll-min.js"></script>
+</body></html>

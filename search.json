@@ -28,6 +28,111 @@
     "text": "Training Events:\nABI Bioinformatics Summer School Uganda 2026\n\n\n\n\n\n\nTip\n\n\n\nBioinformatics is the art of answering biological questions with computational tools. Practice your skills well and leave no question unexplored."
   },
   {
+    "objectID": "abisumschool26.html",
+    "href": "abisumschool26.html",
+    "title": "ABI Summer School 2026",
+    "section": "",
+    "text": "The aim is to provide comprehensive training on bioinformatics computational resources, and domain-specific tools and workflows to improve participants’ proficiency in executing, interpreting, and communicating analyses for major bioinformatics studies, with a special focus on genomics."
+  },
+  {
+    "objectID": "abisumschool26.html#about-the-event",
+    "href": "abisumschool26.html#about-the-event",
+    "title": "ABI Summer School 2026",
+    "section": "",
+    "text": "The aim is to provide comprehensive training on bioinformatics computational resources, and domain-specific tools and workflows to improve participants’ proficiency in executing, interpreting, and communicating analyses for major bioinformatics studies, with a special focus on genomics."
+  },
+  {
+    "objectID": "abisumschool26.html#course-content",
+    "href": "abisumschool26.html#course-content",
+    "title": "ABI Summer School 2026",
+    "section": "Course Content:",
+    "text": "Course Content:\n\nWeek 1:\n\nLinux\n\nIntroduction to Linux Basics\nIntroduction to Linux Basics II\nFile processing with sed\nFile processing with awk\n\n\n\nR coding content\n\n\nIntro to NGS\n\n\n\n\nWeek 2\n\nR/Biology Streams\n\n\nHuman Genomics\n\n\nPathogen Genomics\n\n\nMetabolomics"
+  },
+  {
+    "objectID": "abisumschool26.html#trainer-info",
+    "href": "abisumschool26.html#trainer-info",
+    "title": "ABI Summer School 2026",
+    "section": "Trainer Info",
+    "text": "Trainer Info\n\n\n\n\n\n\n\n\n\nName\nAffiliation\nRole\nStream\n\n\n\n\nGloria Nakabiri\nAfrican Center of Excellence in Bioinformatics and Data Intensive Sciences\nLead trainer\nUnix\n\n\nPeter van Heusden\nSouth African National Bioinformatics Institute (SANBI)\nLead trainer\nR\n\n\nIan Wasukira\nAfrican Center of Excellence in Bioinformatics and Data-Intensive Sciences\nLead Trainer\nUnix/HPC\n\n\nRonald Galiwango\nAfrican Center of Excellence in Bioinformatics and Data-Intensive Sciences\nLead trainer\nR\n\n\nMusalula Sinkala\nUniversity of Cape Town\nLead trainer\nHuman Genomics\n\n\nDayna Adrienne Croock\nStellenbosch University\nLead trainer\nHuman Genomics\n\n\nJohn Juma\nInternational Livestock Research Institute (ILRI)\nLead trainer\nPathogen Genomics\n\n\nDamien Tully\nMRC/UVRI & LSHTM Uganda Research Unit\nLead Trainer\nPathogen Genomics\n\n\nAlfred Ssekagiri\nUganda Virus Research Institute\nLead trainer\nMetagenomics\n\n\nYohannes Gedamu Gebre\nBio and Emerging Technology Institute (BETin); former Ethiopia Biotechnology Institute (EBTi)\nCo-trainer\nUnix/R/Pathogen Genomics\n\n\nKeaghan Brown\nPHA4GE\nCo-trainer\nPathogen Genomics\n\n\nAmadou Diallo\nPioneer Bio-Analytics\nCo-trainer\nMetagenomics\n\n\nEphifania Geza\nUniversity of Cape Town\nLead trainer\nMetagenomics\n\n\nPatricia Nabisubi\nThe African Centre of Excellence in Bioinformatics and Data Intensive Sciences\nCo-trainer\nUnix/R/NGS basics\n\n\nTrushar Shah\nInternational Livestock Research Institute (Kenya)\nCo-trainer\nHuman Genomics/Unix\n\n\nDaria Sokolova\nEuropean Bioinformatics Institute (EBI)\nCore organiser/support\n\n\n\nGrace Kebirungi\nAfrican Center of Excellence in Bioinformatics and Data-Intensive Sciences\nCore organiser/support\n\n\n\nDavid Twesigomwe\nMRC/UVRI & LSHTM Uganda Research Unit\nCore organiser/support\n\n\n\nVerena Ras\nAfrican Bioinformatics Institute / University of Cape Town\nCore organiser/support\n\n\n\nShaun Aron\nSydney Brenner Institute for Molecular Bioscience (SBIMB) / University of Witwatersrand\nCore organiser/support\n\n\n\nMelek Chaouch\nInstitut Pasteur, Tunis\nCore organiser/support\n\n\n\nJorge da Rocha\nEuropean Bioinformatics Institute (EBI)\nCore organiser/support"
+  },
+  {
+    "objectID": "week1/Introduction_to_Linux_Basics.html#you-made-it",
+    "href": "week1/Introduction_to_Linux_Basics.html#you-made-it",
+    "title": "ABI Summer School 2026 · WEEK 1: Linux / HPC",
+    "section": "YOU MADE IT!",
+    "text": "YOU MADE IT!\nYou made it through the entire project directory. The folder is organised, the data is interrogated, and the meeting is saved.\n\n\nCommands used today\n\n\n\n\n\n\n\nCategory\nCommands & options\n\n\n\n\nDownload & extract\nwget · unzip\n\n\nLocation\npwd\n\n\nNavigation\ncd · cd .. · cd ~ · cd -\n\n\nListing\nls -l · ls -lh · ls -1 · ls -t · ls -lt · ls -a · ls -lha · ls -R · ls -lhR\n\n\nViewing files\ncat · head -n · tail -n · less\n\n\nWildcards\n*.fastq · *.vcf · Pf* · *SAMPLE* · SAMPLE*.fastq\n\n\nCreating directories\nmkdir · mkdir -p\n\n\nCreating files\ntouch · nano\n\n\nCopying\ncp · cp -r · cp -i\n\n\nSymbolic links\nln -s\n\n\nMoving & renaming\nmv\n\n\nDeleting\nrm · rm -r\n\n\nSorting\nsort · sort -k · sort -r\n\n\nComparing\ncomm · comm -12 · comm -23 · comm -13\n\n\nJoining\njoin · join -a1\n\n\nFinding\nfind -name · find -type · find -size · find -mtime\n\n\nCounting\nwc -l\n\n\nSearching\ngrep · grep -c · grep -v · grep -vc · grep -n · grep -i · grep -r · grep -rn\n\n\nExtracting columns\ncut -f · cut -f1-4\n\n\nCombining files\npaste · paste -d\n\n\n\n\nABI Summer School 2026 · Week 1: Linux / HPC"
+  },
+  {
+    "objectID": "week1/file-processing-awk.html",
+    "href": "week1/file-processing-awk.html",
+    "title": "File processing: Part 2 (using awk)",
+    "section": "",
+    "text": "AWK is a programming language named after its three developers: Alfred Aho, Peter J Weinberger and Brian KernIghan. AWK is useful for processing text files and extracting data, particularly when a file is split into columns or delimited by a specific character (e.g. a tab, comma). The awk command/script reads a file line by line and splits each line into columns according to a delimiter character. The default output delimiter is a single space character.\nFor this tutorial, the workind directory will be the workshop1 directory within ABI_summer_school_project1.\n\n\nUse the awk command to print the first column of the SAMPLE_001.vcf file\nawk -F'\\t' '{print $1}' SAMPLE_001.vcf\nAlternatively:\nawk 'BEGIN {FS=\"\\t\"} {print $1}' SAMPLE_001.vcf   # Notice the difference in inner vs outer quotation marks\nIn case you want to skip the header row:\nawk 'BEGIN {FS=\"\\t\"} NR&gt;1 {print $1}' SAMPLE_001.vcf \nIn case you want to extract only the header row:\nawk 'NR==1 {print $0}' SAMPLE_001.vcf  \n\n\ne.g. extracting all contents of the file SAMPLE_001.vcf but skipping the record with position 1024:\nawk -F'\\t' '!/1024/ {print $0}' SAMPLE_001.vcf \nThis is also helpful when skipping multiple header lines:\nawk -F'\\t' '!/#/ {print $0}' SAMPLE_001.vcf \n\n\n\nExtract the first 5 columns and the 10th column in SAMPLE_001.vcf using awk\nawk 'BEGIN {FS=\"\\t\"} {print $1,$2,$3,$4,$5,$10}' SAMPLE_001.vcf\nNote that the delimiter in the output is now a single space character (the default for awk). How can we maintain tab as the delimiter?\n\nWhat if we do not want to write $1,$2,$3,$4,$5 in the print function above, how can we specify this range?\nawk 'BEGIN {FS=OFS=\"\\t\"} {for (i=1; i&lt;=5; i++) printf \"%s%s\", $i, OFS ; print $10}' SAMPLE_001.vcf\nPractice: Extract the first 8 columns in SAMPLE_001.vcf using awk; be sure to try both approaches above to specify the range of columns 1-8.\nApproach 1:\n\nApproach 2:\n\n\n\n\nConvert the delimiter of the file to a comma and save the output as SAMPLE_001.csv\n\n\n\n\nUse awk to determine the number of columns in SAMPLE_001.vcf\nawk -F'\\t' 'NR==1{print NF}' SAMPLE_001.vcf\n\n\n\nUse awk to extract records for participants from YRI in the file 1000G_2504_high_coverage.sequence.index.txt\nStep 1:\nDetermine the column number for POPULATION using sed and/or grep\n\nStep two:\nawk -F'\\t' '${col_number}==\"YRI\"' 1000G_2504_high_coverage.sequence.index.txt\nDetour: Compare with the sed approach"
+  },
+  {
+    "objectID": "week1/file-processing-awk.html#starter-commands-with-awk",
+    "href": "week1/file-processing-awk.html#starter-commands-with-awk",
+    "title": "File processing: Part 2 (using awk)",
+    "section": "",
+    "text": "Use the awk command to print the first column of the SAMPLE_001.vcf file\nawk -F'\\t' '{print $1}' SAMPLE_001.vcf\nAlternatively:\nawk 'BEGIN {FS=\"\\t\"} {print $1}' SAMPLE_001.vcf   # Notice the difference in inner vs outer quotation marks\nIn case you want to skip the header row:\nawk 'BEGIN {FS=\"\\t\"} NR&gt;1 {print $1}' SAMPLE_001.vcf \nIn case you want to extract only the header row:\nawk 'NR==1 {print $0}' SAMPLE_001.vcf  \n\n\ne.g. extracting all contents of the file SAMPLE_001.vcf but skipping the record with position 1024:\nawk -F'\\t' '!/1024/ {print $0}' SAMPLE_001.vcf \nThis is also helpful when skipping multiple header lines:\nawk -F'\\t' '!/#/ {print $0}' SAMPLE_001.vcf \n\n\n\nExtract the first 5 columns and the 10th column in SAMPLE_001.vcf using awk\nawk 'BEGIN {FS=\"\\t\"} {print $1,$2,$3,$4,$5,$10}' SAMPLE_001.vcf\nNote that the delimiter in the output is now a single space character (the default for awk). How can we maintain tab as the delimiter?\n\nWhat if we do not want to write $1,$2,$3,$4,$5 in the print function above, how can we specify this range?\nawk 'BEGIN {FS=OFS=\"\\t\"} {for (i=1; i&lt;=5; i++) printf \"%s%s\", $i, OFS ; print $10}' SAMPLE_001.vcf\nPractice: Extract the first 8 columns in SAMPLE_001.vcf using awk; be sure to try both approaches above to specify the range of columns 1-8.\nApproach 1:\n\nApproach 2:\n\n\n\n\nConvert the delimiter of the file to a comma and save the output as SAMPLE_001.csv\n\n\n\n\nUse awk to determine the number of columns in SAMPLE_001.vcf\nawk -F'\\t' 'NR==1{print NF}' SAMPLE_001.vcf\n\n\n\nUse awk to extract records for participants from YRI in the file 1000G_2504_high_coverage.sequence.index.txt\nStep 1:\nDetermine the column number for POPULATION using sed and/or grep\n\nStep two:\nawk -F'\\t' '${col_number}==\"YRI\"' 1000G_2504_high_coverage.sequence.index.txt\nDetour: Compare with the sed approach"
+  },
+  {
+    "objectID": "about.html#core-team",
+    "href": "about.html#core-team",
+    "title": "About",
+    "section": "Core Team",
+    "text": "Core Team\nVerena Ras — Training Coordination and Development\nShaun Aron — Training Coordination and Development\nMelek Chaouch — Training Coordination and Development\n\nAssisting team\nJorge Batista da Rocha - Site setup and training support"
+  },
+  {
+    "objectID": "about.html#license",
+    "href": "about.html#license",
+    "title": "About",
+    "section": "License",
+    "text": "License\nThis site and training content are released under the Creative Commons Attribution (CC BY)."
+  },
+  {
+    "objectID": "about.html#contact-community",
+    "href": "about.html#contact-community",
+    "title": "About",
+    "section": "Contact & Community",
+    "text": "Contact & Community\n\n📬 info@bioinformaticsinstitute.africa — for any questions."
+  },
+  {
+    "objectID": "week1/Introduction_to_Linux_Basics_II.html#brace-expansion",
+    "href": "week1/Introduction_to_Linux_Basics_II.html#brace-expansion",
+    "title": "ABI Summer School 2026 · WEEK 1: Linux / HPC",
+    "section": "Brace Expansion",
+    "text": "Brace Expansion\nTyping out long lists of files or repetitive folder names is prone to typos. Learn to expand them automatically.\n\n\nStep 1 : Creating bulk directories\nQ1: From the project root, create four directories inside results/ at once using brace expansion: fastqc, trimmomatic, bwa, and gatk.\n\n\n\n\n\n\nNoteShow answer\n\n\n\n\n\nmkdir -p results/{fastqc,trimmomatic,bwa,gatk}\n\nTip: Do not put spaces after the commas in brace expansion! {a,b} works, {a, b} does not.\n\n\n\n\n\n\n\nStep 2 : Creating sequential files\nQ1: Create five empty log files in logs/ named run_day_1.log through run_day_5.log using brace expansion.\n\n\n\n\n\n\nNoteShow answer\n\n\n\n\n\ntouch logs/run_day_{1..5}.log\n\n\n\n\n\n\nStep 3 : The backup shortcut\nA quick trick to make backups without typing a filename twice.\nQ1: Navigate to raw_data/. Copy sample_manifest.tsv to a new file called sample_manifest.tsv.backup using the {,.backup} trick.\n\n\n\n\n\n\nNoteShow answer\n\n\n\n\n\ncd ../raw_data\ncp sample_manifest.tsv{,.backup}\n\nThis expands to cp sample_manifest.tsv sample_manifest.tsv.backup. It works because the first item in the brace is completely empty!"
+  },
+  {
+    "objectID": "week1/Introduction_to_Linux_Basics_II.html#the-power-of-pipes",
+    "href": "week1/Introduction_to_Linux_Basics_II.html#the-power-of-pipes",
+    "title": "ABI Summer School 2026 · WEEK 1: Linux / HPC",
+    "section": "The Power of Pipes (|)",
+    "text": "The Power of Pipes (|)\nPrograms in Linux are designed to do one thing well. The pipe operator (|) takes the standard output of one command and feeds it directly into the standard input of the next.\n\n\nStep 4 : Piping to grep, less and wc\nQ1: Go back to the project root. You want to view all lines in pipeline.log that contain the word WARNING. Use grep to find them, and pipe the output to less so you can scroll through them safely.\n\n\n\n\n\n\nNoteShow answer\n\n\n\n\n\ncd ..\ngrep \"WARNING\" logs/pipeline.log | less\n\n\n\nQ2: Navigate into variants/. Search for all lines in SAMPLE_001.vcf that DO NOT start with # (the data lines) using grep -v.\n\n\n\n\n\n\nNoteShow answer\n\n\n\n\n\ncd variants\ngrep -v \"^#\" SAMPLE_001.vcf\n\n^ inside grep means “starts with”.\n\n\n\n\nQ3: Pipe that output into another grep to find only the variants marked as PASS.\n\n\n\n\n\n\nNoteShow answer\n\n\n\n\n\ngrep -v \"^#\" SAMPLE_001.vcf | grep \"PASS\"\n\n\n\nQ4: Pipe that final output into wc -l to count exactly how many PASS variants this sample has.\n\n\n\n\n\n\nNoteShow answer\n\n\n\n\n\ngrep -v \"^#\" SAMPLE_001.vcf | grep \"PASS\" | wc -l"
+  },
+  {
+    "objectID": "week1/Introduction_to_Linux_Basics_II.html#advanced-combinations",
+    "href": "week1/Introduction_to_Linux_Basics_II.html#advanced-combinations",
+    "title": "ABI Summer School 2026 · WEEK 1: Linux / HPC",
+    "section": "Advanced Combinations",
+    "text": "Advanced Combinations\nPutting everything together into powerful one-liners.\n\n\nStep 6 : find + Pipes\nQ1: Go back to the project root. Use find to list all .fastq files anywhere in the project, and pipe the output to wc -l to count how many FASTQ files exist.\n\n\n\n\n\n\nNoteShow answer\n\n\n\n\n\ncd ..\nfind . -name \"*.fastq\" | wc -l\n\n\n\n\n\n\nStep 7 : Brace Expansion + Pipes\nQ1: From the project root, search for the sequence ATG across specifically SAMPLE_001.fastq, SAMPLE_002.fastq, and SAMPLE_003.fastq in the raw_data/ folder using brace expansion.\n\n\n\n\n\n\nNoteShow answer\n\n\n\n\n\ngrep \"ATG\" raw_data/SAMPLE_{001,002,003}.fastq\n\nAlternatively, raw_data/SAMPLE_00{1..3}.fastq also works!\n\n\n\n\nQ2: Pipe that search into wc -l to count how many total times ATG appears across all three files combined.\n\n\n\n\n\n\nNoteShow answer\n\n\n\n\n\ngrep \"ATG\" raw_data/SAMPLE_{001..003}.fastq | wc -l"
+  },
+  {
+    "objectID": "week1/Introduction_to_Linux_Basics_II.html#you-made-it",
+    "href": "week1/Introduction_to_Linux_Basics_II.html#you-made-it",
+    "title": "ABI Summer School 2026 · WEEK 1: Linux / HPC",
+    "section": "YOU MADE IT!",
+    "text": "YOU MADE IT!\nYou have mastered the pipe and the brace.\n\n\nCommands used today\n\n\n\nCategory\nCommands & operators\n\n\n\n\nBrace Expansion (Lists)\n{name1,name2,name3}\n\n\nBrace Expansion (Ranges)\n{1..5} · {a..z}\n\n\nBrace Expansion (Append)\n{,.bak}\n\n\nThe Pipe\n|\n\n\nViewing\nless\n\n\nCounting\nwc -l\n\n\nFiltering\ngrep · grep -v\n\n\nFinding\nfind -name\n\n\n\n\nABI Summer School 2026 · Week 1: Linux / HPC"
+  },
+  {
+    "objectID": "week1/base.html",
+    "href": "week1/base.html",
+    "title": "ABI-ITWG",
+    "section": "",
+    "text": "a base for week 1 content"
+  },
+  {
     "objectID": "week1/file-processing-sed.html",
     "href": "week1/file-processing-sed.html",
     "title": "File processing: Part 1 (using sed)",
@@ -63,109 +168,67 @@
     "text": "sed -n '1p' sample_manifest3.tsv \n\n\n\nsed -n '/PATTERN/p' file.txt  \nExample:\nsed -n '/TRUE/p' sample_manifest3.tsv \n\n\n\n\n\n\n\nUsing file1.txt as a testcase, remove all empty lines.\n\nUsing a similar syntax, sed can be used as an alternative to grep to remove lines containing certain patterns. Use sed to remove the header lines (only the ones starting with ##) from the SAMPLE_001.vcf file. Save the output to a new file SAMPLE_001_v2.vcf so that we can reuse the SAMPLE_001.vcf file, if needed.\n\nUse sed to remove empty lines from file1.txt and the line containing the heading i.e. sample_id, in one command.\n\n\n\n\nUsing sample_manifest3.tsv as a test case, extract the metadata lines of samples 004 through 008 i.e. from line containing SAMPLE_004 to the one containing SAMPLE_008.\nsed -n '/SAMPLE_004/,/SAMPLE_008/p' sample_manifest3.tsv"
   },
   {
-    "objectID": "week1/base.html",
-    "href": "week1/base.html",
-    "title": "ABI-ITWG",
+    "objectID": "week2/metagenomics/qc.html",
+    "href": "week2/metagenomics/qc.html",
+    "title": "Day 1 Practical — Part 1: Quality Control with FastQC & SeqKit",
     "section": "",
-    "text": "a base for week 1 content"
+    "text": "Before any downstream analysis (denoising, assembly, taxonomic classification), raw sequencing reads must be inspected for quality, length distribution, and composition. This practical introduces two complementary QC tools:\n\nSeqKit — a fast command-line toolkit for FASTA/FASTQ manipulation and summary statistics\nFastQC / MultiQC — per-base quality visualisation and aggregated reporting across samples\n\nBy the end of this session you should be able to explain why a dataset does or doesn’t need trimming, and where to look for adapter contamination or low-quality tails.\n\n\n\nset -euo pipefail\nset -euo pipefail makes the script stop immediately on any error (-e), treat unset variables as errors (-u), and fail if any command in a pipe fails (-o pipefail) — good practice for reproducible pipelines.\nDATA_DIR=\"data/amplicon/gut\"\nOUT_DIR=\"day1_results/qc\"\nTHREADS=4\nPaths and thread count are defined once at the top so they’re easy to adjust for a different dataset or machine.\n\n\n\n\n\n\nseqkit stats --all --tabular --threads ${THREADS} ${DATA_DIR}/*.fastq.gz \\\n    &gt; ${OUT_DIR}/seqkit_stats.tsv\n\n--all reports extended stats (min/avg/max length, N50, GC%, Q20/Q30 rates) rather than just read counts.\n--tabular outputs machine-readable TSV instead of a formatted table — useful for downstream parsing in R or Excel.\nRunning this across *.fastq.gz in one call lets SeqKit process all samples in a single pass rather than looping manually.\n\nWhat to look for: number of reads per sample (are libraries balanced?), average read length (does it match the expected amplicon/read length?), and Q20/Q30 percentages (a rough proxy for overall quality before you even open FastQC).\n\n\n\nseqkit fx2tab --name --gc ${DATA_DIR}/*.fastq.gz | \\\n    awk '{sum+=$3; n++} END {printf \"Mean GC: %.1f%%\\n\", sum/n}'\nfx2tab converts FASTQ/FASTA records to a simple tabular format; here --gc adds a GC% column per read. The awk command averages that column across all reads to give a single mean GC% for the dataset — a quick sanity check (e.g. gut 16S amplicons are typically in the 45–55% GC range; strong deviations can indicate contamination or the wrong reference).\n\n\n\nFIRST_SAMPLE=$(ls ${DATA_DIR}/*.fastq.gz | head -1)\nseqkit fx2tab --name --length ${FIRST_SAMPLE} | \\\n    awk '{len[$2]++} END {for (l in len) print l\"\\t\"len[l]}' | \\\n    sort -n | \\\n    awk '{printf \"Length %s bp: %d reads\\n\", $1, $2}'\nThis builds a histogram of read lengths for one representative sample: fx2tab --length adds a length column, the first awk tallies how many reads fall at each length, and the final sort/awk pair prints it in ascending, human-readable order. For amplicon data you generally expect a tight peak at the expected amplicon length (e.g. ~250 bp for V4 16S); a broad or bimodal distribution can flag primer-trimming issues.\n\n\n\nseqkit sample --proportion 0.1 --rand-seed 42 ${FIRST_SAMPLE} \\\n    --out-file ${OUT_DIR}/demo_sample_sub.fastq.gz\n--proportion 0.1 randomly keeps ~10% of reads; --rand-seed 42 makes the subsampling reproducible. This is purely a teaching convenience to make FastQC run quickly during the course — in a real analysis you would run FastQC on the full file.\n\n\n\n\n\nfastqc --outdir ${OUT_DIR}/fastqc --threads ${THREADS} --quiet ${DATA_DIR}/*.fastq.gz\nFastQC generates an HTML report per FASTQ file covering per-base quality scores, GC content distribution, sequence duplication levels, adapter content, and overrepresented sequences. --quiet suppresses per-file progress messages so the log stays readable when processing many samples at once.\n\n\n\n\nmultiqc ${OUT_DIR}/fastqc/ --outdir ${OUT_DIR}/multiqc \\\n    --filename \"multiqc_day1_amplicon\" --quiet\nMultiQC scans a directory of tool outputs (here, all the FastQC reports) and produces a single interactive HTML dashboard. This is essential once you have more than a handful of samples — comparing 20 separate FastQC pages by eye doesn’t scale, but MultiQC overlays all per-base quality curves and duplication rates on one page.\n\n\n\n\n\n\nseqkit seq --min-len 200 ${FIRST_SAMPLE} --out-file ${OUT_DIR}/filtered_min200.fastq.gz\nseqkit seq is a general sequence-filtering command; --min-len 200 discards any read shorter than 200 bp. Short fragments are often adapter dimers or degraded reads that add noise to downstream clustering/denoising.\n\n\n\nORIG=$(seqkit stats ${FIRST_SAMPLE} | awk 'NR==2{print $4}')\nFILT=$(seqkit stats ${OUT_DIR}/filtered_min200.fastq.gz | awk 'NR==2{print $4}')\necho \"Original reads: ${ORIG}\"\necho \"After length filter (≥200 bp): ${FILT}\"\nseqkit stats without --tabular prints a formatted table; column 4 (NR==2, i.e. the first data row) is the read count. Comparing before/after gives a quick sense of how much data the length filter removes.\n\n\n\nseqkit fq2fa ${FIRST_SAMPLE} --out-file ${OUT_DIR}/demo_sample.fasta.gz\nSome downstream tools (e.g. certain taxonomy classifiers, BLAST-based searches) require FASTA rather than FASTQ input, since they don’t use quality scores. fq2fa strips the quality lines and keeps only sequence + header.\n\n\n\n\n\n\n\n\n\n\n\n\nOutput\nPath\n\n\n\n\nSeqKit stats\n${OUT_DIR}/seqkit_stats.tsv\n\n\nFastQC reports\n${OUT_DIR}/fastqc/\n\n\nMultiQC report\n${OUT_DIR}/multiqc/multiqc_day1_amplicon.html — open in a browser\n\n\n\n\n\n\n\nWhat is the average read length? Is this expected for V4 amplicons?\nAre there any samples with poor quality? How would you identify them?\nIs there significant adapter contamination?\nWhat does the GC content plot look like? Any outliers?"
   },
   {
-    "objectID": "week1/Introduction_to_Linux_Basics_II.html#brace-expansion",
-    "href": "week1/Introduction_to_Linux_Basics_II.html#brace-expansion",
-    "title": "ABI Summer School 2026 · WEEK 1: Linux / HPC",
-    "section": "Brace Expansion",
-    "text": "Brace Expansion\nTyping out long lists of files or repetitive folder names is prone to typos. Learn to expand them automatically.\n\n\nStep 1 : Creating bulk directories\nQ1: From the project root, create four directories inside results/ at once using brace expansion: fastqc, trimmomatic, bwa, and gatk.\n\n\n\n\n\n\nNoteShow answer\n\n\n\n\n\nmkdir -p results/{fastqc,trimmomatic,bwa,gatk}\n\nTip: Do not put spaces after the commas in brace expansion! {a,b} works, {a, b} does not.\n\n\n\n\n\n\n\nStep 2 : Creating sequential files\nQ1: Create five empty log files in logs/ named run_day_1.log through run_day_5.log using brace expansion.\n\n\n\n\n\n\nNoteShow answer\n\n\n\n\n\ntouch logs/run_day_{1..5}.log\n\n\n\n\n\n\nStep 3 : The backup shortcut\nA quick trick to make backups without typing a filename twice.\nQ1: Navigate to raw_data/. Copy sample_manifest.tsv to a new file called sample_manifest.tsv.backup using the {,.backup} trick.\n\n\n\n\n\n\nNoteShow answer\n\n\n\n\n\ncd ../raw_data\ncp sample_manifest.tsv{,.backup}\n\nThis expands to cp sample_manifest.tsv sample_manifest.tsv.backup. It works because the first item in the brace is completely empty!"
-  },
-  {
-    "objectID": "week1/Introduction_to_Linux_Basics_II.html#the-power-of-pipes",
-    "href": "week1/Introduction_to_Linux_Basics_II.html#the-power-of-pipes",
-    "title": "ABI Summer School 2026 · WEEK 1: Linux / HPC",
-    "section": "The Power of Pipes (|)",
-    "text": "The Power of Pipes (|)\nPrograms in Linux are designed to do one thing well. The pipe operator (|) takes the standard output of one command and feeds it directly into the standard input of the next.\n\n\nStep 4 : Piping to grep, less and wc\nQ1: Go back to the project root. You want to view all lines in pipeline.log that contain the word WARNING. Use grep to find them, and pipe the output to less so you can scroll through them safely.\n\n\n\n\n\n\nNoteShow answer\n\n\n\n\n\ncd ..\ngrep \"WARNING\" logs/pipeline.log | less\n\n\n\nQ2: Navigate into variants/. Search for all lines in SAMPLE_001.vcf that DO NOT start with # (the data lines) using grep -v.\n\n\n\n\n\n\nNoteShow answer\n\n\n\n\n\ncd variants\ngrep -v \"^#\" SAMPLE_001.vcf\n\n^ inside grep means “starts with”.\n\n\n\n\nQ3: Pipe that output into another grep to find only the variants marked as PASS.\n\n\n\n\n\n\nNoteShow answer\n\n\n\n\n\ngrep -v \"^#\" SAMPLE_001.vcf | grep \"PASS\"\n\n\n\nQ4: Pipe that final output into wc -l to count exactly how many PASS variants this sample has.\n\n\n\n\n\n\nNoteShow answer\n\n\n\n\n\ngrep -v \"^#\" SAMPLE_001.vcf | grep \"PASS\" | wc -l"
-  },
-  {
-    "objectID": "week1/Introduction_to_Linux_Basics_II.html#advanced-combinations",
-    "href": "week1/Introduction_to_Linux_Basics_II.html#advanced-combinations",
-    "title": "ABI Summer School 2026 · WEEK 1: Linux / HPC",
-    "section": "Advanced Combinations",
-    "text": "Advanced Combinations\nPutting everything together into powerful one-liners.\n\n\nStep 6 : find + Pipes\nQ1: Go back to the project root. Use find to list all .fastq files anywhere in the project, and pipe the output to wc -l to count how many FASTQ files exist.\n\n\n\n\n\n\nNoteShow answer\n\n\n\n\n\ncd ..\nfind . -name \"*.fastq\" | wc -l\n\n\n\n\n\n\nStep 7 : Brace Expansion + Pipes\nQ1: From the project root, search for the sequence ATG across specifically SAMPLE_001.fastq, SAMPLE_002.fastq, and SAMPLE_003.fastq in the raw_data/ folder using brace expansion.\n\n\n\n\n\n\nNoteShow answer\n\n\n\n\n\ngrep \"ATG\" raw_data/SAMPLE_{001,002,003}.fastq\n\nAlternatively, raw_data/SAMPLE_00{1..3}.fastq also works!\n\n\n\n\nQ2: Pipe that search into wc -l to count how many total times ATG appears across all three files combined.\n\n\n\n\n\n\nNoteShow answer\n\n\n\n\n\ngrep \"ATG\" raw_data/SAMPLE_{001..003}.fastq | wc -l"
-  },
-  {
-    "objectID": "week1/Introduction_to_Linux_Basics_II.html#you-made-it",
-    "href": "week1/Introduction_to_Linux_Basics_II.html#you-made-it",
-    "title": "ABI Summer School 2026 · WEEK 1: Linux / HPC",
-    "section": "YOU MADE IT!",
-    "text": "YOU MADE IT!\nYou have mastered the pipe and the brace.\n\n\nCommands used today\n\n\n\nCategory\nCommands & operators\n\n\n\n\nBrace Expansion (Lists)\n{name1,name2,name3}\n\n\nBrace Expansion (Ranges)\n{1..5} · {a..z}\n\n\nBrace Expansion (Append)\n{,.bak}\n\n\nThe Pipe\n|\n\n\nViewing\nless\n\n\nCounting\nwc -l\n\n\nFiltering\ngrep · grep -v\n\n\nFinding\nfind -name\n\n\n\n\nABI Summer School 2026 · Week 1: Linux / HPC"
-  },
-  {
-    "objectID": "about.html#core-team",
-    "href": "about.html#core-team",
-    "title": "About",
-    "section": "Core Team",
-    "text": "Core Team\nVerena Ras — Training Coordination and Development\nShaun Aron — Training Coordination and Development\nMelek Chaouch — Training Coordination and Development\n\nAssisting team\nJorge Batista da Rocha - Site setup and training support"
-  },
-  {
-    "objectID": "about.html#license",
-    "href": "about.html#license",
-    "title": "About",
-    "section": "License",
-    "text": "License\nThis site and training content are released under the Creative Commons Attribution (CC BY)."
-  },
-  {
-    "objectID": "about.html#contact-community",
-    "href": "about.html#contact-community",
-    "title": "About",
-    "section": "Contact & Community",
-    "text": "Contact & Community\n\n📬 info@bioinformaticsinstitute.africa — for any questions."
-  },
-  {
-    "objectID": "week1/file-processing-awk.html",
-    "href": "week1/file-processing-awk.html",
-    "title": "File processing: Part 2 (using awk)",
+    "objectID": "week2/metagenomics/qc.html#purpose",
+    "href": "week2/metagenomics/qc.html#purpose",
+    "title": "Day 1 Practical — Part 1: Quality Control with FastQC & SeqKit",
     "section": "",
-    "text": "AWK is a programming language named after its three developers: Alfred Aho, Peter J Weinberger and Brian KernIghan. AWK is useful for processing text files and extracting data, particularly when a file is split into columns or delimited by a specific character (e.g. a tab, comma). The awk command/script reads a file line by line and splits each line into columns according to a delimiter character. The default output delimiter is a single space character.\nFor this tutorial, the workind directory will be the workshop1 directory within ABI_summer_school_project1.\n\n\nUse the awk command to print the first column of the SAMPLE_001.vcf file\nawk -F'\\t' '{print $1}' SAMPLE_001.vcf\nAlternatively:\nawk 'BEGIN {FS=\"\\t\"} {print $1}' SAMPLE_001.vcf   # Notice the difference in inner vs outer quotation marks\nIn case you want to skip the header row:\nawk 'BEGIN {FS=\"\\t\"} NR&gt;1 {print $1}' SAMPLE_001.vcf \nIn case you want to extract only the header row:\nawk 'NR==1 {print $0}' SAMPLE_001.vcf  \n\n\ne.g. extracting all contents of the file SAMPLE_001.vcf but skipping the record with position 1024:\nawk -F'\\t' '!/1024/ {print $0}' SAMPLE_001.vcf \nThis is also helpful when skipping multiple header lines:\nawk -F'\\t' '!/#/ {print $0}' SAMPLE_001.vcf \n\n\n\nExtract the first 5 columns and the 10th column in SAMPLE_001.vcf using awk\nawk 'BEGIN {FS=\"\\t\"} {print $1,$2,$3,$4,$5,$10}' SAMPLE_001.vcf\nNote that the delimiter in the output is now a single space character (the default for awk). How can we maintain tab as the delimiter?\n\nWhat if we do not want to write $1,$2,$3,$4,$5 in the print function above, how can we specify this range?\nawk 'BEGIN {FS=OFS=\"\\t\"} {for (i=1; i&lt;=5; i++) printf \"%s%s\", $i, OFS ; print $10}' SAMPLE_001.vcf\nPractice: Extract the first 8 columns in SAMPLE_001.vcf using awk; be sure to try both approaches above to specify the range of columns 1-8.\nApproach 1:\n\nApproach 2:\n\n\n\n\nConvert the delimiter of the file to a comma and save the output as SAMPLE_001.csv\n\n\n\n\nUse awk to determine the number of columns in SAMPLE_001.vcf\nawk -F'\\t' 'NR==1{print NF}' SAMPLE_001.vcf\n\n\n\nUse awk to extract records for participants from YRI in the file 1000G_2504_high_coverage.sequence.index.txt\nStep 1:\nDetermine the column number for POPULATION using sed and/or grep\n\nStep two:\nawk -F'\\t' '${col_number}==\"YRI\"' 1000G_2504_high_coverage.sequence.index.txt\nDetour: Compare with the sed approach"
+    "text": "Before any downstream analysis (denoising, assembly, taxonomic classification), raw sequencing reads must be inspected for quality, length distribution, and composition. This practical introduces two complementary QC tools:\n\nSeqKit — a fast command-line toolkit for FASTA/FASTQ manipulation and summary statistics\nFastQC / MultiQC — per-base quality visualisation and aggregated reporting across samples\n\nBy the end of this session you should be able to explain why a dataset does or doesn’t need trimming, and where to look for adapter contamination or low-quality tails."
   },
   {
-    "objectID": "week1/file-processing-awk.html#starter-commands-with-awk",
-    "href": "week1/file-processing-awk.html#starter-commands-with-awk",
-    "title": "File processing: Part 2 (using awk)",
+    "objectID": "week2/metagenomics/qc.html#setup",
+    "href": "week2/metagenomics/qc.html#setup",
+    "title": "Day 1 Practical — Part 1: Quality Control with FastQC & SeqKit",
     "section": "",
-    "text": "Use the awk command to print the first column of the SAMPLE_001.vcf file\nawk -F'\\t' '{print $1}' SAMPLE_001.vcf\nAlternatively:\nawk 'BEGIN {FS=\"\\t\"} {print $1}' SAMPLE_001.vcf   # Notice the difference in inner vs outer quotation marks\nIn case you want to skip the header row:\nawk 'BEGIN {FS=\"\\t\"} NR&gt;1 {print $1}' SAMPLE_001.vcf \nIn case you want to extract only the header row:\nawk 'NR==1 {print $0}' SAMPLE_001.vcf  \n\n\ne.g. extracting all contents of the file SAMPLE_001.vcf but skipping the record with position 1024:\nawk -F'\\t' '!/1024/ {print $0}' SAMPLE_001.vcf \nThis is also helpful when skipping multiple header lines:\nawk -F'\\t' '!/#/ {print $0}' SAMPLE_001.vcf \n\n\n\nExtract the first 5 columns and the 10th column in SAMPLE_001.vcf using awk\nawk 'BEGIN {FS=\"\\t\"} {print $1,$2,$3,$4,$5,$10}' SAMPLE_001.vcf\nNote that the delimiter in the output is now a single space character (the default for awk). How can we maintain tab as the delimiter?\n\nWhat if we do not want to write $1,$2,$3,$4,$5 in the print function above, how can we specify this range?\nawk 'BEGIN {FS=OFS=\"\\t\"} {for (i=1; i&lt;=5; i++) printf \"%s%s\", $i, OFS ; print $10}' SAMPLE_001.vcf\nPractice: Extract the first 8 columns in SAMPLE_001.vcf using awk; be sure to try both approaches above to specify the range of columns 1-8.\nApproach 1:\n\nApproach 2:\n\n\n\n\nConvert the delimiter of the file to a comma and save the output as SAMPLE_001.csv\n\n\n\n\nUse awk to determine the number of columns in SAMPLE_001.vcf\nawk -F'\\t' 'NR==1{print NF}' SAMPLE_001.vcf\n\n\n\nUse awk to extract records for participants from YRI in the file 1000G_2504_high_coverage.sequence.index.txt\nStep 1:\nDetermine the column number for POPULATION using sed and/or grep\n\nStep two:\nawk -F'\\t' '${col_number}==\"YRI\"' 1000G_2504_high_coverage.sequence.index.txt\nDetour: Compare with the sed approach"
+    "text": "set -euo pipefail\nset -euo pipefail makes the script stop immediately on any error (-e), treat unset variables as errors (-u), and fail if any command in a pipe fails (-o pipefail) — good practice for reproducible pipelines.\nDATA_DIR=\"data/amplicon/gut\"\nOUT_DIR=\"day1_results/qc\"\nTHREADS=4\nPaths and thread count are defined once at the top so they’re easy to adjust for a different dataset or machine."
   },
   {
-    "objectID": "week1/Introduction_to_Linux_Basics.html#you-made-it",
-    "href": "week1/Introduction_to_Linux_Basics.html#you-made-it",
-    "title": "ABI Summer School 2026 · WEEK 1: Linux / HPC",
-    "section": "YOU MADE IT!",
-    "text": "YOU MADE IT!\nYou made it through the entire project directory. The folder is organised, the data is interrogated, and the meeting is saved.\n\n\nCommands used today\n\n\n\n\n\n\n\nCategory\nCommands & options\n\n\n\n\nDownload & extract\nwget · unzip\n\n\nLocation\npwd\n\n\nNavigation\ncd · cd .. · cd ~ · cd -\n\n\nListing\nls -l · ls -lh · ls -1 · ls -t · ls -lt · ls -a · ls -lha · ls -R · ls -lhR\n\n\nViewing files\ncat · head -n · tail -n · less\n\n\nWildcards\n*.fastq · *.vcf · Pf* · *SAMPLE* · SAMPLE*.fastq\n\n\nCreating directories\nmkdir · mkdir -p\n\n\nCreating files\ntouch · nano\n\n\nCopying\ncp · cp -r · cp -i\n\n\nSymbolic links\nln -s\n\n\nMoving & renaming\nmv\n\n\nDeleting\nrm · rm -r\n\n\nSorting\nsort · sort -k · sort -r\n\n\nComparing\ncomm · comm -12 · comm -23 · comm -13\n\n\nJoining\njoin · join -a1\n\n\nFinding\nfind -name · find -type · find -size · find -mtime\n\n\nCounting\nwc -l\n\n\nSearching\ngrep · grep -c · grep -v · grep -vc · grep -n · grep -i · grep -r · grep -rn\n\n\nExtracting columns\ncut -f · cut -f1-4\n\n\nCombining files\npaste · paste -d\n\n\n\n\nABI Summer School 2026 · Week 1: Linux / HPC"
-  },
-  {
-    "objectID": "abisumschool26.html",
-    "href": "abisumschool26.html",
-    "title": "ABI Summer School 2026",
+    "objectID": "week2/metagenomics/qc.html#section-1-seqkit-exploring-your-fastq-files",
+    "href": "week2/metagenomics/qc.html#section-1-seqkit-exploring-your-fastq-files",
+    "title": "Day 1 Practical — Part 1: Quality Control with FastQC & SeqKit",
     "section": "",
-    "text": "The aim is to provide comprehensive training on bioinformatics computational resources, and domain-specific tools and workflows to improve participants’ proficiency in executing, interpreting, and communicating analyses for major bioinformatics studies, with a special focus on genomics."
+    "text": "seqkit stats --all --tabular --threads ${THREADS} ${DATA_DIR}/*.fastq.gz \\\n    &gt; ${OUT_DIR}/seqkit_stats.tsv\n\n--all reports extended stats (min/avg/max length, N50, GC%, Q20/Q30 rates) rather than just read counts.\n--tabular outputs machine-readable TSV instead of a formatted table — useful for downstream parsing in R or Excel.\nRunning this across *.fastq.gz in one call lets SeqKit process all samples in a single pass rather than looping manually.\n\nWhat to look for: number of reads per sample (are libraries balanced?), average read length (does it match the expected amplicon/read length?), and Q20/Q30 percentages (a rough proxy for overall quality before you even open FastQC).\n\n\n\nseqkit fx2tab --name --gc ${DATA_DIR}/*.fastq.gz | \\\n    awk '{sum+=$3; n++} END {printf \"Mean GC: %.1f%%\\n\", sum/n}'\nfx2tab converts FASTQ/FASTA records to a simple tabular format; here --gc adds a GC% column per read. The awk command averages that column across all reads to give a single mean GC% for the dataset — a quick sanity check (e.g. gut 16S amplicons are typically in the 45–55% GC range; strong deviations can indicate contamination or the wrong reference).\n\n\n\nFIRST_SAMPLE=$(ls ${DATA_DIR}/*.fastq.gz | head -1)\nseqkit fx2tab --name --length ${FIRST_SAMPLE} | \\\n    awk '{len[$2]++} END {for (l in len) print l\"\\t\"len[l]}' | \\\n    sort -n | \\\n    awk '{printf \"Length %s bp: %d reads\\n\", $1, $2}'\nThis builds a histogram of read lengths for one representative sample: fx2tab --length adds a length column, the first awk tallies how many reads fall at each length, and the final sort/awk pair prints it in ascending, human-readable order. For amplicon data you generally expect a tight peak at the expected amplicon length (e.g. ~250 bp for V4 16S); a broad or bimodal distribution can flag primer-trimming issues.\n\n\n\nseqkit sample --proportion 0.1 --rand-seed 42 ${FIRST_SAMPLE} \\\n    --out-file ${OUT_DIR}/demo_sample_sub.fastq.gz\n--proportion 0.1 randomly keeps ~10% of reads; --rand-seed 42 makes the subsampling reproducible. This is purely a teaching convenience to make FastQC run quickly during the course — in a real analysis you would run FastQC on the full file."
   },
   {
-    "objectID": "abisumschool26.html#about-the-event",
-    "href": "abisumschool26.html#about-the-event",
-    "title": "ABI Summer School 2026",
+    "objectID": "week2/metagenomics/qc.html#section-2-fastqc-per-sample-quality-reports",
+    "href": "week2/metagenomics/qc.html#section-2-fastqc-per-sample-quality-reports",
+    "title": "Day 1 Practical — Part 1: Quality Control with FastQC & SeqKit",
     "section": "",
-    "text": "The aim is to provide comprehensive training on bioinformatics computational resources, and domain-specific tools and workflows to improve participants’ proficiency in executing, interpreting, and communicating analyses for major bioinformatics studies, with a special focus on genomics."
+    "text": "fastqc --outdir ${OUT_DIR}/fastqc --threads ${THREADS} --quiet ${DATA_DIR}/*.fastq.gz\nFastQC generates an HTML report per FASTQ file covering per-base quality scores, GC content distribution, sequence duplication levels, adapter content, and overrepresented sequences. --quiet suppresses per-file progress messages so the log stays readable when processing many samples at once."
   },
   {
-    "objectID": "abisumschool26.html#course-content",
-    "href": "abisumschool26.html#course-content",
-    "title": "ABI Summer School 2026",
-    "section": "Course Content:",
-    "text": "Course Content:\n\nWeek 1:\n\nLinux\n\nIntroduction to Linux Basics\nIntroduction to Linux Basics II\nFile processing with sed\nFile processing with awk\n\n\n\nR coding content\n\n\nIntro to NGS\n\n\n\n\nWeek 2\n\nR/Biology Streams\n\n\nHuman Genomics\n\n\nPathogen Genomics\n\n\nMetabolomics"
+    "objectID": "week2/metagenomics/qc.html#section-3-multiqc-aggregating-fastqc-reports",
+    "href": "week2/metagenomics/qc.html#section-3-multiqc-aggregating-fastqc-reports",
+    "title": "Day 1 Practical — Part 1: Quality Control with FastQC & SeqKit",
+    "section": "",
+    "text": "multiqc ${OUT_DIR}/fastqc/ --outdir ${OUT_DIR}/multiqc \\\n    --filename \"multiqc_day1_amplicon\" --quiet\nMultiQC scans a directory of tool outputs (here, all the FastQC reports) and produces a single interactive HTML dashboard. This is essential once you have more than a handful of samples — comparing 20 separate FastQC pages by eye doesn’t scale, but MultiQC overlays all per-base quality curves and duplication rates on one page."
   },
   {
-    "objectID": "abisumschool26.html#trainer-info",
-    "href": "abisumschool26.html#trainer-info",
-    "title": "ABI Summer School 2026",
-    "section": "Trainer Info",
-    "text": "Trainer Info\n\n\n\n\n\n\n\n\n\nName\nAffiliation\nRole\nStream\n\n\n\n\nGloria Nakabiri\nAfrican Center of Excellence in Bioinformatics and Data Intensive Sciences\nLead trainer\nUnix\n\n\nPeter van Heusden\nSouth African National Bioinformatics Institute (SANBI)\nLead trainer\nR\n\n\nIan Wasukira\nAfrican Center of Excellence in Bioinformatics and Data-Intensive Sciences\nLead Trainer\nUnix/HPC\n\n\nRonald Galiwango\nAfrican Center of Excellence in Bioinformatics and Data-Intensive Sciences\nLead trainer\nR\n\n\nMusalula Sinkala\nUniversity of Cape Town\nLead trainer\nHuman Genomics\n\n\nDayna Adrienne Croock\nStellenbosch University\nLead trainer\nHuman Genomics\n\n\nJohn Juma\nInternational Livestock Research Institute (ILRI)\nLead trainer\nPathogen Genomics\n\n\nDamien Tully\nMRC/UVRI & LSHTM Uganda Research Unit\nLead Trainer\nPathogen Genomics\n\n\nAlfred Ssekagiri\nUganda Virus Research Institute\nLead trainer\nMetagenomics\n\n\nYohannes Gedamu Gebre\nBio and Emerging Technology Institute (BETin); former Ethiopia Biotechnology Institute (EBTi)\nCo-trainer\nUnix/R/Pathogen Genomics\n\n\nKeaghan Brown\nPHA4GE\nCo-trainer\nPathogen Genomics\n\n\nAmadou Diallo\nPioneer Bio-Analytics\nCo-trainer\nMetagenomics\n\n\nEphifania Geza\nUniversity of Cape Town\nLead trainer\nMetagenomics\n\n\nPatricia Nabisubi\nThe African Centre of Excellence in Bioinformatics and Data Intensive Sciences\nCo-trainer\nUnix/R/NGS basics\n\n\nTrushar Shah\nInternational Livestock Research Institute (Kenya)\nCo-trainer\nHuman Genomics/Unix\n\n\nDaria Sokolova\nEuropean Bioinformatics Institute (EBI)\nCore organiser/support\n\n\n\nGrace Kebirungi\nAfrican Center of Excellence in Bioinformatics and Data-Intensive Sciences\nCore organiser/support\n\n\n\nDavid Twesigomwe\nMRC/UVRI & LSHTM Uganda Research Unit\nCore organiser/support\n\n\n\nVerena Ras\nAfrican Bioinformatics Institute / University of Cape Town\nCore organiser/support\n\n\n\nShaun Aron\nSydney Brenner Institute for Molecular Bioscience (SBIMB) / University of Witwatersrand\nCore organiser/support\n\n\n\nMelek Chaouch\nInstitut Pasteur, Tunis\nCore organiser/support\n\n\n\nJorge da Rocha\nEuropean Bioinformatics Institute (EBI)\nCore organiser/support"
+    "objectID": "week2/metagenomics/qc.html#section-4-seqkit-advanced-filtering-and-manipulation",
+    "href": "week2/metagenomics/qc.html#section-4-seqkit-advanced-filtering-and-manipulation",
+    "title": "Day 1 Practical — Part 1: Quality Control with FastQC & SeqKit",
+    "section": "",
+    "text": "seqkit seq --min-len 200 ${FIRST_SAMPLE} --out-file ${OUT_DIR}/filtered_min200.fastq.gz\nseqkit seq is a general sequence-filtering command; --min-len 200 discards any read shorter than 200 bp. Short fragments are often adapter dimers or degraded reads that add noise to downstream clustering/denoising.\n\n\n\nORIG=$(seqkit stats ${FIRST_SAMPLE} | awk 'NR==2{print $4}')\nFILT=$(seqkit stats ${OUT_DIR}/filtered_min200.fastq.gz | awk 'NR==2{print $4}')\necho \"Original reads: ${ORIG}\"\necho \"After length filter (≥200 bp): ${FILT}\"\nseqkit stats without --tabular prints a formatted table; column 4 (NR==2, i.e. the first data row) is the read count. Comparing before/after gives a quick sense of how much data the length filter removes.\n\n\n\nseqkit fq2fa ${FIRST_SAMPLE} --out-file ${OUT_DIR}/demo_sample.fasta.gz\nSome downstream tools (e.g. certain taxonomy classifiers, BLAST-based searches) require FASTA rather than FASTQ input, since they don’t use quality scores. fq2fa strips the quality lines and keeps only sequence + header."
+  },
+  {
+    "objectID": "week2/metagenomics/qc.html#key-outputs",
+    "href": "week2/metagenomics/qc.html#key-outputs",
+    "title": "Day 1 Practical — Part 1: Quality Control with FastQC & SeqKit",
+    "section": "",
+    "text": "Output\nPath\n\n\n\n\nSeqKit stats\n${OUT_DIR}/seqkit_stats.tsv\n\n\nFastQC reports\n${OUT_DIR}/fastqc/\n\n\nMultiQC report\n${OUT_DIR}/multiqc/multiqc_day1_amplicon.html — open in a browser"
+  },
+  {
+    "objectID": "week2/metagenomics/qc.html#discussion-questions",
+    "href": "week2/metagenomics/qc.html#discussion-questions",
+    "title": "Day 1 Practical — Part 1: Quality Control with FastQC & SeqKit",
+    "section": "",
+    "text": "What is the average read length? Is this expected for V4 amplicons?\nAre there any samples with poor quality? How would you identify them?\nIs there significant adapter contamination?\nWhat does the GC content plot look like? Any outliers?"
   },
   {
     "objectID": "projects.html",
