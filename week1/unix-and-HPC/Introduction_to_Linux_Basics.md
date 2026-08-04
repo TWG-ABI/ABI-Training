@@ -1,6 +1,6 @@
 <div align="center">
 
-![ABI Summer School 2026 · WEEK 1: Linux / HPC](week%20one%20banner%20image.png)
+![ABI Summer School 2026 · WEEK 1: Linux / HPC](week1/unix-and-HPC/linux banner image.png)
 
 </div>
 
