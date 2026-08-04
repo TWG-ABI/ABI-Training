@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="week1/unix-and-HPC/linux%20banner%20image.png" alt="ABI Summer School 2026 · WEEK 1: Linux / HPC" width="100%" />
+  <img src="linux_banner_image.png" alt="ABI Summer School 2026 · WEEK 1: Linux / HPC" width="100%" />
 </p>
 
 ---
