@@ -1,6 +1,6 @@
 <div align="center">
 
-# ABI Summer School 2026 · WEEK 1: Linux / HPC
+![ABI Summer School 2026 · WEEK 1: Linux / HPC](https://github.com/TWG-ABI/ABI-Training/blob/main/week1/unix-and-HPC/linux%20banner%20image.png)
 
 </div>
 
