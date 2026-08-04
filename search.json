@@ -315,71 +315,43 @@
     "text": "Alpha diversity: Are Shannon diversity values significantly different between groups? What does this tell us biologically?\nBeta diversity: Do the samples cluster by group in the PCoA? What percentage of variance do PC1 and PC2 explain?\nPERMANOVA: Is the grouping factor a significant driver of community composition (p &lt; 0.05)? What is the R² (effect size)?\nComposition: What are the top 3 phyla? Does the ratio of Firmicutes to Bacteroidetes differ between groups?\nDifferential abundance: Which taxa are most significantly enriched/depleted? What is their potential biological role?"
   },
   {
-    "objectID": "week1/Introduction_to_Linux_Basics.html#you-made-it",
-    "href": "week1/Introduction_to_Linux_Basics.html#you-made-it",
+    "objectID": "week1/base.html",
+    "href": "week1/base.html",
+    "title": "ABI-ITWG",
+    "section": "",
+    "text": "a base for week 1 content"
+  },
+  {
+    "objectID": "week1/unix-and-HPC/Introduction_to_Linux_Basics.html#you-made-it",
+    "href": "week1/unix-and-HPC/Introduction_to_Linux_Basics.html#you-made-it",
     "title": "ABI Summer School 2026 · WEEK 1: Linux / HPC",
     "section": "YOU MADE IT!",
     "text": "YOU MADE IT!\nYou made it through the entire project directory. The folder is organised, the data is interrogated, and the meeting is saved.\n\n\nCommands used today\n\n\n\n\n\n\n\nCategory\nCommands & options\n\n\n\n\nDownload & extract\nwget · unzip\n\n\nLocation\npwd\n\n\nNavigation\ncd · cd .. · cd ~ · cd -\n\n\nListing\nls -l · ls -lh · ls -1 · ls -t · ls -lt · ls -a · ls -lha · ls -R · ls -lhR\n\n\nViewing files\ncat · head -n · tail -n · less\n\n\nWildcards\n*.fastq · *.vcf · Pf* · *SAMPLE* · SAMPLE*.fastq\n\n\nCreating directories\nmkdir · mkdir -p\n\n\nCreating files\ntouch · nano\n\n\nCopying\ncp · cp -r · cp -i\n\n\nSymbolic links\nln -s\n\n\nMoving & renaming\nmv\n\n\nDeleting\nrm · rm -r\n\n\nSorting\nsort · sort -k · sort -r\n\n\nComparing\ncomm · comm -12 · comm -23 · comm -13\n\n\nJoining\njoin · join -a1\n\n\nFinding\nfind -name · find -type · find -size · find -mtime\n\n\nCounting\nwc -l\n\n\nSearching\ngrep · grep -c · grep -v · grep -vc · grep -n · grep -i · grep -r · grep -rn\n\n\nExtracting columns\ncut -f · cut -f1-4\n\n\nCombining files\npaste · paste -d\n\n\n\n\nABI Summer School 2026 · Week 1: Linux / HPC"
   },
   {
-    "objectID": "week1/unix-and-HPC/file-processing-sed.html",
-    "href": "week1/unix-and-HPC/file-processing-sed.html",
-    "title": "File processing: Part 1 (using sed)",
-    "section": "",
-    "text": "sed allows us to automate pattern substitutions (usually line-by-line). The name sed is an abbreviation of stream editor.\nChange to the workshop1 directory within ABI_summer_school_project1 as it will be your working directory for this tutorial.\n\n\nReplace the fasta pattern in each line of the file sample_manifest2.tsv with fastq\nsed 's/fasta/fastq/' sample_manifest2.tsv\nTo save the output to a new file:\nsed 's/fasta/fastq/' sample_manifest2.tsv &gt; sample_manifest2_fastq.tsv\nTo make the replacement within the primary file (use with caution):\nsed -i 's/fasta/fastq/' sample_manifest2.tsv\nNotice that the fasta pattern after Plasmodium_falciparum_ was not replaced by the previous command. Why is this?\nWrite the sed command(s) to replace both occurrences of fasta in each line of sample_manifest2.tsv with fastq. Save the output to sample_manifest2_fastq_2.tsv\n\nWith the same syntax, sed can be used to remove unwanted patterns within each line of a given file. Use sed to remove all occurrences of fastq in the sample_manifest2_fastq_2.tsv file. Save the output to sample_manifest3.tsv\n\nExercise: Use sed to replace the ftp://ftp.sra.ebi.ac.uk/vol1/run/ERR323/ string in each line of the file named file_paths.txt.\nsed can also be used to replace patterns shared across files simultaneously. As an example, replace Kampala with Entebbe in all the .tsv files currently in workshop1\nsed -i 's/Kampala/Entebbe/g' *.tsv\nUsing similar syntax for replacing patterns, sed can be used to change file delimiters/separators. As a test case, use sed to convert sample_manifest3.tsv into a .csv file named sample_manifest3.csv.\n\nTry converting sample_manifest3.csv into a space-delimited file.\n\n\n\n\nSometimes, it’s helpful to replace patterns only in lines that meet a certain condition. As a test case, change the read_length for the Kisumu samples in sample_manifest3.tsv from 150 to 100.\nsed '/Kisumu/s/150/100/' sample_manifest3.tsv\n\n\n\nAdd the model numbers of the Illumina_NextSeq and Illumina_MiSeq platforms so that they read Illumina_NextSeq_2000 and Illumina_MiSeq_100, respectively.\n\nAdd an extra column (at the end) to the contents of sample_manifest3.tsv with the heading file_size and the column values all .\n\nAdd a project_id column (make it the first column) to sample_manifest3.tsv. Use Pf_AMR as the values for each row under this column.\n\n\n\n\n\n\nsed -n '1p' sample_manifest3.tsv \n\n\n\nsed -n '/PATTERN/p' file.txt  \nExample:\nsed -n '/TRUE/p' sample_manifest3.tsv \n\n\n\n\n\n\n\nUsing file1.txt as a testcase, remove all empty lines.\n\nUsing a similar syntax, sed can be used as an alternative to grep to remove lines containing certain patterns. Use sed to remove the header lines (only the ones starting with ##) from the SAMPLE_001.vcf file. Save the output to a new file SAMPLE_001_v2.vcf so that we can reuse the SAMPLE_001.vcf file, if needed.\n\nUse sed to remove empty lines from file1.txt and the line containing the heading i.e. sample_id, in one command.\n\n\n\n\nUsing sample_manifest3.tsv as a test case, extract the metadata lines of samples 004 through 008 i.e. from line containing SAMPLE_004 to the one containing SAMPLE_008.\nsed -n '/SAMPLE_004/,/SAMPLE_008/p' sample_manifest3.tsv"
-  },
-  {
-    "objectID": "week1/unix-and-HPC/file-processing-sed.html#replacing-simple-patterns-with-sed",
-    "href": "week1/unix-and-HPC/file-processing-sed.html#replacing-simple-patterns-with-sed",
-    "title": "File processing: Part 1 (using sed)",
-    "section": "",
-    "text": "Replace the fasta pattern in each line of the file sample_manifest2.tsv with fastq\nsed 's/fasta/fastq/' sample_manifest2.tsv\nTo save the output to a new file:\nsed 's/fasta/fastq/' sample_manifest2.tsv &gt; sample_manifest2_fastq.tsv\nTo make the replacement within the primary file (use with caution):\nsed -i 's/fasta/fastq/' sample_manifest2.tsv\nNotice that the fasta pattern after Plasmodium_falciparum_ was not replaced by the previous command. Why is this?\nWrite the sed command(s) to replace both occurrences of fasta in each line of sample_manifest2.tsv with fastq. Save the output to sample_manifest2_fastq_2.tsv\n\nWith the same syntax, sed can be used to remove unwanted patterns within each line of a given file. Use sed to remove all occurrences of fastq in the sample_manifest2_fastq_2.tsv file. Save the output to sample_manifest3.tsv\n\nExercise: Use sed to replace the ftp://ftp.sra.ebi.ac.uk/vol1/run/ERR323/ string in each line of the file named file_paths.txt.\nsed can also be used to replace patterns shared across files simultaneously. As an example, replace Kampala with Entebbe in all the .tsv files currently in workshop1\nsed -i 's/Kampala/Entebbe/g' *.tsv\nUsing similar syntax for replacing patterns, sed can be used to change file delimiters/separators. As a test case, use sed to convert sample_manifest3.tsv into a .csv file named sample_manifest3.csv.\n\nTry converting sample_manifest3.csv into a space-delimited file."
-  },
-  {
-    "objectID": "week1/unix-and-HPC/file-processing-sed.html#conditional-substitutions-with-sed",
-    "href": "week1/unix-and-HPC/file-processing-sed.html#conditional-substitutions-with-sed",
-    "title": "File processing: Part 1 (using sed)",
-    "section": "",
-    "text": "Sometimes, it’s helpful to replace patterns only in lines that meet a certain condition. As a test case, change the read_length for the Kisumu samples in sample_manifest3.tsv from 150 to 100.\nsed '/Kisumu/s/150/100/' sample_manifest3.tsv"
-  },
-  {
-    "objectID": "week1/unix-and-HPC/file-processing-sed.html#adding-simple-patterns-to-a-file-using-sed",
-    "href": "week1/unix-and-HPC/file-processing-sed.html#adding-simple-patterns-to-a-file-using-sed",
-    "title": "File processing: Part 1 (using sed)",
-    "section": "",
-    "text": "Add the model numbers of the Illumina_NextSeq and Illumina_MiSeq platforms so that they read Illumina_NextSeq_2000 and Illumina_MiSeq_100, respectively.\n\nAdd an extra column (at the end) to the contents of sample_manifest3.tsv with the heading file_size and the column values all .\n\nAdd a project_id column (make it the first column) to sample_manifest3.tsv. Use Pf_AMR as the values for each row under this column."
-  },
-  {
-    "objectID": "week1/unix-and-HPC/file-processing-sed.html#other-use-cases-of-sed-in-cleaningpre-processing-files",
-    "href": "week1/unix-and-HPC/file-processing-sed.html#other-use-cases-of-sed-in-cleaningpre-processing-files",
-    "title": "File processing: Part 1 (using sed)",
-    "section": "",
-    "text": "sed -n '1p' sample_manifest3.tsv \n\n\n\nsed -n '/PATTERN/p' file.txt  \nExample:\nsed -n '/TRUE/p' sample_manifest3.tsv \n\n\n\n\n\n\n\nUsing file1.txt as a testcase, remove all empty lines.\n\nUsing a similar syntax, sed can be used as an alternative to grep to remove lines containing certain patterns. Use sed to remove the header lines (only the ones starting with ##) from the SAMPLE_001.vcf file. Save the output to a new file SAMPLE_001_v2.vcf so that we can reuse the SAMPLE_001.vcf file, if needed.\n\nUse sed to remove empty lines from file1.txt and the line containing the heading i.e. sample_id, in one command.\n\n\n\n\nUsing sample_manifest3.tsv as a test case, extract the metadata lines of samples 004 through 008 i.e. from line containing SAMPLE_004 to the one containing SAMPLE_008.\nsed -n '/SAMPLE_004/,/SAMPLE_008/p' sample_manifest3.tsv"
-  },
-  {
-    "objectID": "week1/Introduction_to_Linux_Basics_II.html#brace-expansion",
-    "href": "week1/Introduction_to_Linux_Basics_II.html#brace-expansion",
+    "objectID": "week1/unix-and-HPC/Introduction_to_Linux_Basics_II.html#brace-expansion",
+    "href": "week1/unix-and-HPC/Introduction_to_Linux_Basics_II.html#brace-expansion",
     "title": "ABI Summer School 2026 · WEEK 1: Linux / HPC",
     "section": "Brace Expansion",
     "text": "Brace Expansion\nTyping out long lists of files or repetitive folder names is prone to typos. Learn to expand them automatically.\n\n\nStep 1 : Creating bulk directories\nQ1: From the project root, create four directories inside results/ at once using brace expansion: fastqc, trimmomatic, bwa, and gatk.\n\n\n\n\n\n\nNoteShow answer\n\n\n\n\n\nmkdir -p results/{fastqc,trimmomatic,bwa,gatk}\n\nTip: Do not put spaces after the commas in brace expansion! {a,b} works, {a, b} does not.\n\n\n\n\n\n\n\nStep 2 : Creating sequential files\nQ1: Create five empty log files in logs/ named run_day_1.log through run_day_5.log using brace expansion.\n\n\n\n\n\n\nNoteShow answer\n\n\n\n\n\ntouch logs/run_day_{1..5}.log\n\n\n\n\n\n\nStep 3 : The backup shortcut\nA quick trick to make backups without typing a filename twice.\nQ1: Navigate to raw_data/. Copy sample_manifest.tsv to a new file called sample_manifest.tsv.backup using the {,.backup} trick.\n\n\n\n\n\n\nNoteShow answer\n\n\n\n\n\ncd ../raw_data\ncp sample_manifest.tsv{,.backup}\n\nThis expands to cp sample_manifest.tsv sample_manifest.tsv.backup. It works because the first item in the brace is completely empty!"
   },
   {
-    "objectID": "week1/Introduction_to_Linux_Basics_II.html#the-power-of-pipes",
-    "href": "week1/Introduction_to_Linux_Basics_II.html#the-power-of-pipes",
+    "objectID": "week1/unix-and-HPC/Introduction_to_Linux_Basics_II.html#the-power-of-pipes",
+    "href": "week1/unix-and-HPC/Introduction_to_Linux_Basics_II.html#the-power-of-pipes",
     "title": "ABI Summer School 2026 · WEEK 1: Linux / HPC",
     "section": "The Power of Pipes (|)",
     "text": "The Power of Pipes (|)\nPrograms in Linux are designed to do one thing well. The pipe operator (|) takes the standard output of one command and feeds it directly into the standard input of the next.\n\n\nStep 4 : Piping to grep, less and wc\nQ1: Go back to the project root. You want to view all lines in pipeline.log that contain the word WARNING. Use grep to find them, and pipe the output to less so you can scroll through them safely.\n\n\n\n\n\n\nNoteShow answer\n\n\n\n\n\ncd ..\ngrep \"WARNING\" logs/pipeline.log | less\n\n\n\nQ2: Navigate into variants/. Search for all lines in SAMPLE_001.vcf that DO NOT start with # (the data lines) using grep -v.\n\n\n\n\n\n\nNoteShow answer\n\n\n\n\n\ncd variants\ngrep -v \"^#\" SAMPLE_001.vcf\n\n^ inside grep means “starts with”.\n\n\n\n\nQ3: Pipe that output into another grep to find only the variants marked as PASS.\n\n\n\n\n\n\nNoteShow answer\n\n\n\n\n\ngrep -v \"^#\" SAMPLE_001.vcf | grep \"PASS\"\n\n\n\nQ4: Pipe that final output into wc -l to count exactly how many PASS variants this sample has.\n\n\n\n\n\n\nNoteShow answer\n\n\n\n\n\ngrep -v \"^#\" SAMPLE_001.vcf | grep \"PASS\" | wc -l"
   },
   {
-    "objectID": "week1/Introduction_to_Linux_Basics_II.html#advanced-combinations",
-    "href": "week1/Introduction_to_Linux_Basics_II.html#advanced-combinations",
+    "objectID": "week1/unix-and-HPC/Introduction_to_Linux_Basics_II.html#advanced-combinations",
+    "href": "week1/unix-and-HPC/Introduction_to_Linux_Basics_II.html#advanced-combinations",
     "title": "ABI Summer School 2026 · WEEK 1: Linux / HPC",
     "section": "Advanced Combinations",
     "text": "Advanced Combinations\nPutting everything together into powerful one-liners.\n\n\nStep 6 : find + Pipes\nQ1: Go back to the project root. Use find to list all .fastq files anywhere in the project, and pipe the output to wc -l to count how many FASTQ files exist.\n\n\n\n\n\n\nNoteShow answer\n\n\n\n\n\ncd ..\nfind . -name \"*.fastq\" | wc -l\n\n\n\n\n\n\nStep 7 : Brace Expansion + Pipes\nQ1: From the project root, search for the sequence ATG across specifically SAMPLE_001.fastq, SAMPLE_002.fastq, and SAMPLE_003.fastq in the raw_data/ folder using brace expansion.\n\n\n\n\n\n\nNoteShow answer\n\n\n\n\n\ngrep \"ATG\" raw_data/SAMPLE_{001,002,003}.fastq\n\nAlternatively, raw_data/SAMPLE_00{1..3}.fastq also works!\n\n\n\n\nQ2: Pipe that search into wc -l to count how many total times ATG appears across all three files combined.\n\n\n\n\n\n\nNoteShow answer\n\n\n\n\n\ngrep \"ATG\" raw_data/SAMPLE_{001..003}.fastq | wc -l"
   },
   {
-    "objectID": "week1/Introduction_to_Linux_Basics_II.html#you-made-it",
-    "href": "week1/Introduction_to_Linux_Basics_II.html#you-made-it",
+    "objectID": "week1/unix-and-HPC/Introduction_to_Linux_Basics_II.html#you-made-it",
+    "href": "week1/unix-and-HPC/Introduction_to_Linux_Basics_II.html#you-made-it",
     "title": "ABI Summer School 2026 · WEEK 1: Linux / HPC",
     "section": "YOU MADE IT!",
     "text": "YOU MADE IT!\nYou have mastered the pipe and the brace.\n\n\nCommands used today\n\n\n\nCategory\nCommands & operators\n\n\n\n\nBrace Expansion (Lists)\n{name1,name2,name3}\n\n\nBrace Expansion (Ranges)\n{1..5} · {a..z}\n\n\nBrace Expansion (Append)\n{,.bak}\n\n\nThe Pipe\n|\n\n\nViewing\nless\n\n\nCounting\nwc -l\n\n\nFiltering\ngrep · grep -v\n\n\nFinding\nfind -name\n\n\n\n\nABI Summer School 2026 · Week 1: Linux / HPC"
@@ -420,11 +392,39 @@
     "text": "Use the awk command to print the first column of the SAMPLE_001.vcf file\nawk -F'\\t' '{print $1}' SAMPLE_001.vcf\nAlternatively:\nawk 'BEGIN {FS=\"\\t\"} {print $1}' SAMPLE_001.vcf   # Notice the difference in inner vs outer quotation marks\nIn case you want to skip the header row:\nawk 'BEGIN {FS=\"\\t\"} NR&gt;1 {print $1}' SAMPLE_001.vcf \nIn case you want to extract only the header row:\nawk 'NR==1 {print $0}' SAMPLE_001.vcf  \n\n\ne.g. extracting all contents of the file SAMPLE_001.vcf but skipping the record with position 1024:\nawk -F'\\t' '!/1024/ {print $0}' SAMPLE_001.vcf \nThis is also helpful when skipping multiple header lines:\nawk -F'\\t' '!/#/ {print $0}' SAMPLE_001.vcf \n\n\n\nExtract the first 5 columns and the 10th column in SAMPLE_001.vcf using awk\nawk 'BEGIN {FS=\"\\t\"} {print $1,$2,$3,$4,$5,$10}' SAMPLE_001.vcf\nNote that the delimiter in the output is now a single space character (the default for awk). How can we maintain tab as the delimiter?\n\nWhat if we do not want to write $1,$2,$3,$4,$5 in the print function above, how can we specify this range?\nawk 'BEGIN {FS=OFS=\"\\t\"} {for (i=1; i&lt;=5; i++) printf \"%s%s\", $i, OFS ; print $10}' SAMPLE_001.vcf\nPractice: Extract the first 8 columns in SAMPLE_001.vcf using awk; be sure to try both approaches above to specify the range of columns 1-8.\nApproach 1:\n\nApproach 2:\n\n\n\n\nConvert the delimiter of the file to a comma and save the output as SAMPLE_001.csv\n\n\n\n\nUse awk to determine the number of columns in SAMPLE_001.vcf\nawk -F'\\t' 'NR==1{print NF}' SAMPLE_001.vcf\n\n\n\nUse awk to extract records for participants from YRI in the file 1000G_2504_high_coverage.sequence.index.txt\nStep 1:\nDetermine the column number for POPULATION using sed and/or grep\n\nStep two:\nawk -F'\\t' '${col_number}==\"YRI\"' 1000G_2504_high_coverage.sequence.index.txt\nDetour: Compare with the sed approach"
   },
   {
-    "objectID": "week1/base.html",
-    "href": "week1/base.html",
-    "title": "ABI-ITWG",
+    "objectID": "week1/unix-and-HPC/file-processing-sed.html",
+    "href": "week1/unix-and-HPC/file-processing-sed.html",
+    "title": "File processing: Part 1 (using sed)",
     "section": "",
-    "text": "a base for week 1 content"
+    "text": "sed allows us to automate pattern substitutions (usually line-by-line). The name sed is an abbreviation of stream editor.\nChange to the workshop1 directory within ABI_summer_school_project1 as it will be your working directory for this tutorial.\n\n\nReplace the fasta pattern in each line of the file sample_manifest2.tsv with fastq\nsed 's/fasta/fastq/' sample_manifest2.tsv\nTo save the output to a new file:\nsed 's/fasta/fastq/' sample_manifest2.tsv &gt; sample_manifest2_fastq.tsv\nTo make the replacement within the primary file (use with caution):\nsed -i 's/fasta/fastq/' sample_manifest2.tsv\nNotice that the fasta pattern after Plasmodium_falciparum_ was not replaced by the previous command. Why is this?\nWrite the sed command(s) to replace both occurrences of fasta in each line of sample_manifest2.tsv with fastq. Save the output to sample_manifest2_fastq_2.tsv\n\nWith the same syntax, sed can be used to remove unwanted patterns within each line of a given file. Use sed to remove all occurrences of fastq in the sample_manifest2_fastq_2.tsv file. Save the output to sample_manifest3.tsv\n\nExercise: Use sed to replace the ftp://ftp.sra.ebi.ac.uk/vol1/run/ERR323/ string in each line of the file named file_paths.txt.\nsed can also be used to replace patterns shared across files simultaneously. As an example, replace Kampala with Entebbe in all the .tsv files currently in workshop1\nsed -i 's/Kampala/Entebbe/g' *.tsv\nUsing similar syntax for replacing patterns, sed can be used to change file delimiters/separators. As a test case, use sed to convert sample_manifest3.tsv into a .csv file named sample_manifest3.csv.\n\nTry converting sample_manifest3.csv into a space-delimited file.\n\n\n\n\nSometimes, it’s helpful to replace patterns only in lines that meet a certain condition. As a test case, change the read_length for the Kisumu samples in sample_manifest3.tsv from 150 to 100.\nsed '/Kisumu/s/150/100/' sample_manifest3.tsv\n\n\n\nAdd the model numbers of the Illumina_NextSeq and Illumina_MiSeq platforms so that they read Illumina_NextSeq_2000 and Illumina_MiSeq_100, respectively.\n\nAdd an extra column (at the end) to the contents of sample_manifest3.tsv with the heading file_size and the column values all .\n\nAdd a project_id column (make it the first column) to sample_manifest3.tsv. Use Pf_AMR as the values for each row under this column.\n\n\n\n\n\n\nsed -n '1p' sample_manifest3.tsv \n\n\n\nsed -n '/PATTERN/p' file.txt  \nExample:\nsed -n '/TRUE/p' sample_manifest3.tsv \n\n\n\n\n\n\n\nUsing file1.txt as a testcase, remove all empty lines.\n\nUsing a similar syntax, sed can be used as an alternative to grep to remove lines containing certain patterns. Use sed to remove the header lines (only the ones starting with ##) from the SAMPLE_001.vcf file. Save the output to a new file SAMPLE_001_v2.vcf so that we can reuse the SAMPLE_001.vcf file, if needed.\n\nUse sed to remove empty lines from file1.txt and the line containing the heading i.e. sample_id, in one command.\n\n\n\n\nUsing sample_manifest3.tsv as a test case, extract the metadata lines of samples 004 through 008 i.e. from line containing SAMPLE_004 to the one containing SAMPLE_008.\nsed -n '/SAMPLE_004/,/SAMPLE_008/p' sample_manifest3.tsv"
+  },
+  {
+    "objectID": "week1/unix-and-HPC/file-processing-sed.html#replacing-simple-patterns-with-sed",
+    "href": "week1/unix-and-HPC/file-processing-sed.html#replacing-simple-patterns-with-sed",
+    "title": "File processing: Part 1 (using sed)",
+    "section": "",
+    "text": "Replace the fasta pattern in each line of the file sample_manifest2.tsv with fastq\nsed 's/fasta/fastq/' sample_manifest2.tsv\nTo save the output to a new file:\nsed 's/fasta/fastq/' sample_manifest2.tsv &gt; sample_manifest2_fastq.tsv\nTo make the replacement within the primary file (use with caution):\nsed -i 's/fasta/fastq/' sample_manifest2.tsv\nNotice that the fasta pattern after Plasmodium_falciparum_ was not replaced by the previous command. Why is this?\nWrite the sed command(s) to replace both occurrences of fasta in each line of sample_manifest2.tsv with fastq. Save the output to sample_manifest2_fastq_2.tsv\n\nWith the same syntax, sed can be used to remove unwanted patterns within each line of a given file. Use sed to remove all occurrences of fastq in the sample_manifest2_fastq_2.tsv file. Save the output to sample_manifest3.tsv\n\nExercise: Use sed to replace the ftp://ftp.sra.ebi.ac.uk/vol1/run/ERR323/ string in each line of the file named file_paths.txt.\nsed can also be used to replace patterns shared across files simultaneously. As an example, replace Kampala with Entebbe in all the .tsv files currently in workshop1\nsed -i 's/Kampala/Entebbe/g' *.tsv\nUsing similar syntax for replacing patterns, sed can be used to change file delimiters/separators. As a test case, use sed to convert sample_manifest3.tsv into a .csv file named sample_manifest3.csv.\n\nTry converting sample_manifest3.csv into a space-delimited file."
+  },
+  {
+    "objectID": "week1/unix-and-HPC/file-processing-sed.html#conditional-substitutions-with-sed",
+    "href": "week1/unix-and-HPC/file-processing-sed.html#conditional-substitutions-with-sed",
+    "title": "File processing: Part 1 (using sed)",
+    "section": "",
+    "text": "Sometimes, it’s helpful to replace patterns only in lines that meet a certain condition. As a test case, change the read_length for the Kisumu samples in sample_manifest3.tsv from 150 to 100.\nsed '/Kisumu/s/150/100/' sample_manifest3.tsv"
+  },
+  {
+    "objectID": "week1/unix-and-HPC/file-processing-sed.html#adding-simple-patterns-to-a-file-using-sed",
+    "href": "week1/unix-and-HPC/file-processing-sed.html#adding-simple-patterns-to-a-file-using-sed",
+    "title": "File processing: Part 1 (using sed)",
+    "section": "",
+    "text": "Add the model numbers of the Illumina_NextSeq and Illumina_MiSeq platforms so that they read Illumina_NextSeq_2000 and Illumina_MiSeq_100, respectively.\n\nAdd an extra column (at the end) to the contents of sample_manifest3.tsv with the heading file_size and the column values all .\n\nAdd a project_id column (make it the first column) to sample_manifest3.tsv. Use Pf_AMR as the values for each row under this column."
+  },
+  {
+    "objectID": "week1/unix-and-HPC/file-processing-sed.html#other-use-cases-of-sed-in-cleaningpre-processing-files",
+    "href": "week1/unix-and-HPC/file-processing-sed.html#other-use-cases-of-sed-in-cleaningpre-processing-files",
+    "title": "File processing: Part 1 (using sed)",
+    "section": "",
+    "text": "sed -n '1p' sample_manifest3.tsv \n\n\n\nsed -n '/PATTERN/p' file.txt  \nExample:\nsed -n '/TRUE/p' sample_manifest3.tsv \n\n\n\n\n\n\n\nUsing file1.txt as a testcase, remove all empty lines.\n\nUsing a similar syntax, sed can be used as an alternative to grep to remove lines containing certain patterns. Use sed to remove the header lines (only the ones starting with ##) from the SAMPLE_001.vcf file. Save the output to a new file SAMPLE_001_v2.vcf so that we can reuse the SAMPLE_001.vcf file, if needed.\n\nUse sed to remove empty lines from file1.txt and the line containing the heading i.e. sample_id, in one command.\n\n\n\n\nUsing sample_manifest3.tsv as a test case, extract the metadata lines of samples 004 through 008 i.e. from line containing SAMPLE_004 to the one containing SAMPLE_008.\nsed -n '/SAMPLE_004/,/SAMPLE_008/p' sample_manifest3.tsv"
   },
   {
     "objectID": "abisumschool26.html",
