@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://github.com/TWG-ABI/ABI-Training/blob/main/week1/unix-and-HPC/linux%20banner%20image.png" alt="ABI Summer School 2026 · WEEK 1: Linux / HPC" width="100%" />
+  <img src="linux_banner_image.png" alt="ABI Summer School 2026 · WEEK 1: Linux / HPC" width="100%" />
 </p>
 
 ---
@@ -32,7 +32,7 @@ A script acts as an automated recipe. When executed, the computer reads the file
 Every well-written Bash script follows a clear structure composed of core components:
 
 <p align="center">
-  <img src="https://github.com/TWG-ABI/ABI-Training/blob/main/week1/unix-and-HPC/bash_script_structure.png" alt="Bash Script Structure" width="100%" />
+  <img src="bash_script_structure.png" alt="Bash Script Structure" width="100%" />
 </p>
 
 ---
