@@ -329,13 +329,6 @@
     "text": "YOU MADE IT!\nYou made it through the entire project directory. The folder is organised, the data is interrogated, and the meeting is saved.\n\n\nCommands used today\n\n\n\n\n\n\n\nCategory\nCommands & options\n\n\n\n\nDownload & extract\nwget · unzip\n\n\nLocation\npwd\n\n\nNavigation\ncd · cd .. · cd ~ · cd -\n\n\nListing\nls -l · ls -lh · ls -1 · ls -t · ls -lt · ls -a · ls -lha · ls -R · ls -lhR\n\n\nViewing files\ncat · head -n · tail -n · less\n\n\nWildcards\n*.fastq · *.vcf · Pf* · *SAMPLE* · SAMPLE*.fastq\n\n\nCreating directories\nmkdir · mkdir -p\n\n\nCreating files\ntouch · nano\n\n\nCopying\ncp · cp -r · cp -i\n\n\nSymbolic links\nln -s\n\n\nMoving & renaming\nmv\n\n\nDeleting\nrm · rm -r\n\n\nSorting\nsort · sort -k · sort -r\n\n\nComparing\ncomm · comm -12 · comm -23 · comm -13\n\n\nJoining\njoin · join -a1\n\n\nFinding\nfind -name · find -type · find -size · find -mtime\n\n\nCounting\nwc -l\n\n\nSearching\ngrep · grep -c · grep -v · grep -vc · grep -n · grep -i · grep -r · grep -rn\n\n\nExtracting columns\ncut -f · cut -f1-4\n\n\nCombining files\npaste · paste -d\n\n\n\n\nABI Summer School 2026 · Week 1: Linux / HPC"
   },
   {
-    "objectID": "week1/unix-and-HPC/Bash_scripting_I_and_HPC_Job_Submission.html",
-    "href": "week1/unix-and-HPC/Bash_scripting_I_and_HPC_Job_Submission.html",
-    "title": "Bash Scripting & HPC Job Submission",
-    "section": "",
-    "text": "ABI Summer School 2026 · WEEK 1: Linux / HPC"
-  },
-  {
     "objectID": "week1/unix-and-HPC/Bash_scripting_I_and_HPC_Job_Submission.html#part-1-fundamentals-of-bash-scripting",
     "href": "week1/unix-and-HPC/Bash_scripting_I_and_HPC_Job_Submission.html#part-1-fundamentals-of-bash-scripting",
     "title": "Bash Scripting & HPC Job Submission",
