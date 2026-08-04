@@ -1,8 +1,8 @@
-<div align="center">
+<p align="center">
+  <img src="linux_banner_image.png" alt="ABI Summer School 2026 · WEEK 1: Linux / HPC" width="100%" />
+</p>
 
-![ABI Summer School 2026 · WEEK 1: Linux / HPC](https://github.com/TWG-ABI/ABI-Training/blob/main/week1/unix-and-HPC/linux%20banner%20image.png)
-
-</div>
+---
 
 # File processing: Part 2 (using awk) 
 
@@ -10,7 +10,7 @@
 AWK is useful for processing text files and extracting data, particularly when a file is **split into columns** or **delimited by a specific character** (e.g. a tab, comma).
 The **awk** command/script reads a file line by line and splits each line into columns according to a delimiter character. The default output delimiter is a single space character.
 
-For this tutorial, the workind directory will be the `workshop1` directory within `ABI_summer_school_project1`.
+For this tutorial, we shall still use `ABI_summer_school_project` folder.
 
 ## Starter commands with awk
 
