@@ -31,11 +31,9 @@ A script acts as an automated recipe. When executed, the computer reads the file
 ### Anatomy & Structure of a Bash Script
 Every well-written Bash script follows a clear structure composed of core components:
 
-<div align="center">
-
-![Bash Script Basics: Files, Structure & First Commands](bash_script_structure.png)
-
-</div>
+<p align="center">
+  <img src="https://github.com/TWG-ABI/ABI-Training/blob/main/week1/unix-and-HPC/bash_script_structure.png" alt="Bash Script Structure" width="100%" />
+</p>
 
 ---
 
