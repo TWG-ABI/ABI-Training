@@ -399,13 +399,6 @@
     "text": "YOU MADE IT!\nYou have mastered the pipe and the brace.\n\n\nCommands used today\n\n\n\nCategory\nCommands & operators\n\n\n\n\nBrace Expansion (Lists)\n{name1,name2,name3}\n\n\nBrace Expansion (Ranges)\n{1..5} · {a..z}\n\n\nBrace Expansion (Append)\n{,.bak}\n\n\nThe Pipe\n|\n\n\nViewing\nless\n\n\nCounting\nwc -l\n\n\nFiltering\ngrep · grep -v\n\n\nFinding\nfind -name\n\n\n\n\nABI Summer School 2026 · Week 1: Linux / HPC"
   },
   {
-    "objectID": "week1/unix-and-HPC/file-processing-awk.html",
-    "href": "week1/unix-and-HPC/file-processing-awk.html",
-    "title": "File processing: Part 2 (using awk)",
-    "section": "",
-    "text": "ABI Summer School 2026 · WEEK 1: Linux / HPC"
-  },
-  {
     "objectID": "week1/unix-and-HPC/file-processing-awk.html#starter-commands-with-awk",
     "href": "week1/unix-and-HPC/file-processing-awk.html#starter-commands-with-awk",
     "title": "File processing: Part 2 (using awk)",
