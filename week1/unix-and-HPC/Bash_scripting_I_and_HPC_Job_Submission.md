@@ -185,7 +185,7 @@ To tell Slurm what computational resources your script requires, we place `#SBAT
 
 ---
 
-### Practical 2 — Submitting Your First Slurm Batch Job
+### Practical 2 : Submitting Your First Slurm Batch Job
 
 1. Create a job submission script called `hello_slurm.sbatch`:
    ```bash
