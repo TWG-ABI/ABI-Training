@@ -463,5 +463,3 @@ Now let's synthesize variables, `read`, and `$()` into a complete, standalone ut
 ---
 
 *ABI Summer School 2026 · Week 1: Linux / HPC*
-
-*ABI Summer School 2026 · Week 1: Linux / HPC*
