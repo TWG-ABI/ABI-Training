@@ -21,7 +21,7 @@ Today, we will learn how to bundle our commands into reusable **Bash scripts** t
 A Bash script is simply a plain text file containing a sequence of Linux commands.
 * **File Extension:** By convention, Bash scripts end with the `.sh` file extension (for example, `myscript.sh` or `pipeline.sh`). While Linux does not strictly require file extensions, using `.sh` immediately signals to you and your collaborators that the file is a shell script.
 * **Creating a Script:** You can create and edit a script using any terminal text editor, such as `nano`:
-  ```bash
+  ```
   nano myscript.sh
   ```
 A script acts as an automated recipe. When executed, the computer reads the file line-by-line from top to bottom and runs each command in order, exactly as if you were typing them into the terminal yourself. This guarantees **reproducibility** which is a fundamental requirement in scientific research.
@@ -42,11 +42,11 @@ Every well-written Bash script follows a clear structure composed of core compon
 Let's build your very first standalone script!
 
 1. Open a new file called `first_script.sh` using `nano`:
-   ```bash
+   ```
    nano first_script.sh
    ```
 2. Type the following lines into the file:
-   ```bash
+   ```
    #!/bin/bash
    
    # ---description----
@@ -66,19 +66,19 @@ There are **three different methods** to execute your script:
 
 **Method 1: Passing the file to `bash` directly**
 You can explicitly tell the `bash` program to read and execute your script:
-```bash
+```
 bash first_script.sh
 ```
 
 **Method 2: Passing the file to `sh`**
 `sh` is an older standard shell interpreter. For basic commands, it behaves similarly:
-```bash
+```
 sh first_script.sh
 ```
 
 **Method 3: Executing the file directly**
 In professional environments, we run scripts directly as standalone programs using `./` (which specifies "look in the current directory"):
-```bash
+```
 ./first_script.sh
 ```
 
@@ -89,12 +89,12 @@ Why did this happen? By default, Linux creates new text files with read and writ
 #### The `chmod` Command
 * `chmod` stands for "Change Mode". It modifies file access permissions. The `+x` flag tells Linux to add executable rights to the file.
 
-```bash
+```
 chmod +x first_script.sh
 ```
 
 Now, try running Method 3 again:
-```bash
+```
 ./first_script.sh
 ```
 It works! When executed this way, the operating system inspects the `#!/bin/bash` shebang on line 1, loads the Bash interpreter, and executes your instructions.
@@ -136,11 +136,11 @@ There are three primary ways to run workloads on compute nodes:
 An interactive job allocates dedicated resources on a compute node and immediately gives you a live command prompt on that node in real time.
 * **When to use:** Testing short commands, debugging scripts, or exploring data interactively.
 * **Quick interactive session:**
-  ```bash
+  ```
   srun --pty bash
   ```
 * **Custom resource request (e.g. 1 CPU core, 2GB RAM for 30 minutes):**
-  ```bash
+  ```
   srun --nodes=1 --ntasks=1 --cpus-per-task=1 --mem=2G --time=00:30:00 --pty bash
   ```
   *(Notice how your prompt changes from `user@login-node` to `user@compute-node`! When finished, simply type `exit` to return to the login node).*
@@ -150,15 +150,15 @@ While `srun` immediately runs a command on a compute node, `salloc` is used to *
 
 * **When to use:** When you need to hold a resource reservation for a work session and run several separate commands or `srun` tasks within that same allocation.
 * **Example command (requesting 1 node, 2 CPUs, 4GB RAM for 1 hour):**
-  ```bash
+  ```
   salloc --nodes=1 --cpus-per-task=2 --mem=4G --time=01:00:00
   ```
   Once Slurm grants the allocation (`salloc: Granted job allocation ...`), you can run tasks inside it using `srun`:
-  ```bash
+  ```
   srun hostname
   ```
 * **Releasing resources:** When finished, type `exit` to terminate the allocation and release the resources back to the cluster:
-  ```bash
+  ```
   exit
   ```
 
@@ -185,14 +185,14 @@ To tell Slurm what computational resources your script requires, we place `#SBAT
 
 ---
 
-### Practical 2 : Submitting Your First Slurm Batch Job
+### Practical 2 — Submitting Your First Slurm Batch Job
 
 1. Create a job submission script called `hello_slurm.sbatch`:
-   ```bash
+   ```
    nano hello_slurm.sbatch
    ```
 2. Type the following code:
-   ```bash
+   ```
    #!/bin/bash
    #SBATCH --job-name=hello_slurm       # Name of the job in the queue
    #SBATCH --output=hello_slurm.out     # Standard output log file
@@ -222,21 +222,21 @@ To tell Slurm what computational resources your script requires, we place `#SBAT
 #### Submitting and Monitoring the Job
 
 4. **Submit the job to Slurm:**
-   ```bash
+   ```
    sbatch hello_slurm.sbatch
    ```
    *Slurm will confirm with a job number, e.g.: `Submitted batch job 104523`.*
 
 5. **Inspect the queue:**
    Check the status of your running job (replace `<your_username>` with your cluster username):
-   ```bash
+   ```
    squeue -u <your_username>
    ```
    * *`ST` (State):* `PD` = Pending, `R` = Running, `CG` = Completing.
 
 6. **View the generated output log:**
    Once the job finishes, check the generated output file:
-   ```bash
+   ```
    cat hello_slurm.out
    ```
 
@@ -247,11 +247,11 @@ To tell Slurm what computational resources your script requires, we place `#SBAT
 In bioinformatics, jobs frequently fail due to typos or missing files. Knowing how to read log files is essential.
 
 1. Create a script with a deliberate typo:
-   ```bash
+   ```
    nano broken_job.sbatch
    ```
 2. Type the following code:
-   ```bash
+   ```
    #!/bin/bash
    #SBATCH --job-name=broken_test
    #SBATCH --output=broken_test.out
@@ -267,11 +267,11 @@ In bioinformatics, jobs frequently fail due to typos or missing files. Knowing h
    echo "Analysis finished."
    ```
 3. Save, exit, and submit:
-   ```bash
+   ```
    sbatch broken_job.sbatch
    ```
 4. Check the error log:
-   ```bash
+   ```
    cat broken_test.err
    ```
    *You will see the exact cause of failure: `ls: cannot access '/non_existent_directory/data/': No such file or directory`.*
@@ -288,15 +288,15 @@ Whenever a Slurm job fails or produces unexpected results, always inspect your `
 If you submit a job and realize you made a mistake, you can cancel it immediately to free up cluster resources:
 
 1. Submit a job:
-   ```bash
+   ```
    sbatch hello_slurm.sbatch
    ```
 2. Find the `JOBID` in the queue:
-   ```bash
+   ```
    squeue -u <your_username>
    ```
 3. Cancel the job:
-   ```bash
+   ```
    scancel <YOUR_JOB_ID>
    ```
 
@@ -323,11 +323,11 @@ Static scripts that only print fixed messages are of limited use. To build flexi
 
 #### Practical:
 1. Open a new script with `nano`:
-   ```bash
+   ```
    nano variables_demo.sh
    ```
 2. Type the following code:
-   ```bash
+   ```
    #!/bin/bash
    # ---description----
    # Demonstrating variable assignment and retrieval
@@ -343,7 +343,7 @@ Static scripts that only print fixed messages are of limited use. To build flexi
    ```
 3. Save and exit `nano` (`Ctrl+O`, `Enter`, `Ctrl+X`).
 4. Run the script:
-   ```bash
+   ```
    bash variables_demo.sh
    ```
 
@@ -358,11 +358,11 @@ Hard-coding sample names directly into your script means you have to edit the fi
 
 #### Practical:
 1. Open a new script:
-   ```bash
+   ```
    nano interactive_prompt.sh
    ```
 2. Type the following code:
-   ```bash
+   ```
    #!/bin/bash
    # ---description----
    # Capturing dynamic user input with read
@@ -377,7 +377,7 @@ Hard-coding sample names directly into your script means you have to edit the fi
    ```
 3. Save and exit `nano`.
 4. Run the script and type in your sample details when prompted:
-   ```bash
+   ```
    bash interactive_prompt.sh
    ```
 
@@ -391,11 +391,11 @@ Often, you don't want to store static text or wait for user typing; you want to 
 
 #### Practical:
 1. Open a new script:
-   ```bash
+   ```
    nano command_sub.sh
    ```
 2. Type the following code:
-   ```bash
+   ```
    #!/bin/bash
    # ---description----
    # Demonstrating command substitution using $()
@@ -412,7 +412,7 @@ Often, you don't want to store static text or wait for user typing; you want to 
    ```
 3. Save and exit `nano`.
 4. Run the script:
-   ```bash
+   ```
    bash command_sub.sh
    ```
 
@@ -423,11 +423,11 @@ Often, you don't want to store static text or wait for user typing; you want to 
 Now let's synthesize variables, `read`, and `$()` into a complete, standalone utility.
 
 1. Open a new file called `system_info.sh`:
-   ```bash
+   ```
    nano system_info.sh
    ```
 2. Type the following code:
-   ```bash
+   ```
    #!/bin/bash
    # ---description----
    # Complete interactive pipeline summary reporter
@@ -456,10 +456,12 @@ Now let's synthesize variables, `read`, and `$()` into a complete, standalone ut
 
 3. Save and exit (`Ctrl+O`, `Enter`, `Ctrl+X`).
 4. Run the script directly as a program:
-   ```bash
+   ```
    bash system_info.sh
    ```
 
 ---
+
+*ABI Summer School 2026 · Week 1: Linux / HPC*
 
 *ABI Summer School 2026 · Week 1: Linux / HPC*
