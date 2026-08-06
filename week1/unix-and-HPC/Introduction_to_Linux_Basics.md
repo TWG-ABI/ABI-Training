@@ -23,13 +23,10 @@
 >
 > You are now the person responsible for this project.
 > Log in. Get to work.
-:::
-
-
-> **How this works**
+>
+> **How this works:**
 > Each question tells you **what needs to be done** and you figure out the command
-
----
+:::
 
 
 ### Step 1 : Download the project
