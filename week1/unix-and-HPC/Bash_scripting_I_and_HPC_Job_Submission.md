@@ -338,6 +338,32 @@ Static scripts that only print fixed messages are of limited use. To build flexi
 3. To retrieve or evaluate the data stored inside a variable, prefix its name with a dollar sign `$`. Wrapping the name in curly braces `${VAR}` is standard best practice.
 :::
 
+#### Why Curly Braces Matter: `$VAR` vs. `${VAR}`
+In simple standalone expressions, `$VAR` and `${VAR}` produce the same result. However, when you need to attach text, letters, or suffixes directly to a variable without spaces, curly braces `${VAR}` are **mandatory** to explicitly mark the boundary of the variable name.
+
+```bash
+# Example 1: Appending letters to a word
+word="chocolate"
+
+# CORRECT: Prints "foobar"
+echo "${word}bar"
+
+# FAILS: Bash looks for a non-existent variable named '$wordbar'
+echo "$wordbar"
+```
+
+In bioinformatics workflows, this is essential when generating output file names:
+```bash
+# Example 2: Constructing bioinformatics file paths
+SAMPLE="Pf_3D7_001"
+
+# CORRECT: Constructs "Pf_3D7_001_aligned.bam"
+echo "${SAMPLE}_aligned.bam"
+
+# FAILS: Bash looks for an undefined variable named '$SAMPLE_aligned'!
+echo "$SAMPLE_aligned.bam"
+```
+
 #### Practical:
 1. Open a new script with `nano`:
    ```bash
@@ -347,17 +373,23 @@ Static scripts that only print fixed messages are of limited use. To build flexi
    ```bash
    #!/bin/bash
    # ---description----
-   # Demonstrating variable assignment and retrieval
+   # Demonstrating variable assignment, $VAR vs ${VAR}
    # Usage: bash variables_demo.sh
 
    # 1. Define variables (NO SPACES around =)
    ORGANISM="Plasmodium falciparum"
-   SAMPLE_ID="Pf_3D7_001"
+   SAMPLE="Pf_3D7_001"
+   WORD="chocolate"
 
-   # 2. Print variables using $ and ${}
+   # 2. Print variables using standard expansion
    echo "========================================="
-   echo "Target organism: $ORGANISM" #without braces
-   echo "Sample ID:       ${SAMPLE_ID}" #with braces
+   echo "Target organism: $ORGANISM"
+   echo "Sample ID:       ${SAMPLE}"
+   echo "-----------------------------------------"
+
+   # 3. Demonstrating boundary syntax with curly braces
+   echo "Appended word:   ${WORD}bar"
+   echo "Constructed file: ${SAMPLE}_raw.fastq"
    echo "========================================="
    ```
 3. Save and exit `nano` (`Ctrl+O`, `Enter`, `Ctrl+X`).
