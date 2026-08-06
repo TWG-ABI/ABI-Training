@@ -6,8 +6,8 @@
 
 # INTRODUCTION TO LINUX BASICS
 
+::: {.callout-note}
 ### The Scenario
-
 > You are a research assistant on a multi-country
 > *Plasmodium falciparum* malaria genomics study spanning field sites across
 > East Africa. The lead researcher on the project has had to leave unexpectedly
@@ -23,8 +23,8 @@
 >
 > You are now the person responsible for this project.
 > Log in. Get to work.
+:::
 
----
 
 > **How this works**
 > Each question tells you **what needs to be done** and you figure out the command
