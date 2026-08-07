@@ -4,7 +4,7 @@
 
 ---
 
-# INTRODUCTION TO LINUX BASICS
+# LINUX BASICS RECAP
 
 ::: {.callout-note}
 ### The Scenario
