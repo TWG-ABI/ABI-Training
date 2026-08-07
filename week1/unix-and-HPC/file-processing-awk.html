@@ -80,7 +80,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../../site_libs/quarto-html/quarto-syntax-highlighting-bb62276ab45c84d9efd712f51ff97b5a.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-cf2abc19ec09823c931a54267571c7dc.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-95474ecfeb6b55d189ddb154baa1042a.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -223,6 +223,93 @@ Note
 <p><em>(Note: To run commands on <code>SAMPLE_001.vcf</code>, remember it is located inside the <code>variants/</code> subfolder, so you can either <code>cd variants</code> or specify <code>variants/SAMPLE_001.vcf</code>).</em></p>
 </div>
 </div>
+<hr>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Syntax / Variable</th>
+<th style="text-align: left;">Description / Purpose</th>
+<th style="text-align: left;">Example</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><code>-F'\t'</code></td>
+<td style="text-align: left;"><strong>Field Separator Flag:</strong> Sets the input column delimiter on the command line</td>
+<td style="text-align: left;"><code>awk -F'\t' '{print $1}' ...</code></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>$1, $2, ...</code></td>
+<td style="text-align: left;"><strong>Field Variables:</strong> References column 1, column 2, etc.</td>
+<td style="text-align: left;"><code>{print $1, $10}</code></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><code>$0</code></td>
+<td style="text-align: left;"><strong>Whole Record:</strong> References the entire current line</td>
+<td style="text-align: left;"><code>NR==1 {print $0}</code></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>BEGIN { }</code></td>
+<td style="text-align: left;"><strong>Initialization Block:</strong> Code executed <em>before</em> reading any file lines</td>
+<td style="text-align: left;"><code>BEGIN {FS=OFS="\t"}</code></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><code>FS</code></td>
+<td style="text-align: left;"><strong>Field Separator:</strong> Built-in variable defining the input delimiter</td>
+<td style="text-align: left;"><code>FS="\t"</code></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>OFS</code></td>
+<td style="text-align: left;"><strong>Output Field Separator:</strong> Built-in variable defining the output delimiter</td>
+<td style="text-align: left;"><code>OFS="\t"</code> or <code>OFS=","</code></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><code>NR</code></td>
+<td style="text-align: left;"><strong>Number of Records:</strong> Holds the current line number (1, 2, 3…)</td>
+<td style="text-align: left;"><code>NR &gt; 1</code> (skips header)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>NF</code></td>
+<td style="text-align: left;"><strong>Number of Fields:</strong> Holds the total column count of the current line</td>
+<td style="text-align: left;"><code>NR==1 {print NF}</code></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><code>!/pattern/</code></td>
+<td style="text-align: left;"><strong>Pattern Negation:</strong> Matches lines that do <em>not</em> contain the pattern</td>
+<td style="text-align: left;"><code>!/1024/</code> or <code>!/#/</code> (skips headers)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>$1=$1</code></td>
+<td style="text-align: left;"><strong>Field Reassignment:</strong> Forces AWK to rebuild <code>$0</code> using the new <code>OFS</code></td>
+<td style="text-align: left;"><code>{$1=$1; print $0}</code></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><code>$3 == "value"</code></td>
+<td style="text-align: left;"><strong>Column Equality:</strong> Filters rows where a specific column matches a value</td>
+<td style="text-align: left;"><code>$3 == "Kampala"</code></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>\|\|</code></td>
+<td style="text-align: left;"><strong>Logical OR:</strong> Combines conditions (e.g.&nbsp;keep header OR matching rows)</td>
+<td style="text-align: left;"><code>NR==1 \|\| $3=="Kampala"</code></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><code>printf</code></td>
+<td style="text-align: left;"><strong>Formatted Print:</strong> Prints output without adding an automatic newline</td>
+<td style="text-align: left;"><code>printf "%s%s", $i, OFS</code></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>for (i=...; ...)</code></td>
+<td style="text-align: left;"><strong>Loop Construct:</strong> Iterates over a sequence of column indices</td>
+<td style="text-align: left;"><code>for (i=1; i&lt;=5; i++)</code></td>
+</tr>
+</tbody>
+</table>
 <hr>
 <section id="starter-commands-with-awk" class="level2">
 <h2 class="anchored" data-anchor-id="starter-commands-with-awk">Starter commands with awk</h2>
