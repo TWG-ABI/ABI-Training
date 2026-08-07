@@ -4,7 +4,7 @@
 
 ---
 
-# INTRODUCTION TO LINUX BASICS II
+# LINUX BASICS RECAP
 
 ::: {.callout-note}
 > ### Pipes and Brace Expansion
