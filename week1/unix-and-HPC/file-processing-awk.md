@@ -191,4 +191,8 @@ Why use AWK instead of `grep` or `sed` for tabular files?
 2. **`sed`:** Excellent for stream replacements (`s/old/new/g`), but writing logic to check specific columns in `sed` requires complex, hard-to-read regular expressions.
 3. **`awk '$3 == "Kampala"'`:** Specifically evaluates **only Column 3**, ensuring exact column matching without accidental matches in other fields.
 
+---
+
+*ABI Summer School 2026 · Week 1: Linux / HPC*
+
 
