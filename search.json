@@ -459,7 +459,7 @@
     "href": "abisumschool26.html#course-content",
     "title": "ABI Summer School 2026",
     "section": "Course Content:",
-    "text": "Course Content:\n\nWeek 1:\n\nLinux\n\nIntroduction to Linux Basics\nIntroduction to Linux Basics II\nBash Scripting I & HPC Job Submission\nFile processing with sed\nFile processing with awk\n\n\n\nR coding content\n\n\nIntro to NGS\n\n\n\n\nWeek 2\n\nR/Biology Streams\n\n\nHuman Genomics\n\n\nPathogen Genomics\n\n\nMetagenomics\n\nQuality Control\nAmplicon Data Analysis\nDiversity Analysis\nShotgun Metagenomics\nMetagenome-Assembled Genomes\nFunctional Analysis\nVisualisation & Mini-Project"
+    "text": "Course Content:\n\nWeek 1:\n\nLinux\n\nLinux Basics Recap\nLinux Basics Recap II\nBash Scripting I & HPC Job Submission\nFile processing with sed\nFile processing with awk\n\n\n\nR coding content\n\n\nIntro to NGS\n\n\n\n\nWeek 2\n\nR/Biology Streams\n\n\nHuman Genomics\n\n\nPathogen Genomics\n\n\nMetagenomics\n\nQuality Control\nAmplicon Data Analysis\nDiversity Analysis\nShotgun Metagenomics\nMetagenome-Assembled Genomes\nFunctional Analysis\nVisualisation & Mini-Project"
   },
   {
     "objectID": "abisumschool26.html#trainer-info",
