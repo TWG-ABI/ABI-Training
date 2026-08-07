@@ -39,6 +39,25 @@ cd ABI_summer_school_project
 
 ---
 
+| Syntax / Variable | Description / Purpose | Example |
+| :--- | :--- | :--- |
+| `-F'\t'` | **Field Separator Flag:** Sets the input column delimiter on the command line | `awk -F'\t' '{print $1}' ...` |
+| `$1, $2, ...` | **Field Variables:** References column 1, column 2, etc. | `{print $1, $10}` |
+| `$0` | **Whole Record:** References the entire current line | `NR==1 {print $0}` |
+| `BEGIN { }` | **Initialization Block:** Code executed *before* reading any file lines | `BEGIN {FS=OFS="\t"}` |
+| `FS` | **Field Separator:** Built-in variable defining the input delimiter | `FS="\t"` |
+| `OFS` | **Output Field Separator:** Built-in variable defining the output delimiter | `OFS="\t"` or `OFS=","` |
+| `NR` | **Number of Records:** Holds the current line number (1, 2, 3...) | `NR > 1` (skips header) |
+| `NF` | **Number of Fields:** Holds the total column count of the current line | `NR==1 {print NF}` |
+| `!/pattern/` | **Pattern Negation:** Matches lines that do *not* contain the pattern | `!/1024/` or `!/#/` (skips headers) |
+| `$1=$1` | **Field Reassignment:** Forces AWK to rebuild `$0` using the new `OFS` | `{$1=$1; print $0}` |
+| `$3 == "value"` | **Column Equality:** Filters rows where a specific column matches a value | `$3 == "Kampala"` |
+| `\|\|` | **Logical OR:** Combines conditions (e.g. keep header OR matching rows) | `NR==1 \|\| $3=="Kampala"` |
+| `printf` | **Formatted Print:** Prints output without adding an automatic newline | `printf "%s%s", $i, OFS` |
+| `for (i=...; ...)` | **Loop Construct:** Iterates over a sequence of column indices | `for (i=1; i<=5; i++)` |
+
+---
+
 ## Starter commands with awk
 
 Use the awk command to print the first column of the `SAMPLE_001.vcf` file:
