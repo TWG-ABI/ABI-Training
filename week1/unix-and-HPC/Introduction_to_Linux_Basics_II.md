@@ -6,6 +6,7 @@
 
 # INTRODUCTION TO LINUX BASICS II
 
+::: {.callout-note}
 > ### Pipes and Brace Expansion
 >
 > Now that you are comfortable navigating the Linux file system and managing files, it is time to transition into real data analysis.
@@ -15,8 +16,7 @@
 > In this module, you will learn how to chain multiple programs together into a single continuous workflow using **Pipes** (`|`), and how to automatically generate sequences of data using **Brace Expansion** (`{}`). These are essential skills for scaling up your workflows and working efficiently on the cluster.
 >
 > Navigate to your project directory, and let's get started.
-
----
+:::
 
 ## Brace Expansion
 
