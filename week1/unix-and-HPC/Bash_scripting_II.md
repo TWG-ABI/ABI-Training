@@ -1,8 +1,6 @@
-<div align="center">
-
-![ABI Summer School 2026 · WEEK 1: Linux / HPC](week%20one%20banner%20image.png)
-
-</div>
+<p align="center">
+  <img src="linux_banner_image.png" alt="ABI Summer School 2026 · WEEK 1: Linux / HPC" width="100%" />
+</p>
 
 <style>
 /* Clean, modern, high-contrast code blocks with pretty borders */
