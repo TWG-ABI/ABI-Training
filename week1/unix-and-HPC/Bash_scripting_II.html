@@ -1,0 +1,1316 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.10.18">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>bash_scripting_ii – ABI-ITWG</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-bb62276ab45c84d9efd712f51ff97b5a.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-cf2abc19ec09823c931a54267571c7dc.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<style>html{ scroll-behavior: smooth; }</style>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../../styles.css">
+</head>
+
+<body class="nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="../../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../../✦" alt="" class="navbar-logo light-content">
+    <img src="../../✦" alt="" class="navbar-logo dark-content">
+    </a>
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">ABI-ITWG</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../abisumschool26.html"> 
+<span class="menu-text">Training Materials</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../about.html"> 
+<span class="menu-text">About</span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#bash-scripting-ii-advanced-text-dynamic-inputs-automation" id="toc-bash-scripting-ii-advanced-text-dynamic-inputs-automation" class="nav-link active" data-scroll-target="#bash-scripting-ii-advanced-text-dynamic-inputs-automation">Bash Scripting II: Advanced Text, Dynamic Inputs &amp; Automation</a>
+  <ul class="collapse">
+  <li><a href="#part-1-text-formatting-escaping-special-characters" id="toc-part-1-text-formatting-escaping-special-characters" class="nav-link" data-scroll-target="#part-1-text-formatting-escaping-special-characters">Part 1: Text Formatting &amp; Escaping Special Characters</a>
+  <ul class="collapse">
+  <li><a href="#common-escape-sequences" id="toc-common-escape-sequences" class="nav-link" data-scroll-target="#common-escape-sequences">Common Escape Sequences:</a></li>
+  <li><a href="#practical-1-the-formatter-format.sh" id="toc-practical-1-the-formatter-format.sh" class="nav-link" data-scroll-target="#practical-1-the-formatter-format.sh">Practical 1: The Formatter (<code>format.sh</code>)</a></li>
+  </ul></li>
+  <li><a href="#part-2-dynamic-inputs---command-substitution-positional-arguments" id="toc-part-2-dynamic-inputs---command-substitution-positional-arguments" class="nav-link" data-scroll-target="#part-2-dynamic-inputs---command-substitution-positional-arguments">Part 2: Dynamic Inputs - Command Substitution &amp; Positional Arguments</a>
+  <ul class="collapse">
+  <li><a href="#command-substitution" id="toc-command-substitution" class="nav-link" data-scroll-target="#command-substitution">1. Command Substitution (<code>$()</code>)</a></li>
+  </ul></li>
+  <li><a href="#notesimple-command-substitution-script-example" id="toc-notesimple-command-substitution-script-example" class="nav-link" data-scroll-target="#notesimple-command-substitution-script-example">NOTE:simple command substitution script example</a>
+  <ul class="collapse">
+  <li><a href="#positional-arguments-1-2" id="toc-positional-arguments-1-2" class="nav-link" data-scroll-target="#positional-arguments-1-2">2. Positional Arguments (<code>$1</code>, <code>$2</code>, <code>$@</code>, <code>$#</code>)</a></li>
+  </ul></li>
+  <li><a href="#note-simple-example-script-here-on-positional-arguments" id="toc-note-simple-example-script-here-on-positional-arguments" class="nav-link" data-scroll-target="#note-simple-example-script-here-on-positional-arguments">NOTE: simple example script here on positional arguments</a>
+  <ul class="collapse">
+  <li><a href="#practical-2-counting-lines-with-dynamic-arguments-count_lines.sh" id="toc-practical-2-counting-lines-with-dynamic-arguments-count_lines.sh" class="nav-link" data-scroll-target="#practical-2-counting-lines-with-dynamic-arguments-count_lines.sh">Practical 2: Counting Lines with Dynamic Arguments (<code>count_lines.sh</code>)</a></li>
+  </ul></li>
+  <li><a href="#part-3-arithmetic-in-bash" id="toc-part-3-arithmetic-in-bash" class="nav-link" data-scroll-target="#part-3-arithmetic-in-bash">Part 3: Arithmetic in Bash</a>
+  <ul class="collapse">
+  <li><a href="#arithmetic-operators" id="toc-arithmetic-operators" class="nav-link" data-scroll-target="#arithmetic-operators">Arithmetic Operators</a></li>
+  <li><a href="#arithmetic-substitution-evaluation" id="toc-arithmetic-substitution-evaluation" class="nav-link" data-scroll-target="#arithmetic-substitution-evaluation">Arithmetic Substitution <code>$(( ))</code> &amp; Evaluation <code>(( ))</code></a></li>
+  <li><a href="#practical-3-math-counters-arithmetic.sh" id="toc-practical-3-math-counters-arithmetic.sh" class="nav-link" data-scroll-target="#practical-3-math-counters-arithmetic.sh">Practical 3: Math &amp; Counters (<code>arithmetic.sh</code>)</a></li>
+  </ul></li>
+  <li><a href="#part-4-decision-making-if-statements" id="toc-part-4-decision-making-if-statements" class="nav-link" data-scroll-target="#part-4-decision-making-if-statements">Part 4: Decision Making (If Statements)</a>
+  <ul class="collapse">
+  <li><a href="#basic-syntax-structures" id="toc-basic-syntax-structures" class="nav-link" data-scroll-target="#basic-syntax-structures">1. Basic Syntax Structures</a></li>
+  <li><a href="#comparison-operators" id="toc-comparison-operators" class="nav-link" data-scroll-target="#comparison-operators">2. Comparison Operators</a></li>
+  <li><a href="#file-test-operators" id="toc-file-test-operators" class="nav-link" data-scroll-target="#file-test-operators">3. File Test Operators</a></li>
+  <li><a href="#logical-operators-and-or-not" id="toc-logical-operators-and-or-not" class="nav-link" data-scroll-target="#logical-operators-and-or-not">4. Logical Operators (AND / OR / NOT)</a></li>
+  <li><a href="#practical-4-logic-file-testing-check_sample.sh" id="toc-practical-4-logic-file-testing-check_sample.sh" class="nav-link" data-scroll-target="#practical-4-logic-file-testing-check_sample.sh">Practical 4: Logic &amp; File Testing (<code>check_sample.sh</code>)</a></li>
+  <li><a href="#practical-exercise-age-classifier" id="toc-practical-exercise-age-classifier" class="nav-link" data-scroll-target="#practical-exercise-age-classifier">Practical Exercise: Age Classifier</a></li>
+  </ul></li>
+  <li><a href="#part-5-automation-loops" id="toc-part-5-automation-loops" class="nav-link" data-scroll-target="#part-5-automation-loops">Part 5: Automation (Loops)</a>
+  <ul class="collapse">
+  <li><a href="#the-for-loop" id="toc-the-for-loop" class="nav-link" data-scroll-target="#the-for-loop">1. The <code>for</code> Loop</a></li>
+  <li><a href="#looping-over-files-with-command-substitution" id="toc-looping-over-files-with-command-substitution" class="nav-link" data-scroll-target="#looping-over-files-with-command-substitution">2. Looping Over Files with Command Substitution</a></li>
+  <li><a href="#the-while-loop-with-a-counter" id="toc-the-while-loop-with-a-counter" class="nav-link" data-scroll-target="#the-while-loop-with-a-counter">3. The <code>while</code> Loop with a Counter</a></li>
+  <li><a href="#loop-flow-control-break-continue" id="toc-loop-flow-control-break-continue" class="nav-link" data-scroll-target="#loop-flow-control-break-continue">4. Loop Flow Control: <code>break</code> &amp; <code>continue</code></a></li>
+  </ul></li>
+  <li><a href="#part-6-comprehensive-final-pipeline" id="toc-part-6-comprehensive-final-pipeline" class="nav-link" data-scroll-target="#part-6-comprehensive-final-pipeline">Part 6: Comprehensive Final Pipeline</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
+
+
+
+
+<div data-align="center">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="week one banner image.png" class="img-fluid figure-img"></p>
+<figcaption>ABI Summer School 2026 · WEEK 1: Linux / HPC</figcaption>
+</figure>
+</div>
+</div>
+<style>
+/* Clean, modern, high-contrast code blocks with pretty borders */
+div.sourceCode, pre.sourceCode, pre, pre code, div.cell-code pre {
+  background-color: #f8f9fa !important;
+  color: #212529 !important;
+  border: 1px solid #dee2e6 !important;
+  border-left: 4px solid #31BAE9 !important;
+  border-radius: 6px !important;
+}
+/* Ensure comments and shebangs (#) are crisp, legible, and distinct */
+code span.co, code span.c, code span.ch, code span.cm, code span.c1 {
+  color: #2e7d32 !important; /* clear readable green */
+  font-weight: 600 !important;
+  opacity: 1 !important;
+}
+</style>
+<hr>
+<section id="bash-scripting-ii-advanced-text-dynamic-inputs-automation" class="level1">
+<h1>Bash Scripting II: Advanced Text, Dynamic Inputs &amp; Automation</h1>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Overview &amp; Learning Objectives
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>In Part I, we learned how to write basic Bash scripts, submit jobs on the HPC cluster using Slurm, and manage simple variables and user input.</p>
+<p>Now, we take our scripting to an advanced level. We will learn how to <strong>escape special characters</strong>, capture dynamic inputs using <strong>Command Substitution and Positional Arguments</strong>, perform <strong>Mathematical calculations</strong>, implement <strong>Conditional decision making (<code>if</code> statements)</strong>, and automate large-scale batch processing using <strong>Loops</strong>.</p>
+</div>
+</div>
+<hr>
+<section id="part-1-text-formatting-escaping-special-characters" class="level2">
+<h2 class="anchored" data-anchor-id="part-1-text-formatting-escaping-special-characters">Part 1: Text Formatting &amp; Escaping Special Characters</h2>
+<p>Sometimes you need to print a newline, a tab, or print a character that usually has a special syntax meaning in Bash (such as <code>$</code>, <code>"</code>, or <code>\</code>). We do this by “escaping” the character using a backslash <code>\</code>.</p>
+<ul>
+<li><strong>Escaping:</strong> The backslash <code>\</code> removes the special meaning of the character immediately following it, or turns normal characters into special formatting characters.</li>
+<li>To use special formatting escape sequences with <code>echo</code>, you must include the <code>-e</code> flag (enable escapes).</li>
+</ul>
+<section id="common-escape-sequences" class="level3">
+<h3 class="anchored" data-anchor-id="common-escape-sequences">Common Escape Sequences:</h3>
+<ul>
+<li><code>\n</code>: Newline (moves text to the next line)</li>
+<li><code>\t</code>: Horizontal Tab (indents text into clean columns)</li>
+<li><code>\\</code>: Prints a literal backslash</li>
+<li><code>\"</code>: Prints a literal double quote</li>
+<li><code>\$</code>: Prints a literal dollar sign (prevents variable expansion)</li>
+<li><code>\a</code>: Alert (triggers a terminal bell/beep)</li>
+</ul>
+<hr>
+</section>
+<section id="practical-1-the-formatter-format.sh" class="level3">
+<h3 class="anchored" data-anchor-id="practical-1-the-formatter-format.sh">Practical 1: The Formatter (<code>format.sh</code>)</h3>
+<ol type="1">
+<li><p>Open a new file called <code>format.sh</code>:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">nano</span> format.sh</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
+<li><p>Type the following code:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/bin/bash</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="co"># ---description----</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Demonstrating escape sequences and special character formatting</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Usage: bash format.sh</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="va">PRICE</span><span class="op">=</span>100</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"The cost is </span><span class="dt">\$</span><span class="va">${PRICE}</span><span class="st">"</span>            <span class="co"># We escape the $ so it prints literally</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="at">-e</span> <span class="st">"Sample1\tSample2\tSample3"</span>       <span class="co"># Prints with tabs between columns</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="at">-e</span> <span class="st">"Line1\nLine2\nLine3"</span>             <span class="co"># Prints on three separate lines</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
+<li><p>Save and exit <code>nano</code> (<code>Ctrl+O</code>, <code>Enter</code>, <code>Ctrl+X</code>).</p></li>
+<li><p>Run the script:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">bash</span> format.sh</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
+</ol>
+<hr>
+</section>
+</section>
+<section id="part-2-dynamic-inputs---command-substitution-positional-arguments" class="level2">
+<h2 class="anchored" data-anchor-id="part-2-dynamic-inputs---command-substitution-positional-arguments">Part 2: Dynamic Inputs - Command Substitution &amp; Positional Arguments</h2>
+<p>Before building automated pipelines, our scripts must be able to dynamically capture information from two sources: 1. <strong>The Terminal Command Line</strong> (Positional Arguments passed when launching the script) 2. <strong>Other Linux Commands</strong> (Command Substitution capturing live output)</p>
+<hr>
+<section id="command-substitution" class="level3">
+<h3 class="anchored" data-anchor-id="command-substitution">1. Command Substitution (<code>$()</code>)</h3>
+<p>Sometimes you do not want to store static text in a variable; you want to save the <em>live output</em> of a Linux command (such as a line count from <code>wc -l</code>, or the current timestamp from <code>date</code>).</p>
+<ul>
+<li>By wrapping a command inside <code>$(...)</code>, Linux executes that command first, captures its Standard Output, and substitutes that result into your variable.</li>
+<li><em>(Historical note: Older scripts used backticks <code>`command`</code>, but <code>$()</code> is the modern standard because it is cleaner and can be easily nested).</em></li>
+</ul>
+</section>
+</section>
+<section id="notesimple-command-substitution-script-example" class="level2">
+<h2 class="anchored" data-anchor-id="notesimple-command-substitution-script-example">NOTE:simple command substitution script example</h2>
+<section id="positional-arguments-1-2" class="level3">
+<h3 class="anchored" data-anchor-id="positional-arguments-1-2">2. Positional Arguments (<code>$1</code>, <code>$2</code>, <code>$@</code>, <code>$#</code>)</h3>
+<p>When you launch a script from the terminal, you can pass file paths or parameters directly after the script name (for example: <code>bash count_lines.sh sample1.fastq sample2.fastq</code>).</p>
+<p>Inside your script, Bash automatically assigns these inputs to special built-in variables:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Variable</th>
+<th style="text-align: left;">Purpose</th>
+<th style="text-align: left;">Example</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><code>$1</code></td>
+<td style="text-align: left;">The <strong>first</strong> argument passed</td>
+<td style="text-align: left;"><code>ABI_summer_school_project/raw_data/SAMPLE_001.fastq</code></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>$2</code></td>
+<td style="text-align: left;">The <strong>second</strong> argument passed</td>
+<td style="text-align: left;"><code>ABI_summer_school_project/raw_data/SAMPLE_002.fastq</code></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><code>$@</code></td>
+<td style="text-align: left;">A list of <strong>all</strong> arguments provided</td>
+<td style="text-align: left;"><code>SAMPLE_001.fastq SAMPLE_002.fastq</code></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>$#</code></td>
+<td style="text-align: left;">The <strong>total count</strong> of arguments provided</td>
+<td style="text-align: left;"><code>2</code></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="note-simple-example-script-here-on-positional-arguments" class="level2">
+<h2 class="anchored" data-anchor-id="note-simple-example-script-here-on-positional-arguments">NOTE: simple example script here on positional arguments</h2>
+<section id="practical-2-counting-lines-with-dynamic-arguments-count_lines.sh" class="level3">
+<h3 class="anchored" data-anchor-id="practical-2-counting-lines-with-dynamic-arguments-count_lines.sh">Practical 2: Counting Lines with Dynamic Arguments (<code>count_lines.sh</code>)</h3>
+<p>Let’s see Command Substitution and Positional Arguments working together on actual bioinformatics files: * <strong>Scenario:</strong> You have two FASTQ files for a single sample (read 1 and read 2) and you need to count the total number of reads across both files.</p>
+<ol type="1">
+<li><p>Open a new file <code>count_lines.sh</code>:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">nano</span> count_lines.sh</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
+<li><p>Type the following code:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/bin/bash</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="co"># ---description----</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Counts lines in files passed as positional arguments</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Usage: bash count_lines.sh file1 file2</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Check if at least 2 arguments were provided</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"Arguments received: </span><span class="va">$@</span><span class="st">"</span></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"Total argument count: </span><span class="va">$#</span><span class="st">"</span></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Command substitution capturing line counts of $1 and $2</span></span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a><span class="va">NUM_ONE</span><span class="op">=</span><span class="va">$(</span><span class="fu">cat</span> <span class="va">$1</span> <span class="kw">|</span> <span class="fu">wc</span> <span class="at">-l</span><span class="va">)</span></span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a><span class="va">NUM_TWO</span><span class="op">=</span><span class="va">$(</span><span class="fu">cat</span> <span class="va">$2</span> <span class="kw">|</span> <span class="fu">wc</span> <span class="at">-l</span><span class="va">)</span></span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"----------------------------------------"</span></span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"File 1 (</span><span class="va">$1</span><span class="st">) has </span><span class="va">$NUM_ONE</span><span class="st"> lines."</span></span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"File 2 (</span><span class="va">$2</span><span class="st">) has </span><span class="va">$NUM_TWO</span><span class="st"> lines."</span></span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"----------------------------------------"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
+<li><p>Save and exit <code>nano</code>.</p></li>
+<li><p>Run the script by passing two files from your project folder:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">bash</span> count_lines.sh ABI_summer_school_project/raw_data/SAMPLE_001.fastq ABI_summer_school_project/raw_data/SAMPLE_002.fastq</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
+</ol>
+<hr>
+</section>
+</section>
+<section id="part-3-arithmetic-in-bash" class="level2">
+<h2 class="anchored" data-anchor-id="part-3-arithmetic-in-bash">Part 3: Arithmetic in Bash</h2>
+<p>By default, Bash treats all variables as text strings. If you type <code>VAL="10+5"</code>, Bash stores a string of four characters, not the number 15! We must use specific syntax to perform mathematical calculations.</p>
+<section id="arithmetic-operators" class="level3">
+<h3 class="anchored" data-anchor-id="arithmetic-operators">Arithmetic Operators</h3>
+<ul>
+<li><code>+</code> : Addition</li>
+<li><code>-</code> : Subtraction</li>
+<li><code>*</code> : Multiplication</li>
+<li><code>/</code> : Integer Division (decimals are truncated/dropped)</li>
+<li><code>**</code> : Exponentiation (Power)</li>
+<li><code>%</code> : Modulo (Remainder of division)</li>
+</ul>
+<hr>
+</section>
+<section id="arithmetic-substitution-evaluation" class="level3">
+<h3 class="anchored" data-anchor-id="arithmetic-substitution-evaluation">Arithmetic Substitution <code>$(( ))</code> &amp; Evaluation <code>(( ))</code></h3>
+<ol type="1">
+<li><strong><code>$(( expression ))</code> (Substitution):</strong> Calculates the mathematical formula and substitutes the numeric result back into your script or variable.</li>
+<li><strong><code>(( expression ))</code> (Evaluation):</strong> Evaluates mathematical logic directly without printing. It is primarily used for incrementing counters (e.g.&nbsp;<code>((COUNT++))</code>) or modifying variables.</li>
+</ol>
+<hr>
+</section>
+<section id="practical-3-math-counters-arithmetic.sh" class="level3">
+<h3 class="anchored" data-anchor-id="practical-3-math-counters-arithmetic.sh">Practical 3: Math &amp; Counters (<code>arithmetic.sh</code>)</h3>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Challenge Scenario
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>You are processing sequencing data where a sample yielded <span class="math inline">\(20\)</span> million total reads, and <span class="math inline">\(4\)</span> million reads successfully mapped to the reference genome.</p>
+<p>How can we write a script <code>arithmetic.sh</code> that calculates basic mathematical metrics (sum, product, division) and dynamically increments step counters as our pipeline progresses?</p>
+</div>
+</div>
+<ol type="1">
+<li><p>Open a new file <code>arithmetic.sh</code>:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">nano</span> arithmetic.sh</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
+<li><p>Type the following code:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/bin/bash</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="co"># ---description----</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Demonstrating arithmetic operations and variable incrementing</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Usage: bash arithmetic.sh</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a><span class="co"># 1. Calculating values with $(( ))</span></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="va">A</span><span class="op">=</span>20</span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a><span class="va">B</span><span class="op">=</span>4</span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a><span class="va">SUM</span><span class="op">=</span><span class="va">$((A</span> <span class="op">+</span> <span class="va">B))</span></span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a><span class="va">PRODUCT</span><span class="op">=</span><span class="va">$((A</span> <span class="op">*</span> <span class="va">B))</span></span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a><span class="va">DIV</span><span class="op">=</span><span class="va">$((A</span> <span class="op">/</span> <span class="va">B))</span></span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"Sum: </span><span class="va">$SUM</span><span class="st">"</span></span>
+<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"Product: </span><span class="va">$PRODUCT</span><span class="st">"</span></span>
+<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"Division: </span><span class="va">$DIV</span><span class="st">"</span></span>
+<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a><span class="co"># 2. Incrementing counters with (( ))</span></span>
+<span id="cb8-18"><a href="#cb8-18" aria-hidden="true" tabindex="-1"></a><span class="va">COUNT</span><span class="op">=</span>1</span>
+<span id="cb8-19"><a href="#cb8-19" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"Initial count: </span><span class="va">$COUNT</span><span class="st">"</span></span>
+<span id="cb8-20"><a href="#cb8-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-21"><a href="#cb8-21" aria-hidden="true" tabindex="-1"></a><span class="kw">((</span><span class="va">COUNT</span><span class="op">++</span><span class="kw">))</span>      <span class="co"># Adds 1 to COUNT</span></span>
+<span id="cb8-22"><a href="#cb8-22" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"Count after ++: </span><span class="va">$COUNT</span><span class="st">"</span></span>
+<span id="cb8-23"><a href="#cb8-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-24"><a href="#cb8-24" aria-hidden="true" tabindex="-1"></a><span class="kw">((</span><span class="va">COUNT</span> <span class="op">+=</span> <span class="dv">5</span><span class="kw">))</span>   <span class="co"># Adds 5 to COUNT</span></span>
+<span id="cb8-25"><a href="#cb8-25" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"Count after += 5: </span><span class="va">$COUNT</span><span class="st">"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
+<li><p>Save, exit <code>nano</code>, and run:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">bash</span> arithmetic.sh</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
+</ol>
+<hr>
+</section>
+</section>
+<section id="part-4-decision-making-if-statements" class="level2">
+<h2 class="anchored" data-anchor-id="part-4-decision-making-if-statements">Part 4: Decision Making (If Statements)</h2>
+<p>Bioinformatics pipelines need to make intelligent decisions based on file existence, quality thresholds, or user arguments. We control script execution flow using <code>if</code> statements.</p>
+<section id="basic-syntax-structures" class="level3">
+<h3 class="anchored" data-anchor-id="basic-syntax-structures">1. Basic Syntax Structures</h3>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Syntax Rule for <code>[ condition ]</code>
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Always leave spaces after <code>[</code> and before <code>]</code>. Every <code>if</code> block must conclude with <code>fi</code> (<code>if</code> spelled backward)!</p>
+</div>
+</div>
+<ul>
+<li><p><strong>Simple <code>if</code>:</strong></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="bu">[</span> condition <span class="bu">]</span><span class="kw">;</span> <span class="cf">then</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Code to run if true</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="cf">fi</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
+<li><p><strong><code>if...else</code>:</strong></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="bu">[</span> condition <span class="bu">]</span><span class="kw">;</span> <span class="cf">then</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Code to run if true</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Code to run if false</span></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="cf">fi</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
+<li><p><strong><code>if...elif...else</code>:</strong></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="bu">[</span> condition1 <span class="bu">]</span><span class="kw">;</span> <span class="cf">then</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Code for condition 1</span></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="cf">elif</span> <span class="bu">[</span> condition2 <span class="bu">]</span><span class="kw">;</span> <span class="cf">then</span></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Code for condition 2</span></span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span></span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Fallback code</span></span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a><span class="cf">fi</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
+</ul>
+<hr>
+</section>
+<section id="comparison-operators" class="level3">
+<h3 class="anchored" data-anchor-id="comparison-operators">2. Comparison Operators</h3>
+<p>Bash uses distinct operators for comparing numbers versus comparing strings:</p>
+<section id="numeric-comparison-operators" class="level4">
+<h4 class="anchored" data-anchor-id="numeric-comparison-operators">Numeric Comparison Operators:</h4>
+<ul>
+<li><code>-eq</code> : Equal to</li>
+<li><code>-ne</code> : Not equal to</li>
+<li><code>-gt</code> : Greater than</li>
+<li><code>-ge</code> : Greater than or equal to</li>
+<li><code>-lt</code> : Less than</li>
+<li><code>-le</code> : Less than or equal to</li>
+</ul>
+</section>
+<section id="string-comparison-operators" class="level4">
+<h4 class="anchored" data-anchor-id="string-comparison-operators">String Comparison Operators:</h4>
+<ul>
+<li><code>==</code> : Exact string match</li>
+<li><code>!=</code> : Strings do not match</li>
+</ul>
+</section>
+<section id="example-script-quality-control-check-on-project-data-qc_check.sh" class="level4">
+<h4 class="anchored" data-anchor-id="example-script-quality-control-check-on-project-data-qc_check.sh">Example Script: Quality Control Check on Project Data (<code>qc_check.sh</code>)</h4>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Practical Scenario
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Let’s inspect sample <code>SAMPLE_001</code> from our project file <code>ABI_summer_school_project/raw_data/sample_manifest.tsv</code> to verify if it meets our quality criteria: 1. <strong>String comparison (<code>==</code>):</strong> Is the organism <code>Plasmodium_falciparum</code>? 2. <strong>Numeric comparison (<code>-ge</code>):</strong> Is the sequencing read length at least <span class="math inline">\(150\text{ bp}\)</span>?</p>
+</div>
+</div>
+<ol type="1">
+<li><p>Open <code>qc_check.sh</code>:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">nano</span> qc_check.sh</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
+<li><p>Type the following code:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/bin/bash</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="co"># ---description----</span></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Demonstrating string and numeric comparison operators on project files</span></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Usage: bash qc_check.sh</span></span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a><span class="va">MANIFEST</span><span class="op">=</span><span class="st">"ABI_summer_school_project/raw_data/sample_manifest.tsv"</span></span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Extract organism and read length for SAMPLE_001 from the manifest</span></span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a><span class="va">ORGANISM</span><span class="op">=</span><span class="va">$(</span><span class="fu">grep</span> <span class="st">"SAMPLE_001"</span> <span class="st">"</span><span class="va">$MANIFEST</span><span class="st">"</span> <span class="kw">|</span> <span class="fu">cut</span> <span class="at">-f2</span><span class="va">)</span></span>
+<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a><span class="va">READ_LENGTH</span><span class="op">=</span><span class="va">$(</span><span class="fu">grep</span> <span class="st">"SAMPLE_001"</span> <span class="st">"</span><span class="va">$MANIFEST</span><span class="st">"</span> <span class="kw">|</span> <span class="fu">cut</span> <span class="at">-f6</span><span class="va">)</span></span>
+<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"Checking quality metrics for SAMPLE_001..."</span></span>
+<span id="cb14-13"><a href="#cb14-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-14"><a href="#cb14-14" aria-hidden="true" tabindex="-1"></a><span class="co"># 1. String comparison: Check organism</span></span>
+<span id="cb14-15"><a href="#cb14-15" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="bu">[</span> <span class="st">"</span><span class="va">$ORGANISM</span><span class="st">"</span> <span class="ot">==</span> <span class="st">"Plasmodium_falciparum"</span> <span class="bu">]</span><span class="kw">;</span> <span class="cf">then</span></span>
+<span id="cb14-16"><a href="#cb14-16" aria-hidden="true" tabindex="-1"></a>    <span class="bu">echo</span> <span class="st">"Organism Check:    [PASS] Target parasite (</span><span class="va">$ORGANISM</span><span class="st">)."</span></span>
+<span id="cb14-17"><a href="#cb14-17" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span></span>
+<span id="cb14-18"><a href="#cb14-18" aria-hidden="true" tabindex="-1"></a>    <span class="bu">echo</span> <span class="st">"Organism Check:    [FAIL] Non-target organism (</span><span class="va">$ORGANISM</span><span class="st">)."</span></span>
+<span id="cb14-19"><a href="#cb14-19" aria-hidden="true" tabindex="-1"></a><span class="cf">fi</span></span>
+<span id="cb14-20"><a href="#cb14-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-21"><a href="#cb14-21" aria-hidden="true" tabindex="-1"></a><span class="co"># 2. Numeric comparison: Check read length</span></span>
+<span id="cb14-22"><a href="#cb14-22" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="bu">[</span> <span class="st">"</span><span class="va">$READ_LENGTH</span><span class="st">"</span> <span class="ot">-ge</span> 150 <span class="bu">]</span><span class="kw">;</span> <span class="cf">then</span></span>
+<span id="cb14-23"><a href="#cb14-23" aria-hidden="true" tabindex="-1"></a>    <span class="bu">echo</span> <span class="st">"Read Length Check: [PASS] </span><span class="va">$READ_LENGTH</span><span class="st"> bp meets minimum threshold (&gt;= 150 bp)."</span></span>
+<span id="cb14-24"><a href="#cb14-24" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span></span>
+<span id="cb14-25"><a href="#cb14-25" aria-hidden="true" tabindex="-1"></a>    <span class="bu">echo</span> <span class="st">"Read Length Check: [FAIL] </span><span class="va">$READ_LENGTH</span><span class="st"> bp is too short!"</span></span>
+<span id="cb14-26"><a href="#cb14-26" aria-hidden="true" tabindex="-1"></a><span class="cf">fi</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
+<li><p>Save and exit <code>nano</code> (<code>Ctrl+O</code>, <code>Enter</code>, <code>Ctrl+X</code>).</p></li>
+<li><p>Run the script:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb15"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">bash</span> qc_check.sh</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
+</ol>
+<hr>
+</section>
+</section>
+<section id="file-test-operators" class="level3">
+<h3 class="anchored" data-anchor-id="file-test-operators">3. File Test Operators</h3>
+<p>Before processing a file, your script should always verify that the file exists to prevent pipeline crashes!</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: left;">Operator</th>
+<th style="text-align: left;">Evaluates to True if:</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><code>-e FILE</code></td>
+<td style="text-align: left;">The file or directory <strong>e</strong>xists</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>-f FILE</code></td>
+<td style="text-align: left;">It is a regular <strong>f</strong>ile</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><code>-d DIR</code></td>
+<td style="text-align: left;">It is a <strong>d</strong>irectory</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>-s FILE</code></td>
+<td style="text-align: left;">The file exists and is not empty (<strong>s</strong>ize &gt; 0)</td>
+</tr>
+</tbody>
+</table>
+<section id="example-script-validating-input-directories-files-validate_inputs.sh" class="level4">
+<h4 class="anchored" data-anchor-id="example-script-validating-input-directories-files-validate_inputs.sh">Example Script: Validating Input Directories &amp; Files (<code>validate_inputs.sh</code>)</h4>
+<blockquote class="blockquote">
+<p><strong>Scenario:</strong> Before starting an alignment pipeline, check whether the <code>raw_data/</code> directory and <code>sample_manifest.tsv</code> exists.</p>
+</blockquote>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb16"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/bin/bash</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Demonstrating file test operators (-d, -f)</span></span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="va">DATA_DIR</span><span class="op">=</span><span class="st">"ABI_summer_school_project/raw_data"</span></span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a><span class="va">MANIFEST</span><span class="op">=</span><span class="st">"ABI_summer_school_project/raw_data/sample_manifest.tsv"</span></span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Check if directory exists</span></span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="bu">[</span> <span class="ot">-d</span> <span class="st">"</span><span class="va">$DATA_DIR</span><span class="st">"</span> <span class="bu">]</span><span class="kw">;</span> <span class="cf">then</span></span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>    <span class="bu">echo</span> <span class="st">"Raw data directory is present."</span></span>
+<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a><span class="cf">fi</span></span>
+<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Check if file exists</span></span>
+<span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="bu">[</span> <span class="ot">-f</span> <span class="st">"</span><span class="va">$MANIFEST</span><span class="st">"</span> <span class="bu">]</span><span class="kw">;</span> <span class="cf">then</span></span>
+<span id="cb16-13"><a href="#cb16-13" aria-hidden="true" tabindex="-1"></a>    <span class="bu">echo</span> <span class="st">"Manifest file exists."</span></span>
+<span id="cb16-14"><a href="#cb16-14" aria-hidden="true" tabindex="-1"></a><span class="cf">fi</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<hr>
+</section>
+</section>
+<section id="logical-operators-and-or-not" class="level3">
+<h3 class="anchored" data-anchor-id="logical-operators-and-or-not">4. Logical Operators (AND / OR / NOT)</h3>
+<ul>
+<li><strong>AND (<code>&amp;&amp;</code> / <code>-a</code>):</strong> True only if <em>both</em> conditions are true.</li>
+<li><strong>OR (<code>||</code> / <code>-o</code>):</strong> True if <em>at least one</em> condition is true.</li>
+<li><strong>NOT (<code>!</code>):</strong> Inverts the result (e.g.&nbsp;<code>[ ! -f "$FILE" ]</code> means “if file does NOT exist”).</li>
+</ul>
+<hr>
+</section>
+<section id="practical-4-logic-file-testing-check_sample.sh" class="level3">
+<h3 class="anchored" data-anchor-id="practical-4-logic-file-testing-check_sample.sh">Practical 4: Logic &amp; File Testing (<code>check_sample.sh</code>)</h3>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Challenge Scenario
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Before launching a pipeline, you need to perform safety checks: 1. <strong>AND (<code>&amp;&amp;</code>):</strong> Both the input directory AND the primary sample file must exist. 2. <strong>OR (<code>||</code>):</strong> Check if either <code>SAMPLE_001</code> OR <code>SAMPLE_002</code> is missing. 3. <strong>NOT (<code>!</code>):</strong> Check if the output folder <code>results/</code> does NOT exist, and create it.</p>
+</div>
+</div>
+<ol type="1">
+<li><p>Open <code>check_sample.sh</code>:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb17"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">nano</span> check_sample.sh</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
+<li><p>Type the following code:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb18"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/bin/bash</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="co"># ---description----</span></span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Verifies directories and files using logical operators (&amp;&amp;, ||, !)</span></span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Usage: bash check_sample.sh</span></span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a><span class="va">DIR</span><span class="op">=</span><span class="st">"ABI_summer_school_project/raw_data"</span></span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a><span class="va">FILE1</span><span class="op">=</span><span class="st">"ABI_summer_school_project/raw_data/SAMPLE_001.fastq"</span></span>
+<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a><span class="va">FILE2</span><span class="op">=</span><span class="st">"ABI_summer_school_project/raw_data/SAMPLE_002.fastq"</span></span>
+<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a><span class="va">OUT_DIR</span><span class="op">=</span><span class="st">"ABI_summer_school_project/results"</span></span>
+<span id="cb18-10"><a href="#cb18-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-11"><a href="#cb18-11" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"=== Quick Check ==="</span></span>
+<span id="cb18-12"><a href="#cb18-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-13"><a href="#cb18-13" aria-hidden="true" tabindex="-1"></a><span class="co"># 1. Logical AND (&amp;&amp;): Directory AND sample file must both exist</span></span>
+<span id="cb18-14"><a href="#cb18-14" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="bu">[</span> <span class="ot">-d</span> <span class="st">"</span><span class="va">$DIR</span><span class="st">"</span> <span class="bu">]</span> <span class="kw">&amp;&amp;</span> <span class="bu">[</span> <span class="ot">-f</span> <span class="st">"</span><span class="va">$FILE1</span><span class="st">"</span> <span class="bu">]</span><span class="kw">;</span> <span class="cf">then</span></span>
+<span id="cb18-15"><a href="#cb18-15" aria-hidden="true" tabindex="-1"></a>    <span class="bu">echo</span> <span class="st">"Check 1 (AND): [PASS] Raw data folder and SAMPLE_001 are both present."</span></span>
+<span id="cb18-16"><a href="#cb18-16" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span></span>
+<span id="cb18-17"><a href="#cb18-17" aria-hidden="true" tabindex="-1"></a>    <span class="bu">echo</span> <span class="st">"Check 1 (AND): [FAIL] Missing directory or primary sample file!"</span></span>
+<span id="cb18-18"><a href="#cb18-18" aria-hidden="true" tabindex="-1"></a><span class="cf">fi</span></span>
+<span id="cb18-19"><a href="#cb18-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-20"><a href="#cb18-20" aria-hidden="true" tabindex="-1"></a><span class="co"># 2. Logical OR (||): Alert if either file 1 OR file 2 is missing</span></span>
+<span id="cb18-21"><a href="#cb18-21" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="bu">[</span> <span class="ot">!</span> <span class="ot">-f</span> <span class="st">"</span><span class="va">$FILE1</span><span class="st">"</span> <span class="bu">]</span> <span class="kw">||</span> <span class="bu">[</span> <span class="ot">!</span> <span class="ot">-f</span> <span class="st">"</span><span class="va">$FILE2</span><span class="st">"</span> <span class="bu">]</span><span class="kw">;</span> <span class="cf">then</span></span>
+<span id="cb18-22"><a href="#cb18-22" aria-hidden="true" tabindex="-1"></a>    <span class="bu">echo</span> <span class="st">"Check 2 (OR):  [FAIL] Missing one or both required sample files!"</span></span>
+<span id="cb18-23"><a href="#cb18-23" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span></span>
+<span id="cb18-24"><a href="#cb18-24" aria-hidden="true" tabindex="-1"></a>    <span class="bu">echo</span> <span class="st">"Check 2 (OR):  [PASS] Both SAMPLE_001 and SAMPLE_002 are present."</span></span>
+<span id="cb18-25"><a href="#cb18-25" aria-hidden="true" tabindex="-1"></a><span class="cf">fi</span></span>
+<span id="cb18-26"><a href="#cb18-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-27"><a href="#cb18-27" aria-hidden="true" tabindex="-1"></a><span class="co"># 3. Logical NOT (!): Check if output results folder does NOT exist</span></span>
+<span id="cb18-28"><a href="#cb18-28" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="bu">[</span> <span class="ot">!</span> <span class="ot">-d</span> <span class="st">"</span><span class="va">$OUT_DIR</span><span class="st">"</span> <span class="bu">]</span><span class="kw">;</span> <span class="cf">then</span></span>
+<span id="cb18-29"><a href="#cb18-29" aria-hidden="true" tabindex="-1"></a>    <span class="bu">echo</span> <span class="st">"Check 3 (NOT): Results directory does not exist. Creating </span><span class="va">$OUT_DIR</span><span class="st">..."</span></span>
+<span id="cb18-30"><a href="#cb18-30" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mkdir</span> <span class="at">-p</span> <span class="st">"</span><span class="va">$OUT_DIR</span><span class="st">"</span></span>
+<span id="cb18-31"><a href="#cb18-31" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span></span>
+<span id="cb18-32"><a href="#cb18-32" aria-hidden="true" tabindex="-1"></a>    <span class="bu">echo</span> <span class="st">"Check 3 (NOT): [PASS] Results directory already exists."</span></span>
+<span id="cb18-33"><a href="#cb18-33" aria-hidden="true" tabindex="-1"></a><span class="cf">fi</span></span>
+<span id="cb18-34"><a href="#cb18-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-35"><a href="#cb18-35" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"================================="</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
+<li><p>Save, exit <code>nano</code> (<code>Ctrl+O</code>, <code>Enter</code>, <code>Ctrl+X</code>), and run:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb19"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">bash</span> check_sample.sh</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
+</ol>
+<hr>
+</section>
+<section id="practical-exercise-age-classifier" class="level3">
+<h3 class="anchored" data-anchor-id="practical-exercise-age-classifier">Practical Exercise: Age Classifier</h3>
+<p>Now it’s your turn to write an <code>if/elif/else</code> logic chain from scratch!</p>
+<p><strong>Task Instructions:</strong> 1. Create a script called <code>age_classifier.sh</code>. 2. Use <code>read -p "Enter your age: " AGE</code> to ask the user for their age. 3. Write an <code>if/elif/else</code> block that categorizes the user: * Less than 13: <code>"You are a child"</code> * 13 to 19 (inclusive): <code>"You are a teenager"</code> * 20 to 35 (inclusive): <code>"You are a youth"</code> * 36 to 55 (inclusive): <code>"You are an adult"</code> * Greater than 55: <code>"You are an elder"</code></p>
+<p><em>(Hint: Use <code>-lt</code>, <code>-ge</code>, <code>-le</code>, and combine them with <code>-a</code> or <code>&amp;&amp;</code>).</em></p>
+<p>Test your script with values: <code>10</code>, <code>16</code>, <code>27</code>, <code>42</code>, and <code>65</code>.</p>
+<hr>
+</section>
+</section>
+<section id="part-5-automation-loops" class="level2">
+<h2 class="anchored" data-anchor-id="part-5-automation-loops">Part 5: Automation (Loops)</h2>
+<p>Loops allow your script to repeat the same set of analysis commands across dozens or hundreds of sample files automatically.</p>
+<hr>
+<section id="the-for-loop" class="level3">
+<h3 class="anchored" data-anchor-id="the-for-loop">1. The <code>for</code> Loop</h3>
+<p>A <code>for</code> loop iterates over a list of items. For each item in the list, it runs the code block once.</p>
+<section id="looping-over-static-lists-brace-expansion-1..n" class="level4">
+<h4 class="anchored" data-anchor-id="looping-over-static-lists-brace-expansion-1..n">Looping Over Static Lists &amp; Brace Expansion <code>{1..N}</code>:</h4>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb20"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Loop over a list of words:</span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> ORGANISM <span class="kw">in</span> <span class="st">"Plasmodium"</span> <span class="st">"Anopheles"</span> <span class="st">"Human"</span><span class="kw">;</span> <span class="cf">do</span></span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>    <span class="bu">echo</span> <span class="st">"Analyzing: </span><span class="va">$ORGANISM</span><span class="st">"</span></span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a><span class="cf">done</span></span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Loop over numbers using brace expansion:</span></span>
+<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="dt">{</span><span class="dv">1</span><span class="dt">..</span><span class="dv">5</span><span class="dt">}</span><span class="kw">;</span> <span class="cf">do</span></span>
+<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a>    <span class="bu">echo</span> <span class="st">"Processing batch </span><span class="va">$i</span><span class="st">..."</span></span>
+<span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a><span class="cf">done</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<hr>
+</section>
+</section>
+<section id="looping-over-files-with-command-substitution" class="level3">
+<h3 class="anchored" data-anchor-id="looping-over-files-with-command-substitution">2. Looping Over Files with Command Substitution</h3>
+<p>In real bioinformatics workflows, sample IDs are often listed in a text file. We can combine Command Substitution with a <code>for</code> loop to construct dynamic file paths:</p>
+<ol type="1">
+<li><p>Open <code>string_loop.sh</code>:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb21"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">nano</span> string_loop.sh</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
+<li><p>Type the following code:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb22"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/bin/bash</span></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="co"># ---description----</span></span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Reads sample IDs from a file and dynamically builds input/output paths</span></span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Usage: bash string_loop.sh</span></span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Read sample names from batch file using command substitution</span></span>
+<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a><span class="va">SAMPLES</span><span class="op">=</span><span class="va">$(</span><span class="fu">cat</span> ABI_summer_school_project/raw_data/batch1_samples.txt<span class="va">)</span></span>
+<span id="cb22-8"><a href="#cb22-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-9"><a href="#cb22-9" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> SAMPLE <span class="kw">in</span> <span class="va">$SAMPLES</span><span class="kw">;</span> <span class="cf">do</span></span>
+<span id="cb22-10"><a href="#cb22-10" aria-hidden="true" tabindex="-1"></a>    <span class="va">INPUT</span><span class="op">=</span><span class="st">"ABI_summer_school_project/raw_data/</span><span class="va">${SAMPLE}</span><span class="st">.fastq"</span></span>
+<span id="cb22-11"><a href="#cb22-11" aria-hidden="true" tabindex="-1"></a>    <span class="va">OUTPUT</span><span class="op">=</span><span class="st">"ABI_summer_school_project/results/</span><span class="va">${SAMPLE}</span><span class="st">_aligned.sam"</span></span>
+<span id="cb22-12"><a href="#cb22-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-13"><a href="#cb22-13" aria-hidden="true" tabindex="-1"></a>    <span class="bu">echo</span> <span class="st">"Aligning </span><span class="va">${INPUT}</span><span class="st"> -&gt; Output: </span><span class="va">${OUTPUT}</span><span class="st">"</span></span>
+<span id="cb22-14"><a href="#cb22-14" aria-hidden="true" tabindex="-1"></a><span class="cf">done</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
+<li><p>Save, exit <code>nano</code>, and run:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb23"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">bash</span> string_loop.sh</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
+</ol>
+<hr>
+</section>
+<section id="the-while-loop-with-a-counter" class="level3">
+<h3 class="anchored" data-anchor-id="the-while-loop-with-a-counter">3. The <code>while</code> Loop with a Counter</h3>
+<p>A <code>while</code> loop continues executing as long as its condition remains true. It is commonly used with counter variables or polling jobs:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb24"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/bin/bash</span></span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="va">COUNT</span><span class="op">=</span>1</span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span> <span class="bu">[</span> <span class="va">$COUNT</span> <span class="ot">-le</span> 3 <span class="bu">]</span><span class="kw">;</span> <span class="cf">do</span></span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>    <span class="bu">echo</span> <span class="st">"Processing iteration </span><span class="va">$COUNT</span><span class="st">..."</span></span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a>    <span class="kw">((</span><span class="va">COUNT</span><span class="op">++</span><span class="kw">))</span>   <span class="co"># Increment counter to prevent an infinite loop!</span></span>
+<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a><span class="cf">done</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<section id="example-scenario-monitoring-a-job-with-a-while-loop" class="level4">
+<h4 class="anchored" data-anchor-id="example-scenario-monitoring-a-job-with-a-while-loop">Example Scenario: Monitoring a Job with a <code>while</code> Loop</h4>
+<blockquote class="blockquote">
+<p><strong>Scenario:</strong> Let’s say you submitted an alignment job and want a script that polls the process every second until 5 checks are completed:</p>
+</blockquote>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb25"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/bin/bash</span></span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Simulating job monitoring with a while loop</span></span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a><span class="va">ATTEMPT</span><span class="op">=</span>1</span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a><span class="va">MAX_ATTEMPTS</span><span class="op">=</span>5</span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"Monitoring background alignment job..."</span></span>
+<span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span> <span class="bu">[</span> <span class="va">$ATTEMPT</span> <span class="ot">-le</span> <span class="va">$MAX_ATTEMPTS</span> <span class="bu">]</span><span class="kw">;</span> <span class="cf">do</span></span>
+<span id="cb25-8"><a href="#cb25-8" aria-hidden="true" tabindex="-1"></a>    <span class="bu">echo</span> <span class="st">"Check </span><span class="va">$ATTEMPT</span><span class="st"> of </span><span class="va">$MAX_ATTEMPTS</span><span class="st">: Job still running..."</span></span>
+<span id="cb25-9"><a href="#cb25-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">sleep</span> 1</span>
+<span id="cb25-10"><a href="#cb25-10" aria-hidden="true" tabindex="-1"></a>    <span class="kw">((</span><span class="va">ATTEMPT</span><span class="op">++</span><span class="kw">))</span></span>
+<span id="cb25-11"><a href="#cb25-11" aria-hidden="true" tabindex="-1"></a><span class="cf">done</span></span>
+<span id="cb25-12"><a href="#cb25-12" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"Job completed successfully!"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<hr>
+</section>
+</section>
+<section id="loop-flow-control-break-continue" class="level3">
+<h3 class="anchored" data-anchor-id="loop-flow-control-break-continue">4. Loop Flow Control: <code>break</code> &amp; <code>continue</code></h3>
+<ul>
+<li><strong><code>continue</code>:</strong> Instantly stops the current iteration and jumps to the next item (perfect for skipping missing or corrupted files).</li>
+<li><strong><code>break</code>:</strong> Instantly terminates the loop completely.</li>
+</ul>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb26"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Example skipping missing files with continue:</span></span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="dt">{</span><span class="dv">1</span><span class="dt">..</span><span class="dv">5</span><span class="dt">}</span><span class="kw">;</span> <span class="cf">do</span></span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>    <span class="va">FILE</span><span class="op">=</span><span class="st">"ABI_summer_school_project/raw_data/SAMPLE_00</span><span class="va">${i}</span><span class="st">.fastq"</span></span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="bu">[</span> <span class="ot">!</span> <span class="ot">-f</span> <span class="st">"</span><span class="va">$FILE</span><span class="st">"</span> <span class="bu">]</span><span class="kw">;</span> <span class="cf">then</span></span>
+<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a>        <span class="bu">echo</span> <span class="st">"WARNING: </span><span class="va">$FILE</span><span class="st"> is missing! Skipping..."</span></span>
+<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a>        <span class="cf">continue</span></span>
+<span id="cb26-7"><a href="#cb26-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">fi</span></span>
+<span id="cb26-8"><a href="#cb26-8" aria-hidden="true" tabindex="-1"></a>    <span class="bu">echo</span> <span class="st">"Processing </span><span class="va">$FILE</span><span class="st">..."</span></span>
+<span id="cb26-9"><a href="#cb26-9" aria-hidden="true" tabindex="-1"></a><span class="cf">done</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<hr>
+</section>
+</section>
+<section id="part-6-comprehensive-final-pipeline" class="level2">
+<h2 class="anchored" data-anchor-id="part-6-comprehensive-final-pipeline">Part 6: Comprehensive Final Pipeline</h2>
+<p>Let’s integrate Variables, Positional Arguments, Arithmetic Counters, If File Tests, and Loops into a complete, robust sample processing pipeline!</p>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Important</span>5-Minute Challenge: Build a Batch FASTQ Quality Inspector!
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>Objective:</strong> Write a batch script called <code>pipeline.sh</code> that iterates through samples <code>1</code> to <code>3</code> in <code>ABI_summer_school_project/raw_data/</code> and performs the following tasks: 1. Check if a sample exists. If missing, log a warning, increment count, and skip to the next iteration using <code>continue</code>. 2. If the file is present, count total lines using command substitution. 3. Calculate total reads by dividing lines by 4. 4. Print an <code>[OK]</code> status message and increment count. 5. Display a final summary of total processed and skipped samples.</p>
+</div>
+</div>
+<ol type="1">
+<li><p>Open <code>pipeline.sh</code>:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb27"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">nano</span> pipeline.sh</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
+<li><p>Type the following code:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb28"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/bin/bash</span></span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a><span class="co"># ---description----</span></span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Automated bioinformatics batch processing pipeline</span></span>
+<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Usage: bash pipeline.sh</span></span>
+<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-6"><a href="#cb28-6" aria-hidden="true" tabindex="-1"></a><span class="va">PROCESSED_COUNT</span><span class="op">=</span>0</span>
+<span id="cb28-7"><a href="#cb28-7" aria-hidden="true" tabindex="-1"></a><span class="va">SKIPPED_COUNT</span><span class="op">=</span>0</span>
+<span id="cb28-8"><a href="#cb28-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-9"><a href="#cb28-9" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"=================================================="</span></span>
+<span id="cb28-10"><a href="#cb28-10" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"STARTING BIOINFORMATICS BATCH PIPELINE"</span></span>
+<span id="cb28-11"><a href="#cb28-11" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"=================================================="</span></span>
+<span id="cb28-12"><a href="#cb28-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-13"><a href="#cb28-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Loop over three sample fastq files</span></span>
+<span id="cb28-14"><a href="#cb28-14" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> ID <span class="kw">in</span> <span class="dt">{</span><span class="dv">1</span><span class="dt">..</span><span class="dv">3</span><span class="dt">}</span><span class="kw">;</span> <span class="cf">do</span></span>
+<span id="cb28-15"><a href="#cb28-15" aria-hidden="true" tabindex="-1"></a>    <span class="va">FILE</span><span class="op">=</span><span class="st">"ABI_summer_school_project/raw_data/SAMPLE_00</span><span class="va">${ID}</span><span class="st">.fastq"</span></span>
+<span id="cb28-16"><a href="#cb28-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-17"><a href="#cb28-17" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Test if file exists</span></span>
+<span id="cb28-18"><a href="#cb28-18" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="bu">[</span> <span class="ot">!</span> <span class="ot">-f</span> <span class="st">"</span><span class="va">$FILE</span><span class="st">"</span> <span class="bu">]</span><span class="kw">;</span> <span class="cf">then</span></span>
+<span id="cb28-19"><a href="#cb28-19" aria-hidden="true" tabindex="-1"></a>        <span class="bu">echo</span> <span class="at">-e</span> <span class="st">"[\e[31mSKIPPED\e[0m]\t</span><span class="va">$FILE</span><span class="st"> not found."</span></span>
+<span id="cb28-20"><a href="#cb28-20" aria-hidden="true" tabindex="-1"></a>        <span class="kw">((</span><span class="va">SKIPPED_COUNT</span><span class="op">++</span><span class="kw">))</span></span>
+<span id="cb28-21"><a href="#cb28-21" aria-hidden="true" tabindex="-1"></a>        <span class="cf">continue</span></span>
+<span id="cb28-22"><a href="#cb28-22" aria-hidden="true" tabindex="-1"></a>    <span class="cf">fi</span></span>
+<span id="cb28-23"><a href="#cb28-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-24"><a href="#cb28-24" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Count lines using command substitution</span></span>
+<span id="cb28-25"><a href="#cb28-25" aria-hidden="true" tabindex="-1"></a>    <span class="va">TOTAL_LINES</span><span class="op">=</span><span class="va">$(</span><span class="fu">cat</span> <span class="st">"</span><span class="va">$FILE</span><span class="st">"</span> <span class="kw">|</span> <span class="fu">wc</span> <span class="at">-l</span><span class="va">)</span></span>
+<span id="cb28-26"><a href="#cb28-26" aria-hidden="true" tabindex="-1"></a>    <span class="va">TOTAL_READS</span><span class="op">=</span><span class="va">$((TOTAL_LINES</span> <span class="op">/</span> <span class="dv">4</span><span class="va">))</span>  <span class="co"># FASTQ format has 4 lines per read</span></span>
+<span id="cb28-27"><a href="#cb28-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-28"><a href="#cb28-28" aria-hidden="true" tabindex="-1"></a>    <span class="bu">echo</span> <span class="at">-e</span> <span class="st">"[\e[32mOK\e[0m]\tProcessing </span><span class="va">$FILE</span><span class="st"> (</span><span class="va">$TOTAL_READS</span><span class="st"> reads)..."</span></span>
+<span id="cb28-29"><a href="#cb28-29" aria-hidden="true" tabindex="-1"></a>    <span class="kw">((</span><span class="va">PROCESSED_COUNT</span><span class="op">++</span><span class="kw">))</span></span>
+<span id="cb28-30"><a href="#cb28-30" aria-hidden="true" tabindex="-1"></a><span class="cf">done</span></span>
+<span id="cb28-31"><a href="#cb28-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-32"><a href="#cb28-32" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"=================================================="</span></span>
+<span id="cb28-33"><a href="#cb28-33" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"PIPELINE SUMMARY"</span></span>
+<span id="cb28-34"><a href="#cb28-34" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"=================================================="</span></span>
+<span id="cb28-35"><a href="#cb28-35" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"Samples Successfully Processed: </span><span class="va">$PROCESSED_COUNT</span><span class="st">"</span></span>
+<span id="cb28-36"><a href="#cb28-36" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"Samples Skipped:                </span><span class="va">$SKIPPED_COUNT</span><span class="st">"</span></span>
+<span id="cb28-37"><a href="#cb28-37" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"=================================================="</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
+<li><p>Save, exit <code>nano</code>, and run:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb29"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">bash</span> pipeline.sh</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
+</ol>
+<hr>
+<p><em>ABI Summer School 2026 · Module 1: Linux &amp; HPC</em></p>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/TWG-ABI\.github\.io\/ABI-Training\/");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>© 2026 ABI-ITWG. CC BY</p>
+</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    </div>
+    <div class="nav-footer-right">
+      &nbsp;
+    </div>
+  </div>
+</footer>
+
+
+
+
+<script src="../../site_libs/quarto-html/zenscroll-min.js"></script>
+</body></html>
