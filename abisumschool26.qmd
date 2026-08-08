@@ -14,11 +14,12 @@ The aim is to provide comprehensive training on bioinformatics computational res
 ### Week 1: 
 
 #### Linux 
-1. [Linux Basics Recap](week1/unix-and-HPC/Linux_Basics_Recap.md)
-2. [Linux Basics Recap II](week1/unix-and-HPC/Linux_Basics_Recap_II.md)
-3. [Bash Scripting I & HPC Job Submission](week1/unix-and-HPC/Bash_scripting_I_and_HPC_Job_Submission.md)
-4. [File processing with sed](week1/unix-and-HPC/file-processing-sed.md)
-5. [File processing with awk](week1/unix-and-HPC/file-processing-awk.md)
+2. [Linux Basics Recap](week1/unix-and-HPC/Linux_Basics_Recap.md)
+3. [Linux Basics Recap II](week1/unix-and-HPC/Linux_Basics_Recap_II.md)
+4. [Bash Scripting I & HPC Job Submission](week1/unix-and-HPC/Bash_scripting_I_and_HPC_Job_Submission.md)
+5. [File processing with sed](week1/unix-and-HPC/file-processing-sed.md)
+6. [File processing with awk](week1/unix-and-HPC/file-processing-awk.md)
+7. [Bash Scripting II](week1/unix-and-HPC/Bash_scripting_II.md)
 
 #### R coding content
 
