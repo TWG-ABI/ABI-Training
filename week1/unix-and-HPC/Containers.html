@@ -1,0 +1,1719 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.10.18">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>containers – ABI-ITWG</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-bb62276ab45c84d9efd712f51ff97b5a.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-4ab0624560ed8065de672b5a54abdb89.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<style>html{ scroll-behavior: smooth; }</style>
+
+
+<link rel="stylesheet" href="../../styles.css">
+</head>
+
+<body class="nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="../../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../../✦" alt="" class="navbar-logo light-content">
+    <img src="../../✦" alt="" class="navbar-logo dark-content">
+    </a>
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">ABI-ITWG</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../abisumschool26.html"> 
+<span class="menu-text">Training Materials</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../about.html"> 
+<span class="menu-text">About</span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#introduction-to-containers" id="toc-introduction-to-containers" class="nav-link active" data-scroll-target="#introduction-to-containers">Introduction to Containers</a>
+  <ul class="collapse">
+  <li><a href="#what-is-a-container" id="toc-what-is-a-container" class="nav-link" data-scroll-target="#what-is-a-container">What is a Container?</a></li>
+  <li><a href="#containers-vs.-virtual-machines" id="toc-containers-vs.-virtual-machines" class="nav-link" data-scroll-target="#containers-vs.-virtual-machines">Containers vs.&nbsp;Virtual Machines</a></li>
+  <li><a href="#docker-and-apptainer" id="toc-docker-and-apptainer" class="nav-link" data-scroll-target="#docker-and-apptainer">Docker and Apptainer</a>
+  <ul class="collapse">
+  <li><a href="#docker" id="toc-docker" class="nav-link" data-scroll-target="#docker">Docker</a></li>
+  <li><a href="#apptainer" id="toc-apptainer" class="nav-link" data-scroll-target="#apptainer">Apptainer</a></li>
+  </ul></li>
+  <li><a href="#the-container-workflow-on-ace-hpc" id="toc-the-container-workflow-on-ace-hpc" class="nav-link" data-scroll-target="#the-container-workflow-on-ace-hpc">The Container Workflow on ACE HPC</a></li>
+  <li><a href="#quick-start-run-your-first-container" id="toc-quick-start-run-your-first-container" class="nav-link" data-scroll-target="#quick-start-run-your-first-container">Quick Start: Run Your First Container</a></li>
+  <li><a href="#prerequisites" id="toc-prerequisites" class="nav-link" data-scroll-target="#prerequisites">Prerequisites</a></li>
+  <li><a href="#tutorial-roadmap" id="toc-tutorial-roadmap" class="nav-link" data-scroll-target="#tutorial-roadmap">Tutorial Roadmap</a></li>
+  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
+  </ul></li>
+  <li><a href="#containerize-your-code" id="toc-containerize-your-code" class="nav-link" data-scroll-target="#containerize-your-code">Containerize Your Code</a>
+  <ul class="collapse">
+  <li><a href="#what-is-a-dockerfile" id="toc-what-is-a-dockerfile" class="nav-link" data-scroll-target="#what-is-a-dockerfile">What is a Dockerfile?</a></li>
+  <li><a href="#the-example-a-monte-carlo-simulation" id="toc-the-example-a-monte-carlo-simulation" class="nav-link" data-scroll-target="#the-example-a-monte-carlo-simulation">The Example: A Monte Carlo Simulation</a>
+  <ul class="collapse">
+  <li><a href="#project-setup" id="toc-project-setup" class="nav-link" data-scroll-target="#project-setup">Project Setup</a></li>
+  <li><a href="#the-application-code" id="toc-the-application-code" class="nav-link" data-scroll-target="#the-application-code">The Application Code</a></li>
+  <li><a href="#the-requirements-file" id="toc-the-requirements-file" class="nav-link" data-scroll-target="#the-requirements-file">The Requirements File</a></li>
+  <li><a href="#writing-the-dockerfile" id="toc-writing-the-dockerfile" class="nav-link" data-scroll-target="#writing-the-dockerfile">Writing the Dockerfile</a></li>
+  <li><a href="#building-the-image" id="toc-building-the-image" class="nav-link" data-scroll-target="#building-the-image">Building the Image</a></li>
+  <li><a href="#testing-the-container" id="toc-testing-the-container" class="nav-link" data-scroll-target="#testing-the-container">Testing the Container</a></li>
+  <li><a href="#using-.dockerignore" id="toc-using-.dockerignore" class="nav-link" data-scroll-target="#using-.dockerignore">Using .dockerignore</a></li>
+  <li><a href="#pushing-to-a-container-registry" id="toc-pushing-to-a-container-registry" class="nav-link" data-scroll-target="#pushing-to-a-container-registry">Pushing to a Container Registry</a></li>
+  <li><a href="#docker-hub" id="toc-docker-hub" class="nav-link" data-scroll-target="#docker-hub">Docker Hub</a></li>
+  <li><a href="#github-container-registry" id="toc-github-container-registry" class="nav-link" data-scroll-target="#github-container-registry">GitHub Container Registry</a></li>
+  <li><a href="#pulling-on-ace-hpc" id="toc-pulling-on-ace-hpc" class="nav-link" data-scroll-target="#pulling-on-ace-hpc">Pulling on ACE HPC</a></li>
+  <li><a href="#running-containers-with-slurm" id="toc-running-containers-with-slurm" class="nav-link" data-scroll-target="#running-containers-with-slurm">Running Containers with SLURM</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#containers-on-hpc-clusters" id="toc-containers-on-hpc-clusters" class="nav-link" data-scroll-target="#containers-on-hpc-clusters">Containers on HPC Clusters</a>
+  <ul class="collapse">
+  <li><a href="#how-apptainer-differs-from-docker" id="toc-how-apptainer-differs-from-docker" class="nav-link" data-scroll-target="#how-apptainer-differs-from-docker">How Apptainer Differs from Docker</a></li>
+  <li><a href="#introduction-to-apptainer" id="toc-introduction-to-apptainer" class="nav-link" data-scroll-target="#introduction-to-apptainer">Introduction to Apptainer</a>
+  <ul class="collapse">
+  <li><a href="#loading-the-module" id="toc-loading-the-module" class="nav-link" data-scroll-target="#loading-the-module">Loading the Module</a></li>
+  <li><a href="#pulling-an-image" id="toc-pulling-an-image" class="nav-link" data-scroll-target="#pulling-an-image">Pulling an Image</a></li>
+  <li><a href="#running-containers" id="toc-running-containers" class="nav-link" data-scroll-target="#running-containers">Running Containers</a></li>
+  <li><a href="#interactive-shell-sessions-with-srun" id="toc-interactive-shell-sessions-with-srun" class="nav-link" data-scroll-target="#interactive-shell-sessions-with-srun">Interactive Shell Sessions with srun</a></li>
+  </ul></li>
+  <li><a href="#slurm-batch-jobs" id="toc-slurm-batch-jobs" class="nav-link" data-scroll-target="#slurm-batch-jobs">SLURM Batch Jobs</a>
+  <ul class="collapse">
+  <li><a href="#the-example-monte-carlo-batch-job" id="toc-the-example-monte-carlo-batch-job" class="nav-link" data-scroll-target="#the-example-monte-carlo-batch-job">The Example: Monte Carlo Batch Job</a></li>
+  </ul></li>
+  <li><a href="#mpi-containers" id="toc-mpi-containers" class="nav-link" data-scroll-target="#mpi-containers">MPI Containers</a>
+  <ul class="collapse">
+  <li><a href="#the-concept" id="toc-the-concept" class="nav-link" data-scroll-target="#the-concept">The Concept</a></li>
+  <li><a href="#the-example-parallel-pi-estimation" id="toc-the-example-parallel-pi-estimation" class="nav-link" data-scroll-target="#the-example-parallel-pi-estimation">The Example: Parallel Pi Estimation</a></li>
+  </ul></li>
+  <li><a href="#gpu-containers" id="toc-gpu-containers" class="nav-link" data-scroll-target="#gpu-containers">GPU Containers</a>
+  <ul class="collapse">
+  <li><a href="#the-concept-1" id="toc-the-concept-1" class="nav-link" data-scroll-target="#the-concept-1">The Concept</a></li>
+  <li><a href="#the-example-gpu-matrix-benchmark" id="toc-the-example-gpu-matrix-benchmark" class="nav-link" data-scroll-target="#the-example-gpu-matrix-benchmark">The Example: GPU Matrix Benchmark</a></li>
+  </ul></li>
+  <li><a href="#troubleshooting" id="toc-troubleshooting" class="nav-link" data-scroll-target="#troubleshooting">Troubleshooting</a></li>
+  <li><a href="#quick-reference" id="toc-quick-reference" class="nav-link" data-scroll-target="#quick-reference">Quick Reference</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
+
+
+
+
+<p align="center">
+<img src="linux_banner_image.png" alt="ABI Summer School 2026 · WEEK 1: Linux / HPC" width="100%">
+</p>
+<style>
+/* Clean, modern, high-contrast code blocks with pretty borders */
+div.sourceCode, pre.sourceCode, pre, pre code, div.cell-code pre {
+  background-color: #f8f9fa !important;
+  color: #212529 !important;
+  border: 1px solid #dee2e6 !important;
+  border-left: 4px solid #31BAE9 !important;
+  border-radius: 6px !important;
+}
+/* Ensure comments and shebangs (#) are crisp, legible, and distinct */
+code span.co, code span.c, code span.ch, code span.cm, code span.c1 {
+  color: #2e7d32 !important;
+  font-weight: 600 !important;
+  opacity: 1 !important;
+}
+</style>
+<section id="introduction-to-containers" class="level1">
+<h1>Introduction to Containers</h1>
+<section id="what-is-a-container" class="level2">
+<h2 class="anchored" data-anchor-id="what-is-a-container">What is a Container?</h2>
+<p>A container is a lightweight, portable package that bundles an application together with everything it needs to run — libraries, tools, system packages, and configuration — into a single unit that behaves the same way on any machine.</p>
+<p>Without containers, getting software to run on a new machine means manually installing the right versions of every dependency and hoping nothing conflicts with what’s already installed. With containers, you package the entire environment once and run it anywhere.</p>
+<pre><code>┌─────────────────────────────────────┐
+│         Your Container              │
+│  ┌───────────────────────────────┐  │
+│  │     Your Application          │  │
+│  │  ┌─────────┐ ┌─────────┐      │  │
+│  │  │ Python  │ │ NumPy   │      │  │
+│  │  │ 3.11    │ │ 1.24    │ ...  │  │
+│  │  └─────────┘ └─────────┘      │  │
+│  └───────────────────────────────┘  │
+│       Operating System Layer        │
+│         (Ubuntu 22.04)              │
+└─────────────────────────────────────┘
+       Runs the same everywhere:
+       laptop, cloud, HPC cluster</code></pre>
+<p>A container image is a read-only template. When you “run” an image, you create a container — a live instance of that template. You can run many containers from the same image, and each one is isolated from the others.</p>
+<p>:::info Why should you care? If you’ve ever said “it works on my machine” and then spent hours debugging it on the cluster, containers eliminate that problem entirely. The environment that works on your laptop is the same environment that runs on ACE HPC. :::</p>
+</section>
+<section id="containers-vs.-virtual-machines" class="level2">
+<h2 class="anchored" data-anchor-id="containers-vs.-virtual-machines">Containers vs.&nbsp;Virtual Machines</h2>
+<p>You may be familiar with Virtual Machines (VMs). Both VMs and containers provide isolation, but they work differently:</p>
+<ul>
+<li>A <strong>Virtual Machine</strong> includes an entire guest operating system on top of a hypervisor. This makes VMs heavy (gigabytes), slow to start (minutes), and resource-intensive.</li>
+<li>A <strong>Container</strong> shares the host operating system’s kernel and only packages the application and its dependencies. This makes containers lightweight (megabytes), fast to start (seconds), and nearly as performant as running natively.</li>
+</ul>
+<p>For HPC workloads where performance matters, containers add negligible overhead compared to running software directly on the host.</p>
+</section>
+<section id="docker-and-apptainer" class="level2">
+<h2 class="anchored" data-anchor-id="docker-and-apptainer">Docker and Apptainer</h2>
+<p>Two container platforms matter for HPC work:</p>
+<section id="docker" class="level3">
+<h3 class="anchored" data-anchor-id="docker">Docker</h3>
+<p><a href="https://www.docker.com/">Docker</a> is the industry standard for building and distributing container images. It provides:</p>
+<ul>
+<li>A simple build syntax (the <strong>Dockerfile</strong>)</li>
+<li>A massive ecosystem of pre-built images on <a href="https://hub.docker.com/">Docker Hub</a></li>
+<li>Excellent developer tooling</li>
+</ul>
+<p>However, Docker requires root (administrator) privileges to run. On shared HPC systems where users don’t have root access, Docker cannot be used directly.</p>
+</section>
+<section id="apptainer" class="level3">
+<h3 class="anchored" data-anchor-id="apptainer">Apptainer</h3>
+<p><a href="https://apptainer.org/">Apptainer</a> (formerly Singularity) was built specifically for HPC. It solves the root privilege problem:</p>
+<ul>
+<li><strong>Runs as your normal user</strong> — no root required</li>
+<li><strong>Integrates with SLURM</strong> — works seamlessly in batch job scripts</li>
+<li><strong>Runs Docker images directly</strong> — pull any Docker image and run it with Apptainer</li>
+<li><strong>Near-native performance</strong> — minimal overhead, direct access to host hardware (GPUs, high-speed networks)</li>
+</ul>
+<p><strong>On ACE HPC, we use Apptainer to run containers.</strong></p>
+<p>The practical workflow is: build your containers with Docker on your workstation, push them to a registry, then pull and run them with Apptainer on ACE HPC.</p>
+</section>
+</section>
+<section id="the-container-workflow-on-ace-hpc" class="level2">
+<h2 class="anchored" data-anchor-id="the-container-workflow-on-ace-hpc">The Container Workflow on ACE HPC</h2>
+<pre><code>  Your Workstation (Docker)              ACE HPC (Apptainer + SLURM)
+ ┌──────────────────────────┐          ┌──────────────────────────┐
+ │ 1. Write Dockerfile      │          │ 4. Pull image            │
+ │ 2. Build image           │  ──────&gt; │ 5. Convert to .sif       │
+ │ 3. Push to registry      │          │ 6. Run with SLURM        │
+ └──────────────────────────┘          └──────────────────────────┘
+                    │
+              Docker Hub or
+              GitHub Container
+              Registry</code></pre>
+<ol type="1">
+<li><strong>Write</strong> a Dockerfile describing your software environment</li>
+<li><strong>Build</strong> the container image on your workstation (where you have Docker)</li>
+<li><strong>Push</strong> the image to a container registry (Docker Hub, GitHub Container Registry)</li>
+<li><strong>Pull</strong> the image on ACE HPC using Apptainer</li>
+<li><strong>Convert</strong> — Apptainer automatically converts Docker images to its native <code>.sif</code> format</li>
+<li><strong>Run</strong> your containerized application through SLURM job scripts</li>
+</ol>
+</section>
+<section id="quick-start-run-your-first-container" class="level2">
+<h2 class="anchored" data-anchor-id="quick-start-run-your-first-container">Quick Start: Run Your First Container</h2>
+<p>Log into ACE HPC and try this:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load the Apptainer module</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="ex">module</span> load apptainer</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Pull a Python container from Docker Hub</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="ex">apptainer</span> pull docker://python:3.11-slim</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Run Python inside the container</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="ex">apptainer</span> exec python_3.11-slim.sif python <span class="at">-c</span> <span class="st">"</span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="st">import sys</span></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a><span class="st">print('Hello from inside a container!')</span></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a><span class="st">print(f'Python version: {sys.version}')</span></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a><span class="st">import os</span></span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a><span class="st">print(f'User: {os.environ.get(</span><span class="dt">\"</span><span class="st">USER</span><span class="dt">\"</span><span class="st">, </span><span class="dt">\"</span><span class="st">unknown</span><span class="dt">\"</span><span class="st">)}')</span></span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a><span class="st">print(f'Hostname: {os.uname().nodename}')</span></span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a><span class="st">"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Notice two things: (1) you didn’t install Python — it came from the container, and (2) your username and host environment are visible inside the container. This is Apptainer’s design — it runs as <em>you</em>, not as root.</p>
+</section>
+<section id="prerequisites" class="level2">
+<h2 class="anchored" data-anchor-id="prerequisites">Prerequisites</h2>
+<p>To follow these tutorials, you’ll need:</p>
+<ul>
+<li><strong>Basic Linux command-line skills</strong> — navigating directories, editing files, running commands</li>
+<li><strong>A programming language</strong> — the examples use Python, but the concepts apply to any language</li>
+</ul>
+<p>For building containers (covered in the next section), you’ll also need:</p>
+<ul>
+<li><a href="https://docs.docker.com/get-docker/">Docker Desktop</a> installed on your local machine</li>
+<li>A free <a href="https://hub.docker.com/signup">Docker Hub</a> account</li>
+</ul>
+</section>
+<section id="tutorial-roadmap" class="level2">
+<h2 class="anchored" data-anchor-id="tutorial-roadmap">Tutorial Roadmap</h2>
+<p>This tutorial series has three sections:</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Section</th>
+<th>What You’ll Learn</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><a href="containerize-code">Containerize Your Code</a></td>
+<td>Write a Dockerfile, build an image, push it to a registry</td>
+</tr>
+<tr class="even">
+<td><a href="advanced-builds">Advanced Build Topics</a></td>
+<td>Multi-stage builds, multi-architecture builds</td>
+</tr>
+<tr class="odd">
+<td><a href="containers-hpc">Containers on HPC Clusters</a></td>
+<td>Apptainer on ACE HPC, SLURM job scripts, MPI and GPU containers</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="references" class="level2">
+<h2 class="anchored" data-anchor-id="references">References</h2>
+<ul>
+<li><a href="https://apptainer.org/docs/user/latest/">Apptainer User Guide</a></li>
+<li><a href="https://docs.docker.com/">Docker Documentation</a></li>
+<li><a href="https://hub.docker.com/">Docker Hub</a> — public registry of container images</li>
+<li><a href="https://biocontainers.pro/">BioContainers</a> — pre-built containers for bioinformatics tools</li>
+<li><a href="https://catalog.ngc.nvidia.com/">NVIDIA NGC Catalog</a> — GPU-optimized containers</li>
+</ul>
+<hr>
+</section>
+</section>
+<section id="containerize-your-code" class="level1">
+<h1>Containerize Your Code</h1>
+<p>In this tutorial, you will write a Dockerfile, build a container image, test it locally, and push it to Docker Hub so it can be used on ACE HPC. We’ll work through a single example from start to finish.</p>
+<section id="what-is-a-dockerfile" class="level2">
+<h2 class="anchored" data-anchor-id="what-is-a-dockerfile">What is a Dockerfile?</h2>
+<p>A Dockerfile is a plain text file that contains a sequence of instructions for building a container image. Each instruction creates a <strong>layer</strong> in the image. Docker reads the Dockerfile top-to-bottom, executing each instruction in order, and the result is an image you can run anywhere.</p>
+<p>Here are the core instructions:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Instruction</th>
+<th>What it does</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>FROM</code></td>
+<td>Sets the base image — your starting point</td>
+</tr>
+<tr class="even">
+<td><code>RUN</code></td>
+<td>Executes a command during the build (install packages, compile code, etc.)</td>
+</tr>
+<tr class="odd">
+<td><code>COPY</code></td>
+<td>Copies files from your machine into the image</td>
+</tr>
+<tr class="even">
+<td><code>ENV</code></td>
+<td>Sets an environment variable that persists when the container runs</td>
+</tr>
+<tr class="odd">
+<td><code>WORKDIR</code></td>
+<td>Sets the working directory for subsequent instructions</td>
+</tr>
+<tr class="even">
+<td><code>CMD</code></td>
+<td>Defines the default command when the container starts</td>
+</tr>
+<tr class="odd">
+<td><code>ENTRYPOINT</code></td>
+<td>Configures the container to run as an executable</td>
+</tr>
+</tbody>
+</table>
+<p>Let’s see how these work together in practice.</p>
+</section>
+<section id="the-example-a-monte-carlo-simulation" class="level2">
+<h2 class="anchored" data-anchor-id="the-example-a-monte-carlo-simulation">The Example: A Monte Carlo Simulation</h2>
+<p>We’ll containerize a Python script that estimates the value of Pi using a Monte Carlo method. This is a common computational technique — generate random points in a square, count how many fall inside a circle, and use the ratio to estimate Pi.</p>
+<section id="project-setup" class="level3">
+<h3 class="anchored" data-anchor-id="project-setup">Project Setup</h3>
+<p>On your local workstation (where Docker is installed), create a project directory:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> mkdir ~/monte-carlo <span class="kw">&amp;&amp;</span> <span class="bu">cd</span> ~/monte-carlo</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="the-application-code" class="level3">
+<h3 class="anchored" data-anchor-id="the-application-code">The Application Code</h3>
+<p>Create a file called <code>estimate_pi.py</code>:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/usr/bin/env python3</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="co">"""Estimate Pi using a Monte Carlo method."""</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> argparse</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> time</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> json</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> os</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> estimate_pi(num_samples):</span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Generate random points in a unit square, count those inside the unit circle."""</span></span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>    x <span class="op">=</span> np.random.uniform(<span class="dv">0</span>, <span class="dv">1</span>, num_samples)</span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>    y <span class="op">=</span> np.random.uniform(<span class="dv">0</span>, <span class="dv">1</span>, num_samples)</span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>    inside_circle <span class="op">=</span> np.<span class="bu">sum</span>(x<span class="op">**</span><span class="dv">2</span> <span class="op">+</span> y<span class="op">**</span><span class="dv">2</span> <span class="op">&lt;=</span> <span class="dv">1</span>)</span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="dv">4</span> <span class="op">*</span> inside_circle <span class="op">/</span> num_samples</span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> main():</span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a>    parser <span class="op">=</span> argparse.ArgumentParser(description<span class="op">=</span><span class="st">"Estimate Pi using Monte Carlo simulation"</span>)</span>
+<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a>    parser.add_argument(<span class="st">"samples"</span>, <span class="bu">type</span><span class="op">=</span><span class="bu">int</span>, nargs<span class="op">=</span><span class="st">"?"</span>, default<span class="op">=</span><span class="dv">1_000_000</span>,</span>
+<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a>                        <span class="bu">help</span><span class="op">=</span><span class="st">"Number of random samples (default: 1,000,000)"</span>)</span>
+<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a>    parser.add_argument(<span class="st">"--output"</span>, <span class="st">"-o"</span>, <span class="bu">type</span><span class="op">=</span><span class="bu">str</span>, default<span class="op">=</span><span class="va">None</span>,</span>
+<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a>                        <span class="bu">help</span><span class="op">=</span><span class="st">"Path to write JSON results"</span>)</span>
+<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a>    parser.add_argument(<span class="st">"--seed"</span>, <span class="bu">type</span><span class="op">=</span><span class="bu">int</span>, default<span class="op">=</span><span class="va">None</span>,</span>
+<span id="cb5-24"><a href="#cb5-24" aria-hidden="true" tabindex="-1"></a>                        <span class="bu">help</span><span class="op">=</span><span class="st">"Random seed for reproducibility"</span>)</span>
+<span id="cb5-25"><a href="#cb5-25" aria-hidden="true" tabindex="-1"></a>    args <span class="op">=</span> parser.parse_args()</span>
+<span id="cb5-26"><a href="#cb5-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-27"><a href="#cb5-27" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> args.seed <span class="kw">is</span> <span class="kw">not</span> <span class="va">None</span>:</span>
+<span id="cb5-28"><a href="#cb5-28" aria-hidden="true" tabindex="-1"></a>        np.random.seed(args.seed)</span>
+<span id="cb5-29"><a href="#cb5-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-30"><a href="#cb5-30" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"Estimating Pi with </span><span class="sc">{</span>args<span class="sc">.</span>samples<span class="sc">:,}</span><span class="ss"> samples..."</span>)</span>
+<span id="cb5-31"><a href="#cb5-31" aria-hidden="true" tabindex="-1"></a>    start <span class="op">=</span> time.time()</span>
+<span id="cb5-32"><a href="#cb5-32" aria-hidden="true" tabindex="-1"></a>    pi_estimate <span class="op">=</span> estimate_pi(args.samples)</span>
+<span id="cb5-33"><a href="#cb5-33" aria-hidden="true" tabindex="-1"></a>    elapsed <span class="op">=</span> time.time() <span class="op">-</span> start</span>
+<span id="cb5-34"><a href="#cb5-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-35"><a href="#cb5-35" aria-hidden="true" tabindex="-1"></a>    error <span class="op">=</span> <span class="bu">abs</span>(pi_estimate <span class="op">-</span> np.pi)</span>
+<span id="cb5-36"><a href="#cb5-36" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"  Estimate: </span><span class="sc">{</span>pi_estimate<span class="sc">:.8f}</span><span class="ss">"</span>)</span>
+<span id="cb5-37"><a href="#cb5-37" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"  Actual:   </span><span class="sc">{</span>np<span class="sc">.</span>pi<span class="sc">:.8f}</span><span class="ss">"</span>)</span>
+<span id="cb5-38"><a href="#cb5-38" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"  Error:    </span><span class="sc">{</span>error<span class="sc">:.8f}</span><span class="ss">"</span>)</span>
+<span id="cb5-39"><a href="#cb5-39" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"  Time:     </span><span class="sc">{</span>elapsed<span class="sc">:.3f}</span><span class="ss">s"</span>)</span>
+<span id="cb5-40"><a href="#cb5-40" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-41"><a href="#cb5-41" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> args.output:</span>
+<span id="cb5-42"><a href="#cb5-42" aria-hidden="true" tabindex="-1"></a>        results <span class="op">=</span> {</span>
+<span id="cb5-43"><a href="#cb5-43" aria-hidden="true" tabindex="-1"></a>            <span class="st">"samples"</span>: args.samples,</span>
+<span id="cb5-44"><a href="#cb5-44" aria-hidden="true" tabindex="-1"></a>            <span class="st">"estimate"</span>: pi_estimate,</span>
+<span id="cb5-45"><a href="#cb5-45" aria-hidden="true" tabindex="-1"></a>            <span class="st">"error"</span>: error,</span>
+<span id="cb5-46"><a href="#cb5-46" aria-hidden="true" tabindex="-1"></a>            <span class="st">"elapsed_seconds"</span>: elapsed,</span>
+<span id="cb5-47"><a href="#cb5-47" aria-hidden="true" tabindex="-1"></a>        }</span>
+<span id="cb5-48"><a href="#cb5-48" aria-hidden="true" tabindex="-1"></a>        <span class="cf">with</span> <span class="bu">open</span>(args.output, <span class="st">"w"</span>) <span class="im">as</span> f:</span>
+<span id="cb5-49"><a href="#cb5-49" aria-hidden="true" tabindex="-1"></a>            json.dump(results, f, indent<span class="op">=</span><span class="dv">2</span>)</span>
+<span id="cb5-50"><a href="#cb5-50" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"  Results written to </span><span class="sc">{</span>args<span class="sc">.</span>output<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb5-51"><a href="#cb5-51" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-52"><a href="#cb5-52" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">"__main__"</span>:</span>
+<span id="cb5-53"><a href="#cb5-53" aria-hidden="true" tabindex="-1"></a>    main()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Test it locally to make sure it works:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> python estimate_pi.py 100000</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="the-requirements-file" class="level3">
+<h3 class="anchored" data-anchor-id="the-requirements-file">The Requirements File</h3>
+<p>Create <code>requirements.txt</code> with pinned versions for reproducibility:</p>
+<pre><code>numpy==1.24.3</code></pre>
+<p>:::tip Why pin versions? Using <code>numpy==1.24.3</code> instead of just <code>numpy</code> ensures that anyone building this container — today or six months from now — gets the exact same version. Without pinning, <code>pip install numpy</code> installs whatever the latest version is at build time, which can break your code if the API changes. :::</p>
+</section>
+<section id="writing-the-dockerfile" class="level3">
+<h3 class="anchored" data-anchor-id="writing-the-dockerfile">Writing the Dockerfile</h3>
+<p>Now we translate the manual setup steps into a Dockerfile. Create a file called <code>Dockerfile</code> (no extension):</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode dockerfile code-with-copy"><code class="sourceCode dockerfile"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="kw">FROM</span> python:3.11-slim</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="kw">RUN</span> <span class="ex">apt-get</span> update <span class="dt">\</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&amp;&amp;</span> <span class="ex">apt-get</span> install <span class="at">-y</span> <span class="at">--no-install-recommends</span> build-essential <span class="dt">\</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&amp;&amp;</span> <span class="fu">rm</span> <span class="at">-rf</span> /var/lib/apt/lists/<span class="pp">*</span></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="kw">COPY</span> requirements.txt /app/requirements.txt</span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a><span class="kw">RUN</span> <span class="ex">pip</span> install <span class="at">--no-cache-dir</span> <span class="at">-r</span> /app/requirements.txt</span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a><span class="kw">COPY</span> estimate_pi.py /app/estimate_pi.py</span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a><span class="kw">RUN</span> <span class="fu">chmod</span> +x /app/estimate_pi.py</span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a><span class="kw">ENV</span> PATH=<span class="st">"/app:$PATH"</span></span>
+<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a><span class="kw">WORKDIR</span> /app</span>
+<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a><span class="kw">CMD</span> [<span class="st">"python"</span>, <span class="st">"estimate_pi.py"</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Let’s walk through each instruction:</p>
+<p><strong><code>FROM python:3.11-slim</code></strong> — We start from the official Python 3.11 image, using the <code>-slim</code> variant which strips out compilers and docs we don’t need. This is ~125 MB instead of ~1 GB for the full image. Avoid <code>python:latest</code> — the meaning of “latest” changes over time, making your builds non-reproducible.</p>
+<p><strong><code>RUN apt-get update &amp;&amp; apt-get install ...</code></strong> — Installs system-level build tools that numpy needs for compilation. The <code>--no-install-recommends</code> flag skips optional packages, and <code>rm -rf /var/lib/apt/lists/*</code> cleans up the package cache. These are combined into a single <code>RUN</code> instruction because each <code>RUN</code> creates a new image layer — combining them keeps the image smaller.</p>
+<p><strong><code>COPY requirements.txt ...</code> then <code>RUN pip install ...</code></strong> — We copy the requirements file <em>before</em> the application code. This is intentional: Docker caches each layer, and layers only rebuild when their inputs change. If you change <code>estimate_pi.py</code> but not <code>requirements.txt</code>, Docker reuses the cached pip install layer instead of reinstalling all dependencies. This can save minutes on every rebuild.</p>
+<p><strong><code>COPY estimate_pi.py ...</code> then <code>RUN chmod +x ...</code></strong> — Copies the application code and makes it executable.</p>
+<p><strong><code>ENV PATH="/app:$PATH"</code></strong> — Adds <code>/app</code> to the system PATH so you can run <code>estimate_pi.py</code> directly without specifying the full path.</p>
+<p><strong><code>WORKDIR /app</code></strong> — Sets the working directory. Any subsequent commands (and the default command when the container starts) run from this directory.</p>
+<p><strong><code>CMD ["python", "estimate_pi.py"]</code></strong> — The default command. When you run the container without specifying a command, it executes this. You can override it at runtime by appending a different command.</p>
+</section>
+<section id="building-the-image" class="level3">
+<h3 class="anchored" data-anchor-id="building-the-image">Building the Image</h3>
+<p>From the <code>~/monte-carlo</code> directory (where your Dockerfile lives), run:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> docker build <span class="at">--platform</span> linux/amd64 <span class="at">-t</span> ianwasukira/monte-carlo:0.1 . </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<ul>
+<li><code>--platform</code> tells docker to build the image for a specific target operating platform, Intel/AMD Linux systems</li>
+<li><code>-t ianwasukira/monte-carlo:0.1</code> specifies the account docker should push the image to &amp; tags the image with a name and version</li>
+<li><code>.</code> tells Docker to use the current directory as the build context (it looks for a file named <code>Dockerfile</code> here)</li>
+</ul>
+<pre><code>[+] Building 0.5s (10/10) FINISHED                                                                                                                                                             docker:desktop-linux
+ =&gt; [internal] load build definition from Dockerfile                                                                                                                                                           0.0s
+ =&gt; =&gt; transferring dockerfile: 244B                                                                                                                                                                           0.0s
+ =&gt; [internal] load metadata for docker.io/library/ubuntu:24.04                                                                                                                                                0.4s
+ =&gt; [internal] load .dockerignore                                                                                                                                                                              0.0s
+ =&gt; =&gt; transferring context: 2B                                                                                                                                                                                0.0s
+ =&gt; [1/5] FROM docker.io/library/ubuntu:24.04@sha256:d1e2e92c075e5ca139d51a140fff46f84315c0fdce203eab2807c7e495eff4f9                                                                                          0.0s
+ =&gt; =&gt; resolve docker.io/library/ubuntu:24.04@sha256:d1e2e92c075e5ca139d51a140fff46f84315c0fdce203eab2807c7e495eff4f9                                                                                          0.0s
+ =&gt; [internal] load build context                                                                                                                                                                              0.0s
+ =&gt; =&gt; transferring context: 92B                                                                                                                                                                               0.0s
+ =&gt; CACHED [2/5] RUN apt-get update &amp;&amp; apt-get upgrade -y                                                                                                                                                      0.0s
+ =&gt; CACHED [3/5] RUN apt-get install -y python3                                                                                                                                                                0.0s
+ =&gt; CACHED [4/5] COPY pi.py /code/pi.py                                                                                                                                                                        0.0s
+ =&gt; CACHED [5/5] RUN chmod +rx /code/pi.py                                                                                                                                                                     0.0s
+ =&gt; exporting to image                                                                                                                                                                                         0.0s
+ =&gt; =&gt; exporting layers                                                                                                                                                                                        0.0s
+ =&gt; =&gt; exporting manifest sha256:02282c6a660f0cddec59ad57f11bad9be4fa447572128d5a50109d8e8359a478                                                                                                              0.0s
+ =&gt; =&gt; exporting config sha256:d8631be9d908addfd25f392d8cbf70240021c301bc79553e48d6af70067c8450                                                                                                                0.0s
+ =&gt; =&gt; exporting attestation manifest sha256:e2a61ec11f0ea3d3b8c9d38e65039e1c0b9a74f5059478c7b5dcc73d449ee288                                                                                                  0.0s
+ =&gt; =&gt; exporting manifest list sha256:efa123ce9ceaac09819d6f6a0d591c5b39209b61ba4a8d3657a8eac08edfcbd8                                                                                                         0.0s
+ =&gt; =&gt; naming to docker.io/ianwasukira/monte-carlo:0.1                                                                                                                                                         0.0s</code></pre>
+<p>You should see Docker execute each instruction. Subsequent builds will be much faster because of layer caching — Docker skips unchanged layers.</p>
+<p>Verify the image was created:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> docker images monte-carlo</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<pre><code>REPOSITORY    TAG    IMAGE ID       CREATED          SIZE
+monte-carlo   0.1    a1b2c3d4e5f6   30 seconds ago   198MB</code></pre>
+</section>
+<section id="testing-the-container" class="level3">
+<h3 class="anchored" data-anchor-id="testing-the-container">Testing the Container</h3>
+<p>Run the container with the default command:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> docker run <span class="at">--rm</span> monte-carlo:0.1</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>The <code>--rm</code> flag removes the container after it exits (otherwise stopped containers accumulate). You should see output like:</p>
+<pre><code>Estimating Pi with 1,000,000 samples...
+  Estimate: 3.14132400
+  Actual:   3.14159265
+  Error:    0.00026865
+  Time:     0.024s</code></pre>
+<p>Override the default to pass arguments:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb15"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> docker run <span class="at">--rm</span> monte-carlo:0.1 python estimate_pi.py 10000000 <span class="at">--seed</span> 42</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Write output to a file using a <strong>bind mount</strong> — this maps a directory on your host into the container so data persists after the container exits:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb16"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> mkdir <span class="at">-p</span> ~/monte-carlo/output</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> docker run <span class="at">--rm</span> <span class="dt">\</span></span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">-v</span> ~/monte-carlo/output:/output <span class="dt">\</span></span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>    monte-carlo:0.1 <span class="dt">\</span></span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>    python estimate_pi.py 5000000 <span class="at">--output</span> /output/results.json</span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> cat ~/monte-carlo/output/results.json</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Start an interactive shell inside the container to explore:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb17"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> docker run <span class="at">--rm</span> <span class="at">-it</span> monte-carlo:0.1 /bin/bash</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>From inside the container, you can run <code>python</code>, check installed packages with <code>pip list</code>, inspect the filesystem, and so on. Type <code>exit</code> to leave.</p>
+</section>
+<section id="using-.dockerignore" class="level3">
+<h3 class="anchored" data-anchor-id="using-.dockerignore">Using .dockerignore</h3>
+<p>When Docker builds an image, it sends the entire build context (the <code>.</code> directory) to the Docker daemon. If your project directory contains large data files, <code>.git</code> history, or output files, these are unnecessarily copied and slow down the build.</p>
+<p>Create a <code>.dockerignore</code> file to exclude them:</p>
+<pre><code>.git
+__pycache__
+*.pyc
+output/
+*.log</code></pre>
+<p>This works exactly like <code>.gitignore</code> — any matching files are excluded from the build context.</p>
+</section>
+<section id="pushing-to-a-container-registry" class="level3">
+<h3 class="anchored" data-anchor-id="pushing-to-a-container-registry">Pushing to a Container Registry</h3>
+<p>Your image currently lives only on your local machine. To use it on ACE HPC, push it to a container registry.</p>
+</section>
+<section id="docker-hub" class="level3">
+<h3 class="anchored" data-anchor-id="docker-hub">Docker Hub</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb19"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Log in (you'll be prompted for your Docker Hub credentials)</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> docker login</span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Tag the image with your Docker Hub username</span></span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> docker tag monte-carlo:0.1 ianwasukira/monte-carlo:0.1</span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Push</span></span>
+<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> docker push ianwasukira/monte-carlo:0.1</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<pre><code>The push refers to repository [docker.io/ianwasukira/monte-carlo]
+b73415306fae: Pushed
+4f4fb700ef54: Mounted from ianwasukira/pi-estimator
+66a4bbbfab88: Pushed
+3fc31d9c7e98: Pushed
+3cc646d3f0dd: Pushed
+9dd65c448696: Pushed
+0.1: digest: sha256:7e702eccde1d6c730f65a47d45ce7078a54519a232dd6b84137ba14f2f4705f4 size: 856</code></pre>
+<p>Navigate to <a href="https://hub.docker.com/repositories">Docker Hub</a> on your preferred web browser, and go to your repositories.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../../img/docker-hub-push.png" class="img-fluid figure-img"></p>
+<figcaption>Image Pushed to DockerHub</figcaption>
+</figure>
+</div>
+<p>Alternatively, you can use the GitHub Coontainer Registry (GHCR);</p>
+</section>
+<section id="github-container-registry" class="level3">
+<h3 class="anchored" data-anchor-id="github-container-registry">GitHub Container Registry</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb21"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Log in using a personal access token</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> echo <span class="va">$GITHUB_TOKEN</span> <span class="kw">|</span> <span class="ex">docker</span> login ghcr.io <span class="at">-u</span> USERNAME <span class="at">--password-stdin</span></span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Tag for GHCR</span></span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> docker tag monte-carlo:0.1 ghcr.io/yourusername/monte-carlo:0.1</span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Push</span></span>
+<span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> docker push ghcr.io/yourusername/monte-carlo:0.1</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="pulling-on-ace-hpc" class="level3">
+<h3 class="anchored" data-anchor-id="pulling-on-ace-hpc">Pulling on ACE HPC</h3>
+<p>Once pushed, Apptainer can convert the Docker image to its native <code>.sif</code> format. <code>apptainer pull</code> downloads and converts the image — the result is a single portable file you can reference in your job scripts:</p>
+<pre><code>$ module load apptainer
+$ apptainer pull docker://iawasukira/monte-carlo:0.1
+INFO:    Converting OCI blobs to SIF format
+INFO:    Starting build...
+INFO:    Fetching OCI image...
+28.4MiB / 28.4MiB [=============================================================================================================================================================================] 100 % 3.5 MiB/s 0s
+13.2MiB / 13.2MiB [=============================================================================================================================================================================] 100 % 3.5 MiB/s 0s
+41.1MiB / 41.1MiB [=============================================================================================================================================================================] 100 % 3.5 MiB/s 0s
+INFO:    Extracting OCI image...
+INFO:    Inserting Apptainer configuration...
+INFO:    Creating SIF file...
+INFO:    To see mksquashfs output with progress bar enable verbose logging</code></pre>
+<p>This creates a file called <code>monte-carlo_0.1.sif</code>. See the next section for how to pull and run this correctly inside a SLURM job.</p>
+</section>
+<section id="running-containers-with-slurm" class="level3">
+<h3 class="anchored" data-anchor-id="running-containers-with-slurm">Running Containers with SLURM</h3>
+<p>:::danger Do not run containers on the head node The commands shown above (<code>apptainer pull</code> and <code>apptainer run</code>) are for illustration only. <strong>Do not run them directly on the head node.</strong> The head node is a shared login environment — running compute workloads there slows it down for everyone and may get your session terminated by the system administrators.</p>
+<p>All container execution must happen inside a SLURM job script submitted to the compute cluster. :::</p>
+<p>The <code>apptainer pull</code> step (converting the Docker image to a <code>.sif</code> file) can be resource-intensive and should also be done inside a job. Here is the correct approach for pulling and running the Monte Carlo container:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb23"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/bin/bash</span></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --job-name=monte-carlo</span></span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --ntasks=1</span></span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --cpus-per-task=4</span></span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --mem=8G</span></span>
+<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --time=01:00:00</span></span>
+<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --output=monte-carlo-%j.out</span></span>
+<span id="cb23-8"><a href="#cb23-8" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --error=monte-carlo-%j.err</span></span>
+<span id="cb23-9"><a href="#cb23-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-10"><a href="#cb23-10" aria-hidden="true" tabindex="-1"></a><span class="ex">module</span> load apptainer</span>
+<span id="cb23-11"><a href="#cb23-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-12"><a href="#cb23-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Pull the image from Docker Hub (only needed once; skip if .sif already exists)</span></span>
+<span id="cb23-13"><a href="#cb23-13" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="bu">[</span> <span class="ot">!</span> <span class="ot">-f</span> monte-carlo_0.1.sif <span class="bu">]</span><span class="kw">;</span> <span class="cf">then</span></span>
+<span id="cb23-14"><a href="#cb23-14" aria-hidden="true" tabindex="-1"></a>    <span class="ex">apptainer</span> pull docker://ianwasukira/monte-carlo:0.1</span>
+<span id="cb23-15"><a href="#cb23-15" aria-hidden="true" tabindex="-1"></a><span class="cf">fi</span></span>
+<span id="cb23-16"><a href="#cb23-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-17"><a href="#cb23-17" aria-hidden="true" tabindex="-1"></a><span class="co"># Run the simulation inside the container</span></span>
+<span id="cb23-18"><a href="#cb23-18" aria-hidden="true" tabindex="-1"></a><span class="ex">apptainer</span> run monte-carlo_0.1.sif 1000000 <span class="at">--output</span> results.json</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Submit it with:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb24"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> sbatch monte-carlo.sh</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>The full workflow for running containers on ACE HPC, including bind mounts and GPU access, is covered in <a href="containers-hpc">Containers on HPC Clusters</a>.</p>
+<hr>
+<p><strong>Next:</strong> <a href="containers-hpc">Containers on HPC Clusters</a> — pull your images on ACE HPC with Apptainer, write SLURM job scripts, and run MPI and GPU workloads.</p>
+<hr>
+</section>
+</section>
+</section>
+<section id="containers-on-hpc-clusters" class="level1">
+<h1>Containers on HPC Clusters</h1>
+<p>This tutorial covers deploying containers on ACE HPC using Apptainer and SLURM. You’ll learn how to pull and run Docker images, write batch job scripts for containerized workloads, and run MPI and GPU jobs inside containers.</p>
+<section id="how-apptainer-differs-from-docker" class="level2">
+<h2 class="anchored" data-anchor-id="how-apptainer-differs-from-docker">How Apptainer Differs from Docker</h2>
+<p>If you’ve followed the previous tutorials, you’ve been using Docker on your workstation. Apptainer works differently in a few important ways:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 5%">
+<col style="width: 40%">
+<col style="width: 55%">
+</colgroup>
+<thead>
+<tr class="header">
+<th></th>
+<th>Docker</th>
+<th>Apptainer</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Privileges</strong></td>
+<td>Requires root (admin) access</td>
+<td>Runs as your normal user</td>
+</tr>
+<tr class="even">
+<td><strong>Image format</strong></td>
+<td>Layered images stored in a daemon</td>
+<td>Single <code>.sif</code> file you can copy and move</td>
+</tr>
+<tr class="odd">
+<td><strong>Directory mounts</strong></td>
+<td>Must be explicitly specified with <code>-v</code></td>
+<td>Automatically mounts <code>$HOME</code>, <code>$PWD</code>, and <code>/tmp</code></td>
+</tr>
+<tr class="even">
+<td><strong>User identity</strong></td>
+<td>Runs as root inside the container by default</td>
+<td>Runs as <em>you</em> — same UID, same permissions</td>
+</tr>
+<tr class="odd">
+<td><strong>Where to build</strong></td>
+<td>On your workstation</td>
+<td>Pull pre-built images (no <code>sudo</code> on HPC)</td>
+</tr>
+</tbody>
+</table>
+<p>The key takeaway: you <strong>build</strong> containers with Docker on your workstation (where you have root), then <strong>run</strong> them with Apptainer on the cluster (where you don’t).</p>
+</section>
+<section id="introduction-to-apptainer" class="level2">
+<h2 class="anchored" data-anchor-id="introduction-to-apptainer">Introduction to Apptainer</h2>
+<section id="loading-the-module" class="level3">
+<h3 class="anchored" data-anchor-id="loading-the-module">Loading the Module</h3>
+<p>Apptainer is available as a module on ACE HPC. Start an interactive session on a compute node before working with containers — don’t pull or run containers on the login node:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb25"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Request an interactive session</span></span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> salloc <span class="at">--ntasks</span><span class="op">=</span>1 <span class="at">--mem</span><span class="op">=</span>4G <span class="at">--time</span><span class="op">=</span>01:00:00</span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Load Apptainer</span></span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> module load apptainer</span>
+<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Verify</span></span>
+<span id="cb25-8"><a href="#cb25-8" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> apptainer <span class="at">--version</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="pulling-an-image" class="level3">
+<h3 class="anchored" data-anchor-id="pulling-an-image">Pulling an Image</h3>
+<p>Apptainer can pull any Docker image and convert it to its native <code>.sif</code> format:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb26"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Pull the Monte Carlo image we built in previous tutorials</span></span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> apptainer pull docker://yourusername/monte-carlo:0.1</span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a><span class="co"># This creates: monte-carlo_0.1.sif</span></span>
+<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> ls <span class="at">-lh</span> monte-carlo_0.1.sif</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>The <code>.sif</code> file is a single, portable file containing the entire container. You can copy it, move it, share it — it’s just a file.</p>
+<p>To pull to a specific directory or with a custom filename:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb27"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> mkdir <span class="at">-p</span> ~/containers</span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> apptainer pull ~/containers/monte-carlo.sif docker://yourusername/monte-carlo:0.1</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>:::note Cache management Apptainer caches downloaded layers in <code>~/.apptainer/cache</code>. This counts toward your <code>$HOME</code> quota. Clean the cache regularly if you are pulling many images:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb28"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="ex">apptainer</span> cache clean</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>You can check cache size with <code>apptainer cache list</code>. :::</p>
+</section>
+<section id="running-containers" class="level3">
+<h3 class="anchored" data-anchor-id="running-containers">Running Containers</h3>
+<p>:::danger Do not run containers on the head node The commands below are for reference only. <strong>Never run <code>apptainer exec</code>, <code>apptainer run</code>, or <code>apptainer shell</code> on the head node for actual compute work.</strong> The head node is a shared login environment — running workloads there degrades it for all users and may result in your session being terminated.</p>
+<p>All container execution must be done inside a SLURM job. Use <code>sbatch</code> for batch jobs or <code>salloc</code> for interactive sessions on a compute node. See the <a href="#slurm-batch-jobs">SLURM Batch Jobs</a> section below for the correct approach. :::</p>
+<p>Apptainer has three commands for running containers:</p>
+<p><strong><code>apptainer exec</code></strong> — Run a specific command inside the container. This is what you’ll use most often:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb29"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Run the Monte Carlo simulation</span></span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> apptainer exec monte-carlo_0.1.sif python /app/estimate_pi.py 5000000</span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Check what Python version is inside the container</span></span>
+<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> apptainer exec monte-carlo_0.1.sif python <span class="at">--version</span></span>
+<span id="cb29-6"><a href="#cb29-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-7"><a href="#cb29-7" aria-hidden="true" tabindex="-1"></a><span class="co"># List installed packages</span></span>
+<span id="cb29-8"><a href="#cb29-8" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> apptainer exec monte-carlo_0.1.sif pip list</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong><code>apptainer shell</code></strong> — Start an interactive shell inside the container for exploration and debugging:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb30"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> apptainer shell monte-carlo_0.1.sif</span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a><span class="ex">Apptainer</span><span class="op">&gt;</span> python <span class="at">--version</span></span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a><span class="ex">Apptainer</span><span class="op">&gt;</span> ls /app/</span>
+<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a><span class="ex">Apptainer</span><span class="op">&gt;</span> cat /etc/os-release</span>
+<span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a><span class="ex">Apptainer</span><span class="op">&gt;</span> exit</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Notice that inside the shell, you’re still <em>you</em> — your home directory is accessible, your files are there, and you have the same permissions as outside. This is different from Docker, where you’d typically be root.</p>
+<p><strong><code>apptainer run</code></strong> — Execute the container’s default command (its <code>CMD</code> or <code>ENTRYPOINT</code>):</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb31"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> apptainer run monte-carlo_0.1.sif</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="interactive-shell-sessions-with-srun" class="level3">
+<h3 class="anchored" data-anchor-id="interactive-shell-sessions-with-srun">Interactive Shell Sessions with srun</h3>
+<p>When you need to explore a container interactively — inspect its filesystem, test commands, or debug a failing job — use <code>srun</code> to get an interactive session on a compute node first, then launch <code>apptainer shell</code> from there.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb32"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Request an interactive session on a compute node</span></span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> srun <span class="at">--ntasks</span><span class="op">=</span>1 <span class="at">--cpus-per-task</span><span class="op">=</span>2 <span class="at">--mem</span><span class="op">=</span>4G <span class="at">--time</span><span class="op">=</span>01:00:00 <span class="at">--pty</span> bash</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Once your shell lands on a compute node, load Apptainer and open the container:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb33"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> module load apptainer</span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> apptainer shell ~/containers/monte-carlo.sif</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>You’ll drop into the container’s environment:</p>
+<pre><code>Apptainer&gt; python --version
+Python 3.11.x
+Apptainer&gt; pip list
+Apptainer&gt; ls /app/
+Apptainer&gt; python /app/estimate_pi.py 100000
+Apptainer&gt; exit</code></pre>
+<p>If you need a GPU node for interactive debugging:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb35"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> srun <span class="at">--ntasks</span><span class="op">=</span>1 <span class="at">--cpus-per-task</span><span class="op">=</span>4 <span class="at">--mem</span><span class="op">=</span>16G <span class="at">--time</span><span class="op">=</span>01:00:00 <span class="dt">\</span></span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>     <span class="at">--gres</span><span class="op">=</span>gpu:1 <span class="at">--partition</span><span class="op">=</span>gpu <span class="at">--pty</span> bash</span>
+<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Then inside the compute node:</span></span>
+<span id="cb35-5"><a href="#cb35-5" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> module load apptainer</span>
+<span id="cb35-6"><a href="#cb35-6" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> apptainer shell <span class="at">--nv</span> ~/containers/gpu-benchmark.sif</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="tip">
+<p><code>apptainer shell</code> inherits your home directory and current working directory automatically, so your data and scripts are accessible inside the container without any extra <code>--bind</code> flags.</p>
+</div>
+</section>
+</section>
+<section id="slurm-batch-jobs" class="level2">
+<h2 class="anchored" data-anchor-id="slurm-batch-jobs">SLURM Batch Jobs</h2>
+<p>On an HPC cluster, you don’t run jobs interactively — you write a batch script that specifies the resources you need and the commands to run, then submit it to the scheduler. The scheduler runs your job when resources become available.</p>
+<section id="the-example-monte-carlo-batch-job" class="level3">
+<h3 class="anchored" data-anchor-id="the-example-monte-carlo-batch-job">The Example: Monte Carlo Batch Job</h3>
+<p>Create a file called <code>monte-carlo.slurm</code>:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb36"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/bin/bash</span></span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --job-name=monte-carlo</span></span>
+<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --output=monte-carlo_%j.out</span></span>
+<span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --error=monte-carlo_%j.err</span></span>
+<span id="cb36-5"><a href="#cb36-5" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --time=00:30:00</span></span>
+<span id="cb36-6"><a href="#cb36-6" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --ntasks=1</span></span>
+<span id="cb36-7"><a href="#cb36-7" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --cpus-per-task=4</span></span>
+<span id="cb36-8"><a href="#cb36-8" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --mem=8G</span></span>
+<span id="cb36-9"><a href="#cb36-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-10"><a href="#cb36-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Load Apptainer</span></span>
+<span id="cb36-11"><a href="#cb36-11" aria-hidden="true" tabindex="-1"></a><span class="ex">module</span> load apptainer</span>
+<span id="cb36-12"><a href="#cb36-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-13"><a href="#cb36-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Define paths</span></span>
+<span id="cb36-14"><a href="#cb36-14" aria-hidden="true" tabindex="-1"></a><span class="va">CONTAINER</span><span class="op">=</span>~/containers/monte-carlo.sif</span>
+<span id="cb36-15"><a href="#cb36-15" aria-hidden="true" tabindex="-1"></a><span class="va">OUTPUT_DIR</span><span class="op">=</span>mc_results_<span class="va">$SLURM_JOB_ID</span></span>
+<span id="cb36-16"><a href="#cb36-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-17"><a href="#cb36-17" aria-hidden="true" tabindex="-1"></a><span class="co"># Create output directory</span></span>
+<span id="cb36-18"><a href="#cb36-18" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> <span class="at">-p</span> <span class="va">$OUTPUT_DIR</span></span>
+<span id="cb36-19"><a href="#cb36-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-20"><a href="#cb36-20" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"Job </span><span class="va">$SLURM_JOB_ID</span><span class="st"> started on </span><span class="va">$(</span><span class="fu">hostname</span><span class="va">)</span><span class="st"> at </span><span class="va">$(</span><span class="fu">date</span><span class="va">)</span><span class="st">"</span></span>
+<span id="cb36-21"><a href="#cb36-21" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"Container: </span><span class="va">$CONTAINER</span><span class="st">"</span></span>
+<span id="cb36-22"><a href="#cb36-22" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"Output:    </span><span class="va">$OUTPUT_DIR</span><span class="st">"</span></span>
+<span id="cb36-23"><a href="#cb36-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-24"><a href="#cb36-24" aria-hidden="true" tabindex="-1"></a><span class="co"># Run the simulation</span></span>
+<span id="cb36-25"><a href="#cb36-25" aria-hidden="true" tabindex="-1"></a><span class="ex">apptainer</span> exec <span class="dt">\</span></span>
+<span id="cb36-26"><a href="#cb36-26" aria-hidden="true" tabindex="-1"></a>    <span class="at">--bind</span> <span class="va">$OUTPUT_DIR</span>:/output <span class="dt">\</span></span>
+<span id="cb36-27"><a href="#cb36-27" aria-hidden="true" tabindex="-1"></a>    <span class="va">$CONTAINER</span> python /app/estimate_pi.py 50000000 <span class="dt">\</span></span>
+<span id="cb36-28"><a href="#cb36-28" aria-hidden="true" tabindex="-1"></a>        <span class="at">--trials</span> 20 <span class="dt">\</span></span>
+<span id="cb36-29"><a href="#cb36-29" aria-hidden="true" tabindex="-1"></a>        <span class="at">--output</span> /output/results.json</span>
+<span id="cb36-30"><a href="#cb36-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-31"><a href="#cb36-31" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"Job completed at </span><span class="va">$(</span><span class="fu">date</span><span class="va">)</span><span class="st">"</span></span>
+<span id="cb36-32"><a href="#cb36-32" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"Results:"</span></span>
+<span id="cb36-33"><a href="#cb36-33" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span> <span class="va">$OUTPUT_DIR</span>/results.json</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Let’s walk through the key parts:</p>
+<p><strong><code>#SBATCH</code> directives</strong> tell SLURM what resources to allocate. <code>%j</code> in the output/error filenames is replaced with the job ID, so each run produces uniquely named log files.</p>
+<p><strong><code>module load apptainer</code></strong> makes the <code>apptainer</code> command available. Always include this in your job script — modules loaded in your interactive session aren’t inherited by batch jobs.</p>
+<p><strong><code>mkdir -p $OUTPUT_DIR</code></strong> creates a job-specific output directory. Using <code>$SLURM_JOB_ID</code> in the path keeps results from different runs separate.</p>
+<p><strong><code>--bind $OUTPUT_DIR:/output</code></strong> mounts the scratch directory as <code>/output</code> inside the container. The Python script writes to <code>/output/results.json</code>, which actually lands on scratch.</p>
+<p>Submit the job:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb37"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> sbatch monte-carlo.slurm</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Monitor it:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb38"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Check job status</span></span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> squeue <span class="at">-u</span> <span class="va">$USER</span></span>
+<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-4"><a href="#cb38-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Once completed, view the output</span></span>
+<span id="cb38-5"><a href="#cb38-5" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> cat monte-carlo_<span class="pp">*</span>.out</span>
+<span id="cb38-6"><a href="#cb38-6" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> cat mc_results_<span class="pp">*</span>/results.json</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<!-- TODO: Add a screenshot showing squeue output with the container job running -->
+</section>
+</section>
+<section id="mpi-containers" class="level2">
+<h2 class="anchored" data-anchor-id="mpi-containers">MPI Containers</h2>
+<p>MPI (Message Passing Interface) enables running a single program across multiple nodes, with processes communicating over the high-speed network. MPI containers require special handling because the MPI library inside the container must be compatible with the host system’s MPI and network drivers.</p>
+<section id="the-concept" class="level3">
+<h3 class="anchored" data-anchor-id="the-concept">The Concept</h3>
+<p>The recommended approach is the <strong>hybrid model</strong>: the container includes MPI libraries, but the <em>host</em> MPI launcher (<code>mpirun</code> or the cluster’s equivalent) starts the processes. This lets the host handle network configuration and process placement while the container provides the application environment.</p>
+<pre><code>  Host System                    Container
+┌─────────────────┐          ┌──────────────────┐
+│  mpirun / ibrun │ launches │  Your app + MPI  │
+│  (host MPI)     │ ───────&gt; │  (container MPI) │
+│                 │          │                  │
+│  Manages:       │          │  Provides:       │
+│  - Network      │          │  - Application   │
+│  - Process      │          │  - Dependencies  │
+│    placement    │          │  - Compatible MPI│
+└─────────────────┘          └──────────────────┘</code></pre>
+<p><strong>Important:</strong> The MPI version inside the container should match or be newer than the host’s MPI version. Using the same major version of OpenMPI generally works.</p>
+</section>
+<section id="the-example-parallel-pi-estimation" class="level3">
+<h3 class="anchored" data-anchor-id="the-example-parallel-pi-estimation">The Example: Parallel Pi Estimation</h3>
+<p>We’ll create a version of the Monte Carlo simulation that distributes work across multiple MPI processes. Each process estimates Pi with a portion of the total samples, and the results are combined.</p>
+<p>On your workstation, create the project:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb40"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> ~/monte-carlo-mpi <span class="kw">&amp;&amp;</span> <span class="bu">cd</span> ~/monte-carlo-mpi</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Create <code>estimate_pi_mpi.py</code>:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb41"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/usr/bin/env python3</span></span>
+<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a><span class="co">"""Parallel Monte Carlo Pi estimation using MPI."""</span></span>
+<span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb41-4"><a href="#cb41-4" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> mpi4py <span class="im">import</span> MPI</span>
+<span id="cb41-5"><a href="#cb41-5" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb41-6"><a href="#cb41-6" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> time</span>
+<span id="cb41-7"><a href="#cb41-7" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> socket</span>
+<span id="cb41-8"><a href="#cb41-8" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> argparse</span>
+<span id="cb41-9"><a href="#cb41-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb41-10"><a href="#cb41-10" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> monte_carlo_pi(num_samples):</span>
+<span id="cb41-11"><a href="#cb41-11" aria-hidden="true" tabindex="-1"></a>    x <span class="op">=</span> np.random.uniform(<span class="dv">0</span>, <span class="dv">1</span>, num_samples)</span>
+<span id="cb41-12"><a href="#cb41-12" aria-hidden="true" tabindex="-1"></a>    y <span class="op">=</span> np.random.uniform(<span class="dv">0</span>, <span class="dv">1</span>, num_samples)</span>
+<span id="cb41-13"><a href="#cb41-13" aria-hidden="true" tabindex="-1"></a>    inside <span class="op">=</span> np.<span class="bu">sum</span>(x<span class="op">**</span><span class="dv">2</span> <span class="op">+</span> y<span class="op">**</span><span class="dv">2</span> <span class="op">&lt;=</span> <span class="dv">1</span>)</span>
+<span id="cb41-14"><a href="#cb41-14" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> inside</span>
+<span id="cb41-15"><a href="#cb41-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb41-16"><a href="#cb41-16" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> main():</span>
+<span id="cb41-17"><a href="#cb41-17" aria-hidden="true" tabindex="-1"></a>    comm <span class="op">=</span> MPI.COMM_WORLD</span>
+<span id="cb41-18"><a href="#cb41-18" aria-hidden="true" tabindex="-1"></a>    rank <span class="op">=</span> comm.Get_rank()</span>
+<span id="cb41-19"><a href="#cb41-19" aria-hidden="true" tabindex="-1"></a>    size <span class="op">=</span> comm.Get_size()</span>
+<span id="cb41-20"><a href="#cb41-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb41-21"><a href="#cb41-21" aria-hidden="true" tabindex="-1"></a>    parser <span class="op">=</span> argparse.ArgumentParser()</span>
+<span id="cb41-22"><a href="#cb41-22" aria-hidden="true" tabindex="-1"></a>    parser.add_argument(<span class="st">"samples"</span>, <span class="bu">type</span><span class="op">=</span><span class="bu">int</span>, nargs<span class="op">=</span><span class="st">"?"</span>, default<span class="op">=</span><span class="dv">10_000_000</span>)</span>
+<span id="cb41-23"><a href="#cb41-23" aria-hidden="true" tabindex="-1"></a>    args <span class="op">=</span> parser.parse_args()</span>
+<span id="cb41-24"><a href="#cb41-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb41-25"><a href="#cb41-25" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Each process handles an equal share of the samples</span></span>
+<span id="cb41-26"><a href="#cb41-26" aria-hidden="true" tabindex="-1"></a>    samples_per_rank <span class="op">=</span> args.samples <span class="op">//</span> size</span>
+<span id="cb41-27"><a href="#cb41-27" aria-hidden="true" tabindex="-1"></a>    np.random.seed(rank <span class="op">*</span> <span class="dv">1000</span> <span class="op">+</span> <span class="dv">42</span>)</span>
+<span id="cb41-28"><a href="#cb41-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb41-29"><a href="#cb41-29" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> rank <span class="op">==</span> <span class="dv">0</span>:</span>
+<span id="cb41-30"><a href="#cb41-30" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"Estimating Pi with </span><span class="sc">{</span>args<span class="sc">.</span>samples<span class="sc">:,}</span><span class="ss"> total samples across </span><span class="sc">{</span>size<span class="sc">}</span><span class="ss"> processes"</span>)</span>
+<span id="cb41-31"><a href="#cb41-31" aria-hidden="true" tabindex="-1"></a>        start <span class="op">=</span> time.time()</span>
+<span id="cb41-32"><a href="#cb41-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb41-33"><a href="#cb41-33" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Each rank computes its portion</span></span>
+<span id="cb41-34"><a href="#cb41-34" aria-hidden="true" tabindex="-1"></a>    local_inside <span class="op">=</span> monte_carlo_pi(samples_per_rank)</span>
+<span id="cb41-35"><a href="#cb41-35" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb41-36"><a href="#cb41-36" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Combine results across all ranks</span></span>
+<span id="cb41-37"><a href="#cb41-37" aria-hidden="true" tabindex="-1"></a>    total_inside <span class="op">=</span> comm.<span class="bu">reduce</span>(local_inside, op<span class="op">=</span>MPI.SUM, root<span class="op">=</span><span class="dv">0</span>)</span>
+<span id="cb41-38"><a href="#cb41-38" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb41-39"><a href="#cb41-39" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> rank <span class="op">==</span> <span class="dv">0</span>:</span>
+<span id="cb41-40"><a href="#cb41-40" aria-hidden="true" tabindex="-1"></a>        pi_estimate <span class="op">=</span> <span class="dv">4</span> <span class="op">*</span> total_inside <span class="op">/</span> (samples_per_rank <span class="op">*</span> size)</span>
+<span id="cb41-41"><a href="#cb41-41" aria-hidden="true" tabindex="-1"></a>        elapsed <span class="op">=</span> time.time() <span class="op">-</span> start</span>
+<span id="cb41-42"><a href="#cb41-42" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"  Estimate: </span><span class="sc">{</span>pi_estimate<span class="sc">:.8f}</span><span class="ss">"</span>)</span>
+<span id="cb41-43"><a href="#cb41-43" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"  Error:    </span><span class="sc">{</span><span class="bu">abs</span>(pi_estimate <span class="op">-</span> np.pi)<span class="sc">:.8f}</span><span class="ss">"</span>)</span>
+<span id="cb41-44"><a href="#cb41-44" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"  Time:     </span><span class="sc">{</span>elapsed<span class="sc">:.3f}</span><span class="ss">s"</span>)</span>
+<span id="cb41-45"><a href="#cb41-45" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"  Speedup:  </span><span class="sc">{</span>size<span class="sc">}</span><span class="ss"> processes"</span>)</span>
+<span id="cb41-46"><a href="#cb41-46" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb41-47"><a href="#cb41-47" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Every rank reports its hostname for verification</span></span>
+<span id="cb41-48"><a href="#cb41-48" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"  Rank </span><span class="sc">{</span>rank<span class="sc">}</span><span class="ss">/</span><span class="sc">{</span>size<span class="sc">}</span><span class="ss"> on </span><span class="sc">{</span>socket<span class="sc">.</span>gethostname()<span class="sc">}</span><span class="ss">: </span><span class="sc">{</span>local_inside<span class="sc">:,}</span><span class="ss"> hits "</span></span>
+<span id="cb41-49"><a href="#cb41-49" aria-hidden="true" tabindex="-1"></a>          <span class="ss">f"from </span><span class="sc">{</span>samples_per_rank<span class="sc">:,}</span><span class="ss"> samples"</span>)</span>
+<span id="cb41-50"><a href="#cb41-50" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb41-51"><a href="#cb41-51" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">"__main__"</span>:</span>
+<span id="cb41-52"><a href="#cb41-52" aria-hidden="true" tabindex="-1"></a>    main()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Create the <code>Dockerfile</code>:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb42"><pre class="sourceCode dockerfile code-with-copy"><code class="sourceCode dockerfile"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="kw">FROM</span> ubuntu:22.04</span>
+<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a><span class="kw">ENV</span> DEBIAN_FRONTEND=noninteractive</span>
+<span id="cb42-4"><a href="#cb42-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-5"><a href="#cb42-5" aria-hidden="true" tabindex="-1"></a><span class="kw">RUN</span> <span class="ex">apt-get</span> update <span class="dt">\</span></span>
+<span id="cb42-6"><a href="#cb42-6" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&amp;&amp;</span> <span class="ex">apt-get</span> install <span class="at">-y</span> <span class="at">--no-install-recommends</span> <span class="dt">\</span></span>
+<span id="cb42-7"><a href="#cb42-7" aria-hidden="true" tabindex="-1"></a>        python3 <span class="dt">\</span></span>
+<span id="cb42-8"><a href="#cb42-8" aria-hidden="true" tabindex="-1"></a>        python3-pip <span class="dt">\</span></span>
+<span id="cb42-9"><a href="#cb42-9" aria-hidden="true" tabindex="-1"></a>        openmpi-bin <span class="dt">\</span></span>
+<span id="cb42-10"><a href="#cb42-10" aria-hidden="true" tabindex="-1"></a>        libopenmpi-dev <span class="dt">\</span></span>
+<span id="cb42-11"><a href="#cb42-11" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&amp;&amp;</span> <span class="fu">rm</span> <span class="at">-rf</span> /var/lib/apt/lists/<span class="pp">*</span></span>
+<span id="cb42-12"><a href="#cb42-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-13"><a href="#cb42-13" aria-hidden="true" tabindex="-1"></a><span class="kw">RUN</span> <span class="ex">pip3</span> install <span class="at">--no-cache-dir</span> mpi4py numpy</span>
+<span id="cb42-14"><a href="#cb42-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-15"><a href="#cb42-15" aria-hidden="true" tabindex="-1"></a><span class="kw">WORKDIR</span> /app</span>
+<span id="cb42-16"><a href="#cb42-16" aria-hidden="true" tabindex="-1"></a><span class="kw">COPY</span> estimate_pi_mpi.py .</span>
+<span id="cb42-17"><a href="#cb42-17" aria-hidden="true" tabindex="-1"></a><span class="kw">RUN</span> <span class="fu">chmod</span> +x estimate_pi_mpi.py</span>
+<span id="cb42-18"><a href="#cb42-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-19"><a href="#cb42-19" aria-hidden="true" tabindex="-1"></a><span class="kw">CMD</span> [<span class="st">"python3"</span>, <span class="st">"estimate_pi_mpi.py"</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Build and push:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb43"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> docker build <span class="at">--platform</span> linux/amd64 <span class="at">-t</span> yourusername/monte-carlo-mpi:0.1 .</span>
+<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a><span class="ex">[+]</span> Building 51.6s <span class="er">(</span><span class="ex">12/12</span><span class="kw">)</span> <span class="ex">FINISHED</span>                                                                                                                                                            docker:desktop-linux</span>
+<span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a> <span class="ex">=</span><span class="op">&gt;</span> <span class="pp">[</span><span class="ss">internal</span><span class="pp">]</span> load build definition from Dockerfile                                                                                                                                                           0.0s</span>
+<span id="cb43-4"><a href="#cb43-4" aria-hidden="true" tabindex="-1"></a> <span class="ex">=</span><span class="op">&gt;</span> =<span class="op">&gt;</span> transferring dockerfile: 446B                                                                                                                                                                           0.0s</span>
+<span id="cb43-5"><a href="#cb43-5" aria-hidden="true" tabindex="-1"></a> <span class="ex">=</span><span class="op">&gt;</span> <span class="pp">[</span><span class="ss">internal</span><span class="pp">]</span> load metadata for docker.io/library/ubuntu:22.04                                                                                                                                                1.0s</span>
+<span id="cb43-6"><a href="#cb43-6" aria-hidden="true" tabindex="-1"></a> <span class="ex">=</span><span class="op">&gt;</span> <span class="pp">[</span><span class="ss">auth</span><span class="pp">]</span> library/ubuntu:pull token for registry-1.docker.io                                                                                                                                                  0.0s</span>
+<span id="cb43-7"><a href="#cb43-7" aria-hidden="true" tabindex="-1"></a> <span class="ex">=</span><span class="op">&gt;</span> <span class="pp">[</span><span class="ss">internal</span><span class="pp">]</span> load .dockerignore                                                                                                                                                                              0.0s</span>
+<span id="cb43-8"><a href="#cb43-8" aria-hidden="true" tabindex="-1"></a> <span class="ex">=</span><span class="op">&gt;</span> =<span class="op">&gt;</span> transferring context: 2B                                                                                                                                                                                0.0s</span>
+<span id="cb43-9"><a href="#cb43-9" aria-hidden="true" tabindex="-1"></a> <span class="ex">=</span><span class="op">&gt;</span> <span class="pp">[</span><span class="ss">1/6</span><span class="pp">]</span> FROM docker.io/library/ubuntu:22.04@sha256:3ba65aa20f86a0fad9df2b2c259c613df006b2e6d0bfcc8a146afb8c525a9751                                                                                          1.1s</span>
+<span id="cb43-10"><a href="#cb43-10" aria-hidden="true" tabindex="-1"></a> <span class="ex">=</span><span class="op">&gt;</span> =<span class="op">&gt;</span> resolve docker.io/library/ubuntu:22.04@sha256:3ba65aa20f86a0fad9df2b2c259c613df006b2e6d0bfcc8a146afb8c525a9751                                                                                          0.0s</span>
+<span id="cb43-11"><a href="#cb43-11" aria-hidden="true" tabindex="-1"></a> <span class="ex">=</span><span class="op">&gt;</span> =<span class="op">&gt;</span> sha256:b1cba2e842ca52b95817f958faf99734080c78e92e43ce609cde9244867b49ed 29.54MB / 29.54MB                                                                                                               0.8s</span>
+<span id="cb43-12"><a href="#cb43-12" aria-hidden="true" tabindex="-1"></a> <span class="ex">=</span><span class="op">&gt;</span> =<span class="op">&gt;</span> extracting sha256:b1cba2e842ca52b95817f958faf99734080c78e92e43ce609cde9244867b49ed                                                                                                                      0.3s</span>
+<span id="cb43-13"><a href="#cb43-13" aria-hidden="true" tabindex="-1"></a> <span class="ex">=</span><span class="op">&gt;</span> <span class="pp">[</span><span class="ss">internal</span><span class="pp">]</span> load build context                                                                                                                                                                              0.0s</span>
+<span id="cb43-14"><a href="#cb43-14" aria-hidden="true" tabindex="-1"></a> <span class="ex">=</span><span class="op">&gt;</span> =<span class="op">&gt;</span> transferring context: 1.54kB                                                                                                                                                                            0.0s</span>
+<span id="cb43-15"><a href="#cb43-15" aria-hidden="true" tabindex="-1"></a> <span class="ex">=</span><span class="op">&gt;</span> <span class="pp">[</span><span class="ss">2/6</span><span class="pp">]</span> RUN apt-get update     <span class="kw">&amp;&amp;</span> <span class="ex">apt-get</span> install <span class="at">-y</span> <span class="at">--no-install-recommends</span>         python3         python3-pip         openmpi-bin         libopenmpi-dev     <span class="kw">&amp;&amp;</span> <span class="fu">rm</span> <span class="at">-rf</span> /var/lib/apt/lists/<span class="pp">*</span>              40.4s</span>
+<span id="cb43-16"><a href="#cb43-16" aria-hidden="true" tabindex="-1"></a> <span class="ex">=</span><span class="op">&gt;</span> <span class="pp">[</span><span class="ss">3/6</span><span class="pp">]</span> RUN pip3 install <span class="at">--no-cache-dir</span> mpi4py numpy                                                                                                                                                         2.5s</span>
+<span id="cb43-17"><a href="#cb43-17" aria-hidden="true" tabindex="-1"></a> <span class="ex">=</span><span class="op">&gt;</span> <span class="pp">[</span><span class="ss">4/6</span><span class="pp">]</span> WORKDIR /app                                                                                                                                                                                         0.0s</span>
+<span id="cb43-18"><a href="#cb43-18" aria-hidden="true" tabindex="-1"></a> <span class="ex">=</span><span class="op">&gt;</span> <span class="pp">[</span><span class="ss">5/6</span><span class="pp">]</span> COPY estimate_pi_mpi.py .                                                                                                                                                                            0.0s</span>
+<span id="cb43-19"><a href="#cb43-19" aria-hidden="true" tabindex="-1"></a> <span class="ex">=</span><span class="op">&gt;</span> <span class="pp">[</span><span class="ss">6/6</span><span class="pp">]</span> RUN chmod +x estimate_pi_mpi.py                                                                                                                                                                      0.1s</span>
+<span id="cb43-20"><a href="#cb43-20" aria-hidden="true" tabindex="-1"></a> <span class="ex">=</span><span class="op">&gt;</span> exporting to image                                                                                                                                                                                         6.3s</span>
+<span id="cb43-21"><a href="#cb43-21" aria-hidden="true" tabindex="-1"></a> <span class="ex">=</span><span class="op">&gt;</span> =<span class="op">&gt;</span> exporting layers                                                                                                                                                                                        6.3s</span>
+<span id="cb43-22"><a href="#cb43-22" aria-hidden="true" tabindex="-1"></a> <span class="ex">=</span><span class="op">&gt;</span> =<span class="op">&gt;</span> exporting manifest sha256:6ef2c750407397b709e1b0d616052e9fc6626b5a221b03302676f83ff1d2b6f0                                                                                                              0.0s</span>
+<span id="cb43-23"><a href="#cb43-23" aria-hidden="true" tabindex="-1"></a> <span class="ex">=</span><span class="op">&gt;</span> =<span class="op">&gt;</span> exporting config sha256:99c2625718bb3a900f9e2efe51abf1c10f9c6e4b5b25806b543864a2feb55fcc                                                                                                                0.0s</span>
+<span id="cb43-24"><a href="#cb43-24" aria-hidden="true" tabindex="-1"></a> <span class="ex">=</span><span class="op">&gt;</span> =<span class="op">&gt;</span> exporting attestation manifest sha256:5562fc2c080dc34fe0944bca9d807260209078cafb8b83021c9cddea0a9c157a                                                                                                  0.0s</span>
+<span id="cb43-25"><a href="#cb43-25" aria-hidden="true" tabindex="-1"></a> <span class="ex">=</span><span class="op">&gt;</span> =<span class="op">&gt;</span> exporting manifest list sha256:2b9a09f20de16bc9187464b0cc04c7c33db9da1239d9991588ddf2395030bb86                                                                                                         0.0s</span>
+<span id="cb43-26"><a href="#cb43-26" aria-hidden="true" tabindex="-1"></a> <span class="ex">=</span><span class="op">&gt;</span> =<span class="op">&gt;</span> naming to docker.io/ianwasukira/monte-carlo-mpi:0.1                                                                                                                                                     0.0s</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<pre><code>docker push yourusername/monte-carlo-mpi:0.1
+The push refers to repository [docker.io/yourusername/monte-carlo-mpi]
+54c6a19e1ba5: Pushed
+195d96c8233d: Pushed
+7125307ec0a6: Pushed
+64861010b1bc: Pushed
+16a2ff661819: Pushed
+b1cba2e842ca: Pushed
+658d7018384c: Pushed
+0.1: digest: sha256:2b9a09f20de16bc9187464b0cc04c7c33db9da1239d9991588ddf2395030bb86 size: 856</code></pre>
+<p>Test locally with Docker before using cluster :</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb45"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Single process</span></span>
+<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> docker run <span class="at">--rm</span> yourusername/monte-carlo-mpi:0.1 <span class="dt">\</span></span>
+<span id="cb45-3"><a href="#cb45-3" aria-hidden="true" tabindex="-1"></a>    mpirun <span class="at">-n</span> 1 python3 /app/estimate_pi_mpi.py 5000000</span>
+<span id="cb45-4"><a href="#cb45-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-5"><a href="#cb45-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Two processes (if Docker has access to multiple cores)</span></span>
+<span id="cb45-6"><a href="#cb45-6" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> docker run <span class="at">--rm</span> yourusername/monte-carlo-mpi:0.1 <span class="dt">\</span></span>
+<span id="cb45-7"><a href="#cb45-7" aria-hidden="true" tabindex="-1"></a>    mpirun <span class="at">-n</span> 2 python3 /app/estimate_pi_mpi.py 5000000</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>On ACE HPC, pull the image and create a batch script called <code>mpi-pi.slurm</code>:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb46"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/bin/bash</span></span>
+<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --job-name=mpi-pi</span></span>
+<span id="cb46-3"><a href="#cb46-3" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --output=mpi-pi_%j.out</span></span>
+<span id="cb46-4"><a href="#cb46-4" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --error=mpi-pi_%j.err</span></span>
+<span id="cb46-5"><a href="#cb46-5" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --time=00:30:00</span></span>
+<span id="cb46-6"><a href="#cb46-6" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --nodes=2</span></span>
+<span id="cb46-7"><a href="#cb46-7" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --ntasks-per-node=8</span></span>
+<span id="cb46-8"><a href="#cb46-8" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --mem=16G</span></span>
+<span id="cb46-9"><a href="#cb46-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-10"><a href="#cb46-10" aria-hidden="true" tabindex="-1"></a><span class="ex">module</span> load apptainer</span>
+<span id="cb46-11"><a href="#cb46-11" aria-hidden="true" tabindex="-1"></a><span class="ex">module</span> load openmpi</span>
+<span id="cb46-12"><a href="#cb46-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-13"><a href="#cb46-13" aria-hidden="true" tabindex="-1"></a><span class="va">CONTAINER</span><span class="op">=</span>~/containers/monte-carlo-mpi.sif</span>
+<span id="cb46-14"><a href="#cb46-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-15"><a href="#cb46-15" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"MPI Pi estimation: </span><span class="va">$SLURM_NTASKS</span><span class="st"> total tasks across </span><span class="va">$SLURM_NNODES</span><span class="st"> nodes"</span></span>
+<span id="cb46-16"><a href="#cb46-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-17"><a href="#cb46-17" aria-hidden="true" tabindex="-1"></a><span class="co"># Use the HOST mpirun to launch container processes.</span></span>
+<span id="cb46-18"><a href="#cb46-18" aria-hidden="true" tabindex="-1"></a><span class="co"># This ensures proper network configuration and process placement.</span></span>
+<span id="cb46-19"><a href="#cb46-19" aria-hidden="true" tabindex="-1"></a><span class="ex">mpirun</span> <span class="at">-np</span> <span class="va">$SLURM_NTASKS</span> apptainer exec <span class="va">$CONTAINER</span> <span class="dt">\</span></span>
+<span id="cb46-20"><a href="#cb46-20" aria-hidden="true" tabindex="-1"></a>    python3 /app/estimate_pi_mpi.py 100000000</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Submit:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb47"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> sbatch mpi_pi.slurm</span>
+<span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a><span class="ex">Submitted</span> batch job 1197</span>
+<span id="cb47-3"><a href="#cb47-3" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> cat mpi-pi_1197.out</span>
+<span id="cb47-4"><a href="#cb47-4" aria-hidden="true" tabindex="-1"></a><span class="ex">MPI</span> Pi estimation: 8 total tasks across 1 nodes</span>
+<span id="cb47-5"><a href="#cb47-5" aria-hidden="true" tabindex="-1"></a><span class="ex">Estimating</span> Pi with 100,000,000 total samples across 8 processes</span>
+<span id="cb47-6"><a href="#cb47-6" aria-hidden="true" tabindex="-1"></a>  <span class="ex">Rank</span> 5/8 on kla-ac-cpu-45: 9,818,024 hits from 12,500,000 samples</span>
+<span id="cb47-7"><a href="#cb47-7" aria-hidden="true" tabindex="-1"></a>  <span class="ex">Rank</span> 6/8 on kla-ac-cpu-45: 9,813,591 hits from 12,500,000 samples</span>
+<span id="cb47-8"><a href="#cb47-8" aria-hidden="true" tabindex="-1"></a>  <span class="ex">Rank</span> 7/8 on kla-ac-cpu-45: 9,814,575 hits from 12,500,000 samples</span>
+<span id="cb47-9"><a href="#cb47-9" aria-hidden="true" tabindex="-1"></a>  <span class="ex">Rank</span> 1/8 on kla-ac-cpu-45: 9,817,978 hits from 12,500,000 samples</span>
+<span id="cb47-10"><a href="#cb47-10" aria-hidden="true" tabindex="-1"></a>  <span class="ex">Rank</span> 2/8 on kla-ac-cpu-45: 9,818,049 hits from 12,500,000 samples</span>
+<span id="cb47-11"><a href="#cb47-11" aria-hidden="true" tabindex="-1"></a>  <span class="ex">Rank</span> 3/8 on kla-ac-cpu-45: 9,818,775 hits from 12,500,000 samples</span>
+<span id="cb47-12"><a href="#cb47-12" aria-hidden="true" tabindex="-1"></a>  <span class="ex">Rank</span> 4/8 on kla-ac-cpu-45: 9,817,634 hits from 12,500,000 samples</span>
+<span id="cb47-13"><a href="#cb47-13" aria-hidden="true" tabindex="-1"></a>  <span class="ex">Estimate:</span> 3.14142368</span>
+<span id="cb47-14"><a href="#cb47-14" aria-hidden="true" tabindex="-1"></a>  <span class="ex">Error:</span>    0.00016897</span>
+<span id="cb47-15"><a href="#cb47-15" aria-hidden="true" tabindex="-1"></a>  <span class="ex">Time:</span>     2.563s</span>
+<span id="cb47-16"><a href="#cb47-16" aria-hidden="true" tabindex="-1"></a>  <span class="ex">Speedup:</span>  8 processes</span>
+<span id="cb47-17"><a href="#cb47-17" aria-hidden="true" tabindex="-1"></a>  <span class="ex">Rank</span> 0/8 on kla-ac-cpu-45: 9,816,966 hits from 12,500,000 samples</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>See each rank report its hostname — ranks on the same node share a hostname, ranks on different nodes report different hostnames. This confirms MPI is communicating across nodes.</p>
+</section>
+</section>
+<section id="gpu-containers" class="level2">
+<h2 class="anchored" data-anchor-id="gpu-containers">GPU Containers</h2>
+<p>GPU containers let you run CUDA workloads (deep learning, molecular dynamics, etc.) inside a container. Apptainer exposes the host’s NVIDIA GPUs to the container with the <code>--nv</code> flag.</p>
+<section id="the-concept-1" class="level3">
+<h3 class="anchored" data-anchor-id="the-concept-1">The Concept</h3>
+<p>The <code>--nv</code> flag tells Apptainer to bind-mount the host’s NVIDIA driver libraries and GPU devices into the container. The container must include CUDA libraries that are compatible with the host’s NVIDIA driver version. As a rule: the host driver must be <strong>equal to or newer</strong> than the CUDA version in the container.</p>
+<p>You don’t need to install NVIDIA drivers inside the container — <code>--nv</code> injects them from the host at runtime.</p>
+</section>
+<section id="the-example-gpu-matrix-benchmark" class="level3">
+<h3 class="anchored" data-anchor-id="the-example-gpu-matrix-benchmark">The Example: GPU Matrix Benchmark</h3>
+<p>We’ll create a container that benchmarks GPU performance with a matrix multiplication using PyTorch, then compare it to CPU performance.</p>
+<p>On your workstation, create <code>gpu_benchmark.py</code>:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb48"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/usr/bin/env python3</span></span>
+<span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a><span class="co">"""Benchmark matrix multiplication on CPU vs GPU."""</span></span>
+<span id="cb48-3"><a href="#cb48-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-4"><a href="#cb48-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> torch</span>
+<span id="cb48-5"><a href="#cb48-5" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> time</span>
+<span id="cb48-6"><a href="#cb48-6" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> argparse</span>
+<span id="cb48-7"><a href="#cb48-7" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> os</span>
+<span id="cb48-8"><a href="#cb48-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-9"><a href="#cb48-9" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> benchmark(device, size, iterations):</span>
+<span id="cb48-10"><a href="#cb48-10" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Run matrix multiplication benchmark on the given device."""</span></span>
+<span id="cb48-11"><a href="#cb48-11" aria-hidden="true" tabindex="-1"></a>    a <span class="op">=</span> torch.randn(size, size, device<span class="op">=</span>device)</span>
+<span id="cb48-12"><a href="#cb48-12" aria-hidden="true" tabindex="-1"></a>    b <span class="op">=</span> torch.randn(size, size, device<span class="op">=</span>device)</span>
+<span id="cb48-13"><a href="#cb48-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-14"><a href="#cb48-14" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Warm-up</span></span>
+<span id="cb48-15"><a href="#cb48-15" aria-hidden="true" tabindex="-1"></a>    torch.matmul(a, b)</span>
+<span id="cb48-16"><a href="#cb48-16" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> device.<span class="bu">type</span> <span class="op">==</span> <span class="st">"cuda"</span>:</span>
+<span id="cb48-17"><a href="#cb48-17" aria-hidden="true" tabindex="-1"></a>        torch.cuda.synchronize()</span>
+<span id="cb48-18"><a href="#cb48-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-19"><a href="#cb48-19" aria-hidden="true" tabindex="-1"></a>    start <span class="op">=</span> time.time()</span>
+<span id="cb48-20"><a href="#cb48-20" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> _ <span class="kw">in</span> <span class="bu">range</span>(iterations):</span>
+<span id="cb48-21"><a href="#cb48-21" aria-hidden="true" tabindex="-1"></a>        torch.matmul(a, b)</span>
+<span id="cb48-22"><a href="#cb48-22" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> device.<span class="bu">type</span> <span class="op">==</span> <span class="st">"cuda"</span>:</span>
+<span id="cb48-23"><a href="#cb48-23" aria-hidden="true" tabindex="-1"></a>        torch.cuda.synchronize()</span>
+<span id="cb48-24"><a href="#cb48-24" aria-hidden="true" tabindex="-1"></a>    elapsed <span class="op">=</span> time.time() <span class="op">-</span> start</span>
+<span id="cb48-25"><a href="#cb48-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-26"><a href="#cb48-26" aria-hidden="true" tabindex="-1"></a>    <span class="co"># FLOPS for matrix multiplication: 2 * N^3 per multiply</span></span>
+<span id="cb48-27"><a href="#cb48-27" aria-hidden="true" tabindex="-1"></a>    flops <span class="op">=</span> <span class="dv">2</span> <span class="op">*</span> size<span class="op">**</span><span class="dv">3</span> <span class="op">*</span> iterations <span class="op">/</span> elapsed</span>
+<span id="cb48-28"><a href="#cb48-28" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> elapsed, flops</span>
+<span id="cb48-29"><a href="#cb48-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-30"><a href="#cb48-30" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> main():</span>
+<span id="cb48-31"><a href="#cb48-31" aria-hidden="true" tabindex="-1"></a>    parser <span class="op">=</span> argparse.ArgumentParser(description<span class="op">=</span><span class="st">"GPU matrix multiplication benchmark"</span>)</span>
+<span id="cb48-32"><a href="#cb48-32" aria-hidden="true" tabindex="-1"></a>    parser.add_argument(<span class="st">"--size"</span>, <span class="bu">type</span><span class="op">=</span><span class="bu">int</span>, default<span class="op">=</span><span class="dv">4096</span>, <span class="bu">help</span><span class="op">=</span><span class="st">"Matrix size NxN"</span>)</span>
+<span id="cb48-33"><a href="#cb48-33" aria-hidden="true" tabindex="-1"></a>    parser.add_argument(<span class="st">"--iterations"</span>, <span class="bu">type</span><span class="op">=</span><span class="bu">int</span>, default<span class="op">=</span><span class="dv">10</span>)</span>
+<span id="cb48-34"><a href="#cb48-34" aria-hidden="true" tabindex="-1"></a>    parser.add_argument(<span class="st">"--no-gpu"</span>, action<span class="op">=</span><span class="st">"store_true"</span>, <span class="bu">help</span><span class="op">=</span><span class="st">"Skip GPU benchmark"</span>)</span>
+<span id="cb48-35"><a href="#cb48-35" aria-hidden="true" tabindex="-1"></a>    args <span class="op">=</span> parser.parse_args()</span>
+<span id="cb48-36"><a href="#cb48-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-37"><a href="#cb48-37" aria-hidden="true" tabindex="-1"></a>    job_id <span class="op">=</span> os.environ.get(<span class="st">"SLURM_JOB_ID"</span>, <span class="st">"local"</span>)</span>
+<span id="cb48-38"><a href="#cb48-38" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"Matrix Benchmark (Job: </span><span class="sc">{</span>job_id<span class="sc">}</span><span class="ss">)"</span>)</span>
+<span id="cb48-39"><a href="#cb48-39" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"  PyTorch: </span><span class="sc">{</span>torch<span class="sc">.</span>__version__<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb48-40"><a href="#cb48-40" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"  Matrix size: </span><span class="sc">{</span>args<span class="sc">.</span>size<span class="sc">}</span><span class="ss">x</span><span class="sc">{</span>args<span class="sc">.</span>size<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb48-41"><a href="#cb48-41" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"  Iterations: </span><span class="sc">{</span>args<span class="sc">.</span>iterations<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb48-42"><a href="#cb48-42" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>()</span>
+<span id="cb48-43"><a href="#cb48-43" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-44"><a href="#cb48-44" aria-hidden="true" tabindex="-1"></a>    <span class="co"># CPU benchmark</span></span>
+<span id="cb48-45"><a href="#cb48-45" aria-hidden="true" tabindex="-1"></a>    cpu_time, cpu_flops <span class="op">=</span> benchmark(torch.device(<span class="st">"cpu"</span>), args.size, args.iterations)</span>
+<span id="cb48-46"><a href="#cb48-46" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"  CPU: </span><span class="sc">{</span>cpu_time<span class="sc">:.3f}</span><span class="ss">s (</span><span class="sc">{</span>cpu_flops<span class="op">/</span><span class="fl">1e9</span><span class="sc">:.1f}</span><span class="ss"> GFLOPS)"</span>)</span>
+<span id="cb48-47"><a href="#cb48-47" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-48"><a href="#cb48-48" aria-hidden="true" tabindex="-1"></a>    <span class="co"># GPU benchmark</span></span>
+<span id="cb48-49"><a href="#cb48-49" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="kw">not</span> args.no_gpu <span class="kw">and</span> torch.cuda.is_available():</span>
+<span id="cb48-50"><a href="#cb48-50" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"  CUDA: </span><span class="sc">{</span>torch<span class="sc">.</span>version<span class="sc">.</span>cuda<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb48-51"><a href="#cb48-51" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(torch.cuda.device_count()):</span>
+<span id="cb48-52"><a href="#cb48-52" aria-hidden="true" tabindex="-1"></a>            props <span class="op">=</span> torch.cuda.get_device_properties(i)</span>
+<span id="cb48-53"><a href="#cb48-53" aria-hidden="true" tabindex="-1"></a>            <span class="bu">print</span>(<span class="ss">f"  GPU </span><span class="sc">{</span>i<span class="sc">}</span><span class="ss">: </span><span class="sc">{</span>props<span class="sc">.</span>name<span class="sc">}</span><span class="ss"> (</span><span class="sc">{</span>props<span class="sc">.</span>total_memory <span class="op">/</span> <span class="fl">1e9</span><span class="sc">:.1f}</span><span class="ss"> GB)"</span>)</span>
+<span id="cb48-54"><a href="#cb48-54" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-55"><a href="#cb48-55" aria-hidden="true" tabindex="-1"></a>        gpu_time, gpu_flops <span class="op">=</span> benchmark(torch.device(<span class="st">"cuda"</span>), args.size, args.iterations)</span>
+<span id="cb48-56"><a href="#cb48-56" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"  GPU: </span><span class="sc">{</span>gpu_time<span class="sc">:.3f}</span><span class="ss">s (</span><span class="sc">{</span>gpu_flops<span class="op">/</span><span class="fl">1e12</span><span class="sc">:.2f}</span><span class="ss"> TFLOPS)"</span>)</span>
+<span id="cb48-57"><a href="#cb48-57" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"  Speedup: </span><span class="sc">{</span>cpu_time<span class="op">/</span>gpu_time<span class="sc">:.1f}</span><span class="ss">x"</span>)</span>
+<span id="cb48-58"><a href="#cb48-58" aria-hidden="true" tabindex="-1"></a>    <span class="cf">elif</span> args.no_gpu:</span>
+<span id="cb48-59"><a href="#cb48-59" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="st">"  GPU: skipped (--no-gpu)"</span>)</span>
+<span id="cb48-60"><a href="#cb48-60" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:</span>
+<span id="cb48-61"><a href="#cb48-61" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="st">"  GPU: not available. Did you use the --nv flag?"</span>)</span>
+<span id="cb48-62"><a href="#cb48-62" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-63"><a href="#cb48-63" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">"__main__"</span>:</span>
+<span id="cb48-64"><a href="#cb48-64" aria-hidden="true" tabindex="-1"></a>    main()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Create the <code>Dockerfile</code>:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb49"><pre class="sourceCode dockerfile code-with-copy"><code class="sourceCode dockerfile"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="kw">FROM</span> nvidia/cuda:12.2.0-cudnn8-runtime-ubuntu22.04</span>
+<span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-3"><a href="#cb49-3" aria-hidden="true" tabindex="-1"></a><span class="kw">ENV</span> DEBIAN_FRONTEND=noninteractive</span>
+<span id="cb49-4"><a href="#cb49-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-5"><a href="#cb49-5" aria-hidden="true" tabindex="-1"></a><span class="kw">RUN</span> <span class="ex">apt-get</span> update <span class="dt">\</span></span>
+<span id="cb49-6"><a href="#cb49-6" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&amp;&amp;</span> <span class="ex">apt-get</span> install <span class="at">-y</span> <span class="at">--no-install-recommends</span> <span class="dt">\</span></span>
+<span id="cb49-7"><a href="#cb49-7" aria-hidden="true" tabindex="-1"></a>        python3 <span class="dt">\</span></span>
+<span id="cb49-8"><a href="#cb49-8" aria-hidden="true" tabindex="-1"></a>        python3-pip <span class="dt">\</span></span>
+<span id="cb49-9"><a href="#cb49-9" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&amp;&amp;</span> <span class="fu">rm</span> <span class="at">-rf</span> /var/lib/apt/lists/<span class="pp">*</span></span>
+<span id="cb49-10"><a href="#cb49-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-11"><a href="#cb49-11" aria-hidden="true" tabindex="-1"></a><span class="kw">RUN</span> <span class="ex">pip3</span> install <span class="at">--no-cache-dir</span> <span class="dt">\</span></span>
+<span id="cb49-12"><a href="#cb49-12" aria-hidden="true" tabindex="-1"></a>    torch torchvision torchaudio <span class="dt">\</span></span>
+<span id="cb49-13"><a href="#cb49-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">--index-url</span> https://download.pytorch.org/whl/cu121</span>
+<span id="cb49-14"><a href="#cb49-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-15"><a href="#cb49-15" aria-hidden="true" tabindex="-1"></a><span class="kw">WORKDIR</span> /app</span>
+<span id="cb49-16"><a href="#cb49-16" aria-hidden="true" tabindex="-1"></a><span class="kw">COPY</span> gpu_benchmark.py .</span>
+<span id="cb49-17"><a href="#cb49-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-18"><a href="#cb49-18" aria-hidden="true" tabindex="-1"></a><span class="kw">CMD</span> [<span class="st">"python3"</span>, <span class="st">"gpu_benchmark.py"</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Build and push:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb50"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> docker build <span class="at">-t</span> yourusername/gpu-benchmark:0.1 .</span>
+<span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> docker push yourusername/gpu-benchmark:0.1</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>On ACE HPC, pull the image and create <code>gpu-bench.slurm</code>:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb51"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/bin/bash</span></span>
+<span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --job-name=gpu-bench</span></span>
+<span id="cb51-3"><a href="#cb51-3" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --output=gpu-bench_%j.out</span></span>
+<span id="cb51-4"><a href="#cb51-4" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --error=gpu-bench_%j.err</span></span>
+<span id="cb51-5"><a href="#cb51-5" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --time=00:15:00</span></span>
+<span id="cb51-6"><a href="#cb51-6" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --ntasks=1</span></span>
+<span id="cb51-7"><a href="#cb51-7" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --cpus-per-task=8</span></span>
+<span id="cb51-8"><a href="#cb51-8" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --mem=32G</span></span>
+<span id="cb51-9"><a href="#cb51-9" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --gres=gpu:1</span></span>
+<span id="cb51-10"><a href="#cb51-10" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --partition=gpu</span></span>
+<span id="cb51-11"><a href="#cb51-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-12"><a href="#cb51-12" aria-hidden="true" tabindex="-1"></a><span class="ex">module</span> load apptainer</span>
+<span id="cb51-13"><a href="#cb51-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-14"><a href="#cb51-14" aria-hidden="true" tabindex="-1"></a><span class="va">CONTAINER</span><span class="op">=</span>~/containers/gpu-benchmark.sif</span>
+<span id="cb51-15"><a href="#cb51-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-16"><a href="#cb51-16" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"GPU Benchmark - Job </span><span class="va">$SLURM_JOB_ID</span><span class="st"> on </span><span class="va">$(</span><span class="fu">hostname</span><span class="va">)</span><span class="st">"</span></span>
+<span id="cb51-17"><a href="#cb51-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-18"><a href="#cb51-18" aria-hidden="true" tabindex="-1"></a><span class="co"># The --nv flag exposes the host GPU to the container</span></span>
+<span id="cb51-19"><a href="#cb51-19" aria-hidden="true" tabindex="-1"></a><span class="ex">apptainer</span> exec <span class="at">--nv</span> <span class="va">$CONTAINER</span> python3 /app/gpu_benchmark.py <span class="at">--size</span> 8192 <span class="at">--iterations</span> 20</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Submit:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb52"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> sbatch gpu-bench.slurm</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>The output will show CPU GFLOPS vs GPU TFLOPS — typically a 30–100x speedup for matrix operations, depending on the GPU model and matrix size.</p>
+<p>Without <code>--nv</code>, the container cannot see the GPU and <code>torch.cuda.is_available()</code> returns <code>False</code>. This is the most common mistake when running GPU containers.</p>
+<!-- TODO: Add a screenshot showing the GPU benchmark output comparing CPU vs GPU performance -->
+</section>
+</section>
+<section id="troubleshooting" class="level2">
+<h2 class="anchored" data-anchor-id="troubleshooting">Troubleshooting</h2>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 34%">
+<col style="width: 26%">
+<col style="width: 38%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Problem</th>
+<th>Cause</th>
+<th>Solution</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>command not found</code> inside container</td>
+<td>Binary isn’t in the container’s <code>$PATH</code></td>
+<td>Check with <code>apptainer exec container.sif which python</code> or use the full path</td>
+</tr>
+<tr class="even">
+<td>GPU not detected</td>
+<td>Missing <code>--nv</code> flag</td>
+<td>Add <code>--nv</code> to the <code>apptainer exec</code> command</td>
+</tr>
+<tr class="odd">
+<td>GPU not detected</td>
+<td>No GPU allocated by SLURM</td>
+<td>Add <code>#SBATCH --gres=gpu:1</code> and <code>#SBATCH --partition=gpu</code></td>
+</tr>
+<tr class="even">
+<td>MPI processes all on same node</td>
+<td>Not using host MPI launcher</td>
+<td>Use <code>mpirun -np $SLURM_NTASKS apptainer exec ...</code> not <code>apptainer exec ... mpirun</code></td>
+</tr>
+<tr class="odd">
+<td>Host environment leaking in</td>
+<td>Host <code>$PATH</code> or Python paths interfere</td>
+<td>Use <code>--cleanenv</code> to start with a clean environment</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="quick-reference" class="level2">
+<h2 class="anchored" data-anchor-id="quick-reference">Quick Reference</h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb53"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load the module</span></span>
+<span id="cb53-2"><a href="#cb53-2" aria-hidden="true" tabindex="-1"></a><span class="ex">module</span> load apptainer</span>
+<span id="cb53-3"><a href="#cb53-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb53-4"><a href="#cb53-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Pull a Docker image</span></span>
+<span id="cb53-5"><a href="#cb53-5" aria-hidden="true" tabindex="-1"></a><span class="ex">apptainer</span> pull docker://image:tag</span>
+<span id="cb53-6"><a href="#cb53-6" aria-hidden="true" tabindex="-1"></a><span class="ex">apptainer</span> pull custom_name.sif docker://image:tag</span>
+<span id="cb53-7"><a href="#cb53-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb53-8"><a href="#cb53-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Run a command in a container</span></span>
+<span id="cb53-9"><a href="#cb53-9" aria-hidden="true" tabindex="-1"></a><span class="ex">apptainer</span> exec image.sif command args</span>
+<span id="cb53-10"><a href="#cb53-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb53-11"><a href="#cb53-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Interactive shell</span></span>
+<span id="cb53-12"><a href="#cb53-12" aria-hidden="true" tabindex="-1"></a><span class="ex">apptainer</span> shell image.sif</span>
+<span id="cb53-13"><a href="#cb53-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb53-14"><a href="#cb53-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Run with GPU</span></span>
+<span id="cb53-15"><a href="#cb53-15" aria-hidden="true" tabindex="-1"></a><span class="ex">apptainer</span> exec <span class="at">--nv</span> image.sif command</span>
+<span id="cb53-16"><a href="#cb53-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb53-17"><a href="#cb53-17" aria-hidden="true" tabindex="-1"></a><span class="co"># Run with custom bind mounts</span></span>
+<span id="cb53-18"><a href="#cb53-18" aria-hidden="true" tabindex="-1"></a><span class="ex">apptainer</span> exec <span class="at">--bind</span> /host/path:/container/path:ro image.sif command</span>
+<span id="cb53-19"><a href="#cb53-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb53-20"><a href="#cb53-20" aria-hidden="true" tabindex="-1"></a><span class="co"># Run with clean environment</span></span>
+<span id="cb53-21"><a href="#cb53-21" aria-hidden="true" tabindex="-1"></a><span class="ex">apptainer</span> exec <span class="at">--cleanenv</span> image.sif command</span>
+<span id="cb53-22"><a href="#cb53-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb53-23"><a href="#cb53-23" aria-hidden="true" tabindex="-1"></a><span class="co"># Pass environment variables</span></span>
+<span id="cb53-24"><a href="#cb53-24" aria-hidden="true" tabindex="-1"></a><span class="ex">apptainer</span> exec <span class="at">--env</span> KEY=VALUE image.sif command</span>
+<span id="cb53-25"><a href="#cb53-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb53-26"><a href="#cb53-26" aria-hidden="true" tabindex="-1"></a><span class="co"># Inspect image metadata</span></span>
+<span id="cb53-27"><a href="#cb53-27" aria-hidden="true" tabindex="-1"></a><span class="ex">apptainer</span> inspect image.sif</span>
+<span id="cb53-28"><a href="#cb53-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb53-29"><a href="#cb53-29" aria-hidden="true" tabindex="-1"></a><span class="co"># Manage cache</span></span>
+<span id="cb53-30"><a href="#cb53-30" aria-hidden="true" tabindex="-1"></a><span class="ex">apptainer</span> cache list</span>
+<span id="cb53-31"><a href="#cb53-31" aria-hidden="true" tabindex="-1"></a><span class="ex">apptainer</span> cache clean</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<hr>
+<p><em>ABI Summer School 2026 · Week 1: Linux &amp; HPC</em></p>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/TWG-ABI\.github\.io\/ABI-Training\/");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>© 2026 ABI-ITWG. CC BY</p>
+</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    </div>
+    <div class="nav-footer-right">
+      &nbsp;
+    </div>
+  </div>
+</footer>
+
+
+
+
+<script src="../../site_libs/quarto-html/zenscroll-min.js"></script>
+</body></html>
