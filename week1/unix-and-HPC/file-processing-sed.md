@@ -23,237 +23,144 @@ code span.co, code span.c, code span.ch, code span.cm, code span.c1 {
 
 # File processing: Part 1 (using sed)
 
-::: {.callout-note}
-**sed** allows us to automate pattern substitutions, deletions, and stream modifications (usually line-by-line). The name **sed** is an abbreviation for **stream editor**.
+**sed** allows us to automate pattern substitutions (usually line-by-line). The name **sed** is an abbreviation of **stream editor**.
 
-For this tutorial, navigate inside the `ABI_summer_school_project` directory:
-```bash
-cd ABI_summer_school_project
+Change to the `workshop1` directory within `ABI_summer_school_project1` as it will be your working directory for this tutorial. 
+
+## Replacing simple patterns with sed 
+
+Replace the **fasta** pattern in each line of the file `sample_manifest2.tsv` with **fastq**
+
 ```
-:::
-
----
-
-## Core `sed` Concepts & Syntax
-
-| Syntax / Flag | Description / Purpose | Example |
-| :--- | :--- | :--- |
-| `s/old/new/` | **Substitute First:** Replaces the *first* occurrence of `old` with `new` per line | `sed 's/fasta/fastq/' ...` |
-| `s/old/new/g` | **Global Substitution:** Replaces *all* occurrences of `old` with `new` on every line | `sed 's/\t/,/g' ...` |
-| `-i` | **In-place Editing:** Directly modifies the file on disk without creating a new file | `sed -i 's/Kampala/Entebbe/g' file.tsv` |
-| `-n` | **Quiet / Silent Mode:** Suppresses automatic printing of lines | `sed -n '1p' file.tsv` |
-| `p` | **Print Command:** Explicitly prints the specified line(s) (used with `-n`) | `sed -n '/TRUE/p' ...` |
-| `d` | **Delete Command:** Deletes lines matching an address or pattern | `sed '/^##/d' file.vcf` |
-| `/condition/s/old/new/` | **Conditional Substitution:** Substitutes only on lines matching `/condition/` | `sed '/Kisumu/s/150/100/' ...` |
-| `^` | **Line Start Anchor:** Matches the beginning of a line (used to prepend text) | `sed 's/^/prefix\t/' ...` |
-| `$` | **Line End Anchor:** Matches the end of a line (used to append text) | `sed 's/$/\tsuffix/' ...` |
-| `/START/,/END/p` | **Range / Block Print:** Prints all lines from `/START/` through `/END/` | `sed -n '/SAMPLE_004/,/SAMPLE_008/p' ...` |
-| `-e` | **Multiple Expressions:** Chains multiple `sed` operations in a single command | `sed -e 's/A/B/' -e 's/C/D/' ...` |
-
----
-
-## 1. Replacing Simple Patterns with `sed`
-
-### Basic Substitution (First Occurrence)
-Replace the `Plasmodium_falciparum` organism name in each line of `raw_data/sample_manifest.tsv` with `P_falciparum`:
-
-```bash
-sed 's/Plasmodium_falciparum/P_falciparum/' raw_data/sample_manifest.tsv
+sed 's/fasta/fastq/' sample_manifest2.tsv
 ```
 
 To save the output to a new file:
 
-```bash
-sed 's/Plasmodium_falciparum/P_falciparum/' raw_data/sample_manifest.tsv > raw_data/sample_manifest_short.tsv
+```
+sed 's/fasta/fastq/' sample_manifest2.tsv > sample_manifest2_fastq.tsv
 ```
 
-To make the replacement directly within the file (use with caution):
+To make the replacement within the primary file (use with caution):
 
-```bash
-sed -i 's/Plasmodium_falciparum/P_falciparum/' raw_data/sample_manifest_short.tsv
+```
+sed -i 's/fasta/fastq/' sample_manifest2.tsv
 ```
 
----
+Notice that the **fasta** pattern after **Plasmodium_falciparum_** was not replaced by the previous command. Why is this?
 
-### Global Substitution (`/g`)
+Write the **sed** command(s) to replace both occurrences of **fasta** in each line of `sample_manifest2.tsv` with **fastq**. Save the output to `sample_manifest2_fastq_2.tsv`
 
-By default, `s/old/new/` replaces **only the first occurrence** of a pattern on each line. To replace **all** occurrences in a line, append the global flag `g` (`s/old/new/g`).
-
-For example, replace all underscores (`_`) in each line of `raw_data/sample_manifest.tsv` with hyphens (`-`):
-
-```bash
-sed 's/_/-/g' raw_data/sample_manifest.tsv
 ```
 
----
-
-### Removing Unwanted Patterns
-
-With the same substitution syntax, `sed` can **remove** unwanted patterns by substituting them with nothing (`s/pattern//g`).
-
-Remove the `Illumina_` prefix from all platform names in `raw_data/sample_manifest.tsv`:
-
-```bash
-sed 's/Illumina_//g' raw_data/sample_manifest.tsv
 ```
 
-**Exercise: Stripping File Paths & Custom Delimiters**
+With the same syntax, sed can be used to **remove** unwanted patterns within each line of a given file. Use **sed** to remove all occurrences of **fastq** in the `sample_manifest2_fastq_2.tsv` file. Save the output to `sample_manifest3.tsv`
 
-When patterns contain file paths with forward slashes (`/`), using the standard `s/old/new/` syntax causes confusion because each slash must be escaped (`\/`). To keep commands clean and readable, **sed allows you to use any character as the delimiter** (such as `|`, `#`, or `@`).
-
-Generate a list of sample paths from `raw_data/` and use **sed** with the custom delimiter `|` to strip the `raw_data/` directory prefix:
-
-```bash
-# Step 1: Save the FASTQ file paths to a text file
-ls raw_data/*.fastq > file_paths.txt
-
-# Step 2: Use alternate delimiter '|' to strip the directory path prefix
-sed 's|raw_data/||g' file_paths.txt
-```
-*(Tip: Using `s|raw_data/||` avoids having to write hard-to-read escaped slashes like `s/raw_data\///`)*.
-
----
-
-### Replacing Patterns Across Multiple Files Simultaneously
-
-`sed` can batch-edit multiple files at once using wildcards. For example, replace **Kampala** with **Entebbe** in all `.tsv` files in `raw_data/`:
-
-```bash
-sed -i 's/Kampala/Entebbe/g' raw_data/*.tsv
 ```
 
----
-
-### Changing File Delimiters (TSV to CSV & Space-Delimited)
-
-Convert `raw_data/sample_manifest.tsv` into a comma-separated (`.csv`) file:
-
-```bash
-sed 's/\t/,/g' raw_data/sample_manifest.tsv > raw_data/sample_manifest.csv
 ```
 
-Convert `raw_data/sample_manifest.csv` into a space-delimited file:
+**Exercise**: Use **sed** to replace the `ftp://ftp.sra.ebi.ac.uk/vol1/run/ERR323/` string in each line of the file named `file_paths.txt`.
 
-```bash
-sed 's/,/ /g' raw_data/sample_manifest.csv > raw_data/sample_manifest_space.txt
+
+**sed** can also be used to replace patterns shared across files simultaneously. As an example, replace **Kampala** with **Entebbe** in all the `.tsv` files currently in `workshop1`
+
+```
+sed -i 's/Kampala/Entebbe/g' *.tsv
 ```
 
----
+Using similar syntax for replacing patterns, **sed** can be used to change file delimiters/separators. As a test case, use **sed** to convert `sample_manifest3.tsv` into a `.csv` file named `sample_manifest3.csv`. 
 
-## 2. Conditional Substitutions with `sed`
-
-Sometimes, you only want to replace a pattern on lines that meet a specific condition.
-
-As a test case, change the `read_length` for only the **Kisumu** samples in `raw_data/sample_manifest.tsv` from `150` to `100`:
-
-```bash
-sed '/Kisumu/s/150/100/' raw_data/sample_manifest.tsv
 ```
 
----
-
-## 3. Adding Patterns & Columns Using `sed`
-
-### Chaining Multiple Replacements (`-e`)
-
-Update the model numbers of both `Illumina_NextSeq` and `Illumina_MiSeq` in a single pass so they read `Illumina_NextSeq_2000` and `Illumina_MiSeq_100`:
-
-```bash
-sed -e 's/Illumina_NextSeq/Illumina_NextSeq_2000/g' -e 's/Illumina_MiSeq/Illumina_MiSeq_100/g' raw_data/sample_manifest.tsv
 ```
 
----
+Try converting `sample_manifest3.csv` into a **space-delimited** file. 
 
-### Appending a New Column at the End of Lines (`$`)
-
-Add an extra column at the end of `raw_data/sample_manifest.tsv` with the header `file_size` and column values all `.`:
-
-```bash
-sed '1s/$/\tfile_size/; 2,$s/$/\t./' raw_data/sample_manifest.tsv
-```
-*(Explanation: `1s/$/\tfile_size/` appends the header to line 1; `2,$s/$/\t./` appends `\t.` to line 2 through the end of the file `$`).*
-
----
-
-### Prepending a New Column at the Beginning of Lines (`^`)
-
-Add a `project_id` column as the very first column with the header `project_id` and value `Pf_AMR` for all rows:
-
-```bash
-sed '1s/^/project_id\t/; 2,$s/^/Pf_AMR\t/' raw_data/sample_manifest.tsv
 ```
 
----
-
-## 4. Other Use Cases of `sed` in Data Cleaning
-
-### Obtaining the Header Line of a File
-
-Print only the 1st line of a file using `-n` (quiet mode) and `1p` (print line 1):
-
-```bash
-sed -n '1p' raw_data/sample_manifest.tsv
 ```
 
----
+## Conditional substitutions with sed
 
-### Extracting Lines Matching a Specific Pattern
+Sometimes, it's helpful to replace patterns only in lines that meet a certain condition. As a test case, change the read_length for the Kisumu samples in `sample_manifest3.tsv` from 150 to 100.
 
-Print only rows that passed quality control (`pass_qc == TRUE`):
-
-```bash
-sed -n '/TRUE/p' raw_data/sample_manifest.tsv
+```
+sed '/Kisumu/s/150/100/' sample_manifest3.tsv
 ```
 
----
 
-### Counting the Number of Columns in a File
 
-Extract the header line and count the tab-separated fields:
+## Adding simple patterns to a file using sed
 
-```bash
-sed -n '1p' raw_data/sample_manifest.tsv | tr '\t' '\n' | wc -l
+Add the model numbers of the `Illumina_NextSeq` and `Illumina_MiSeq` platforms so that they read `Illumina_NextSeq_2000` and `Illumina_MiSeq_100`, respectively. 
+
 ```
 
----
-
-### Removing (Empty) Lines from a File
-
-Remove all empty/blank lines (`/^$/d`) from a text file:
-
-```bash
-sed '/^$/d' raw_data/batch1_samples.txt
 ```
 
----
+Add an extra column (at the end) to the contents of `sample_manifest3.tsv` with the heading `file_size` and the column values all `.` 
 
-### Removing VCF Header Lines (`##`)
-
-Remove all metadata header lines (starting with `##`) from `variants/SAMPLE_001.vcf` and save the clean variant table to `variants/SAMPLE_001_v2.vcf`:
-
-```bash
-sed '/^##/d' variants/SAMPLE_001.vcf > variants/SAMPLE_001_v2.vcf
 ```
 
----
-
-### Removing Empty Lines AND Header Lines in One Command
-
-Remove empty lines and remove the header line containing `sample_id` simultaneously:
-
-```bash
-sed -e '/^$/d' -e '/sample_id/d' raw_data/sample_manifest.tsv
 ```
 
----
+Add a `project_id` column (make it the first column) to `sample_manifest3.tsv`. Use **Pf_AMR** as the values for each row under this column.
 
-### Extracting Text Blocks / Line Ranges from a File
-
-Extract sample metadata lines from `SAMPLE_004` through `SAMPLE_008`:
-
-```bash
-sed -n '/SAMPLE_004/,/SAMPLE_008/p' raw_data/sample_manifest.tsv
 ```
+
+```
+
+## Other use cases of sed in cleaning/pre-processing files
+
+### Obtaining the header line of a file
+
+```
+sed -n '1p' sample_manifest3.tsv 
+```
+
+### Extracting line(s) with a specific pattern
+
+```
+sed -n '/PATTERN/p' file.txt  
+```
+
+Example:
+
+```
+sed -n '/TRUE/p' sample_manifest3.tsv 
+```
+
+### Counting number of columns in a file
+
+```
+
+```
+
+### Removing (empty) lines from a file
+
+Using `file1.txt` as a testcase, remove all empty lines.
+
+```
+
+```
+
+Using a similar syntax, **sed** can be used as an alternative to **grep** to remove lines containing certain patterns. Use **sed** to remove the header lines (only the ones starting with *##*) from the `SAMPLE_001.vcf` file. Save the output to a new file `SAMPLE_001_v2.vcf` so that we can reuse the `SAMPLE_001.vcf` file, if needed. 
+
+```
+
+```
+
+Use sed to remove empty lines from `file1.txt` and the line containing the heading i.e. `sample_id`, in one command. 
+
+```
+
+```
+
+### Extracting text blocks from a file
+
+Using `sample_manifest3.tsv` as a test case, extract the metadata lines of samples **004** through **008** i.e. from line containing `SAMPLE_004` to the one containing `SAMPLE_008`. 
 
 ```
 sed -n '/SAMPLE_004/,/SAMPLE_008/p' sample_manifest3.tsv
