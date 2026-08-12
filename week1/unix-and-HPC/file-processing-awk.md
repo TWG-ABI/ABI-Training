@@ -21,6 +21,7 @@ code span.co, code span.c, code span.ch, code span.cm, code span.c1 {
 }
 </style>
 
+
 **AWK** is a programming language named after its three developers: Alfred Aho, Peter J Weinberger and Brian KernIghan. 
 AWK is useful for processing text files and extracting data, particularly when a file is **split into columns** or **delimited by a specific character** (e.g. a tab, comma).
 The **awk** command/script reads a file line by line and splits each line into columns according to a delimiter character. The default output delimiter is a single space character.
