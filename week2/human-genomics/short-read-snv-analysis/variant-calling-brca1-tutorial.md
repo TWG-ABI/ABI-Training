@@ -1,4 +1,4 @@
-# Variant Calling with GATK: A BRCA1 Tutorial
+# Human NGS Read Alignment and Variant Calling: BRCA1 Tutorial
 
 A hands-on, reproducible walkthrough of germline short-variant discovery on **whole-genome sequencing (WGS)** data, following the [GATK Best Practices](https://gatk.broadinstitute.org/hc/en-us/sections/360007226651-Best-Practices-Workflows). We start from raw `FASTQ` for a **single sample**, then scale to **10 samples with joint genotyping**, and finish by annotating the variants we find in **BRCA1** with Ensembl VEP.
 
@@ -143,10 +143,10 @@ brca1-vc/
 Throughout, we use these shell variables:
 
 ```bash
-REF=ref/Homo_sapiens_assembly38.fasta
-DBSNP=ref/Homo_sapiens_assembly38.dbsnp138.vcf
-MILLS=ref/Mills_and_1000G_gold_standard.indels.hg38.vcf.gz
-KNOWN_INDELS=ref/Homo_sapiens_assembly38.known_indels.vcf.gz
+REF=/etc/ace-data/genomics-resources/hg38/Homo_sapiens_assembly38.fasta
+DBSNP=/etc/ace-data/genomics-resources/hg38/Homo_sapiens_assembly38.dbsnp138.vcf
+MILLS=/etc/ace-data/genomics-resources/hg38/Mills_and_1000G_gold_standard.indels.hg38.vcf.gz
+KNOWN_INDELS=/etc/ace-data/genomics-resources/hg38/Homo_sapiens_assembly38.known_indels.vcf.gz
 THREADS=8
 ```
 
@@ -170,10 +170,10 @@ We restrict expensive steps (variant calling) to this interval with `-L`. You co
 
 ## Part 1 — Single sample
 
-We'll process one sample called `NA12878` (a widely used reference individual). Reads are paired-end: `fastq/NA12878_R1.fastq.gz` and `fastq/NA12878_R2.fastq.gz`.
+We'll process one sample called `HG02562` (a widely used reference individual). Reads are paired-end: `fastq/HG02562_R1.fastq.gz` and `fastq/HG02562_R2.fastq.gz`.
 
 ```bash
-SAMPLE=NA12878
+SAMPLE=HG02562
 R1=fastq/${SAMPLE}_R1.fastq.gz
 R2=fastq/${SAMPLE}_R2.fastq.gz
 ```
@@ -408,7 +408,7 @@ filter_vep \
 
 ---
 
-## Part 2 — Ten samples (joint calling)
+## Part 2 — 20 samples (joint calling)
 
 **Why joint calling?** Genotyping samples together (rather than merging single-sample VCFs) gives more accurate genotypes, correctly distinguishes homozygous-reference from no-data at each site, and produces a square matrix where every sample has a genotype at every variant site. This matters enormously for cohort and population analyses.
 
@@ -429,6 +429,9 @@ sample07
 sample08
 sample09
 sample10
+...
+...
+sample20
 EOF
 ```
 
