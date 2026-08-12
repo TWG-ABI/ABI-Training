@@ -26,6 +26,41 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -128,13 +163,17 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#starter-commands-with-awk" id="toc-starter-commands-with-awk" class="nav-link active" data-scroll-target="#starter-commands-with-awk">Starter commands with awk</a>
+  <li><a href="#file-processing-part-2-using-awk" id="toc-file-processing-part-2-using-awk" class="nav-link active" data-scroll-target="#file-processing-part-2-using-awk">File processing: Part 2 (using awk)</a>
   <ul class="collapse">
-  <li><a href="#removingskipping-a-line-with-a-specific-pattern" id="toc-removingskipping-a-line-with-a-specific-pattern" class="nav-link" data-scroll-target="#removingskipping-a-line-with-a-specific-pattern">Removing/Skipping a line with a specific pattern</a></li>
-  <li><a href="#extracting-more-than-one-column" id="toc-extracting-more-than-one-column" class="nav-link" data-scroll-target="#extracting-more-than-one-column">Extracting more than one column</a></li>
+  <li><a href="#part-1-starter-commands-with-awk" id="toc-part-1-starter-commands-with-awk" class="nav-link" data-scroll-target="#part-1-starter-commands-with-awk">Part 1: Starter commands with awk</a></li>
+  <li><a href="#part-2-removingskipping-a-line-with-a-specific-pattern" id="toc-part-2-removingskipping-a-line-with-a-specific-pattern" class="nav-link" data-scroll-target="#part-2-removingskipping-a-line-with-a-specific-pattern">Part 2: Removing/Skipping a line with a specific pattern</a></li>
+  <li><a href="#part-3-extracting-more-than-one-column" id="toc-part-3-extracting-more-than-one-column" class="nav-link" data-scroll-target="#part-3-extracting-more-than-one-column">Part 3: Extracting more than one column</a></li>
+  <li><a href="#part-4-data-manipulation-data-mining" id="toc-part-4-data-manipulation-data-mining" class="nav-link" data-scroll-target="#part-4-data-manipulation-data-mining">Part 4: Data Manipulation &amp; Data Mining</a>
+  <ul class="collapse">
   <li><a href="#converting-file-delimiter" id="toc-converting-file-delimiter" class="nav-link" data-scroll-target="#converting-file-delimiter">Converting file delimiter</a></li>
   <li><a href="#determining-number-of-columns-in-a-file" id="toc-determining-number-of-columns-in-a-file" class="nav-link" data-scroll-target="#determining-number-of-columns-in-a-file">Determining number of columns in a file</a></li>
   <li><a href="#extracting-specific-rows-and-columns" id="toc-extracting-specific-rows-and-columns" class="nav-link" data-scroll-target="#extracting-specific-rows-and-columns">Extracting specific rows and columns</a></li>
+  </ul></li>
   </ul></li>
   </ul>
 </nav>
@@ -164,65 +203,123 @@ code span.co, code span.c, code span.ch, code span.cm, code span.c1 {
   opacity: 1 !important;
 }
 </style>
-<p><strong>AWK</strong> is a programming language named after its three developers: Alfred Aho, Peter J Weinberger and Brian KernIghan. AWK is useful for processing text files and extracting data, particularly when a file is <strong>split into columns</strong> or <strong>delimited by a specific character</strong> (e.g.&nbsp;a tab, comma). The <strong>awk</strong> command/script reads a file line by line and splits each line into columns according to a delimiter character. The default output delimiter is a single space character.</p>
-<p>For this tutorial, the workind directory will be the <code>workshop1</code> directory within <code>ABI_summer_school_project1</code>.</p>
-<section id="starter-commands-with-awk" class="level2">
-<h2 class="anchored" data-anchor-id="starter-commands-with-awk">Starter commands with awk</h2>
-<p>Use the awk command to print the first column of the <code>SAMPLE_001.vcf</code> file</p>
-<p><code>bash awk -F'\t' '{print $1}' SAMPLE_001.vcf</code>bash</p>
+<hr>
+<section id="file-processing-part-2-using-awk" class="level1">
+<h1>File processing: Part 2 (using awk)</h1>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Overview &amp; Learning Objectives
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>AWK</strong> is a programming language named after its three developers: Alfred Aho, Peter J Weinberger and Brian Kernighan.</p>
+<p>AWK is useful for processing text files and extracting data, particularly when a file is <strong>split into columns</strong> or <strong>delimited by a specific character</strong> (e.g.&nbsp;a tab, comma). The <strong>awk</strong> command reads a file line by line and splits each line into columns according to a delimiter character. The default output delimiter is a single space character.</p>
+</div>
+</div>
+<blockquote class="blockquote">
+<p><strong>Preparation:</strong> For this tutorial, the working directory will be the <code>workshop1</code> directory within <code>ABI_summer_school_project1</code>.</p>
+</blockquote>
+<hr>
+<section id="part-1-starter-commands-with-awk" class="level2">
+<h2 class="anchored" data-anchor-id="part-1-starter-commands-with-awk">Part 1: Starter commands with awk</h2>
+<p>Use the awk command to print the first column of the <code>SAMPLE_001.vcf</code> file:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">awk</span> <span class="at">-F</span><span class="st">'\t'</span> <span class="st">'{print $1}'</span> SAMPLE_001.vcf</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Alternatively:</p>
-<p><code>bash awk 'BEGIN {FS="\t"} {print $1}' SAMPLE_001.vcf   # Notice the difference in inner vs outer quotation marks</code>bash</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">awk</span> <span class="st">'BEGIN {FS="\t"} {print $1}'</span> SAMPLE_001.vcf   <span class="co"># Notice the difference in inner vs outer quotation marks</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>In case you want to skip the header row:</p>
-<p><code>bash awk 'BEGIN {FS="\t"} NR&gt;1 {print $1}' SAMPLE_001.vcf</code>bash</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">awk</span> <span class="st">'BEGIN {FS="\t"} NR&gt;1 {print $1}'</span> SAMPLE_001.vcf </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>In case you want to extract only the header row:</p>
-<p><code>bash awk 'NR==1 {print $0}' SAMPLE_001.vcf</code>bash</p>
-<section id="removingskipping-a-line-with-a-specific-pattern" class="level3">
-<h3 class="anchored" data-anchor-id="removingskipping-a-line-with-a-specific-pattern">Removing/Skipping a line with a specific pattern</h3>
-<p>e.g.&nbsp;extracting all contents of the file <code>SAMPLE_001.vcf</code> but skipping the record with <strong>position 1024</strong>:</p>
-<p><code>bash awk -F'\t' '!/1024/ {print $0}' SAMPLE_001.vcf</code>bash</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">awk</span> <span class="st">'NR==1 {print $0}'</span> SAMPLE_001.vcf  </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<hr>
+</section>
+<section id="part-2-removingskipping-a-line-with-a-specific-pattern" class="level2">
+<h2 class="anchored" data-anchor-id="part-2-removingskipping-a-line-with-a-specific-pattern">Part 2: Removing/Skipping a line with a specific pattern</h2>
+<p>For example, extracting all contents of the file <code>SAMPLE_001.vcf</code> but skipping the record with <strong>position 1024</strong>:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">awk</span> <span class="at">-F</span><span class="st">'\t'</span> <span class="st">'!/1024/ {print $0}'</span> SAMPLE_001.vcf </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>This is also helpful when skipping multiple header lines:</p>
-<p><code>bash awk -F'\t' '!/#/ {print $0}' SAMPLE_001.vcf</code>bash</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">awk</span> <span class="at">-F</span><span class="st">'\t'</span> <span class="st">'!/#/ {print $0}'</span> SAMPLE_001.vcf </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<hr>
 </section>
-<section id="extracting-more-than-one-column" class="level3">
-<h3 class="anchored" data-anchor-id="extracting-more-than-one-column">Extracting more than one column</h3>
-<p>Extract the first 5 columns and the 10th column in <code>SAMPLE_001.vcf</code> using awk</p>
-<p><code>bash awk 'BEGIN {FS="\t"} {print $1,$2,$3,$4,$5,$10}' SAMPLE_001.vcf</code>bash</p>
+<section id="part-3-extracting-more-than-one-column" class="level2">
+<h2 class="anchored" data-anchor-id="part-3-extracting-more-than-one-column">Part 3: Extracting more than one column</h2>
+<p>Extract the first 5 columns and the 10th column in <code>SAMPLE_001.vcf</code> using awk:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">awk</span> <span class="st">'BEGIN {FS="\t"} {print $1,$2,$3,$4,$5,$10}'</span> SAMPLE_001.vcf</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Challenge 1: Formatting Output Delimiters
+</div>
+</div>
+<div class="callout-body-container callout-body">
 <p>Note that the delimiter in the output is now a single space character (the default for awk). How can we maintain <strong>tab</strong> as the delimiter?</p>
-<p>```bash</p>
-<p>```bash</p>
+</div>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>What if we do not want to write <code>$1,$2,$3,$4,$5</code> in the print function above, how can we specify this range?</p>
-<p><code>bash awk 'BEGIN {FS=OFS="\t"} {for (i=1; i&lt;=5; i++) printf "%s%s", $i, OFS ; print $10}' SAMPLE_001.vcf</code>bash</p>
-<p><strong>Practice</strong>: Extract the first 8 columns in <code>SAMPLE_001.vcf</code> using <strong>awk</strong>; be sure to try both approaches above to specify the range of columns 1-8.</p>
-<p>Approach 1: ```bash</p>
-<p>```bash</p>
-<p>Approach 2: ```bash</p>
-<p>```bash</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">awk</span> <span class="st">'BEGIN {FS=OFS="\t"} {for (i=1; i&lt;=5; i++) printf "%s%s", $i, OFS ; print $10}'</span> SAMPLE_001.vcf</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Practice: Column Ranges
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Extract the first 8 columns in <code>SAMPLE_001.vcf</code> using <strong>awk</strong>; be sure to try both approaches above to specify the range of columns 1-8.</p>
+</div>
+</div>
+<p><strong>Approach 1:</strong></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>Approach 2:</strong></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<hr>
 </section>
+<section id="part-4-data-manipulation-data-mining" class="level2">
+<h2 class="anchored" data-anchor-id="part-4-data-manipulation-data-mining">Part 4: Data Manipulation &amp; Data Mining</h2>
 <section id="converting-file-delimiter" class="level3">
 <h3 class="anchored" data-anchor-id="converting-file-delimiter">Converting file delimiter</h3>
 <p>Convert the delimiter of the file to a comma and save the output as <code>SAMPLE_001.csv</code></p>
-<p>```bash</p>
-<p>```bash</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section id="determining-number-of-columns-in-a-file" class="level3">
 <h3 class="anchored" data-anchor-id="determining-number-of-columns-in-a-file">Determining number of columns in a file</h3>
 <p>Use awk to determine the number of columns in <code>SAMPLE_001.vcf</code></p>
-<p><code>bash awk -F'\t' 'NR==1{print NF}' SAMPLE_001.vcf</code>bash</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">awk</span> <span class="at">-F</span><span class="st">'\t'</span> <span class="st">'NR==1{print NF}'</span> SAMPLE_001.vcf</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section id="extracting-specific-rows-and-columns" class="level3">
 <h3 class="anchored" data-anchor-id="extracting-specific-rows-and-columns">Extracting specific rows and columns</h3>
 <p>Use awk to extract records for participants from YRI in the file <code>1000G_2504_high_coverage.sequence.index.txt</code></p>
-<p>Step 1:</p>
-<p>Determine the column number for <code>POPULATION</code> using <strong>sed</strong> and/or <strong>grep</strong></p>
-<p>```bash</p>
-<p>```bash</p>
-<p>Step two:</p>
-<p><code>bash awk -F'\t' '${col_number}=="YRI"' 1000G_2504_high_coverage.sequence.index.txt</code>bash</p>
-<p><strong>Detour</strong>: Compare with the <strong>sed</strong> approach</p>
+<p><strong>Step 1:</strong> Determine the column number for <code>POPULATION</code> using <strong>sed</strong> and/or <strong>grep</strong></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>Step 2:</strong> Use the column number to filter the dataset:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb15"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">awk</span> <span class="at">-F</span><span class="st">'\t'</span> <span class="st">'${col_number}=="YRI"'</span> 1000G_2504_high_coverage.sequence.index.txt</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Important</span>Detour: Tool Comparison
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Compare this <code>awk</code> column-filtering approach with how you would accomplish the same task using the <strong>sed</strong> approach!</p>
+</div>
+</div>
 <hr>
-<p><em>ABI Summer School 2026 · Week 1: Linux / HPC</em></p>
+<p><em>ABI Summer School 2026 · Module 1: Linux &amp; HPC</em></p>
 
 
+</section>
 </section>
 </section>
 

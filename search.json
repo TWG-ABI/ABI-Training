@@ -336,18 +336,32 @@
     "text": "Welcome to the first lecture of the Linux module. Scroll through the slides below:"
   },
   {
-    "objectID": "week1/unix-and-HPC/file-processing-awk.html",
-    "href": "week1/unix-and-HPC/file-processing-awk.html",
-    "title": "ABI-ITWG",
-    "section": "",
-    "text": "AWK is a programming language named after its three developers: Alfred Aho, Peter J Weinberger and Brian KernIghan. AWK is useful for processing text files and extracting data, particularly when a file is split into columns or delimited by a specific character (e.g. a tab, comma). The awk command/script reads a file line by line and splits each line into columns according to a delimiter character. The default output delimiter is a single space character.\nFor this tutorial, the workind directory will be the workshop1 directory within ABI_summer_school_project1."
+    "objectID": "week1/unix-and-HPC/file-processing-awk.html#part-1-starter-commands-with-awk",
+    "href": "week1/unix-and-HPC/file-processing-awk.html#part-1-starter-commands-with-awk",
+    "title": "File processing: Part 2 (using awk)",
+    "section": "Part 1: Starter commands with awk",
+    "text": "Part 1: Starter commands with awk\nUse the awk command to print the first column of the SAMPLE_001.vcf file:\nawk -F'\\t' '{print $1}' SAMPLE_001.vcf\nAlternatively:\nawk 'BEGIN {FS=\"\\t\"} {print $1}' SAMPLE_001.vcf   # Notice the difference in inner vs outer quotation marks\nIn case you want to skip the header row:\nawk 'BEGIN {FS=\"\\t\"} NR&gt;1 {print $1}' SAMPLE_001.vcf \nIn case you want to extract only the header row:\nawk 'NR==1 {print $0}' SAMPLE_001.vcf"
   },
   {
-    "objectID": "week1/unix-and-HPC/file-processing-awk.html#starter-commands-with-awk",
-    "href": "week1/unix-and-HPC/file-processing-awk.html#starter-commands-with-awk",
-    "title": "ABI-ITWG",
-    "section": "Starter commands with awk",
-    "text": "Starter commands with awk\nUse the awk command to print the first column of the SAMPLE_001.vcf file\nbash awk -F'\\t' '{print $1}' SAMPLE_001.vcfbash\nAlternatively:\nbash awk 'BEGIN {FS=\"\\t\"} {print $1}' SAMPLE_001.vcf   # Notice the difference in inner vs outer quotation marksbash\nIn case you want to skip the header row:\nbash awk 'BEGIN {FS=\"\\t\"} NR&gt;1 {print $1}' SAMPLE_001.vcfbash\nIn case you want to extract only the header row:\nbash awk 'NR==1 {print $0}' SAMPLE_001.vcfbash\n\nRemoving/Skipping a line with a specific pattern\ne.g. extracting all contents of the file SAMPLE_001.vcf but skipping the record with position 1024:\nbash awk -F'\\t' '!/1024/ {print $0}' SAMPLE_001.vcfbash\nThis is also helpful when skipping multiple header lines:\nbash awk -F'\\t' '!/#/ {print $0}' SAMPLE_001.vcfbash\n\n\nExtracting more than one column\nExtract the first 5 columns and the 10th column in SAMPLE_001.vcf using awk\nbash awk 'BEGIN {FS=\"\\t\"} {print $1,$2,$3,$4,$5,$10}' SAMPLE_001.vcfbash\nNote that the delimiter in the output is now a single space character (the default for awk). How can we maintain tab as the delimiter?\n```bash\n```bash\nWhat if we do not want to write $1,$2,$3,$4,$5 in the print function above, how can we specify this range?\nbash awk 'BEGIN {FS=OFS=\"\\t\"} {for (i=1; i&lt;=5; i++) printf \"%s%s\", $i, OFS ; print $10}' SAMPLE_001.vcfbash\nPractice: Extract the first 8 columns in SAMPLE_001.vcf using awk; be sure to try both approaches above to specify the range of columns 1-8.\nApproach 1: ```bash\n```bash\nApproach 2: ```bash\n```bash\n\n\nConverting file delimiter\nConvert the delimiter of the file to a comma and save the output as SAMPLE_001.csv\n```bash\n```bash\n\n\nDetermining number of columns in a file\nUse awk to determine the number of columns in SAMPLE_001.vcf\nbash awk -F'\\t' 'NR==1{print NF}' SAMPLE_001.vcfbash\n\n\nExtracting specific rows and columns\nUse awk to extract records for participants from YRI in the file 1000G_2504_high_coverage.sequence.index.txt\nStep 1:\nDetermine the column number for POPULATION using sed and/or grep\n```bash\n```bash\nStep two:\nbash awk -F'\\t' '${col_number}==\"YRI\"' 1000G_2504_high_coverage.sequence.index.txtbash\nDetour: Compare with the sed approach\n\nABI Summer School 2026 · Week 1: Linux / HPC"
+    "objectID": "week1/unix-and-HPC/file-processing-awk.html#part-2-removingskipping-a-line-with-a-specific-pattern",
+    "href": "week1/unix-and-HPC/file-processing-awk.html#part-2-removingskipping-a-line-with-a-specific-pattern",
+    "title": "File processing: Part 2 (using awk)",
+    "section": "Part 2: Removing/Skipping a line with a specific pattern",
+    "text": "Part 2: Removing/Skipping a line with a specific pattern\nFor example, extracting all contents of the file SAMPLE_001.vcf but skipping the record with position 1024:\nawk -F'\\t' '!/1024/ {print $0}' SAMPLE_001.vcf \nThis is also helpful when skipping multiple header lines:\nawk -F'\\t' '!/#/ {print $0}' SAMPLE_001.vcf"
+  },
+  {
+    "objectID": "week1/unix-and-HPC/file-processing-awk.html#part-3-extracting-more-than-one-column",
+    "href": "week1/unix-and-HPC/file-processing-awk.html#part-3-extracting-more-than-one-column",
+    "title": "File processing: Part 2 (using awk)",
+    "section": "Part 3: Extracting more than one column",
+    "text": "Part 3: Extracting more than one column\nExtract the first 5 columns and the 10th column in SAMPLE_001.vcf using awk:\nawk 'BEGIN {FS=\"\\t\"} {print $1,$2,$3,$4,$5,$10}' SAMPLE_001.vcf\n\n\n\n\n\n\nTipChallenge 1: Formatting Output Delimiters\n\n\n\nNote that the delimiter in the output is now a single space character (the default for awk). How can we maintain tab as the delimiter?\n\n\n\nWhat if we do not want to write $1,$2,$3,$4,$5 in the print function above, how can we specify this range?\nawk 'BEGIN {FS=OFS=\"\\t\"} {for (i=1; i&lt;=5; i++) printf \"%s%s\", $i, OFS ; print $10}' SAMPLE_001.vcf\n\n\n\n\n\n\nTipPractice: Column Ranges\n\n\n\nExtract the first 8 columns in SAMPLE_001.vcf using awk; be sure to try both approaches above to specify the range of columns 1-8.\n\n\nApproach 1:\n\nApproach 2:"
+  },
+  {
+    "objectID": "week1/unix-and-HPC/file-processing-awk.html#part-4-data-manipulation-data-mining",
+    "href": "week1/unix-and-HPC/file-processing-awk.html#part-4-data-manipulation-data-mining",
+    "title": "File processing: Part 2 (using awk)",
+    "section": "Part 4: Data Manipulation & Data Mining",
+    "text": "Part 4: Data Manipulation & Data Mining\n\nConverting file delimiter\nConvert the delimiter of the file to a comma and save the output as SAMPLE_001.csv\n\n\n\nDetermining number of columns in a file\nUse awk to determine the number of columns in SAMPLE_001.vcf\nawk -F'\\t' 'NR==1{print NF}' SAMPLE_001.vcf\n\n\nExtracting specific rows and columns\nUse awk to extract records for participants from YRI in the file 1000G_2504_high_coverage.sequence.index.txt\nStep 1: Determine the column number for POPULATION using sed and/or grep\n\nStep 2: Use the column number to filter the dataset:\nawk -F'\\t' '${col_number}==\"YRI\"' 1000G_2504_high_coverage.sequence.index.txt\n\n\n\n\n\n\nImportantDetour: Tool Comparison\n\n\n\nCompare this awk column-filtering approach with how you would accomplish the same task using the sed approach!\n\n\n\nABI Summer School 2026 · Module 1: Linux & HPC"
   },
   {
     "objectID": "week1/unix-and-HPC/Linux_Basics_Recap.html#you-made-it",
