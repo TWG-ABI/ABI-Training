@@ -2,8 +2,6 @@
   <img src="linux_banner_image.png" alt="ABI Summer School 2026 · WEEK 1: Linux / HPC" width="100%" />
 </p>
 
----
-
 <style>
 /* Clean, modern, high-contrast code blocks with pretty borders */
 div.sourceCode, pre.sourceCode, pre, pre code, div.cell-code pre {
@@ -20,7 +18,6 @@ code span.co, code span.c, code span.ch, code span.cm, code span.c1 {
   opacity: 1 !important;
 }
 </style>
-
 
 **AWK** is a programming language named after its three developers: Alfred Aho, Peter J Weinberger and Brian KernIghan. 
 AWK is useful for processing text files and extracting data, particularly when a file is **split into columns** or **delimited by a specific character** (e.g. a tab, comma).
@@ -140,6 +137,5 @@ awk -F'\t' '${col_number}=="YRI"' 1000G_2504_high_coverage.sequence.index.txt
 ---
 
 *ABI Summer School 2026 · Week 1: Linux / HPC*
-
 
 
