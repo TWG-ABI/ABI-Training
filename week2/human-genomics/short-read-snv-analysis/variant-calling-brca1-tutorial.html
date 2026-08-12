@@ -163,7 +163,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#variant-calling-with-gatk-a-brca1-tutorial" id="toc-variant-calling-with-gatk-a-brca1-tutorial" class="nav-link active" data-scroll-target="#variant-calling-with-gatk-a-brca1-tutorial">Variant Calling with GATK: A BRCA1 Tutorial</a>
+  <li><a href="#human-ngs-read-alignment-and-variant-calling-brca1-tutorial" id="toc-human-ngs-read-alignment-and-variant-calling-brca1-tutorial" class="nav-link active" data-scroll-target="#human-ngs-read-alignment-and-variant-calling-brca1-tutorial">Human NGS Read Alignment and Variant Calling: BRCA1 Tutorial</a>
   <ul class="collapse">
   <li><a href="#table-of-contents" id="toc-table-of-contents" class="nav-link" data-scroll-target="#table-of-contents">Table of contents</a></li>
   <li><a href="#overview" id="toc-overview" class="nav-link" data-scroll-target="#overview">Overview</a></li>
@@ -186,7 +186,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#hard-filtering" id="toc-hard-filtering" class="nav-link" data-scroll-target="#hard-filtering">8. Hard filtering</a></li>
   <li><a href="#annotation-with-vep" id="toc-annotation-with-vep" class="nav-link" data-scroll-target="#annotation-with-vep">9. Annotation with VEP</a></li>
   </ul></li>
-  <li><a href="#part-2-ten-samples-joint-calling" id="toc-part-2-ten-samples-joint-calling" class="nav-link" data-scroll-target="#part-2-ten-samples-joint-calling">Part 2 — Ten samples (joint calling)</a>
+  <li><a href="#part-2-20-samples-joint-calling" id="toc-part-2-20-samples-joint-calling" class="nav-link" data-scroll-target="#part-2-20-samples-joint-calling">Part 2 — 20 samples (joint calling)</a>
   <ul class="collapse">
   <li><a href="#per-sample-gvcfs" id="toc-per-sample-gvcfs" class="nav-link" data-scroll-target="#per-sample-gvcfs">1. Per-sample GVCFs</a></li>
   <li><a href="#consolidate-with-genomicsdbimport" id="toc-consolidate-with-genomicsdbimport" class="nav-link" data-scroll-target="#consolidate-with-genomicsdbimport">2. Consolidate with GenomicsDBImport</a></li>
@@ -213,8 +213,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 
-<section id="variant-calling-with-gatk-a-brca1-tutorial" class="level1">
-<h1>Variant Calling with GATK: A BRCA1 Tutorial</h1>
+<section id="human-ngs-read-alignment-and-variant-calling-brca1-tutorial" class="level1">
+<h1>Human NGS Read Alignment and Variant Calling: BRCA1 Tutorial</h1>
 <p>A hands-on, reproducible walkthrough of germline short-variant discovery on <strong>whole-genome sequencing (WGS)</strong> data, following the <a href="https://gatk.broadinstitute.org/hc/en-us/sections/360007226651-Best-Practices-Workflows">GATK Best Practices</a>. We start from raw <code>FASTQ</code> for a <strong>single sample</strong>, then scale to <strong>10 samples with joint genotyping</strong>, and finish by annotating the variants we find in <strong>BRCA1</strong> with Ensembl VEP.</p>
 <blockquote class="blockquote">
 <p><strong>Why BRCA1?</strong> It is a clinically important tumour-suppressor gene on chromosome 17. Restricting our analysis to the BRCA1 locus keeps runtimes and file sizes small while still demonstrating a real, end-to-end clinical-grade workflow.</p>
@@ -397,10 +397,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 ├── annot/                    # VEP outputs
 └── scripts/</code></pre>
 <p>Throughout, we use these shell variables:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="va">REF</span><span class="op">=</span>ref/Homo_sapiens_assembly38.fasta</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="va">DBSNP</span><span class="op">=</span>ref/Homo_sapiens_assembly38.dbsnp138.vcf</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="va">MILLS</span><span class="op">=</span>ref/Mills_and_1000G_gold_standard.indels.hg38.vcf.gz</span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="va">KNOWN_INDELS</span><span class="op">=</span>ref/Homo_sapiens_assembly38.known_indels.vcf.gz</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="va">REF</span><span class="op">=</span>/etc/ace-data/genomics-resources/hg38/Homo_sapiens_assembly38.fasta</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="va">DBSNP</span><span class="op">=</span>/etc/ace-data/genomics-resources/hg38/Homo_sapiens_assembly38.dbsnp138.vcf</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="va">MILLS</span><span class="op">=</span>/etc/ace-data/genomics-resources/hg38/Mills_and_1000G_gold_standard.indels.hg38.vcf.gz</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="va">KNOWN_INDELS</span><span class="op">=</span>/etc/ace-data/genomics-resources/hg38/Homo_sapiens_assembly38.known_indels.vcf.gz</span>
 <span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="va">THREADS</span><span class="op">=</span>8</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section id="the-brca1-interval" class="level3">
@@ -420,8 +420,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="part-1-single-sample" class="level2">
 <h2 class="anchored" data-anchor-id="part-1-single-sample">Part 1 — Single sample</h2>
-<p>We’ll process one sample called <code>NA12878</code> (a widely used reference individual). Reads are paired-end: <code>fastq/NA12878_R1.fastq.gz</code> and <code>fastq/NA12878_R2.fastq.gz</code>.</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="va">SAMPLE</span><span class="op">=</span>NA12878</span>
+<p>We’ll process one sample called <code>HG02562</code> (a widely used reference individual). Reads are paired-end: <code>fastq/HG02562_R1.fastq.gz</code> and <code>fastq/HG02562_R2.fastq.gz</code>.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="va">SAMPLE</span><span class="op">=</span>HG02562</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="va">R1</span><span class="op">=</span>fastq/<span class="va">${SAMPLE}</span>_R1.fastq.gz</span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="va">R2</span><span class="op">=</span>fastq/<span class="va">${SAMPLE}</span>_R2.fastq.gz</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <section id="raw-read-qc" class="level3">
@@ -681,8 +681,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <hr>
 </section>
 </section>
-<section id="part-2-ten-samples-joint-calling" class="level2">
-<h2 class="anchored" data-anchor-id="part-2-ten-samples-joint-calling">Part 2 — Ten samples (joint calling)</h2>
+<section id="part-2-20-samples-joint-calling" class="level2">
+<h2 class="anchored" data-anchor-id="part-2-20-samples-joint-calling">Part 2 — 20 samples (joint calling)</h2>
 <p><strong>Why joint calling?</strong> Genotyping samples together (rather than merging single-sample VCFs) gives more accurate genotypes, correctly distinguishes homozygous-reference from no-data at each site, and produces a square matrix where every sample has a genotype at every variant site. This matters enormously for cohort and population analyses.</p>
 <p>The key insight: <strong>per-sample work stays per-sample</strong> (steps from Part 1, producing one GVCF each); only the genotyping is joint.</p>
 <p>Assume a sample sheet:</p>
@@ -698,7 +698,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb20-10"><a href="#cb20-10" aria-hidden="true" tabindex="-1"></a><span class="st">sample08</span></span>
 <span id="cb20-11"><a href="#cb20-11" aria-hidden="true" tabindex="-1"></a><span class="st">sample09</span></span>
 <span id="cb20-12"><a href="#cb20-12" aria-hidden="true" tabindex="-1"></a><span class="st">sample10</span></span>
-<span id="cb20-13"><a href="#cb20-13" aria-hidden="true" tabindex="-1"></a><span class="op">EOF</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb20-13"><a href="#cb20-13" aria-hidden="true" tabindex="-1"></a><span class="st">...</span></span>
+<span id="cb20-14"><a href="#cb20-14" aria-hidden="true" tabindex="-1"></a><span class="st">...</span></span>
+<span id="cb20-15"><a href="#cb20-15" aria-hidden="true" tabindex="-1"></a><span class="st">sample20</span></span>
+<span id="cb20-16"><a href="#cb20-16" aria-hidden="true" tabindex="-1"></a><span class="op">EOF</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <section id="per-sample-gvcfs" class="level3">
 <h3 class="anchored" data-anchor-id="per-sample-gvcfs">1. Per-sample GVCFs</h3>
 <p>Run the exact Part 1 pipeline (QC → align → dedup → BQSR → HaplotypeCaller <code>-ERC GVCF</code>) for each sample. A simple loop wraps the per-sample steps; in practice you’d use a workflow manager (Snakemake, Nextflow, WDL/Cromwell) to parallelise across samples and a cluster.</p>
