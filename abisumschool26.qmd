@@ -14,6 +14,7 @@ The aim is to provide comprehensive training on bioinformatics computational res
 ### Week 1: 
 
 #### Linux 
+1. [Introduction to Linux & HPC](week1/unix-and-HPC/intro_to_linux.qmd)
 2. [Linux Basics Recap](week1/unix-and-HPC/Linux_Basics_Recap.md)
 3. [Linux Basics Recap II](week1/unix-and-HPC/Linux_Basics_Recap_II.md)
 4. [Bash Scripting I & HPC Job Submission](week1/unix-and-HPC/Bash_scripting_I_and_HPC_Job_Submission.md)
