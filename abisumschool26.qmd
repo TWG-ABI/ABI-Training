@@ -21,6 +21,7 @@ The aim is to provide comprehensive training on bioinformatics computational res
 5. [File processing with sed](week1/unix-and-HPC/file-processing-sed.md)
 6. [File processing with awk](week1/unix-and-HPC/file-processing-awk.md)
 7. [Bash Scripting II](week1/unix-and-HPC/Bash_scripting_II.md)
+8. [Containers](week1/unix-and-HPC/Containers.md)
 
 #### R coding content
 
