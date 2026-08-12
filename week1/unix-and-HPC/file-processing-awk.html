@@ -128,16 +128,13 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#file-processing-part-2-using-awk" id="toc-file-processing-part-2-using-awk" class="nav-link active" data-scroll-target="#file-processing-part-2-using-awk">File processing: Part 2 (using awk)</a>
-  <ul class="collapse">
-  <li><a href="#starter-commands-with-awk" id="toc-starter-commands-with-awk" class="nav-link" data-scroll-target="#starter-commands-with-awk">Starter commands with awk</a>
+  <li><a href="#starter-commands-with-awk" id="toc-starter-commands-with-awk" class="nav-link active" data-scroll-target="#starter-commands-with-awk">Starter commands with awk</a>
   <ul class="collapse">
   <li><a href="#removingskipping-a-line-with-a-specific-pattern" id="toc-removingskipping-a-line-with-a-specific-pattern" class="nav-link" data-scroll-target="#removingskipping-a-line-with-a-specific-pattern">Removing/Skipping a line with a specific pattern</a></li>
   <li><a href="#extracting-more-than-one-column" id="toc-extracting-more-than-one-column" class="nav-link" data-scroll-target="#extracting-more-than-one-column">Extracting more than one column</a></li>
   <li><a href="#converting-file-delimiter" id="toc-converting-file-delimiter" class="nav-link" data-scroll-target="#converting-file-delimiter">Converting file delimiter</a></li>
   <li><a href="#determining-number-of-columns-in-a-file" id="toc-determining-number-of-columns-in-a-file" class="nav-link" data-scroll-target="#determining-number-of-columns-in-a-file">Determining number of columns in a file</a></li>
   <li><a href="#extracting-specific-rows-and-columns" id="toc-extracting-specific-rows-and-columns" class="nav-link" data-scroll-target="#extracting-specific-rows-and-columns">Extracting specific rows and columns</a></li>
-  </ul></li>
   </ul></li>
   </ul>
 </nav>
@@ -168,66 +165,65 @@ code span.co, code span.c, code span.ch, code span.cm, code span.c1 {
   opacity: 1 !important;
 }
 </style>
-<hr>
-<section id="file-processing-part-2-using-awk" class="level1">
-<h1>File processing: Part 2 (using awk)</h1>
 <p><strong>AWK</strong> is a programming language named after its three developers: Alfred Aho, Peter J Weinberger and Brian KernIghan. AWK is useful for processing text files and extracting data, particularly when a file is <strong>split into columns</strong> or <strong>delimited by a specific character</strong> (e.g.&nbsp;a tab, comma). The <strong>awk</strong> command/script reads a file line by line and splits each line into columns according to a delimiter character. The default output delimiter is a single space character.</p>
 <p>For this tutorial, the workind directory will be the <code>workshop1</code> directory within <code>ABI_summer_school_project1</code>.</p>
 <section id="starter-commands-with-awk" class="level2">
 <h2 class="anchored" data-anchor-id="starter-commands-with-awk">Starter commands with awk</h2>
 <p>Use the awk command to print the first column of the <code>SAMPLE_001.vcf</code> file</p>
-<pre><code>awk -F'\t' '{print $1}' SAMPLE_001.vcf</code></pre>
+<p><code>bash awk -F'\t' '{print $1}' SAMPLE_001.vcf</code>bash</p>
 <p>Alternatively:</p>
-<pre><code>awk 'BEGIN {FS="\t"} {print $1}' SAMPLE_001.vcf   # Notice the difference in inner vs outer quotation marks</code></pre>
+<p><code>bash awk 'BEGIN {FS="\t"} {print $1}' SAMPLE_001.vcf   # Notice the difference in inner vs outer quotation marks</code>bash</p>
 <p>In case you want to skip the header row:</p>
-<pre><code>awk 'BEGIN {FS="\t"} NR&gt;1 {print $1}' SAMPLE_001.vcf </code></pre>
+<p><code>bash awk 'BEGIN {FS="\t"} NR&gt;1 {print $1}' SAMPLE_001.vcf</code>bash</p>
 <p>In case you want to extract only the header row:</p>
-<pre><code>awk 'NR==1 {print $0}' SAMPLE_001.vcf  </code></pre>
+<p><code>bash awk 'NR==1 {print $0}' SAMPLE_001.vcf</code>bash</p>
 <section id="removingskipping-a-line-with-a-specific-pattern" class="level3">
 <h3 class="anchored" data-anchor-id="removingskipping-a-line-with-a-specific-pattern">Removing/Skipping a line with a specific pattern</h3>
 <p>e.g.&nbsp;extracting all contents of the file <code>SAMPLE_001.vcf</code> but skipping the record with <strong>position 1024</strong>:</p>
-<pre><code>awk -F'\t' '!/1024/ {print $0}' SAMPLE_001.vcf </code></pre>
+<p><code>bash awk -F'\t' '!/1024/ {print $0}' SAMPLE_001.vcf</code>bash</p>
 <p>This is also helpful when skipping multiple header lines:</p>
-<pre><code>awk -F'\t' '!/#/ {print $0}' SAMPLE_001.vcf </code></pre>
+<p><code>bash awk -F'\t' '!/#/ {print $0}' SAMPLE_001.vcf</code>bash</p>
 </section>
 <section id="extracting-more-than-one-column" class="level3">
 <h3 class="anchored" data-anchor-id="extracting-more-than-one-column">Extracting more than one column</h3>
 <p>Extract the first 5 columns and the 10th column in <code>SAMPLE_001.vcf</code> using awk</p>
-<pre><code>awk 'BEGIN {FS="\t"} {print $1,$2,$3,$4,$5,$10}' SAMPLE_001.vcf</code></pre>
+<p><code>bash awk 'BEGIN {FS="\t"} {print $1,$2,$3,$4,$5,$10}' SAMPLE_001.vcf</code>bash</p>
 <p>Note that the delimiter in the output is now a single space character (the default for awk). How can we maintain <strong>tab</strong> as the delimiter?</p>
-<pre><code></code></pre>
+<p>```bash</p>
+<p>```bash</p>
 <p>What if we do not want to write <code>$1,$2,$3,$4,$5</code> in the print function above, how can we specify this range?</p>
-<pre><code>awk 'BEGIN {FS=OFS="\t"} {for (i=1; i&lt;=5; i++) printf "%s%s", $i, OFS ; print $10}' SAMPLE_001.vcf</code></pre>
+<p><code>bash awk 'BEGIN {FS=OFS="\t"} {for (i=1; i&lt;=5; i++) printf "%s%s", $i, OFS ; print $10}' SAMPLE_001.vcf</code>bash</p>
 <p><strong>Practice</strong>: Extract the first 8 columns in <code>SAMPLE_001.vcf</code> using <strong>awk</strong>; be sure to try both approaches above to specify the range of columns 1-8.</p>
-<p>Approach 1:</p>
-<pre><code></code></pre>
-<p>Approach 2:</p>
-<pre><code></code></pre>
+<p>Approach 1: ```bash</p>
+<p>```bash</p>
+<p>Approach 2: ```bash</p>
+<p>```bash</p>
 </section>
 <section id="converting-file-delimiter" class="level3">
 <h3 class="anchored" data-anchor-id="converting-file-delimiter">Converting file delimiter</h3>
 <p>Convert the delimiter of the file to a comma and save the output as <code>SAMPLE_001.csv</code></p>
-<pre><code></code></pre>
+<p>```bash</p>
+<p>```bash</p>
 </section>
 <section id="determining-number-of-columns-in-a-file" class="level3">
 <h3 class="anchored" data-anchor-id="determining-number-of-columns-in-a-file">Determining number of columns in a file</h3>
 <p>Use awk to determine the number of columns in <code>SAMPLE_001.vcf</code></p>
-<pre><code>awk -F'\t' 'NR==1{print NF}' SAMPLE_001.vcf</code></pre>
+<p><code>bash awk -F'\t' 'NR==1{print NF}' SAMPLE_001.vcf</code>bash</p>
 </section>
 <section id="extracting-specific-rows-and-columns" class="level3">
 <h3 class="anchored" data-anchor-id="extracting-specific-rows-and-columns">Extracting specific rows and columns</h3>
 <p>Use awk to extract records for participants from YRI in the file <code>1000G_2504_high_coverage.sequence.index.txt</code></p>
 <p>Step 1:</p>
 <p>Determine the column number for <code>POPULATION</code> using <strong>sed</strong> and/or <strong>grep</strong></p>
-<pre><code></code></pre>
+<p>```bash</p>
+<p>```bash</p>
 <p>Step two:</p>
-<pre><code>awk -F'\t' '${col_number}=="YRI"' 1000G_2504_high_coverage.sequence.index.txt</code></pre>
+<p><code>bash awk -F'\t' '${col_number}=="YRI"' 1000G_2504_high_coverage.sequence.index.txt</code>bash</p>
 <p><strong>Detour</strong>: Compare with the <strong>sed</strong> approach</p>
 <hr>
 <p><em>ABI Summer School 2026 · Week 1: Linux / HPC</em></p>
 
 
-</section>
 </section>
 </section>
 
