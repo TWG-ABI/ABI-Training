@@ -163,7 +163,7 @@ This tutorial series has three sections:
 - [NVIDIA NGC Catalog](https://catalog.ngc.nvidia.com/) — GPU-optimized containers
 
 
----
+<hr>
 
 # Containerize Your Code
 
@@ -532,10 +532,10 @@ $ sbatch monte-carlo.sh
 
 The full workflow for running containers on ACE HPC, including bind mounts and GPU access, is covered in [Containers on HPC Clusters](containers-hpc).
 
----
+<hr>
 **Next:** [Containers on HPC Clusters](containers-hpc) — pull your images on ACE HPC with Apptainer, write SLURM job scripts, and run MPI and GPU workloads.
 
----
+<hr>
 
 # Containers on HPC Clusters
 
@@ -1172,6 +1172,6 @@ apptainer cache list
 apptainer cache clean
 ```
 
----
+<hr>
 
 *ABI Summer School 2026 · Week 1: Linux & HPC*
