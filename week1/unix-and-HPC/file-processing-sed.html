@@ -45,7 +45,7 @@ ul.task-list li input[type="checkbox"] {
 <link href="../../site_libs/quarto-html/quarto-syntax-highlighting-bb62276ab45c84d9efd712f51ff97b5a.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-4ab0624560ed8065de672b5a54abdb89.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-cf2abc19ec09823c931a54267571c7dc.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -128,9 +128,7 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#file-processing-part-1-using-sed" id="toc-file-processing-part-1-using-sed" class="nav-link active" data-scroll-target="#file-processing-part-1-using-sed">File processing: Part 1 (using sed)</a>
-  <ul class="collapse">
-  <li><a href="#replacing-simple-patterns-with-sed" id="toc-replacing-simple-patterns-with-sed" class="nav-link" data-scroll-target="#replacing-simple-patterns-with-sed">Replacing simple patterns with sed</a></li>
+  <li><a href="#replacing-simple-patterns-with-sed" id="toc-replacing-simple-patterns-with-sed" class="nav-link active" data-scroll-target="#replacing-simple-patterns-with-sed">Replacing simple patterns with sed</a></li>
   <li><a href="#conditional-substitutions-with-sed" id="toc-conditional-substitutions-with-sed" class="nav-link" data-scroll-target="#conditional-substitutions-with-sed">Conditional substitutions with sed</a></li>
   <li><a href="#adding-simple-patterns-to-a-file-using-sed" id="toc-adding-simple-patterns-to-a-file-using-sed" class="nav-link" data-scroll-target="#adding-simple-patterns-to-a-file-using-sed">Adding simple patterns to a file using sed</a></li>
   <li><a href="#other-use-cases-of-sed-in-cleaningpre-processing-files" id="toc-other-use-cases-of-sed-in-cleaningpre-processing-files" class="nav-link" data-scroll-target="#other-use-cases-of-sed-in-cleaningpre-processing-files">Other use cases of sed in cleaning/pre-processing files</a>
@@ -140,7 +138,6 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#counting-number-of-columns-in-a-file" id="toc-counting-number-of-columns-in-a-file" class="nav-link" data-scroll-target="#counting-number-of-columns-in-a-file">Counting number of columns in a file</a></li>
   <li><a href="#removing-empty-lines-from-a-file" id="toc-removing-empty-lines-from-a-file" class="nav-link" data-scroll-target="#removing-empty-lines-from-a-file">Removing (empty) lines from a file</a></li>
   <li><a href="#extracting-text-blocks-from-a-file" id="toc-extracting-text-blocks-from-a-file" class="nav-link" data-scroll-target="#extracting-text-blocks-from-a-file">Extracting text blocks from a file</a></li>
-  </ul></li>
   </ul></li>
   </ul>
 </nav>
@@ -154,6 +151,7 @@ ul.task-list li input[type="checkbox"] {
 <p align="center">
 <img src="linux_banner_image.png" alt="ABI Summer School 2026 · WEEK 1: Linux / HPC" width="100%">
 </p>
+<hr>
 <style>
 /* Clean, modern, high-contrast code blocks with pretty borders */
 div.sourceCode, pre.sourceCode, pre, pre code, div.cell-code pre {
@@ -171,79 +169,87 @@ code span.co, code span.c, code span.ch, code span.cm, code span.c1 {
 }
 </style>
 <hr>
-<section id="file-processing-part-1-using-sed" class="level1">
-<h1>File processing: Part 1 (using sed)</h1>
 <p><strong>sed</strong> allows us to automate pattern substitutions (usually line-by-line). The name <strong>sed</strong> is an abbreviation of <strong>stream editor</strong>.</p>
 <p>Change to the <code>workshop1</code> directory within <code>ABI_summer_school_project1</code> as it will be your working directory for this tutorial.</p>
 <section id="replacing-simple-patterns-with-sed" class="level2">
 <h2 class="anchored" data-anchor-id="replacing-simple-patterns-with-sed">Replacing simple patterns with sed</h2>
 <p>Replace the <strong>fasta</strong> pattern in each line of the file <code>sample_manifest2.tsv</code> with <strong>fastq</strong></p>
-<pre><code>sed 's/fasta/fastq/' sample_manifest2.tsv</code></pre>
+<p><code>bash sed 's/fasta/fastq/' sample_manifest2.tsv</code>bash</p>
 <p>To save the output to a new file:</p>
-<pre><code>sed 's/fasta/fastq/' sample_manifest2.tsv &gt; sample_manifest2_fastq.tsv</code></pre>
+<p><code>bash sed 's/fasta/fastq/' sample_manifest2.tsv &gt; sample_manifest2_fastq.tsv</code>bash</p>
 <p>To make the replacement within the primary file (use with caution):</p>
-<pre><code>sed -i 's/fasta/fastq/' sample_manifest2.tsv</code></pre>
+<p><code>bash sed -i 's/fasta/fastq/' sample_manifest2.tsv</code>bash</p>
 <p>Notice that the <strong>fasta</strong> pattern after <strong>Plasmodium_falciparum_</strong> was not replaced by the previous command. Why is this?</p>
 <p>Write the <strong>sed</strong> command(s) to replace both occurrences of <strong>fasta</strong> in each line of <code>sample_manifest2.tsv</code> with <strong>fastq</strong>. Save the output to <code>sample_manifest2_fastq_2.tsv</code></p>
-<pre><code></code></pre>
+<p>```bash</p>
+<p>```bash</p>
 <p>With the same syntax, sed can be used to <strong>remove</strong> unwanted patterns within each line of a given file. Use <strong>sed</strong> to remove all occurrences of <strong>fastq</strong> in the <code>sample_manifest2_fastq_2.tsv</code> file. Save the output to <code>sample_manifest3.tsv</code></p>
-<pre><code></code></pre>
+<p>```bash</p>
+<p>```bash</p>
 <p><strong>Exercise</strong>: Use <strong>sed</strong> to replace the <code>ftp://ftp.sra.ebi.ac.uk/vol1/run/ERR323/</code> string in each line of the file named <code>file_paths.txt</code>.</p>
 <p><strong>sed</strong> can also be used to replace patterns shared across files simultaneously. As an example, replace <strong>Kampala</strong> with <strong>Entebbe</strong> in all the <code>.tsv</code> files currently in <code>workshop1</code></p>
-<pre><code>sed -i 's/Kampala/Entebbe/g' *.tsv</code></pre>
+<p><code>bash sed -i 's/Kampala/Entebbe/g' *.tsv</code>bash</p>
 <p>Using similar syntax for replacing patterns, <strong>sed</strong> can be used to change file delimiters/separators. As a test case, use <strong>sed</strong> to convert <code>sample_manifest3.tsv</code> into a <code>.csv</code> file named <code>sample_manifest3.csv</code>.</p>
-<pre><code></code></pre>
+<p>```bash</p>
+<p>```bash</p>
 <p>Try converting <code>sample_manifest3.csv</code> into a <strong>space-delimited</strong> file.</p>
-<pre><code></code></pre>
+<p>```bash</p>
+<p>```bash</p>
 </section>
 <section id="conditional-substitutions-with-sed" class="level2">
 <h2 class="anchored" data-anchor-id="conditional-substitutions-with-sed">Conditional substitutions with sed</h2>
 <p>Sometimes, it’s helpful to replace patterns only in lines that meet a certain condition. As a test case, change the read_length for the Kisumu samples in <code>sample_manifest3.tsv</code> from 150 to 100.</p>
-<pre><code>sed '/Kisumu/s/150/100/' sample_manifest3.tsv</code></pre>
+<p><code>bash sed '/Kisumu/s/150/100/' sample_manifest3.tsv</code>bash</p>
 </section>
 <section id="adding-simple-patterns-to-a-file-using-sed" class="level2">
 <h2 class="anchored" data-anchor-id="adding-simple-patterns-to-a-file-using-sed">Adding simple patterns to a file using sed</h2>
 <p>Add the model numbers of the <code>Illumina_NextSeq</code> and <code>Illumina_MiSeq</code> platforms so that they read <code>Illumina_NextSeq_2000</code> and <code>Illumina_MiSeq_100</code>, respectively.</p>
-<pre><code></code></pre>
+<p>```bash</p>
+<p>```bash</p>
 <p>Add an extra column (at the end) to the contents of <code>sample_manifest3.tsv</code> with the heading <code>file_size</code> and the column values all <code>.</code></p>
-<pre><code></code></pre>
+<p>```bash</p>
+<p>```bash</p>
 <p>Add a <code>project_id</code> column (make it the first column) to <code>sample_manifest3.tsv</code>. Use <strong>Pf_AMR</strong> as the values for each row under this column.</p>
-<pre><code></code></pre>
+<p>```bash</p>
+<p>```bash</p>
 </section>
 <section id="other-use-cases-of-sed-in-cleaningpre-processing-files" class="level2">
 <h2 class="anchored" data-anchor-id="other-use-cases-of-sed-in-cleaningpre-processing-files">Other use cases of sed in cleaning/pre-processing files</h2>
 <section id="obtaining-the-header-line-of-a-file" class="level3">
 <h3 class="anchored" data-anchor-id="obtaining-the-header-line-of-a-file">Obtaining the header line of a file</h3>
-<pre><code>sed -n '1p' sample_manifest3.tsv </code></pre>
+<p><code>bash sed -n '1p' sample_manifest3.tsv</code>bash</p>
 </section>
 <section id="extracting-lines-with-a-specific-pattern" class="level3">
 <h3 class="anchored" data-anchor-id="extracting-lines-with-a-specific-pattern">Extracting line(s) with a specific pattern</h3>
-<pre><code>sed -n '/PATTERN/p' file.txt  </code></pre>
+<p><code>bash sed -n '/PATTERN/p' file.txt</code>bash</p>
 <p>Example:</p>
-<pre><code>sed -n '/TRUE/p' sample_manifest3.tsv </code></pre>
+<p><code>bash sed -n '/TRUE/p' sample_manifest3.tsv</code>bash</p>
 </section>
 <section id="counting-number-of-columns-in-a-file" class="level3">
 <h3 class="anchored" data-anchor-id="counting-number-of-columns-in-a-file">Counting number of columns in a file</h3>
-<pre><code></code></pre>
+<p>```bash</p>
+<p>```bash</p>
 </section>
 <section id="removing-empty-lines-from-a-file" class="level3">
 <h3 class="anchored" data-anchor-id="removing-empty-lines-from-a-file">Removing (empty) lines from a file</h3>
 <p>Using <code>file1.txt</code> as a testcase, remove all empty lines.</p>
-<pre><code></code></pre>
+<p>```bash</p>
+<p>```bash</p>
 <p>Using a similar syntax, <strong>sed</strong> can be used as an alternative to <strong>grep</strong> to remove lines containing certain patterns. Use <strong>sed</strong> to remove the header lines (only the ones starting with <em>##</em>) from the <code>SAMPLE_001.vcf</code> file. Save the output to a new file <code>SAMPLE_001_v2.vcf</code> so that we can reuse the <code>SAMPLE_001.vcf</code> file, if needed.</p>
-<pre><code></code></pre>
+<p>```bash</p>
+<p>```bash</p>
 <p>Use sed to remove empty lines from <code>file1.txt</code> and the line containing the heading i.e.&nbsp;<code>sample_id</code>, in one command.</p>
-<pre><code></code></pre>
+<p>```bash</p>
+<p>```bash</p>
 </section>
 <section id="extracting-text-blocks-from-a-file" class="level3">
 <h3 class="anchored" data-anchor-id="extracting-text-blocks-from-a-file">Extracting text blocks from a file</h3>
 <p>Using <code>sample_manifest3.tsv</code> as a test case, extract the metadata lines of samples <strong>004</strong> through <strong>008</strong> i.e.&nbsp;from line containing <code>SAMPLE_004</code> to the one containing <code>SAMPLE_008</code>.</p>
-<pre><code>sed -n '/SAMPLE_004/,/SAMPLE_008/p' sample_manifest3.tsv</code></pre>
+<p><code>bash sed -n '/SAMPLE_004/,/SAMPLE_008/p' sample_manifest3.tsv</code>bash</p>
 <hr>
 <p><em>ABI Summer School 2026 · Week 1: Linux / HPC</em></p>
 
 
-</section>
 </section>
 </section>
 
