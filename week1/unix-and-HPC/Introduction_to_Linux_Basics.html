@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>linux_basics_recap – ABI-ITWG</title>
+<title>introduction_to_linux_basics – ABI-ITWG</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -128,8 +128,10 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#linux-basics-recap" id="toc-linux-basics-recap" class="nav-link active" data-scroll-target="#linux-basics-recap">LINUX BASICS RECAP</a>
+  <li><a href="#abi-summer-school-2026-week-1-linux-hpc" id="toc-abi-summer-school-2026-week-1-linux-hpc" class="nav-link active" data-scroll-target="#abi-summer-school-2026-week-1-linux-hpc">ABI Summer School 2026 · WEEK 1: Linux / HPC</a></li>
+  <li><a href="#introduction-to-linux-basics" id="toc-introduction-to-linux-basics" class="nav-link" data-scroll-target="#introduction-to-linux-basics">INTRODUCTION TO LINUX BASICS</a>
   <ul class="collapse">
+  <li><a href="#the-scenario" id="toc-the-scenario" class="nav-link" data-scroll-target="#the-scenario">The Scenario</a></li>
   <li><a href="#step-1-download-the-project" id="toc-step-1-download-the-project" class="nav-link" data-scroll-target="#step-1-download-the-project">Step 1 : Download the project</a></li>
   <li><a href="#step-2-unzip-the-project" id="toc-step-2-unzip-the-project" class="nav-link" data-scroll-target="#step-2-unzip-the-project">Step 2 : Unzip the project</a></li>
   <li><a href="#step-3-where-are-you" id="toc-step-3-where-are-you" class="nav-link" data-scroll-target="#step-3-where-are-you">Step 3 : Where are you?</a></li>
@@ -166,22 +168,14 @@ ul.task-list li input[type="checkbox"] {
 
 
 
-<p align="center">
-<img src="linux_banner_image.png" alt="ABI Summer School 2026 · WEEK 1: Linux / HPC" width="100%">
-</p>
+<section id="abi-summer-school-2026-week-1-linux-hpc" class="level1" data-align="center">
+<h1>ABI Summer School 2026 · WEEK 1: Linux / HPC</h1>
+</section>
 <hr>
-<section id="linux-basics-recap" class="level1">
-<h1>LINUX BASICS RECAP</h1>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>The Scenario
-</div>
-</div>
-<div class="callout-body-container callout-body">
+<section id="introduction-to-linux-basics" class="level1">
+<h1>INTRODUCTION TO LINUX BASICS</h1>
+<section id="the-scenario" class="level3">
+<h3 class="anchored" data-anchor-id="the-scenario">The Scenario</h3>
 <blockquote class="blockquote">
 <p>You are a research assistant on a multi-country <em>Plasmodium falciparum</em> malaria genomics study spanning field sites across East Africa. The lead researcher on the project has had to leave unexpectedly and the analysis is half-finished on the cluster.</p>
 <p>The supervisor meeting is Monday morning at 9am.</p>
@@ -190,14 +184,34 @@ ul.task-list li input[type="checkbox"] {
 <p><em>“The project folder is on the cluster. Please find your way around it, organise what was left behind, and make sure everything is in order before the meeting. The folder is called ABI_summer_school_project.”</em></p>
 </blockquote>
 <p>You are now the person responsible for this project. Log in. Get to work.</p>
-<p><strong>How this works:</strong> Each question tells you <strong>what needs to be done</strong> and you figure out the command</p>
 </blockquote>
-</div>
-</div>
+<hr>
+<blockquote class="blockquote">
+<p><strong>How this works</strong> Each question tells you <strong>what needs to be done</strong> and you figure out the command</p>
+</blockquote>
+<hr>
+</section>
 <section id="step-1-download-the-project" class="level3">
 <h3 class="anchored" data-anchor-id="step-1-download-the-project">Step 1 : Download the project</h3>
 <p><em>The project has been uploaded to GitHub (https://github.com/TWG-ABI/ABI-Training). Your first job is to get it onto the cluster.</em></p>
 <p><strong>Q1:</strong> Download the project zip file using <code>wget</code>.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Show answer
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<pre><code>wget https://github.com/TWG-ABI/ABI-Training/raw/refs/heads/main/week1/ABI_summer_school_project.zip</code></pre>
+</div>
+</div>
+</div>
+<p><strong>Q2:</strong> List the files in your current directory to confirm, and check the file size.</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -209,23 +223,6 @@ ul.task-list li input[type="checkbox"] {
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
 <div id="callout-2" class="callout-2-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<pre><code>wget https://github.com/TWG-ABI/ABI-Training/raw/refs/heads/main/week1/ABI_summer_school_project.zip</code></pre>
-</div>
-</div>
-</div>
-<p><strong>Q2:</strong> List the files in your current directory to confirm, and check the file size.</p>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>Show answer
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-3" class="callout-3-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <pre><code>ls -lh</code></pre>
 <blockquote class="blockquote">
@@ -241,7 +238,7 @@ ul.task-list li input[type="checkbox"] {
 <p><em>The file arrived as a zip archive. It needs to be extracted before you can work with it.</em></p>
 <p><strong>Q1:</strong> Unzip the downloaded file.</p>
 <div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -250,7 +247,7 @@ ul.task-list li input[type="checkbox"] {
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-4" class="callout-4-contents callout-collapse collapse">
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <pre><code>unzip ABI_summer_school_project.zip</code></pre>
 </div>
@@ -263,7 +260,7 @@ ul.task-list li input[type="checkbox"] {
 <p><em>Before touching anything, make sure you know exactly where you are on the cluster.</em></p>
 <p><strong>Q1:</strong> Print your current working directory - the full absolute path.</p>
 <div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -272,7 +269,7 @@ ul.task-list li input[type="checkbox"] {
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-5" class="callout-5-contents callout-collapse collapse">
+<div id="callout-4" class="callout-4-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <pre><code>pwd</code></pre>
 <blockquote class="blockquote">
@@ -283,7 +280,7 @@ ul.task-list li input[type="checkbox"] {
 </div>
 <p><strong>Q2:</strong> Move into the project folder using a <strong>relative path</strong>, then confirm your new location.</p>
 <div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -292,7 +289,7 @@ ul.task-list li input[type="checkbox"] {
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-6" class="callout-6-contents callout-collapse collapse">
+<div id="callout-5" class="callout-5-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <pre><code>cd ABI_summer_school_project
 pwd</code></pre>
@@ -306,6 +303,26 @@ pwd</code></pre>
 <p><em>You have never seen this project before. Get a proper overview of what is inside.</em></p>
 <p><strong>Q1:</strong> List the contents of the project folder and show file types, sizes in human-readable format.</p>
 <div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Show answer
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-6" class="callout-6-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<pre><code>ls -lh</code></pre>
+<blockquote class="blockquote">
+<p>You should see directories: <code>raw_data/</code>, <code>reference/</code>, <code>variants/</code>, <code>results/</code>, <code>logs/</code>, <code>scripts/</code>, and <code>README.txt</code></p>
+</blockquote>
+</div>
+</div>
+</div>
+<p><strong>Q2:</strong> List with one item per line using a different <code>ls</code> option.</p>
+<div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
@@ -317,14 +334,14 @@ pwd</code></pre>
 </div>
 <div id="callout-7" class="callout-7-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<pre><code>ls -lh</code></pre>
+<pre><code>ls -1</code></pre>
 <blockquote class="blockquote">
-<p>You should see directories: <code>raw_data/</code>, <code>reference/</code>, <code>variants/</code>, <code>results/</code>, <code>logs/</code>, <code>scripts/</code>, and <code>README.txt</code></p>
+<p>Each file/folder on its own line useful for counting.</p>
 </blockquote>
 </div>
 </div>
 </div>
-<p><strong>Q2:</strong> List with one item per line using a different <code>ls</code> option.</p>
+<p><strong>Q3:</strong> List all contents sorted by modification time, newest first.</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -337,14 +354,14 @@ pwd</code></pre>
 </div>
 <div id="callout-8" class="callout-8-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<pre><code>ls -1</code></pre>
+<pre><code>ls -lt</code></pre>
 <blockquote class="blockquote">
-<p>Each file/folder on its own line useful for counting.</p>
+<p><code>-t</code> sorts by time, newest first.</p>
 </blockquote>
 </div>
 </div>
 </div>
-<p><strong>Q3:</strong> List all contents sorted by modification time, newest first.</p>
+<p><strong>Q4:</strong> See everything inside the project - all subdirectories and their contents in one command.</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-9-contents" aria-controls="callout-9" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -357,14 +374,14 @@ pwd</code></pre>
 </div>
 <div id="callout-9" class="callout-9-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<pre><code>ls -lt</code></pre>
+<pre><code>ls -lhR</code></pre>
 <blockquote class="blockquote">
-<p><code>-t</code> sorts by time, newest first.</p>
+<p>The <code>-R</code> flag lists recursively through all subdirectories.</p>
 </blockquote>
 </div>
 </div>
 </div>
-<p><strong>Q4:</strong> See everything inside the project - all subdirectories and their contents in one command.</p>
+<p><strong>Q5:</strong> Read the project README file without opening any editor.</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-10-contents" aria-controls="callout-10" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -377,14 +394,16 @@ pwd</code></pre>
 </div>
 <div id="callout-10" class="callout-10-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<pre><code>ls -lhR</code></pre>
-<blockquote class="blockquote">
-<p>The <code>-R</code> flag lists recursively through all subdirectories.</p>
-</blockquote>
+<pre><code>cat README.txt</code></pre>
 </div>
 </div>
 </div>
-<p><strong>Q5:</strong> Read the project README file without opening any editor.</p>
+<hr>
+</section>
+<section id="step-5-navigate-using-absolute-and-relative-paths" class="level3">
+<h3 class="anchored" data-anchor-id="step-5-navigate-using-absolute-and-relative-paths">Step 5 : Navigate using absolute and relative paths</h3>
+<p><em>Get comfortable moving around the cluster — not just inside the project folder.</em></p>
+<p><strong>Q1:</strong> Move into <code>raw_data/</code> using a <strong>relative path</strong>. Print your location.</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-11-contents" aria-controls="callout-11" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -397,16 +416,12 @@ pwd</code></pre>
 </div>
 <div id="callout-11" class="callout-11-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<pre><code>cat README.txt</code></pre>
+<pre><code>cd raw_data
+pwd</code></pre>
 </div>
 </div>
 </div>
-<hr>
-</section>
-<section id="step-5-navigate-using-absolute-and-relative-paths" class="level3">
-<h3 class="anchored" data-anchor-id="step-5-navigate-using-absolute-and-relative-paths">Step 5 : Navigate using absolute and relative paths</h3>
-<p><em>Get comfortable moving around the cluster — not just inside the project folder.</em></p>
-<p><strong>Q1:</strong> Move into <code>raw_data/</code> using a <strong>relative path</strong>. Print your location.</p>
+<p><strong>Q2:</strong> Go back up one level to the project root using a relative shortcut.</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-12-contents" aria-controls="callout-12" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -419,12 +434,14 @@ pwd</code></pre>
 </div>
 <div id="callout-12" class="callout-12-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<pre><code>cd raw_data
-pwd</code></pre>
+<pre><code>cd ..</code></pre>
+<blockquote class="blockquote">
+<p><code>..</code> always means ‘one level up’.</p>
+</blockquote>
 </div>
 </div>
 </div>
-<p><strong>Q2:</strong> Go back up one level to the project root using a relative shortcut.</p>
+<p><strong>Q3:</strong> Jump straight to your home directory in one command.</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-13-contents" aria-controls="callout-13" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -437,14 +454,14 @@ pwd</code></pre>
 </div>
 <div id="callout-13" class="callout-13-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<pre><code>cd ..</code></pre>
+<pre><code>cd ~</code></pre>
 <blockquote class="blockquote">
-<p><code>..</code> always means ‘one level up’.</p>
+<p>Or just <code>cd</code> with no arguments - both go home.</p>
 </blockquote>
 </div>
 </div>
 </div>
-<p><strong>Q3:</strong> Jump straight to your home directory in one command.</p>
+<p><strong>Q4:</strong> Now navigate into <code>reference/</code> using an <strong>absolute path</strong> (replace <code>username</code> with yours).</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-14-contents" aria-controls="callout-14" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -457,14 +474,14 @@ pwd</code></pre>
 </div>
 <div id="callout-14" class="callout-14-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<pre><code>cd ~</code></pre>
+<pre><code>cd /home/username/ABI_summer_school_project/reference</code></pre>
 <blockquote class="blockquote">
-<p>Or just <code>cd</code> with no arguments - both go home.</p>
+<p>Absolute paths always start with <code>/</code>.</p>
 </blockquote>
 </div>
 </div>
 </div>
-<p><strong>Q4:</strong> Now navigate into <code>reference/</code> using an <strong>absolute path</strong> (replace <code>username</code> with yours).</p>
+<p><strong>Q5:</strong> Go back to the project root. Try the shortcut for the previous directory you were in.</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-15-contents" aria-controls="callout-15" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -476,26 +493,6 @@ pwd</code></pre>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
 <div id="callout-15" class="callout-15-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<pre><code>cd /home/username/ABI_summer_school_project/reference</code></pre>
-<blockquote class="blockquote">
-<p>Absolute paths always start with <code>/</code>.</p>
-</blockquote>
-</div>
-</div>
-</div>
-<p><strong>Q5:</strong> Go back to the project root. Try the shortcut for the previous directory you were in.</p>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-16-contents" aria-controls="callout-16" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>Show answer
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-16" class="callout-16-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <pre><code>cd -</code></pre>
 <blockquote class="blockquote">
@@ -511,6 +508,23 @@ pwd</code></pre>
 <p><em>The <code>raw_data/</code> folder has a sample manifest. Read through it to understand what samples are in the project.</em></p>
 <p><strong>Q1:</strong> From the project root, print the entire sample manifest to the screen.</p>
 <div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-16-contents" aria-controls="callout-16" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Show answer
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-16" class="callout-16-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<pre><code>cat raw_data/sample_manifest.tsv</code></pre>
+</div>
+</div>
+</div>
+<p><strong>Q2:</strong> From the project root, print two files at once - the manifest and the coverage report - using a single <code>cat</code> command.</p>
+<div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-17-contents" aria-controls="callout-17" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
@@ -522,11 +536,14 @@ pwd</code></pre>
 </div>
 <div id="callout-17" class="callout-17-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<pre><code>cat raw_data/sample_manifest.tsv</code></pre>
+<pre><code>cat raw_data/sample_manifest.tsv raw_data/coverage_report.tsv</code></pre>
+<blockquote class="blockquote">
+<p><code>cat</code> accepts multiple filenames separated by spaces.</p>
+</blockquote>
 </div>
 </div>
 </div>
-<p><strong>Q2:</strong> From the project root, print two files at once - the manifest and the coverage report - using a single <code>cat</code> command.</p>
+<p><strong>Q3:</strong> The manifest is long. Show only the <strong>first 4 lines</strong> (header + 3 samples).</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-18-contents" aria-controls="callout-18" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -539,14 +556,11 @@ pwd</code></pre>
 </div>
 <div id="callout-18" class="callout-18-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<pre><code>cat raw_data/sample_manifest.tsv raw_data/coverage_report.tsv</code></pre>
-<blockquote class="blockquote">
-<p><code>cat</code> accepts multiple filenames separated by spaces.</p>
-</blockquote>
+<pre><code>head -n 4 raw_data/sample_manifest.tsv</code></pre>
 </div>
 </div>
 </div>
-<p><strong>Q3:</strong> The manifest is long. Show only the <strong>first 4 lines</strong> (header + 3 samples).</p>
+<p><strong>Q4:</strong> Show only the <strong>last 3 lines</strong> of the manifest.</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-19-contents" aria-controls="callout-19" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -559,11 +573,11 @@ pwd</code></pre>
 </div>
 <div id="callout-19" class="callout-19-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<pre><code>head -n 4 raw_data/sample_manifest.tsv</code></pre>
+<pre><code>tail -n 3 raw_data/sample_manifest.tsv</code></pre>
 </div>
 </div>
 </div>
-<p><strong>Q4:</strong> Show only the <strong>last 3 lines</strong> of the manifest.</p>
+<p><strong>Q5:</strong> Navigate into the <code>reference/</code> directory. From there, open the reference FASTA in a pager so you can scroll through it without flooding the screen.</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-20-contents" aria-controls="callout-20" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -576,11 +590,15 @@ pwd</code></pre>
 </div>
 <div id="callout-20" class="callout-20-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<pre><code>tail -n 3 raw_data/sample_manifest.tsv</code></pre>
+<pre><code>cd reference
+less Pfalciparum_3D7.fasta</code></pre>
+<blockquote class="blockquote">
+<p>Arrow keys to scroll · <code>q</code> to quit · <code>/</code> then a word to search inside.</p>
+</blockquote>
 </div>
 </div>
 </div>
-<p><strong>Q5:</strong> Navigate into the <code>reference/</code> directory. From there, open the reference FASTA in a pager so you can scroll through it without flooding the screen.</p>
+<p><strong>Q6:</strong> Without leaving <code>reference/</code>, show the first 8 lines of <code>SAMPLE_001.fastq</code> which is located in <code>raw_data/</code>. You will need to use <code>../</code> to go up one level and then into <code>raw_data/</code>. Can you identify the 4 parts of a FASTQ read?</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-21-contents" aria-controls="callout-21" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -593,15 +611,14 @@ pwd</code></pre>
 </div>
 <div id="callout-21" class="callout-21-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<pre><code>cd reference
-less Pfalciparum_3D7.fasta</code></pre>
+<pre><code>head -n 8 ../raw_data/SAMPLE_001.fastq</code></pre>
 <blockquote class="blockquote">
-<p>Arrow keys to scroll · <code>q</code> to quit · <code>/</code> then a word to search inside.</p>
+<p>Line 1: <code>@</code> header · Line 2: DNA sequence · Line 3: <code>+</code> separator · Line 4: quality scores</p>
 </blockquote>
 </div>
 </div>
 </div>
-<p><strong>Q6:</strong> Without leaving <code>reference/</code>, show the first 8 lines of <code>SAMPLE_001.fastq</code> which is located in <code>raw_data/</code>. You will need to use <code>../</code> to go up one level and then into <code>raw_data/</code>. Can you identify the 4 parts of a FASTQ read?</p>
+<p><strong>Q7:</strong> Still in <code>reference/</code>, show the last 8 lines of the same file using relative paths.</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-22-contents" aria-controls="callout-22" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -614,14 +631,16 @@ less Pfalciparum_3D7.fasta</code></pre>
 </div>
 <div id="callout-22" class="callout-22-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<pre><code>head -n 8 ../raw_data/SAMPLE_001.fastq</code></pre>
-<blockquote class="blockquote">
-<p>Line 1: <code>@</code> header · Line 2: DNA sequence · Line 3: <code>+</code> separator · Line 4: quality scores</p>
-</blockquote>
+<pre><code>tail -n 8 ../raw_data/SAMPLE_001.fastq</code></pre>
 </div>
 </div>
 </div>
-<p><strong>Q7:</strong> Still in <code>reference/</code>, show the last 8 lines of the same file using relative paths.</p>
+<hr>
+</section>
+<section id="step-7-use-wildcards" class="level3">
+<h3 class="anchored" data-anchor-id="step-7-use-wildcards">Step 7 : Use wildcards</h3>
+<p><em>There are 10 FASTQ files in the project. Get a quick overview of all of them without typing each name.</em></p>
+<p><strong>Q1:</strong> Navigate to <code>raw_data/</code>. From here, list all FASTQ files at once using a wildcard.</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-23-contents" aria-controls="callout-23" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -634,16 +653,15 @@ less Pfalciparum_3D7.fasta</code></pre>
 </div>
 <div id="callout-23" class="callout-23-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<pre><code>tail -n 8 ../raw_data/SAMPLE_001.fastq</code></pre>
+<pre><code>cd raw_data
+ls -lh *.fastq</code></pre>
+<blockquote class="blockquote">
+<p><code>*</code> matches anything — so <code>*.fastq</code> matches every file ending in <code>.fastq</code>.</p>
+</blockquote>
 </div>
 </div>
 </div>
-<hr>
-</section>
-<section id="step-7-use-wildcards" class="level3">
-<h3 class="anchored" data-anchor-id="step-7-use-wildcards">Step 7 : Use wildcards</h3>
-<p><em>There are 10 FASTQ files in the project. Get a quick overview of all of them without typing each name.</em></p>
-<p><strong>Q1:</strong> Navigate to <code>raw_data/</code>. From here, list all FASTQ files at once using a wildcard.</p>
+<p><strong>Q2:</strong> From where you are, list all files in <code>variants/</code> ending in <code>.vcf</code>.</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-24-contents" aria-controls="callout-24" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -656,15 +674,11 @@ less Pfalciparum_3D7.fasta</code></pre>
 </div>
 <div id="callout-24" class="callout-24-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<pre><code>cd raw_data
-ls -lh *.fastq</code></pre>
-<blockquote class="blockquote">
-<p><code>*</code> matches anything — so <code>*.fastq</code> matches every file ending in <code>.fastq</code>.</p>
-</blockquote>
+<pre><code>ls -lh ../variants/*.vcf</code></pre>
 </div>
 </div>
 </div>
-<p><strong>Q2:</strong> From where you are, list all files in <code>variants/</code> ending in <code>.vcf</code>.</p>
+<p><strong>Q3:</strong> Navigate into <code>results/qc/</code> (you are currently in <code>raw_data/</code>, so you’ll need to go up and then down into <code>results/qc/</code>). From here, list all files in <code>reference/</code> whose names start with <code>Pf</code>. You’ll need to go two levels up (<code>../../</code>)!</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-25-contents" aria-controls="callout-25" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -677,11 +691,12 @@ ls -lh *.fastq</code></pre>
 </div>
 <div id="callout-25" class="callout-25-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<pre><code>ls -lh ../variants/*.vcf</code></pre>
+<pre><code>cd ../results/qc
+ls -lh ../../reference/Pf*</code></pre>
 </div>
 </div>
 </div>
-<p><strong>Q3:</strong> Navigate into <code>results/qc/</code> (you are currently in <code>raw_data/</code>, so you’ll need to go up and then down into <code>results/qc/</code>). From here, list all files in <code>reference/</code> whose names start with <code>Pf</code>. You’ll need to go two levels up (<code>../../</code>)!</p>
+<p><strong>Q4:</strong> Go back to the project root. List all files in <code>raw_data/</code> that contain the word <code>SAMPLE</code> in their name.</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-26-contents" aria-controls="callout-26" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -693,24 +708,6 @@ ls -lh *.fastq</code></pre>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
 <div id="callout-26" class="callout-26-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<pre><code>cd ../results/qc
-ls -lh ../../reference/Pf*</code></pre>
-</div>
-</div>
-</div>
-<p><strong>Q4:</strong> Go back to the project root. List all files in <code>raw_data/</code> that contain the word <code>SAMPLE</code> in their name.</p>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-27-contents" aria-controls="callout-27" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>Show answer
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-27" class="callout-27-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <pre><code>cd ../../
 ls raw_data/*SAMPLE*</code></pre>
@@ -727,6 +724,26 @@ ls raw_data/*SAMPLE*</code></pre>
 <p><em>There is a personal note hidden somewhere in the project but nobody can find it. A normal <code>ls</code> is not showing everything.</em></p>
 <p><strong>Q1:</strong> From the project root, list <strong>all</strong> files in <code>raw_data/</code> — including hidden ones.</p>
 <div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-27-contents" aria-controls="callout-27" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Show answer
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-27" class="callout-27-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<pre><code>ls -a raw_data/</code></pre>
+<blockquote class="blockquote">
+<p>Files starting with <code>.</code> are hidden in Linux. They only appear with <code>-a</code>.</p>
+</blockquote>
+</div>
+</div>
+</div>
+<p><strong>Q2:</strong> Show the hidden files with full details and human-readable sizes.</p>
+<div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-28-contents" aria-controls="callout-28" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
@@ -738,14 +755,11 @@ ls raw_data/*SAMPLE*</code></pre>
 </div>
 <div id="callout-28" class="callout-28-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<pre><code>ls -a raw_data/</code></pre>
-<blockquote class="blockquote">
-<p>Files starting with <code>.</code> are hidden in Linux. They only appear with <code>-a</code>.</p>
-</blockquote>
+<pre><code>ls -lha raw_data/</code></pre>
 </div>
 </div>
 </div>
-<p><strong>Q2:</strong> Show the hidden files with full details and human-readable sizes.</p>
+<p><strong>Q3:</strong> Read the hidden note.</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-29-contents" aria-controls="callout-29" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -758,11 +772,11 @@ ls raw_data/*SAMPLE*</code></pre>
 </div>
 <div id="callout-29" class="callout-29-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<pre><code>ls -lha raw_data/</code></pre>
+<pre><code>cat raw_data/.hidden_note.txt</code></pre>
 </div>
 </div>
 </div>
-<p><strong>Q3:</strong> Read the hidden note.</p>
+<p><strong>Q4:</strong> Search for any other hidden directories anywhere in the project.</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-30-contents" aria-controls="callout-30" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -774,23 +788,6 @@ ls raw_data/*SAMPLE*</code></pre>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
 <div id="callout-30" class="callout-30-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<pre><code>cat raw_data/.hidden_note.txt</code></pre>
-</div>
-</div>
-</div>
-<p><strong>Q4:</strong> Search for any other hidden directories anywhere in the project.</p>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-31-contents" aria-controls="callout-31" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>Show answer
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-31" class="callout-31-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <pre><code>ls -la</code></pre>
 <blockquote class="blockquote">
@@ -806,6 +803,23 @@ ls raw_data/*SAMPLE*</code></pre>
 <p><em>The <code>results/</code> folder is completely empty. The supervisor expects a proper structure before the meeting.</em></p>
 <p><strong>Q1:</strong> From the project root, create a single directory called <code>qc/</code> inside <code>results/</code>.</p>
 <div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-31-contents" aria-controls="callout-31" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Show answer
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-31" class="callout-31-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<pre><code>mkdir results/qc</code></pre>
+</div>
+</div>
+</div>
+<p><strong>Q2:</strong> Create two more directories — <code>alignments/</code> and <code>variants/</code> — inside <code>results/</code> in one command.</p>
+<div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-32-contents" aria-controls="callout-32" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
@@ -817,11 +831,14 @@ ls raw_data/*SAMPLE*</code></pre>
 </div>
 <div id="callout-32" class="callout-32-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<pre><code>mkdir results/qc</code></pre>
+<pre><code>mkdir results/alignments results/variants</code></pre>
+<blockquote class="blockquote">
+<p>Pass multiple paths to <code>mkdir</code> separated by spaces.</p>
+</blockquote>
 </div>
 </div>
 </div>
-<p><strong>Q2:</strong> Create two more directories — <code>alignments/</code> and <code>variants/</code> — inside <code>results/</code> in one command.</p>
+<p><strong>Q3:</strong> Create <code>results/reports/archive/</code> — two levels deep — in one command.</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-33-contents" aria-controls="callout-33" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -833,26 +850,6 @@ ls raw_data/*SAMPLE*</code></pre>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
 <div id="callout-33" class="callout-33-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<pre><code>mkdir results/alignments results/variants</code></pre>
-<blockquote class="blockquote">
-<p>Pass multiple paths to <code>mkdir</code> separated by spaces.</p>
-</blockquote>
-</div>
-</div>
-</div>
-<p><strong>Q3:</strong> Create <code>results/reports/archive/</code> — two levels deep — in one command.</p>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-34-contents" aria-controls="callout-34" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>Show answer
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-34" class="callout-34-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <pre><code>mkdir -p results/reports/archive</code></pre>
 <blockquote class="blockquote">
@@ -868,6 +865,27 @@ ls raw_data/*SAMPLE*</code></pre>
 <p><em>A notes file is needed in <code>results/reports/</code> before the supervisor meeting.</em></p>
 <p><strong>Q1:</strong> Move into <code>results/reports/</code>. Create an empty file called <code>analysis_notes.txt</code> here.</p>
 <div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-34-contents" aria-controls="callout-34" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Show answer
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-34" class="callout-34-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<pre><code>cd results/reports
+touch analysis_notes.txt</code></pre>
+<blockquote class="blockquote">
+<p><code>touch</code> creates an empty file if it doesn’t already exist.</p>
+</blockquote>
+</div>
+</div>
+</div>
+<p><strong>Q2:</strong> Open it in <code>nano</code> and write one line: <code>Analysis started by [your name], 8 June 2026</code></p>
+<div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-35-contents" aria-controls="callout-35" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
@@ -879,15 +897,15 @@ ls raw_data/*SAMPLE*</code></pre>
 </div>
 <div id="callout-35" class="callout-35-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<pre><code>cd results/reports
-touch analysis_notes.txt</code></pre>
+<pre><code>nano analysis_notes.txt</code></pre>
+<p>Type some contents in the file and save it</p>
 <blockquote class="blockquote">
-<p><code>touch</code> creates an empty file if it doesn’t already exist.</p>
+<p><code>Ctrl+O</code> → <code>Enter</code> to save · <code>Ctrl+X</code> to exit</p>
 </blockquote>
 </div>
 </div>
 </div>
-<p><strong>Q2:</strong> Open it in <code>nano</code> and write one line: <code>Analysis started by [your name], 8 June 2026</code></p>
+<p><strong>Q3:</strong> Confirm the file saved correctly.</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-36-contents" aria-controls="callout-36" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -900,15 +918,11 @@ touch analysis_notes.txt</code></pre>
 </div>
 <div id="callout-36" class="callout-36-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<pre><code>nano analysis_notes.txt</code></pre>
-<p>Type some contents in the file and save it</p>
-<blockquote class="blockquote">
-<p><code>Ctrl+O</code> → <code>Enter</code> to save · <code>Ctrl+X</code> to exit</p>
-</blockquote>
+<pre><code>cat analysis_notes.txt</code></pre>
 </div>
 </div>
 </div>
-<p><strong>Q3:</strong> Confirm the file saved correctly.</p>
+<p><strong>Q4:</strong> Navigate deep into <code>archive/</code> (so you are in <code>results/reports/archive/</code>). From here, create <strong>three empty files</strong> at once in <code>results/qc/</code>. You will need to go three levels up to the project root (<code>../../../</code>) and then down into <code>results/qc/</code> — <code>sample_001_qc.txt</code>, <code>sample_002_qc.txt</code>, <code>sample_003_qc.txt</code>.</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-37-contents" aria-controls="callout-37" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -920,23 +934,6 @@ touch analysis_notes.txt</code></pre>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
 <div id="callout-37" class="callout-37-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<pre><code>cat analysis_notes.txt</code></pre>
-</div>
-</div>
-</div>
-<p><strong>Q4:</strong> Navigate deep into <code>archive/</code> (so you are in <code>results/reports/archive/</code>). From here, create <strong>three empty files</strong> at once in <code>results/qc/</code>. You will need to go three levels up to the project root (<code>../../../</code>) and then down into <code>results/qc/</code> — <code>sample_001_qc.txt</code>, <code>sample_002_qc.txt</code>, <code>sample_003_qc.txt</code>.</p>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-38-contents" aria-controls="callout-38" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>Show answer
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-38" class="callout-38-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <pre><code>cd archive
 touch ../../../results/qc/sample_001_qc.txt ../../../results/qc/sample_002_qc.txt ../../../results/qc/sample_003_qc.txt</code></pre>
@@ -953,6 +950,24 @@ touch ../../../results/qc/sample_001_qc.txt ../../../results/qc/sample_002_qc.tx
 <p><em>Key files need to be copied into the right places before the meeting.</em></p>
 <p><strong>Q1:</strong> Navigate back to <code>results/reports/</code>. Copy <code>sample_manifest.tsv</code> from the <code>raw_data/</code> folder directly into your current directory using <code>.</code> to represent “here”. You will need to use <code>../../</code> to reach the raw data.</p>
 <div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-38-contents" aria-controls="callout-38" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Show answer
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-38" class="callout-38-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<pre><code>cd ..
+cp ../../raw_data/sample_manifest.tsv .</code></pre>
+</div>
+</div>
+</div>
+<p><strong>Q2:</strong> Confirm both copies exist — the original and the new one.</p>
+<div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-39-contents" aria-controls="callout-39" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
@@ -964,12 +979,11 @@ touch ../../../results/qc/sample_001_qc.txt ../../../results/qc/sample_002_qc.tx
 </div>
 <div id="callout-39" class="callout-39-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<pre><code>cd ..
-cp ../../raw_data/sample_manifest.tsv .</code></pre>
+<pre><code>ls -lh raw_data/sample_manifest.tsv results/reports/sample_manifest.tsv</code></pre>
 </div>
 </div>
 </div>
-<p><strong>Q2:</strong> Confirm both copies exist — the original and the new one.</p>
+<p><strong>Q3:</strong> Navigate into <code>results/qc/</code>. From here, copy <code>SAMPLE_001.fastq</code> from the <code>raw_data/</code> folder (two levels up) into your current directory <code>.</code> but name it <code>SAMPLE_001_backup.fastq</code>.</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-40-contents" aria-controls="callout-40" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -982,11 +996,15 @@ cp ../../raw_data/sample_manifest.tsv .</code></pre>
 </div>
 <div id="callout-40" class="callout-40-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<pre><code>ls -lh raw_data/sample_manifest.tsv results/reports/sample_manifest.tsv</code></pre>
+<pre><code>cd ../qc
+cp ../../raw_data/SAMPLE_001.fastq ./SAMPLE_001_backup.fastq</code></pre>
+<blockquote class="blockquote">
+<p>You can rename a file while copying it by giving the destination a new filename.</p>
+</blockquote>
 </div>
 </div>
 </div>
-<p><strong>Q3:</strong> Navigate into <code>results/qc/</code>. From here, copy <code>SAMPLE_001.fastq</code> from the <code>raw_data/</code> folder (two levels up) into your current directory <code>.</code> but name it <code>SAMPLE_001_backup.fastq</code>.</p>
+<p><strong>Q4:</strong> From where you are (<code>results/qc/</code>), copy the entire <code>logs/</code> directory into <code>results/</code> as a backup (you’ll need to go two levels up to find <code>logs/</code>, and one level up for the destination <code>results/logs_backup/</code>), and verify it copied successfully. You need a flag for directories.</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-41-contents" aria-controls="callout-41" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -999,15 +1017,15 @@ cp ../../raw_data/sample_manifest.tsv .</code></pre>
 </div>
 <div id="callout-41" class="callout-41-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<pre><code>cd ../qc
-cp ../../raw_data/SAMPLE_001.fastq ./SAMPLE_001_backup.fastq</code></pre>
+<pre><code>cp -r ../../logs ../logs_backup/
+ls -lh ../logs_backup/</code></pre>
 <blockquote class="blockquote">
-<p>You can rename a file while copying it by giving the destination a new filename.</p>
+<p><code>-r</code> means recursive — copies the directory and all its contents.</p>
 </blockquote>
 </div>
 </div>
 </div>
-<p><strong>Q4:</strong> From where you are (<code>results/qc/</code>), copy the entire <code>logs/</code> directory into <code>results/</code> as a backup (you’ll need to go two levels up to find <code>logs/</code>, and one level up for the destination <code>results/logs_backup/</code>), and verify it copied successfully. You need a flag for directories.</p>
+<p><strong>Q5:</strong> Go back to the project root. Copy <code>SAMPLE_002.fastq</code> from <code>raw_data/</code> to <code>results/qc/</code> but ask for confirmation before overwriting if a file already exists.</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-42-contents" aria-controls="callout-42" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -1019,27 +1037,6 @@ cp ../../raw_data/SAMPLE_001.fastq ./SAMPLE_001_backup.fastq</code></pre>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
 <div id="callout-42" class="callout-42-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<pre><code>cp -r ../../logs ../logs_backup/
-ls -lh ../logs_backup/</code></pre>
-<blockquote class="blockquote">
-<p><code>-r</code> means recursive — copies the directory and all its contents.</p>
-</blockquote>
-</div>
-</div>
-</div>
-<p><strong>Q5:</strong> Go back to the project root. Copy <code>SAMPLE_002.fastq</code> from <code>raw_data/</code> to <code>results/qc/</code> but ask for confirmation before overwriting if a file already exists.</p>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-43-contents" aria-controls="callout-43" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>Show answer
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-43" class="callout-43-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <pre><code>cd ../../
 cp -i raw_data/SAMPLE_002.fastq results/qc/</code></pre>
@@ -1056,6 +1053,26 @@ cp -i raw_data/SAMPLE_002.fastq results/qc/</code></pre>
 <p><em>The pipeline failed because it expected a file called <code>ref_index</code> inside <code>results/</code> — but it does not exist. A symbolic link is needed there pointing to the reference FASTA.</em></p>
 <p><strong>Q1:</strong> From the project root, create a symbolic link called <code>ref_index</code> inside <code>results/</code> pointing to the reference FASTA.</p>
 <div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-43-contents" aria-controls="callout-43" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Show answer
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-43" class="callout-43-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<pre><code>ln -s ../reference/Pfalciparum_3D7.fasta results/ref_index</code></pre>
+<blockquote class="blockquote">
+<p><code>ln -s source linkname</code> — the source is where the link points, the link name is what you create.</p>
+</blockquote>
+</div>
+</div>
+</div>
+<p><strong>Q2:</strong> Verify the link was created. What does the <code>-&gt;</code> in the listing tell you?</p>
+<div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-44-contents" aria-controls="callout-44" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
@@ -1067,14 +1084,14 @@ cp -i raw_data/SAMPLE_002.fastq results/qc/</code></pre>
 </div>
 <div id="callout-44" class="callout-44-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<pre><code>ln -s ../reference/Pfalciparum_3D7.fasta results/ref_index</code></pre>
+<pre><code>ls -lh results/</code></pre>
 <blockquote class="blockquote">
-<p><code>ln -s source linkname</code> — the source is where the link points, the link name is what you create.</p>
+<p>The <code>-&gt;</code> shows where the link points. A symlink is a pointer — no data is duplicated.</p>
 </blockquote>
 </div>
 </div>
 </div>
-<p><strong>Q2:</strong> Verify the link was created. What does the <code>-&gt;</code> in the listing tell you?</p>
+<p><strong>Q3:</strong> Navigate into <code>results/reports/</code>. Create a symbolic link here called <code>manifest_link.tsv</code> that points to the original manifest in <code>raw_data/</code>. You’ll need to tell the link how to get there using <code>../../</code>!</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-45-contents" aria-controls="callout-45" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -1086,26 +1103,6 @@ cp -i raw_data/SAMPLE_002.fastq results/qc/</code></pre>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
 <div id="callout-45" class="callout-45-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<pre><code>ls -lh results/</code></pre>
-<blockquote class="blockquote">
-<p>The <code>-&gt;</code> shows where the link points. A symlink is a pointer — no data is duplicated.</p>
-</blockquote>
-</div>
-</div>
-</div>
-<p><strong>Q3:</strong> Navigate into <code>results/reports/</code>. Create a symbolic link here called <code>manifest_link.tsv</code> that points to the original manifest in <code>raw_data/</code>. You’ll need to tell the link how to get there using <code>../../</code>!</p>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-46-contents" aria-controls="callout-46" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>Show answer
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-46" class="callout-46-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <pre><code>cd results/reports
 ln -s ../../raw_data/sample_manifest.tsv manifest_link.tsv</code></pre>
@@ -1119,6 +1116,24 @@ ln -s ../../raw_data/sample_manifest.tsv manifest_link.tsv</code></pre>
 <p><em>Some files need to be renamed and reorganised.</em></p>
 <p><strong>Q1:</strong> Navigate to <code>raw_data/</code>. Create a folder called <code>trimmed/</code> here.</p>
 <div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-46-contents" aria-controls="callout-46" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Show answer
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-46" class="callout-46-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<pre><code>cd ../../raw_data
+mkdir trimmed</code></pre>
+</div>
+</div>
+</div>
+<p><strong>Q2:</strong> Rename <code>SAMPLE_003.fastq</code> to <code>SAMPLE_003_trimmed.fastq</code> here in <code>raw_data/</code>.</p>
+<div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-47-contents" aria-controls="callout-47" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
@@ -1130,12 +1145,11 @@ ln -s ../../raw_data/sample_manifest.tsv manifest_link.tsv</code></pre>
 </div>
 <div id="callout-47" class="callout-47-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<pre><code>cd ../../raw_data
-mkdir trimmed</code></pre>
+<pre><code>mv SAMPLE_003.fastq SAMPLE_003_trimmed.fastq</code></pre>
 </div>
 </div>
 </div>
-<p><strong>Q2:</strong> Rename <code>SAMPLE_003.fastq</code> to <code>SAMPLE_003_trimmed.fastq</code> here in <code>raw_data/</code>.</p>
+<p><strong>Q3:</strong> Move the renamed file into <code>trimmed/</code>.</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-48-contents" aria-controls="callout-48" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -1148,11 +1162,11 @@ mkdir trimmed</code></pre>
 </div>
 <div id="callout-48" class="callout-48-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<pre><code>mv SAMPLE_003.fastq SAMPLE_003_trimmed.fastq</code></pre>
+<pre><code>mv SAMPLE_003_trimmed.fastq trimmed/</code></pre>
 </div>
 </div>
 </div>
-<p><strong>Q3:</strong> Move the renamed file into <code>trimmed/</code>.</p>
+<p><strong>Q4:</strong> Move into <code>results/reports/</code>. From here, move both <code>batch1_samples.txt</code> and <code>batch2_samples.txt</code> from <code>raw_data/</code> (two levels up!) directly into your current directory using <code>.</code>.</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-49-contents" aria-controls="callout-49" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -1165,11 +1179,12 @@ mkdir trimmed</code></pre>
 </div>
 <div id="callout-49" class="callout-49-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<pre><code>mv SAMPLE_003_trimmed.fastq trimmed/</code></pre>
+<pre><code>cd ../results/reports
+mv ../../raw_data/batch1_samples.txt ../../raw_data/batch2_samples.txt .</code></pre>
 </div>
 </div>
 </div>
-<p><strong>Q4:</strong> Move into <code>results/reports/</code>. From here, move both <code>batch1_samples.txt</code> and <code>batch2_samples.txt</code> from <code>raw_data/</code> (two levels up!) directly into your current directory using <code>.</code>.</p>
+<p><strong>Q5:</strong> Go back to the project root. Move the entire <code>scripts/</code> directory into <code>results/</code>. Notice you do <strong>not</strong> need <code>-r</code> for <code>mv</code>.</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-50-contents" aria-controls="callout-50" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -1182,12 +1197,15 @@ mkdir trimmed</code></pre>
 </div>
 <div id="callout-50" class="callout-50-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<pre><code>cd ../results/reports
-mv ../../raw_data/batch1_samples.txt ../../raw_data/batch2_samples.txt .</code></pre>
+<pre><code>cd ../../
+mv scripts/ results/</code></pre>
+<blockquote class="blockquote">
+<p><code>mv</code> moves directories without any extra flags — unlike <code>cp</code> which needs <code>-r</code>.</p>
+</blockquote>
 </div>
 </div>
 </div>
-<p><strong>Q5:</strong> Go back to the project root. Move the entire <code>scripts/</code> directory into <code>results/</code>. Notice you do <strong>not</strong> need <code>-r</code> for <code>mv</code>.</p>
+<p><strong>Q6:</strong> Move <code>results/logs_backup/</code> into a directory called <code>archive/</code> that doesn’t exist yet.</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-51-contents" aria-controls="callout-51" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -1199,27 +1217,6 @@ mv ../../raw_data/batch1_samples.txt ../../raw_data/batch2_samples.txt .</code><
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
 <div id="callout-51" class="callout-51-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<pre><code>cd ../../
-mv scripts/ results/</code></pre>
-<blockquote class="blockquote">
-<p><code>mv</code> moves directories without any extra flags — unlike <code>cp</code> which needs <code>-r</code>.</p>
-</blockquote>
-</div>
-</div>
-</div>
-<p><strong>Q6:</strong> Move <code>results/logs_backup/</code> into a directory called <code>archive/</code> that doesn’t exist yet.</p>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-52-contents" aria-controls="callout-52" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>Show answer
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-52" class="callout-52-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <pre><code>mv results/logs_backup/ results/archive/</code></pre>
 <blockquote class="blockquote">
@@ -1235,6 +1232,23 @@ mv scripts/ results/</code></pre>
 <p><em>Samples 008 and 009 failed QC and should be removed from the project.</em></p>
 <p><strong>Q1:</strong> From the project root, delete <code>SAMPLE_008.fastq</code> from <code>raw_data/</code>.</p>
 <div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-52-contents" aria-controls="callout-52" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Show answer
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-52" class="callout-52-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<pre><code>rm raw_data/SAMPLE_008.fastq</code></pre>
+</div>
+</div>
+</div>
+<p><strong>Q2:</strong> Delete <code>SAMPLE_009.fastq</code> and <code>SAMPLE_010.fastq</code> together in one command.</p>
+<div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-53-contents" aria-controls="callout-53" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
@@ -1246,11 +1260,14 @@ mv scripts/ results/</code></pre>
 </div>
 <div id="callout-53" class="callout-53-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<pre><code>rm raw_data/SAMPLE_008.fastq</code></pre>
+<pre><code>rm raw_data/SAMPLE_009.fastq raw_data/SAMPLE_010.fastq</code></pre>
+<blockquote class="blockquote">
+<p><code>rm</code> accepts multiple filenames.</p>
+</blockquote>
 </div>
 </div>
 </div>
-<p><strong>Q2:</strong> Delete <code>SAMPLE_009.fastq</code> and <code>SAMPLE_010.fastq</code> together in one command.</p>
+<p><strong>Q3:</strong> The <code>results/qc/</code> folder has some empty placeholder files from Step 10. Delete all three at once using a wildcard.</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-54-contents" aria-controls="callout-54" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -1263,14 +1280,11 @@ mv scripts/ results/</code></pre>
 </div>
 <div id="callout-54" class="callout-54-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<pre><code>rm raw_data/SAMPLE_009.fastq raw_data/SAMPLE_010.fastq</code></pre>
-<blockquote class="blockquote">
-<p><code>rm</code> accepts multiple filenames.</p>
-</blockquote>
+<pre><code>rm results/qc/sample_*_qc.txt</code></pre>
 </div>
 </div>
 </div>
-<p><strong>Q3:</strong> The <code>results/qc/</code> folder has some empty placeholder files from Step 10. Delete all three at once using a wildcard.</p>
+<p><strong>Q4:</strong> Delete the <code>results/archive/</code> directory and everything inside it.</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-55-contents" aria-controls="callout-55" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -1283,11 +1297,14 @@ mv scripts/ results/</code></pre>
 </div>
 <div id="callout-55" class="callout-55-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<pre><code>rm results/qc/sample_*_qc.txt</code></pre>
+<pre><code>rm -r results/archive/</code></pre>
+<blockquote class="blockquote">
+<p><code>-r</code> removes a directory recursively. Without it, <code>rm</code> refuses to delete directories.</p>
+</blockquote>
 </div>
 </div>
 </div>
-<p><strong>Q4:</strong> Delete the <code>results/archive/</code> directory and everything inside it.</p>
+<p><strong>Q5:</strong> Confirm the deletions — list <code>raw_data/</code> and check what FASTQ files remain.</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-56-contents" aria-controls="callout-56" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -1299,26 +1316,6 @@ mv scripts/ results/</code></pre>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
 <div id="callout-56" class="callout-56-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<pre><code>rm -r results/archive/</code></pre>
-<blockquote class="blockquote">
-<p><code>-r</code> removes a directory recursively. Without it, <code>rm</code> refuses to delete directories.</p>
-</blockquote>
-</div>
-</div>
-</div>
-<p><strong>Q5:</strong> Confirm the deletions — list <code>raw_data/</code> and check what FASTQ files remain.</p>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-57-contents" aria-controls="callout-57" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>Show answer
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-57" class="callout-57-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <pre><code>ls -lh raw_data/*.fastq</code></pre>
 <blockquote class="blockquote">
@@ -1334,6 +1331,23 @@ mv scripts/ results/</code></pre>
 <p><em>The sample lists need to be sorted before they can be compared.</em></p>
 <p><strong>Q1:</strong> Take a look at <code>results/reports/batch2_samples.txt</code>. It is actually already in alphabetical order, so we do not need to sort it! (Feel free to verify this using <code>cat</code>).</p>
 <div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-57-contents" aria-controls="callout-57" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Show answer
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-57" class="callout-57-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<pre><code>cat results/reports/batch2_samples.txt</code></pre>
+</div>
+</div>
+</div>
+<p><strong>Q2:</strong> However, <code>batch1_samples.txt</code> is messy. From the project root, sort <code>results/reports/batch1_samples.txt</code> alphabetically and print the result to the screen.</p>
+<div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-58-contents" aria-controls="callout-58" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
@@ -1345,11 +1359,11 @@ mv scripts/ results/</code></pre>
 </div>
 <div id="callout-58" class="callout-58-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<pre><code>cat results/reports/batch2_samples.txt</code></pre>
+<pre><code>sort results/reports/batch1_samples.txt</code></pre>
 </div>
 </div>
 </div>
-<p><strong>Q2:</strong> However, <code>batch1_samples.txt</code> is messy. From the project root, sort <code>results/reports/batch1_samples.txt</code> alphabetically and print the result to the screen.</p>
+<p><strong>Q3:</strong> Now sort <code>results/reports/batch1_samples.txt</code> and save the output to <code>batch1_sorted.txt</code> in the same folder.</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-59-contents" aria-controls="callout-59" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -1362,11 +1376,11 @@ mv scripts/ results/</code></pre>
 </div>
 <div id="callout-59" class="callout-59-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<pre><code>sort results/reports/batch1_samples.txt</code></pre>
+<pre><code>sort results/reports/batch1_samples.txt &gt; results/reports/batch1_sorted.txt</code></pre>
 </div>
 </div>
 </div>
-<p><strong>Q3:</strong> Now sort <code>results/reports/batch1_samples.txt</code> and save the output to <code>batch1_sorted.txt</code> in the same folder.</p>
+<p><strong>Q4:</strong> From the project root, sort the sample manifest by the <code>site</code> column (column 3).</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-60-contents" aria-controls="callout-60" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -1379,11 +1393,14 @@ mv scripts/ results/</code></pre>
 </div>
 <div id="callout-60" class="callout-60-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<pre><code>sort results/reports/batch1_samples.txt &gt; results/reports/batch1_sorted.txt</code></pre>
+<pre><code>sort -k3 raw_data/sample_manifest.tsv</code></pre>
+<blockquote class="blockquote">
+<p><code>-k3</code> sorts by the third column.</p>
+</blockquote>
 </div>
 </div>
 </div>
-<p><strong>Q4:</strong> From the project root, sort the sample manifest by the <code>site</code> column (column 3).</p>
+<p><strong>Q5:</strong> Sort the manifest by collection date (column 4) in reverse order.</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-61-contents" aria-controls="callout-61" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -1395,26 +1412,6 @@ mv scripts/ results/</code></pre>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
 <div id="callout-61" class="callout-61-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<pre><code>sort -k3 raw_data/sample_manifest.tsv</code></pre>
-<blockquote class="blockquote">
-<p><code>-k3</code> sorts by the third column.</p>
-</blockquote>
-</div>
-</div>
-</div>
-<p><strong>Q5:</strong> Sort the manifest by collection date (column 4) in reverse order.</p>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-62-contents" aria-controls="callout-62" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>Show answer
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-62" class="callout-62-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <pre><code>sort -k4 -r raw_data/sample_manifest.tsv</code></pre>
 <blockquote class="blockquote">
@@ -1430,6 +1427,26 @@ mv scripts/ results/</code></pre>
 <p><em>Samples were sent to two different sequencing batches. Find out which samples are unique to each batch and which appear in both.</em></p>
 <p><strong>Q1:</strong> From the project root, use <code>comm</code> to compare the two sorted sample lists. What do the three columns mean?</p>
 <div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-62-contents" aria-controls="callout-62" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Show answer
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-62" class="callout-62-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<pre><code>comm results/reports/batch1_sorted.txt results/reports/batch2_samples.txt</code></pre>
+<blockquote class="blockquote">
+<p>Column 1: only in batch1 · Column 2: only in batch2 · Column 3: in both files. Files <strong>must</strong> be sorted first.</p>
+</blockquote>
+</div>
+</div>
+</div>
+<p><strong>Q2:</strong> Show only samples that appear in <strong>both</strong> batches (suppress columns 1 and 2).</p>
+<div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-63-contents" aria-controls="callout-63" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
@@ -1441,14 +1458,14 @@ mv scripts/ results/</code></pre>
 </div>
 <div id="callout-63" class="callout-63-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<pre><code>comm results/reports/batch1_sorted.txt results/reports/batch2_samples.txt</code></pre>
+<pre><code>comm -12 results/reports/batch1_sorted.txt results/reports/batch2_samples.txt</code></pre>
 <blockquote class="blockquote">
-<p>Column 1: only in batch1 · Column 2: only in batch2 · Column 3: in both files. Files <strong>must</strong> be sorted first.</p>
+<p><code>-12</code> suppresses columns 1 and 2, leaving only the shared lines.</p>
 </blockquote>
 </div>
 </div>
 </div>
-<p><strong>Q2:</strong> Show only samples that appear in <strong>both</strong> batches (suppress columns 1 and 2).</p>
+<p><strong>Q3:</strong> Show only samples <strong>unique to batch1</strong> (not in batch2).</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-64-contents" aria-controls="callout-64" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -1461,14 +1478,14 @@ mv scripts/ results/</code></pre>
 </div>
 <div id="callout-64" class="callout-64-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<pre><code>comm -12 results/reports/batch1_sorted.txt results/reports/batch2_samples.txt</code></pre>
+<pre><code>comm -23 results/reports/batch1_sorted.txt results/reports/batch2_samples.txt</code></pre>
 <blockquote class="blockquote">
-<p><code>-12</code> suppresses columns 1 and 2, leaving only the shared lines.</p>
+<p><code>-23</code> suppresses columns 2 and 3.</p>
 </blockquote>
 </div>
 </div>
 </div>
-<p><strong>Q3:</strong> Show only samples <strong>unique to batch1</strong> (not in batch2).</p>
+<p><strong>Q4:</strong> Show only samples <strong>unique to batch2</strong>.</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-65-contents" aria-controls="callout-65" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -1480,26 +1497,6 @@ mv scripts/ results/</code></pre>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
 <div id="callout-65" class="callout-65-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<pre><code>comm -23 results/reports/batch1_sorted.txt results/reports/batch2_samples.txt</code></pre>
-<blockquote class="blockquote">
-<p><code>-23</code> suppresses columns 2 and 3.</p>
-</blockquote>
-</div>
-</div>
-</div>
-<p><strong>Q4:</strong> Show only samples <strong>unique to batch2</strong>.</p>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-66-contents" aria-controls="callout-66" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>Show answer
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-66" class="callout-66-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <pre><code>comm -13 results/reports/batch1_sorted.txt results/reports/batch2_samples.txt</code></pre>
 <blockquote class="blockquote">
@@ -1515,7 +1512,7 @@ mv scripts/ results/</code></pre>
 <p><em>The sample manifest and the coverage report need to be combined into one table, matched by sample ID.</em></p>
 <p><strong>Q1:</strong> First, sort both files by their first column (sample ID) and save the outputs.</p>
 <div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-67-contents" aria-controls="callout-67" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-66-contents" aria-controls="callout-66" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -1524,7 +1521,7 @@ mv scripts/ results/</code></pre>
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-67" class="callout-67-contents callout-collapse collapse">
+<div id="callout-66" class="callout-66-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <pre><code>sort -k1 raw_data/sample_manifest.tsv &gt; manifest_sorted.tsv
 sort -k1 raw_data/coverage_report.tsv &gt; coverage_sorted.tsv</code></pre>
@@ -1536,7 +1533,7 @@ sort -k1 raw_data/coverage_report.tsv &gt; coverage_sorted.tsv</code></pre>
 </div>
 <p><strong>Q2:</strong> Join the two sorted files on column 1 (sample ID).</p>
 <div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-68-contents" aria-controls="callout-68" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-67-contents" aria-controls="callout-67" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -1545,7 +1542,7 @@ sort -k1 raw_data/coverage_report.tsv &gt; coverage_sorted.tsv</code></pre>
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-68" class="callout-68-contents callout-collapse collapse">
+<div id="callout-67" class="callout-67-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <pre><code>join manifest_sorted.tsv coverage_sorted.tsv</code></pre>
 <blockquote class="blockquote">
@@ -1556,7 +1553,7 @@ sort -k1 raw_data/coverage_report.tsv &gt; coverage_sorted.tsv</code></pre>
 </div>
 <p><strong>Q3:</strong> Join but show <strong>all</strong> lines from the manifest even if there is no match in the coverage file.</p>
 <div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-69-contents" aria-controls="callout-69" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-68-contents" aria-controls="callout-68" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -1565,7 +1562,7 @@ sort -k1 raw_data/coverage_report.tsv &gt; coverage_sorted.tsv</code></pre>
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-69" class="callout-69-contents callout-collapse collapse">
+<div id="callout-68" class="callout-68-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <pre><code>join -a1 manifest_sorted.tsv coverage_sorted.tsv</code></pre>
 <blockquote class="blockquote">
@@ -1581,6 +1578,23 @@ sort -k1 raw_data/coverage_report.tsv &gt; coverage_sorted.tsv</code></pre>
 <p><em>Audit everything in the project directory — find every file type and location.</em></p>
 <p><strong>Q1:</strong> From the project root, find all <code>.fastq</code> files anywhere in the project.</p>
 <div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-69-contents" aria-controls="callout-69" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Show answer
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-69" class="callout-69-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<pre><code>find . -name '*.fastq'</code></pre>
+</div>
+</div>
+</div>
+<p><strong>Q2:</strong> Find all <code>.vcf</code> files anywhere in the project.</p>
+<div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-70-contents" aria-controls="callout-70" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
@@ -1592,11 +1606,11 @@ sort -k1 raw_data/coverage_report.tsv &gt; coverage_sorted.tsv</code></pre>
 </div>
 <div id="callout-70" class="callout-70-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<pre><code>find . -name '*.fastq'</code></pre>
+<pre><code>find . -name '*.vcf'</code></pre>
 </div>
 </div>
 </div>
-<p><strong>Q2:</strong> Find all <code>.vcf</code> files anywhere in the project.</p>
+<p><strong>Q3:</strong> Find all hidden files anywhere in the project.</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-71-contents" aria-controls="callout-71" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -1609,11 +1623,11 @@ sort -k1 raw_data/coverage_report.tsv &gt; coverage_sorted.tsv</code></pre>
 </div>
 <div id="callout-71" class="callout-71-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<pre><code>find . -name '*.vcf'</code></pre>
+<pre><code>find . -name '.*' -type f</code></pre>
 </div>
 </div>
 </div>
-<p><strong>Q3:</strong> Find all hidden files anywhere in the project.</p>
+<p><strong>Q4:</strong> Find only directories — no files.</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-72-contents" aria-controls="callout-72" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -1626,11 +1640,11 @@ sort -k1 raw_data/coverage_report.tsv &gt; coverage_sorted.tsv</code></pre>
 </div>
 <div id="callout-72" class="callout-72-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<pre><code>find . -name '.*' -type f</code></pre>
+<pre><code>find . -type d</code></pre>
 </div>
 </div>
 </div>
-<p><strong>Q4:</strong> Find only directories — no files.</p>
+<p><strong>Q5:</strong> Find any file larger than 1 kilobyte.</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-73-contents" aria-controls="callout-73" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -1643,11 +1657,11 @@ sort -k1 raw_data/coverage_report.tsv &gt; coverage_sorted.tsv</code></pre>
 </div>
 <div id="callout-73" class="callout-73-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<pre><code>find . -type d</code></pre>
+<pre><code>find . -size +1k -type f</code></pre>
 </div>
 </div>
 </div>
-<p><strong>Q5:</strong> Find any file larger than 1 kilobyte.</p>
+<p><strong>Q6:</strong> Find files modified in the last 1 day.</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-74-contents" aria-controls="callout-74" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -1660,11 +1674,14 @@ sort -k1 raw_data/coverage_report.tsv &gt; coverage_sorted.tsv</code></pre>
 </div>
 <div id="callout-74" class="callout-74-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<pre><code>find . -size +1k -type f</code></pre>
+<pre><code>find . -mtime -1 -type f</code></pre>
+<blockquote class="blockquote">
+<p><code>-mtime -1</code> means modified less than 1 day ago.</p>
+</blockquote>
 </div>
 </div>
 </div>
-<p><strong>Q6:</strong> Find files modified in the last 1 day.</p>
+<p><strong>Q7:</strong> Find files whose name starts with <code>SAMPLE</code> and ends with <code>.fastq</code>.</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-75-contents" aria-controls="callout-75" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -1677,14 +1694,16 @@ sort -k1 raw_data/coverage_report.tsv &gt; coverage_sorted.tsv</code></pre>
 </div>
 <div id="callout-75" class="callout-75-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<pre><code>find . -mtime -1 -type f</code></pre>
-<blockquote class="blockquote">
-<p><code>-mtime -1</code> means modified less than 1 day ago.</p>
-</blockquote>
+<pre><code>find . -name 'SAMPLE*.fastq'</code></pre>
 </div>
 </div>
 </div>
-<p><strong>Q7:</strong> Find files whose name starts with <code>SAMPLE</code> and ends with <code>.fastq</code>.</p>
+<hr>
+</section>
+<section id="step-19-count-lines-with-wc" class="level3">
+<h3 class="anchored" data-anchor-id="step-19-count-lines-with-wc">Step 19 : Count lines with <code>wc</code></h3>
+<p><em>Get some quick counts across the data files.</em></p>
+<p><strong>Q1:</strong> From the project root, how many lines does the sample manifest have, including the header?</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-76-contents" aria-controls="callout-76" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -1697,16 +1716,14 @@ sort -k1 raw_data/coverage_report.tsv &gt; coverage_sorted.tsv</code></pre>
 </div>
 <div id="callout-76" class="callout-76-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<pre><code>find . -name 'SAMPLE*.fastq'</code></pre>
+<pre><code>wc -l raw_data/sample_manifest.tsv</code></pre>
+<blockquote class="blockquote">
+<p>Answer: 11 lines (1 header + 10 samples)</p>
+</blockquote>
 </div>
 </div>
 </div>
-<hr>
-</section>
-<section id="step-19-count-lines-with-wc" class="level3">
-<h3 class="anchored" data-anchor-id="step-19-count-lines-with-wc">Step 19 : Count lines with <code>wc</code></h3>
-<p><em>Get some quick counts across the data files.</em></p>
-<p><strong>Q1:</strong> From the project root, how many lines does the sample manifest have, including the header?</p>
+<p><strong>Q2:</strong> How many lines does <code>SAMPLE_001.fastq</code> have? Given each read is 4 lines, how many reads does it contain?</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-77-contents" aria-controls="callout-77" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -1719,14 +1736,14 @@ sort -k1 raw_data/coverage_report.tsv &gt; coverage_sorted.tsv</code></pre>
 </div>
 <div id="callout-77" class="callout-77-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<pre><code>wc -l raw_data/sample_manifest.tsv</code></pre>
+<pre><code>wc -l raw_data/SAMPLE_001.fastq</code></pre>
 <blockquote class="blockquote">
-<p>Answer: 11 lines (1 header + 10 samples)</p>
+<p>Divide the line count by 4 to get the number of reads.</p>
 </blockquote>
 </div>
 </div>
 </div>
-<p><strong>Q2:</strong> How many lines does <code>SAMPLE_001.fastq</code> have? Given each read is 4 lines, how many reads does it contain?</p>
+<p><strong>Q3:</strong> Count lines across all remaining FASTQ files at once using a wildcard.</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-78-contents" aria-controls="callout-78" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -1739,14 +1756,14 @@ sort -k1 raw_data/coverage_report.tsv &gt; coverage_sorted.tsv</code></pre>
 </div>
 <div id="callout-78" class="callout-78-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<pre><code>wc -l raw_data/SAMPLE_001.fastq</code></pre>
+<pre><code>wc -l raw_data/*.fastq</code></pre>
 <blockquote class="blockquote">
-<p>Divide the line count by 4 to get the number of reads.</p>
+<p>You get a count per file plus a total at the bottom.</p>
 </blockquote>
 </div>
 </div>
 </div>
-<p><strong>Q3:</strong> Count lines across all remaining FASTQ files at once using a wildcard.</p>
+<p><strong>Q4:</strong> Count lines in all VCF files.</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-79-contents" aria-controls="callout-79" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -1759,14 +1776,16 @@ sort -k1 raw_data/coverage_report.tsv &gt; coverage_sorted.tsv</code></pre>
 </div>
 <div id="callout-79" class="callout-79-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<pre><code>wc -l raw_data/*.fastq</code></pre>
-<blockquote class="blockquote">
-<p>You get a count per file plus a total at the bottom.</p>
-</blockquote>
+<pre><code>wc -l variants/*.vcf</code></pre>
 </div>
 </div>
 </div>
-<p><strong>Q4:</strong> Count lines in all VCF files.</p>
+<hr>
+</section>
+<section id="step-20-search-with-grep" class="level3">
+<h3 class="anchored" data-anchor-id="step-20-search-with-grep">Step 20 : Search with <code>grep</code></h3>
+<p><em>Search and interrogate the data files.</em></p>
+<p><strong>Q1:</strong> From the project root, show all lines in <code>SAMPLE_001.vcf</code> that contain the word <code>PASS</code>.</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-80-contents" aria-controls="callout-80" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -1779,16 +1798,11 @@ sort -k1 raw_data/coverage_report.tsv &gt; coverage_sorted.tsv</code></pre>
 </div>
 <div id="callout-80" class="callout-80-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<pre><code>wc -l variants/*.vcf</code></pre>
+<pre><code>grep 'PASS' variants/SAMPLE_001.vcf</code></pre>
 </div>
 </div>
 </div>
-<hr>
-</section>
-<section id="step-20-search-with-grep" class="level3">
-<h3 class="anchored" data-anchor-id="step-20-search-with-grep">Step 20 : Search with <code>grep</code></h3>
-<p><em>Search and interrogate the data files.</em></p>
-<p><strong>Q1:</strong> From the project root, show all lines in <code>SAMPLE_001.vcf</code> that contain the word <code>PASS</code>.</p>
+<p><strong>Q2:</strong> Count how many lines contain <code>PASS</code> — use a <code>grep</code> flag, no separate command.</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-81-contents" aria-controls="callout-81" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -1801,11 +1815,14 @@ sort -k1 raw_data/coverage_report.tsv &gt; coverage_sorted.tsv</code></pre>
 </div>
 <div id="callout-81" class="callout-81-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<pre><code>grep 'PASS' variants/SAMPLE_001.vcf</code></pre>
+<pre><code>grep -c 'PASS' variants/SAMPLE_001.vcf</code></pre>
+<blockquote class="blockquote">
+<p><code>-c</code> counts matching lines directly. Answer: 9</p>
+</blockquote>
 </div>
 </div>
 </div>
-<p><strong>Q2:</strong> Count how many lines contain <code>PASS</code> — use a <code>grep</code> flag, no separate command.</p>
+<p><strong>Q3:</strong> Show only the <strong>variant data lines</strong> — lines that do NOT start with <code>#</code>.</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-82-contents" aria-controls="callout-82" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -1818,14 +1835,14 @@ sort -k1 raw_data/coverage_report.tsv &gt; coverage_sorted.tsv</code></pre>
 </div>
 <div id="callout-82" class="callout-82-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<pre><code>grep -c 'PASS' variants/SAMPLE_001.vcf</code></pre>
+<pre><code>grep -v '^#' variants/SAMPLE_001.vcf</code></pre>
 <blockquote class="blockquote">
-<p><code>-c</code> counts matching lines directly. Answer: 9</p>
+<p><code>-v</code> inverts the match · <code>^#</code> means ‘starts with #’</p>
 </blockquote>
 </div>
 </div>
 </div>
-<p><strong>Q3:</strong> Show only the <strong>variant data lines</strong> — lines that do NOT start with <code>#</code>.</p>
+<p><strong>Q4:</strong> Count the variant data lines (non-header lines) in <code>SAMPLE_001.vcf</code> in one command.</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-83-contents" aria-controls="callout-83" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -1838,14 +1855,14 @@ sort -k1 raw_data/coverage_report.tsv &gt; coverage_sorted.tsv</code></pre>
 </div>
 <div id="callout-83" class="callout-83-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<pre><code>grep -v '^#' variants/SAMPLE_001.vcf</code></pre>
+<pre><code>grep -vc '^#' variants/SAMPLE_001.vcf</code></pre>
 <blockquote class="blockquote">
-<p><code>-v</code> inverts the match · <code>^#</code> means ‘starts with #’</p>
+<p>Combine <code>-v</code> and <code>-c</code>. Answer: 13</p>
 </blockquote>
 </div>
 </div>
 </div>
-<p><strong>Q4:</strong> Count the variant data lines (non-header lines) in <code>SAMPLE_001.vcf</code> in one command.</p>
+<p><strong>Q5:</strong> Show all WARNING lines in <code>pipeline.log</code> with their line numbers.</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-84-contents" aria-controls="callout-84" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -1858,14 +1875,14 @@ sort -k1 raw_data/coverage_report.tsv &gt; coverage_sorted.tsv</code></pre>
 </div>
 <div id="callout-84" class="callout-84-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<pre><code>grep -vc '^#' variants/SAMPLE_001.vcf</code></pre>
+<pre><code>grep -n 'WARNING' logs/pipeline.log</code></pre>
 <blockquote class="blockquote">
-<p>Combine <code>-v</code> and <code>-c</code>. Answer: 13</p>
+<p><code>-n</code> shows line numbers alongside matches.</p>
 </blockquote>
 </div>
 </div>
 </div>
-<p><strong>Q5:</strong> Show all WARNING lines in <code>pipeline.log</code> with their line numbers.</p>
+<p><strong>Q6:</strong> Search for ‘failed’ in the pipeline log — uppercase or lowercase.</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-85-contents" aria-controls="callout-85" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -1878,14 +1895,14 @@ sort -k1 raw_data/coverage_report.tsv &gt; coverage_sorted.tsv</code></pre>
 </div>
 <div id="callout-85" class="callout-85-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<pre><code>grep -n 'WARNING' logs/pipeline.log</code></pre>
+<pre><code>grep -i 'failed' logs/pipeline.log</code></pre>
 <blockquote class="blockquote">
-<p><code>-n</code> shows line numbers alongside matches.</p>
+<p><code>-i</code> makes the search case-insensitive.</p>
 </blockquote>
 </div>
 </div>
 </div>
-<p><strong>Q6:</strong> Search for ‘failed’ in the pipeline log — uppercase or lowercase.</p>
+<p><strong>Q7:</strong> How many sequences (chromosomes) are in the reference FASTA? In FASTA format every sequence header starts with <code>&gt;</code>.</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-86-contents" aria-controls="callout-86" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -1898,14 +1915,14 @@ sort -k1 raw_data/coverage_report.tsv &gt; coverage_sorted.tsv</code></pre>
 </div>
 <div id="callout-86" class="callout-86-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<pre><code>grep -i 'failed' logs/pipeline.log</code></pre>
+<pre><code>grep -c '^&gt;' reference/Pfalciparum_3D7.fasta</code></pre>
 <blockquote class="blockquote">
-<p><code>-i</code> makes the search case-insensitive.</p>
+<p>Answer: 5 chromosomes</p>
 </blockquote>
 </div>
 </div>
 </div>
-<p><strong>Q7:</strong> How many sequences (chromosomes) are in the reference FASTA? In FASTA format every sequence header starts with <code>&gt;</code>.</p>
+<p><strong>Q8:</strong> Search for <code>SAMPLE_008</code> across <strong>all files</strong> in the project at once.</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-87-contents" aria-controls="callout-87" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -1918,14 +1935,14 @@ sort -k1 raw_data/coverage_report.tsv &gt; coverage_sorted.tsv</code></pre>
 </div>
 <div id="callout-87" class="callout-87-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<pre><code>grep -c '^&gt;' reference/Pfalciparum_3D7.fasta</code></pre>
+<pre><code>grep -r 'SAMPLE_008' .</code></pre>
 <blockquote class="blockquote">
-<p>Answer: 5 chromosomes</p>
+<p><code>-r</code> searches recursively through all files in a directory.</p>
 </blockquote>
 </div>
 </div>
 </div>
-<p><strong>Q8:</strong> Search for <code>SAMPLE_008</code> across <strong>all files</strong> in the project at once.</p>
+<p><strong>Q9:</strong> Search for <code>ERROR</code> in <code>logs/</code> and show the filename alongside each match.</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-88-contents" aria-controls="callout-88" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -1937,26 +1954,6 @@ sort -k1 raw_data/coverage_report.tsv &gt; coverage_sorted.tsv</code></pre>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
 <div id="callout-88" class="callout-88-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<pre><code>grep -r 'SAMPLE_008' .</code></pre>
-<blockquote class="blockquote">
-<p><code>-r</code> searches recursively through all files in a directory.</p>
-</blockquote>
-</div>
-</div>
-</div>
-<p><strong>Q9:</strong> Search for <code>ERROR</code> in <code>logs/</code> and show the filename alongside each match.</p>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-89-contents" aria-controls="callout-89" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>Show answer
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-89" class="callout-89-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <pre><code>grep -rn 'ERROR' logs/</code></pre>
 <blockquote class="blockquote">
@@ -1972,6 +1969,23 @@ sort -k1 raw_data/coverage_report.tsv &gt; coverage_sorted.tsv</code></pre>
 <p><em>Specific columns need to be pulled out of the tab-separated files.</em></p>
 <p><strong>Q1:</strong> From the project root, extract only the <code>sample_id</code> column (column 1) from the sample manifest.</p>
 <div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-89-contents" aria-controls="callout-89" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Show answer
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-89" class="callout-89-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<pre><code>cut -f1 raw_data/sample_manifest.tsv</code></pre>
+</div>
+</div>
+</div>
+<p><strong>Q2:</strong> Extract the <code>site</code> column (column 3).</p>
+<div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-90-contents" aria-controls="callout-90" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
@@ -1983,11 +1997,11 @@ sort -k1 raw_data/coverage_report.tsv &gt; coverage_sorted.tsv</code></pre>
 </div>
 <div id="callout-90" class="callout-90-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<pre><code>cut -f1 raw_data/sample_manifest.tsv</code></pre>
+<pre><code>cut -f3 raw_data/sample_manifest.tsv</code></pre>
 </div>
 </div>
 </div>
-<p><strong>Q2:</strong> Extract the <code>site</code> column (column 3).</p>
+<p><strong>Q3:</strong> Extract both <code>sample_id</code> and <code>pass_qc</code> columns (columns 1 and 8) at the same time.</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-91-contents" aria-controls="callout-91" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -2000,11 +2014,11 @@ sort -k1 raw_data/coverage_report.tsv &gt; coverage_sorted.tsv</code></pre>
 </div>
 <div id="callout-91" class="callout-91-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<pre><code>cut -f3 raw_data/sample_manifest.tsv</code></pre>
+<pre><code>cut -f1,8 raw_data/sample_manifest.tsv</code></pre>
 </div>
 </div>
 </div>
-<p><strong>Q3:</strong> Extract both <code>sample_id</code> and <code>pass_qc</code> columns (columns 1 and 8) at the same time.</p>
+<p><strong>Q4:</strong> Extract a range of columns — columns 1 through 4.</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-92-contents" aria-controls="callout-92" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -2016,23 +2030,6 @@ sort -k1 raw_data/coverage_report.tsv &gt; coverage_sorted.tsv</code></pre>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
 <div id="callout-92" class="callout-92-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<pre><code>cut -f1,8 raw_data/sample_manifest.tsv</code></pre>
-</div>
-</div>
-</div>
-<p><strong>Q4:</strong> Extract a range of columns — columns 1 through 4.</p>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-93-contents" aria-controls="callout-93" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>Show answer
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-93" class="callout-93-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <pre><code>cut -f1-4 raw_data/sample_manifest.tsv</code></pre>
 <blockquote class="blockquote">
@@ -2048,7 +2045,7 @@ sort -k1 raw_data/coverage_report.tsv &gt; coverage_sorted.tsv</code></pre>
 <p><em>Build a quick combined reference table from two files.</em></p>
 <p><strong>Q1:</strong> From the project root, use <code>paste</code> to combine <code>results/reports/batch1_sorted.txt</code> and <code>results/reports/batch2_samples.txt</code> side by side.</p>
 <div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-94-contents" aria-controls="callout-94" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-93-contents" aria-controls="callout-93" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -2057,7 +2054,7 @@ sort -k1 raw_data/coverage_report.tsv &gt; coverage_sorted.tsv</code></pre>
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-94" class="callout-94-contents callout-collapse collapse">
+<div id="callout-93" class="callout-93-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <pre><code>paste results/reports/batch1_sorted.txt results/reports/batch2_samples.txt</code></pre>
 <blockquote class="blockquote">
@@ -2068,7 +2065,7 @@ sort -k1 raw_data/coverage_report.tsv &gt; coverage_sorted.tsv</code></pre>
 </div>
 <p><strong>Q2:</strong> Paste the two files using a comma as a separator instead of a tab.</p>
 <div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-95-contents" aria-controls="callout-95" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-94-contents" aria-controls="callout-94" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -2077,7 +2074,7 @@ sort -k1 raw_data/coverage_report.tsv &gt; coverage_sorted.tsv</code></pre>
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-95" class="callout-95-contents callout-collapse collapse">
+<div id="callout-94" class="callout-94-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <pre><code>paste -d',' results/reports/batch1_sorted.txt results/reports/batch2_samples.txt</code></pre>
 <blockquote class="blockquote">

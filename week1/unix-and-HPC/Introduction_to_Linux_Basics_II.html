@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>file-processing-awk – ABI-ITWG</title>
+<title>introduction_to_linux_basics_ii – ABI-ITWG</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -25,41 +25,6 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
-}
-/* CSS for syntax highlighting */
-html { -webkit-text-size-adjust: 100%; }
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -163,16 +128,27 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#file-processing-part-2-using-awk" id="toc-file-processing-part-2-using-awk" class="nav-link active" data-scroll-target="#file-processing-part-2-using-awk">File processing: Part 2 (using awk)</a>
+  <li><a href="#abi-summer-school-2026-week-1-linux-hpc" id="toc-abi-summer-school-2026-week-1-linux-hpc" class="nav-link active" data-scroll-target="#abi-summer-school-2026-week-1-linux-hpc">ABI Summer School 2026 · WEEK 1: Linux / HPC</a></li>
+  <li><a href="#introduction-to-linux-basics-ii" id="toc-introduction-to-linux-basics-ii" class="nav-link" data-scroll-target="#introduction-to-linux-basics-ii">INTRODUCTION TO LINUX BASICS II</a>
   <ul class="collapse">
-  <li><a href="#starter-commands-with-awk" id="toc-starter-commands-with-awk" class="nav-link" data-scroll-target="#starter-commands-with-awk">Starter commands with awk</a>
+  <li><a href="#brace-expansion" id="toc-brace-expansion" class="nav-link" data-scroll-target="#brace-expansion">Brace Expansion</a>
   <ul class="collapse">
-  <li><a href="#removingskipping-a-line-with-a-specific-pattern" id="toc-removingskipping-a-line-with-a-specific-pattern" class="nav-link" data-scroll-target="#removingskipping-a-line-with-a-specific-pattern">Removing/Skipping a line with a specific pattern</a></li>
-  <li><a href="#extracting-more-than-one-column" id="toc-extracting-more-than-one-column" class="nav-link" data-scroll-target="#extracting-more-than-one-column">Extracting more than one column</a></li>
-  <li><a href="#converting-file-delimiter" id="toc-converting-file-delimiter" class="nav-link" data-scroll-target="#converting-file-delimiter">Converting file delimiter</a></li>
-  <li><a href="#determining-number-of-columns-in-a-file" id="toc-determining-number-of-columns-in-a-file" class="nav-link" data-scroll-target="#determining-number-of-columns-in-a-file">Determining number of columns in a file</a></li>
-  <li><a href="#extracting-specific-rows-and-columns" id="toc-extracting-specific-rows-and-columns" class="nav-link" data-scroll-target="#extracting-specific-rows-and-columns">Extracting specific rows and columns</a></li>
-  <li><a href="#detour-comparing-with-the-sed-and-grep-approach" id="toc-detour-comparing-with-the-sed-and-grep-approach" class="nav-link" data-scroll-target="#detour-comparing-with-the-sed-and-grep-approach">Detour: Comparing with the <code>sed</code> and <code>grep</code> approach</a></li>
+  <li><a href="#step-1-creating-bulk-directories" id="toc-step-1-creating-bulk-directories" class="nav-link" data-scroll-target="#step-1-creating-bulk-directories">Step 1 : Creating bulk directories</a></li>
+  <li><a href="#step-2-creating-sequential-files" id="toc-step-2-creating-sequential-files" class="nav-link" data-scroll-target="#step-2-creating-sequential-files">Step 2 : Creating sequential files</a></li>
+  <li><a href="#step-3-the-backup-shortcut" id="toc-step-3-the-backup-shortcut" class="nav-link" data-scroll-target="#step-3-the-backup-shortcut">Step 3 : The backup shortcut</a></li>
+  </ul></li>
+  <li><a href="#the-power-of-pipes" id="toc-the-power-of-pipes" class="nav-link" data-scroll-target="#the-power-of-pipes">The Power of Pipes (<code>|</code>)</a>
+  <ul class="collapse">
+  <li><a href="#step-4-piping-to-grep-less-and-wc" id="toc-step-4-piping-to-grep-less-and-wc" class="nav-link" data-scroll-target="#step-4-piping-to-grep-less-and-wc">Step 4 : Piping to <code>grep</code>, <code>less</code> and <code>wc</code></a></li>
+  </ul></li>
+  <li><a href="#advanced-combinations" id="toc-advanced-combinations" class="nav-link" data-scroll-target="#advanced-combinations">Advanced Combinations</a>
+  <ul class="collapse">
+  <li><a href="#step-6-find-pipes" id="toc-step-6-find-pipes" class="nav-link" data-scroll-target="#step-6-find-pipes">Step 6 : <code>find</code> + Pipes</a></li>
+  <li><a href="#step-7-brace-expansion-pipes" id="toc-step-7-brace-expansion-pipes" class="nav-link" data-scroll-target="#step-7-brace-expansion-pipes">Step 7 : Brace Expansion + Pipes</a></li>
+  </ul></li>
+  <li><a href="#you-made-it" id="toc-you-made-it" class="nav-link" data-scroll-target="#you-made-it">YOU MADE IT!</a>
+  <ul class="collapse">
+  <li><a href="#commands-used-today" id="toc-commands-used-today" class="nav-link" data-scroll-target="#commands-used-today">Commands used today</a></li>
   </ul></li>
   </ul></li>
   </ul>
@@ -184,201 +160,294 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 
-<p align="center">
-<img src="linux_banner_image.png" alt="ABI Summer School 2026 · WEEK 1: Linux / HPC" width="100%">
-</p>
+<section id="abi-summer-school-2026-week-1-linux-hpc" class="level1" data-align="center">
+<h1>ABI Summer School 2026 · WEEK 1: Linux / HPC</h1>
+</section>
 <hr>
-<style>
-/* Clean, modern, high-contrast code blocks with pretty borders */
-div.sourceCode, pre.sourceCode, pre, pre code, div.cell-code pre {
-  background-color: #f8f9fa !important;
-  color: #212529 !important;
-  border: 1px solid #dee2e6 !important;
-  border-left: 4px solid #31BAE9 !important;
-  border-radius: 6px !important;
-}
-/* Ensure comments and shebangs (#) are crisp, legible, and distinct */
-code span.co, code span.c, code span.ch, code span.cm, code span.c1 {
-  color: #2e7d32 !important; /* clear readable green */
-  font-weight: 600 !important;
-  opacity: 1 !important;
-}
-</style>
+<section id="introduction-to-linux-basics-ii" class="level1">
+<h1>INTRODUCTION TO LINUX BASICS II</h1>
+<blockquote class="blockquote">
+<h3 id="pipes-and-brace-expansion" class="anchored">Pipes and Brace Expansion</h3>
+<p>Now that you are comfortable navigating the Linux file system and managing files, it is time to transition into real data analysis.</p>
+<p>Genomics projects often involve massive amounts of data. Executing tasks one command at a time, or manually typing out dozens of filenames, is highly inefficient and prone to errors.</p>
+<p>In this module, you will learn how to chain multiple programs together into a single continuous workflow using <strong>Pipes</strong> (<code>|</code>), and how to automatically generate sequences of data using <strong>Brace Expansion</strong> (<code>{}</code>). These are essential skills for scaling up your workflows and working efficiently on the cluster.</p>
+<p>Navigate to your project directory, and let’s get started.</p>
+</blockquote>
 <hr>
-<section id="file-processing-part-2-using-awk" class="level1">
-<h1>File processing: Part 2 (using awk)</h1>
+<section id="brace-expansion" class="level2">
+<h2 class="anchored" data-anchor-id="brace-expansion">Brace Expansion</h2>
+<p><em>Typing out long lists of files or repetitive folder names is prone to typos. Learn to expand them automatically.</em></p>
+<hr>
+<section id="step-1-creating-bulk-directories" class="level3">
+<h3 class="anchored" data-anchor-id="step-1-creating-bulk-directories">Step 1 : Creating bulk directories</h3>
+<p><strong>Q1:</strong> From the project root, create four directories inside <code>results/</code> at once using brace expansion: <code>fastqc</code>, <code>trimmomatic</code>, <code>bwa</code>, and <code>gatk</code>.</p>
 <div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Note
+<span class="screen-reader-only">Note</span>Show answer
 </div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p><strong>AWK</strong> is a programming language named after its three developers: Alfred Aho, Peter J Weinberger and Brian Kernighan. AWK is useful for processing text files and extracting data, particularly when a file is <strong>split into columns</strong> or <strong>delimited by a specific character</strong> (e.g.&nbsp;a tab, comma). The <strong>awk</strong> command/script reads a file line by line and splits each line into columns according to a delimiter character. The default output delimiter is a single space character.</p>
-<p>For this tutorial, navigate inside the <code>ABI_summer_school_project</code> directory:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> ABI_summer_school_project</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p><em>(Note: To run commands on <code>SAMPLE_001.vcf</code>, remember it is located inside the <code>variants/</code> subfolder, so you can either <code>cd variants</code> or specify <code>variants/SAMPLE_001.vcf</code>).</em></p>
+<pre><code>mkdir -p results/{fastqc,trimmomatic,bwa,gatk}</code></pre>
+<blockquote class="blockquote">
+<p><strong>Tip:</strong> Do not put spaces after the commas in brace expansion! <code>{a,b}</code> works, <code>{a, b}</code> does not.</p>
+</blockquote>
+</div>
 </div>
 </div>
 <hr>
+</section>
+<section id="step-2-creating-sequential-files" class="level3">
+<h3 class="anchored" data-anchor-id="step-2-creating-sequential-files">Step 2 : Creating sequential files</h3>
+<p><strong>Q1:</strong> Create five empty log files in <code>logs/</code> named <code>run_day_1.log</code> through <code>run_day_5.log</code> using brace expansion.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Show answer
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<pre><code>touch logs/run_day_{1..5}.log</code></pre>
+</div>
+</div>
+</div>
+<hr>
+</section>
+<section id="step-3-the-backup-shortcut" class="level3">
+<h3 class="anchored" data-anchor-id="step-3-the-backup-shortcut">Step 3 : The backup shortcut</h3>
+<p><em>A quick trick to make backups without typing a filename twice.</em></p>
+<p><strong>Q1:</strong> Navigate to <code>raw_data/</code>. Copy <code>sample_manifest.tsv</code> to a new file called <code>sample_manifest.tsv.backup</code> using the <code>{,.backup}</code> trick.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Show answer
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<pre><code>cd ../raw_data
+cp sample_manifest.tsv{,.backup}</code></pre>
+<blockquote class="blockquote">
+<p>This expands to <code>cp sample_manifest.tsv sample_manifest.tsv.backup</code>. It works because the first item in the brace is completely empty!</p>
+</blockquote>
+</div>
+</div>
+</div>
+<hr>
+</section>
+</section>
+<section id="the-power-of-pipes" class="level2">
+<h2 class="anchored" data-anchor-id="the-power-of-pipes">The Power of Pipes (<code>|</code>)</h2>
+<p><em>Programs in Linux are designed to do one thing well. The pipe operator (<code>|</code>) takes the standard output of one command and feeds it directly into the standard input of the next.</em></p>
+<hr>
+<section id="step-4-piping-to-grep-less-and-wc" class="level3">
+<h3 class="anchored" data-anchor-id="step-4-piping-to-grep-less-and-wc">Step 4 : Piping to <code>grep</code>, <code>less</code> and <code>wc</code></h3>
+<p><strong>Q1:</strong> Go back to the project root. You want to view all lines in <code>pipeline.log</code> that contain the word <code>WARNING</code>. Use <code>grep</code> to find them, and pipe the output to <code>less</code> so you can scroll through them safely.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Show answer
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-4" class="callout-4-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<pre><code>cd ..
+grep "WARNING" logs/pipeline.log | less</code></pre>
+</div>
+</div>
+</div>
+<p><strong>Q2:</strong> Navigate into <code>variants/</code>. Search for all lines in <code>SAMPLE_001.vcf</code> that DO NOT start with <code>#</code> (the data lines) using <code>grep -v</code>.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Show answer
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-5" class="callout-5-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<pre><code>cd variants
+grep -v "^#" SAMPLE_001.vcf</code></pre>
+<blockquote class="blockquote">
+<p><code>^</code> inside grep means “starts with”.</p>
+</blockquote>
+</div>
+</div>
+</div>
+<p><strong>Q3:</strong> Pipe that output into another <code>grep</code> to find only the variants marked as <code>PASS</code>.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Show answer
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-6" class="callout-6-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<pre><code>grep -v "^#" SAMPLE_001.vcf | grep "PASS"</code></pre>
+</div>
+</div>
+</div>
+<p><strong>Q4:</strong> Pipe that final output into <code>wc -l</code> to count exactly how many PASS variants this sample has.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Show answer
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-7" class="callout-7-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<pre><code>grep -v "^#" SAMPLE_001.vcf | grep "PASS" | wc -l</code></pre>
+</div>
+</div>
+</div>
+<hr>
+</section>
+</section>
+<section id="advanced-combinations" class="level2">
+<h2 class="anchored" data-anchor-id="advanced-combinations">Advanced Combinations</h2>
+<p><em>Putting everything together into powerful one-liners.</em></p>
+<hr>
+<section id="step-6-find-pipes" class="level3">
+<h3 class="anchored" data-anchor-id="step-6-find-pipes">Step 6 : <code>find</code> + Pipes</h3>
+<p><strong>Q1:</strong> Go back to the project root. Use <code>find</code> to list all <code>.fastq</code> files anywhere in the project, and pipe the output to <code>wc -l</code> to count how many FASTQ files exist.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Show answer
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-8" class="callout-8-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<pre><code>cd ..
+find . -name "*.fastq" | wc -l</code></pre>
+</div>
+</div>
+</div>
+<hr>
+</section>
+<section id="step-7-brace-expansion-pipes" class="level3">
+<h3 class="anchored" data-anchor-id="step-7-brace-expansion-pipes">Step 7 : Brace Expansion + Pipes</h3>
+<p><strong>Q1:</strong> From the project root, search for the sequence <code>ATG</code> across specifically <code>SAMPLE_001.fastq</code>, <code>SAMPLE_002.fastq</code>, and <code>SAMPLE_003.fastq</code> in the <code>raw_data/</code> folder using brace expansion.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-9-contents" aria-controls="callout-9" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Show answer
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-9" class="callout-9-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<pre><code>grep "ATG" raw_data/SAMPLE_{001,002,003}.fastq</code></pre>
+<blockquote class="blockquote">
+<p>Alternatively, <code>raw_data/SAMPLE_00{1..3}.fastq</code> also works!</p>
+</blockquote>
+</div>
+</div>
+</div>
+<p><strong>Q2:</strong> Pipe that search into <code>wc -l</code> to count how many total times <code>ATG</code> appears across all three files combined.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-10-contents" aria-controls="callout-10" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Show answer
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-10" class="callout-10-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<pre><code>grep "ATG" raw_data/SAMPLE_{001..003}.fastq | wc -l</code></pre>
+</div>
+</div>
+</div>
+<hr>
+</section>
+</section>
+<section id="you-made-it" class="level2">
+<h2 class="anchored" data-anchor-id="you-made-it">YOU MADE IT!</h2>
+<p>You have mastered the pipe and the brace.</p>
+<hr>
+<section id="commands-used-today" class="level3">
+<h3 class="anchored" data-anchor-id="commands-used-today">Commands used today</h3>
 <table class="caption-top table">
-<colgroup>
-<col style="width: 33%">
-<col style="width: 33%">
-<col style="width: 33%">
-</colgroup>
 <thead>
 <tr class="header">
-<th style="text-align: left;">Syntax / Variable</th>
-<th style="text-align: left;">Description / Purpose</th>
-<th style="text-align: left;">Example</th>
+<th>Category</th>
+<th>Commands &amp; operators</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: left;"><code>-F'\t'</code></td>
-<td style="text-align: left;"><strong>Field Separator Flag:</strong> Sets the input column delimiter on the command line</td>
-<td style="text-align: left;"><code>awk -F'\t' '{print $1}' ...</code></td>
+<td>Brace Expansion (Lists)</td>
+<td><code>{name1,name2,name3}</code></td>
 </tr>
 <tr class="even">
-<td style="text-align: left;"><code>$1, $2, ...</code></td>
-<td style="text-align: left;"><strong>Field Variables:</strong> References column 1, column 2, etc.</td>
-<td style="text-align: left;"><code>{print $1, $10}</code></td>
+<td>Brace Expansion (Ranges)</td>
+<td><code>{1..5}</code> · <code>{a..z}</code></td>
 </tr>
 <tr class="odd">
-<td style="text-align: left;"><code>$0</code></td>
-<td style="text-align: left;"><strong>Whole Record:</strong> References the entire current line</td>
-<td style="text-align: left;"><code>NR==1 {print $0}</code></td>
+<td>Brace Expansion (Append)</td>
+<td><code>{,.bak}</code></td>
 </tr>
 <tr class="even">
-<td style="text-align: left;"><code>BEGIN { }</code></td>
-<td style="text-align: left;"><strong>Initialization Block:</strong> Code executed <em>before</em> reading any file lines</td>
-<td style="text-align: left;"><code>BEGIN {FS=OFS="\t"}</code></td>
+<td>The Pipe</td>
+<td><code>|</code></td>
 </tr>
 <tr class="odd">
-<td style="text-align: left;"><code>FS</code></td>
-<td style="text-align: left;"><strong>Field Separator:</strong> Built-in variable defining the input delimiter</td>
-<td style="text-align: left;"><code>FS="\t"</code></td>
+<td>Viewing</td>
+<td><code>less</code></td>
 </tr>
 <tr class="even">
-<td style="text-align: left;"><code>OFS</code></td>
-<td style="text-align: left;"><strong>Output Field Separator:</strong> Built-in variable defining the output delimiter</td>
-<td style="text-align: left;"><code>OFS="\t"</code> or <code>OFS=","</code></td>
+<td>Counting</td>
+<td><code>wc -l</code></td>
 </tr>
 <tr class="odd">
-<td style="text-align: left;"><code>NR</code></td>
-<td style="text-align: left;"><strong>Number of Records:</strong> Holds the current line number (1, 2, 3…)</td>
-<td style="text-align: left;"><code>NR &gt; 1</code> (skips header)</td>
+<td>Filtering</td>
+<td><code>grep</code> · <code>grep -v</code></td>
 </tr>
 <tr class="even">
-<td style="text-align: left;"><code>NF</code></td>
-<td style="text-align: left;"><strong>Number of Fields:</strong> Holds the total column count of the current line</td>
-<td style="text-align: left;"><code>NR==1 {print NF}</code></td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;"><code>!/pattern/</code></td>
-<td style="text-align: left;"><strong>Pattern Negation:</strong> Matches lines that do <em>not</em> contain the pattern</td>
-<td style="text-align: left;"><code>!/1024/</code> or <code>!/#/</code> (skips headers)</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"><code>$1=$1</code></td>
-<td style="text-align: left;"><strong>Field Reassignment:</strong> Forces AWK to rebuild <code>$0</code> using the new <code>OFS</code></td>
-<td style="text-align: left;"><code>{$1=$1; print $0}</code></td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;"><code>$3 == "value"</code></td>
-<td style="text-align: left;"><strong>Column Equality:</strong> Filters rows where a specific column matches a value</td>
-<td style="text-align: left;"><code>$3 == "Kampala"</code></td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"><code>\|\|</code></td>
-<td style="text-align: left;"><strong>Logical OR:</strong> Combines conditions (e.g.&nbsp;keep header OR matching rows)</td>
-<td style="text-align: left;"><code>NR==1 \|\| $3=="Kampala"</code></td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;"><code>printf</code></td>
-<td style="text-align: left;"><strong>Formatted Print:</strong> Prints output without adding an automatic newline</td>
-<td style="text-align: left;"><code>printf "%s%s", $i, OFS</code></td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"><code>for (i=...; ...)</code></td>
-<td style="text-align: left;"><strong>Loop Construct:</strong> Iterates over a sequence of column indices</td>
-<td style="text-align: left;"><code>for (i=1; i&lt;=5; i++)</code></td>
+<td>Finding</td>
+<td><code>find -name</code></td>
 </tr>
 </tbody>
 </table>
-<hr>
-<section id="starter-commands-with-awk" class="level2">
-<h2 class="anchored" data-anchor-id="starter-commands-with-awk">Starter commands with awk</h2>
-<p>Use the awk command to print the first column of the <code>SAMPLE_001.vcf</code> file:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">awk</span> <span class="at">-F</span><span class="st">'\t'</span> <span class="st">'{print $1}'</span> variants/SAMPLE_001.vcf</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Alternatively:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">awk</span> <span class="st">'BEGIN {FS="\t"} {print $1}'</span> variants/SAMPLE_001.vcf   <span class="co"># Notice the difference in inner vs outer quotation marks</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>In case you want to skip the header row:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">awk</span> <span class="st">'BEGIN {FS="\t"} NR&gt;1 {print $1}'</span> variants/SAMPLE_001.vcf </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>In case you want to extract only the header row:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">awk</span> <span class="st">'NR==1 {print $0}'</span> raw_data/sample_manifest.tsv  </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<hr>
-<section id="removingskipping-a-line-with-a-specific-pattern" class="level3">
-<h3 class="anchored" data-anchor-id="removingskipping-a-line-with-a-specific-pattern">Removing/Skipping a line with a specific pattern</h3>
-<p>e.g.&nbsp;extracting all contents of the file <code>SAMPLE_001.vcf</code> but skipping the record with <strong>position 1024</strong>:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">awk</span> <span class="at">-F</span><span class="st">'\t'</span> <span class="st">'!/1024/ {print $0}'</span> variants/SAMPLE_001.vcf </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>This is also helpful when skipping multiple header lines (lines starting with <code>#</code>):</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">awk</span> <span class="at">-F</span><span class="st">'\t'</span> <span class="st">'!/#/ {print $0}'</span> variants/SAMPLE_001.vcf </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<hr>
-</section>
-<section id="extracting-more-than-one-column" class="level3">
-<h3 class="anchored" data-anchor-id="extracting-more-than-one-column">Extracting more than one column</h3>
-<p>Extract the first 5 columns and the 10th column in <code>SAMPLE_001.vcf</code> using awk:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">awk</span> <span class="st">'BEGIN {FS="\t"} {print $1,$2,$3,$4,$5,$10}'</span> variants/SAMPLE_001.vcf</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Note that the delimiter in the output is now a single space character (the default for awk). How can we maintain <strong>tab</strong> as the delimiter?</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">awk</span> <span class="st">'BEGIN {FS=OFS="\t"} {print $1,$2,$3,$4,$5,$10}'</span> variants/SAMPLE_001.vcf</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>What if we do not want to write <code>$1,$2,$3,$4,$5</code> in the print function above, how can we specify this range?</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">awk</span> <span class="st">'BEGIN {FS=OFS="\t"} {for (i=1; i&lt;=5; i++) printf "%s%s", $i, OFS ; print $10}'</span> variants/SAMPLE_001.vcf</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p><strong>Practice</strong>: Extract the first 8 columns in <code>SAMPLE_001.vcf</code> using <strong>awk</strong>; be sure to try both approaches above to specify the range of columns 1-8.</p>
-<p><strong>Approach 1 (Listing columns explicitly):</strong></p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">awk</span> <span class="st">'BEGIN {FS=OFS="\t"} {print $1,$2,$3,$4,$5,$6,$7,$8}'</span> variants/SAMPLE_001.vcf</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p><strong>Approach 2 (Looping through range with <code>for</code> and <code>printf</code>):</strong></p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">awk</span> <span class="st">'BEGIN {FS=OFS="\t"} {for (i=1; i&lt;8; i++) printf "%s%s", $i, OFS ; print $8}'</span> variants/SAMPLE_001.vcf</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<hr>
-</section>
-<section id="converting-file-delimiter" class="level3">
-<h3 class="anchored" data-anchor-id="converting-file-delimiter">Converting file delimiter</h3>
-<p>Convert the delimiter of the file to a comma and save the output as <code>SAMPLE_001.csv</code>:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">awk</span> <span class="st">'BEGIN {FS="\t"; OFS=","} {$1=$1; print $0}'</span> variants/SAMPLE_001.vcf <span class="op">&gt;</span> variants/SAMPLE_001.csv</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p><em>(Tip: Reassigning <code>$1=$1</code> tells AWK to rebuild the entire line using the new <code>OFS</code> comma delimiter).</em></p>
-<hr>
-</section>
-<section id="determining-number-of-columns-in-a-file" class="level3">
-<h3 class="anchored" data-anchor-id="determining-number-of-columns-in-a-file">Determining number of columns in a file</h3>
-<p>Use awk to determine the number of columns in <code>raw_data/sample_manifest.tsv</code>:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">awk</span> <span class="at">-F</span><span class="st">'\t'</span> <span class="st">'NR==1{print NF}'</span> raw_data/sample_manifest.tsv</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p><em>(For <code>SAMPLE_001.vcf</code>, the main column header is on line 16, so you can check its 10 columns using <code>awk -F'\t' 'NR==16{print NF}' variants/SAMPLE_001.vcf</code>).</em></p>
-<hr>
-</section>
-<section id="extracting-specific-rows-and-columns" class="level3">
-<h3 class="anchored" data-anchor-id="extracting-specific-rows-and-columns">Extracting specific rows and columns</h3>
-<p>Use awk to extract records for samples collected from <strong>Kampala</strong> in the file <code>raw_data/sample_manifest.tsv</code>:</p>
-<p><strong>Step 1: Determine the column number for <code>site</code> using <code>head</code>, <code>tr</code>, and <code>grep</code>:</strong></p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb15"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span> <span class="at">-n</span> 1 raw_data/sample_manifest.tsv <span class="kw">|</span> <span class="fu">tr</span> <span class="st">'\t'</span> <span class="st">'\n'</span> <span class="kw">|</span> <span class="fu">grep</span> <span class="at">-n</span> <span class="st">"site"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p><em>(This shows that <code>site</code> is in <strong>column 3</strong>).</em></p>
-<p><strong>Step 2: Filter rows where Column 3 is <code>"Kampala"</code>:</strong></p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb16"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">awk</span> <span class="at">-F</span><span class="st">'\t'</span> <span class="st">'$3=="Kampala"'</span> raw_data/sample_manifest.tsv</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>To include the header row as well:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb17"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">awk</span> <span class="at">-F</span><span class="st">'\t'</span> <span class="st">'NR==1 || $3=="Kampala"'</span> raw_data/sample_manifest.tsv</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<hr>
-</section>
-<section id="detour-comparing-with-the-sed-and-grep-approach" class="level3">
-<h3 class="anchored" data-anchor-id="detour-comparing-with-the-sed-and-grep-approach">Detour: Comparing with the <code>sed</code> and <code>grep</code> approach</h3>
-<p>Why use AWK instead of <code>grep</code> or <code>sed</code> for tabular files?</p>
-<ol type="1">
-<li><strong><code>grep "Kampala"</code>:</strong> Searches the whole line indiscriminately. If a sample ID or organism name happens to contain “Kampala”, it will produce a false match.</li>
-<li><strong><code>sed</code>:</strong> Excellent for stream replacements (<code>s/old/new/g</code>), but writing logic to check specific columns in <code>sed</code> requires complex, hard-to-read regular expressions.</li>
-<li><strong><code>awk '$3 == "Kampala"'</code>:</strong> Specifically evaluates <strong>only Column 3</strong>, ensuring exact column matching without accidental matches in other fields.</li>
-</ol>
 <hr>
 <p><em>ABI Summer School 2026 · Week 1: Linux / HPC</em></p>
 
