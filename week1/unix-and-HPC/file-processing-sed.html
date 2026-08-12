@@ -26,6 +26,41 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -128,16 +163,23 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#replacing-simple-patterns-with-sed" id="toc-replacing-simple-patterns-with-sed" class="nav-link active" data-scroll-target="#replacing-simple-patterns-with-sed">Replacing simple patterns with sed</a></li>
-  <li><a href="#conditional-substitutions-with-sed" id="toc-conditional-substitutions-with-sed" class="nav-link" data-scroll-target="#conditional-substitutions-with-sed">Conditional substitutions with sed</a></li>
-  <li><a href="#adding-simple-patterns-to-a-file-using-sed" id="toc-adding-simple-patterns-to-a-file-using-sed" class="nav-link" data-scroll-target="#adding-simple-patterns-to-a-file-using-sed">Adding simple patterns to a file using sed</a></li>
-  <li><a href="#other-use-cases-of-sed-in-cleaningpre-processing-files" id="toc-other-use-cases-of-sed-in-cleaningpre-processing-files" class="nav-link" data-scroll-target="#other-use-cases-of-sed-in-cleaningpre-processing-files">Other use cases of sed in cleaning/pre-processing files</a>
+  <li><a href="#file-processing-part-1-using-sed" id="toc-file-processing-part-1-using-sed" class="nav-link active" data-scroll-target="#file-processing-part-1-using-sed">File processing: Part 1 (using sed)</a>
+  <ul class="collapse">
+  <li><a href="#part-1-replacing-simple-patterns-with-sed" id="toc-part-1-replacing-simple-patterns-with-sed" class="nav-link" data-scroll-target="#part-1-replacing-simple-patterns-with-sed">Part 1: Replacing simple patterns with sed</a>
+  <ul class="collapse">
+  <li><a href="#batch-substitutions-across-files" id="toc-batch-substitutions-across-files" class="nav-link" data-scroll-target="#batch-substitutions-across-files">Batch Substitutions Across Files</a></li>
+  <li><a href="#changing-delimiters" id="toc-changing-delimiters" class="nav-link" data-scroll-target="#changing-delimiters">Changing Delimiters</a></li>
+  </ul></li>
+  <li><a href="#part-2-conditional-substitutions-with-sed" id="toc-part-2-conditional-substitutions-with-sed" class="nav-link" data-scroll-target="#part-2-conditional-substitutions-with-sed">Part 2: Conditional substitutions with sed</a></li>
+  <li><a href="#part-3-adding-simple-patterns-to-a-file-using-sed" id="toc-part-3-adding-simple-patterns-to-a-file-using-sed" class="nav-link" data-scroll-target="#part-3-adding-simple-patterns-to-a-file-using-sed">Part 3: Adding simple patterns to a file using sed</a></li>
+  <li><a href="#part-4-other-use-cases-of-sed-in-cleaningpre-processing-files" id="toc-part-4-other-use-cases-of-sed-in-cleaningpre-processing-files" class="nav-link" data-scroll-target="#part-4-other-use-cases-of-sed-in-cleaningpre-processing-files">Part 4: Other use cases of sed in cleaning/pre-processing files</a>
   <ul class="collapse">
   <li><a href="#obtaining-the-header-line-of-a-file" id="toc-obtaining-the-header-line-of-a-file" class="nav-link" data-scroll-target="#obtaining-the-header-line-of-a-file">Obtaining the header line of a file</a></li>
   <li><a href="#extracting-lines-with-a-specific-pattern" id="toc-extracting-lines-with-a-specific-pattern" class="nav-link" data-scroll-target="#extracting-lines-with-a-specific-pattern">Extracting line(s) with a specific pattern</a></li>
   <li><a href="#counting-number-of-columns-in-a-file" id="toc-counting-number-of-columns-in-a-file" class="nav-link" data-scroll-target="#counting-number-of-columns-in-a-file">Counting number of columns in a file</a></li>
   <li><a href="#removing-empty-lines-from-a-file" id="toc-removing-empty-lines-from-a-file" class="nav-link" data-scroll-target="#removing-empty-lines-from-a-file">Removing (empty) lines from a file</a></li>
   <li><a href="#extracting-text-blocks-from-a-file" id="toc-extracting-text-blocks-from-a-file" class="nav-link" data-scroll-target="#extracting-text-blocks-from-a-file">Extracting text blocks from a file</a></li>
+  </ul></li>
   </ul></li>
   </ul>
 </nav>
@@ -151,7 +193,6 @@ ul.task-list li input[type="checkbox"] {
 <p align="center">
 <img src="linux_banner_image.png" alt="ABI Summer School 2026 · WEEK 1: Linux / HPC" width="100%">
 </p>
-<hr>
 <style>
 /* Clean, modern, high-contrast code blocks with pretty borders */
 div.sourceCode, pre.sourceCode, pre, pre code, div.cell-code pre {
@@ -169,87 +210,228 @@ code span.co, code span.c, code span.ch, code span.cm, code span.c1 {
 }
 </style>
 <hr>
+<section id="file-processing-part-1-using-sed" class="level1">
+<h1>File processing: Part 1 (using sed)</h1>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Overview &amp; Learning Objectives
+</div>
+</div>
+<div class="callout-body-container callout-body">
 <p><strong>sed</strong> allows us to automate pattern substitutions (usually line-by-line). The name <strong>sed</strong> is an abbreviation of <strong>stream editor</strong>.</p>
-<p>Change to the <code>workshop1</code> directory within <code>ABI_summer_school_project1</code> as it will be your working directory for this tutorial.</p>
-<section id="replacing-simple-patterns-with-sed" class="level2">
-<h2 class="anchored" data-anchor-id="replacing-simple-patterns-with-sed">Replacing simple patterns with sed</h2>
-<p>Replace the <strong>fasta</strong> pattern in each line of the file <code>sample_manifest2.tsv</code> with <strong>fastq</strong></p>
-<p><code>bash sed 's/fasta/fastq/' sample_manifest2.tsv</code>bash</p>
+<p>In this tutorial, we will learn how to: * Replace and remove simple patterns. * Perform conditional substitutions based on pattern matching. * Add patterns and columns to existing files. * Use <code>sed</code> to extract headers, specific lines, and clean datasets.</p>
+</div>
+</div>
+<blockquote class="blockquote">
+<p><strong>Preparation:</strong> Change to the <code>workshop1</code> directory within <code>ABI_summer_school_project1</code> as it will be your working directory for this tutorial.</p>
+</blockquote>
+<hr>
+<section id="part-1-replacing-simple-patterns-with-sed" class="level2">
+<h2 class="anchored" data-anchor-id="part-1-replacing-simple-patterns-with-sed">Part 1: Replacing simple patterns with sed</h2>
+<p>Let’s replace the <strong>fasta</strong> pattern in each line of the file <code>sample_manifest2.tsv</code> with <strong>fastq</strong>:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sed</span> <span class="st">'s/fasta/fastq/'</span> sample_manifest2.tsv</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>To save the output to a new file:</p>
-<p><code>bash sed 's/fasta/fastq/' sample_manifest2.tsv &gt; sample_manifest2_fastq.tsv</code>bash</p>
-<p>To make the replacement within the primary file (use with caution):</p>
-<p><code>bash sed -i 's/fasta/fastq/' sample_manifest2.tsv</code>bash</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sed</span> <span class="st">'s/fasta/fastq/'</span> sample_manifest2.tsv <span class="op">&gt;</span> sample_manifest2_fastq.tsv</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Warning</span>Using the In-Place flag (<code>-i</code>)
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>To make the replacement directly within the primary file (use with caution):</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sed</span> <span class="at">-i</span> <span class="st">'s/fasta/fastq/'</span> sample_manifest2.tsv</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</div>
 <p>Notice that the <strong>fasta</strong> pattern after <strong>Plasmodium_falciparum_</strong> was not replaced by the previous command. Why is this?</p>
-<p>Write the <strong>sed</strong> command(s) to replace both occurrences of <strong>fasta</strong> in each line of <code>sample_manifest2.tsv</code> with <strong>fastq</strong>. Save the output to <code>sample_manifest2_fastq_2.tsv</code></p>
-<p>```bash</p>
-<p>```bash</p>
-<p>With the same syntax, sed can be used to <strong>remove</strong> unwanted patterns within each line of a given file. Use <strong>sed</strong> to remove all occurrences of <strong>fastq</strong> in the <code>sample_manifest2_fastq_2.tsv</code> file. Save the output to <code>sample_manifest3.tsv</code></p>
-<p>```bash</p>
-<p>```bash</p>
-<p><strong>Exercise</strong>: Use <strong>sed</strong> to replace the <code>ftp://ftp.sra.ebi.ac.uk/vol1/run/ERR323/</code> string in each line of the file named <code>file_paths.txt</code>.</p>
-<p><strong>sed</strong> can also be used to replace patterns shared across files simultaneously. As an example, replace <strong>Kampala</strong> with <strong>Entebbe</strong> in all the <code>.tsv</code> files currently in <code>workshop1</code></p>
-<p><code>bash sed -i 's/Kampala/Entebbe/g' *.tsv</code>bash</p>
-<p>Using similar syntax for replacing patterns, <strong>sed</strong> can be used to change file delimiters/separators. As a test case, use <strong>sed</strong> to convert <code>sample_manifest3.tsv</code> into a <code>.csv</code> file named <code>sample_manifest3.csv</code>.</p>
-<p>```bash</p>
-<p>```bash</p>
-<p>Try converting <code>sample_manifest3.csv</code> into a <strong>space-delimited</strong> file.</p>
-<p>```bash</p>
-<p>```bash</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Exercise 1: Global Substitution
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Write the <strong>sed</strong> command(s) to replace <em>both</em> occurrences of <strong>fasta</strong> in each line of <code>sample_manifest2.tsv</code> with <strong>fastq</strong>. Save the output to <code>sample_manifest2_fastq_2.tsv</code>.</p>
+</div>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>With the same syntax, <code>sed</code> can be used to <strong>remove</strong> unwanted patterns within each line of a given file.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Exercise 2: Removing Patterns
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Use <strong>sed</strong> to remove all occurrences of <strong>fastq</strong> in the <code>sample_manifest2_fastq_2.tsv</code> file. Save the output to <code>sample_manifest3.tsv</code>.</p>
+</div>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Exercise 3: Advanced Replacements
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Use <strong>sed</strong> to replace the <code>ftp://ftp.sra.ebi.ac.uk/vol1/run/ERR323/</code> string in each line of the file named <code>file_paths.txt</code>.</p>
+</div>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<section id="batch-substitutions-across-files" class="level3">
+<h3 class="anchored" data-anchor-id="batch-substitutions-across-files">Batch Substitutions Across Files</h3>
+<p><strong>sed</strong> can also be used to replace patterns shared across multiple files simultaneously. As an example, let’s replace <strong>Kampala</strong> with <strong>Entebbe</strong> in all the <code>.tsv</code> files currently in <code>workshop1</code>:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sed</span> <span class="at">-i</span> <span class="st">'s/Kampala/Entebbe/g'</span> <span class="pp">*</span>.tsv</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
-<section id="conditional-substitutions-with-sed" class="level2">
-<h2 class="anchored" data-anchor-id="conditional-substitutions-with-sed">Conditional substitutions with sed</h2>
-<p>Sometimes, it’s helpful to replace patterns only in lines that meet a certain condition. As a test case, change the read_length for the Kisumu samples in <code>sample_manifest3.tsv</code> from 150 to 100.</p>
-<p><code>bash sed '/Kisumu/s/150/100/' sample_manifest3.tsv</code>bash</p>
+<section id="changing-delimiters" class="level3">
+<h3 class="anchored" data-anchor-id="changing-delimiters">Changing Delimiters</h3>
+<p>Using similar syntax for replacing patterns, <strong>sed</strong> can be used to change file delimiters/separators.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Exercise 4: Delimiter Conversion
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>As a test case, use <strong>sed</strong> to convert <code>sample_manifest3.tsv</code> into a <code>.csv</code> (comma-separated) file named <code>sample_manifest3.csv</code>.</p>
+</div>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Try converting <code>sample_manifest3.csv</code> into a <strong>space-delimited</strong> file:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<hr>
 </section>
-<section id="adding-simple-patterns-to-a-file-using-sed" class="level2">
-<h2 class="anchored" data-anchor-id="adding-simple-patterns-to-a-file-using-sed">Adding simple patterns to a file using sed</h2>
+</section>
+<section id="part-2-conditional-substitutions-with-sed" class="level2">
+<h2 class="anchored" data-anchor-id="part-2-conditional-substitutions-with-sed">Part 2: Conditional substitutions with sed</h2>
+<p>Sometimes, it’s helpful to replace patterns only in lines that meet a certain condition. As a test case, change the <code>read_length</code> for the Kisumu samples in <code>sample_manifest3.tsv</code> from 150 to 100.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sed</span> <span class="st">'/Kisumu/s/150/100/'</span> sample_manifest3.tsv</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<hr>
+</section>
+<section id="part-3-adding-simple-patterns-to-a-file-using-sed" class="level2">
+<h2 class="anchored" data-anchor-id="part-3-adding-simple-patterns-to-a-file-using-sed">Part 3: Adding simple patterns to a file using sed</h2>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Exercise 5: Adding Strings
+</div>
+</div>
+<div class="callout-body-container callout-body">
 <p>Add the model numbers of the <code>Illumina_NextSeq</code> and <code>Illumina_MiSeq</code> platforms so that they read <code>Illumina_NextSeq_2000</code> and <code>Illumina_MiSeq_100</code>, respectively.</p>
-<p>```bash</p>
-<p>```bash</p>
-<p>Add an extra column (at the end) to the contents of <code>sample_manifest3.tsv</code> with the heading <code>file_size</code> and the column values all <code>.</code></p>
-<p>```bash</p>
-<p>```bash</p>
+</div>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Exercise 6: Appending Columns
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Add an extra column (at the end) to the contents of <code>sample_manifest3.tsv</code> with the heading <code>file_size</code> and the column values all <code>.</code>.</p>
+</div>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Exercise 7: Prepending Columns
+</div>
+</div>
+<div class="callout-body-container callout-body">
 <p>Add a <code>project_id</code> column (make it the first column) to <code>sample_manifest3.tsv</code>. Use <strong>Pf_AMR</strong> as the values for each row under this column.</p>
-<p>```bash</p>
-<p>```bash</p>
+</div>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<hr>
 </section>
-<section id="other-use-cases-of-sed-in-cleaningpre-processing-files" class="level2">
-<h2 class="anchored" data-anchor-id="other-use-cases-of-sed-in-cleaningpre-processing-files">Other use cases of sed in cleaning/pre-processing files</h2>
+<section id="part-4-other-use-cases-of-sed-in-cleaningpre-processing-files" class="level2">
+<h2 class="anchored" data-anchor-id="part-4-other-use-cases-of-sed-in-cleaningpre-processing-files">Part 4: Other use cases of sed in cleaning/pre-processing files</h2>
 <section id="obtaining-the-header-line-of-a-file" class="level3">
 <h3 class="anchored" data-anchor-id="obtaining-the-header-line-of-a-file">Obtaining the header line of a file</h3>
-<p><code>bash sed -n '1p' sample_manifest3.tsv</code>bash</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sed</span> <span class="at">-n</span> <span class="st">'1p'</span> sample_manifest3.tsv </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section id="extracting-lines-with-a-specific-pattern" class="level3">
 <h3 class="anchored" data-anchor-id="extracting-lines-with-a-specific-pattern">Extracting line(s) with a specific pattern</h3>
-<p><code>bash sed -n '/PATTERN/p' file.txt</code>bash</p>
-<p>Example:</p>
-<p><code>bash sed -n '/TRUE/p' sample_manifest3.tsv</code>bash</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb15"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sed</span> <span class="at">-n</span> <span class="st">'/PATTERN/p'</span> file.txt  </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>Example:</strong></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb16"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sed</span> <span class="at">-n</span> <span class="st">'/TRUE/p'</span> sample_manifest3.tsv </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section id="counting-number-of-columns-in-a-file" class="level3">
 <h3 class="anchored" data-anchor-id="counting-number-of-columns-in-a-file">Counting number of columns in a file</h3>
-<p>```bash</p>
-<p>```bash</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb17"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section id="removing-empty-lines-from-a-file" class="level3">
 <h3 class="anchored" data-anchor-id="removing-empty-lines-from-a-file">Removing (empty) lines from a file</h3>
-<p>Using <code>file1.txt</code> as a testcase, remove all empty lines.</p>
-<p>```bash</p>
-<p>```bash</p>
-<p>Using a similar syntax, <strong>sed</strong> can be used as an alternative to <strong>grep</strong> to remove lines containing certain patterns. Use <strong>sed</strong> to remove the header lines (only the ones starting with <em>##</em>) from the <code>SAMPLE_001.vcf</code> file. Save the output to a new file <code>SAMPLE_001_v2.vcf</code> so that we can reuse the <code>SAMPLE_001.vcf</code> file, if needed.</p>
-<p>```bash</p>
-<p>```bash</p>
-<p>Use sed to remove empty lines from <code>file1.txt</code> and the line containing the heading i.e.&nbsp;<code>sample_id</code>, in one command.</p>
-<p>```bash</p>
-<p>```bash</p>
+<p>Using <code>file1.txt</code> as a test case, remove all empty lines.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb18"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Using a similar syntax, <strong>sed</strong> can be used as an alternative to <strong>grep</strong> to remove lines containing certain patterns.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Exercise 8: Header Removal
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Use <strong>sed</strong> to remove the VCF header lines (only the ones starting with <em>##</em>) from the <code>SAMPLE_001.vcf</code> file. Save the output to a new file <code>SAMPLE_001_v2.vcf</code> so that we can reuse the <code>SAMPLE_001.vcf</code> file, if needed.</p>
+</div>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb19"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Exercise 9: Multi-condition Removal
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Use sed to remove empty lines from <code>file1.txt</code> and the line containing the heading (i.e.&nbsp;<code>sample_id</code>) in a single command.</p>
+</div>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb20"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section id="extracting-text-blocks-from-a-file" class="level3">
 <h3 class="anchored" data-anchor-id="extracting-text-blocks-from-a-file">Extracting text blocks from a file</h3>
-<p>Using <code>sample_manifest3.tsv</code> as a test case, extract the metadata lines of samples <strong>004</strong> through <strong>008</strong> i.e.&nbsp;from line containing <code>SAMPLE_004</code> to the one containing <code>SAMPLE_008</code>.</p>
-<p><code>bash sed -n '/SAMPLE_004/,/SAMPLE_008/p' sample_manifest3.tsv</code>bash</p>
+<p>Using <code>sample_manifest3.tsv</code> as a test case, extract the metadata lines of samples <strong>004</strong> through <strong>008</strong> (i.e.&nbsp;from the line containing <code>SAMPLE_004</code> to the one containing <code>SAMPLE_008</code>).</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb21"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sed</span> <span class="at">-n</span> <span class="st">'/SAMPLE_004/,/SAMPLE_008/p'</span> sample_manifest3.tsv</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <hr>
-<p><em>ABI Summer School 2026 · Week 1: Linux / HPC</em></p>
+<p><em>ABI Summer School 2026 · Module 1: Linux &amp; HPC</em></p>
 
 
+</section>
 </section>
 </section>
 
