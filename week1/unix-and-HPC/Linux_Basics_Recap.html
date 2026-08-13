@@ -1,0 +1,892 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.10.18">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>linux_basics_recap – ABI-ITWG</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-bb62276ab45c84d9efd712f51ff97b5a.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-cf2abc19ec09823c931a54267571c7dc.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<style>html{ scroll-behavior: smooth; }</style>
+
+
+<link rel="stylesheet" href="../../styles.css">
+</head>
+
+<body class="nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="../../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../../✦" alt="" class="navbar-logo light-content">
+    <img src="../../✦" alt="" class="navbar-logo dark-content">
+    </a>
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">ABI-ITWG</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../abisumschool26.html"> 
+<span class="menu-text">Training Materials</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../about.html"> 
+<span class="menu-text">About</span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#linux-basics-recap" id="toc-linux-basics-recap" class="nav-link active" data-scroll-target="#linux-basics-recap">Linux Basics Recap</a>
+  <ul class="collapse">
+  <li><a href="#task-1-setup-navigation" id="toc-task-1-setup-navigation" class="nav-link" data-scroll-target="#task-1-setup-navigation">TASK 1: SETUP &amp; NAVIGATION</a></li>
+  <li><a href="#task-2-directory-file-management" id="toc-task-2-directory-file-management" class="nav-link" data-scroll-target="#task-2-directory-file-management">TASK 2: DIRECTORY &amp; FILE MANAGEMENT</a></li>
+  <li><a href="#task-3-inspection-viewing" id="toc-task-3-inspection-viewing" class="nav-link" data-scroll-target="#task-3-inspection-viewing">TASK 3: INSPECTION &amp; VIEWING</a></li>
+  <li><a href="#task-4-sorting-searching" id="toc-task-4-sorting-searching" class="nav-link" data-scroll-target="#task-4-sorting-searching">TASK 4: SORTING &amp; SEARCHING</a></li>
+  <li><a href="#task-5-batch-processing-data-interrogation" id="toc-task-5-batch-processing-data-interrogation" class="nav-link" data-scroll-target="#task-5-batch-processing-data-interrogation">TASK 5: BATCH PROCESSING &amp; DATA INTERROGATION</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
+
+
+
+
+<p align="center">
+<img src="linux_banner_image.png" alt="ABI Summer School 2026 · WEEK 1: Linux / HPC" width="100%">
+</p>
+<section id="linux-basics-recap" class="level1">
+<h1>Linux Basics Recap</h1>
+<hr>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>SESSION OVERVIEW
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Welcome to the Linux Basics Recap for the ABI Summer School 2026. In high-performance computing (HPC) environments, efficiency, precision, and reproducibility are critical when handling massive biological datasets. This hands-on practical session is designed to reinforce fundamental Unix terminal skills and transition your command-line usage from simple file navigation to automated, multi-step bioinformatics workflows.</p>
+</div>
+</div>
+<p><strong>Key Learning Objectives</strong> * <strong>Command Chaining &amp; Execution Control:</strong> Master logical operators (<code>&amp;&amp;</code>, <code>;</code>) to run sequential commands safely and construct conditional workflows.<br>
+* <strong>File System Architecture &amp; Linking:</strong> Practice efficient directory tree management (<code>mkdir -p</code>), relative/absolute navigation, and disk space preservation using symbolic links (<code>ln -s</code>).<br>
+* <strong>Bulk String &amp; File Expansion:</strong> Utilize brace expansion (<code>{}</code>) and wildcards (<code>*</code>) to generate directories, construct numerical log sequences, and perform instant backups without writing shell scripts.<br>
+* <strong>Data Inspection &amp; Interrogation:</strong> Inspect, paginate, and audit raw sequencing read files (FASTQ) and variant calls (VCF) using non-destructive terminal viewers (<code>head</code>, <code>less</code>, <code>cat -n</code>, <code>cat -T</code>).<br>
+* <strong>Pattern Searching &amp; Metadata Summarization:</strong> Deploy <code>grep</code> with advanced flags (<code>-v</code>, <code>-c</code>, <code>-n</code>, <code>-r</code>) alongside column extraction (<code>cut</code>), sorting (<code>sort</code>), and frequency counting (<code>uniq -c</code>).<br>
+* <strong>Relational Pipelines &amp; Batch Processing:</strong> Compare overlapping sample cohorts (<code>comm</code>), merge multi-file datasets (<code>join</code>, <code>paste</code>), and execute bulk file processing via stream piping (<code>|</code>) and argument conversion (<code>find</code> + <code>xargs</code>).</p>
+<p><strong>Dataset Context</strong> All exercises operate directly on the <code>ABI_summer_school_project</code> archive. This directory simulates an active <em>Plasmodium falciparum</em> malaria genomic surveillance project spanning East African field sites. You will work with real bioinformatics file formats—including sample manifests (<code>.tsv</code>), raw reads (<code>.fastq</code>), variant call files (<code>.vcf</code>), reference genomes (<code>.fasta</code>), and execution logs (<code>.log</code>).</p>
+<hr>
+<section id="task-1-setup-navigation" class="level2">
+<h2 class="anchored" data-anchor-id="task-1-setup-navigation">TASK 1: SETUP &amp; NAVIGATION</h2>
+<p><strong>Task 1.1:</strong> Download the project ZIP archive from the training repository, extract its contents, and navigate into the newly created directory. ::: {.callout-note collapse=“true”} ## Show answer</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">wget</span> https://github.com/TWG-ABI/ABI-Training/raw/refs/heads/main/week1/unix-and-HPC/ABI_summer_school_project.zip </span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">unzip</span> ABI_summer_school_project.zip</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> ABI_summer_school_project</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<blockquote class="blockquote">
+<p><strong>Why it works:</strong> * <code>wget</code> downloads files directly from a URL. * <code>unzip</code> extracts the compressed archive. * <code>cd</code> (change directory) navigates your terminal into the newly extracted folder. :::</p>
+</blockquote>
+<p><strong>Task 1.2:</strong> List all the contents of this project directory and its subdirectories in one command to understand the structure. ::: {.callout-note collapse=“true”} ## Show answer</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> <span class="at">-R</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<blockquote class="blockquote">
+<p><strong>Why it works:</strong> <code>ls</code> lists directory contents. * <code>-R</code> (recursive) forces the command to also list all files inside all nested subdirectories, giving a complete tree view. :::</p>
+</blockquote>
+<p><strong>Task 1.3:</strong> Navigate into the <code>raw_data/</code> directory and confirm your absolute directory path in a single line command. ::: {.callout-note collapse=“true”} ## Show answer</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> raw_data <span class="kw">&amp;&amp;</span> <span class="bu">pwd</span> </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<blockquote class="blockquote">
+<p><strong>Why it works:</strong> <code>cd</code> changes the directory, and <code>pwd</code> (print working directory) outputs your absolute path. * <code>&amp;&amp;</code> (AND operator) ensures that <code>pwd</code> only runs <em>if</em> the <code>cd</code> command succeeds, preventing you from executing commands in the wrong place. :::</p>
+</blockquote>
+<p><strong>Task 1.4:</strong> Find and list any hidden tracking files in this directory along with their detailed permissions. ::: {.callout-note collapse=“true”} ## Show answer</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> <span class="at">-la</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<blockquote class="blockquote">
+<p><strong>Why it works:</strong> <code>ls</code> lists files. * <code>-l</code> (long format) displays detailed information like permissions, ownership, and file size. * <code>-a</code> (all) reveals hidden files and directories (those starting with a dot, like <code>.hidden_note.txt</code>). :::</p>
+</blockquote>
+<hr>
+</section>
+<section id="task-2-directory-file-management" class="level2">
+<h2 class="anchored" data-anchor-id="task-2-directory-file-management">TASK 2: DIRECTORY &amp; FILE MANAGEMENT</h2>
+<p><em>(Note: Unless otherwise specified, assume you have navigated back to the project root <code>ABI_summer_school_project</code>)</em></p>
+<p><strong>Task 2.1:</strong> Create a directory called <code>qc</code> within the existing <code>results</code> directory. ::: {.callout-note collapse=“true”} ## Show answer</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> results/qc</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<blockquote class="blockquote">
+<p><strong>Why it works:</strong> <code>mkdir</code> (make directory) creates a new folder. Because we provide the relative path <code>results/qc</code>, it reliably creates the <code>qc</code> folder directly inside the existing <code>results</code> directory. :::</p>
+</blockquote>
+<p><strong>Task 2.2:</strong> From the project root, build four main pipeline directories (fastqc, trimmomatic, bwa, gatk) along with a nested reports/archive folder inside results/ simultaneously using a single command. ::: {.callout-note collapse=“true”} ## Show answer</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> <span class="at">-p</span> results/<span class="dt">{fastqc</span><span class="op">,</span><span class="dt">trimmomatic</span><span class="op">,</span><span class="dt">bwa</span><span class="op">,</span><span class="dt">gatk</span><span class="op">,</span><span class="dt">reports/archive}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<blockquote class="blockquote">
+<p><strong>Why it works:</strong> <code>mkdir</code> creates directories. * <code>-p</code> (parents) ensures no error is thrown if <code>results/</code> already exists, and it creates parent directories like <code>reports/</code> if they are missing. * <code>{...}</code> (brace expansion) automatically generates multiple arguments, instantly creating all listed directories inside <code>results/</code>. :::</p>
+</blockquote>
+<p><strong>Task 2.3:</strong> Create 5 files in the <code>logs</code> directory called <code>run_day_1.log</code> to <code>run_day_5.log</code> using brace expansion. ::: {.callout-note collapse=“true”} ## Show answer</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">touch</span> logs/run_day_{1..5}.log</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<blockquote class="blockquote">
+<p><strong>Why it works:</strong> <code>touch</code> creates empty files or updates their timestamps. * <code>{1..5}</code> is a sequence brace expansion that automatically generates numbers 1 through 5, seamlessly creating five sequentially numbered log files in one go. :::</p>
+</blockquote>
+<p><strong>Task 2.4:</strong> Create three QC tracker files (<code>sample_001_qc.txt</code>, <code>sample_002_qc.txt</code>, <code>sample_003_qc.txt</code>) in the <code>results/qc</code> directory. ::: {.callout-note collapse=“true”} ## Show answer</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">touch</span> results/qc/sample_001_qc.txt results/qc/sample_002_qc.txt results/qc/sample_003_qc.txt</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<blockquote class="blockquote">
+<p><strong>Why it works:</strong> <code>touch</code> can accept multiple file paths at once. It evaluates each path individually, generating all three text files in the specified <code>results/qc/</code> directory simultaneously. :::</p>
+</blockquote>
+<p><strong>Task 2.5:</strong> Securely copy the entire <code>logs</code> directory and its contents into a new directory called <code>logs_backup</code>. ::: {.callout-note collapse=“true”} ## Show answer</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cp</span> <span class="at">-r</span> logs/ logs_backup/</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<blockquote class="blockquote">
+<p><strong>Why it works:</strong> <code>cp</code> copies files. * <code>-r</code> (recursive) is mandatory when copying directories. It guarantees the folder and all of its internal contents are duplicated into <code>logs_backup/</code>. :::</p>
+</blockquote>
+<p><strong>Task 2.6:</strong> Move into <code>raw_data/</code> and create a <code>.backup</code> copy of <code>sample_manifest.tsv</code> using brace expansion to avoid retyping the filename. ::: {.callout-note collapse=“true”} ## Show answer</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> raw_data</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="fu">cp</span> sample_manifest.tsv<span class="dt">{</span><span class="op">,</span><span class="dt">.backup}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<blockquote class="blockquote">
+<p><strong>Why it works:</strong> <code>cp</code> requires a source and a destination. * <code>{,.backup}</code> is a brace expansion trick. The shell expands this comma-separated list into <code>cp sample_manifest.tsv sample_manifest.tsv.backup</code>, saving you from typing the filename twice. :::</p>
+</blockquote>
+<p><strong>Task 2.7:</strong> Move the entire <code>scripts</code> directory into the <code>results</code> directory. ::: {.callout-note collapse=“true”} ## Show answer</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mv</span> ../scripts/ ../results/</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<blockquote class="blockquote">
+<p><strong>Why it works:</strong> <code>mv</code> (move) relocates files or directories. <code>../</code> tells the terminal to step one directory level up (into the project root) to find <code>scripts/</code>, and moves it directly into the <code>results/</code> folder. :::</p>
+</blockquote>
+<p><strong>Task 2.8:</strong> To conserve cluster storage space, create a symbolic link named <code>ref_index</code> inside <code>results/</code> pointing to the reference genome. ::: {.callout-note collapse=“true”} ## Show answer</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ln</span> <span class="at">-s</span> ../reference/Pfalciparum_3D7.fasta ../results/ref_index</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<blockquote class="blockquote">
+<p><strong>Why it works:</strong> <code>ln</code> creates links between files. * <code>-s</code> (symbolic) creates a lightweight shortcut instead of a hard link. Programs accessing <code>results/ref_index</code> will be seamlessly redirected to the actual FASTA file without consuming duplicate disk space. :::</p>
+</blockquote>
+<p><strong>Task 2.9:</strong> Use a wildcard to permanently remove all files ending in <code>_qc.txt</code> from the <code>results/qc/</code> directory. ::: {.callout-note collapse=“true”} ## Show answer</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span> ../results/qc/sample_<span class="pp">*</span>_qc.txt</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<blockquote class="blockquote">
+<p><strong>Why it works:</strong> <code>rm</code> removes files. * The <code>*</code> (wildcard) acts as a flexible placeholder for any string of characters. This securely deletes <code>sample_001_qc.txt</code>, <code>sample_002_qc.txt</code>, etc., while ignoring unrelated files. :::</p>
+</blockquote>
+<hr>
+</section>
+<section id="task-3-inspection-viewing" class="level2">
+<h2 class="anchored" data-anchor-id="task-3-inspection-viewing">TASK 3: INSPECTION &amp; VIEWING</h2>
+<p><em>(Navigate back to the project root)</em></p>
+<p><strong>Task 3.1:</strong> Concatenate and display the contents of both <code>sample_manifest.tsv</code> and <code>coverage_report.tsv</code> to the terminal screen simultaneously. ::: {.callout-note collapse=“true”} ## Show answer</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span> raw_data/sample_manifest.tsv raw_data/coverage_report.tsv</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<blockquote class="blockquote">
+<p><strong>Why it works:</strong> <code>cat</code> (concatenate) reads files sequentially and prints their contents to the standard output. Supplying multiple filenames stitches them together back-to-back on your screen. :::</p>
+</blockquote>
+<p><strong>Task 3.2:</strong> Display the contents of the hidden file <code>.hidden_note.txt</code> located in the <code>raw_data/</code> directory. ::: {.callout-note collapse=“true”} ## Show answer</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb15"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span> raw_data/.hidden_note.txt</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<blockquote class="blockquote">
+<p><strong>Why it works:</strong> Hidden files are just regular files that start with a dot. <code>cat</code> easily reads them, displaying their secret contents directly to your terminal. :::</p>
+</blockquote>
+<p><strong>Task 3.3:</strong> Print the <code>README.txt</code> file to the screen, but prepend line numbers to each line of output. ::: {.callout-note collapse=“true”} ## Show answer</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb16"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span> <span class="at">-n</span> README.txt</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<blockquote class="blockquote">
+<p><strong>Why it works:</strong> * <code>-n</code> (number) forces <code>cat</code> to prefix every line of output with its corresponding line number, which is highly useful for referencing specific rows in a dataset. :::</p>
+</blockquote>
+<p><strong>Task 3.4:</strong> Safely peek inside the massive <code>Pfalciparum_3D7.fasta</code> reference file using a pager that disables line wrapping for easy reading. ::: {.callout-note collapse=“true”} ## Show answer</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb17"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">less</span> <span class="at">-S</span> reference/Pfalciparum_3D7.fasta</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<blockquote class="blockquote">
+<p><strong>Why it works:</strong> <code>less</code> is a pager that lets you safely scroll through massive files without flooding your terminal. * <code>-S</code> (chop long lines) disables line wrapping. Instead of text spilling over, it stays on a single horizontal line that you can scroll through using your arrow keys. :::</p>
+</blockquote>
+<p><strong>Task 3.5:</strong> Print <code>sample_manifest.tsv</code> starting from line 2 to isolate the sample records and exclude the header row. ::: {.callout-note collapse=“true”} ## Show answer</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb18"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tail</span> <span class="at">-n</span> +2 raw_data/sample_manifest.tsv</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<blockquote class="blockquote">
+<p><strong>Why it works:</strong> <code>tail</code> traditionally outputs the end of a file. * <code>-n +2</code> tells <code>tail</code> to start printing specifically from line 2 all the way to the end, effectively discarding the 1st line (the header). :::</p>
+</blockquote>
+<hr>
+</section>
+<section id="task-4-sorting-searching" class="level2">
+<h2 class="anchored" data-anchor-id="task-4-sorting-searching">TASK 4: SORTING &amp; SEARCHING</h2>
+<p><strong>Task 4.1:</strong> Sort the <code>batch1_samples.txt</code> file in the raw_data directory alphabetically and save the sorted output into a new file called <code>batch1_sorted.txt</code> in the archive directory. ::: {.callout-note collapse=“true”} ## Show answer</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb19"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sort</span> raw_data/batch1_samples.txt <span class="op">&gt;</span> results/reports/archive/batch1_sorted.txt</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<blockquote class="blockquote">
+<p><strong>Why it works:</strong> <code>sort</code> naturally arranges lines alphabetically. * <code>&gt;</code> (redirection operator) captures the sorted output that would normally print to your screen and permanently writes it into the <code>batch1_sorted.txt</code> file instead. :::</p>
+</blockquote>
+<p><strong>Task 4.2:</strong> Sort the sample manifest file specifically based on the values in its 3rd column. ::: {.callout-note collapse=“true”} ## Show answer</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb20"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sort</span> <span class="at">-k3</span> raw_data/sample_manifest.tsv</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<blockquote class="blockquote">
+<p><strong>Why it works:</strong> * <code>-k3</code> (key 3) instructs <code>sort</code> to evaluate only the 3rd column (which defaults to being separated by whitespace/tabs) when determining the alphabetical order. :::</p>
+</blockquote>
+<p><strong>Task 4.3:</strong> Sort the sample manifest based on the 4th column, but in reverse (descending) order. ::: {.callout-note collapse=“true”} ## Show answer</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb21"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sort</span> <span class="at">-k4</span> <span class="at">-r</span> raw_data/sample_manifest.tsv</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<blockquote class="blockquote">
+<p><strong>Why it works:</strong> * <code>-k4</code> targets the 4th column for sorting. * <code>-r</code> (reverse) flips the default ascending order, sorting the column in descending order (e.g., newest dates first or Z-to-A). :::</p>
+</blockquote>
+<p><strong>Task 4.4:</strong> Display only the first 5 variant data lines of <code>SAMPLE_001.vcf</code>, excluding the VCF header lines (which all start with <code>#</code>). ::: {.callout-note collapse=“true”} ## Show answer</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb22"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">grep</span> <span class="at">-v</span> <span class="st">'^#'</span> variants/SAMPLE_001.vcf <span class="kw">|</span> <span class="fu">head</span> <span class="at">-n</span> 5</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<blockquote class="blockquote">
+<p><strong>Why it works:</strong> * <code>grep -v</code> (invert-match) aggressively filters out lines that contain the pattern. * <code>'^#'</code> targets lines starting with <code>#</code> (<code>^</code> signifies the “start of line”). * <code>|</code> (pipe) sends that filtered data stream directly into <code>head</code>, which cleanly limits the display to the first 5 variant lines. :::</p>
+</blockquote>
+<p><strong>Task 4.5:</strong> Count exactly how many non-header lines (actual variant calls) exist in <code>SAMPLE_001.vcf</code>. ::: {.callout-note collapse=“true”} ## Show answer</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb23"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">grep</span> <span class="at">-vc</span> <span class="st">'^#'</span> variants/SAMPLE_001.vcf</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<blockquote class="blockquote">
+<p><strong>Why it works:</strong> * <code>-v</code> filters out the header lines. * <code>-c</code> (count) suppresses standard output and instead prints only the total number of lines that matched the criteria, instantly telling you the variant count. :::</p>
+</blockquote>
+<p><strong>Task 4.6:</strong> Search through the <code>pipeline.log</code> file for the word ‘WARNING’ and prefix the output with the exact line numbers where they occurred. ::: {.callout-note collapse=“true”} ## Show answer</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb24"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">grep</span> <span class="at">-n</span> <span class="st">'WARNING'</span> logs/pipeline.log</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<blockquote class="blockquote">
+<p><strong>Why it works:</strong> * <code>-n</code> (line number) cleanly prefixes each matched line with its exact line number from the original file, making it easy to locate exactly where the warning occurred in the log. :::</p>
+</blockquote>
+<p><strong>Task 4.7:</strong> Search the pipeline log for the word ‘failed’, ignoring case sensitivity (so it matches ‘FAILED’, ‘Failed’, etc.). ::: {.callout-note collapse=“true”} ## Show answer</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb25"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">grep</span> <span class="at">-i</span> <span class="st">'failed'</span> logs/pipeline.log</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<blockquote class="blockquote">
+<p><strong>Why it works:</strong> * <code>-i</code> (ignore case) ensures the search is case-insensitive, guaranteeing you catch “FAILED”, “Failed”, and “failed” without having to write multiple search queries. :::</p>
+</blockquote>
+<p><strong>Task 4.8:</strong> Count how many sequences are present in the reference FASTA file by counting the number of FASTA header lines (which start with <code>&gt;</code>). ::: {.callout-note collapse=“true”} ## Show answer</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb26"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">grep</span> <span class="at">-c</span> <span class="st">'^&gt;'</span> reference/Pfalciparum_3D7.fasta</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<blockquote class="blockquote">
+<p><strong>Why it works:</strong> In biological FASTA files, every sequence is preceded by a header line starting with <code>&gt;</code>. * <code>^&gt;</code> strictly targets these header lines, and <code>-c</code> tallies them up to give you the total number of chromosomes or contigs in the genome. :::</p>
+</blockquote>
+<p><strong>Task 4.9:</strong> Search the entire <code>logs/</code> directory for the word ‘ERROR’, printing the matching line numbers alongside the file names.</p>
+<ol type="a">
+<li>First, redirect this output into a new file called <code>error_summary.log</code> in the archive directory using standard redirection. Notice that nothing prints to your screen. ::: {.callout-note collapse=“true”} ## Show answer</li>
+</ol>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb27"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">grep</span> <span class="at">-rn</span> <span class="st">'ERROR'</span> logs/ <span class="op">&gt;</span> results/reports/archive/error_summary.log</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<blockquote class="blockquote">
+<p><strong>Why it works:</strong> * <code>-r</code> (recursive) comprehensively searches through every file inside the <code>logs/</code> directory. * <code>-n</code> prints line numbers. * <code>&gt;</code> intercepts the search results and saves them silently into <code>error_summary.log</code>. :::</p>
+</blockquote>
+<ol start="2" type="a">
+<li>Now repeat the same search, but this time use <code>tee</code> to write to <code>error_summary_tee.log</code> while also displaying the matches on screen in real time. ::: {.callout-note collapse=“true”} ## Show answer</li>
+</ol>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb28"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">grep</span> <span class="at">-rn</span> <span class="st">'ERROR'</span> logs/ <span class="kw">|</span> <span class="fu">tee</span> results/reports/archive/error_summary_tee.log</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<blockquote class="blockquote">
+<p><strong>Why it works:</strong> * <code>| tee</code> acts identically to a T-junction in plumbing. It takes the output stream from <code>grep</code>, writes it into the specified file, <em>and</em> allows it to continue flowing out to your terminal screen for you to see. :::</p>
+</blockquote>
+<p><strong>Task 4.10:</strong> Count all the lines across all FASTQ files in the <code>raw_data/</code> directory at once. ::: {.callout-note collapse=“true”} ## Show answer</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb29"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">wc</span> <span class="at">-l</span> raw_data/<span class="pp">*</span>.fastq</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<blockquote class="blockquote">
+<p><strong>Why it works:</strong> <code>wc</code> (word count) calculates file metrics. * <code>-l</code> restricts it to counting only lines. * <code>*.fastq</code> efficiently feeds every FASTQ file into the command, outputting the line count for each individual file alongside a grand total at the bottom. :::</p>
+</blockquote>
+<p><strong>Task 4.11:</strong> Calculate the exact number of sequencing reads in <code>SAMPLE_001.fastq</code> by counting total lines. ::: {.callout-note collapse=“true”} ## Show answer</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb30"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">expr</span> <span class="va">$(</span><span class="fu">wc</span> <span class="at">-l</span> <span class="op">&lt;</span> raw_data/SAMPLE_001.fastq<span class="va">)</span> / 4</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<blockquote class="blockquote">
+<p><strong>Why it works:</strong> Every single sequencing read in a standard FASTQ file consists of exactly 4 lines. * <code>$(...)</code> executes the inner command first. <code>wc -l &lt;</code> feeds the file in and counts lines without printing the filename (which would otherwise break the math). * <code>expr ... / 4</code> securely evaluates a basic mathematical expression, dividing the total lines by 4 to reveal the true number of biological reads. :::</p>
+</blockquote>
+<hr>
+</section>
+<section id="task-5-batch-processing-data-interrogation" class="level2">
+<h2 class="anchored" data-anchor-id="task-5-batch-processing-data-interrogation">TASK 5: BATCH PROCESSING &amp; DATA INTERROGATION</h2>
+<p><em>(Change into the archive directory)</em></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb31"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> results/reports/archive</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>Task 5.1:</strong> Compare the two lists (<code>batch1_sorted.txt</code> and <code>batch2_samples.txt</code>) and output only the sample IDs that are unique to the second batch. ::: {.callout-note collapse=“true”} ## Show answer</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb32"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="fu">comm</span> <span class="at">-13</span> batch1_sorted.txt ../../../raw_data/batch2_samples.txt</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<blockquote class="blockquote">
+<p><strong>Why it works:</strong> <code>comm</code> compares two sorted files line by line, generating three columns: unique to file 1, unique to file 2, and shared. * <code>-1</code> suppresses lines unique to file 1. * <code>-3</code> suppresses lines shared by both. * By eliminating those, only column 2 remains visible, displaying items uniquely found in the second file. :::</p>
+</blockquote>
+<p><strong>Task 5.2:</strong> Compare the two lists and output only the sample IDs that are unique to the first batch. ::: {.callout-note collapse=“true”} ## Show answer</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb33"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="fu">comm</span> <span class="at">-23</span> batch1_sorted.txt ../../../raw_data/batch2_samples.txt</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<blockquote class="blockquote">
+<p><strong>Why it works:</strong> * <code>-2</code> suppresses lines unique to file 2. * <code>-3</code> suppresses lines shared by both. * This outputs only column 1, precisely isolating items exclusively found in the first file. :::</p>
+</blockquote>
+<p><strong>Task 5.3:</strong> Extract only the 1st column (Sample ID) from the sample manifest file using <code>cut</code>. ::: {.callout-note collapse=“true”} ## Show answer</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb34"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cut</span> <span class="at">-f1</span> ../../../raw_data/sample_manifest.tsv</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<blockquote class="blockquote">
+<p><strong>Why it works:</strong> <code>cut</code> extracts sections from lines of files based on delimiters (tabs by default). * <code>-f1</code> (field 1) strictly targets the first column, cleanly slicing the Sample IDs out of the dataset. :::</p>
+</blockquote>
+<p><strong>Task 5.4:</strong> Extract the 3rd column (e.g.&nbsp;Field Site) from the sample manifest file using <code>cut</code>. ::: {.callout-note collapse=“true”} ## Show answer</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb35"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cut</span> <span class="at">-f3</span> ../../../raw_data/sample_manifest.tsv</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<blockquote class="blockquote">
+<p><strong>Why it works:</strong> * <code>-f3</code> explicitly extracts only the 3rd field, slicing out the Field Sites while ignoring the rest of the file contents. :::</p>
+</blockquote>
+<p><strong>Task 5.5:</strong> Extract the 1st and 8th columns simultaneously from the manifest. ::: {.callout-note collapse=“true”} ## Show answer</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb36"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cut</span> <span class="at">-f1,8</span> ../../../raw_data/sample_manifest.tsv</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<blockquote class="blockquote">
+<p><strong>Why it works:</strong> * <code>-f1,8</code> utilizes a comma to select discrete, non-contiguous fields, allowing you to instantly extract just the first and eighth columns side-by-side. :::</p>
+</blockquote>
+<p><strong>Task 5.6:</strong> Extract a continuous range of columns (1 through 4) from the manifest. ::: {.callout-note collapse=“true”} ## Show answer</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb37"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cut</span> <span class="at">-f1-4</span> ../../../raw_data/sample_manifest.tsv</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<blockquote class="blockquote">
+<p><strong>Why it works:</strong> * <code>-f1-4</code> utilizes a hyphen to select a continuous block, extracting columns 1, 2, 3, and 4 collectively without having to type each number. :::</p>
+</blockquote>
+<p><strong>Task 5.7:</strong> Extract the Field Site column, sort the extracted sites alphabetically, and generate a frequency table counting how many samples belong to each site. ::: {.callout-note collapse=“true”} ## Show answer</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb38"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cut</span> <span class="at">-f3</span> ../../../raw_data/sample_manifest.tsv <span class="kw">|</span> <span class="fu">sort</span> <span class="kw">|</span> <span class="fu">uniq</span> <span class="at">-c</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<blockquote class="blockquote">
+<p><strong>Why it works:</strong> This is a cornerstone bioinformatics aggregation pipeline. * <code>cut</code> isolates the data column you care about (Field Sites). * <code>sort</code> groups identical text strings together. * <code>uniq -c</code> efficiently collapses identical adjacent lines into a single record, prefixing them with an integer counting how many times they originally appeared. :::</p>
+</blockquote>
+<p><strong>Task 5.8:</strong> Stitch two text files together side-by-side using a default tab delimiter (Hint: use <code>paste</code>). ::: {.callout-note collapse=“true”} ## Show answer</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb39"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="fu">paste</span> batch1_sorted.txt ../../../raw_data/batch2_samples.txt</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<blockquote class="blockquote">
+<p><strong>Why it works:</strong> <code>paste</code> merges files horizontally. It automatically reads line 1 from file A and line 1 from file B, pasting them together horizontally separated by a standard tab character. :::</p>
+</blockquote>
+<p><strong>Task 5.9:</strong> Stitch the same two files together, but use a comma (<code>,</code>) as the delimiter instead of a tab. ::: {.callout-note collapse=“true”} ## Show answer</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb40"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="fu">paste</span> <span class="at">-d</span><span class="st">','</span> batch1_sorted.txt ../../../raw_data/batch2_samples.txt</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<blockquote class="blockquote">
+<p><strong>Why it works:</strong> * <code>-d','</code> (delimiter) changes the default tab separator directly to a comma, allowing you to effortlessly generate CSV-style output on the fly. :::</p>
+</blockquote>
+<p><strong>Task 5.10:</strong> Navigate back to the project root. Then search the entire project tree recursively to find all files starting with ‘SAMPLE’ and ending in ‘.fastq’. ::: {.callout-note collapse=“true”} ## Show answer</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb41"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> ../../../</span>
+<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a><span class="fu">find</span> . <span class="at">-name</span> <span class="st">'SAMPLE*.fastq'</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<blockquote class="blockquote">
+<p><strong>Why it works:</strong> <code>find</code> rigorously searches directory hierarchies. * <code>.</code> tells it to search downwards starting from your current directory. * <code>-name</code> specifies the search pattern. Single quotes (<code>'...'</code>) are crucial because they protect the wildcard <code>*</code> from being evaluated prematurely by your shell. :::</p>
+</blockquote>
+<p><strong>Task 5.11:</strong> Find all FASTQ files anywhere in the project tree, and pass their names to <code>wc -l</code> to calculate a batch line count. ::: {.callout-note collapse=“true”} ## Show answer</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb42"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="fu">find</span> . <span class="at">-name</span> <span class="st">"*.fastq"</span> <span class="kw">|</span> <span class="fu">xargs</span> wc <span class="at">-l</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<blockquote class="blockquote">
+<p><strong>Why it works:</strong> * <code>find</code> locates the relative paths for all FASTQ files. * <code>xargs</code> neatly takes that resulting list of filenames and dynamically feeds them as trailing arguments to <code>wc -l</code>. This allows you to process thousands of files without hitting shell character limits. :::</p>
+</blockquote>
+<p><strong>Task 5.12:</strong> Identify the total disk usage of the project folder and list its immediate subdirectories, sorted by size from largest to smallest. ::: {.callout-note collapse=“true”} ## Show answer</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb43"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="fu">du</span> <span class="at">-h</span> <span class="at">--max-depth</span><span class="op">=</span>1 . <span class="kw">|</span> <span class="fu">sort</span> <span class="at">-hr</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<blockquote class="blockquote">
+<p><strong>Why it works:</strong> * <code>du -h</code> (disk usage, human-readable) calculates directory sizes in kilobytes, megabytes, or gigabytes. * <code>--max-depth=1</code> aggressively prevents it from reporting on every single nested subdirectory. * <code>sort -hr</code> (human, reverse) intelligently sorts metric sizes (e.g., placing “1G” above “500M”), listing the heaviest directories conveniently at the top. :::</p>
+</blockquote>
+<p><strong>Task 5.13:</strong> Isolate samples marked as ‘FALSE’ for QC in the manifest and save them to a new log file (<code>failed_qc.log</code>) located in the archive directory. If successful, securely append a completion timestamp to the bottom without overwriting data. ::: {.callout-note collapse=“true”} ## Show answer</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb44"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="fu">grep</span> <span class="st">'FALSE'</span> raw_data/sample_manifest.tsv <span class="op">&gt;</span> results/reports/archive/failed_qc.log <span class="kw">&amp;&amp;</span> <span class="bu">echo</span> <span class="st">"Log generated on </span><span class="va">$(</span><span class="fu">date</span><span class="va">)</span><span class="st">"</span> <span class="op">&gt;&gt;</span> results/reports/archive/failed_qc.log</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<blockquote class="blockquote">
+<p><strong>Why it works:</strong> * <code>&gt;</code> overwrites or creates <code>failed_qc.log</code> with the initial <code>grep</code> results. * <code>&amp;&amp;</code> logically ensures the subsequent timestamp command only runs if the search command succeeded without error. * <code>$(date)</code> seamlessly injects the current system time into the string. * <code>&gt;&gt;</code> safely <em>appends</em> the echo string to the very bottom of the log file without erasing the data we just wrote. :::</p>
+</blockquote>
+<p><strong>Task 5.14:</strong> Display a clean 2-level directory tree of the project structure without listing every nested file. ::: {.callout-note collapse=“true”} ## Show answer</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb45"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="fu">find</span> . <span class="at">-maxdepth</span> 2 <span class="at">-not</span> <span class="at">-path</span> <span class="st">'*/.*'</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<blockquote class="blockquote">
+<p><strong>Why it works:</strong> * <code>-maxdepth 2</code> severely restricts the search to only the current folder and exactly one level deep. * <code>-not -path '*/.*'</code> filters out any hidden directories (like <code>.git</code>) and hidden files, providing an uncluttered overview of your project structure. :::</p>
+</blockquote>
+<p><strong>Task 5.15:</strong> Display the total human-readable disk space usage for each file and subdirectory located directly inside the <code>results/</code> directory using wildcard expansion. ::: {.callout-note collapse=“true”} ## Show answer</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb46"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="fu">du</span> <span class="at">-sh</span> results/<span class="pp">*</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<blockquote class="blockquote">
+<p><strong>Why it works:</strong> * <code>du -s</code> (summarize) prevents it from traversing and detailing every file inside nested folders, only giving the grand total for each specified path. * <code>results/*</code> leverages a shell wildcard to pass every individual file and folder inside <code>results/</code> into the disk usage command as separate arguments. :::</p>
+</blockquote>
+<p><em>ABI Summer School 2026 · Week 1: Linux / HPC</em></p>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/TWG-ABI\.github\.io\/ABI-Training\/");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>© 2026 ABI-ITWG. CC BY</p>
+</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    </div>
+    <div class="nav-footer-right">
+      &nbsp;
+    </div>
+  </div>
+</footer>
+
+
+
+
+<script src="../../site_libs/quarto-html/zenscroll-min.js"></script>
+</body></html>
