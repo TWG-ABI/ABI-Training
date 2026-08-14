@@ -24,7 +24,7 @@ Welcome to the Linux Basics Recap for the ABI Summer School 2026. In high-perfor
 :::
 
 **Dataset:**
-All exercises operate directly on the `ABI_summer_school_project` archive. This directory simulates an active malaria genomic surveillance project spanning East African field sites. You will work with real bioinformatics file formats.
+All exercises operate directly on the `ABI_summer_school_project` archive. This directory simulates real bioinformatics file formats.
 
 ---
 
