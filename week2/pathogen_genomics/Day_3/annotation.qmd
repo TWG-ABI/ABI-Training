@@ -1,0 +1,7 @@
+---
+title: "Bacterial Genome Annotation"
+---
+
+Welcome to the Pathogen Genomics module. Scroll through the slides below:
+
+<iframe src="Bacterial_Genome_Annotation.pdf" width="100%" height="600px" style="border: none;"></iframe>
