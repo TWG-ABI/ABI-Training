@@ -1,0 +1,7 @@
+---
+title: "Quality Control"
+---
+
+Welcome to the Pathogen Genomics module. Scroll through the slides below:
+
+<iframe src="Quality_control.pdf" width="100%" height="600px" style="border: none;"></iframe>
