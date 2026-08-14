@@ -39,6 +39,13 @@ The aim is to provide comprehensive training on bioinformatics computational res
 #### Pathogen Genomics
 1. [Basics of Bacterial Genomes](week2/pathogen_genomics/Day_1/basics.qmd)
 2. [Quality Control of Sequencing Data](week2/pathogen_genomics/Day_1/qc.qmd)
+3. [Assembly Principles: Reference Vs De Novo](week2/pathogen_genomics/Day_2/assembly_principles.qmd)
+4. [Genome Alignment & Variant Calling](week2/pathogen_genomics/Day_2/genome.qmd)
+5. [Bacterial Genome Annotation](week2/pathogen_genomics/Day_3/annotation.qmd)
+6. [Pan-genome Analysis & Multilocus Sequence Typing](week2/pathogen_genomics/Day_3/pangenome.qmd)
+7. [Mechanisms of AMR & Virulence](week2/pathogen_genomics/Day_4/mechanisms.qmd)
+8. [Horizontal Gene Transfer & Mobile Genetic Elements](week2/pathogen_genomics/Day_4/mge.qmd)
+9. [Applications of Bacterial Genomics: AMR Surveillance](week2/pathogen_genomics/Day_5/applications.qmd)
 
 #### Metagenomics
 1. [Quality Control](week2/metagenomics/qc.md)
