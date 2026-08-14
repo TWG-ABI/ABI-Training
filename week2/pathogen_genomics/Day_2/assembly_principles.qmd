@@ -1,0 +1,7 @@
+---
+title: "Assembly Principles"
+---
+
+Welcome to the Pathogen Genomics module. Scroll through the slides below:
+
+<iframe src="Assembly_principles.pdf" width="100%" height="600px" style="border: none;"></iframe>
