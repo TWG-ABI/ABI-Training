@@ -518,39 +518,39 @@
     "text": "Welcome to the Pathogen Genomics module. Scroll through the slides below:"
   },
   {
-    "objectID": "week2/pathogen_genomics/Day_1/qc.html",
-    "href": "week2/pathogen_genomics/Day_1/qc.html",
-    "title": "Quality Control of Sequencing Data",
+    "objectID": "week2/pathogen_genomics/Day_3/annotation.html",
+    "href": "week2/pathogen_genomics/Day_3/annotation.html",
+    "title": "Bacterial Genome Annotation",
     "section": "",
     "text": "Welcome to the Pathogen Genomics module. Scroll through the slides below:"
   },
   {
-    "objectID": "abisumschool26.html",
-    "href": "abisumschool26.html",
-    "title": "ABI Summer School 2026",
+    "objectID": "week2/pathogen_genomics/Day_1/basics.html",
+    "href": "week2/pathogen_genomics/Day_1/basics.html",
+    "title": "Basics of Bacterial Genomes",
     "section": "",
-    "text": "The aim is to provide comprehensive training on bioinformatics computational resources, and domain-specific tools and workflows to improve participants’ proficiency in executing, interpreting, and communicating analyses for major bioinformatics studies, with a special focus on genomics."
+    "text": "Welcome to the Pathogen Genomics module. Scroll through the slides below:"
   },
   {
-    "objectID": "abisumschool26.html#about-the-event",
-    "href": "abisumschool26.html#about-the-event",
-    "title": "ABI Summer School 2026",
-    "section": "",
-    "text": "The aim is to provide comprehensive training on bioinformatics computational resources, and domain-specific tools and workflows to improve participants’ proficiency in executing, interpreting, and communicating analyses for major bioinformatics studies, with a special focus on genomics."
+    "objectID": "about.html#core-team",
+    "href": "about.html#core-team",
+    "title": "About",
+    "section": "Core Team",
+    "text": "Core Team\nVerena Ras — Training Coordination and Development\nShaun Aron — Training Coordination and Development\nMelek Chaouch — Training Coordination and Development\n\nAssisting team\nJorge Batista da Rocha - Site setup and training support"
   },
   {
-    "objectID": "abisumschool26.html#course-content",
-    "href": "abisumschool26.html#course-content",
-    "title": "ABI Summer School 2026",
-    "section": "Course Content:",
-    "text": "Course Content:\n\nWeek 1:\n\nLinux\n\nIntroduction to Linux & HPC\nLinux Basics Recap\nBash Scripting I & HPC Job Submission\nFile processing with sed\nFile processing with awk\nBash Scripting II\nContainers\n\n\n\nR coding content\n\n\nIntro to NGS\n\n\n\n\nWeek 2\n\nR/Biology Streams\n\n\nHuman Genomics\n\n\nPathogen Genomics\n\nBasics of Bacterial Genomes\nQuality Control of Sequencing Data\n\n\n\nMetagenomics\n\nQuality Control\nAmplicon Data Analysis\nDiversity Analysis\nShotgun Metagenomics\nMetagenome-Assembled Genomes\nFunctional Analysis\nVisualisation & Mini-Project"
+    "objectID": "about.html#license",
+    "href": "about.html#license",
+    "title": "About",
+    "section": "License",
+    "text": "License\nThis site and training content are released under the Creative Commons Attribution (CC BY)."
   },
   {
-    "objectID": "abisumschool26.html#trainer-info",
-    "href": "abisumschool26.html#trainer-info",
-    "title": "ABI Summer School 2026",
-    "section": "Trainer Info",
-    "text": "Trainer Info\n\n\n\n\n\n\n\n\n\nName\nAffiliation\nRole\nStream\n\n\n\n\nGloria Nakabiri\nAfrican Center of Excellence in Bioinformatics and Data Intensive Sciences\nLead trainer\nUnix\n\n\nPeter van Heusden\nSouth African National Bioinformatics Institute (SANBI)\nLead trainer\nR\n\n\nIan Wasukira\nAfrican Center of Excellence in Bioinformatics and Data-Intensive Sciences\nLead Trainer\nUnix/HPC\n\n\nRonald Galiwango\nAfrican Center of Excellence in Bioinformatics and Data-Intensive Sciences\nLead trainer\nR\n\n\nMusalula Sinkala\nUniversity of Cape Town\nLead trainer\nHuman Genomics\n\n\nDayna Adrienne Croock\nStellenbosch University\nLead trainer\nHuman Genomics\n\n\nJohn Juma\nInternational Livestock Research Institute (ILRI)\nLead trainer\nPathogen Genomics\n\n\nDamien Tully\nMRC/UVRI & LSHTM Uganda Research Unit\nLead Trainer\nPathogen Genomics\n\n\nAlfred Ssekagiri\nUganda Virus Research Institute\nLead trainer\nMetagenomics\n\n\nYohannes Gedamu Gebre\nBio and Emerging Technology Institute (BETin); former Ethiopia Biotechnology Institute (EBTi)\nCo-trainer\nUnix/R/Pathogen Genomics\n\n\nKeaghan Brown\nPHA4GE\nCo-trainer\nPathogen Genomics\n\n\nAmadou Diallo\nPioneer Bio-Analytics\nCo-trainer\nMetagenomics\n\n\nEphifania Geza\nUniversity of Cape Town\nLead trainer\nMetagenomics\n\n\nPatricia Nabisubi\nThe African Centre of Excellence in Bioinformatics and Data Intensive Sciences\nCo-trainer\nUnix/R/NGS basics\n\n\nTrushar Shah\nInternational Livestock Research Institute (Kenya)\nCo-trainer\nHuman Genomics/Unix\n\n\nDaria Sokolova\nEuropean Bioinformatics Institute (EBI)\nCore organiser/support\n\n\n\nGrace Kebirungi\nAfrican Center of Excellence in Bioinformatics and Data-Intensive Sciences\nCore organiser/support\n\n\n\nDavid Twesigomwe\nMRC/UVRI & LSHTM Uganda Research Unit\nCore organiser/support\n\n\n\nVerena Ras\nAfrican Bioinformatics Institute / University of Cape Town\nCore organiser/support\n\n\n\nShaun Aron\nSydney Brenner Institute for Molecular Bioscience (SBIMB) / University of Witwatersrand\nCore organiser/support\n\n\n\nMelek Chaouch\nInstitut Pasteur, Tunis\nCore organiser/support\n\n\n\nJorge da Rocha\nEuropean Bioinformatics Institute (EBI)\nCore organiser/support"
+    "objectID": "about.html#contact-community",
+    "href": "about.html#contact-community",
+    "title": "About",
+    "section": "Contact & Community",
+    "text": "Contact & Community\n\n📬 info@bioinformaticsinstitute.africa — for any questions."
   },
   {
     "objectID": "projects.html",
@@ -588,30 +588,37 @@
     "text": "Roadmap\n\n\n\nVersion\nStatus\nWhat’s included\n\n\n\n\nv2.4\n✅ Released\nPlugin API stabilised\n\n\nv2.4.1\n✅ Released\nPerformance improvements\n\n\nv2.5\n🔄 In progress\nDev tools browser extension\n\n\nv3.0\n⏳ Planned\nFull async plugin lifecycle\n\n\n\nHave a feature request? Open a discussion on GitHub."
   },
   {
-    "objectID": "about.html#core-team",
-    "href": "about.html#core-team",
-    "title": "About",
-    "section": "Core Team",
-    "text": "Core Team\nVerena Ras — Training Coordination and Development\nShaun Aron — Training Coordination and Development\nMelek Chaouch — Training Coordination and Development\n\nAssisting team\nJorge Batista da Rocha - Site setup and training support"
+    "objectID": "abisumschool26.html",
+    "href": "abisumschool26.html",
+    "title": "ABI Summer School 2026",
+    "section": "",
+    "text": "The aim is to provide comprehensive training on bioinformatics computational resources, and domain-specific tools and workflows to improve participants’ proficiency in executing, interpreting, and communicating analyses for major bioinformatics studies, with a special focus on genomics."
   },
   {
-    "objectID": "about.html#license",
-    "href": "about.html#license",
-    "title": "About",
-    "section": "License",
-    "text": "License\nThis site and training content are released under the Creative Commons Attribution (CC BY)."
+    "objectID": "abisumschool26.html#about-the-event",
+    "href": "abisumschool26.html#about-the-event",
+    "title": "ABI Summer School 2026",
+    "section": "",
+    "text": "The aim is to provide comprehensive training on bioinformatics computational resources, and domain-specific tools and workflows to improve participants’ proficiency in executing, interpreting, and communicating analyses for major bioinformatics studies, with a special focus on genomics."
   },
   {
-    "objectID": "about.html#contact-community",
-    "href": "about.html#contact-community",
-    "title": "About",
-    "section": "Contact & Community",
-    "text": "Contact & Community\n\n📬 info@bioinformaticsinstitute.africa — for any questions."
+    "objectID": "abisumschool26.html#course-content",
+    "href": "abisumschool26.html#course-content",
+    "title": "ABI Summer School 2026",
+    "section": "Course Content:",
+    "text": "Course Content:\n\nWeek 1:\n\nLinux\n\nIntroduction to Linux & HPC\nLinux Basics Recap\nBash Scripting I & HPC Job Submission\nFile processing with sed\nFile processing with awk\nBash Scripting II\nContainers\n\n\n\nR coding content\n\n\nIntro to NGS\n\n\n\n\nWeek 2\n\nR/Biology Streams\n\n\nHuman Genomics\n\n\nPathogen Genomics\n\nBasics of Bacterial Genomes\nQuality Control of Sequencing Data\n\n\n\nMetagenomics\n\nQuality Control\nAmplicon Data Analysis\nDiversity Analysis\nShotgun Metagenomics\nMetagenome-Assembled Genomes\nFunctional Analysis\nVisualisation & Mini-Project"
   },
   {
-    "objectID": "week2/pathogen_genomics/Day_1/basics.html",
-    "href": "week2/pathogen_genomics/Day_1/basics.html",
-    "title": "Basics of Bacterial Genomes",
+    "objectID": "abisumschool26.html#trainer-info",
+    "href": "abisumschool26.html#trainer-info",
+    "title": "ABI Summer School 2026",
+    "section": "Trainer Info",
+    "text": "Trainer Info\n\n\n\n\n\n\n\n\n\nName\nAffiliation\nRole\nStream\n\n\n\n\nGloria Nakabiri\nAfrican Center of Excellence in Bioinformatics and Data Intensive Sciences\nLead trainer\nUnix\n\n\nPeter van Heusden\nSouth African National Bioinformatics Institute (SANBI)\nLead trainer\nR\n\n\nIan Wasukira\nAfrican Center of Excellence in Bioinformatics and Data-Intensive Sciences\nLead Trainer\nUnix/HPC\n\n\nRonald Galiwango\nAfrican Center of Excellence in Bioinformatics and Data-Intensive Sciences\nLead trainer\nR\n\n\nMusalula Sinkala\nUniversity of Cape Town\nLead trainer\nHuman Genomics\n\n\nDayna Adrienne Croock\nStellenbosch University\nLead trainer\nHuman Genomics\n\n\nJohn Juma\nInternational Livestock Research Institute (ILRI)\nLead trainer\nPathogen Genomics\n\n\nDamien Tully\nMRC/UVRI & LSHTM Uganda Research Unit\nLead Trainer\nPathogen Genomics\n\n\nAlfred Ssekagiri\nUganda Virus Research Institute\nLead trainer\nMetagenomics\n\n\nYohannes Gedamu Gebre\nBio and Emerging Technology Institute (BETin); former Ethiopia Biotechnology Institute (EBTi)\nCo-trainer\nUnix/R/Pathogen Genomics\n\n\nKeaghan Brown\nPHA4GE\nCo-trainer\nPathogen Genomics\n\n\nAmadou Diallo\nPioneer Bio-Analytics\nCo-trainer\nMetagenomics\n\n\nEphifania Geza\nUniversity of Cape Town\nLead trainer\nMetagenomics\n\n\nPatricia Nabisubi\nThe African Centre of Excellence in Bioinformatics and Data Intensive Sciences\nCo-trainer\nUnix/R/NGS basics\n\n\nTrushar Shah\nInternational Livestock Research Institute (Kenya)\nCo-trainer\nHuman Genomics/Unix\n\n\nDaria Sokolova\nEuropean Bioinformatics Institute (EBI)\nCore organiser/support\n\n\n\nGrace Kebirungi\nAfrican Center of Excellence in Bioinformatics and Data-Intensive Sciences\nCore organiser/support\n\n\n\nDavid Twesigomwe\nMRC/UVRI & LSHTM Uganda Research Unit\nCore organiser/support\n\n\n\nVerena Ras\nAfrican Bioinformatics Institute / University of Cape Town\nCore organiser/support\n\n\n\nShaun Aron\nSydney Brenner Institute for Molecular Bioscience (SBIMB) / University of Witwatersrand\nCore organiser/support\n\n\n\nMelek Chaouch\nInstitut Pasteur, Tunis\nCore organiser/support\n\n\n\nJorge da Rocha\nEuropean Bioinformatics Institute (EBI)\nCore organiser/support"
+  },
+  {
+    "objectID": "week2/pathogen_genomics/Day_1/qc.html",
+    "href": "week2/pathogen_genomics/Day_1/qc.html",
+    "title": "Quality Control of Sequencing Data",
     "section": "",
     "text": "Welcome to the Pathogen Genomics module. Scroll through the slides below:"
   },
