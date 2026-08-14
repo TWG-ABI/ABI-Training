@@ -23,7 +23,7 @@ Welcome to the Linux Basics Recap for the ABI Summer School 2026. In high-perfor
 * **Relational Pipelines & Batch Processing:** Compare overlapping sample cohorts and execute bulk file processing via stream piping.  
 :::
 
-**Dataset**
+**Dataset:**
 All exercises operate directly on the `ABI_summer_school_project` archive. This directory simulates an active malaria genomic surveillance project spanning East African field sites. You will work with real bioinformatics file formats.
 
 ---
