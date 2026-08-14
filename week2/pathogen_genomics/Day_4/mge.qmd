@@ -1,0 +1,7 @@
+---
+title: "Horizontal Gene Transfer & Mobile Genetic Elements"
+---
+
+Welcome to the Pathogen Genomics module. Scroll through the slides below:
+
+<iframe src="Mechanisms_of_AMR_and_HGT.pdf" width="100%" height="600px" style="border: none;"></iframe>
