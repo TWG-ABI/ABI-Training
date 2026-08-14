@@ -1,5 +1,5 @@
 ---
-title: "Quality Control"
+title: "Quality Control of Sequencing Data"
 ---
 
 Welcome to the Pathogen Genomics module. Scroll through the slides below:
