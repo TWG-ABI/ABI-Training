@@ -4,4 +4,4 @@ title: "Introduction to Linux and High Performance Computing"
 
 Welcome to the first lecture of the Linux module. Scroll through the slides below:
 
-<iframe src="Basics_of_Bacterial_Genomes.pdf" width="100%" height="600px" style="border: none;"></iframe>
+<iframe src="Pathogen_Genomics_Program.pdf" width="100%" height="600px" style="border: none;"></iframe>
