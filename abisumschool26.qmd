@@ -38,6 +38,7 @@ The aim is to provide comprehensive training on bioinformatics computational res
 
 #### Pathogen Genomics
 1. [Basics of Bacterial Genomes](week2/pathogen_genomics/Day_1/basics.qmd)
+2. [Quality Control of Sequencing Data](week2/pathogen_genomics/Day_1/qc.qmd)
 
 #### Metagenomics
 1. [Quality Control](week2/metagenomics/qc.md)
