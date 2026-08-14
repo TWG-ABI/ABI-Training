@@ -1,1 +1,7 @@
-Pan-genome_and_MLST.pdf
+---
+title: "Pan-genome Analysis & Multilocus Sequence Typing"
+---
+
+Welcome to the Pathogen Genomics module. Scroll through the slides below:
+
+<iframe src="Pan-genome_and_MLST.pdf" width="100%" height="600px" style="border: none;"></iframe>
