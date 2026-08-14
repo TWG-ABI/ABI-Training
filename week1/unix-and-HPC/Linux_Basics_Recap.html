@@ -80,7 +80,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../../site_libs/quarto-html/quarto-syntax-highlighting-bb62276ab45c84d9efd712f51ff97b5a.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-cf2abc19ec09823c931a54267571c7dc.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-4ab0624560ed8065de672b5a54abdb89.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -199,269 +199,966 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Welcome to the Linux Basics Recap for the ABI Summer School 2026. In high-performance computing (HPC) environments, efficiency, precision, and reproducibility are critical when handling massive biological datasets. This hands-on practical session is designed to reinforce fundamental Unix terminal skills and transition your command-line usage from simple file navigation to automated, multi-step bioinformatics workflows.</p>
 </div>
 </div>
-<p><strong>Key Learning Objectives</strong> ::: {.callout-note collapse=“true”} * <strong>Command Chaining &amp; Execution Control:</strong> Master logical operators to run sequential commands safely and construct conditional workflows.<br>
-* <strong>File System Architecture &amp; Linking:</strong> Practice efficient directory tree management and disk space preservation using symbolic links.<br>
-* <strong>Bulk String &amp; File Expansion:</strong> Utilize brace expansion and wildcards to generate directories, construct numerical log sequences. * <strong>Data Inspection &amp; Interrogation:</strong> Inspect, paginate, and audit raw sequencing read files and variant calls using non-destructive terminal viewers. * <strong>Pattern Searching &amp; Metadata Summarization:</strong> Deploy grep with advanced flags alongside column extraction, sorting, and frequency counting.<br>
-* <strong>Relational Pipelines &amp; Batch Processing:</strong> Compare overlapping sample cohorts and execute bulk file processing via stream piping.<br>
-:::</p>
+<p><strong>Key Learning Objectives</strong></p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<ul>
+<li><strong>Command Chaining &amp; Execution Control:</strong> Master logical operators to run sequential commands safely and construct conditional workflows.<br>
+</li>
+<li><strong>File System Architecture &amp; Linking:</strong> Practice efficient directory tree management and disk space preservation using symbolic links.<br>
+</li>
+<li><strong>Bulk String &amp; File Expansion:</strong> Utilize brace expansion and wildcards to generate directories, construct numerical log sequences.</li>
+<li><strong>Data Inspection &amp; Interrogation:</strong> Inspect, paginate, and audit raw sequencing read files and variant calls using non-destructive terminal viewers.</li>
+<li><strong>Pattern Searching &amp; Metadata Summarization:</strong> Deploy grep with advanced flags alongside column extraction, sorting, and frequency counting.<br>
+</li>
+<li><strong>Relational Pipelines &amp; Batch Processing:</strong> Compare overlapping sample cohorts and execute bulk file processing via stream piping.</li>
+</ul>
+</div>
+</div>
+</div>
 <p><strong>Dataset:</strong> All exercises operate directly on the <code>ABI_summer_school_project</code> archive. This directory simulates real bioinformatics file formats.</p>
 <hr>
 <section id="task-1-setup-navigation" class="level2">
 <h2 class="anchored" data-anchor-id="task-1-setup-navigation">TASK 1: SETUP &amp; NAVIGATION</h2>
-<p><strong>Task 1.1:</strong> Download the project ZIP archive from the training repository, extract its contents, and navigate into the newly created directory. ::: {.callout-note collapse=“true”} ## Show answer</p>
+<p><strong>Task 1.1:</strong> Download the project ZIP archive from the training repository, extract its contents, and navigate into the newly created directory.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Show answer
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">wget</span> https://github.com/TWG-ABI/ABI-Training/raw/refs/heads/main/week1/unix-and-HPC/ABI_summer_school_project.zip </span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">unzip</span> ABI_summer_school_project.zip</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> ABI_summer_school_project</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <blockquote class="blockquote">
-<p><strong>Why it works:</strong> * <code>wget</code> downloads files directly from a URL. * <code>unzip</code> extracts the compressed archive. * <code>cd</code> (change directory) navigates your terminal into the newly extracted folder. :::</p>
+<p><strong>Why it works:</strong> * <code>wget</code> downloads files directly from a URL. * <code>unzip</code> extracts the compressed archive. * <code>cd</code> (change directory) navigates your terminal into the newly extracted folder.</p>
 </blockquote>
-<p><strong>Task 1.2:</strong> List all the contents of this project directory and its subdirectories in one command to understand the structure. ::: {.callout-note collapse=“true”} ## Show answer</p>
+</div>
+</div>
+</div>
+<p><strong>Task 1.2:</strong> List all the contents of this project directory and its subdirectories in one command to understand the structure.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Show answer
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-4" class="callout-4-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> <span class="at">-R</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <blockquote class="blockquote">
-<p><strong>Why it works:</strong> <code>ls</code> lists directory contents. * <code>-R</code> (recursive) forces the command to also list all files inside all nested subdirectories, giving a complete tree view. :::</p>
+<p><strong>Why it works:</strong> <code>ls</code> lists directory contents. * <code>-R</code> (recursive) forces the command to also list all files inside all nested subdirectories, giving a complete tree view.</p>
 </blockquote>
-<p><strong>Task 1.3:</strong> Navigate into the <code>raw_data/</code> directory and confirm your absolute directory path in a single line command. ::: {.callout-note collapse=“true”} ## Show answer</p>
+</div>
+</div>
+</div>
+<p><strong>Task 1.3:</strong> Navigate into the <code>raw_data/</code> directory and confirm your absolute directory path in a single line command.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Show answer
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-5" class="callout-5-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> raw_data <span class="kw">&amp;&amp;</span> <span class="bu">pwd</span> </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <blockquote class="blockquote">
-<p><strong>Why it works:</strong> <code>cd</code> changes the directory, and <code>pwd</code> (print working directory) outputs your absolute path. * <code>&amp;&amp;</code> (AND operator) ensures that <code>pwd</code> only runs <em>if</em> the <code>cd</code> command succeeds, preventing you from executing commands in the wrong place. :::</p>
+<p><strong>Why it works:</strong> <code>cd</code> changes the directory, and <code>pwd</code> (print working directory) outputs your absolute path. * <code>&amp;&amp;</code> (AND operator) ensures that <code>pwd</code> only runs <em>if</em> the <code>cd</code> command succeeds, preventing you from executing commands in the wrong place.</p>
 </blockquote>
-<p><strong>Task 1.4:</strong> Find and list any hidden tracking files in this directory along with their detailed permissions. ::: {.callout-note collapse=“true”} ## Show answer</p>
+</div>
+</div>
+</div>
+<p><strong>Task 1.4:</strong> Find and list any hidden tracking files in this directory along with their detailed permissions.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Show answer
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-6" class="callout-6-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> <span class="at">-la</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <blockquote class="blockquote">
-<p><strong>Why it works:</strong> <code>ls</code> lists files. * <code>-l</code> (long format) displays detailed information like permissions, ownership, and file size. * <code>-a</code> (all) reveals hidden files and directories (those starting with a dot, like <code>.hidden_note.txt</code>). :::</p>
+<p><strong>Why it works:</strong> <code>ls</code> lists files. * <code>-l</code> (long format) displays detailed information like permissions, ownership, and file size. * <code>-a</code> (all) reveals hidden files and directories (those starting with a dot, like <code>.hidden_note.txt</code>).</p>
 </blockquote>
+</div>
+</div>
+</div>
 <hr>
 </section>
 <section id="task-2-directory-file-management" class="level2">
 <h2 class="anchored" data-anchor-id="task-2-directory-file-management">TASK 2: DIRECTORY &amp; FILE MANAGEMENT</h2>
 <p><em>(Note: Unless otherwise specified, assume you have navigated back to the project root <code>ABI_summer_school_project</code>)</em></p>
-<p><strong>Task 2.1:</strong> Create a directory called <code>qc</code> within the existing <code>results</code> directory. ::: {.callout-note collapse=“true”} ## Show answer</p>
+<p><strong>Task 2.1:</strong> Create a directory called <code>qc</code> within the existing <code>results</code> directory.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Show answer
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-7" class="callout-7-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> results/qc</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <blockquote class="blockquote">
-<p><strong>Why it works:</strong> <code>mkdir</code> (make directory) creates a new folder. Because we provide the relative path <code>results/qc</code>, it reliably creates the <code>qc</code> folder directly inside the existing <code>results</code> directory. :::</p>
+<p><strong>Why it works:</strong> <code>mkdir</code> (make directory) creates a new folder. Because we provide the relative path <code>results/qc</code>, it reliably creates the <code>qc</code> folder directly inside the existing <code>results</code> directory.</p>
 </blockquote>
-<p><strong>Task 2.2:</strong> From the project root, build four main pipeline directories (fastqc, trimmomatic, bwa, gatk) along with a nested reports/archive folder inside results/ simultaneously using a single command. ::: {.callout-note collapse=“true”} ## Show answer</p>
+</div>
+</div>
+</div>
+<p><strong>Task 2.2:</strong> From the project root, build four main pipeline directories (fastqc, trimmomatic, bwa, gatk) along with a nested reports/archive folder inside results/ simultaneously using a single command.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Show answer
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-8" class="callout-8-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> <span class="at">-p</span> results/<span class="dt">{fastqc</span><span class="op">,</span><span class="dt">trimmomatic</span><span class="op">,</span><span class="dt">bwa</span><span class="op">,</span><span class="dt">gatk</span><span class="op">,</span><span class="dt">reports/archive}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <blockquote class="blockquote">
-<p><strong>Why it works:</strong> <code>mkdir</code> creates directories. * <code>-p</code> (parents) ensures no error is thrown if <code>results/</code> already exists, and it creates parent directories like <code>reports/</code> if they are missing. * <code>{...}</code> (brace expansion) automatically generates multiple arguments, instantly creating all listed directories inside <code>results/</code>. :::</p>
+<p><strong>Why it works:</strong> <code>mkdir</code> creates directories. * <code>-p</code> (parents) ensures no error is thrown if <code>results/</code> already exists, and it creates parent directories like <code>reports/</code> if they are missing. * <code>{...}</code> (brace expansion) automatically generates multiple arguments, instantly creating all listed directories inside <code>results/</code>.</p>
 </blockquote>
-<p><strong>Task 2.3:</strong> Create 5 files in the <code>logs</code> directory called <code>run_day_1.log</code> to <code>run_day_5.log</code> using brace expansion. ::: {.callout-note collapse=“true”} ## Show answer</p>
+</div>
+</div>
+</div>
+<p><strong>Task 2.3:</strong> Create 5 files in the <code>logs</code> directory called <code>run_day_1.log</code> to <code>run_day_5.log</code> using brace expansion.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-9-contents" aria-controls="callout-9" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Show answer
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-9" class="callout-9-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">touch</span> logs/run_day_{1..5}.log</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <blockquote class="blockquote">
-<p><strong>Why it works:</strong> <code>touch</code> creates empty files or updates their timestamps. * <code>{1..5}</code> is a sequence brace expansion that automatically generates numbers 1 through 5, seamlessly creating five sequentially numbered log files in one go. :::</p>
+<p><strong>Why it works:</strong> <code>touch</code> creates empty files or updates their timestamps. * <code>{1..5}</code> is a sequence brace expansion that automatically generates numbers 1 through 5, seamlessly creating five sequentially numbered log files in one go.</p>
 </blockquote>
-<p><strong>Task 2.4:</strong> Create three QC tracker files (<code>sample_001_qc.txt</code>, <code>sample_002_qc.txt</code>, <code>sample_003_qc.txt</code>) in the <code>results/qc</code> directory. ::: {.callout-note collapse=“true”} ## Show answer</p>
+</div>
+</div>
+</div>
+<p><strong>Task 2.4:</strong> Create three QC tracker files (<code>sample_001_qc.txt</code>, <code>sample_002_qc.txt</code>, <code>sample_003_qc.txt</code>) in the <code>results/qc</code> directory.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-10-contents" aria-controls="callout-10" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Show answer
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-10" class="callout-10-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">touch</span> results/qc/sample_001_qc.txt results/qc/sample_002_qc.txt results/qc/sample_003_qc.txt</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <blockquote class="blockquote">
-<p><strong>Why it works:</strong> <code>touch</code> can accept multiple file paths at once. It evaluates each path individually, generating all three text files in the specified <code>results/qc/</code> directory simultaneously. :::</p>
+<p><strong>Why it works:</strong> <code>touch</code> can accept multiple file paths at once. It evaluates each path individually, generating all three text files in the specified <code>results/qc/</code> directory simultaneously.</p>
 </blockquote>
-<p><strong>Task 2.5:</strong> Securely copy the entire <code>logs</code> directory and its contents into a new directory called <code>logs_backup</code>. ::: {.callout-note collapse=“true”} ## Show answer</p>
+</div>
+</div>
+</div>
+<p><strong>Task 2.5:</strong> Securely copy the entire <code>logs</code> directory and its contents into a new directory called <code>logs_backup</code>.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-11-contents" aria-controls="callout-11" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Show answer
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-11" class="callout-11-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cp</span> <span class="at">-r</span> logs/ logs_backup/</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <blockquote class="blockquote">
-<p><strong>Why it works:</strong> <code>cp</code> copies files. * <code>-r</code> (recursive) is mandatory when copying directories. It guarantees the folder and all of its internal contents are duplicated into <code>logs_backup/</code>. :::</p>
+<p><strong>Why it works:</strong> <code>cp</code> copies files. * <code>-r</code> (recursive) is mandatory when copying directories. It guarantees the folder and all of its internal contents are duplicated into <code>logs_backup/</code>.</p>
 </blockquote>
-<p><strong>Task 2.6:</strong> Move into <code>raw_data/</code> and create a <code>.backup</code> copy of <code>sample_manifest.tsv</code> using brace expansion to avoid retyping the filename. ::: {.callout-note collapse=“true”} ## Show answer</p>
+</div>
+</div>
+</div>
+<p><strong>Task 2.6:</strong> Move into <code>raw_data/</code> and create a <code>.backup</code> copy of <code>sample_manifest.tsv</code> using brace expansion to avoid retyping the filename.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-12-contents" aria-controls="callout-12" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Show answer
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-12" class="callout-12-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> raw_data</span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="fu">cp</span> sample_manifest.tsv<span class="dt">{</span><span class="op">,</span><span class="dt">.backup}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <blockquote class="blockquote">
-<p><strong>Why it works:</strong> <code>cp</code> requires a source and a destination. * <code>{,.backup}</code> is a brace expansion trick. The shell expands this comma-separated list into <code>cp sample_manifest.tsv sample_manifest.tsv.backup</code>, saving you from typing the filename twice. :::</p>
+<p><strong>Why it works:</strong> <code>cp</code> requires a source and a destination. * <code>{,.backup}</code> is a brace expansion trick. The shell expands this comma-separated list into <code>cp sample_manifest.tsv sample_manifest.tsv.backup</code>, saving you from typing the filename twice.</p>
 </blockquote>
-<p><strong>Task 2.7:</strong> Move the entire <code>scripts</code> directory into the <code>results</code> directory. ::: {.callout-note collapse=“true”} ## Show answer</p>
+</div>
+</div>
+</div>
+<p><strong>Task 2.7:</strong> Move the entire <code>scripts</code> directory into the <code>results</code> directory.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-13-contents" aria-controls="callout-13" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Show answer
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-13" class="callout-13-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mv</span> ../scripts/ ../results/</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <blockquote class="blockquote">
-<p><strong>Why it works:</strong> <code>mv</code> (move) relocates files or directories. <code>../</code> tells the terminal to step one directory level up (into the project root) to find <code>scripts/</code>, and moves it directly into the <code>results/</code> folder. :::</p>
+<p><strong>Why it works:</strong> <code>mv</code> (move) relocates files or directories. <code>../</code> tells the terminal to step one directory level up (into the project root) to find <code>scripts/</code>, and moves it directly into the <code>results/</code> folder.</p>
 </blockquote>
-<p><strong>Task 2.8:</strong> To conserve cluster storage space, create a symbolic link named <code>ref_index</code> inside <code>results/</code> pointing to the reference genome. ::: {.callout-note collapse=“true”} ## Show answer</p>
+</div>
+</div>
+</div>
+<p><strong>Task 2.8:</strong> To conserve cluster storage space, create a symbolic link named <code>ref_index</code> inside <code>results/</code> pointing to the reference genome.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-14-contents" aria-controls="callout-14" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Show answer
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-14" class="callout-14-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ln</span> <span class="at">-s</span> ../reference/Pfalciparum_3D7.fasta ../results/ref_index</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <blockquote class="blockquote">
-<p><strong>Why it works:</strong> <code>ln</code> creates links between files. * <code>-s</code> (symbolic) creates a lightweight shortcut instead of a hard link. Programs accessing <code>results/ref_index</code> will be seamlessly redirected to the actual FASTA file without consuming duplicate disk space. :::</p>
+<p><strong>Why it works:</strong> <code>ln</code> creates links between files. * <code>-s</code> (symbolic) creates a lightweight shortcut instead of a hard link. Programs accessing <code>results/ref_index</code> will be seamlessly redirected to the actual FASTA file without consuming duplicate disk space.</p>
 </blockquote>
-<p><strong>Task 2.9:</strong> Use a wildcard to permanently remove all files ending in <code>_qc.txt</code> from the <code>results/qc/</code> directory. ::: {.callout-note collapse=“true”} ## Show answer</p>
+</div>
+</div>
+</div>
+<p><strong>Task 2.9:</strong> Use a wildcard to permanently remove all files ending in <code>_qc.txt</code> from the <code>results/qc/</code> directory.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-15-contents" aria-controls="callout-15" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Show answer
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-15" class="callout-15-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span> ../results/qc/sample_<span class="pp">*</span>_qc.txt</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <blockquote class="blockquote">
-<p><strong>Why it works:</strong> <code>rm</code> removes files. * The <code>*</code> (wildcard) acts as a flexible placeholder for any string of characters. This securely deletes <code>sample_001_qc.txt</code>, <code>sample_002_qc.txt</code>, etc., while ignoring unrelated files. :::</p>
+<p><strong>Why it works:</strong> <code>rm</code> removes files. * The <code>*</code> (wildcard) acts as a flexible placeholder for any string of characters. This securely deletes <code>sample_001_qc.txt</code>, <code>sample_002_qc.txt</code>, etc., while ignoring unrelated files.</p>
 </blockquote>
+</div>
+</div>
+</div>
 <hr>
 </section>
 <section id="task-3-inspection-viewing" class="level2">
 <h2 class="anchored" data-anchor-id="task-3-inspection-viewing">TASK 3: INSPECTION &amp; VIEWING</h2>
 <p><em>(Navigate back to the project root)</em></p>
-<p><strong>Task 3.1:</strong> Concatenate and display the contents of both <code>sample_manifest.tsv</code> and <code>coverage_report.tsv</code> to the terminal screen simultaneously. ::: {.callout-note collapse=“true”} ## Show answer</p>
+<p><strong>Task 3.1:</strong> Concatenate and display the contents of both <code>sample_manifest.tsv</code> and <code>coverage_report.tsv</code> to the terminal screen simultaneously.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-16-contents" aria-controls="callout-16" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Show answer
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-16" class="callout-16-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span> raw_data/sample_manifest.tsv raw_data/coverage_report.tsv</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <blockquote class="blockquote">
-<p><strong>Why it works:</strong> <code>cat</code> (concatenate) reads files sequentially and prints their contents to the standard output. Supplying multiple filenames stitches them together back-to-back on your screen. :::</p>
+<p><strong>Why it works:</strong> <code>cat</code> (concatenate) reads files sequentially and prints their contents to the standard output. Supplying multiple filenames stitches them together back-to-back on your screen.</p>
 </blockquote>
-<p><strong>Task 3.2:</strong> Display the contents of the hidden file <code>.hidden_note.txt</code> located in the <code>raw_data/</code> directory. ::: {.callout-note collapse=“true”} ## Show answer</p>
+</div>
+</div>
+</div>
+<p><strong>Task 3.2:</strong> Display the contents of the hidden file <code>.hidden_note.txt</code> located in the <code>raw_data/</code> directory.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-17-contents" aria-controls="callout-17" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Show answer
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-17" class="callout-17-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb15"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span> raw_data/.hidden_note.txt</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <blockquote class="blockquote">
-<p><strong>Why it works:</strong> Hidden files are just regular files that start with a dot. <code>cat</code> easily reads them, displaying their secret contents directly to your terminal. :::</p>
+<p><strong>Why it works:</strong> Hidden files are just regular files that start with a dot. <code>cat</code> easily reads them, displaying their secret contents directly to your terminal.</p>
 </blockquote>
-<p><strong>Task 3.3:</strong> Print the <code>README.txt</code> file to the screen, but prepend line numbers to each line of output. ::: {.callout-note collapse=“true”} ## Show answer</p>
+</div>
+</div>
+</div>
+<p><strong>Task 3.3:</strong> Print the <code>README.txt</code> file to the screen, but prepend line numbers to each line of output.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-18-contents" aria-controls="callout-18" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Show answer
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-18" class="callout-18-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb16"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span> <span class="at">-n</span> README.txt</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <blockquote class="blockquote">
-<p><strong>Why it works:</strong> * <code>-n</code> (number) forces <code>cat</code> to prefix every line of output with its corresponding line number, which is highly useful for referencing specific rows in a dataset. :::</p>
+<p><strong>Why it works:</strong> * <code>-n</code> (number) forces <code>cat</code> to prefix every line of output with its corresponding line number, which is highly useful for referencing specific rows in a dataset.</p>
 </blockquote>
-<p><strong>Task 3.4:</strong> Safely peek inside the massive <code>Pfalciparum_3D7.fasta</code> reference file using a pager that disables line wrapping for easy reading. ::: {.callout-note collapse=“true”} ## Show answer</p>
+</div>
+</div>
+</div>
+<p><strong>Task 3.4:</strong> Safely peek inside the massive <code>Pfalciparum_3D7.fasta</code> reference file using a pager that disables line wrapping for easy reading.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-19-contents" aria-controls="callout-19" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Show answer
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-19" class="callout-19-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb17"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">less</span> <span class="at">-S</span> reference/Pfalciparum_3D7.fasta</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <blockquote class="blockquote">
-<p><strong>Why it works:</strong> <code>less</code> is a pager that lets you safely scroll through massive files without flooding your terminal. * <code>-S</code> (chop long lines) disables line wrapping. Instead of text spilling over, it stays on a single horizontal line that you can scroll through using your arrow keys. :::</p>
+<p><strong>Why it works:</strong> <code>less</code> is a pager that lets you safely scroll through massive files without flooding your terminal. * <code>-S</code> (chop long lines) disables line wrapping. Instead of text spilling over, it stays on a single horizontal line that you can scroll through using your arrow keys.</p>
 </blockquote>
-<p><strong>Task 3.5:</strong> Print <code>sample_manifest.tsv</code> starting from line 2 to isolate the sample records and exclude the header row. ::: {.callout-note collapse=“true”} ## Show answer</p>
+</div>
+</div>
+</div>
+<p><strong>Task 3.5:</strong> Print <code>sample_manifest.tsv</code> starting from line 2 to isolate the sample records and exclude the header row.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-20-contents" aria-controls="callout-20" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Show answer
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-20" class="callout-20-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb18"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tail</span> <span class="at">-n</span> +2 raw_data/sample_manifest.tsv</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <blockquote class="blockquote">
-<p><strong>Why it works:</strong> <code>tail</code> traditionally outputs the end of a file. * <code>-n +2</code> tells <code>tail</code> to start printing specifically from line 2 all the way to the end, effectively discarding the 1st line (the header). :::</p>
+<p><strong>Why it works:</strong> <code>tail</code> traditionally outputs the end of a file. * <code>-n +2</code> tells <code>tail</code> to start printing specifically from line 2 all the way to the end, effectively discarding the 1st line (the header).</p>
 </blockquote>
+</div>
+</div>
+</div>
 <hr>
 </section>
 <section id="task-4-sorting-searching" class="level2">
 <h2 class="anchored" data-anchor-id="task-4-sorting-searching">TASK 4: SORTING &amp; SEARCHING</h2>
-<p><strong>Task 4.1:</strong> Sort the <code>batch1_samples.txt</code> file in the raw_data directory alphabetically and save the sorted output into a new file called <code>batch1_sorted.txt</code> in the archive directory. ::: {.callout-note collapse=“true”} ## Show answer</p>
+<p><strong>Task 4.1:</strong> Sort the <code>batch1_samples.txt</code> file in the raw_data directory alphabetically and save the sorted output into a new file called <code>batch1_sorted.txt</code> in the archive directory.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-21-contents" aria-controls="callout-21" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Show answer
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-21" class="callout-21-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb19"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sort</span> raw_data/batch1_samples.txt <span class="op">&gt;</span> results/reports/archive/batch1_sorted.txt</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <blockquote class="blockquote">
-<p><strong>Why it works:</strong> <code>sort</code> naturally arranges lines alphabetically. * <code>&gt;</code> (redirection operator) captures the sorted output that would normally print to your screen and permanently writes it into the <code>batch1_sorted.txt</code> file instead. :::</p>
+<p><strong>Why it works:</strong> <code>sort</code> naturally arranges lines alphabetically. * <code>&gt;</code> (redirection operator) captures the sorted output that would normally print to your screen and permanently writes it into the <code>batch1_sorted.txt</code> file instead.</p>
 </blockquote>
-<p><strong>Task 4.2:</strong> Sort the sample manifest file specifically based on the values in its 3rd column. ::: {.callout-note collapse=“true”} ## Show answer</p>
+</div>
+</div>
+</div>
+<p><strong>Task 4.2:</strong> Sort the sample manifest file specifically based on the values in its 3rd column.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-22-contents" aria-controls="callout-22" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Show answer
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-22" class="callout-22-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb20"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sort</span> <span class="at">-k3</span> raw_data/sample_manifest.tsv</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <blockquote class="blockquote">
-<p><strong>Why it works:</strong> * <code>-k3</code> (key 3) instructs <code>sort</code> to evaluate only the 3rd column (which defaults to being separated by whitespace/tabs) when determining the alphabetical order. :::</p>
+<p><strong>Why it works:</strong> * <code>-k3</code> (key 3) instructs <code>sort</code> to evaluate only the 3rd column (which defaults to being separated by whitespace/tabs) when determining the alphabetical order.</p>
 </blockquote>
-<p><strong>Task 4.3:</strong> Sort the sample manifest based on the 4th column, but in reverse (descending) order. ::: {.callout-note collapse=“true”} ## Show answer</p>
+</div>
+</div>
+</div>
+<p><strong>Task 4.3:</strong> Sort the sample manifest based on the 4th column, but in reverse (descending) order.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-23-contents" aria-controls="callout-23" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Show answer
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-23" class="callout-23-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb21"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sort</span> <span class="at">-k4</span> <span class="at">-r</span> raw_data/sample_manifest.tsv</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <blockquote class="blockquote">
-<p><strong>Why it works:</strong> * <code>-k4</code> targets the 4th column for sorting. * <code>-r</code> (reverse) flips the default ascending order, sorting the column in descending order (e.g., newest dates first or Z-to-A). :::</p>
+<p><strong>Why it works:</strong> * <code>-k4</code> targets the 4th column for sorting. * <code>-r</code> (reverse) flips the default ascending order, sorting the column in descending order (e.g., newest dates first or Z-to-A).</p>
 </blockquote>
-<p><strong>Task 4.4:</strong> Display only the first 5 variant data lines of <code>SAMPLE_001.vcf</code>, excluding the VCF header lines (which all start with <code>#</code>). ::: {.callout-note collapse=“true”} ## Show answer</p>
+</div>
+</div>
+</div>
+<p><strong>Task 4.4:</strong> Display only the first 5 variant data lines of <code>SAMPLE_001.vcf</code>, excluding the VCF header lines (which all start with <code>#</code>).</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-24-contents" aria-controls="callout-24" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Show answer
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-24" class="callout-24-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb22"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">grep</span> <span class="at">-v</span> <span class="st">'^#'</span> variants/SAMPLE_001.vcf <span class="kw">|</span> <span class="fu">head</span> <span class="at">-n</span> 5</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <blockquote class="blockquote">
-<p><strong>Why it works:</strong> * <code>grep -v</code> (invert-match) aggressively filters out lines that contain the pattern. * <code>'^#'</code> targets lines starting with <code>#</code> (<code>^</code> signifies the “start of line”). * <code>|</code> (pipe) sends that filtered data stream directly into <code>head</code>, which cleanly limits the display to the first 5 variant lines. :::</p>
+<p><strong>Why it works:</strong> * <code>grep -v</code> (invert-match) aggressively filters out lines that contain the pattern. * <code>'^#'</code> targets lines starting with <code>#</code> (<code>^</code> signifies the “start of line”). * <code>|</code> (pipe) sends that filtered data stream directly into <code>head</code>, which cleanly limits the display to the first 5 variant lines.</p>
 </blockquote>
-<p><strong>Task 4.5:</strong> Count exactly how many non-header lines (actual variant calls) exist in <code>SAMPLE_001.vcf</code>. ::: {.callout-note collapse=“true”} ## Show answer</p>
+</div>
+</div>
+</div>
+<p><strong>Task 4.5:</strong> Count exactly how many non-header lines (actual variant calls) exist in <code>SAMPLE_001.vcf</code>.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-25-contents" aria-controls="callout-25" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Show answer
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-25" class="callout-25-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb23"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">grep</span> <span class="at">-vc</span> <span class="st">'^#'</span> variants/SAMPLE_001.vcf</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <blockquote class="blockquote">
-<p><strong>Why it works:</strong> * <code>-v</code> filters out the header lines. * <code>-c</code> (count) suppresses standard output and instead prints only the total number of lines that matched the criteria, instantly telling you the variant count. :::</p>
+<p><strong>Why it works:</strong> * <code>-v</code> filters out the header lines. * <code>-c</code> (count) suppresses standard output and instead prints only the total number of lines that matched the criteria, instantly telling you the variant count.</p>
 </blockquote>
-<p><strong>Task 4.6:</strong> Search through the <code>pipeline.log</code> file for the word ‘WARNING’ and prefix the output with the exact line numbers where they occurred. ::: {.callout-note collapse=“true”} ## Show answer</p>
+</div>
+</div>
+</div>
+<p><strong>Task 4.6:</strong> Search through the <code>pipeline.log</code> file for the word ‘WARNING’ and prefix the output with the exact line numbers where they occurred.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-26-contents" aria-controls="callout-26" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Show answer
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-26" class="callout-26-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb24"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">grep</span> <span class="at">-n</span> <span class="st">'WARNING'</span> logs/pipeline.log</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <blockquote class="blockquote">
-<p><strong>Why it works:</strong> * <code>-n</code> (line number) cleanly prefixes each matched line with its exact line number from the original file, making it easy to locate exactly where the warning occurred in the log. :::</p>
+<p><strong>Why it works:</strong> * <code>-n</code> (line number) cleanly prefixes each matched line with its exact line number from the original file, making it easy to locate exactly where the warning occurred in the log.</p>
 </blockquote>
-<p><strong>Task 4.7:</strong> Search the pipeline log for the word ‘failed’, ignoring case sensitivity (so it matches ‘FAILED’, ‘Failed’, etc.). ::: {.callout-note collapse=“true”} ## Show answer</p>
+</div>
+</div>
+</div>
+<p><strong>Task 4.7:</strong> Search the pipeline log for the word ‘failed’, ignoring case sensitivity (so it matches ‘FAILED’, ‘Failed’, etc.).</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-27-contents" aria-controls="callout-27" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Show answer
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-27" class="callout-27-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb25"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">grep</span> <span class="at">-i</span> <span class="st">'failed'</span> logs/pipeline.log</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <blockquote class="blockquote">
-<p><strong>Why it works:</strong> * <code>-i</code> (ignore case) ensures the search is case-insensitive, guaranteeing you catch “FAILED”, “Failed”, and “failed” without having to write multiple search queries. :::</p>
+<p><strong>Why it works:</strong> * <code>-i</code> (ignore case) ensures the search is case-insensitive, guaranteeing you catch “FAILED”, “Failed”, and “failed” without having to write multiple search queries.</p>
 </blockquote>
-<p><strong>Task 4.8:</strong> Count how many sequences are present in the reference FASTA file by counting the number of FASTA header lines (which start with <code>&gt;</code>). ::: {.callout-note collapse=“true”} ## Show answer</p>
+</div>
+</div>
+</div>
+<p><strong>Task 4.8:</strong> Count how many sequences are present in the reference FASTA file by counting the number of FASTA header lines (which start with <code>&gt;</code>).</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-28-contents" aria-controls="callout-28" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Show answer
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-28" class="callout-28-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb26"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">grep</span> <span class="at">-c</span> <span class="st">'^&gt;'</span> reference/Pfalciparum_3D7.fasta</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <blockquote class="blockquote">
-<p><strong>Why it works:</strong> In biological FASTA files, every sequence is preceded by a header line starting with <code>&gt;</code>. * <code>^&gt;</code> strictly targets these header lines, and <code>-c</code> tallies them up to give you the total number of chromosomes or contigs in the genome. :::</p>
+<p><strong>Why it works:</strong> In biological FASTA files, every sequence is preceded by a header line starting with <code>&gt;</code>. * <code>^&gt;</code> strictly targets these header lines, and <code>-c</code> tallies them up to give you the total number of chromosomes or contigs in the genome.</p>
 </blockquote>
+</div>
+</div>
+</div>
 <p><strong>Task 4.9:</strong> Search the entire <code>logs/</code> directory for the word ‘ERROR’, printing the matching line numbers alongside the file names.</p>
 <ol type="a">
-<li>First, redirect this output into a new file called <code>error_summary.log</code> in the archive directory using standard redirection. Notice that nothing prints to your screen. ::: {.callout-note collapse=“true”} ## Show answer</li>
+<li>First, redirect this output into a new file called <code>error_summary.log</code> in the archive directory using standard redirection. Notice that nothing prints to your screen.</li>
 </ol>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-29-contents" aria-controls="callout-29" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Show answer
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-29" class="callout-29-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb27"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">grep</span> <span class="at">-rn</span> <span class="st">'ERROR'</span> logs/ <span class="op">&gt;</span> results/reports/archive/error_summary.log</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <blockquote class="blockquote">
-<p><strong>Why it works:</strong> * <code>-r</code> (recursive) comprehensively searches through every file inside the <code>logs/</code> directory. * <code>-n</code> prints line numbers. * <code>&gt;</code> intercepts the search results and saves them silently into <code>error_summary.log</code>. :::</p>
+<p><strong>Why it works:</strong> * <code>-r</code> (recursive) comprehensively searches through every file inside the <code>logs/</code> directory. * <code>-n</code> prints line numbers. * <code>&gt;</code> intercepts the search results and saves them silently into <code>error_summary.log</code>.</p>
 </blockquote>
+</div>
+</div>
+</div>
 <ol start="2" type="a">
-<li>Now repeat the same search, but this time use <code>tee</code> to write to <code>error_summary_tee.log</code> while also displaying the matches on screen in real time. ::: {.callout-note collapse=“true”} ## Show answer</li>
+<li>Now repeat the same search, but this time use <code>tee</code> to write to <code>error_summary_tee.log</code> while also displaying the matches on screen in real time.</li>
 </ol>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-30-contents" aria-controls="callout-30" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Show answer
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-30" class="callout-30-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb28"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">grep</span> <span class="at">-rn</span> <span class="st">'ERROR'</span> logs/ <span class="kw">|</span> <span class="fu">tee</span> results/reports/archive/error_summary_tee.log</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <blockquote class="blockquote">
-<p><strong>Why it works:</strong> * <code>| tee</code> acts identically to a T-junction in plumbing. It takes the output stream from <code>grep</code>, writes it into the specified file, <em>and</em> allows it to continue flowing out to your terminal screen for you to see. :::</p>
+<p><strong>Why it works:</strong> * <code>| tee</code> acts identically to a T-junction in plumbing. It takes the output stream from <code>grep</code>, writes it into the specified file, <em>and</em> allows it to continue flowing out to your terminal screen for you to see.</p>
 </blockquote>
-<p><strong>Task 4.10:</strong> Count all the lines across all FASTQ files in the <code>raw_data/</code> directory at once. ::: {.callout-note collapse=“true”} ## Show answer</p>
+</div>
+</div>
+</div>
+<p><strong>Task 4.10:</strong> Count all the lines across all FASTQ files in the <code>raw_data/</code> directory at once.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-31-contents" aria-controls="callout-31" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Show answer
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-31" class="callout-31-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb29"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">wc</span> <span class="at">-l</span> raw_data/<span class="pp">*</span>.fastq</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <blockquote class="blockquote">
-<p><strong>Why it works:</strong> <code>wc</code> (word count) calculates file metrics. * <code>-l</code> restricts it to counting only lines. * <code>*.fastq</code> efficiently feeds every FASTQ file into the command, outputting the line count for each individual file alongside a grand total at the bottom. :::</p>
+<p><strong>Why it works:</strong> <code>wc</code> (word count) calculates file metrics. * <code>-l</code> restricts it to counting only lines. * <code>*.fastq</code> efficiently feeds every FASTQ file into the command, outputting the line count for each individual file alongside a grand total at the bottom.</p>
 </blockquote>
-<p><strong>Task 4.11:</strong> Calculate the exact number of sequencing reads in <code>SAMPLE_001.fastq</code> by counting total lines. ::: {.callout-note collapse=“true”} ## Show answer</p>
+</div>
+</div>
+</div>
+<p><strong>Task 4.11:</strong> Calculate the exact number of sequencing reads in <code>SAMPLE_001.fastq</code> by counting total lines.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-32-contents" aria-controls="callout-32" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Show answer
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-32" class="callout-32-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb30"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">expr</span> <span class="va">$(</span><span class="fu">wc</span> <span class="at">-l</span> <span class="op">&lt;</span> raw_data/SAMPLE_001.fastq<span class="va">)</span> / 4</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <blockquote class="blockquote">
-<p><strong>Why it works:</strong> Every single sequencing read in a standard FASTQ file consists of exactly 4 lines. * <code>$(...)</code> executes the inner command first. <code>wc -l &lt;</code> feeds the file in and counts lines without printing the filename (which would otherwise break the math). * <code>expr ... / 4</code> securely evaluates a basic mathematical expression, dividing the total lines by 4 to reveal the true number of biological reads. :::</p>
+<p><strong>Why it works:</strong> Every single sequencing read in a standard FASTQ file consists of exactly 4 lines. * <code>$(...)</code> executes the inner command first. <code>wc -l &lt;</code> feeds the file in and counts lines without printing the filename (which would otherwise break the math). * <code>expr ... / 4</code> securely evaluates a basic mathematical expression, dividing the total lines by 4 to reveal the true number of biological reads.</p>
 </blockquote>
+</div>
+</div>
+</div>
 <hr>
 </section>
 <section id="task-5-batch-processing-data-interrogation" class="level2">
 <h2 class="anchored" data-anchor-id="task-5-batch-processing-data-interrogation">TASK 5: BATCH PROCESSING &amp; DATA INTERROGATION</h2>
 <p><em>(Change into the archive directory)</em></p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb31"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> results/reports/archive</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p><strong>Task 5.1:</strong> Compare the two lists (<code>batch1_sorted.txt</code> and <code>batch2_samples.txt</code>) and output only the sample IDs that are unique to the second batch. ::: {.callout-note collapse=“true”} ## Show answer</p>
+<p><strong>Task 5.1:</strong> Compare the two lists (<code>batch1_sorted.txt</code> and <code>batch2_samples.txt</code>) and output only the sample IDs that are unique to the second batch.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-33-contents" aria-controls="callout-33" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Show answer
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-33" class="callout-33-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb32"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="fu">comm</span> <span class="at">-13</span> batch1_sorted.txt ../../../raw_data/batch2_samples.txt</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <blockquote class="blockquote">
-<p><strong>Why it works:</strong> <code>comm</code> compares two sorted files line by line, generating three columns: unique to file 1, unique to file 2, and shared. * <code>-1</code> suppresses lines unique to file 1. * <code>-3</code> suppresses lines shared by both. * By eliminating those, only column 2 remains visible, displaying items uniquely found in the second file. :::</p>
+<p><strong>Why it works:</strong> <code>comm</code> compares two sorted files line by line, generating three columns: unique to file 1, unique to file 2, and shared. * <code>-1</code> suppresses lines unique to file 1. * <code>-3</code> suppresses lines shared by both. * By eliminating those, only column 2 remains visible, displaying items uniquely found in the second file.</p>
 </blockquote>
-<p><strong>Task 5.2:</strong> Compare the two lists and output only the sample IDs that are unique to the first batch. ::: {.callout-note collapse=“true”} ## Show answer</p>
+</div>
+</div>
+</div>
+<p><strong>Task 5.2:</strong> Compare the two lists and output only the sample IDs that are unique to the first batch.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-34-contents" aria-controls="callout-34" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Show answer
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-34" class="callout-34-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb33"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="fu">comm</span> <span class="at">-23</span> batch1_sorted.txt ../../../raw_data/batch2_samples.txt</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <blockquote class="blockquote">
-<p><strong>Why it works:</strong> * <code>-2</code> suppresses lines unique to file 2. * <code>-3</code> suppresses lines shared by both. * This outputs only column 1, precisely isolating items exclusively found in the first file. :::</p>
+<p><strong>Why it works:</strong> * <code>-2</code> suppresses lines unique to file 2. * <code>-3</code> suppresses lines shared by both. * This outputs only column 1, precisely isolating items exclusively found in the first file.</p>
 </blockquote>
-<p><strong>Task 5.3:</strong> Extract only the 1st column (Sample ID) from the sample manifest file using <code>cut</code>. ::: {.callout-note collapse=“true”} ## Show answer</p>
+</div>
+</div>
+</div>
+<p><strong>Task 5.3:</strong> Extract only the 1st column (Sample ID) from the sample manifest file using <code>cut</code>.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-35-contents" aria-controls="callout-35" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Show answer
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-35" class="callout-35-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb34"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cut</span> <span class="at">-f1</span> ../../../raw_data/sample_manifest.tsv</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <blockquote class="blockquote">
-<p><strong>Why it works:</strong> <code>cut</code> extracts sections from lines of files based on delimiters (tabs by default). * <code>-f1</code> (field 1) strictly targets the first column, cleanly slicing the Sample IDs out of the dataset. :::</p>
+<p><strong>Why it works:</strong> <code>cut</code> extracts sections from lines of files based on delimiters (tabs by default). * <code>-f1</code> (field 1) strictly targets the first column, cleanly slicing the Sample IDs out of the dataset.</p>
 </blockquote>
-<p><strong>Task 5.4:</strong> Extract the 3rd column (e.g.&nbsp;Field Site) from the sample manifest file using <code>cut</code>. ::: {.callout-note collapse=“true”} ## Show answer</p>
+</div>
+</div>
+</div>
+<p><strong>Task 5.4:</strong> Extract the 3rd column (e.g.&nbsp;Field Site) from the sample manifest file using <code>cut</code>.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-36-contents" aria-controls="callout-36" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Show answer
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-36" class="callout-36-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb35"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cut</span> <span class="at">-f3</span> ../../../raw_data/sample_manifest.tsv</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <blockquote class="blockquote">
-<p><strong>Why it works:</strong> * <code>-f3</code> explicitly extracts only the 3rd field, slicing out the Field Sites while ignoring the rest of the file contents. :::</p>
+<p><strong>Why it works:</strong> * <code>-f3</code> explicitly extracts only the 3rd field, slicing out the Field Sites while ignoring the rest of the file contents.</p>
 </blockquote>
-<p><strong>Task 5.5:</strong> Extract the 1st and 8th columns simultaneously from the manifest. ::: {.callout-note collapse=“true”} ## Show answer</p>
+</div>
+</div>
+</div>
+<p><strong>Task 5.5:</strong> Extract the 1st and 8th columns simultaneously from the manifest.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-37-contents" aria-controls="callout-37" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Show answer
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-37" class="callout-37-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb36"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cut</span> <span class="at">-f1,8</span> ../../../raw_data/sample_manifest.tsv</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <blockquote class="blockquote">
-<p><strong>Why it works:</strong> * <code>-f1,8</code> utilizes a comma to select discrete, non-contiguous fields, allowing you to instantly extract just the first and eighth columns side-by-side. :::</p>
+<p><strong>Why it works:</strong> * <code>-f1,8</code> utilizes a comma to select discrete, non-contiguous fields, allowing you to instantly extract just the first and eighth columns side-by-side.</p>
 </blockquote>
-<p><strong>Task 5.6:</strong> Extract a continuous range of columns (1 through 4) from the manifest. ::: {.callout-note collapse=“true”} ## Show answer</p>
+</div>
+</div>
+</div>
+<p><strong>Task 5.6:</strong> Extract a continuous range of columns (1 through 4) from the manifest.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-38-contents" aria-controls="callout-38" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Show answer
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-38" class="callout-38-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb37"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cut</span> <span class="at">-f1-4</span> ../../../raw_data/sample_manifest.tsv</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <blockquote class="blockquote">
-<p><strong>Why it works:</strong> * <code>-f1-4</code> utilizes a hyphen to select a continuous block, extracting columns 1, 2, 3, and 4 collectively without having to type each number. :::</p>
+<p><strong>Why it works:</strong> * <code>-f1-4</code> utilizes a hyphen to select a continuous block, extracting columns 1, 2, 3, and 4 collectively without having to type each number.</p>
 </blockquote>
-<p><strong>Task 5.7:</strong> Extract the Field Site column, sort the extracted sites alphabetically, and generate a frequency table counting how many samples belong to each site. ::: {.callout-note collapse=“true”} ## Show answer</p>
+</div>
+</div>
+</div>
+<p><strong>Task 5.7:</strong> Extract the Field Site column, sort the extracted sites alphabetically, and generate a frequency table counting how many samples belong to each site.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-39-contents" aria-controls="callout-39" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Show answer
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-39" class="callout-39-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb38"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cut</span> <span class="at">-f3</span> ../../../raw_data/sample_manifest.tsv <span class="kw">|</span> <span class="fu">sort</span> <span class="kw">|</span> <span class="fu">uniq</span> <span class="at">-c</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <blockquote class="blockquote">
-<p><strong>Why it works:</strong> This is a cornerstone bioinformatics aggregation pipeline. * <code>cut</code> isolates the data column you care about (Field Sites). * <code>sort</code> groups identical text strings together. * <code>uniq -c</code> efficiently collapses identical adjacent lines into a single record, prefixing them with an integer counting how many times they originally appeared. :::</p>
+<p><strong>Why it works:</strong> This is a cornerstone bioinformatics aggregation pipeline. * <code>cut</code> isolates the data column you care about (Field Sites). * <code>sort</code> groups identical text strings together. * <code>uniq -c</code> efficiently collapses identical adjacent lines into a single record, prefixing them with an integer counting how many times they originally appeared.</p>
 </blockquote>
-<p><strong>Task 5.8:</strong> Stitch two text files together side-by-side using a default tab delimiter (Hint: use <code>paste</code>). ::: {.callout-note collapse=“true”} ## Show answer</p>
+</div>
+</div>
+</div>
+<p><strong>Task 5.8:</strong> Stitch two text files together side-by-side using a default tab delimiter (Hint: use <code>paste</code>).</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-40-contents" aria-controls="callout-40" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Show answer
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-40" class="callout-40-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb39"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="fu">paste</span> batch1_sorted.txt ../../../raw_data/batch2_samples.txt</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <blockquote class="blockquote">
-<p><strong>Why it works:</strong> <code>paste</code> merges files horizontally. It automatically reads line 1 from file A and line 1 from file B, pasting them together horizontally separated by a standard tab character. :::</p>
+<p><strong>Why it works:</strong> <code>paste</code> merges files horizontally. It automatically reads line 1 from file A and line 1 from file B, pasting them together horizontally separated by a standard tab character.</p>
 </blockquote>
-<p><strong>Task 5.9:</strong> Stitch the same two files together, but use a comma (<code>,</code>) as the delimiter instead of a tab. ::: {.callout-note collapse=“true”} ## Show answer</p>
+</div>
+</div>
+</div>
+<p><strong>Task 5.9:</strong> Stitch the same two files together, but use a comma (<code>,</code>) as the delimiter instead of a tab.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-41-contents" aria-controls="callout-41" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Show answer
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-41" class="callout-41-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb40"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="fu">paste</span> <span class="at">-d</span><span class="st">','</span> batch1_sorted.txt ../../../raw_data/batch2_samples.txt</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <blockquote class="blockquote">
-<p><strong>Why it works:</strong> * <code>-d','</code> (delimiter) changes the default tab separator directly to a comma, allowing you to effortlessly generate CSV-style output on the fly. :::</p>
+<p><strong>Why it works:</strong> * <code>-d','</code> (delimiter) changes the default tab separator directly to a comma, allowing you to effortlessly generate CSV-style output on the fly.</p>
 </blockquote>
-<p><strong>Task 5.10:</strong> Navigate back to the project root. Then search the entire project tree recursively to find all files starting with ‘SAMPLE’ and ending in ‘.fastq’. ::: {.callout-note collapse=“true”} ## Show answer</p>
+</div>
+</div>
+</div>
+<p><strong>Task 5.10:</strong> Navigate back to the project root. Then search the entire project tree recursively to find all files starting with ‘SAMPLE’ and ending in ‘.fastq’.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-42-contents" aria-controls="callout-42" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Show answer
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-42" class="callout-42-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb41"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> ../../../</span>
 <span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a><span class="fu">find</span> . <span class="at">-name</span> <span class="st">'SAMPLE*.fastq'</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <blockquote class="blockquote">
-<p><strong>Why it works:</strong> <code>find</code> rigorously searches directory hierarchies. * <code>.</code> tells it to search downwards starting from your current directory. * <code>-name</code> specifies the search pattern. Single quotes (<code>'...'</code>) are crucial because they protect the wildcard <code>*</code> from being evaluated prematurely by your shell. :::</p>
+<p><strong>Why it works:</strong> <code>find</code> rigorously searches directory hierarchies. * <code>.</code> tells it to search downwards starting from your current directory. * <code>-name</code> specifies the search pattern. Single quotes (<code>'...'</code>) are crucial because they protect the wildcard <code>*</code> from being evaluated prematurely by your shell.</p>
 </blockquote>
-<p><strong>Task 5.11:</strong> Find all FASTQ files anywhere in the project tree, and pass their names to <code>wc -l</code> to calculate a batch line count. ::: {.callout-note collapse=“true”} ## Show answer</p>
+</div>
+</div>
+</div>
+<p><strong>Task 5.11:</strong> Find all FASTQ files anywhere in the project tree, and pass their names to <code>wc -l</code> to calculate a batch line count.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-43-contents" aria-controls="callout-43" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Show answer
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-43" class="callout-43-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb42"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="fu">find</span> . <span class="at">-name</span> <span class="st">"*.fastq"</span> <span class="kw">|</span> <span class="fu">xargs</span> wc <span class="at">-l</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <blockquote class="blockquote">
-<p><strong>Why it works:</strong> * <code>find</code> locates the relative paths for all FASTQ files. * <code>xargs</code> neatly takes that resulting list of filenames and dynamically feeds them as trailing arguments to <code>wc -l</code>. This allows you to process thousands of files without hitting shell character limits. :::</p>
+<p><strong>Why it works:</strong> * <code>find</code> locates the relative paths for all FASTQ files. * <code>xargs</code> neatly takes that resulting list of filenames and dynamically feeds them as trailing arguments to <code>wc -l</code>. This allows you to process thousands of files without hitting shell character limits.</p>
 </blockquote>
-<p><strong>Task 5.12:</strong> Identify the total disk usage of the project folder and list its immediate subdirectories, sorted by size from largest to smallest. ::: {.callout-note collapse=“true”} ## Show answer</p>
+</div>
+</div>
+</div>
+<p><strong>Task 5.12:</strong> Identify the total disk usage of the project folder and list its immediate subdirectories, sorted by size from largest to smallest.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-44-contents" aria-controls="callout-44" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Show answer
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-44" class="callout-44-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb43"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="fu">du</span> <span class="at">-h</span> <span class="at">--max-depth</span><span class="op">=</span>1 . <span class="kw">|</span> <span class="fu">sort</span> <span class="at">-hr</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <blockquote class="blockquote">
-<p><strong>Why it works:</strong> * <code>du -h</code> (disk usage, human-readable) calculates directory sizes in kilobytes, megabytes, or gigabytes. * <code>--max-depth=1</code> aggressively prevents it from reporting on every single nested subdirectory. * <code>sort -hr</code> (human, reverse) intelligently sorts metric sizes (e.g., placing “1G” above “500M”), listing the heaviest directories conveniently at the top. :::</p>
+<p><strong>Why it works:</strong> * <code>du -h</code> (disk usage, human-readable) calculates directory sizes in kilobytes, megabytes, or gigabytes. * <code>--max-depth=1</code> aggressively prevents it from reporting on every single nested subdirectory. * <code>sort -hr</code> (human, reverse) intelligently sorts metric sizes (e.g., placing “1G” above “500M”), listing the heaviest directories conveniently at the top.</p>
 </blockquote>
-<p><strong>Task 5.13:</strong> Isolate samples marked as ‘FALSE’ for QC in the manifest and save them to a new log file (<code>failed_qc.log</code>) located in the archive directory. If successful, securely append a completion timestamp to the bottom without overwriting data. ::: {.callout-note collapse=“true”} ## Show answer</p>
+</div>
+</div>
+</div>
+<p><strong>Task 5.13:</strong> Isolate samples marked as ‘FALSE’ for QC in the manifest and save them to a new log file (<code>failed_qc.log</code>) located in the archive directory. If successful, securely append a completion timestamp to the bottom without overwriting data.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-45-contents" aria-controls="callout-45" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Show answer
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-45" class="callout-45-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb44"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="fu">grep</span> <span class="st">'FALSE'</span> raw_data/sample_manifest.tsv <span class="op">&gt;</span> results/reports/archive/failed_qc.log <span class="kw">&amp;&amp;</span> <span class="bu">echo</span> <span class="st">"Log generated on </span><span class="va">$(</span><span class="fu">date</span><span class="va">)</span><span class="st">"</span> <span class="op">&gt;&gt;</span> results/reports/archive/failed_qc.log</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <blockquote class="blockquote">
-<p><strong>Why it works:</strong> * <code>&gt;</code> overwrites or creates <code>failed_qc.log</code> with the initial <code>grep</code> results. * <code>&amp;&amp;</code> logically ensures the subsequent timestamp command only runs if the search command succeeded without error. * <code>$(date)</code> seamlessly injects the current system time into the string. * <code>&gt;&gt;</code> safely <em>appends</em> the echo string to the very bottom of the log file without erasing the data we just wrote. :::</p>
+<p><strong>Why it works:</strong> * <code>&gt;</code> overwrites or creates <code>failed_qc.log</code> with the initial <code>grep</code> results. * <code>&amp;&amp;</code> logically ensures the subsequent timestamp command only runs if the search command succeeded without error. * <code>$(date)</code> seamlessly injects the current system time into the string. * <code>&gt;&gt;</code> safely <em>appends</em> the echo string to the very bottom of the log file without erasing the data we just wrote.</p>
 </blockquote>
-<p><strong>Task 5.14:</strong> Display a clean 2-level directory tree of the project structure without listing every nested file. ::: {.callout-note collapse=“true”} ## Show answer</p>
+</div>
+</div>
+</div>
+<p><strong>Task 5.14:</strong> Display a clean 2-level directory tree of the project structure without listing every nested file.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-46-contents" aria-controls="callout-46" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Show answer
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-46" class="callout-46-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb45"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="fu">find</span> . <span class="at">-maxdepth</span> 2 <span class="at">-not</span> <span class="at">-path</span> <span class="st">'*/.*'</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <blockquote class="blockquote">
-<p><strong>Why it works:</strong> * <code>-maxdepth 2</code> severely restricts the search to only the current folder and exactly one level deep. * <code>-not -path '*/.*'</code> filters out any hidden directories (like <code>.git</code>) and hidden files, providing an uncluttered overview of your project structure. :::</p>
+<p><strong>Why it works:</strong> * <code>-maxdepth 2</code> severely restricts the search to only the current folder and exactly one level deep. * <code>-not -path '*/.*'</code> filters out any hidden directories (like <code>.git</code>) and hidden files, providing an uncluttered overview of your project structure.</p>
 </blockquote>
-<p><strong>Task 5.15:</strong> Display the total human-readable disk space usage for each file and subdirectory located directly inside the <code>results/</code> directory using wildcard expansion. ::: {.callout-note collapse=“true”} ## Show answer</p>
+</div>
+</div>
+</div>
+<p><strong>Task 5.15:</strong> Display the total human-readable disk space usage for each file and subdirectory located directly inside the <code>results/</code> directory using wildcard expansion.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-47-contents" aria-controls="callout-47" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Show answer
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-47" class="callout-47-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb46"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="fu">du</span> <span class="at">-sh</span> results/<span class="pp">*</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <blockquote class="blockquote">
-<p><strong>Why it works:</strong> * <code>du -s</code> (summarize) prevents it from traversing and detailing every file inside nested folders, only giving the grand total for each specified path. * <code>results/*</code> leverages a shell wildcard to pass every individual file and folder inside <code>results/</code> into the disk usage command as separate arguments. :::</p>
+<p><strong>Why it works:</strong> * <code>du -s</code> (summarize) prevents it from traversing and detailing every file inside nested folders, only giving the grand total for each specified path. * <code>results/*</code> leverages a shell wildcard to pass every individual file and folder inside <code>results/</code> into the disk usage command as separate arguments.</p>
 </blockquote>
+</div>
+</div>
+</div>
 <p><em>ABI Summer School 2026 · Week 1: Linux / HPC</em></p>
 
 
