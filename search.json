@@ -511,9 +511,9 @@
     "text": "Alpha diversity: Are Shannon diversity values significantly different between groups? What does this tell us biologically?\nBeta diversity: Do the samples cluster by group in the PCoA? What percentage of variance do PC1 and PC2 explain?\nPERMANOVA: Is the grouping factor a significant driver of community composition (p &lt; 0.05)? What is the R² (effect size)?\nComposition: What are the top 3 phyla? Does the ratio of Firmicutes to Bacteroidetes differ between groups?\nDifferential abundance: Which taxa are most significantly enriched/depleted? What is their potential biological role?"
   },
   {
-    "objectID": "week2/pathogen_genomics/Day_1/basics.html",
-    "href": "week2/pathogen_genomics/Day_1/basics.html",
-    "title": "Basics of Bacterial Genomes",
+    "objectID": "week2/pathogen_genomics/Day_1/qc.html",
+    "href": "week2/pathogen_genomics/Day_1/qc.html",
+    "title": "Quality Control",
     "section": "",
     "text": "Welcome to the Pathogen Genomics module. Scroll through the slides below:"
   },
@@ -602,11 +602,11 @@
     "text": "Contact & Community\n\n📬 info@bioinformaticsinstitute.africa — for any questions."
   },
   {
-    "objectID": "week2/pathogen_genomics/Day_1/pathogen.html",
-    "href": "week2/pathogen_genomics/Day_1/pathogen.html",
-    "title": "Introduction to Linux and High Performance Computing",
+    "objectID": "week2/pathogen_genomics/Day_1/basics.html",
+    "href": "week2/pathogen_genomics/Day_1/basics.html",
+    "title": "Basics of Bacterial Genomes",
     "section": "",
-    "text": "Welcome to the first lecture of the Linux module. Scroll through the slides below:"
+    "text": "Welcome to the Pathogen Genomics module. Scroll through the slides below:"
   },
   {
     "objectID": "week2/metagenomics/metagenome-assembled-genomes.html",
