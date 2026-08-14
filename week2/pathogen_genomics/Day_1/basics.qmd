@@ -1,7 +1,7 @@
 ---
-title: "Introduction to Linux and High Performance Computing"
+title: "Basics of Bacterial Genomes"
 ---
 
-Welcome to the first lecture of the Linux module. Scroll through the slides below:
+Welcome to the Pathogen Genomics module. Scroll through the slides below:
 
 <iframe src="Basics_of_Bacterial_Genomes.pdf" width="100%" height="600px" style="border: none;"></iframe>
