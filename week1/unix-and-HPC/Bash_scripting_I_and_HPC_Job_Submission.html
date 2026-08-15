@@ -575,7 +575,7 @@ code span.co, code span.c, code span.ch, code span.cm, code span.c1 {
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb27"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Example 1: Appending letters to a word</span></span>
 <span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="va">word</span><span class="op">=</span><span class="st">"chocolate"</span></span>
 <span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a><span class="co"># CORRECT: Prints "chocolatebar"</span></span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a><span class="co"># CORRECT: Prints "foobar"</span></span>
 <span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"</span><span class="va">${word}</span><span class="st">bar"</span></span>
 <span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb27-7"><a href="#cb27-7" aria-hidden="true" tabindex="-1"></a><span class="co"># FAILS: Bash looks for a non-existent variable named '$wordbar'</span></span>
@@ -590,36 +590,51 @@ code span.co, code span.c, code span.ch, code span.cm, code span.c1 {
 <span id="cb28-7"><a href="#cb28-7" aria-hidden="true" tabindex="-1"></a><span class="co"># FAILS: Bash looks for an undefined variable named '$SAMPLE_aligned'!</span></span>
 <span id="cb28-8"><a href="#cb28-8" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"</span><span class="va">$SAMPLE_aligned</span><span class="st">.bam"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
-<section id="practical" class="level4">
-<h4 class="anchored" data-anchor-id="practical">Practical:</h4>
+<section id="practical-task" class="level4">
+<h4 class="anchored" data-anchor-id="practical-task">Practical Task:</h4>
+<p><strong>Question:</strong> You are building an automated quality control pipeline. Write a script named <code>init_qc.sh</code> in the <code>results/scripts/</code> directory. 1. Define a variable <code>sample</code> set to <code>SAMPLE_003</code>. 2. Using the curly brace syntax (<code>${VAR}</code>), construct two new variables: <code>input_file</code> (pointing to <code>raw_data/SAMPLE_003.fastq</code>) and <code>output_dir</code> (pointing to <code>results/qc/SAMPLE_003_fastqc/</code>). 3. Have the script print a status message showing the input file path and output directory path. 4. Use the <code>output_dir</code> variable to create the output directory using <code>mkdir -p</code>. Execute the script and verify the directory was created!</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Show answer
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-5" class="callout-5-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
 <ol type="1">
-<li><p>Open a new script with <code>nano</code>:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb29"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">nano</span> variables_demo.sh</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
+<li><p>Open the script with <code>nano</code>:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb29"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">nano</span> init_qc.sh</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
 <li><p>Type the following code:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb30"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/bin/bash</span></span>
-<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a><span class="co"># ---description----</span></span>
-<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Demonstrating variable assignment, $VAR vs ${VAR}</span></span>
-<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Usage: bash variables_demo.sh</span></span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Description: Initialize QC directories using dynamic variables</span></span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a><span class="va">sample</span><span class="op">=</span><span class="st">"SAMPLE_003"</span></span>
 <span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb30-6"><a href="#cb30-6" aria-hidden="true" tabindex="-1"></a><span class="co"># 1. Define variables (NO SPACES around =)</span></span>
-<span id="cb30-7"><a href="#cb30-7" aria-hidden="true" tabindex="-1"></a><span class="va">ORGANISM</span><span class="op">=</span><span class="st">"Plasmodium falciparum"</span></span>
-<span id="cb30-8"><a href="#cb30-8" aria-hidden="true" tabindex="-1"></a><span class="va">SAMPLE</span><span class="op">=</span><span class="st">"Pf_3D7_001"</span></span>
-<span id="cb30-9"><a href="#cb30-9" aria-hidden="true" tabindex="-1"></a><span class="va">WORD</span><span class="op">=</span><span class="st">"chocolate"</span></span>
-<span id="cb30-10"><a href="#cb30-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb30-11"><a href="#cb30-11" aria-hidden="true" tabindex="-1"></a><span class="co"># 2. Print variables using standard expansion</span></span>
-<span id="cb30-12"><a href="#cb30-12" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"========================================="</span></span>
-<span id="cb30-13"><a href="#cb30-13" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"Target organism: </span><span class="va">$ORGANISM</span><span class="st">"</span></span>
-<span id="cb30-14"><a href="#cb30-14" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"Sample ID:       </span><span class="va">${SAMPLE}</span><span class="st">"</span></span>
-<span id="cb30-15"><a href="#cb30-15" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"-----------------------------------------"</span></span>
+<span id="cb30-6"><a href="#cb30-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Construct paths using curly braces</span></span>
+<span id="cb30-7"><a href="#cb30-7" aria-hidden="true" tabindex="-1"></a><span class="va">input_file</span><span class="op">=</span><span class="st">"../../raw_data/</span><span class="va">${sample}</span><span class="st">.fastq"</span></span>
+<span id="cb30-8"><a href="#cb30-8" aria-hidden="true" tabindex="-1"></a><span class="va">output_dir</span><span class="op">=</span><span class="st">"../results/qc/</span><span class="va">${sample}</span><span class="st">_fastqc"</span></span>
+<span id="cb30-9"><a href="#cb30-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-10"><a href="#cb30-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Print status log</span></span>
+<span id="cb30-11"><a href="#cb30-11" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"========================================="</span></span>
+<span id="cb30-12"><a href="#cb30-12" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"Starting QC Analysis"</span></span>
+<span id="cb30-13"><a href="#cb30-13" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"Input File:  </span><span class="va">$input_file</span><span class="st">"</span></span>
+<span id="cb30-14"><a href="#cb30-14" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"Output Dest: </span><span class="va">$output_dir</span><span class="st">"</span></span>
+<span id="cb30-15"><a href="#cb30-15" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"========================================="</span></span>
 <span id="cb30-16"><a href="#cb30-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb30-17"><a href="#cb30-17" aria-hidden="true" tabindex="-1"></a><span class="co"># 3. Demonstrating boundary syntax with curly braces</span></span>
-<span id="cb30-18"><a href="#cb30-18" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"Appended word:   </span><span class="va">${WORD}</span><span class="st">bar"</span></span>
-<span id="cb30-19"><a href="#cb30-19" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"Constructed file: </span><span class="va">${SAMPLE}</span><span class="st">_raw.fastq"</span></span>
-<span id="cb30-20"><a href="#cb30-20" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"========================================="</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
+<span id="cb30-17"><a href="#cb30-17" aria-hidden="true" tabindex="-1"></a><span class="co"># Execute a command using the variable</span></span>
+<span id="cb30-18"><a href="#cb30-18" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> <span class="at">-p</span> <span class="va">$output_dir</span></span>
+<span id="cb30-19"><a href="#cb30-19" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"Successfully created </span><span class="va">$output_dir</span><span class="st">"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
 <li><p>Save and exit <code>nano</code> (<code>Ctrl+O</code>, <code>Enter</code>, <code>Ctrl+X</code>).</p></li>
-<li><p>Run the script:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb31"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">bash</span> variables_demo.sh</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
+<li><p>Run the script and check your <code>results/qc/</code> folder:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb31"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">bash</span> init_qc.sh</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
 </ol>
+</div>
+</div>
+</div>
 <hr>
 </section>
 </section>
@@ -630,10 +645,10 @@ code span.co, code span.c, code span.ch, code span.cm, code span.c1 {
 <li><p><strong>Double Quotes <code>""</code>:</strong> They group words together into a single string but <strong>allow</strong> variables to be expanded (translated into their actual values).</p></li>
 <li><p><strong>Single Quotes <code>''</code>:</strong> They treat everything inside them as literal text. Variables will <strong>not</strong> be expanded.</p></li>
 </ul>
-<section id="practical-1" class="level4">
-<h4 class="anchored" data-anchor-id="practical-1">Practical:</h4>
+<section id="practical" class="level4">
+<h4 class="anchored" data-anchor-id="practical">Practical:</h4>
 <ol type="1">
-<li><p>Open a new script:</p>
+<li><p>Create and open a new script:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb32"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="fu">nano</span> quotes_demo.sh</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
 <li><p>Type the following code:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb33"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/bin/bash</span></span>
@@ -674,8 +689,8 @@ code span.co, code span.c, code span.ch, code span.cm, code span.c1 {
 <li><p>The <code>read</code> command pauses script execution, waits for the user to type something on their keyboard, and stores whatever was typed directly into a variable.</p></li>
 <li><p><strong>The <code>-p</code> Flag:</strong> Using <code>read -p "Prompt text: " VARIABLE</code> displays an inline prompt message to the user before waiting for their response.</p></li>
 </ul>
-<section id="practical-2" class="level4">
-<h4 class="anchored" data-anchor-id="practical-2">Practical:</h4>
+<section id="practical-1" class="level4">
+<h4 class="anchored" data-anchor-id="practical-1">Practical:</h4>
 <ol type="1">
 <li><p>Open a new script:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb35"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="fu">nano</span> interactive_prompt.sh</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
@@ -686,22 +701,59 @@ code span.co, code span.c, code span.ch, code span.cm, code span.c1 {
 <span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Usage: bash interactive_prompt.sh</span></span>
 <span id="cb36-5"><a href="#cb36-5" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb36-6"><a href="#cb36-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Prompt the user for input interactively</span></span>
-<span id="cb36-7"><a href="#cb36-7" aria-hidden="true" tabindex="-1"></a><span class="bu">read</span> <span class="at">-p</span> <span class="st">"Enter your sample ID (e.g. Pf_001): "</span> <span class="va">SAMPLE_ID</span></span>
-<span id="cb36-8"><a href="#cb36-8" aria-hidden="true" tabindex="-1"></a><span class="bu">read</span> <span class="at">-p</span> <span class="st">"Enter the sequencing platform (e.g. Illumina / Nanopore): "</span> <span class="va">PLATFORM</span></span>
-<span id="cb36-9"><a href="#cb36-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb36-10"><a href="#cb36-10" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"----------------------------------------"</span></span>
-<span id="cb36-11"><a href="#cb36-11" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"Configuring pipeline for sample: </span><span class="va">$SAMPLE_ID</span><span class="st">"</span></span>
-<span id="cb36-12"><a href="#cb36-12" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"Platform selected:               </span><span class="va">$PLATFORM</span><span class="st">"</span></span>
-<span id="cb36-13"><a href="#cb36-13" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"----------------------------------------"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
+<span id="cb36-7"><a href="#cb36-7" aria-hidden="true" tabindex="-1"></a><span class="bu">read</span> <span class="at">-p</span> <span class="st">"Enter the sequencing platform (e.g. Illumina / Nanopore): "</span> <span class="va">PLATFORM</span></span>
+<span id="cb36-8"><a href="#cb36-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-9"><a href="#cb36-9" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"----------------------------------------"</span></span>
+<span id="cb36-10"><a href="#cb36-10" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"Platform selected:               </span><span class="va">$PLATFORM</span><span class="st">"</span></span>
+<span id="cb36-11"><a href="#cb36-11" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"----------------------------------------"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
 <li><p>Save and exit <code>nano</code>.</p></li>
 <li><p>Run the script and type in your sample details when prompted:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb37"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="fu">bash</span> interactive_prompt.sh</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
 </ol>
 </section>
+<section id="practical-task-1" class="level4">
+<h4 class="anchored" data-anchor-id="practical-task-1">Practical Task:</h4>
+<p><strong>Question:</strong> Create a script called <code>check_logs.sh</code> in the <code>results/scripts/</code> directory. 1. Use <code>read -p</code> to ask the user: ‘Enter a keyword to search the logs (e.g., ERROR, WARNING):’ and store it in a variable. 2. Use <code>grep</code> to search for that dynamically provided keyword inside the <code>logs/pipeline.log</code> file. 3. Pipe (<code>|</code>) the result to <code>tail</code> to show only the 5 most recent occurrences of that term. 4. Execute the script and test it by typing in <code>ERROR</code> when prompted!</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Show answer
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-7" class="callout-7-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<ol type="1">
+<li><p>Open a new script:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb38"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="fu">nano</span> check_logs.sh</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
+<li><p>Type the following code:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb39"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/bin/bash</span></span>
+<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Description: Interactively search pipeline logs</span></span>
+<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb39-4"><a href="#cb39-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Prompt the user for a search term</span></span>
+<span id="cb39-5"><a href="#cb39-5" aria-hidden="true" tabindex="-1"></a><span class="bu">read</span> <span class="at">-p</span> <span class="st">"Enter a keyword to search the logs (e.g., ERROR, WARNING): "</span> <span class="va">KEYWORD</span></span>
+<span id="cb39-6"><a href="#cb39-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb39-7"><a href="#cb39-7" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"----------------------------------------"</span></span>
+<span id="cb39-8"><a href="#cb39-8" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"Searching for '</span><span class="va">$KEYWORD</span><span class="st">' in logs/pipeline.log..."</span></span>
+<span id="cb39-9"><a href="#cb39-9" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"----------------------------------------"</span></span>
+<span id="cb39-10"><a href="#cb39-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb39-11"><a href="#cb39-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Run grep to find the keyword and pipe to tail</span></span>
+<span id="cb39-12"><a href="#cb39-12" aria-hidden="true" tabindex="-1"></a><span class="fu">grep</span> <span class="st">"</span><span class="va">$KEYWORD</span><span class="st">"</span> logs/pipeline.log <span class="kw">|</span> <span class="fu">tail</span> <span class="at">-n</span> 5</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
+<li><p>Save and exit <code>nano</code> (<code>Ctrl+O</code>, <code>Enter</code>, <code>Ctrl+X</code>).</p></li>
+<li><p>Run the script and type <code>ERROR</code> when prompted:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb40"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="fu">bash</span> check_logs.sh</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
+</ol>
+</div>
+</div>
+</div>
+</section>
 </section>
 <section id="step-4-local-vs.-environment-variables" class="level3">
 <h3 class="anchored" data-anchor-id="step-4-local-vs.-environment-variables">Step 4: Local vs.&nbsp;Environment Variables</h3>
-<p>So far, the variables we have created (like <code>SAMPLE_ID</code>) are <strong>Local Variables</strong>. They only exist within the specific script or terminal session where they were created. If you run a script, any variables defined inside that script disappear as soon as the script finishes.</p>
+<p>So far, the variables we have created are <strong>Local Variables</strong>. They only exist within the specific script or terminal session where they were created. If you run a script, any variables defined inside that script disappear as soon as the script finishes.</p>
 <p>In contrast, <strong>Environment Variables</strong> are system-wide variables that are available to the shell and any child processes or scripts you run.</p>
 <ul>
 <li><p><strong>Viewing Environment Variables:</strong> You can see all active environment variables using the <code>env</code> or <code>printenv</code> commands.</p></li>
@@ -746,11 +798,6 @@ code span.co, code span.c, code span.ch, code span.cm, code span.c1 {
 <td><code>/usr/bin:/bin</code></td>
 </tr>
 <tr class="even">
-<td><code>$EDITOR</code></td>
-<td>The default text editor used by tools like nano.</td>
-<td><code>nano</code></td>
-</tr>
-<tr class="odd">
 <td><code>$HOSTNAME</code></td>
 <td>The network name of the machine.</td>
 <td><code>web-server-01</code></td>
@@ -762,27 +809,27 @@ code span.co, code span.c, code span.ch, code span.cm, code span.c1 {
 <h4 class="anchored" data-anchor-id="making-a-variable-global-with-export">Making a Variable Global with <code>export</code></h4>
 <p>If you want a variable defined in your terminal to be accessible by a script you run, you must “promote” it to an environment variable using the <code>export</code> command.</p>
 </section>
-<section id="practical-3" class="level4">
-<h4 class="anchored" data-anchor-id="practical-3">Practical:</h4>
+<section id="practical-2" class="level4">
+<h4 class="anchored" data-anchor-id="practical-2">Practical:</h4>
 <ol type="1">
 <li><p>Open a new script:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb38"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="fu">nano</span> env_demo.sh</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb41"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="fu">nano</span> env_demo.sh</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
 <li><p>Type the following code:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb39"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/bin/bash</span></span>
-<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a><span class="co"># ---description----</span></span>
-<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Demonstrating environment variables</span></span>
-<span id="cb39-4"><a href="#cb39-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Usage: bash env_demo.sh</span></span>
-<span id="cb39-5"><a href="#cb39-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb39-6"><a href="#cb39-6" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"Hello </span><span class="va">$USER</span><span class="st">! Your home directory is </span><span class="va">$HOME</span><span class="st">."</span></span>
-<span id="cb39-7"><a href="#cb39-7" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"The custom project directory is: </span><span class="va">$MY_PROJECT</span><span class="st">"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb42"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/bin/bash</span></span>
+<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a><span class="co"># ---description----</span></span>
+<span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Demonstrating environment variables</span></span>
+<span id="cb42-4"><a href="#cb42-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Usage: bash env_demo.sh</span></span>
+<span id="cb42-5"><a href="#cb42-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-6"><a href="#cb42-6" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"Hello </span><span class="va">$USER</span><span class="st">! Your home directory is </span><span class="va">$HOME</span><span class="st">."</span></span>
+<span id="cb42-7"><a href="#cb42-7" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"The custom project directory is: </span><span class="va">$MY_PROJECT</span><span class="st">"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
 <li><p>Save and exit <code>nano</code>.</p></li>
 <li><p>Define a local variable in your terminal and run the script:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb40"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="va">MY_PROJECT</span><span class="op">=</span><span class="st">"/data/malaria"</span></span>
-<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a><span class="fu">bash</span> env_demo.sh</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb43"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="va">MY_PROJECT</span><span class="op">=</span><span class="st">"/data/malaria"</span></span>
+<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a><span class="fu">bash</span> env_demo.sh</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p><em>(Notice that <code>$MY_PROJECT</code> is blank in the script’s output because the script cannot see your terminal’s local variables).</em></p></li>
 <li><p>Now, <strong>export</strong> the variable and run the script again:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb41"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="bu">export</span> <span class="va">MY_PROJECT</span></span>
-<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a><span class="fu">bash</span> env_demo.sh</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb44"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="bu">export</span> <span class="va">MY_PROJECT</span></span>
+<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a><span class="fu">bash</span> env_demo.sh</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p><em>(This time, the script successfully reads the variable because <code>export</code> made it an environment variable!)</em></p></li>
 </ol>
 <hr>
