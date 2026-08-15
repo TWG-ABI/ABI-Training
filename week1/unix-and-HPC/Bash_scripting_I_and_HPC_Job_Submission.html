@@ -183,7 +183,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </ul></li>
   <li><a href="#part-3-introduction-to-variables-quoting-user-input" id="toc-part-3-introduction-to-variables-quoting-user-input" class="nav-link" data-scroll-target="#part-3-introduction-to-variables-quoting-user-input">Part 3: Introduction to Variables, Quoting &amp; User Input</a>
   <ul class="collapse">
-  <li><a href="#step-1-learning-variables" id="toc-step-1-learning-variables" class="nav-link" data-scroll-target="#step-1-learning-variables">Step 1: Learning Variables</a></li>
+  <li><a href="#step-1-learning-variables-access-syntax-var-vs.-var" id="toc-step-1-learning-variables-access-syntax-var-vs.-var" class="nav-link" data-scroll-target="#step-1-learning-variables-access-syntax-var-vs.-var">Step 1: Learning Variables &amp; Access Syntax (<code>$VAR</code> vs.&nbsp;<code>${VAR}</code>)</a></li>
   <li><a href="#step-2-quoting-variables---double-quotes-vs.-single-quotes" id="toc-step-2-quoting-variables---double-quotes-vs.-single-quotes" class="nav-link" data-scroll-target="#step-2-quoting-variables---double-quotes-vs.-single-quotes">Step 2: Quoting Variables - Double Quotes (<code>""</code>) vs.&nbsp;Single Quotes (<code>''</code>)</a></li>
   <li><a href="#step-3-interactive-user-input-with-read" id="toc-step-3-interactive-user-input-with-read" class="nav-link" data-scroll-target="#step-3-interactive-user-input-with-read">Step 3: Interactive User Input with <code>read</code></a></li>
   </ul></li>
@@ -250,9 +250,14 @@ code span.co, code span.c, code span.ch, code span.cm, code span.c1 {
 <section id="anatomy-structure-of-a-bash-script" class="level3">
 <h3 class="anchored" data-anchor-id="anatomy-structure-of-a-bash-script">Anatomy &amp; Structure of a Bash Script</h3>
 <p>Every well-written Bash script follows a clear structure composed of core components:</p>
-<p align="center">
-<img src="bash_script_structure.png" alt="Bash Script Structure" width="100%">
-</p>
+<div data-align="center">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="bash_script_structure.png" class="img-fluid figure-img"></p>
+<figcaption>Bash Script Basics: Files, Structure &amp; First Commands</figcaption>
+</figure>
+</div>
+</div>
 <hr>
 </section>
 <section id="writing-and-running-your-first-script" class="level3">
@@ -279,7 +284,8 @@ code span.co, code span.c, code span.ch, code span.cm, code span.c1 {
 <p>There are <strong>three different methods</strong> to execute your script:</p>
 <p><strong>Method 1: Passing the file to <code>bash</code> directly</strong> You can explicitly tell the <code>bash</code> program to read and execute your script:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">bash</span> first_script.sh</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p><strong>Method 2: Passing the file to <code>sh</code></strong> <code>sh</code> is an older standard shell interpreter. For basic commands, it behaves similarly:</p>
+<p><strong>Method 2: Passing the file to <code>sh</code></strong></p>
+<p><code>sh</code> is an older standard shell interpreter. For basic commands, it behaves similarly:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sh</span> first_script.sh</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p><strong>Method 3: Executing the file directly</strong> In professional environments, we run scripts directly as standalone programs using <code>./</code> (which specifies “look in the current directory”):</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="ex">./first_script.sh</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -315,8 +321,8 @@ code span.co, code span.c, code span.ch, code span.cm, code span.c1 {
 </div>
 <div class="callout-body-container callout-body">
 <ul>
-<li><strong>The Login Node:</strong> A shared gateway server used by dozens of researchers at once. It is intended <em>only</em> for lightweight tasks: navigating directories, editing code with <code>nano</code>, and submitting jobs. <strong>Never run computationally heavy analyses on the login node</strong>, as doing so will slow down or crash the server for all users.</li>
-<li><strong>The Compute Nodes:</strong> A massive fleet of high-powered servers (equipped with dozens of CPU cores and hundreds of gigabytes of RAM) where the actual computation takes place. Compute nodes cannot be accessed directly; tasks must be routed to them via a workload manager.</li>
+<li><p><strong>The Login Node:</strong> A shared gateway server used by dozens of researchers at once. It is intended <em>only</em> for lightweight tasks: navigating directories, editing code with <code>nano</code>, and submitting jobs. <strong>Never run computationally heavy analyses on the login node</strong>, as doing so will slow down or crash the server for all users.</p></li>
+<li><p><strong>The Compute Nodes:</strong> A massive fleet of high-powered servers (equipped with dozens of CPU cores and hundreds of gigabytes of RAM) where the actual computation takes place. Compute nodes cannot be accessed directly; tasks must be routed to them via a workload manager.</p></li>
 </ul>
 </div>
 </div>
@@ -325,7 +331,8 @@ code span.co, code span.c, code span.ch, code span.cm, code span.c1 {
 <section id="three-ways-to-execute-work-on-an-hpc" class="level3">
 <h3 class="anchored" data-anchor-id="three-ways-to-execute-work-on-an-hpc">Three Ways to Execute Work on an HPC</h3>
 <p>There are three primary ways to run workloads on compute nodes:</p>
-<pre><code>┌─────────────────────────────────────────────────────────────────────────────────────────┐
+<pre><code>
+┌─────────────────────────────────────────────────────────────────────────────────────────┐
 │                                HOW WORK RUNS ON AN HPC                                  │
 ├───────────────────────────────┬───────────────────────────────┬─────────────────────────┤
 │    1. DIRECT INTERACTIVE      │    2. ALLOCATION SUBSHELL     │      3. BATCH JOBS      │
@@ -335,10 +342,19 @@ code span.co, code span.c, code span.ch, code span.cm, code span.c1 {
 │ • Live interactive shell      │ • Subshell on login node      │ • Fully automated       │
 │ • Good for testing &amp; EDA      │ • Good for multiple tasks     │ • Good for heavy runs   │
 │ • Command: srun --pty bash    │ • Command: salloc ...         │ • Command: sbatch ...   │
-└───────────────────────────────┴───────────────────────────────┴─────────────────────────┘</code></pre>
+└───────────────────────────────┴───────────────────────────────┴─────────────────────────┘
+</code></pre>
 <section id="interactive-jobs-srun" class="level4">
 <h4 class="anchored" data-anchor-id="interactive-jobs-srun">1. Interactive Jobs (<code>srun</code>)</h4>
-<p>An interactive job allocates dedicated resources on a compute node and immediately gives you a live command prompt on that node in real time. * <strong>When to use:</strong> Testing short commands, debugging scripts, or exploring data interactively. * <strong>Quick interactive session:</strong> <code>bash   srun --pty bash</code> * <strong>Custom resource request (e.g.&nbsp;1 CPU core, 2GB RAM for 30 minutes):</strong> <code>bash   srun --nodes=1 --ntasks=1 --cpus-per-task=1 --mem=2G --time=00:30:00 --pty bash</code> <em>(Notice how your prompt changes from <code>user@login-node</code> to <code>user@compute-node</code>! When finished, simply type <code>exit</code> to return to the login node).</em></p>
+<p>An interactive job allocates dedicated resources on a compute node and immediately gives you a live command prompt on that node in real time.</p>
+<ul>
+<li><p><strong>When to use:</strong> Testing short commands, debugging scripts, or exploring data interactively.</p></li>
+<li><p><strong>Quick interactive session:</strong></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="ex">srun</span> <span class="at">--pty</span> bash</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
+<li><p><strong>Custom resource request (e.g.&nbsp;1 CPU core, 2GB RAM for 30 minutes):</strong></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="ex">srun</span> <span class="at">--nodes</span><span class="op">=</span>1 <span class="at">--ntasks</span><span class="op">=</span>1 <span class="at">--cpus-per-task</span><span class="op">=</span>1 <span class="at">--mem</span><span class="op">=</span>2G <span class="at">--time</span><span class="op">=</span>00:30:00 <span class="at">--pty</span> bash</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><em>(Notice how your prompt changes from <code>user@login-node</code> to <code>user@compute-node</code>! When finished, simply type <code>exit</code> to return to the login node).</em></p></li>
+</ul>
 </section>
 <section id="interactive-resource-allocation-salloc" class="level4">
 <h4 class="anchored" data-anchor-id="interactive-resource-allocation-salloc">2. Interactive Resource Allocation (<code>salloc</code>)</h4>
@@ -346,16 +362,19 @@ code span.co, code span.c, code span.ch, code span.cm, code span.c1 {
 <ul>
 <li><p><strong>When to use:</strong> When you need to hold a resource reservation for a work session and run several separate commands or <code>srun</code> tasks within that same allocation.</p></li>
 <li><p><strong>Example command (requesting 1 node, 2 CPUs, 4GB RAM for 1 hour):</strong></p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="ex">salloc</span> <span class="at">--nodes</span><span class="op">=</span>1 <span class="at">--cpus-per-task</span><span class="op">=</span>2 <span class="at">--mem</span><span class="op">=</span>4G <span class="at">--time</span><span class="op">=</span>01:00:00</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="ex">salloc</span> <span class="at">--nodes</span><span class="op">=</span>1 <span class="at">--cpus-per-task</span><span class="op">=</span>2 <span class="at">--mem</span><span class="op">=</span>4G <span class="at">--time</span><span class="op">=</span>01:00:00</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Once Slurm grants the allocation (<code>salloc: Granted job allocation ...</code>), you can run tasks inside it using <code>srun</code>:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="ex">srun</span> hostname</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="ex">srun</span> hostname</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
 <li><p><strong>Releasing resources:</strong> When finished, type <code>exit</code> to terminate the allocation and release the resources back to the cluster:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="bu">exit</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="bu">exit</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
 </ul>
 </section>
 <section id="batch-jobs-sbatch" class="level4">
 <h4 class="anchored" data-anchor-id="batch-jobs-sbatch">3. Batch Jobs (<code>sbatch</code>)</h4>
-<p>A batch job is non-interactive. You write your instructions into a script, submit it to the scheduler, and disconnect. The cluster runs the script automatically in the background and saves all output to log files. * <strong>When to use:</strong> Long-running computations, bioinformatics pipelines, and heavy analyses.</p>
+<p>A batch job is non-interactive. You write your instructions into a script, submit it to the scheduler, and disconnect. The cluster runs the script automatically in the background and saves all output to log files.</p>
+<ul>
+<li><strong>When to use:</strong> Long-running computations, bioinformatics pipelines, and heavy analyses.</li>
+</ul>
 <hr>
 </section>
 </section>
@@ -420,46 +439,46 @@ code span.co, code span.c, code span.ch, code span.cm, code span.c1 {
 <h3 class="anchored" data-anchor-id="practical-submitting-your-first-slurm-batch-job">Practical: Submitting Your First Slurm Batch Job</h3>
 <ol type="1">
 <li><p>Create a job submission script called <code>hello_slurm.sh</code>:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">nano</span> hello_slurm.sh</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb15"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">nano</span> hello_slurm.sh</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
 <li><p>Type the following code:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/bin/bash</span></span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --job-name=hello_slurm       # Name of the job in the queue</span></span>
-<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --output=hello_slurm.out     # Standard output log file</span></span>
-<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --error=hello_slurm.err      # Standard error log file</span></span>
-<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --time=00:05:00              # Maximum time requested (5 minutes)</span></span>
-<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --mem=1G                     # Total RAM requested (1 GB)</span></span>
-<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --cpus-per-task=1            # Number of CPU cores</span></span>
-<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a><span class="co"># --- Basic Commands ---</span></span>
-<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"========================================="</span></span>
-<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"Hello from the HPC cluster!"</span></span>
-<span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"Current working directory:"</span></span>
-<span id="cb14-13"><a href="#cb14-13" aria-hidden="true" tabindex="-1"></a><span class="bu">pwd</span></span>
-<span id="cb14-14"><a href="#cb14-14" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"Current date and time:"</span></span>
-<span id="cb14-15"><a href="#cb14-15" aria-hidden="true" tabindex="-1"></a><span class="fu">date</span></span>
-<span id="cb14-16"><a href="#cb14-16" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"Compute node hostname:"</span></span>
-<span id="cb14-17"><a href="#cb14-17" aria-hidden="true" tabindex="-1"></a><span class="fu">hostname</span></span>
-<span id="cb14-18"><a href="#cb14-18" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"========================================="</span></span>
-<span id="cb14-19"><a href="#cb14-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-20"><a href="#cb14-20" aria-hidden="true" tabindex="-1"></a><span class="co"># Pause for 30 seconds so we can observe the job in the queue</span></span>
-<span id="cb14-21"><a href="#cb14-21" aria-hidden="true" tabindex="-1"></a><span class="fu">sleep</span> 30</span>
-<span id="cb14-22"><a href="#cb14-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-23"><a href="#cb14-23" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"Batch job completed successfully!"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb16"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/bin/bash</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --job-name=hello_slurm       # Name of the job in the queue</span></span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --output=hello_slurm.out     # Standard output log file</span></span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --error=hello_slurm.err      # Standard error log file</span></span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --time=00:05:00              # Maximum time requested (5 minutes)</span></span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --mem=1G                     # Total RAM requested (1 GB)</span></span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --cpus-per-task=1            # Number of CPU cores</span></span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a><span class="co"># --- Basic Commands ---</span></span>
+<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"========================================="</span></span>
+<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"Hello from the HPC cluster!"</span></span>
+<span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"Current working directory:"</span></span>
+<span id="cb16-13"><a href="#cb16-13" aria-hidden="true" tabindex="-1"></a><span class="bu">pwd</span></span>
+<span id="cb16-14"><a href="#cb16-14" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"Current date and time:"</span></span>
+<span id="cb16-15"><a href="#cb16-15" aria-hidden="true" tabindex="-1"></a><span class="fu">date</span></span>
+<span id="cb16-16"><a href="#cb16-16" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"Compute node hostname:"</span></span>
+<span id="cb16-17"><a href="#cb16-17" aria-hidden="true" tabindex="-1"></a><span class="fu">hostname</span></span>
+<span id="cb16-18"><a href="#cb16-18" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"========================================="</span></span>
+<span id="cb16-19"><a href="#cb16-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-20"><a href="#cb16-20" aria-hidden="true" tabindex="-1"></a><span class="co"># Pause for 30 seconds so we can observe the job in the queue</span></span>
+<span id="cb16-21"><a href="#cb16-21" aria-hidden="true" tabindex="-1"></a><span class="fu">sleep</span> 30</span>
+<span id="cb16-22"><a href="#cb16-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-23"><a href="#cb16-23" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"Batch job completed successfully!"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
 <li><p>Save and exit <code>nano</code> (<code>Ctrl+O</code>, <code>Enter</code>, <code>Ctrl+X</code>).</p></li>
 </ol>
 <section id="submitting-and-monitoring-the-job" class="level4">
 <h4 class="anchored" data-anchor-id="submitting-and-monitoring-the-job">Submitting and Monitoring the Job</h4>
 <ol start="4" type="1">
 <li><p><strong>Submit the job to Slurm:</strong></p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb15"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="ex">sbatch</span> hello_slurm.sh</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb17"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="ex">sbatch</span> hello_slurm.sh</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p><em>Slurm will confirm with a job number, e.g.: <code>Submitted batch job 104523</code>.</em></p></li>
 <li><p><strong>Inspect the queue:</strong> Check the status of your running job (replace <code>&lt;your_username&gt;</code> with your cluster username):</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb16"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="ex">squeue</span> <span class="at">-u</span> <span class="op">&lt;</span>your_username<span class="op">&gt;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb18"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="ex">squeue</span> <span class="at">-u</span> <span class="op">&lt;</span>your_username<span class="op">&gt;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <ul>
 <li><em><code>ST</code> (State):</em> <code>PD</code> = Pending, <code>R</code> = Running, <code>CG</code> = Completing.</li>
 </ul></li>
 <li><p><strong>View the generated output log:</strong> Once the job finishes, check the generated output file:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb17"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span> hello_slurm.out</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb19"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span> hello_slurm.out</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
 </ol>
 <hr>
 </section>
@@ -469,25 +488,25 @@ code span.co, code span.c, code span.ch, code span.cm, code span.c1 {
 <p>In bioinformatics, jobs frequently fail due to typos or missing files. Knowing how to read log files is essential.</p>
 <ol type="1">
 <li><p>Create a script with a deliberate typo:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb18"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">nano</span> broken_job.sh</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb20"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">nano</span> broken_job.sh</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
 <li><p>Type the following code:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb19"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/bin/bash</span></span>
-<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --job-name=broken_test</span></span>
-<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --output=broken_test.out</span></span>
-<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --error=broken_test.err</span></span>
-<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --time=00:02:00</span></span>
-<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --mem=1G</span></span>
-<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"Starting my analysis..."</span></span>
-<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-10"><a href="#cb19-10" aria-hidden="true" tabindex="-1"></a><span class="co"># This command will fail because the folder does not exist:</span></span>
-<span id="cb19-11"><a href="#cb19-11" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> /non_existent_directory/data/</span>
-<span id="cb19-12"><a href="#cb19-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-13"><a href="#cb19-13" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"Analysis finished."</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb21"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/bin/bash</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --job-name=broken_test</span></span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --output=broken_test.out</span></span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --error=broken_test.err</span></span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --time=00:02:00</span></span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --mem=1G</span></span>
+<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"Starting my analysis..."</span></span>
+<span id="cb21-9"><a href="#cb21-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-10"><a href="#cb21-10" aria-hidden="true" tabindex="-1"></a><span class="co"># This command will fail because the folder does not exist:</span></span>
+<span id="cb21-11"><a href="#cb21-11" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> /non_existent_directory/data/</span>
+<span id="cb21-12"><a href="#cb21-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-13"><a href="#cb21-13" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"Analysis finished."</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
 <li><p>Save, exit, and submit:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb20"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="ex">sbatch</span> broken_job.sh</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb22"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="ex">sbatch</span> broken_job.sh</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
 <li><p>Check the error log:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb21"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span> broken_test.err</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb23"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span> broken_test.err</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p><em>You will see the exact cause of failure: <code>ls: cannot access '/non_existent_directory/data/': No such file or directory</code>.</em></p></li>
 </ol>
 <div class="callout callout-style-default callout-important callout-titled">
@@ -510,11 +529,11 @@ code span.co, code span.c, code span.ch, code span.cm, code span.c1 {
 <p>If you submit a job and realize you made a mistake, you can cancel it immediately to free up cluster resources:</p>
 <ol type="1">
 <li><p>Submit a job:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb22"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="ex">sbatch</span> hello_slurm.sh</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb24"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="ex">sbatch</span> hello_slurm.sh</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
 <li><p>Find the <code>JOBID</code> in the queue:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb23"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="ex">squeue</span> <span class="at">-u</span> <span class="op">&lt;</span>your_username<span class="op">&gt;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb25"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="ex">squeue</span> <span class="at">-u</span> <span class="op">&lt;</span>your_username<span class="op">&gt;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
 <li><p>Cancel the job:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb24"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="ex">scancel</span> <span class="op">&lt;</span>YOUR_JOB_ID<span class="op">&gt;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb26"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="ex">scancel</span> <span class="op">&lt;</span>YOUR_JOB_ID<span class="op">&gt;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
 </ol>
 <hr>
 </section>
@@ -523,8 +542,8 @@ code span.co, code span.c, code span.ch, code span.cm, code span.c1 {
 <h2 class="anchored" data-anchor-id="part-3-introduction-to-variables-quoting-user-input">Part 3: Introduction to Variables, Quoting &amp; User Input</h2>
 <p>Static scripts that only print fixed messages are of limited use. To build flexible data-analysis pipelines, our scripts must store data in variables, handle spaces with proper quoting, and accept dynamic user input. We will practice each technique step-by-step by creating dedicated scripts.</p>
 <hr>
-<section id="step-1-learning-variables" class="level3">
-<h3 class="anchored" data-anchor-id="step-1-learning-variables">Step 1: Learning Variables</h3>
+<section id="step-1-learning-variables-access-syntax-var-vs.-var" class="level3">
+<h3 class="anchored" data-anchor-id="step-1-learning-variables-access-syntax-var-vs.-var">Step 1: Learning Variables &amp; Access Syntax (<code>$VAR</code> vs.&nbsp;<code>${VAR}</code>)</h3>
 <ul>
 <li><strong>What is a Variable?</strong> A named storage container in the computer’s memory. You store data (like sample IDs, organisms, or file paths) inside the variable and recall it anywhere in your script.</li>
 </ul>
@@ -542,63 +561,63 @@ code span.co, code span.c, code span.ch, code span.cm, code span.c1 {
 <li>Assign values using the equals sign <code>=</code>.</li>
 <li><strong>CRITICAL:</strong> There must be <strong>NO SPACES</strong> around the equals sign!
 <ul>
-<li>Correct: <code>SAMPLE="SAMPLE_001"</code></li>
-<li>Incorrect: <code>SAMPLE = "SAMPLE_001"</code> (Bash will mistakenly interpret <code>SAMPLE</code> as a command!)</li>
+<li><p>Correct: <code>SAMPLE="SAMPLE_001"</code></p></li>
+<li><p>Incorrect: <code>SAMPLE = "SAMPLE_001"</code> (Bash will mistakenly interpret <code>SAMPLE</code> as a command!)</p></li>
 </ul></li>
-<li>To retrieve or evaluate the data stored inside a variable, prefix its name with a dollar sign <code>$</code>. Wrapping the name in curly braces <code>${VAR}</code> is standard best practice.</li>
+<li>To retrieve or evaluate the data stored inside a variable, prefix its name with a dollar sign <code>$VAR</code> or wrap it in curly braces <code>${VAR}</code>.</li>
 </ol>
 </div>
 </div>
 <section id="why-curly-braces-matter-var-vs.-var" class="level4">
 <h4 class="anchored" data-anchor-id="why-curly-braces-matter-var-vs.-var">Why Curly Braces Matter: <code>$VAR</code> vs.&nbsp;<code>${VAR}</code></h4>
 <p>In simple standalone expressions, <code>$VAR</code> and <code>${VAR}</code> produce the same result. However, when you need to attach text, letters, or suffixes directly to a variable without spaces, curly braces <code>${VAR}</code> are <strong>mandatory</strong> to explicitly mark the boundary of the variable name.</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb25"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Example 1: Appending letters to a word</span></span>
-<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="va">word</span><span class="op">=</span><span class="st">"chocolate"</span></span>
-<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a><span class="co"># CORRECT: Prints "foobar"</span></span>
-<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"</span><span class="va">${word}</span><span class="st">bar"</span></span>
-<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a><span class="co"># FAILS: Bash looks for a non-existent variable named '$wordbar'</span></span>
-<span id="cb25-8"><a href="#cb25-8" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"</span><span class="va">$wordbar</span><span class="st">"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb27"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Example 1: Appending letters to a word</span></span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="va">word</span><span class="op">=</span><span class="st">"chocolate"</span></span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a><span class="co"># CORRECT: Prints "foobar"</span></span>
+<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"</span><span class="va">${word}</span><span class="st">bar"</span></span>
+<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-7"><a href="#cb27-7" aria-hidden="true" tabindex="-1"></a><span class="co"># FAILS: Bash looks for a non-existent variable named '$wordbar'</span></span>
+<span id="cb27-8"><a href="#cb27-8" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"</span><span class="va">$wordbar</span><span class="st">"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>In bioinformatics workflows, this is essential when generating output file names:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb26"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Example 2: Constructing bioinformatics file paths</span></span>
-<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="va">SAMPLE</span><span class="op">=</span><span class="st">"Pf_3D7_001"</span></span>
-<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a><span class="co"># CORRECT: Constructs "Pf_3D7_001_aligned.bam"</span></span>
-<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"</span><span class="va">${SAMPLE}</span><span class="st">_aligned.bam"</span></span>
-<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb26-7"><a href="#cb26-7" aria-hidden="true" tabindex="-1"></a><span class="co"># FAILS: Bash looks for an undefined variable named '$SAMPLE_aligned'!</span></span>
-<span id="cb26-8"><a href="#cb26-8" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"</span><span class="va">$SAMPLE_aligned</span><span class="st">.bam"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb28"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Example 2: Constructing bioinformatics file paths</span></span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a><span class="va">SAMPLE</span><span class="op">=</span><span class="st">"Pf_3D7_001"</span></span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a><span class="co"># CORRECT: Constructs "Pf_3D7_001_aligned.bam"</span></span>
+<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"</span><span class="va">${SAMPLE}</span><span class="st">_aligned.bam"</span></span>
+<span id="cb28-6"><a href="#cb28-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-7"><a href="#cb28-7" aria-hidden="true" tabindex="-1"></a><span class="co"># FAILS: Bash looks for an undefined variable named '$SAMPLE_aligned'!</span></span>
+<span id="cb28-8"><a href="#cb28-8" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"</span><span class="va">$SAMPLE_aligned</span><span class="st">.bam"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section id="practical" class="level4">
 <h4 class="anchored" data-anchor-id="practical">Practical:</h4>
 <ol type="1">
 <li><p>Open a new script with <code>nano</code>:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb27"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">nano</span> variables_demo.sh</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb29"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">nano</span> variables_demo.sh</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
 <li><p>Type the following code:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb28"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/bin/bash</span></span>
-<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a><span class="co"># ---description----</span></span>
-<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Demonstrating variable assignment, $VAR vs ${VAR}</span></span>
-<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Usage: bash variables_demo.sh</span></span>
-<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb28-6"><a href="#cb28-6" aria-hidden="true" tabindex="-1"></a><span class="co"># 1. Define variables (NO SPACES around =)</span></span>
-<span id="cb28-7"><a href="#cb28-7" aria-hidden="true" tabindex="-1"></a><span class="va">ORGANISM</span><span class="op">=</span><span class="st">"Plasmodium falciparum"</span></span>
-<span id="cb28-8"><a href="#cb28-8" aria-hidden="true" tabindex="-1"></a><span class="va">SAMPLE</span><span class="op">=</span><span class="st">"Pf_3D7_001"</span></span>
-<span id="cb28-9"><a href="#cb28-9" aria-hidden="true" tabindex="-1"></a><span class="va">WORD</span><span class="op">=</span><span class="st">"chocolate"</span></span>
-<span id="cb28-10"><a href="#cb28-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb28-11"><a href="#cb28-11" aria-hidden="true" tabindex="-1"></a><span class="co"># 2. Print variables using standard expansion</span></span>
-<span id="cb28-12"><a href="#cb28-12" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"========================================="</span></span>
-<span id="cb28-13"><a href="#cb28-13" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"Target organism: </span><span class="va">$ORGANISM</span><span class="st">"</span></span>
-<span id="cb28-14"><a href="#cb28-14" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"Sample ID:       </span><span class="va">${SAMPLE}</span><span class="st">"</span></span>
-<span id="cb28-15"><a href="#cb28-15" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"-----------------------------------------"</span></span>
-<span id="cb28-16"><a href="#cb28-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb28-17"><a href="#cb28-17" aria-hidden="true" tabindex="-1"></a><span class="co"># 3. Demonstrating boundary syntax with curly braces</span></span>
-<span id="cb28-18"><a href="#cb28-18" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"Appended word:   </span><span class="va">${WORD}</span><span class="st">bar"</span></span>
-<span id="cb28-19"><a href="#cb28-19" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"Constructed file: </span><span class="va">${SAMPLE}</span><span class="st">_raw.fastq"</span></span>
-<span id="cb28-20"><a href="#cb28-20" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"========================================="</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb30"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/bin/bash</span></span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a><span class="co"># ---description----</span></span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Demonstrating variable assignment, $VAR vs ${VAR}</span></span>
+<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Usage: bash variables_demo.sh</span></span>
+<span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-6"><a href="#cb30-6" aria-hidden="true" tabindex="-1"></a><span class="co"># 1. Define variables (NO SPACES around =)</span></span>
+<span id="cb30-7"><a href="#cb30-7" aria-hidden="true" tabindex="-1"></a><span class="va">ORGANISM</span><span class="op">=</span><span class="st">"Plasmodium falciparum"</span></span>
+<span id="cb30-8"><a href="#cb30-8" aria-hidden="true" tabindex="-1"></a><span class="va">SAMPLE</span><span class="op">=</span><span class="st">"Pf_3D7_001"</span></span>
+<span id="cb30-9"><a href="#cb30-9" aria-hidden="true" tabindex="-1"></a><span class="va">WORD</span><span class="op">=</span><span class="st">"chocolate"</span></span>
+<span id="cb30-10"><a href="#cb30-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-11"><a href="#cb30-11" aria-hidden="true" tabindex="-1"></a><span class="co"># 2. Print variables using standard expansion</span></span>
+<span id="cb30-12"><a href="#cb30-12" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"========================================="</span></span>
+<span id="cb30-13"><a href="#cb30-13" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"Target organism: </span><span class="va">$ORGANISM</span><span class="st">"</span></span>
+<span id="cb30-14"><a href="#cb30-14" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"Sample ID:       </span><span class="va">${SAMPLE}</span><span class="st">"</span></span>
+<span id="cb30-15"><a href="#cb30-15" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"-----------------------------------------"</span></span>
+<span id="cb30-16"><a href="#cb30-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-17"><a href="#cb30-17" aria-hidden="true" tabindex="-1"></a><span class="co"># 3. Demonstrating boundary syntax with curly braces</span></span>
+<span id="cb30-18"><a href="#cb30-18" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"Appended word:   </span><span class="va">${WORD}</span><span class="st">bar"</span></span>
+<span id="cb30-19"><a href="#cb30-19" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"Constructed file: </span><span class="va">${SAMPLE}</span><span class="st">_raw.fastq"</span></span>
+<span id="cb30-20"><a href="#cb30-20" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"========================================="</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
 <li><p>Save and exit <code>nano</code> (<code>Ctrl+O</code>, <code>Enter</code>, <code>Ctrl+X</code>).</p></li>
 <li><p>Run the script:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb29"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">bash</span> variables_demo.sh</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb31"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">bash</span> variables_demo.sh</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
 </ol>
 <hr>
 </section>
@@ -607,29 +626,29 @@ code span.co, code span.c, code span.ch, code span.cm, code span.c1 {
 <h3 class="anchored" data-anchor-id="step-2-quoting-variables---double-quotes-vs.-single-quotes">Step 2: Quoting Variables - Double Quotes (<code>""</code>) vs.&nbsp;Single Quotes (<code>''</code>)</h3>
 <p>Bash is very particular about how it handles text spaces and variables. You must understand the difference between double quotes (<code>""</code>), single quotes (<code>''</code>), and no quotes.</p>
 <ul>
-<li><strong>Double Quotes <code>""</code>:</strong> They group words together into a single string but <strong>allow</strong> variables to be expanded (translated into their actual values).</li>
-<li><strong>Single Quotes <code>''</code>:</strong> They treat everything inside them as literal text. Variables will <strong>not</strong> be expanded.</li>
+<li><p><strong>Double Quotes <code>""</code>:</strong> They group words together into a single string but <strong>allow</strong> variables to be expanded (translated into their actual values).</p></li>
+<li><p><strong>Single Quotes <code>''</code>:</strong> They treat everything inside them as literal text. Variables will <strong>not</strong> be expanded.</p></li>
 </ul>
 <section id="practical-1" class="level4">
 <h4 class="anchored" data-anchor-id="practical-1">Practical:</h4>
 <ol type="1">
 <li><p>Open a new script:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb30"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">nano</span> quotes_demo.sh</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb32"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="fu">nano</span> quotes_demo.sh</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
 <li><p>Type the following code:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb31"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/bin/bash</span></span>
-<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a><span class="co"># ---description----</span></span>
-<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Demonstrating the difference between double and single quotes</span></span>
-<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Usage: bash quotes_demo.sh</span></span>
-<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb31-6"><a href="#cb31-6" aria-hidden="true" tabindex="-1"></a><span class="va">USER_NAME</span><span class="op">=</span><span class="st">"Gloria"</span></span>
-<span id="cb31-7"><a href="#cb31-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb31-8"><a href="#cb31-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Double quotes allow variable expansion:</span></span>
-<span id="cb31-9"><a href="#cb31-9" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"With double quotes: Hello, </span><span class="va">$USER_NAME</span><span class="st">"</span>   <span class="co"># Outputs: Hello, Gloria</span></span>
-<span id="cb31-10"><a href="#cb31-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb31-11"><a href="#cb31-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Single quotes prevent variable expansion (literal text):</span></span>
-<span id="cb31-12"><a href="#cb31-12" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">'With single quotes: Hello, $USER_NAME'</span>   <span class="co"># Outputs: Hello, $USER_NAME</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb33"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/bin/bash</span></span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a><span class="co"># ---description----</span></span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Demonstrating the difference between double and single quotes</span></span>
+<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Usage: bash quotes_demo.sh</span></span>
+<span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-6"><a href="#cb33-6" aria-hidden="true" tabindex="-1"></a><span class="va">USER_NAME</span><span class="op">=</span><span class="st">"Gloria"</span></span>
+<span id="cb33-7"><a href="#cb33-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-8"><a href="#cb33-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Double quotes allow variable expansion:</span></span>
+<span id="cb33-9"><a href="#cb33-9" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"With double quotes: Hello, </span><span class="va">$USER_NAME</span><span class="st">"</span>   <span class="co"># Outputs: Hello, Gloria</span></span>
+<span id="cb33-10"><a href="#cb33-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-11"><a href="#cb33-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Single quotes prevent variable expansion (literal text):</span></span>
+<span id="cb33-12"><a href="#cb33-12" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">'With single quotes: Hello, $USER_NAME'</span>   <span class="co"># Outputs: Hello, $USER_NAME</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
 <li><p>Save, exit <code>nano</code>, and run:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb32"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="fu">bash</span> quotes_demo.sh</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb34"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="fu">bash</span> quotes_demo.sh</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
 </ol>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -651,31 +670,31 @@ code span.co, code span.c, code span.ch, code span.cm, code span.c1 {
 <h3 class="anchored" data-anchor-id="step-3-interactive-user-input-with-read">Step 3: Interactive User Input with <code>read</code></h3>
 <p>Hard-coding sample names directly into your script means you have to edit the file every time you process a new sample. We can make scripts dynamic by asking the user for input at runtime.</p>
 <ul>
-<li>The <code>read</code> command pauses script execution, waits for the user to type something on their keyboard, and stores whatever was typed directly into a variable.</li>
-<li><strong>The <code>-p</code> Flag:</strong> Using <code>read -p "Prompt text: " VARIABLE</code> displays an inline prompt message to the user before waiting for their response.</li>
+<li><p>The <code>read</code> command pauses script execution, waits for the user to type something on their keyboard, and stores whatever was typed directly into a variable.</p></li>
+<li><p><strong>The <code>-p</code> Flag:</strong> Using <code>read -p "Prompt text: " VARIABLE</code> displays an inline prompt message to the user before waiting for their response.</p></li>
 </ul>
 <section id="practical-2" class="level4">
 <h4 class="anchored" data-anchor-id="practical-2">Practical:</h4>
 <ol type="1">
 <li><p>Open a new script:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb33"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="fu">nano</span> interactive_prompt.sh</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb35"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="fu">nano</span> interactive_prompt.sh</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
 <li><p>Type the following code:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb34"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/bin/bash</span></span>
-<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a><span class="co"># ---description----</span></span>
-<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Capturing dynamic user input with read</span></span>
-<span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Usage: bash interactive_prompt.sh</span></span>
-<span id="cb34-5"><a href="#cb34-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb34-6"><a href="#cb34-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Prompt the user for input interactively</span></span>
-<span id="cb34-7"><a href="#cb34-7" aria-hidden="true" tabindex="-1"></a><span class="bu">read</span> <span class="at">-p</span> <span class="st">"Enter your sample ID (e.g. Pf_001): "</span> <span class="va">SAMPLE_ID</span></span>
-<span id="cb34-8"><a href="#cb34-8" aria-hidden="true" tabindex="-1"></a><span class="bu">read</span> <span class="at">-p</span> <span class="st">"Enter the sequencing platform (e.g. Illumina / Nanopore): "</span> <span class="va">PLATFORM</span></span>
-<span id="cb34-9"><a href="#cb34-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb34-10"><a href="#cb34-10" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"----------------------------------------"</span></span>
-<span id="cb34-11"><a href="#cb34-11" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"Configuring pipeline for sample: </span><span class="va">$SAMPLE_ID</span><span class="st">"</span></span>
-<span id="cb34-12"><a href="#cb34-12" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"Platform selected:               </span><span class="va">$PLATFORM</span><span class="st">"</span></span>
-<span id="cb34-13"><a href="#cb34-13" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"----------------------------------------"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb36"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/bin/bash</span></span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a><span class="co"># ---description----</span></span>
+<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Capturing dynamic user input with read</span></span>
+<span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Usage: bash interactive_prompt.sh</span></span>
+<span id="cb36-5"><a href="#cb36-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-6"><a href="#cb36-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Prompt the user for input interactively</span></span>
+<span id="cb36-7"><a href="#cb36-7" aria-hidden="true" tabindex="-1"></a><span class="bu">read</span> <span class="at">-p</span> <span class="st">"Enter your sample ID (e.g. Pf_001): "</span> <span class="va">SAMPLE_ID</span></span>
+<span id="cb36-8"><a href="#cb36-8" aria-hidden="true" tabindex="-1"></a><span class="bu">read</span> <span class="at">-p</span> <span class="st">"Enter the sequencing platform (e.g. Illumina / Nanopore): "</span> <span class="va">PLATFORM</span></span>
+<span id="cb36-9"><a href="#cb36-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-10"><a href="#cb36-10" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"----------------------------------------"</span></span>
+<span id="cb36-11"><a href="#cb36-11" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"Configuring pipeline for sample: </span><span class="va">$SAMPLE_ID</span><span class="st">"</span></span>
+<span id="cb36-12"><a href="#cb36-12" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"Platform selected:               </span><span class="va">$PLATFORM</span><span class="st">"</span></span>
+<span id="cb36-13"><a href="#cb36-13" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"----------------------------------------"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
 <li><p>Save and exit <code>nano</code>.</p></li>
 <li><p>Run the script and type in your sample details when prompted:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb35"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="fu">bash</span> interactive_prompt.sh</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb37"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="fu">bash</span> interactive_prompt.sh</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
 </ol>
 <hr>
 <p><em>ABI Summer School 2026 · Week 1: Linux / HPC</em></p>
