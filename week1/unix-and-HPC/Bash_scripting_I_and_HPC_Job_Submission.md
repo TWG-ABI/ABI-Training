@@ -2,7 +2,6 @@
   <img src="linux_banner_image.png" alt="ABI Summer School 2026 · WEEK 1: Linux / HPC" width="100%" />
 </p>
 
-
 <style>
 /* Clean, modern, high-contrast code blocks with pretty borders */
 div.sourceCode, pre.sourceCode, pre, pre code, div.cell-code pre {
@@ -390,7 +389,7 @@ In simple standalone expressions, `$VAR` and `${VAR}` produce the same result. H
 # Example 1: Appending letters to a word
 word="chocolate"
 
-# CORRECT: Prints "chocolatebar"
+# CORRECT: Prints "foobar"
 echo "${word}bar"
 
 # FAILS: Bash looks for a non-existent variable named '$wordbar'
@@ -412,41 +411,56 @@ echo "$SAMPLE_aligned.bam"
 
 ```
 
-#### Practical:
-1. Open a new script with `nano`:
+#### Practical Task:
+
+**Question:** You are building an automated quality control pipeline. Write a script named `init_qc.sh` in the `results/scripts/` directory.
+1. Define a variable `sample` set to `SAMPLE_003`.
+2. Using the curly brace syntax (`${VAR}`), construct two new variables: `input_file` (pointing to `raw_data/SAMPLE_003.fastq`) and `output_dir` (pointing to `results/qc/SAMPLE_003_fastqc/`).
+3. Have the script print a status message showing the input file path and output directory path.
+4. Use the `output_dir` variable to create the output directory using `mkdir -p`. Execute the script and verify the directory was created!
+
+::: {.callout-note collapse="true"}
+## Show answer
+
+1. Open the script with `nano`:
+
    ```bash
-   nano variables_demo.sh
+   nano init_qc.sh
    ```
 
 2. Type the following code:
+
    ```bash
    #!/bin/bash
-   # ---description----
-   # Demonstrating variable assignment, $VAR vs ${VAR}
-   # Usage: bash variables_demo.sh
+   # Description: Initialize QC directories using dynamic variables
 
-   # 1. Define variables (NO SPACES around =)
-   ORGANISM="Plasmodium falciparum"
-   SAMPLE="Pf_3D7_001"
-   WORD="chocolate"
+   sample="SAMPLE_003"
 
-   # 2. Print variables using standard expansion
+   # Construct paths using curly braces
+   input_file="../../raw_data/${sample}.fastq"
+   output_dir="../results/qc/${sample}_fastqc"
+
+   # Print status log
    echo "========================================="
-   echo "Target organism: $ORGANISM"
-   echo "Sample ID:       ${SAMPLE}"
-   echo "-----------------------------------------"
-
-   # 3. Demonstrating boundary syntax with curly braces
-   echo "Appended word:   ${WORD}bar"
-   echo "Constructed file: ${SAMPLE}_raw.fastq"
+   echo "Starting QC Analysis"
+   echo "Input File:  $input_file"
+   echo "Output Dest: $output_dir"
    echo "========================================="
+
+   # Execute a command using the variable
+   mkdir -p $output_dir
+   echo "Successfully created $output_dir"
    ```
 
 3. Save and exit `nano` (`Ctrl+O`, `Enter`, `Ctrl+X`).
-4. Run the script:
+
+4. Run the script and check your `results/qc/` folder:
+
    ```bash
-   bash variables_demo.sh
+   bash init_qc.sh
    ```
+
+:::
 
 ---
 
@@ -459,7 +473,7 @@ Bash is very particular about how it handles text spaces and variables. You must
 * **Single Quotes `''`:** They treat everything inside them as literal text. Variables will **not** be expanded.
 
 #### Practical:
-1. Open a new script:
+1. Create and open a new script:
    ```bash
    nano quotes_demo.sh
    ```
@@ -514,24 +528,69 @@ Hard-coding sample names directly into your script means you have to edit the fi
    # Usage: bash interactive_prompt.sh
 
    # Prompt the user for input interactively
-   read -p "Enter your sample ID (e.g. Pf_001): " SAMPLE_ID
    read -p "Enter the sequencing platform (e.g. Illumina / Nanopore): " PLATFORM
 
    echo "----------------------------------------"
-   echo "Configuring pipeline for sample: $SAMPLE_ID"
    echo "Platform selected:               $PLATFORM"
    echo "----------------------------------------"
    ```
 
 3. Save and exit `nano`.
+
 4. Run the script and type in your sample details when prompted:
+
    ```bash
    bash interactive_prompt.sh
    ```
 
+#### Practical Task:
+
+**Question:** Create a script called `check_logs.sh` in the `results/scripts/` directory. 
+1. Use `read -p` to ask the user: 'Enter a keyword to search the logs (e.g., ERROR, WARNING):' and store it in a variable. 
+2. Use `grep` to search for that dynamically provided keyword inside the `logs/pipeline.log` file.
+3. Pipe (`|`) the result to `tail` to show only the 5 most recent occurrences of that term.
+4. Execute the script and test it by typing in `ERROR` when prompted!
+
+::: {.callout-note collapse="true"}
+## Show answer
+
+1. Open a new script:
+
+   ```bash
+   nano check_logs.sh
+   ```
+
+2. Type the following code:
+
+   ```bash
+   #!/bin/bash
+   # Description: Interactively search pipeline logs
+   
+   # Prompt the user for a search term
+   read -p "Enter a keyword to search the logs (e.g., ERROR, WARNING): " KEYWORD
+   
+   echo "----------------------------------------"
+   echo "Searching for '$KEYWORD' in logs/pipeline.log..."
+   echo "----------------------------------------"
+   
+   # Run grep to find the keyword and pipe to tail
+   grep "$KEYWORD" logs/pipeline.log | tail -n 5
+   ```
+
+3. Save and exit `nano` (`Ctrl+O`, `Enter`, `Ctrl+X`).
+
+4. Run the script and type `ERROR` when prompted:
+
+   ```bash
+   bash check_logs.sh
+   ```
+
+:::
+
+
 ### Step 4: Local vs. Environment Variables
 
-So far, the variables we have created (like `SAMPLE_ID`) are **Local Variables**. They only exist within the specific script or terminal session where they were created. If you run a script, any variables defined inside that script disappear as soon as the script finishes.
+So far, the variables we have created are **Local Variables**. They only exist within the specific script or terminal session where they were created. If you run a script, any variables defined inside that script disappear as soon as the script finishes.
 
 In contrast, **Environment Variables** are system-wide variables that are available to the shell and any child processes or scripts you run. 
 
@@ -545,7 +604,6 @@ In contrast, **Environment Variables** are system-wide variables that are availa
   | `$PWD` | Present Working Directory. (Current working directory changes depending on where the user is in terminal.) | `/var/www/html` |
   | `$SHELL` | The path to the current shell interpreter. | `/bin/bash` |
   | `$PATH` | Directories searched for executable commands. | `/usr/bin:/bin` |
-  | `$EDITOR` | The default text editor used by tools like nano. | `nano` |
   | `$HOSTNAME` | The network name of the machine. | `web-server-01` |
 
 #### Making a Variable Global with `export`
