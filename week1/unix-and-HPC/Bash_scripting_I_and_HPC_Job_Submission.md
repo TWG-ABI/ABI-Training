@@ -36,12 +36,15 @@ Today, we will learn how to bundle our commands into reusable **Bash scripts** t
 
 ### What is a Bash Script?
 A Bash script is simply a plain text file containing a sequence of Linux commands.
-> * **File Extension:** By convention, Bash scripts end with the `.sh` file extension (for example, `myscript.sh` or `pipeline.sh`). While Linux does not strictly require file extensions, using `.sh` immediately signals to you and your collaborators that the file is a shell script.
-> * **Creating a Script:** You can create and edit a script using any terminal text editor, such as `nano`:
+
+* **File Extension:** By convention, Bash scripts end with the `.sh` file extension (for example, `myscript.sh` or `pipeline.sh`). While Linux does not strictly require file extensions, using `.sh` immediately signals to you and your collaborators that the file is a shell script.
+
+* **Creating a Script:** You can create and edit a script using any terminal text editor, such as `nano`:
   ```bash
   nano myscript.sh
   ```
-> A script acts as an automated recipe. When executed, the computer reads the file line-by-line from top to bottom and runs each command in order, exactly as if you were typing them into the terminal yourself. This guarantees **reproducibility** which is a fundamental requirement in scientific research.
+
+A script acts as an automated recipe. When executed, the computer reads the file line-by-line from top to bottom and runs each command in order, exactly as if you were typing them into the terminal yourself. This guarantees **reproducibility** which is a fundamental requirement in scientific research.
 
 ---
 
