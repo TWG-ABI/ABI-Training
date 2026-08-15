@@ -390,7 +390,7 @@ In simple standalone expressions, `$VAR` and `${VAR}` produce the same result. H
 # Example 1: Appending letters to a word
 word="chocolate"
 
-# CORRECT: Prints "foobar"
+# CORRECT: Prints "chocolatebar"
 echo "${word}bar"
 
 # FAILS: Bash looks for a non-existent variable named '$wordbar'
