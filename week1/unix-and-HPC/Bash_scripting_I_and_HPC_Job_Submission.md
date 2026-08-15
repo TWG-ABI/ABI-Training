@@ -2,6 +2,7 @@
   <img src="linux_banner_image.png" alt="ABI Summer School 2026 · WEEK 1: Linux / HPC" width="100%" />
 </p>
 
+
 <style>
 /* Clean, modern, high-contrast code blocks with pretty borders */
 div.sourceCode, pre.sourceCode, pre, pre code, div.cell-code pre {
@@ -51,9 +52,11 @@ A script acts as an automated recipe. When executed, the computer reads the file
 ### Anatomy & Structure of a Bash Script
 Every well-written Bash script follows a clear structure composed of core components:
 
-<p align="center">
-  <img src="bash_script_structure.png" alt="Bash Script Structure" width="100%" />
-</p>
+<div align="center">
+
+![Bash Script Basics: Files, Structure & First Commands](bash_script_structure.png)
+
+</div>
 
 ---
 
@@ -65,6 +68,7 @@ Let's build your very first standalone script!
    ```bash
    nano first_script.sh
    ```
+
 2. Type the following lines into the file:
    ```bash
    #!/bin/bash
@@ -78,6 +82,7 @@ Let's build your very first standalone script!
    echo "This is my very first bash script."
    echo "========================================="
    ```
+
 3. Save and exit `nano` (`Ctrl+O`, `Enter`, `Ctrl+X`).
 
 #### How to Run a Bash Script
@@ -86,20 +91,27 @@ There are **three different methods** to execute your script:
 
 **Method 1: Passing the file to `bash` directly**
 You can explicitly tell the `bash` program to read and execute your script:
+
 ```bash
 bash first_script.sh
+
 ```
 
 **Method 2: Passing the file to `sh`**
+
 `sh` is an older standard shell interpreter. For basic commands, it behaves similarly:
+
 ```bash
 sh first_script.sh
+
 ```
 
 **Method 3: Executing the file directly**
 In professional environments, we run scripts directly as standalone programs using `./` (which specifies "look in the current directory"):
+
 ```bash
 ./first_script.sh
+
 ```
 
 **Wait! You will see an error: `Permission denied`!**
@@ -107,16 +119,21 @@ In professional environments, we run scripts directly as standalone programs usi
 Why did this happen? By default, Linux creates new text files with read and write permissions only. To prevent malicious or accidental execution, Linux requires you to explicitly grant **executable permissions** to any file you wish to run directly.
 
 #### The `chmod` Command
+
 * `chmod` stands for "Change Mode". It modifies file access permissions. The `+x` flag tells Linux to add executable rights to the file.
 
 ```bash
 chmod +x first_script.sh
+
 ```
 
 Now, try running Method 3 again:
+
 ```bash
 ./first_script.sh
+
 ```
+
 It works! When executed this way, the operating system inspects the `#!/bin/bash` shebang on line 1, loads the Bash interpreter, and executes your instructions.
 
 ---
@@ -128,7 +145,9 @@ When you log into a High-Performance Computing (HPC) cluster, you land on a **Lo
 
 ::: {.callout-warning}
 ## Login Node Rule
+
 * **The Login Node:** A shared gateway server used by dozens of researchers at once. It is intended *only* for lightweight tasks: navigating directories, editing code with `nano`, and submitting jobs. **Never run computationally heavy analyses on the login node**, as doing so will slow down or crash the server for all users.
+
 * **The Compute Nodes:** A massive fleet of high-powered servers (equipped with dozens of CPU cores and hundreds of gigabytes of RAM) where the actual computation takes place. Compute nodes cannot be accessed directly; tasks must be routed to them via a workload manager.
 :::
 
@@ -139,6 +158,7 @@ When you log into a High-Performance Computing (HPC) cluster, you land on a **Lo
 There are three primary ways to run workloads on compute nodes:
 
 ```
+
 ┌─────────────────────────────────────────────────────────────────────────────────────────┐
 │                                HOW WORK RUNS ON AN HPC                                  │
 ├───────────────────────────────┬───────────────────────────────┬─────────────────────────┤
@@ -150,33 +170,41 @@ There are three primary ways to run workloads on compute nodes:
 │ • Good for testing & EDA      │ • Good for multiple tasks     │ • Good for heavy runs   │
 │ • Command: srun --pty bash    │ • Command: salloc ...         │ • Command: sbatch ...   │
 └───────────────────────────────┴───────────────────────────────┴─────────────────────────┘
+
 ```
 
 #### 1. Interactive Jobs (`srun`)
 An interactive job allocates dedicated resources on a compute node and immediately gives you a live command prompt on that node in real time.
+
 * **When to use:** Testing short commands, debugging scripts, or exploring data interactively.
+
 * **Quick interactive session:**
   ```bash
   srun --pty bash
   ```
+
 * **Custom resource request (e.g. 1 CPU core, 2GB RAM for 30 minutes):**
   ```bash
   srun --nodes=1 --ntasks=1 --cpus-per-task=1 --mem=2G --time=00:30:00 --pty bash
   ```
+
   *(Notice how your prompt changes from `user@login-node` to `user@compute-node`! When finished, simply type `exit` to return to the login node).*
 
 #### 2. Interactive Resource Allocation (`salloc`)
 While `srun` immediately runs a command on a compute node, `salloc` is used to **reserve and allocate resources** first. It opens a subshell with those resources held for you.
 
 * **When to use:** When you need to hold a resource reservation for a work session and run several separate commands or `srun` tasks within that same allocation.
+
 * **Example command (requesting 1 node, 2 CPUs, 4GB RAM for 1 hour):**
   ```bash
   salloc --nodes=1 --cpus-per-task=2 --mem=4G --time=01:00:00
   ```
+
   Once Slurm grants the allocation (`salloc: Granted job allocation ...`), you can run tasks inside it using `srun`:
   ```bash
   srun hostname
   ```
+
 * **Releasing resources:** When finished, type `exit` to terminate the allocation and release the resources back to the cluster:
   ```bash
   exit
@@ -184,11 +212,13 @@ While `srun` immediately runs a command on a compute node, `salloc` is used to *
 
 #### 3. Batch Jobs (`sbatch`)
 A batch job is non-interactive. You write your instructions into a script, submit it to the scheduler, and disconnect. The cluster runs the script automatically in the background and saves all output to log files.
+
 * **When to use:** Long-running computations, bioinformatics pipelines, and heavy analyses.
 
 ---
 
 ### What is Slurm?
+
 * Slurm (Simple Linux Utility for Resource Management) is an open-source **Job Scheduler and Workload Manager**. It tracks cluster resources, manages user queues, and assigns batch jobs to available compute nodes.
 
 ### Slurm `#SBATCH` Directives
@@ -211,6 +241,7 @@ To tell Slurm what computational resources your script requires, we place `#SBAT
    ```bash
    nano hello_slurm.sh
    ```
+
 2. Type the following code:
    ```bash
    #!/bin/bash
@@ -237,6 +268,7 @@ To tell Slurm what computational resources your script requires, we place `#SBAT
 
    echo "Batch job completed successfully!"
    ```
+
 3. Save and exit `nano` (`Ctrl+O`, `Enter`, `Ctrl+X`).
 
 #### Submitting and Monitoring the Job
@@ -245,6 +277,7 @@ To tell Slurm what computational resources your script requires, we place `#SBAT
    ```bash
    sbatch hello_slurm.sh
    ```
+
    *Slurm will confirm with a job number, e.g.: `Submitted batch job 104523`.*
 
 5. **Inspect the queue:**
@@ -252,6 +285,7 @@ To tell Slurm what computational resources your script requires, we place `#SBAT
    ```bash
    squeue -u <your_username>
    ```
+
    * *`ST` (State):* `PD` = Pending, `R` = Running, `CG` = Completing.
 
 6. **View the generated output log:**
@@ -270,6 +304,7 @@ In bioinformatics, jobs frequently fail due to typos or missing files. Knowing h
    ```bash
    nano broken_job.sh
    ```
+
 2. Type the following code:
    ```bash
    #!/bin/bash
@@ -286,14 +321,17 @@ In bioinformatics, jobs frequently fail due to typos or missing files. Knowing h
    
    echo "Analysis finished."
    ```
+
 3. Save, exit, and submit:
    ```bash
    sbatch broken_job.sh
    ```
+
 4. Check the error log:
    ```bash
    cat broken_test.err
    ```
+
    *You will see the exact cause of failure: `ls: cannot access '/non_existent_directory/data/': No such file or directory`.*
 
 ::: {.callout-important}
@@ -311,10 +349,12 @@ If you submit a job and realize you made a mistake, you can cancel it immediatel
    ```bash
    sbatch hello_slurm.sh
    ```
+
 2. Find the `JOBID` in the queue:
    ```bash
    squeue -u <your_username>
    ```
+
 3. Cancel the job:
    ```bash
    scancel <YOUR_JOB_ID>
@@ -328,7 +368,7 @@ Static scripts that only print fixed messages are of limited use. To build flexi
 
 ---
 
-### Step 1: Learning Variables
+### Step 1: Learning Variables & Access Syntax (`$VAR` vs. `${VAR}`)
 
 * **What is a Variable?** A named storage container in the computer's memory. You store data (like sample IDs, organisms, or file paths) inside the variable and recall it anywhere in your script.
 
@@ -337,11 +377,13 @@ Static scripts that only print fixed messages are of limited use. To build flexi
 1. Assign values using the equals sign `=`.
 2. **CRITICAL:** There must be **NO SPACES** around the equals sign!
    * Correct: `SAMPLE="SAMPLE_001"`
+
    * Incorrect: `SAMPLE = "SAMPLE_001"` (Bash will mistakenly interpret `SAMPLE` as a command!)
-3. To retrieve or evaluate the data stored inside a variable, prefix its name with a dollar sign `$`. Wrapping the name in curly braces `${VAR}` is standard best practice.
+3. To retrieve or evaluate the data stored inside a variable, prefix its name with a dollar sign `$VAR` or wrap it in curly braces `${VAR}`.
 :::
 
 #### Why Curly Braces Matter: `$VAR` vs. `${VAR}`
+
 In simple standalone expressions, `$VAR` and `${VAR}` produce the same result. However, when you need to attach text, letters, or suffixes directly to a variable without spaces, curly braces `${VAR}` are **mandatory** to explicitly mark the boundary of the variable name.
 
 ```bash
@@ -353,9 +395,11 @@ echo "${word}bar"
 
 # FAILS: Bash looks for a non-existent variable named '$wordbar'
 echo "$wordbar"
+
 ```
 
 In bioinformatics workflows, this is essential when generating output file names:
+
 ```bash
 # Example 2: Constructing bioinformatics file paths
 SAMPLE="Pf_3D7_001"
@@ -365,6 +409,7 @@ echo "${SAMPLE}_aligned.bam"
 
 # FAILS: Bash looks for an undefined variable named '$SAMPLE_aligned'!
 echo "$SAMPLE_aligned.bam"
+
 ```
 
 #### Practical:
@@ -372,6 +417,7 @@ echo "$SAMPLE_aligned.bam"
    ```bash
    nano variables_demo.sh
    ```
+
 2. Type the following code:
    ```bash
    #!/bin/bash
@@ -395,6 +441,7 @@ echo "$SAMPLE_aligned.bam"
    echo "Constructed file: ${SAMPLE}_raw.fastq"
    echo "========================================="
    ```
+
 3. Save and exit `nano` (`Ctrl+O`, `Enter`, `Ctrl+X`).
 4. Run the script:
    ```bash
@@ -408,6 +455,7 @@ echo "$SAMPLE_aligned.bam"
 Bash is very particular about how it handles text spaces and variables. You must understand the difference between double quotes (`""`), single quotes (`''`), and no quotes.
 
 * **Double Quotes `""`:** They group words together into a single string but **allow** variables to be expanded (translated into their actual values).
+
 * **Single Quotes `''`:** They treat everything inside them as literal text. Variables will **not** be expanded.
 
 #### Practical:
@@ -415,6 +463,7 @@ Bash is very particular about how it handles text spaces and variables. You must
    ```bash
    nano quotes_demo.sh
    ```
+
 2. Type the following code:
    ```bash
    #!/bin/bash
@@ -430,6 +479,7 @@ Bash is very particular about how it handles text spaces and variables. You must
    # Single quotes prevent variable expansion (literal text):
    echo 'With single quotes: Hello, $USER_NAME'   # Outputs: Hello, $USER_NAME
    ```
+
 3. Save, exit `nano`, and run:
    ```bash
    bash quotes_demo.sh
@@ -447,6 +497,7 @@ Always use **Double Quotes `"$VAR"`** when referencing variables in your command
 Hard-coding sample names directly into your script means you have to edit the file every time you process a new sample. We can make scripts dynamic by asking the user for input at runtime.
 
 * The `read` command pauses script execution, waits for the user to type something on their keyboard, and stores whatever was typed directly into a variable.
+
 * **The `-p` Flag:** Using `read -p "Prompt text: " VARIABLE` displays an inline prompt message to the user before waiting for their response.
 
 #### Practical:
@@ -454,6 +505,7 @@ Hard-coding sample names directly into your script means you have to edit the fi
    ```bash
    nano interactive_prompt.sh
    ```
+
 2. Type the following code:
    ```bash
    #!/bin/bash
@@ -470,11 +522,13 @@ Hard-coding sample names directly into your script means you have to edit the fi
    echo "Platform selected:               $PLATFORM"
    echo "----------------------------------------"
    ```
+
 3. Save and exit `nano`.
 4. Run the script and type in your sample details when prompted:
    ```bash
    bash interactive_prompt.sh
    ```
+
 
 ---
 
