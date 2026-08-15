@@ -529,6 +529,60 @@ Hard-coding sample names directly into your script means you have to edit the fi
    bash interactive_prompt.sh
    ```
 
+### Step 4: Local vs. Environment Variables
+
+So far, the variables we have created (like `SAMPLE_ID`) are **Local Variables**. They only exist within the specific script or terminal session where they were created. If you run a script, any variables defined inside that script disappear as soon as the script finishes.
+
+In contrast, **Environment Variables** are system-wide variables that are available to the shell and any child processes or scripts you run. 
+
+* **Viewing Environment Variables:** You can see all active environment variables using the `env` or `printenv` commands.
+* **Common Environment Variables:**
+
+  | Variable | Description | Example Output |
+  |----------|-------------|----------------|
+  | `$USER` | The username of the current user. | `rahul` |
+  | `$HOME` | The path to the user's home directory. | `/home/rahul` |
+  | `$PWD` | Present Working Directory. (Current working directory changes depending on where the user is in terminal.) | `/var/www/html` |
+  | `$SHELL` | The path to the current shell interpreter. | `/bin/bash` |
+  | `$PATH` | Directories searched for executable commands. | `/usr/bin:/bin` |
+  | `$EDITOR` | The default text editor used by tools like nano. | `nano` |
+  | `$HOSTNAME` | The network name of the machine. | `web-server-01` |
+
+#### Making a Variable Global with `export`
+If you want a variable defined in your terminal to be accessible by a script you run, you must "promote" it to an environment variable using the `export` command.
+
+#### Practical:
+1. Open a new script:
+   ```bash
+   nano env_demo.sh
+   ```
+
+2. Type the following code:
+   ```bash
+   #!/bin/bash
+   # ---description----
+   # Demonstrating environment variables
+   # Usage: bash env_demo.sh
+
+   echo "Hello $USER! Your home directory is $HOME."
+   echo "The custom project directory is: $MY_PROJECT"
+   ```
+
+3. Save and exit `nano`.
+
+4. Define a local variable in your terminal and run the script:
+   ```bash
+   MY_PROJECT="/data/malaria"
+   bash env_demo.sh
+   ```
+   *(Notice that `$MY_PROJECT` is blank in the script's output because the script cannot see your terminal's local variables).*
+
+5. Now, **export** the variable and run the script again:
+   ```bash
+   export MY_PROJECT
+   bash env_demo.sh
+   ```
+   *(This time, the script successfully reads the variable because `export` made it an environment variable!)*
 
 ---
 
