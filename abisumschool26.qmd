@@ -13,7 +13,7 @@ The aim is to provide comprehensive training on bioinformatics computational res
 
 ### Week 1: 
 
-#### Linux 
+#### Linux and High Performance Computing
 1. [Introduction to Linux & HPC](week1/unix-and-HPC/intro_to_linux.qmd)
 2. [Linux Basics Recap](week1/unix-and-HPC/Linux_Basics_Recap.md)
 3. [Bash Scripting I & HPC Job Submission](week1/unix-and-HPC/Bash_scripting_I_and_HPC_Job_Submission.md)
@@ -23,19 +23,33 @@ The aim is to provide comprehensive training on bioinformatics computational res
 7. [Containers](week1/unix-and-HPC/Containers.md)
 8. [Day One Assignment](week1/unix-and-HPC/Day_1_Assignment.md)
 
-#### R coding content
+#### R programming
+
 
 #### Intro to NGS
-
 
 
 ---
 
 ### Week 2 
 
-#### R/Biology Streams
-
 #### Human Genomics
+1. [Introduction to Human Genomics: Overview of Data QC and Analysis Workflow]
+2. [Practical: Read alignment using BWA-MEM and QC]
+3. [Principles of Human Variant Calling]
+4. [Variant Calling Practical using GATK HaplotypeCaller] (week2/human-genomics/short-read-snv-analysis/variant-calling-brca1-tutorial.md)
+5. [Variant Filtering and Exploration — Single-sample and Multi-sample VCF Files]
+6. [Introduction to Workflow Automation using Nextflow]
+7. [Practical: Human Variant Calling Workflow Automation using Nextflow]
+8. [Principles of Variant Annotation and Variant Effect Prediction]
+9. [Practical: Variant Annotation/Prioritisation]
+10. [Statistical Phasing Concepts and Practical Example using 1000 Genomes Project data]
+11. [Overview of long-read sequencing technologies and data analysis tools]
+12. [Practical: Oxford Nanopore read alignment and variant calling](week2/human-genomics/long-read-snv-analysis/ont/ont-analysis-practical-1.md)
+13. [Introduction to Structural Variation Analysis]
+14. [Practical: Structural variant calling and annotation]
+15. [Course assessment]
+
 
 #### Pathogen Genomics
 1. [Basics of Bacterial Genomes](week2/pathogen_genomics/Day_1/basics.qmd)
