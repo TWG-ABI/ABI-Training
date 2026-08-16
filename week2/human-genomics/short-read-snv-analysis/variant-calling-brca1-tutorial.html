@@ -215,9 +215,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <section id="human-ngs-read-alignment-and-variant-calling-brca1-tutorial" class="level1">
 <h1>Human NGS Read Alignment and Variant Calling: BRCA1 Tutorial</h1>
-<p>A hands-on, reproducible walkthrough of germline short-variant discovery on <strong>whole-genome sequencing (WGS)</strong> data, following the <a href="https://gatk.broadinstitute.org/hc/en-us/sections/360007226651-Best-Practices-Workflows">GATK Best Practices</a>. We start from raw <code>FASTQ</code> for a <strong>single sample</strong>, then scale to <strong>10 samples with joint genotyping</strong>, and finish by annotating the variants we find in <strong>BRCA1</strong> with Ensembl VEP.</p>
 <blockquote class="blockquote">
-<p><strong>Why BRCA1?</strong> It is a clinically important tumour-suppressor gene on chromosome 17. Restricting our analysis to the BRCA1 locus keeps runtimes and file sizes small while still demonstrating a real, end-to-end clinical-grade workflow.</p>
+<p><strong>Why BRCA1?</strong> BRCA1 is a clinically important tumour-suppressor gene on chromosome 17. Restricting the analysis to the BRCA1 locus keeps runtimes and file sizes small while still demonstrating a real, end-to-end clinical-grade workflow.</p>
 </blockquote>
 <hr>
 <section id="table-of-contents" class="level2">
@@ -265,7 +264,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="overview" class="level2">
 <h2 class="anchored" data-anchor-id="overview">Overview</h2>
-<p>The pipeline below is the standard GATK germline short-variant workflow. Each sample is processed independently up to the per-sample <strong>GVCF</strong>; the cohort is then jointly genotyped so that every sample is genotyped at every variant site discovered in any sample.</p>
+<p>The pipeline below is a GATK-based germline short-variant workflow. Each sample is processed independently up to the per-sample <strong>GVCF</strong>; the cohort is then jointly genotyped so that every sample is genotyped at every variant site discovered in any sample.</p>
+<blockquote class="blockquote">
+<p>For a full background on the Genome Analysis Toolkit, please refer to the <a href="https://gatk.broadinstitute.org/hc/en-us/sections/360007226651-Best-Practices-Workflows">GATK Best Practices</a>.</p>
+</blockquote>
 <pre class="mermaid"><code>flowchart TD
     A[FASTQ&lt;br/&gt;raw reads] --&gt; B[FastQC&lt;br/&gt;read QC]
     B --&gt; C[BWA-MEM&lt;br/&gt;align to GRCh38]
@@ -342,19 +344,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 class="anchored" data-anchor-id="prerequisites">Prerequisites</h2>
 <section id="software" class="level3">
 <h3 class="anchored" data-anchor-id="software">Software</h3>
-<p>Tested versions are shown in parentheses; newer point releases are generally fine. Conda/mamba is the easiest way to install everything.</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create an environment with the core tools</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="ex">mamba</span> create <span class="at">-n</span> brca1-vc <span class="at">-c</span> bioconda <span class="at">-c</span> conda-forge <span class="dt">\</span></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    gatk4=4.5.0.0 <span class="dt">\</span></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>    bwa=0.7.17 <span class="dt">\</span></span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>    samtools=1.19 <span class="dt">\</span></span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>    bcftools=1.19 <span class="dt">\</span></span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>    fastqc=0.12.1 <span class="dt">\</span></span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>    multiqc=1.21 <span class="dt">\</span></span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>    mosdepth=0.3.6 <span class="dt">\</span></span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>    ensembl-vep=111.0</span>
-<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a><span class="ex">mamba</span> activate brca1-vc</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="va">gatk4</span><span class="op">=</span>4.5.0.0 </span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="va">bwa</span><span class="op">=</span>0.7.17 </span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="va">samtools</span><span class="op">=</span>1.19 </span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="va">bcftools</span><span class="op">=</span>1.19 </span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="va">fastqc</span><span class="op">=</span>0.12.1 </span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="va">multiqc</span><span class="op">=</span>1.21 </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <blockquote class="blockquote">
 <p><strong>GATK &amp; Java:</strong> GATK4 ships its own wrapper (<code>gatk</code>) that launches the bundled JAR. It needs Java 17. The Spark-enabled tools (e.g.&nbsp;<code>MarkDuplicatesSpark</code>) can use multiple cores locally with <code>--spark-master local[N]</code>.</p>
 </blockquote>
