@@ -1,8 +1,7 @@
 # Human NGS Read Alignment and Variant Calling: BRCA1 Tutorial
 
-A hands-on, reproducible walkthrough of germline short-variant discovery on **whole-genome sequencing (WGS)** data, following the [GATK Best Practices](https://gatk.broadinstitute.org/hc/en-us/sections/360007226651-Best-Practices-Workflows). We start from raw `FASTQ` for a **single sample**, then scale to **10 samples with joint genotyping**, and finish by annotating the variants we find in **BRCA1** with Ensembl VEP.
-
-> **Why BRCA1?** It is a clinically important tumour-suppressor gene on chromosome 17. Restricting our analysis to the BRCA1 locus keeps runtimes and file sizes small while still demonstrating a real, end-to-end clinical-grade workflow.
+> **Why BRCA1?**
+BRCA1 is a clinically important tumour-suppressor gene on chromosome 17. Restricting the analysis to the BRCA1 locus keeps runtimes and file sizes small while still demonstrating a real, end-to-end clinical-grade workflow.
 
 ---
 
@@ -42,7 +41,9 @@ A hands-on, reproducible walkthrough of germline short-variant discovery on **wh
 
 ## Overview
 
-The pipeline below is the standard GATK germline short-variant workflow. Each sample is processed independently up to the per-sample **GVCF**; the cohort is then jointly genotyped so that every sample is genotyped at every variant site discovered in any sample.
+The pipeline below is a GATK-based germline short-variant workflow. Each sample is processed independently up to the per-sample **GVCF**; the cohort is then jointly genotyped so that every sample is genotyped at every variant site discovered in any sample.
+
+> For a full background on the Genome Analysis Toolkit, please refer to the [GATK Best Practices](https://gatk.broadinstitute.org/hc/en-us/sections/360007226651-Best-Practices-Workflows).
 
 ```mermaid
 flowchart TD
@@ -79,21 +80,14 @@ flowchart TD
 
 ### Software
 
-Tested versions are shown in parentheses; newer point releases are generally fine. Conda/mamba is the easiest way to install everything.
-
 ```bash
-# Create an environment with the core tools
-mamba create -n brca1-vc -c bioconda -c conda-forge \
-    gatk4=4.5.0.0 \
-    bwa=0.7.17 \
-    samtools=1.19 \
-    bcftools=1.19 \
-    fastqc=0.12.1 \
-    multiqc=1.21 \
-    mosdepth=0.3.6 \
-    ensembl-vep=111.0
+gatk4=4.5.0.0 
+bwa=0.7.17 
+samtools=1.19 
+bcftools=1.19 
+fastqc=0.12.1 
+multiqc=1.21 
 
-mamba activate brca1-vc
 ```
 
 > **GATK & Java:** GATK4 ships its own wrapper (`gatk`) that launches the bundled JAR. It needs Java 17. The Spark-enabled tools (e.g. `MarkDuplicatesSpark`) can use multiple cores locally with `--spark-master local[N]`.
