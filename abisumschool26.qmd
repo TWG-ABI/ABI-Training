@@ -37,7 +37,7 @@ The aim is to provide comprehensive training on bioinformatics computational res
 1. [Introduction to Human Genomics: Overview of Data QC and Analysis Workflow]
 2. [Practical: Read alignment using BWA-MEM and QC]
 3. [Principles of Human Variant Calling]
-4. [Variant Calling Practical using GATK HaplotypeCaller] (week2/human-genomics/short-read-snv-analysis/variant-calling-brca1-tutorial.md)
+4. [Variant Calling Practical using GATK HaplotypeCaller](week2/human-genomics/short-read-snv-analysis/variant-calling-brca1-tutorial.md)
 5. [Variant Filtering and Exploration — Single-sample and Multi-sample VCF Files]
 6. [Introduction to Workflow Automation using Nextflow]
 7. [Practical: Human Variant Calling Workflow Automation using Nextflow]
