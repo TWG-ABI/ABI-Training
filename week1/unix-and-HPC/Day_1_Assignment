@@ -1,0 +1,22 @@
+# ABI Summer School 2026: Day 1 Assigment
+
+---
+
+### Task Instructions
+
+1. **Request an Interactive Node:** From the login node, request an interactive bash session.
+2. **Write the Script:** Create a script named `secure_archive.sh` in your `scripts/` directory that executes the following steps:
+   - Choose a sample to archive from the ones in the `raw_data/` directory.
+   - Interactively prompt the user with the message to enter the Sample ID to archive and save their input into a variable.
+   - Create a destination directory at `results/reports/archive/` (ensure your script won't crash if the directory already exists).
+   - Copy the target sample's `.fastq` file from the `raw_data/` directory into your new archive directory.
+   - Generate a current timestamp and save it as the very first line of a new log file. This log file must be created inside the archive directory and named dynamically based on the sample ID (for example, if the user entered `SAMPLE_002`, the log file should be named `SAMPLE_002_backup.log`).
+   - Compress the backup copy of the `.fastq` file to save disk space.
+   - Generate a digital fingerprint (MD5 checksum) of the newly compressed archive file, and append that fingerprint to your log file.
+   - Extract the very first DNA read (the first 4 lines) from the compressed file and append it to your log file.
+   - Search for the DNA motif `"ATGC"`, count how many reads contain it, and append that number to your log file.
+   - Lock the compressed archive file by changing its permissions to "read-only" so no one can accidentally modify or delete it.
+3. **Execute:** Run the script and type in your chosen sample ID when prompted.
+4. **Verify:** Print the final contents of your log file to the screen to prove the pipeline worked!
+
+---
