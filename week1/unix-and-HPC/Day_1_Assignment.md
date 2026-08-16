@@ -3,7 +3,7 @@
 </p>
 
 ---
-# ABI Summer School 2026: Day 1 Assigment
+# Day 1 Assigment
 
 ---
 
@@ -25,3 +25,5 @@
 4. **Verify:** Print the final contents of your log file to the screen to prove the pipeline worked!
 
 ---
+
+*ABI Summer School 2026 · Module 1: Linux & HPC*
