@@ -59,6 +59,7 @@ code span.er {
 </style>
 
 ---
+
 # Day 2 Practical: Diversity Analysis with phyloseq & vegan
 
 **Input:** QIIME2 exports from Day 1 (`feature-table.tsv`, `taxonomy.tsv`) + sample metadata
