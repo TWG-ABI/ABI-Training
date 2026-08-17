@@ -202,6 +202,66 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 
+<style>
+/* Clean, modern, high-contrast code blocks with pretty borders */
+div.sourceCode, pre.sourceCode, pre, pre code, div.cell-code pre {
+  background-color: #f8f9fa !important;
+  color: #212529 !important;
+  border: 1px solid #dee2e6 !important;
+  border-left: 4px solid #31BAE9 !important;
+  border-radius: 6px !important;
+}
+
+/* Base text (plain tokens, punctuation) */
+code span {
+  color: #212529 !important;
+}
+
+/* Comments / shebangs */
+code span.co, code span.c, code span.ch, code span.cm, code span.c1 {
+  color: #2e7d32 !important; /* green */
+  font-weight: 600 !important;
+  opacity: 1 !important;
+}
+
+/* Strings */
+code span.st, code span.s, code span.s1, code span.s2 {
+  color: #c2410c !important; /* burnt orange */
+}
+
+/* Keywords (set, if, for, function, etc.) */
+code span.kw {
+  color: #7c3aed !important; /* purple */
+  font-weight: 600 !important;
+}
+
+/* Variables ($VAR, DATA_DIR, etc.) */
+code span.va {
+  color: #0369a1 !important; /* blue */
+}
+
+/* Function / command names */
+code span.fu {
+  color: #b91c1c !important; /* red */
+}
+
+/* Numbers */
+code span.dv, code span.fl, code span.bn, code span.cn {
+  color: #b45309 !important; /* amber */
+}
+
+/* Operators, flags like -e, -u, -o */
+code span.op {
+  color: #495057 !important;
+}
+
+/* Errors / special tokens Pandoc sometimes flags */
+code span.er {
+  color: #dc2626 !important;
+  font-weight: 600 !important;
+}
+</style>
+<hr>
 <section id="day-2-practical-diversity-analysis-with-phyloseq-vegan" class="level1">
 <h1>Day 2 Practical: Diversity Analysis with phyloseq &amp; vegan</h1>
 <p><strong>Input:</strong> QIIME2 exports from Day 1 (<code>feature-table.tsv</code>, <code>taxonomy.tsv</code>) + sample metadata</p>
