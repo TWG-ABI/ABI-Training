@@ -64,8 +64,8 @@ Notice that the **fasta** pattern after **Plasmodium_falciparum_** was not repla
 
 ::: {.callout-tip}
 ## Exercise 1: Global Substitution
-Write the **sed** command(s) to replace *both* occurrences of **fasta** in each line of `sample_manifest2.tsv` with **fastq**. Save the output to `sample_manifest2_fastq_2.tsv`.
-:::
+Write the **sed** command(s) to replace *both* occurrences of **fasta** in each line of `sample_manifest2.tsv` with **fastq**. Save the output to `sample_manifest2_fastq_2.tsv`
+
 ```bash
 
 ```
