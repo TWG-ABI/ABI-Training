@@ -1,3 +1,20 @@
+<style>
+/* Clean, modern, high-contrast code blocks with pretty borders */
+div.sourceCode, pre.sourceCode, pre, pre code, div.cell-code pre {
+  background-color: #f8f9fa !important;
+  color: #212529 !important;
+  border: 1px solid #dee2e6 !important;
+  border-left: 4px solid #31BAE9 !important;
+  border-radius: 6px !important;
+}
+/* Ensure comments and shebangs (#) are crisp, legible, and distinct */
+code span.co, code span.c, code span.ch, code span.cm, code span.c1 {
+  color: #2e7d32 !important; /* clear readable green */
+  font-weight: 600 !important;
+  opacity: 1 !important;
+}
+</style>
+
 # Day 1 Practical — Part 1: Quality Control with FastQC & SeqKit
 
 ## Purpose
