@@ -165,21 +165,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <ul>
   <li><a href="#file-processing-part-1-using-sed" id="toc-file-processing-part-1-using-sed" class="nav-link active" data-scroll-target="#file-processing-part-1-using-sed">File processing: Part 1 (using sed)</a>
   <ul class="collapse">
-  <li><a href="#part-1-replacing-simple-patterns-with-sed" id="toc-part-1-replacing-simple-patterns-with-sed" class="nav-link" data-scroll-target="#part-1-replacing-simple-patterns-with-sed">Part 1: Replacing simple patterns with sed</a>
-  <ul class="collapse">
-  <li><a href="#batch-substitutions-across-files" id="toc-batch-substitutions-across-files" class="nav-link" data-scroll-target="#batch-substitutions-across-files">Batch Substitutions Across Files</a></li>
-  <li><a href="#changing-delimiters" id="toc-changing-delimiters" class="nav-link" data-scroll-target="#changing-delimiters">Changing Delimiters</a></li>
-  </ul></li>
-  <li><a href="#part-2-conditional-substitutions-with-sed" id="toc-part-2-conditional-substitutions-with-sed" class="nav-link" data-scroll-target="#part-2-conditional-substitutions-with-sed">Part 2: Conditional substitutions with sed</a></li>
-  <li><a href="#part-3-adding-simple-patterns-to-a-file-using-sed" id="toc-part-3-adding-simple-patterns-to-a-file-using-sed" class="nav-link" data-scroll-target="#part-3-adding-simple-patterns-to-a-file-using-sed">Part 3: Adding simple patterns to a file using sed</a></li>
-  <li><a href="#part-4-other-use-cases-of-sed-in-cleaningpre-processing-files" id="toc-part-4-other-use-cases-of-sed-in-cleaningpre-processing-files" class="nav-link" data-scroll-target="#part-4-other-use-cases-of-sed-in-cleaningpre-processing-files">Part 4: Other use cases of sed in cleaning/pre-processing files</a>
-  <ul class="collapse">
-  <li><a href="#obtaining-the-header-line-of-a-file" id="toc-obtaining-the-header-line-of-a-file" class="nav-link" data-scroll-target="#obtaining-the-header-line-of-a-file">Obtaining the header line of a file</a></li>
-  <li><a href="#extracting-lines-with-a-specific-pattern" id="toc-extracting-lines-with-a-specific-pattern" class="nav-link" data-scroll-target="#extracting-lines-with-a-specific-pattern">Extracting line(s) with a specific pattern</a></li>
-  <li><a href="#counting-number-of-columns-in-a-file" id="toc-counting-number-of-columns-in-a-file" class="nav-link" data-scroll-target="#counting-number-of-columns-in-a-file">Counting number of columns in a file</a></li>
-  <li><a href="#removing-empty-lines-from-a-file" id="toc-removing-empty-lines-from-a-file" class="nav-link" data-scroll-target="#removing-empty-lines-from-a-file">Removing (empty) lines from a file</a></li>
-  <li><a href="#extracting-text-blocks-from-a-file" id="toc-extracting-text-blocks-from-a-file" class="nav-link" data-scroll-target="#extracting-text-blocks-from-a-file">Extracting text blocks from a file</a></li>
-  </ul></li>
+  <li><a href="#part-1-replacing-simple-patterns-with-sed" id="toc-part-1-replacing-simple-patterns-with-sed" class="nav-link" data-scroll-target="#part-1-replacing-simple-patterns-with-sed">Part 1: Replacing simple patterns with sed</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -261,9 +247,7 @@ code span.co, code span.c, code span.ch, code span.cm, code span.c1 {
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Write the <strong>sed</strong> command(s) to replace <em>both</em> occurrences of <strong>fasta</strong> in each line of <code>sample_manifest2.tsv</code> with <strong>fastq</strong>. Save the output to <code>sample_manifest2_fastq_2.tsv</code>.</p>
-</div>
-</div>
+<p>Write the <strong>sed</strong> command(s) to replace <em>both</em> occurrences of <strong>fasta</strong> in each line of <code>sample_manifest2.tsv</code> with <strong>fastq</strong>. Save the output to <code>sample_manifest2_fastq_2.tsv</code></p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>With the same syntax, <code>sed</code> can be used to <strong>remove</strong> unwanted patterns within each line of a given file.</p>
 <div class="callout callout-style-default callout-tip callout-titled">
@@ -319,7 +303,6 @@ code span.co, code span.c, code span.ch, code span.cm, code span.c1 {
 <p>Try converting <code>sample_manifest3.csv</code> into a <strong>space-delimited</strong> file:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <hr>
-</section>
 </section>
 <section id="part-2-conditional-substitutions-with-sed" class="level2">
 <h2 class="anchored" data-anchor-id="part-2-conditional-substitutions-with-sed">Part 2: Conditional substitutions with sed</h2>
@@ -432,6 +415,9 @@ code span.co, code span.c, code span.ch, code span.cm, code span.c1 {
 
 
 </section>
+</section>
+</div>
+</div>
 </section>
 </section>
 
