@@ -7,11 +7,54 @@ div.sourceCode, pre.sourceCode, pre, pre code, div.cell-code pre {
   border-left: 4px solid #31BAE9 !important;
   border-radius: 6px !important;
 }
-/* Ensure comments and shebangs (#) are crisp, legible, and distinct */
+
+/* Base text (plain tokens, punctuation) */
+code span {
+  color: #212529 !important;
+}
+
+/* Comments / shebangs */
 code span.co, code span.c, code span.ch, code span.cm, code span.c1 {
-  color: #2e7d32 !important; /* clear readable green */
+  color: #2e7d32 !important; /* green */
   font-weight: 600 !important;
   opacity: 1 !important;
+}
+
+/* Strings */
+code span.st, code span.s, code span.s1, code span.s2 {
+  color: #c2410c !important; /* burnt orange */
+}
+
+/* Keywords (set, if, for, function, etc.) */
+code span.kw {
+  color: #7c3aed !important; /* purple */
+  font-weight: 600 !important;
+}
+
+/* Variables ($VAR, DATA_DIR, etc.) */
+code span.va {
+  color: #0369a1 !important; /* blue */
+}
+
+/* Function / command names */
+code span.fu {
+  color: #b91c1c !important; /* red */
+}
+
+/* Numbers */
+code span.dv, code span.fl, code span.bn, code span.cn {
+  color: #b45309 !important; /* amber */
+}
+
+/* Operators, flags like -e, -u, -o */
+code span.op {
+  color: #495057 !important;
+}
+
+/* Errors / special tokens Pandoc sometimes flags */
+code span.er {
+  color: #dc2626 !important;
+  font-weight: 600 !important;
 }
 </style>
 
