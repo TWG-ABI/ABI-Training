@@ -320,10 +320,9 @@ SAMPLE_001  Drug_A      Pass
 <p>Before building automated pipelines, our scripts must be able to dynamically capture information from various sources: 1. <strong>The Terminal Command Line</strong> (Positional Arguments passed when launching the script) 2. <strong>Other Linux Commands</strong> (Command Substitution capturing live output)</p>
 <hr>
 <section id="command-substitution" class="level3">
-<h3 class="anchored">1. Command Substitution (<code>$()</code>)</h3>
+<h3 class="anchored" data-anchor-id="command-substitution">1. Command Substitution (<code>$()</code>)</h3>
 <ul>
-<li>By wrapping a command inside <code>$(...)</code>, Linux executes that command first, captures its Standard Output, and substitutes that result into your variable.</li>
-<li><h2 id="historical-note-older-scripts-used-backticks-command-but-is-the-modern-standard-because-it-is-cleaner-and-can-be-easily-nested." class="anchored" data-anchor-id="command-substitution"><em>(Historical note: Older scripts used backticks <code>`command`</code>, but <code>$()</code> is the modern standard because it is cleaner and can be easily nested).</em></h2></li>
+<li>By wrapping a command inside <code>$(...)</code>, Linux executes that command first, captures its Standard Output, and substitutes that result into your variable. <em>(Historical note: Older scripts used backticks <code>`command`</code>, but <code>$()</code> is the modern standard because it is cleaner and can be easily nested).</em> —</li>
 </ul>
 </section>
 <section id="positional-arguments-1-2" class="level3">
