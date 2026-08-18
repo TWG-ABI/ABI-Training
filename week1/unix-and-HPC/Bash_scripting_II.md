@@ -109,7 +109,7 @@ Before building automated pipelines, our scripts must be able to dynamically cap
 
 ### 1. Command Substitution (`$()`)
 * By wrapping a command inside `$(...)`, Linux executes that command first, captures its Standard Output, and substitutes that result into your variable.
-* *(Historical note: Older scripts used backticks `` `command` ``, but `$()` is the modern standard because it is cleaner and can be easily nested).*
+*(Historical note: Older scripts used backticks `` `command` ``, but `$()` is the modern standard because it is cleaner and can be easily nested).*
 ---
 
 ### 2. Positional Arguments (`$1`, `$2`, `$@`, `$#`)
