@@ -179,7 +179,7 @@ Your script should:
 
 ---
 
-## Part 2.1: Arithmetic in Bash
+### 3. Arithmetic in Bash
 
 By default, Bash treats all variables as text strings. If you type `VAL="10+5"`, Bash stores a string of four characters, not the number 15! We must use specific syntax to perform mathematical calculations.
 
@@ -200,7 +200,7 @@ By default, Bash treats all variables as text strings. If you type `VAL="10+5"`,
 
 ---
 
-### Practical 2.1: Math & Counters (`arithmetic.sh`)
+### Practical 3: Math & Counters (`arithmetic.sh`)
 
 ::: {.callout-note}
 ## Challenge Task
