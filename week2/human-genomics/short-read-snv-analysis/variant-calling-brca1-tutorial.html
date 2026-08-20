@@ -170,7 +170,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#prerequisites" id="toc-prerequisites" class="nav-link" data-scroll-target="#prerequisites">Prerequisites</a>
   <ul class="collapse">
   <li><a href="#software" id="toc-software" class="nav-link" data-scroll-target="#software">Software</a></li>
-  <li><a href="#reference-data-grch38" id="toc-reference-data-grch38" class="nav-link" data-scroll-target="#reference-data-grch38">Reference data (GRCh38)</a></li>
+  </ul></li>
+  <li><a href="#reference-data-grch38" id="toc-reference-data-grch38" class="nav-link" data-scroll-target="#reference-data-grch38">Reference data (GRCh38)</a>
+  <ul class="collapse">
+  <li><a href="#key-files-required-by-gatk" id="toc-key-files-required-by-gatk" class="nav-link" data-scroll-target="#key-files-required-by-gatk">Key files required by GATK</a></li>
   <li><a href="#project-layout-conventions" id="toc-project-layout-conventions" class="nav-link" data-scroll-target="#project-layout-conventions">Project layout &amp; conventions</a></li>
   <li><a href="#the-brca1-interval" id="toc-the-brca1-interval" class="nav-link" data-scroll-target="#the-brca1-interval">The BRCA1 interval</a></li>
   </ul></li>
@@ -354,31 +357,33 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p><strong>GATK &amp; Java:</strong> GATK4 ships its own wrapper (<code>gatk</code>) that launches the bundled JAR. It needs Java 17. The Spark-enabled tools (e.g.&nbsp;<code>MarkDuplicatesSpark</code>) can use multiple cores locally with <code>--spark-master local[N]</code>.</p>
 </blockquote>
 </section>
-<section id="reference-data-grch38" class="level3">
-<h3 class="anchored" data-anchor-id="reference-data-grch38">Reference data (GRCh38)</h3>
-<p>Download the human reference and the GATK resource bundle (known sites used by BQSR and for filtering context). These live in the <a href="https://gatk.broadinstitute.org/hc/en-us/articles/360035890811-Resource-bundle">GATK Resource Bundle</a> on the Broad’s Google bucket.</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> <span class="at">-p</span> ref <span class="kw">&amp;&amp;</span> <span class="bu">cd</span> ref</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="va">BUCKET</span><span class="op">=</span>gs://genomics-public-data/resources/broad/hg38/v0</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Reference genome (+ .fai and .dict are needed by GATK)</span></span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="ex">gsutil</span> cp <span class="va">${BUCKET}</span>/Homo_sapiens_assembly38.fasta .</span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="ex">gsutil</span> cp <span class="va">${BUCKET}</span>/Homo_sapiens_assembly38.fasta.fai .</span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="ex">gsutil</span> cp <span class="va">${BUCKET}</span>/Homo_sapiens_assembly38.dict .</span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Known sites for BQSR</span></span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a><span class="ex">gsutil</span> cp <span class="va">${BUCKET}</span>/Homo_sapiens_assembly38.dbsnp138.vcf .</span>
-<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a><span class="ex">gsutil</span> cp <span class="va">${BUCKET}</span>/Homo_sapiens_assembly38.dbsnp138.vcf.idx .</span>
-<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a><span class="ex">gsutil</span> cp <span class="va">${BUCKET}</span>/Mills_and_1000G_gold_standard.indels.hg38.vcf.gz .</span>
-<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a><span class="ex">gsutil</span> cp <span class="va">${BUCKET}</span>/Mills_and_1000G_gold_standard.indels.hg38.vcf.gz.tbi .</span>
-<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a><span class="ex">gsutil</span> cp <span class="va">${BUCKET}</span>/Homo_sapiens_assembly38.known_indels.vcf.gz .</span>
-<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a><span class="ex">gsutil</span> cp <span class="va">${BUCKET}</span>/Homo_sapiens_assembly38.known_indels.vcf.gz.tbi .</span>
-<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> ..</span>
-<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a><span class="co"># BWA index (one-time, ~1 hr for the whole genome)</span></span>
-<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a><span class="ex">bwa</span> index ref/Homo_sapiens_assembly38.fasta</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<blockquote class="blockquote">
-<p>If you do not have <code>gsutil</code>, each file is also downloadable over HTTPS from the same bucket via <code>https://storage.googleapis.com/genomics-public-data/resources/broad/hg38/v0/&lt;file&gt;</code>.</p>
-</blockquote>
+</section>
+<section id="reference-data-grch38" class="level2">
+<h2 class="anchored" data-anchor-id="reference-data-grch38">Reference data (GRCh38)</h2>
+<p>In this tutorial, we’ll be using the human reference and the GATK resource bundle on the Broad’s Google bucket (https://console.cloud.google.com/storage/browser/gcp-public-data–broad-references/hg38/v0).</p>
+<section id="key-files-required-by-gatk" class="level3">
+<h3 class="anchored" data-anchor-id="key-files-required-by-gatk">Key files required by GATK</h3>
+<pre><code># Reference genome FASTA file and index files
+
+Homo_sapiens_assembly38.fasta 
+Homo_sapiens_assembly38.fasta.fai
+Homo_sapiens_assembly38.dict
+Homo_sapiens_assembly38.fasta.64.pac
+Homo_sapiens_assembly38.fasta.64.sa
+Homo_sapiens_assembly38.fasta.64.alt         
+Homo_sapiens_assembly38.fasta.64.amb
+Homo_sapiens_assembly38.fasta.64.ann
+
+If the indexes are not already available, you can generate them using bwa (~1 hr for the whole genom)
+bwa index Homo_sapiens_assembly38.fasta
+
+# Known sites for BQSR
+Homo_sapiens_assembly38.dbsnp138.vcf.gz
+Homo_sapiens_assembly38.dbsnp138.vcf.tbi
+Homo_sapiens_assembly38.known_indels.vcf.gz 
+Homo_sapiens_assembly38.known_indels.vcf.gz.tbi
+Mills_and_1000G_gold_standard.indels.hg38.vcf.gz 
+Mills_and_1000G_gold_standard.indels.hg38.vcf.gz.tbi </code></pre>
 </section>
 <section id="project-layout-conventions" class="level3">
 <h3 class="anchored" data-anchor-id="project-layout-conventions">Project layout &amp; conventions</h3>
@@ -393,10 +398,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 └── scripts/</code></pre>
 <p>Throughout, we use these shell variables:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="va">REF</span><span class="op">=</span>/etc/ace-data/genomics-resources/hg38/Homo_sapiens_assembly38.fasta</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="va">DBSNP</span><span class="op">=</span>/etc/ace-data/genomics-resources/hg38/Homo_sapiens_assembly38.dbsnp138.vcf</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="va">MILLS</span><span class="op">=</span>/etc/ace-data/genomics-resources/hg38/Mills_and_1000G_gold_standard.indels.hg38.vcf.gz</span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="va">KNOWN_INDELS</span><span class="op">=</span>/etc/ace-data/genomics-resources/hg38/Homo_sapiens_assembly38.known_indels.vcf.gz</span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="va">THREADS</span><span class="op">=</span>8</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="va">DBSNP</span><span class="op">=</span>/etc/ace-data/genomics-resources/hg38/Homo_sapiens_assembly38.dbsnp138.vcf.gz</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="va">KNOWN_INDELS</span><span class="op">=</span>/etc/ace-data/genomics-resources/hg38/Homo_sapiens_assembly38.known_indels.vcf.gz</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="va">THREADS</span><span class="op">=</span>8</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section id="the-brca1-interval" class="level3">
 <h3 class="anchored" data-anchor-id="the-brca1-interval">The BRCA1 interval</h3>
