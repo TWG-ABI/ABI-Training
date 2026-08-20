@@ -380,49 +380,7 @@ bcftools index -t vcf/HG02562.pass.vcf.gz
 | `MQRankSum` | Mapping-quality difference ref vs alt | Alt allele on worse-mapped reads |
 | `ReadPosRankSum` | Position of allele within reads | Allele clustered at read ends → artifact |
 
-### 9. Annotation with VEP
 
-[Ensembl VEP](https://www.ensembl.org/info/docs/tools/vep/index.html) predicts the functional consequence of each variant and layers on clinical context. 
-
-```bash
-# One-time: download the GRCh38 cache (large; pick the matching VEP version)
-vep_install -a cf -s homo_sapiens -y GRCh38 -c $HOME/.vep
-```
-
-For BRCA1 clinical work, the most useful add-ons are **ClinVar** (known pathogenicity) and **gnomAD** (population frequency). Download those VCFs and pass them as custom annotations:
-
-```bash
-mkdir -p annot
-vep \
-  --offline --cache --dir_cache $HOME/.vep \
-  --fasta ${REF} \
-  --assembly GRCh38 \
-  --input_file vcf/${SAMPLE}.pass.vcf.gz \
-  --output_file annot/${SAMPLE}.vep.vcf --vcf --compress_output bgzip \
-  --everything \
-  --symbol --canonical --hgvs --pick \
-  --custom file=clinvar.vcf.gz,short_name=ClinVar,format=vcf,type=exact,coords=0,fields=CLNSIG%CLNDN \
-  --stats_file annot/${SAMPLE}.vep_summary.html
-```
-
-Useful flags:
-
-- `--everything` turns on a broad set of annotations (consequence, SIFT, PolyPhen, allele frequencies, etc.).
-- `--hgvs` adds HGVS nomenclature (e.g. `BRCA1:c.68_69delAG`, `p.Glu23fs`) — the standard way clinicians refer to variants.
-- `--pick` reports a single, prioritised consequence per variant (drop it to see all transcripts).
-- `--custom ...ClinVar...` attaches ClinVar significance (`CLNSIG`) and disease name (`CLNDN`).
-
-Pull out the most consequential variants for a quick look:
-
-```bash
-# Filter the VEP output to predicted high/moderate-impact variants
-filter_vep \
-  -i annot/${SAMPLE}.vep.vcf.gz \
-  --filter "IMPACT in HIGH,MODERATE and SYMBOL is BRCA1" \
-  -o annot/${SAMPLE}.brca1_impactful.vcf
-```
-
----
 
 ## Part 2 — 20 samples (joint calling)
 
@@ -430,25 +388,10 @@ filter_vep \
 
 The key insight: **per-sample work stays per-sample** (steps from Part 1, producing one GVCF each); only the genotyping is joint.
 
-Assume a sample sheet:
 
 ```bash
-# samples.txt — one sample name per line
-cat > samples.txt <<'EOF'
-sample01
-sample02
-sample03
-sample04
-sample05
-sample06
-sample07
-sample08
-sample09
-sample10
-...
-...
-sample20
-EOF
+# Create a sample sheet named samples.txt — with one sample name per line 
+
 ```
 
 ### 1. Per-sample GVCFs
@@ -469,7 +412,7 @@ while read SAMPLE; do
     --spark-master local[${THREADS}]
 
   gatk BaseRecalibrator -I bam/${SAMPLE}.dedup.bam -R ${REF} \
-    --known-sites ${DBSNP} --known-sites ${MILLS} --known-sites ${KNOWN_INDELS} \
+    --known-sites ${DBSNP} --known-sites ${KNOWN_INDELS} \
     -L ${BRCA1} -O bam/${SAMPLE}.recal.table
   gatk ApplyBQSR -I bam/${SAMPLE}.dedup.bam -R ${REF} \
     --bqsr-recal-file bam/${SAMPLE}.recal.table -L ${BRCA1} \
@@ -488,7 +431,7 @@ You now have `gvcf/sample01.g.vcf.gz … gvcf/sample10.g.vcf.gz`.
 
 ```bash
 # sample-name <TAB> path-to-gvcf
-awk '{print $1"\tgvcf/"$1".g.vcf.gz"}' samples.txt > cohort.sample_map
+awk '{print $1"\tgvcf/$1.g.vcf.gz"}' samples.txt > cohort.sample_map
 
 gatk GenomicsDBImport \
   --genomicsdb-workspace-path genomicsdb_brca1 \
@@ -517,7 +460,7 @@ Quick sanity check on what came out:
 
 ```bash
 bcftools stats vcf/cohort.raw.vcf.gz | grep -E "number of (records|SNPs|indels):"
-bcftools query -l vcf/cohort.raw.vcf.gz   # should list all 10 samples
+bcftools query -l vcf/cohort.raw.vcf.gz   # should list all 20 samples
 ```
 
 ### 4. Hard filtering (cohort)
@@ -558,7 +501,7 @@ bcftools index -t vcf/cohort.pass.vcf.gz
 
 ### 5. Annotation with VEP
 
-Annotate the cohort VCF exactly as before — VEP handles multi-sample VCFs transparently (it annotates sites; per-sample genotypes are preserved).
+[Ensembl VEP](https://www.ensembl.org/info/docs/tools/vep/index.html) predicts the functional consequence of each variant and layers on clinical context. 
 
 ```bash
 vep \
@@ -571,9 +514,26 @@ vep \
   --stats_file annot/cohort.vep_summary.html
 ```
 
+Useful flags:
+
+- `--everything` turns on a broad set of annotations (consequence, SIFT, PolyPhen, allele frequencies, etc.).
+- `--hgvs` adds HGVS nomenclature (e.g. `BRCA1:c.68_69delAG`, `p.Glu23fs`) — the standard way clinicians refer to variants.
+- `--pick` reports a single, prioritised consequence per variant (drop it to see all transcripts).
+- `--custom ...ClinVar...` attaches ClinVar significance (`CLNSIG`) and disease name (`CLNDN`).
+
+Pull out the most consequential variants for a quick look:
+
+```bash
+# Filter the VEP output to predicted high/moderate-impact variants
+filter_vep \
+  -i annot/cohort.vep.vcf.gz \
+  --filter "IMPACT in HIGH,MODERATE and SYMBOL is BRCA1" \
+  -o annot/cohort.brca1_impactful.vcf
+```
+
 ### 6. Extracting BRCA1 variants of interest
 
-Now mine the annotated cohort VCF. A common task: list every clinically significant or high-impact BRCA1 variant and which samples carry it.
+A common task: list every clinically significant or high-impact BRCA1 variant and which samples carry it.
 
 ```bash
 # (a) Restrict to clinically interesting consequences in BRCA1
@@ -618,7 +578,7 @@ Sanity checks for a healthy WGS germline callset:
 
 - **Ts/Tv ratio** ≈ 2.0–2.1 genome-wide (higher, ~3, in exonic/coding regions like much of BRCA1). A value far from this suggests false positives.
 - **Het/Hom ratio** per sample ≈ 1.5–2.0; an outlier sample may indicate contamination or a sample swap.
-- **Missingness / depth** — flag samples with low mean depth over BRCA1 (from `mosdepth`).
+- **Missingness / depth** — flag samples with low mean depth over BRCA1.
 - **Novelty** — most common variants should already be in dbSNP; a high novel fraction at a small locus warrants scrutiny.
 
 ---
@@ -638,62 +598,11 @@ Calling and annotating are upstream of clinical interpretation, which is a regul
 
 ## Appendix
 
-### A. End-to-end single-sample script
-
-```bash
-#!/usr/bin/env bash
-set -euo pipefail
-
-# ---- config ----
-SAMPLE=${1:?usage: run_sample.sh <sample_name>}
-REF=ref/Homo_sapiens_assembly38.fasta
-DBSNP=ref/Homo_sapiens_assembly38.dbsnp138.vcf
-MILLS=ref/Mills_and_1000G_gold_standard.indels.hg38.vcf.gz
-KNOWN_INDELS=ref/Homo_sapiens_assembly38.known_indels.vcf.gz
-BRCA1="chr17:43043295-43126483"
-THREADS=8
-R1=fastq/${SAMPLE}_R1.fastq.gz
-R2=fastq/${SAMPLE}_R2.fastq.gz
-mkdir -p qc bam gvcf vcf
-
-# ---- QC ----
-fastqc -t ${THREADS} -o qc ${R1} ${R2}
-
-# ---- align ----
-RG="@RG\tID:${SAMPLE}.L1\tSM:${SAMPLE}\tLB:${SAMPLE}_lib1\tPL:ILLUMINA\tPU:FLOWCELL.L1"
-bwa mem -t ${THREADS} -R "${RG}" ${REF} ${R1} ${R2} \
-  | samtools sort -@ ${THREADS} -o bam/${SAMPLE}.sorted.bam -
-
-# ---- dedup ----
-gatk MarkDuplicatesSpark -I bam/${SAMPLE}.sorted.bam \
-  -O bam/${SAMPLE}.dedup.bam -M qc/${SAMPLE}.dup_metrics.txt \
-  --spark-master local[${THREADS}]
-
-# ---- BQSR ----
-gatk BaseRecalibrator -I bam/${SAMPLE}.dedup.bam -R ${REF} \
-  --known-sites ${DBSNP} --known-sites ${MILLS} --known-sites ${KNOWN_INDELS} \
-  -L ${BRCA1} -O bam/${SAMPLE}.recal.table
-gatk ApplyBQSR -I bam/${SAMPLE}.dedup.bam -R ${REF} \
-  --bqsr-recal-file bam/${SAMPLE}.recal.table -L ${BRCA1} \
-  -O bam/${SAMPLE}.recal.bam
-
-# ---- alignment QC ----
-samtools flagstat bam/${SAMPLE}.recal.bam > qc/${SAMPLE}.flagstat.txt
-mosdepth --by ref/brca1.bed --no-per-base -t ${THREADS} \
-  qc/${SAMPLE}.brca1 bam/${SAMPLE}.recal.bam
-
-# ---- call ----
-gatk HaplotypeCaller -R ${REF} -I bam/${SAMPLE}.recal.bam \
-  -L ${BRCA1} -ERC GVCF -O gvcf/${SAMPLE}.g.vcf.gz
-
-echo "Done: gvcf/${SAMPLE}.g.vcf.gz"
-```
-
-### B. A note on VQSR
+### A. A note on VQSR
 
 We used hard filtering because **VQSR (Variant Quality Score Recalibration)** needs a large number of variants to train its Gaussian-mixture model — on the order of whole exomes or genomes with many samples. A single BRCA1 locus, even across 10 samples, has far too few variants. If you scale this pipeline up to genome-wide calling on a reasonable cohort, VQSR (`VariantRecalibrator` + `ApplyVQSR`) generally outperforms hard filtering. For modern pipelines, GATK's newer **VETS** (`ExtractVariantAnnotations` + `TrainVariantAnnotationsModel` + `ScoreVariantAnnotations`) is the supported successor and works on smaller callsets than classic VQSR. Hard filtering remains the robust, dependency-free default for small or targeted datasets like this one.
 
-### C. References
+### B. References
 
 - GATK Best Practices — Germline short variant discovery: <https://gatk.broadinstitute.org/hc/en-us/articles/360035535932>
 - HaplotypeCaller in GVCF mode & joint genotyping: <https://gatk.broadinstitute.org/hc/en-us/articles/360035890411>
