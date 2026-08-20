@@ -174,6 +174,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#reference-data-grch38" id="toc-reference-data-grch38" class="nav-link" data-scroll-target="#reference-data-grch38">Reference data (GRCh38)</a>
   <ul class="collapse">
   <li><a href="#key-files-required-by-gatk" id="toc-key-files-required-by-gatk" class="nav-link" data-scroll-target="#key-files-required-by-gatk">Key files required by GATK</a></li>
+  <li><a href="#tutorial-datasets" id="toc-tutorial-datasets" class="nav-link" data-scroll-target="#tutorial-datasets">Tutorial datasets</a></li>
   <li><a href="#project-layout-conventions" id="toc-project-layout-conventions" class="nav-link" data-scroll-target="#project-layout-conventions">Project layout &amp; conventions</a></li>
   <li><a href="#the-brca1-interval" id="toc-the-brca1-interval" class="nav-link" data-scroll-target="#the-brca1-interval">The BRCA1 interval</a></li>
   </ul></li>
@@ -374,7 +375,7 @@ Homo_sapiens_assembly38.fasta.64.alt
 Homo_sapiens_assembly38.fasta.64.amb
 Homo_sapiens_assembly38.fasta.64.ann
 
-If the indexes are not already available, you can generate them using bwa (~1 hr for the whole genom)
+If the indexes are not already available, you can generate them using BWA (~1 hr for the whole genome)
 bwa index Homo_sapiens_assembly38.fasta
 
 # Known sites for BQSR
@@ -385,12 +386,16 @@ Homo_sapiens_assembly38.known_indels.vcf.gz.tbi
 Mills_and_1000G_gold_standard.indels.hg38.vcf.gz 
 Mills_and_1000G_gold_standard.indels.hg38.vcf.gz.tbi </code></pre>
 </section>
+<section id="tutorial-datasets" class="level3">
+<h3 class="anchored" data-anchor-id="tutorial-datasets">Tutorial datasets</h3>
+<p>All datasets used in this tutorial can be found on the ACE HPC in <code>/etc/ace-data/ABI-SummerSchool-26/human-genomics/data/</code></p>
+</section>
 <section id="project-layout-conventions" class="level3">
 <h3 class="anchored" data-anchor-id="project-layout-conventions">Project layout &amp; conventions</h3>
 <pre class="text"><code>brca1-vc/
 ├── ref/                      # reference + known sites (above)
 ├── fastq/                    # raw reads: &lt;sample&gt;_R1.fastq.gz, &lt;sample&gt;_R2.fastq.gz
-├── qc/                       # FastQC / MultiQC / mosdepth outputs
+├── qc/                       # FastQC / MultiQC / samtools depth outputs
 ├── bam/                      # aligned, dedup, recalibrated BAMs
 ├── gvcf/                     # per-sample GVCFs
 ├── vcf/                      # genotyped &amp; filtered VCFs
@@ -404,25 +409,25 @@ Mills_and_1000G_gold_standard.indels.hg38.vcf.gz.tbi </code></pre>
 </section>
 <section id="the-brca1-interval" class="level3">
 <h3 class="anchored" data-anchor-id="the-brca1-interval">The BRCA1 interval</h3>
-<p>BRCA1 sits on the minus strand of chromosome 17 in GRCh38. We add ~1 kb of padding so we don’t clip variants near the gene boundaries. Create an interval file once and reuse it:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># GRCh38 / hg38 coordinates for BRCA1 (GENCODE gene span), with ~1 kb padding</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="bu">printf</span> <span class="st">"chr17\t43043295\t43126483\tBRCA1\n"</span> <span class="op">&gt;</span> ref/brca1.bed</span>
+<p>BRCA1 is on the minus strand of chromosome 17 in GRCh38. We add ~3 kb of padding so we don’t clip variants near the gene boundaries. Create an interval file once and reuse it:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># GRCh38 / hg38 coordinates for BRCA1 (GenBank gene span), with 3 kb padding</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="bu">printf</span> <span class="st">"chr17\t43041295\t43173327\tBRCA1\n"</span> <span class="op">&gt;</span> ref/brca1.bed</span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="co"># GATK also accepts the simple "contig:start-end" form on the command line:</span></span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="va">BRCA1</span><span class="op">=</span><span class="st">"chr17:43043295-43126483"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="va">BRCA1</span><span class="op">=</span><span class="st">"chr17:43041295-43173327"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <blockquote class="blockquote">
-<p><strong>Coordinate note:</strong> the BRCA1 gene body in GRCh38 spans roughly <code>chr17:43,044,295–43,125,483</code>. BED files are 0-based half-open, so the start is written as <code>43043295</code> after padding. Confirm against your annotation source if you need exact transcript boundaries.</p>
+<p><strong>Coordinate note:</strong> the BRCA1 gene body in GRCh38 spans roughly <code>chr17:43044295-43170327</code>. BED files are 0-based half-open, so the start is written as <code>43041295</code> after padding. Confirm against your annotation source if you need exact transcript boundaries.</p>
 </blockquote>
-<p>We restrict expensive steps (variant calling) to this interval with <code>-L</code>. You could equally run the genome-wide pipeline and subset at the end — restricting early just makes the tutorial fast.</p>
+<p>We restrict expensive steps (variant calling) to this interval with <code>-L</code>. You could equally run the genome-wide pipeline and subset at the end — restricting early just makes the tutorial faster.</p>
 <hr>
 </section>
 </section>
 <section id="part-1-single-sample" class="level2">
 <h2 class="anchored" data-anchor-id="part-1-single-sample">Part 1 — Single sample</h2>
-<p>We’ll process one sample called <code>HG02562</code> (a widely used reference individual). Reads are paired-end: <code>fastq/HG02562_R1.fastq.gz</code> and <code>fastq/HG02562_R2.fastq.gz</code>.</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="va">SAMPLE</span><span class="op">=</span>HG02562</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="va">R1</span><span class="op">=</span>fastq/<span class="va">${SAMPLE}</span>_R1.fastq.gz</span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="va">R2</span><span class="op">=</span>fastq/<span class="va">${SAMPLE}</span>_R2.fastq.gz</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>We’ll process one sample called <code>HG02562</code>. Reads are paired-end: <code>fastq/HG02562_R1.fastq.gz</code> and <code>fastq/HG02562_R2.fastq.gz</code>.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="va">R1</span><span class="op">=</span>fastq/HG02562_R1.fastq.gz</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="va">R2</span><span class="op">=</span>fastq/HG02562_R2.fastq.gz</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <section id="raw-read-qc" class="level3">
 <h3 class="anchored" data-anchor-id="raw-read-qc">1. Raw-read QC</h3>
 <p>Always look at your reads before aligning. FastQC flags adapter contamination, quality drop-off, and over-represented sequences.</p>
@@ -440,13 +445,31 @@ Mills_and_1000G_gold_standard.indels.hg38.vcf.gz.tbi </code></pre>
 </section>
 <section id="alignment-bwa-mem" class="level3">
 <h3 class="anchored" data-anchor-id="alignment-bwa-mem">2. Alignment (BWA-MEM)</h3>
-<p>Align to GRCh38 and immediately coordinate-sort into BAM. The <strong>read group</strong> (<code>-R</code>) is mandatory for GATK — it records sample, library, and platform metadata.</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> <span class="at">-p</span> bam</span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="va">RG</span><span class="op">=</span><span class="st">"@RG\tID:</span><span class="va">${SAMPLE}</span><span class="st">.L1\tSM:</span><span class="va">${SAMPLE}</span><span class="st">\tLB:</span><span class="va">${SAMPLE}</span><span class="st">_lib1\tPL:ILLUMINA\tPU:FLOWCELL.L1"</span></span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="ex">bwa</span> mem <span class="at">-t</span> <span class="va">${THREADS}</span> <span class="at">-R</span> <span class="st">"</span><span class="va">${RG}</span><span class="st">"</span> <span class="va">${REF}</span> <span class="va">${R1}</span> <span class="va">${R2}</span> <span class="dt">\</span></span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>  <span class="kw">|</span> <span class="ex">samtools</span> sort <span class="at">-@</span> <span class="va">${THREADS}</span> <span class="at">-o</span> bam/<span class="va">${SAMPLE}</span>.sorted.bam <span class="at">-</span></span>
-<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a><span class="ex">samtools</span> index bam/<span class="va">${SAMPLE}</span>.sorted.bam</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Align reads to GRCh38 using BWA-MEM. The <strong>read group</strong> (<code>-R</code>) is mandatory for GATK — it records sample, library, and platform metadata.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Create bam folder</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> <span class="at">-p</span> bam</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Set read group information</span></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a><span class="va">RG</span><span class="op">=</span><span class="st">"@RG\tID:HG02562.L1\tSM:HG02562\tLB:HG02562_lib1\tPL:ILLUMINA\tPU:FLOWCELL.L1"</span></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Align with BWA-MEM</span></span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a><span class="ex">bwa</span> mem <span class="at">-t</span> <span class="va">${THREADS}</span> <span class="at">-R</span> <span class="st">"</span><span class="va">${RG}</span><span class="st">"</span> <span class="va">${REF}</span> <span class="va">${R1}</span> <span class="va">${R2}</span> <span class="at">-o</span> bam/HG02562.sam</span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert SAM to BAM</span></span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a><span class="ex">samtools</span> view <span class="at">-bS</span> bam/HG02562.sam <span class="at">-o</span> bam/HG02562.bam</span>
+<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Sort BAM file</span></span>
+<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a><span class="ex">samtools</span> sort <span class="at">-@</span> <span class="va">${THREADS}</span> bam/HG02562.bam <span class="at">-o</span> bam/HG02562.sorted.bam</span>
+<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-17"><a href="#cb9-17" aria-hidden="true" tabindex="-1"></a><span class="co"># Align and sort in one step:</span></span>
+<span id="cb9-18"><a href="#cb9-18" aria-hidden="true" tabindex="-1"></a><span class="ex">bwa</span> mem <span class="at">-t</span> <span class="va">${THREADS}</span> <span class="at">-R</span> <span class="st">"</span><span class="va">${RG}</span><span class="st">"</span> <span class="va">${REF}</span> <span class="va">${R1}</span> <span class="va">${R2}</span> <span class="kw">|</span> <span class="ex">samtools</span> sort <span class="at">-@</span> <span class="va">${THREADS}</span> <span class="at">-o</span> HG02562.sorted.bam</span>
+<span id="cb9-19"><a href="#cb9-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-20"><a href="#cb9-20" aria-hidden="true" tabindex="-1"></a><span class="co"># Index BAM file</span></span>
+<span id="cb9-21"><a href="#cb9-21" aria-hidden="true" tabindex="-1"></a><span class="ex">samtools</span> index bam/HG02562.sorted.bam</span>
+<span id="cb9-22"><a href="#cb9-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-23"><a href="#cb9-23" aria-hidden="true" tabindex="-1"></a><span class="co"># Confirm Coordinate sorting</span></span>
+<span id="cb9-24"><a href="#cb9-24" aria-hidden="true" tabindex="-1"></a><span class="ex">samtools</span> view <span class="at">-H</span> bam/HG02562.sorted.bam <span class="kw">|</span> <span class="fu">grep</span> <span class="st">'^@HD'</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <table class="caption-top table">
 <colgroup>
 <col style="width: 64%">
@@ -486,9 +509,9 @@ Mills_and_1000G_gold_standard.indels.hg38.vcf.gz.tbi </code></pre>
 <h3 class="anchored" data-anchor-id="mark-duplicates">3. Mark duplicates</h3>
 <p>PCR and optical duplicates inflate apparent depth and bias allele fractions. We <strong>mark</strong> (not remove) them so callers can ignore them.</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="ex">gatk</span> MarkDuplicatesSpark <span class="dt">\</span></span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">-I</span> bam/<span class="va">${SAMPLE}</span>.sorted.bam <span class="dt">\</span></span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">-O</span> bam/<span class="va">${SAMPLE}</span>.dedup.bam <span class="dt">\</span></span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">-M</span> qc/<span class="va">${SAMPLE}</span>.dup_metrics.txt <span class="dt">\</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">-I</span> bam/HG02562.sorted.bam <span class="dt">\</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">-O</span> bam/HG02562.dedup.bam <span class="dt">\</span></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">-M</span> qc/HG02562.dup_metrics.txt <span class="dt">\</span></span>
 <span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">--spark-master</span> local<span class="pp">[</span><span class="ss">${THREADS}</span><span class="pp">]</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <blockquote class="blockquote">
 <p><code>MarkDuplicatesSpark</code> also produces a coordinate-sorted, indexed BAM, so no separate <code>samtools index</code> is needed. If you prefer the non-Spark route, use Picard-style <code>gatk MarkDuplicates</code> followed by <code>samtools index</code>.</p>
@@ -499,44 +522,42 @@ Mills_and_1000G_gold_standard.indels.hg38.vcf.gz.tbi </code></pre>
 <p>Sequencers make systematic, machine-specific errors in their reported base qualities. BQSR builds an empirical model of these errors (excluding known variant sites, which are real differences, not errors) and adjusts the quality scores.</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Step 1: build the recalibration model</span></span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="ex">gatk</span> BaseRecalibrator <span class="dt">\</span></span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">-I</span> bam/<span class="va">${SAMPLE}</span>.dedup.bam <span class="dt">\</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">-I</span> bam/HG02562.dedup.bam <span class="dt">\</span></span>
 <span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">-R</span> <span class="va">${REF}</span> <span class="dt">\</span></span>
 <span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">--known-sites</span> <span class="va">${DBSNP}</span> <span class="dt">\</span></span>
-<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">--known-sites</span> <span class="va">${MILLS}</span> <span class="dt">\</span></span>
-<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">--known-sites</span> <span class="va">${KNOWN_INDELS}</span> <span class="dt">\</span></span>
-<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">-L</span> <span class="va">${BRCA1}</span> <span class="dt">\</span></span>
-<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">-O</span> bam/<span class="va">${SAMPLE}</span>.recal.table</span>
-<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Step 2: apply it</span></span>
-<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a><span class="ex">gatk</span> ApplyBQSR <span class="dt">\</span></span>
-<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a>  <span class="at">-I</span> bam/<span class="va">${SAMPLE}</span>.dedup.bam <span class="dt">\</span></span>
-<span id="cb11-14"><a href="#cb11-14" aria-hidden="true" tabindex="-1"></a>  <span class="at">-R</span> <span class="va">${REF}</span> <span class="dt">\</span></span>
-<span id="cb11-15"><a href="#cb11-15" aria-hidden="true" tabindex="-1"></a>  <span class="at">--bqsr-recal-file</span> bam/<span class="va">${SAMPLE}</span>.recal.table <span class="dt">\</span></span>
-<span id="cb11-16"><a href="#cb11-16" aria-hidden="true" tabindex="-1"></a>  <span class="at">-L</span> <span class="va">${BRCA1}</span> <span class="dt">\</span></span>
-<span id="cb11-17"><a href="#cb11-17" aria-hidden="true" tabindex="-1"></a>  <span class="at">-O</span> bam/<span class="va">${SAMPLE}</span>.recal.bam</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">--known-sites</span> <span class="va">${KNOWN_INDELS}</span> <span class="dt">\</span></span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">-L</span> <span class="va">${BRCA1}</span> <span class="dt">\</span></span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">-O</span> bam/HG02562.recal.table</span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Step 2: apply it</span></span>
+<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a><span class="ex">gatk</span> ApplyBQSR <span class="dt">\</span></span>
+<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a>  <span class="at">-I</span> bam/HG02562.dedup.bam <span class="dt">\</span></span>
+<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a>  <span class="at">-R</span> <span class="va">${REF}</span> <span class="dt">\</span></span>
+<span id="cb11-14"><a href="#cb11-14" aria-hidden="true" tabindex="-1"></a>  <span class="at">--bqsr-recal-file</span> bam/HG02562.recal.table <span class="dt">\</span></span>
+<span id="cb11-15"><a href="#cb11-15" aria-hidden="true" tabindex="-1"></a>  <span class="at">-L</span> <span class="va">${BRCA1}</span> <span class="dt">\</span></span>
+<span id="cb11-16"><a href="#cb11-16" aria-hidden="true" tabindex="-1"></a>  <span class="at">-O</span> bam/HG02562.recal.bam</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <blockquote class="blockquote">
 <p><strong>Why <code>-L</code> here?</strong> Restricting to BRCA1 keeps the tutorial fast. In production you build the BQSR model genome-wide (the model benefits from more data) and apply it genome-wide too. Recalibrating on a single small gene is for demonstration only.</p>
 </blockquote>
 </section>
 <section id="alignment-qc" class="level3">
 <h3 class="anchored" data-anchor-id="alignment-qc">5. Alignment QC</h3>
-<p>Confirm the alignment is healthy before calling variants.</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Quick mapping summary</span></span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="ex">samtools</span> flagstat bam/<span class="va">${SAMPLE}</span>.recal.bam <span class="op">&gt;</span> qc/<span class="va">${SAMPLE}</span>.flagstat.txt</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="ex">samtools</span> flagstat bam/HG02562.recal.bam <span class="op">&gt;</span> qc/HG02562.flagstat.txt</span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Coverage over the BRCA1 region</span></span>
-<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a><span class="ex">mosdepth</span> <span class="at">--by</span> ref/brca1.bed <span class="at">--no-per-base</span> <span class="at">-t</span> <span class="va">${THREADS}</span> <span class="dt">\</span></span>
-<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>  qc/<span class="va">${SAMPLE}</span>.brca1 bam/<span class="va">${SAMPLE}</span>.recal.bam</span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a><span class="ex">samtools</span> depth <span class="at">-r</span> <span class="va">${BRCA1}</span> <span class="at">--threads</span> <span class="va">${THREADS}</span> <span class="dt">\</span></span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a> bam/HG02562.recal.bam <span class="at">-o</span> qc/HG02562.brca1.depth</span>
 <span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a><span class="co"># GATK metrics</span></span>
 <span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a><span class="ex">gatk</span> CollectAlignmentSummaryMetrics <span class="dt">\</span></span>
 <span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">-R</span> <span class="va">${REF}</span> <span class="dt">\</span></span>
-<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a>  <span class="at">-I</span> bam/<span class="va">${SAMPLE}</span>.recal.bam <span class="dt">\</span></span>
-<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a>  <span class="at">-O</span> qc/<span class="va">${SAMPLE}</span>.aln_metrics.txt</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a>  <span class="at">-I</span> bam/HG02562.recal.bam <span class="dt">\</span></span>
+<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a>  <span class="at">-O</span> qc/HG02562.aln_metrics.txt</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>What to check:</p>
 <ul>
 <li><strong><code>flagstat</code></strong> — mapping rate should be high (typically &gt;95% for WGS) and properly-paired reads should dominate.</li>
-<li><strong><code>mosdepth</code></strong> — <code>qc/${SAMPLE}.brca1.mosdepth.summary.txt</code> reports mean depth over BRCA1. For confident germline calls you want ≥20–30× across the region.</li>
+<li><strong><code>samtools depth</code></strong> — <code>qc/HG02562.brca1.depth</code> reports depth per position across BRCA1. For confident germline calls you want ≥20–30× across the region.</li>
 <li><strong>Duplicate rate</strong> (from step 3) — single-digit percentages are typical; very high rates suggest a low-complexity library.</li>
 </ul>
 </section>
@@ -546,10 +567,10 @@ Mills_and_1000G_gold_standard.indels.hg38.vcf.gz.tbi </code></pre>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> <span class="at">-p</span> gvcf</span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="ex">gatk</span> HaplotypeCaller <span class="dt">\</span></span>
 <span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">-R</span> <span class="va">${REF}</span> <span class="dt">\</span></span>
-<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">-I</span> bam/<span class="va">${SAMPLE}</span>.recal.bam <span class="dt">\</span></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">-I</span> bam/qc/HG02562.recal.bam <span class="dt">\</span></span>
 <span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">-L</span> <span class="va">${BRCA1}</span> <span class="dt">\</span></span>
 <span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">-ERC</span> GVCF <span class="dt">\</span></span>
-<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">-O</span> gvcf/<span class="va">${SAMPLE}</span>.g.vcf.gz</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">-O</span> gvcf/HG02562.g.vcf.gz</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <blockquote class="blockquote">
 <p>HaplotypeCaller does <strong>local de novo reassembly</strong> of each “active region”: it builds a graph of candidate haplotypes from the reads, realigns reads to them, and computes genotype likelihoods. This is why it handles indels and complex regions far better than naive pileup callers.</p>
 </blockquote>
@@ -560,46 +581,46 @@ Mills_and_1000G_gold_standard.indels.hg38.vcf.gz.tbi </code></pre>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> <span class="at">-p</span> vcf</span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="ex">gatk</span> GenotypeGVCFs <span class="dt">\</span></span>
 <span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">-R</span> <span class="va">${REF}</span> <span class="dt">\</span></span>
-<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">-V</span> gvcf/<span class="va">${SAMPLE}</span>.g.vcf.gz <span class="dt">\</span></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">-V</span> gvcf/HG02562.g.vcf.gz <span class="dt">\</span></span>
 <span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">-L</span> <span class="va">${BRCA1}</span> <span class="dt">\</span></span>
-<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">-O</span> vcf/<span class="va">${SAMPLE}</span>.raw.vcf.gz</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p><code>vcf/${SAMPLE}.raw.vcf.gz</code> now contains raw SNVs and indels in BRCA1 for this sample. Next we filter.</p>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">-O</span> vcf/HG02562.raw.vcf.gz</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><code>vcf/HG02562.raw.vcf.gz</code> now contains raw SNVs and indels in BRCA1 for this sample.</p>
 </section>
 <section id="hard-filtering" class="level3">
 <h3 class="anchored" data-anchor-id="hard-filtering">8. Hard filtering</h3>
 <p>With a single sample (and a small target) there isn’t enough data for VQSR, so we use <strong>hard filtering</strong> — fixed thresholds on annotation values, applied separately to SNVs and indels because they have different error profiles. These thresholds are the GATK-recommended starting points; tune them against a truth set if you have one.</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb15"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># --- SNVs ---</span></span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="ex">gatk</span> SelectVariants <span class="at">-R</span> <span class="va">${REF}</span> <span class="at">-V</span> vcf/<span class="va">${SAMPLE}</span>.raw.vcf.gz <span class="dt">\</span></span>
-<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">--select-type-to-include</span> SNP <span class="at">-O</span> vcf/<span class="va">${SAMPLE}</span>.snps.vcf.gz</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="ex">gatk</span> SelectVariants <span class="at">-R</span> <span class="va">${REF}</span> <span class="at">-V</span> vcf/HG02562.raw.vcf.gz <span class="dt">\</span></span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">--select-type-to-include</span> SNP <span class="at">-O</span> vcf/HG02562.snps.vcf.gz</span>
 <span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a><span class="ex">gatk</span> VariantFiltration <span class="at">-R</span> <span class="va">${REF}</span> <span class="at">-V</span> vcf/<span class="va">${SAMPLE}</span>.snps.vcf.gz <span class="dt">\</span></span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a><span class="ex">gatk</span> VariantFiltration <span class="at">-R</span> <span class="va">${REF}</span> <span class="at">-V</span> vcf/HG02562.snps.vcf.gz <span class="dt">\</span></span>
 <span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">--filter-expression</span> <span class="st">"QD &lt; 2.0"</span>                 <span class="at">--filter-name</span> <span class="st">"QD2"</span> <span class="dt">\</span></span>
 <span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">--filter-expression</span> <span class="st">"FS &gt; 60.0"</span>                <span class="at">--filter-name</span> <span class="st">"FS60"</span> <span class="dt">\</span></span>
 <span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">--filter-expression</span> <span class="st">"MQ &lt; 40.0"</span>                <span class="at">--filter-name</span> <span class="st">"MQ40"</span> <span class="dt">\</span></span>
 <span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">--filter-expression</span> <span class="st">"MQRankSum &lt; -12.5"</span>        <span class="at">--filter-name</span> <span class="st">"MQRankSum-12.5"</span> <span class="dt">\</span></span>
 <span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">--filter-expression</span> <span class="st">"ReadPosRankSum &lt; -8.0"</span>    <span class="at">--filter-name</span> <span class="st">"ReadPosRankSum-8"</span> <span class="dt">\</span></span>
 <span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a>  <span class="at">--filter-expression</span> <span class="st">"SOR &gt; 3.0"</span>                <span class="at">--filter-name</span> <span class="st">"SOR3"</span> <span class="dt">\</span></span>
-<span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a>  <span class="at">-O</span> vcf/<span class="va">${SAMPLE}</span>.snps.filtered.vcf.gz</span>
+<span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a>  <span class="at">-O</span> vcf/HG02562.snps.filtered.vcf.gz</span>
 <span id="cb15-13"><a href="#cb15-13" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb15-14"><a href="#cb15-14" aria-hidden="true" tabindex="-1"></a><span class="co"># --- Indels ---</span></span>
-<span id="cb15-15"><a href="#cb15-15" aria-hidden="true" tabindex="-1"></a><span class="ex">gatk</span> SelectVariants <span class="at">-R</span> <span class="va">${REF}</span> <span class="at">-V</span> vcf/<span class="va">${SAMPLE}</span>.raw.vcf.gz <span class="dt">\</span></span>
-<span id="cb15-16"><a href="#cb15-16" aria-hidden="true" tabindex="-1"></a>  <span class="at">--select-type-to-include</span> INDEL <span class="at">-O</span> vcf/<span class="va">${SAMPLE}</span>.indels.vcf.gz</span>
+<span id="cb15-15"><a href="#cb15-15" aria-hidden="true" tabindex="-1"></a><span class="ex">gatk</span> SelectVariants <span class="at">-R</span> <span class="va">${REF}</span> <span class="at">-V</span> vcf/HG02562.raw.vcf.gz <span class="dt">\</span></span>
+<span id="cb15-16"><a href="#cb15-16" aria-hidden="true" tabindex="-1"></a>  <span class="at">--select-type-to-include</span> INDEL <span class="at">-O</span> vcf/HG02562.indels.vcf.gz</span>
 <span id="cb15-17"><a href="#cb15-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-18"><a href="#cb15-18" aria-hidden="true" tabindex="-1"></a><span class="ex">gatk</span> VariantFiltration <span class="at">-R</span> <span class="va">${REF}</span> <span class="at">-V</span> vcf/<span class="va">${SAMPLE}</span>.indels.vcf.gz <span class="dt">\</span></span>
+<span id="cb15-18"><a href="#cb15-18" aria-hidden="true" tabindex="-1"></a><span class="ex">gatk</span> VariantFiltration <span class="at">-R</span> <span class="va">${REF}</span> <span class="at">-V</span> vcf/HG02562.indels.vcf.gz <span class="dt">\</span></span>
 <span id="cb15-19"><a href="#cb15-19" aria-hidden="true" tabindex="-1"></a>  <span class="at">--filter-expression</span> <span class="st">"QD &lt; 2.0"</span>                 <span class="at">--filter-name</span> <span class="st">"QD2"</span> <span class="dt">\</span></span>
 <span id="cb15-20"><a href="#cb15-20" aria-hidden="true" tabindex="-1"></a>  <span class="at">--filter-expression</span> <span class="st">"FS &gt; 200.0"</span>               <span class="at">--filter-name</span> <span class="st">"FS200"</span> <span class="dt">\</span></span>
 <span id="cb15-21"><a href="#cb15-21" aria-hidden="true" tabindex="-1"></a>  <span class="at">--filter-expression</span> <span class="st">"ReadPosRankSum &lt; -20.0"</span>   <span class="at">--filter-name</span> <span class="st">"ReadPosRankSum-20"</span> <span class="dt">\</span></span>
 <span id="cb15-22"><a href="#cb15-22" aria-hidden="true" tabindex="-1"></a>  <span class="at">--filter-expression</span> <span class="st">"SOR &gt; 10.0"</span>               <span class="at">--filter-name</span> <span class="st">"SOR10"</span> <span class="dt">\</span></span>
-<span id="cb15-23"><a href="#cb15-23" aria-hidden="true" tabindex="-1"></a>  <span class="at">-O</span> vcf/<span class="va">${SAMPLE}</span>.indels.filtered.vcf.gz</span>
+<span id="cb15-23"><a href="#cb15-23" aria-hidden="true" tabindex="-1"></a>  <span class="at">-O</span> vcf/HG02562.indels.filtered.vcf.gz</span>
 <span id="cb15-24"><a href="#cb15-24" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb15-25"><a href="#cb15-25" aria-hidden="true" tabindex="-1"></a><span class="co"># --- Merge back together ---</span></span>
 <span id="cb15-26"><a href="#cb15-26" aria-hidden="true" tabindex="-1"></a><span class="ex">gatk</span> MergeVcfs <span class="dt">\</span></span>
-<span id="cb15-27"><a href="#cb15-27" aria-hidden="true" tabindex="-1"></a>  <span class="at">-I</span> vcf/<span class="va">${SAMPLE}</span>.snps.filtered.vcf.gz <span class="dt">\</span></span>
-<span id="cb15-28"><a href="#cb15-28" aria-hidden="true" tabindex="-1"></a>  <span class="at">-I</span> vcf/<span class="va">${SAMPLE}</span>.indels.filtered.vcf.gz <span class="dt">\</span></span>
-<span id="cb15-29"><a href="#cb15-29" aria-hidden="true" tabindex="-1"></a>  <span class="at">-O</span> vcf/<span class="va">${SAMPLE}</span>.filtered.vcf.gz</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb15-27"><a href="#cb15-27" aria-hidden="true" tabindex="-1"></a>  <span class="at">-I</span> vcf/HG02562.snps.filtered.vcf.gz <span class="dt">\</span></span>
+<span id="cb15-28"><a href="#cb15-28" aria-hidden="true" tabindex="-1"></a>  <span class="at">-I</span> vcf/HG02562.indels.filtered.vcf.gz <span class="dt">\</span></span>
+<span id="cb15-29"><a href="#cb15-29" aria-hidden="true" tabindex="-1"></a>  <span class="at">-O</span> vcf/HG02562.filtered.vcf.gz</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Records that fail a filter keep the failed filter’s name in the <code>FILTER</code> column; passing records show <code>PASS</code>. <strong>VariantFiltration flags rather than deletes</strong> — keep both so you can revisit borderline calls. To work with only the passing set:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb16"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="ex">bcftools</span> view <span class="at">-f</span> PASS vcf/<span class="va">${SAMPLE}</span>.filtered.vcf.gz <span class="at">-Oz</span> <span class="at">-o</span> vcf/<span class="va">${SAMPLE}</span>.pass.vcf.gz</span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="ex">bcftools</span> index <span class="at">-t</span> vcf/<span class="va">${SAMPLE}</span>.pass.vcf.gz</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb16"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="ex">bcftools</span> view <span class="at">-f</span> PASS vcf/HG02562.filtered.vcf.gz <span class="at">-Oz</span> <span class="at">-o</span> vcf/HG02562.pass.vcf.gz</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="ex">bcftools</span> index <span class="at">-t</span> vcf/HG02562.pass.vcf.gz</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <table class="caption-top table">
 <colgroup>
 <col style="width: 21%">
@@ -649,7 +670,7 @@ Mills_and_1000G_gold_standard.indels.hg38.vcf.gz.tbi </code></pre>
 </section>
 <section id="annotation-with-vep" class="level3">
 <h3 class="anchored" data-anchor-id="annotation-with-vep">9. Annotation with VEP</h3>
-<p><a href="https://www.ensembl.org/info/docs/tools/vep/index.html">Ensembl VEP</a> predicts the functional consequence of each variant and layers on clinical context. First install the offline cache once:</p>
+<p><a href="https://www.ensembl.org/info/docs/tools/vep/index.html">Ensembl VEP</a> predicts the functional consequence of each variant and layers on clinical context.</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb17"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># One-time: download the GRCh38 cache (large; pick the matching VEP version)</span></span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="ex">vep_install</span> <span class="at">-a</span> cf <span class="at">-s</span> homo_sapiens <span class="at">-y</span> GRCh38 <span class="at">-c</span> <span class="va">$HOME</span>/.vep</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>For BRCA1 clinical work, the most useful add-ons are <strong>ClinVar</strong> (known pathogenicity) and <strong>gnomAD</strong> (population frequency). Download those VCFs and pass them as custom annotations:</p>
