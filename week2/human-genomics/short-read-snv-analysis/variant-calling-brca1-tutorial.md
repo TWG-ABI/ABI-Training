@@ -22,8 +22,7 @@ BRCA1 is a clinically important tumour-suppressor gene on chromosome 17. Restric
   - [6. Variant calling (HaplotypeCaller, GVCF mode)](#6-variant-calling-haplotypecaller-gvcf-mode)
   - [7. Single-sample genotyping](#7-single-sample-genotyping)
   - [8. Hard filtering](#8-hard-filtering)
-  - [9. Annotation with VEP](#9-annotation-with-vep)
-- [Part 2 — Ten samples (joint calling)](#part-2--ten-samples-joint-calling)
+- [Part 2 — Twenty samples (joint calling)](#part-2--twenty-samples-joint-calling)
   - [1. Per-sample GVCFs](#1-per-sample-gvcfs)
   - [2. Consolidate with GenomicsDBImport](#2-consolidate-with-genomicsdbimport)
   - [3. Joint genotyping](#3-joint-genotyping)
@@ -33,9 +32,8 @@ BRCA1 is a clinically important tumour-suppressor gene on chromosome 17. Restric
 - [Cohort QC & evaluation](#cohort-qc--evaluation)
 - [Interpreting BRCA1 variants](#interpreting-brca1-variants)
 - [Appendix](#appendix)
-  - [A. End-to-end single-sample script](#a-end-to-end-single-sample-script)
-  - [B. A note on VQSR](#b-a-note-on-vqsr)
-  - [C. References](#c-references)
+  - [A. A note on VQSR](#b-a-note-on-vqsr)
+  - [B. References](#c-references)
 
 ---
 
