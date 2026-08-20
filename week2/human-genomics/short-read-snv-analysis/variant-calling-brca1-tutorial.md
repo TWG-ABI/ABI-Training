@@ -110,7 +110,7 @@ Homo_sapiens_assembly38.fasta.64.alt
 Homo_sapiens_assembly38.fasta.64.amb
 Homo_sapiens_assembly38.fasta.64.ann
 
-If the indexes are not already available, you can generate them using bwa (~1 hr for the whole genom)
+If the indexes are not already available, you can generate them using BWA (~1 hr for the whole genome)
 bwa index Homo_sapiens_assembly38.fasta
 
 # Known sites for BQSR
@@ -122,6 +122,9 @@ Mills_and_1000G_gold_standard.indels.hg38.vcf.gz
 Mills_and_1000G_gold_standard.indels.hg38.vcf.gz.tbi 
 ```
 
+### Tutorial datasets
+All datasets used in this tutorial can be found on the ACE HPC in `/etc/ace-data/ABI-SummerSchool-26/human-genomics/data/`
+
 
 ### Project layout & conventions
 
@@ -129,7 +132,7 @@ Mills_and_1000G_gold_standard.indels.hg38.vcf.gz.tbi
 brca1-vc/
 ├── ref/                      # reference + known sites (above)
 ├── fastq/                    # raw reads: <sample>_R1.fastq.gz, <sample>_R2.fastq.gz
-├── qc/                       # FastQC / MultiQC / mosdepth outputs
+├── qc/                       # FastQC / MultiQC / samtools depth outputs
 ├── bam/                      # aligned, dedup, recalibrated BAMs
 ├── gvcf/                     # per-sample GVCFs
 ├── vcf/                      # genotyped & filtered VCFs
@@ -148,30 +151,31 @@ THREADS=8
 
 ### The BRCA1 interval
 
-BRCA1 sits on the minus strand of chromosome 17 in GRCh38. We add ~1 kb of padding so we don't clip variants near the gene boundaries. Create an interval file once and reuse it:
+BRCA1 is on the minus strand of chromosome 17 in GRCh38. We add ~3 kb of padding so we don't clip variants near the gene boundaries. Create an interval file once and reuse it:
 
 ```bash
-# GRCh38 / hg38 coordinates for BRCA1 (GENCODE gene span), with ~1 kb padding
-printf "chr17\t43043295\t43126483\tBRCA1\n" > ref/brca1.bed
+# GRCh38 / hg38 coordinates for BRCA1 (GenBank gene span), with 3 kb padding
+printf "chr17\t43041295\t43173327\tBRCA1\n" > ref/brca1.bed
 
 # GATK also accepts the simple "contig:start-end" form on the command line:
-BRCA1="chr17:43043295-43126483"
+BRCA1="chr17:43041295-43173327"
 ```
 
-> **Coordinate note:** the BRCA1 gene body in GRCh38 spans roughly `chr17:43,044,295–43,125,483`. BED files are 0-based half-open, so the start is written as `43043295` after padding. Confirm against your annotation source if you need exact transcript boundaries.
+> **Coordinate note:** the BRCA1 gene body in GRCh38 spans roughly `chr17:43044295-43170327`. BED files are 0-based half-open, so the start is written as `43041295` after padding. Confirm against your annotation source if you need exact transcript boundaries.
 
-We restrict expensive steps (variant calling) to this interval with `-L`. You could equally run the genome-wide pipeline and subset at the end — restricting early just makes the tutorial fast.
+We restrict expensive steps (variant calling) to this interval with `-L`. You could equally run the genome-wide pipeline and subset at the end — restricting early just makes the tutorial faster.
 
 ---
 
+
 ## Part 1 — Single sample
 
-We'll process one sample called `HG02562` (a widely used reference individual). Reads are paired-end: `fastq/HG02562_R1.fastq.gz` and `fastq/HG02562_R2.fastq.gz`.
+We'll process one sample called `HG02562`. Reads are paired-end: `fastq/HG02562_R1.fastq.gz` and `fastq/HG02562_R2.fastq.gz`.
 
 ```bash
-SAMPLE=HG02562
-R1=fastq/${SAMPLE}_R1.fastq.gz
-R2=fastq/${SAMPLE}_R2.fastq.gz
+
+R1=fastq/HG02562_R1.fastq.gz
+R2=fastq/HG02562_R2.fastq.gz
 ```
 
 ### 1. Raw-read QC
@@ -193,16 +197,35 @@ Inspect `qc/fastqc/*_fastqc.html`. Key panels:
 
 ### 2. Alignment (BWA-MEM)
 
-Align to GRCh38 and immediately coordinate-sort into BAM. The **read group** (`-R`) is mandatory for GATK — it records sample, library, and platform metadata.
+Align reads to GRCh38 using BWA-MEM. The **read group** (`-R`) is mandatory for GATK — it records sample, library, and platform metadata.
 
 ```bash
-mkdir -p bam
-RG="@RG\tID:${SAMPLE}.L1\tSM:${SAMPLE}\tLB:${SAMPLE}_lib1\tPL:ILLUMINA\tPU:FLOWCELL.L1"
 
-bwa mem -t ${THREADS} -R "${RG}" ${REF} ${R1} ${R2} \
-  | samtools sort -@ ${THREADS} -o bam/${SAMPLE}.sorted.bam -
-samtools index bam/${SAMPLE}.sorted.bam
+# Create bam folder
+mkdir -p bam
+
+# Set read group information
+RG="@RG\tID:HG02562.L1\tSM:HG02562\tLB:HG02562_lib1\tPL:ILLUMINA\tPU:FLOWCELL.L1"
+
+# Align with BWA-MEM
+bwa mem -t ${THREADS} -R "${RG}" ${REF} ${R1} ${R2} -o bam/HG02562.sam
+
+# Convert SAM to BAM
+samtools view -bS bam/HG02562.sam -o bam/HG02562.bam
+
+# Sort BAM file
+samtools sort -@ ${THREADS} bam/HG02562.bam -o bam/HG02562.sorted.bam
+
+# Align and sort in one step:
+bwa mem -t ${THREADS} -R "${RG}" ${REF} ${R1} ${R2} | samtools sort -@ ${THREADS} -o HG02562.sorted.bam
+
+# Index BAM file
+samtools index bam/HG02562.sorted.bam
+
+# Confirm Coordinate sorting
+samtools view -H bam/HG02562.sorted.bam | grep '^@HD'
 ```
+
 
 | Read-group tag | Meaning |
 |----------------|---------|
@@ -218,9 +241,9 @@ PCR and optical duplicates inflate apparent depth and bias allele fractions. We 
 
 ```bash
 gatk MarkDuplicatesSpark \
-  -I bam/${SAMPLE}.sorted.bam \
-  -O bam/${SAMPLE}.dedup.bam \
-  -M qc/${SAMPLE}.dup_metrics.txt \
+  -I bam/HG02562.sorted.bam \
+  -O bam/HG02562.dedup.bam \
+  -M qc/HG02562.dup_metrics.txt \
   --spark-master local[${THREADS}]
 ```
 
@@ -233,48 +256,45 @@ Sequencers make systematic, machine-specific errors in their reported base quali
 ```bash
 # Step 1: build the recalibration model
 gatk BaseRecalibrator \
-  -I bam/${SAMPLE}.dedup.bam \
+  -I bam/HG02562.dedup.bam \
   -R ${REF} \
   --known-sites ${DBSNP} \
-  --known-sites ${MILLS} \
   --known-sites ${KNOWN_INDELS} \
   -L ${BRCA1} \
-  -O bam/${SAMPLE}.recal.table
+  -O bam/HG02562.recal.table
 
 # Step 2: apply it
 gatk ApplyBQSR \
-  -I bam/${SAMPLE}.dedup.bam \
+  -I bam/HG02562.dedup.bam \
   -R ${REF} \
-  --bqsr-recal-file bam/${SAMPLE}.recal.table \
+  --bqsr-recal-file bam/HG02562.recal.table \
   -L ${BRCA1} \
-  -O bam/${SAMPLE}.recal.bam
+  -O bam/HG02562.recal.bam
 ```
 
 > **Why `-L` here?** Restricting to BRCA1 keeps the tutorial fast. In production you build the BQSR model genome-wide (the model benefits from more data) and apply it genome-wide too. Recalibrating on a single small gene is for demonstration only.
 
 ### 5. Alignment QC
 
-Confirm the alignment is healthy before calling variants.
-
 ```bash
 # Quick mapping summary
-samtools flagstat bam/${SAMPLE}.recal.bam > qc/${SAMPLE}.flagstat.txt
+samtools flagstat bam/HG02562.recal.bam > qc/HG02562.flagstat.txt
 
 # Coverage over the BRCA1 region
-mosdepth --by ref/brca1.bed --no-per-base -t ${THREADS} \
-  qc/${SAMPLE}.brca1 bam/${SAMPLE}.recal.bam
+samtools depth -r ${BRCA1} --threads ${THREADS} \
+ bam/HG02562.recal.bam -o qc/HG02562.brca1.depth
 
 # GATK metrics
 gatk CollectAlignmentSummaryMetrics \
   -R ${REF} \
-  -I bam/${SAMPLE}.recal.bam \
-  -O qc/${SAMPLE}.aln_metrics.txt
+  -I bam/HG02562.recal.bam \
+  -O qc/HG02562.aln_metrics.txt
 ```
 
 What to check:
 
 - **`flagstat`** — mapping rate should be high (typically >95% for WGS) and properly-paired reads should dominate.
-- **`mosdepth`** — `qc/${SAMPLE}.brca1.mosdepth.summary.txt` reports mean depth over BRCA1. For confident germline calls you want ≥20–30× across the region.
+- **`samtools depth`** — `qc/HG02562.brca1.depth` reports depth per position across BRCA1. For confident germline calls you want ≥20–30× across the region.
 - **Duplicate rate** (from step 3) — single-digit percentages are typical; very high rates suggest a low-complexity library.
 
 ### 6. Variant calling (HaplotypeCaller, GVCF mode)
@@ -285,10 +305,10 @@ We run HaplotypeCaller in **GVCF mode** (`-ERC GVCF`). A GVCF records genotype l
 mkdir -p gvcf
 gatk HaplotypeCaller \
   -R ${REF} \
-  -I bam/${SAMPLE}.recal.bam \
+  -I bam/qc/HG02562.recal.bam \
   -L ${BRCA1} \
   -ERC GVCF \
-  -O gvcf/${SAMPLE}.g.vcf.gz
+  -O gvcf/HG02562.g.vcf.gz
 ```
 
 > HaplotypeCaller does **local de novo reassembly** of each "active region": it builds a graph of candidate haplotypes from the reads, realigns reads to them, and computes genotype likelihoods. This is why it handles indels and complex regions far better than naive pileup callers.
@@ -301,12 +321,12 @@ To get a usable VCF for this one sample, genotype its GVCF:
 mkdir -p vcf
 gatk GenotypeGVCFs \
   -R ${REF} \
-  -V gvcf/${SAMPLE}.g.vcf.gz \
+  -V gvcf/HG02562.g.vcf.gz \
   -L ${BRCA1} \
-  -O vcf/${SAMPLE}.raw.vcf.gz
+  -O vcf/HG02562.raw.vcf.gz
 ```
 
-`vcf/${SAMPLE}.raw.vcf.gz` now contains raw SNVs and indels in BRCA1 for this sample. Next we filter.
+`vcf/HG02562.raw.vcf.gz` now contains raw SNVs and indels in BRCA1 for this sample. 
 
 ### 8. Hard filtering
 
@@ -314,41 +334,41 @@ With a single sample (and a small target) there isn't enough data for VQSR, so w
 
 ```bash
 # --- SNVs ---
-gatk SelectVariants -R ${REF} -V vcf/${SAMPLE}.raw.vcf.gz \
-  --select-type-to-include SNP -O vcf/${SAMPLE}.snps.vcf.gz
+gatk SelectVariants -R ${REF} -V vcf/HG02562.raw.vcf.gz \
+  --select-type-to-include SNP -O vcf/HG02562.snps.vcf.gz
 
-gatk VariantFiltration -R ${REF} -V vcf/${SAMPLE}.snps.vcf.gz \
+gatk VariantFiltration -R ${REF} -V vcf/HG02562.snps.vcf.gz \
   --filter-expression "QD < 2.0"                 --filter-name "QD2" \
   --filter-expression "FS > 60.0"                --filter-name "FS60" \
   --filter-expression "MQ < 40.0"                --filter-name "MQ40" \
   --filter-expression "MQRankSum < -12.5"        --filter-name "MQRankSum-12.5" \
   --filter-expression "ReadPosRankSum < -8.0"    --filter-name "ReadPosRankSum-8" \
   --filter-expression "SOR > 3.0"                --filter-name "SOR3" \
-  -O vcf/${SAMPLE}.snps.filtered.vcf.gz
+  -O vcf/HG02562.snps.filtered.vcf.gz
 
 # --- Indels ---
-gatk SelectVariants -R ${REF} -V vcf/${SAMPLE}.raw.vcf.gz \
-  --select-type-to-include INDEL -O vcf/${SAMPLE}.indels.vcf.gz
+gatk SelectVariants -R ${REF} -V vcf/HG02562.raw.vcf.gz \
+  --select-type-to-include INDEL -O vcf/HG02562.indels.vcf.gz
 
-gatk VariantFiltration -R ${REF} -V vcf/${SAMPLE}.indels.vcf.gz \
+gatk VariantFiltration -R ${REF} -V vcf/HG02562.indels.vcf.gz \
   --filter-expression "QD < 2.0"                 --filter-name "QD2" \
   --filter-expression "FS > 200.0"               --filter-name "FS200" \
   --filter-expression "ReadPosRankSum < -20.0"   --filter-name "ReadPosRankSum-20" \
   --filter-expression "SOR > 10.0"               --filter-name "SOR10" \
-  -O vcf/${SAMPLE}.indels.filtered.vcf.gz
+  -O vcf/HG02562.indels.filtered.vcf.gz
 
 # --- Merge back together ---
 gatk MergeVcfs \
-  -I vcf/${SAMPLE}.snps.filtered.vcf.gz \
-  -I vcf/${SAMPLE}.indels.filtered.vcf.gz \
-  -O vcf/${SAMPLE}.filtered.vcf.gz
+  -I vcf/HG02562.snps.filtered.vcf.gz \
+  -I vcf/HG02562.indels.filtered.vcf.gz \
+  -O vcf/HG02562.filtered.vcf.gz
 ```
 
 Records that fail a filter keep the failed filter's name in the `FILTER` column; passing records show `PASS`. **VariantFiltration flags rather than deletes** — keep both so you can revisit borderline calls. To work with only the passing set:
 
 ```bash
-bcftools view -f PASS vcf/${SAMPLE}.filtered.vcf.gz -Oz -o vcf/${SAMPLE}.pass.vcf.gz
-bcftools index -t vcf/${SAMPLE}.pass.vcf.gz
+bcftools view -f PASS vcf/HG02562.filtered.vcf.gz -Oz -o vcf/HG02562.pass.vcf.gz
+bcftools index -t vcf/HG02562.pass.vcf.gz
 ```
 
 | Annotation | What it measures | Why a variant might fail |
@@ -362,7 +382,7 @@ bcftools index -t vcf/${SAMPLE}.pass.vcf.gz
 
 ### 9. Annotation with VEP
 
-[Ensembl VEP](https://www.ensembl.org/info/docs/tools/vep/index.html) predicts the functional consequence of each variant and layers on clinical context. First install the offline cache once:
+[Ensembl VEP](https://www.ensembl.org/info/docs/tools/vep/index.html) predicts the functional consequence of each variant and layers on clinical context. 
 
 ```bash
 # One-time: download the GRCh38 cache (large; pick the matching VEP version)
