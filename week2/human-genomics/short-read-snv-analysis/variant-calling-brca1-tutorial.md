@@ -92,33 +92,36 @@ multiqc=1.21
 
 > **GATK & Java:** GATK4 ships its own wrapper (`gatk`) that launches the bundled JAR. It needs Java 17. The Spark-enabled tools (e.g. `MarkDuplicatesSpark`) can use multiple cores locally with `--spark-master local[N]`.
 
-### Reference data (GRCh38)
+## Reference data (GRCh38)
 
-Download the human reference and the GATK resource bundle (known sites used by BQSR and for filtering context). These live in the [GATK Resource Bundle](https://gatk.broadinstitute.org/hc/en-us/articles/360035890811-Resource-bundle) on the Broad's Google bucket.
+In this tutorial, we'll be using the human reference and the GATK resource bundle on the Broad's Google bucket (https://console.cloud.google.com/storage/browser/gcp-public-data--broad-references/hg38/v0).
 
-```bash
-mkdir -p ref && cd ref
-BUCKET=gs://genomics-public-data/resources/broad/hg38/v0
+### Key files required by GATK
 
-# Reference genome (+ .fai and .dict are needed by GATK)
-gsutil cp ${BUCKET}/Homo_sapiens_assembly38.fasta .
-gsutil cp ${BUCKET}/Homo_sapiens_assembly38.fasta.fai .
-gsutil cp ${BUCKET}/Homo_sapiens_assembly38.dict .
+```
+# Reference genome FASTA file and index files
+
+Homo_sapiens_assembly38.fasta 
+Homo_sapiens_assembly38.fasta.fai
+Homo_sapiens_assembly38.dict
+Homo_sapiens_assembly38.fasta.64.pac
+Homo_sapiens_assembly38.fasta.64.sa
+Homo_sapiens_assembly38.fasta.64.alt         
+Homo_sapiens_assembly38.fasta.64.amb
+Homo_sapiens_assembly38.fasta.64.ann
+
+If the indexes are not already available, you can generate them using bwa (~1 hr for the whole genom)
+bwa index Homo_sapiens_assembly38.fasta
 
 # Known sites for BQSR
-gsutil cp ${BUCKET}/Homo_sapiens_assembly38.dbsnp138.vcf .
-gsutil cp ${BUCKET}/Homo_sapiens_assembly38.dbsnp138.vcf.idx .
-gsutil cp ${BUCKET}/Mills_and_1000G_gold_standard.indels.hg38.vcf.gz .
-gsutil cp ${BUCKET}/Mills_and_1000G_gold_standard.indels.hg38.vcf.gz.tbi .
-gsutil cp ${BUCKET}/Homo_sapiens_assembly38.known_indels.vcf.gz .
-gsutil cp ${BUCKET}/Homo_sapiens_assembly38.known_indels.vcf.gz.tbi .
-cd ..
-
-# BWA index (one-time, ~1 hr for the whole genome)
-bwa index ref/Homo_sapiens_assembly38.fasta
+Homo_sapiens_assembly38.dbsnp138.vcf.gz
+Homo_sapiens_assembly38.dbsnp138.vcf.tbi
+Homo_sapiens_assembly38.known_indels.vcf.gz 
+Homo_sapiens_assembly38.known_indels.vcf.gz.tbi
+Mills_and_1000G_gold_standard.indels.hg38.vcf.gz 
+Mills_and_1000G_gold_standard.indels.hg38.vcf.gz.tbi 
 ```
 
-> If you do not have `gsutil`, each file is also downloadable over HTTPS from the same bucket via `https://storage.googleapis.com/genomics-public-data/resources/broad/hg38/v0/<file>`.
 
 ### Project layout & conventions
 
@@ -138,8 +141,7 @@ Throughout, we use these shell variables:
 
 ```bash
 REF=/etc/ace-data/genomics-resources/hg38/Homo_sapiens_assembly38.fasta
-DBSNP=/etc/ace-data/genomics-resources/hg38/Homo_sapiens_assembly38.dbsnp138.vcf
-MILLS=/etc/ace-data/genomics-resources/hg38/Mills_and_1000G_gold_standard.indels.hg38.vcf.gz
+DBSNP=/etc/ace-data/genomics-resources/hg38/Homo_sapiens_assembly38.dbsnp138.vcf.gz
 KNOWN_INDELS=/etc/ace-data/genomics-resources/hg38/Homo_sapiens_assembly38.known_indels.vcf.gz
 THREADS=8
 ```
