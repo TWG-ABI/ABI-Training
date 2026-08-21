@@ -1,4 +1,4 @@
-# Human NGS Read Alignment and Variant Calling: BRCA1 Tutorial
+## Human NGS Read Alignment and Variant Calling: BRCA1 Tutorial
 
 > **Why BRCA1?**
 BRCA1 is a clinically important tumour-suppressor gene on chromosome 17. Restricting the analysis to the BRCA1 locus keeps runtimes and file sizes small while still demonstrating a real, end-to-end clinical-grade workflow.
