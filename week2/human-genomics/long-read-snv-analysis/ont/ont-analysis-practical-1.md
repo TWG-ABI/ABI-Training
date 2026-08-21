@@ -1,4 +1,4 @@
-# Oxford Nanopore Read Alignment, Variant Calling and Phasing
+## Oxford Nanopore Read Alignment, Variant Calling and Phasing
 
 
 This tutorial introduces a basic workflow for analysing **Oxford Nanopore Technologies (ONT) long-read sequencing data**, focusing on:
@@ -11,21 +11,21 @@ This tutorial introduces a basic workflow for analysing **Oxford Nanopore Techno
 
 ---
 
-# 1. Learning objectives
+## 1. Learning objectives
 
 By the end of this practical, you should be able to:
 
 - explain how ONT reads are aligned to a reference genome;
-- inspect and manipulate CRAM/BAM files using `samtools`;
+- inspect and manipulate long-read CRAM/BAM files using `samtools`;
 - call small variants from ONT reads;
-- distinguish single-sample from multi-sample variant calling;
+- distinguish single-sample from multi-sample ONT variant calling;
 - phase heterozygous variants using long reads;
 - interpret basic VCF genotype and phasing information.
 
 ---
 
 
-# 2. Software
+## 2. Software
 
 The practical uses:
 
@@ -69,7 +69,7 @@ NA19393
 
 ---
 
-# 4. Set up the working directory
+## 4. Set up the working directory
 
 Create directories for the different stages of the analysis.
 
@@ -85,7 +85,7 @@ mkdir -p alignment variants multisample phasing
 Define the reference genome.
 
 ```bash
-REF=reference.fa
+REF=/etc/ace-data/genomics-resources/hg38/Homo_sapiens_assembly38.fasta
 ```
 
 Check that it exists:
@@ -109,13 +109,13 @@ samtools faidx $REF
 Inspect the fastq files:
 
 ```bash
-head /path/to/HG02562.fastq
+head /etc/ace-data/ABI-SummerSchool-26/human-genomics/data/reads/long-read/HG02562.fastq
 ```
 
 Count the reads:
 
 ```bash
-grep -c '^@' /path/to/HG02562.fastq
+grep -c '^@' /etc/ace-data/ABI-SummerSchool-26/human-genomics/data/reads/long-read/HG02562.fastq
 ```
 
 ---
@@ -131,7 +131,7 @@ minimap2 \
     -ax map-ont \
     -t 4 \
     $REF \
-    /path/to/HG02562.fastq \
+    /etc/ace-data/ABI-SummerSchool-26/human-genomics/data/reads/long-read/HG02562.fastq \
     > alignment/HG02562.sam
 ```
 
@@ -283,15 +283,13 @@ Then run:
 
 ```bash
 run_clair3.sh \
-    --bam_fn=HG02562_subset_lr.cram \
+    --bam_fn=alignment/HG02562_subset_lr.cram \
     --ref_fn=$REF \
     --threads=4 \
     --platform=ont \
     --model_path=$MODEL \
     --output=variants/HG02562
 ```
-
-NB: Clair3 can also be run through a container
 
 ---
 
@@ -393,7 +391,7 @@ It facilitates analyses of:
 
 # 9. Call variants for several samples
 
-For teaching purposes, we will use four samples:
+For this tutorial, we will use four samples:
 
 ```text
 HG02562
