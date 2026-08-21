@@ -93,63 +93,91 @@
   {
     "objectID": "week2/human-genomics/long-read-snv-analysis/ont/ont-analysis-practical-1.html",
     "href": "week2/human-genomics/long-read-snv-analysis/ont/ont-analysis-practical-1.html",
-    "title": "Oxford Nanopore Read Alignment, Variant Calling and Phasing",
+    "title": "3. Datasets",
     "section": "",
     "text": "This tutorial introduces a basic workflow for analysing Oxford Nanopore Technologies (ONT) long-read sequencing data, focusing on:\n\naligning ONT reads to a reference genome;\ninspecting long-read alignments;\ncalling variants from a single sample;\nextending variant calling to multiple samples; and\nphasing heterozygous variants using long sequencing reads."
   },
   {
+    "objectID": "week2/human-genomics/long-read-snv-analysis/ont/ont-analysis-practical-1.html#oxford-nanopore-read-alignment-variant-calling-and-phasing",
+    "href": "week2/human-genomics/long-read-snv-analysis/ont/ont-analysis-practical-1.html#oxford-nanopore-read-alignment-variant-calling-and-phasing",
+    "title": "3. Datasets",
+    "section": "",
+    "text": "This tutorial introduces a basic workflow for analysing Oxford Nanopore Technologies (ONT) long-read sequencing data, focusing on:\n\naligning ONT reads to a reference genome;\ninspecting long-read alignments;\ncalling variants from a single sample;\nextending variant calling to multiple samples; and\nphasing heterozygous variants using long sequencing reads."
+  },
+  {
+    "objectID": "week2/human-genomics/long-read-snv-analysis/ont/ont-analysis-practical-1.html#learning-objectives",
+    "href": "week2/human-genomics/long-read-snv-analysis/ont/ont-analysis-practical-1.html#learning-objectives",
+    "title": "3. Datasets",
+    "section": "1. Learning objectives",
+    "text": "1. Learning objectives\nBy the end of this practical, you should be able to:\n\nexplain how ONT reads are aligned to a reference genome;\ninspect and manipulate long-read CRAM/BAM files using samtools;\ncall small variants from ONT reads;\ndistinguish single-sample from multi-sample ONT variant calling;\nphase heterozygous variants using long reads;\ninterpret basic VCF genotype and phasing information."
+  },
+  {
+    "objectID": "week2/human-genomics/long-read-snv-analysis/ont/ont-analysis-practical-1.html#software",
+    "href": "week2/human-genomics/long-read-snv-analysis/ont/ont-analysis-practical-1.html#software",
+    "title": "3. Datasets",
+    "section": "2. Software",
+    "text": "2. Software\nThe practical uses:\n\nsamtools\nminimap2\nbcftools\nClair3\nWhatsHap"
+  },
+  {
+    "objectID": "week2/human-genomics/long-read-snv-analysis/ont/ont-analysis-practical-1.html#set-up-the-working-directory",
+    "href": "week2/human-genomics/long-read-snv-analysis/ont/ont-analysis-practical-1.html#set-up-the-working-directory",
+    "title": "3. Datasets",
+    "section": "4. Set up the working directory",
+    "text": "4. Set up the working directory\nCreate directories for the different stages of the analysis.\nmkdir long-read-analysis\ncd long-read-analysis\nmkdir -p alignment variants multisample phasing\nDefine the reference genome.\nREF=/etc/ace-data/genomics-resources/hg38/Homo_sapiens_assembly38.fasta\nCheck that it exists:\nls -lh $REF\nIndex it if necessary:\nsamtools faidx $REF"
+  },
+  {
     "objectID": "week2/human-genomics/long-read-snv-analysis/ont/ont-analysis-practical-1.html#align-ont-reads-with-minimap2",
     "href": "week2/human-genomics/long-read-snv-analysis/ont/ont-analysis-practical-1.html#align-ont-reads-with-minimap2",
-    "title": "Oxford Nanopore Read Alignment, Variant Calling and Phasing",
+    "title": "3. Datasets",
     "section": "5. Align ONT reads with minimap2",
-    "text": "5. Align ONT reads with minimap2\nminimap2 is widely used for aligning long sequencing reads.\nFor standard ONT reads:\nminimap2 \\\n    -ax map-ont \\\n    -t 4 \\\n    $REF \\\n    /path/to/HG02562.fastq \\\n    &gt; alignment/HG02562.sam\n\nWhat do the options mean?\n-a          produce SAM output\n-x map-ont  use the ONT alignment preset\n-t 4        use four CPU threads\nFor newer high-accuracy ONT reads, the appropriate minimap2 preset may differ depending on the data and software version."
+    "text": "5. Align ONT reads with minimap2\nminimap2 is widely used for aligning long sequencing reads.\nFor standard ONT reads:\nminimap2 \\\n    -ax map-ont \\\n    -t 4 \\\n    $REF \\\n    /etc/ace-data/ABI-SummerSchool-26/human-genomics/data/reads/long-read/HG02562.fastq \\\n    &gt; alignment/HG02562.sam\n\nWhat do the options mean?\n-a          produce SAM output\n-x map-ont  use the ONT alignment preset\n-t 4        use four CPU threads\nFor newer high-accuracy ONT reads, the appropriate minimap2 preset may differ depending on the data and software version."
   },
   {
     "objectID": "week2/human-genomics/long-read-snv-analysis/ont/ont-analysis-practical-1.html#convert-sam-to-bam",
     "href": "week2/human-genomics/long-read-snv-analysis/ont/ont-analysis-practical-1.html#convert-sam-to-bam",
-    "title": "Oxford Nanopore Read Alignment, Variant Calling and Phasing",
+    "title": "3. Datasets",
     "section": "6. Convert SAM to BAM",
     "text": "6. Convert SAM to BAM\nSAM files are human-readable but large.\nBAM files contain essentially the same alignment information in compressed binary form.\nsamtools view \\\n    -b \\\n    alignment/HG02562.sam \\\n    &gt; alignment/HG02562.bam\nSort the alignments:\nsamtools sort \\\n    -@ 4 \\\n    -o alignment/HG02562.sorted.bam \\\n    alignment/HG02562.bam\nIndex:\nsamtools index alignment/HG02562.sorted.bam\nCheck:\nsamtools flagstat alignment/HG02562.sorted.bam"
   },
   {
     "objectID": "week2/human-genomics/long-read-snv-analysis/ont/ont-analysis-practical-1.html#examine-the-cram-files",
     "href": "week2/human-genomics/long-read-snv-analysis/ont/ont-analysis-practical-1.html#examine-the-cram-files",
-    "title": "Oxford Nanopore Read Alignment, Variant Calling and Phasing",
+    "title": "3. Datasets",
     "section": "7. Examine the CRAM files",
     "text": "7. Examine the CRAM files\nCheck one CRAM file:\nsamtools quickcheck -v HG02562_subset_lr.cram\nNo output usually means that the basic integrity checks passed.\n\n\nExamine the CRAM header\nsamtools view -H HG02562_subset_lr.cram | head -30\nLook for:\n\n@SQ — reference sequences;\n@RG — read groups;\n@PG — programs used to generate the alignment.\n\n\n\nQuestion\nCan you identify the reference genome or chromosome(s) represented in the file?\n\n\n\nExamine individual alignments\nsamtools view HG02562_subset_lr.cram | head\nThe first fields represent:\nQNAME FLAG RNAME POS MAPQ CIGAR ...\nFor example:\nread001  0  chr1  123456  60  5000M ...\nThe MAPQ field represents mapping quality.\nA higher value generally indicates greater confidence that the read has been aligned to the correct genomic location.\n\n\n\nGenerate alignment statistics\nsamtools flagstat HG02562_subset_lr.cram\nAlso try:\nsamtools stats HG02562_subset_lr.cram | head -40\nThese commands provide information about the number of reads and their mapping characteristics."
   },
   {
     "objectID": "week2/human-genomics/long-read-snv-analysis/ont/ont-analysis-practical-1.html#examine-the-resulting-vcf",
     "href": "week2/human-genomics/long-read-snv-analysis/ont/ont-analysis-practical-1.html#examine-the-resulting-vcf",
-    "title": "Oxford Nanopore Read Alignment, Variant Calling and Phasing",
+    "title": "3. Datasets",
     "section": "Examine the resulting VCF",
     "text": "Examine the resulting VCF\nClair3 normally produces a compressed VCF.\nFor example:\nls variants/HG02562\nInspect the variants:\nbcftools view \\\n    variants/HG02562/merge_output.vcf.gz \\\n    | less -S\nDisplay only variant records:\nbcftools view \\\n    -H \\\n    variants/HG02562/merge_output.vcf.gz \\\n    | head\n\nCount all variants:\nbcftools view \\\n    -H \\\n    variants/HG02562/merge_output.vcf.gz \\\n    | wc -l\nCount SNPs:\nbcftools view \\\n    -v snps \\\n    -H \\\n    variants/HG02562/merge_output.vcf.gz \\\n    | wc -l\nCount indels:\nbcftools view \\\n    -v indels \\\n    -H \\\n    variants/HG02562/merge_output.vcf.gz \\\n    | wc -l\nGenerate statistics:\nbcftools stats \\\n    variants/HG02562/merge_output.vcf.gz \\\n    &gt; variants/HG02562.stats.txt\nInspect them:\nless variants/HG02562.stats.txt"
   },
   {
     "objectID": "week2/human-genomics/long-read-snv-analysis/ont/ont-analysis-practical-1.html#why-analyse-multiple-samples",
     "href": "week2/human-genomics/long-read-snv-analysis/ont/ont-analysis-practical-1.html#why-analyse-multiple-samples",
-    "title": "Oxford Nanopore Read Alignment, Variant Calling and Phasing",
+    "title": "3. Datasets",
     "section": "Why analyse multiple samples?",
     "text": "Why analyse multiple samples?\nSingle-sample calling asks:\n\nWhat variants are present in this individual?\n\nMulti-sample analysis allows us to ask:\n\nHow does genetic variation differ among individuals?\n\nIt facilitates analyses of:\n\nallele frequencies;\nshared and private variants;\npopulation variation;\ngenotype comparisons;\ndownstream association studies."
   },
   {
     "objectID": "week2/human-genomics/long-read-snv-analysis/ont/ont-analysis-practical-1.html#what-is-phasing",
     "href": "week2/human-genomics/long-read-snv-analysis/ont/ont-analysis-practical-1.html#what-is-phasing",
-    "title": "Oxford Nanopore Read Alignment, Variant Calling and Phasing",
+    "title": "3. Datasets",
     "section": "What is phasing?",
     "text": "What is phasing?\nConsider two heterozygous variants:\nPosition 1: A/G\nPosition 2: C/T\nWithout phasing we know both variants are present, but we do not know which alleles occur together on the same chromosome.\nPossible haplotypes include:\nChromosome 1: A -------- C\nChromosome 2: G -------- T\nor:\nChromosome 1: A -------- T\nChromosome 2: G -------- C\nLong reads are particularly useful because one sequencing read can span multiple heterozygous variants."
   },
   {
     "objectID": "week2/human-genomics/long-read-snv-analysis/ont/ont-analysis-practical-1.html#unphased-versus-phased-genotypes",
     "href": "week2/human-genomics/long-read-snv-analysis/ont/ont-analysis-practical-1.html#unphased-versus-phased-genotypes",
-    "title": "Oxford Nanopore Read Alignment, Variant Calling and Phasing",
+    "title": "3. Datasets",
     "section": "Unphased versus phased genotypes",
     "text": "Unphased versus phased genotypes\nAn unphased genotype is represented as:\n0/1\nA phased genotype is represented as:\n0|1\nThe vertical bar indicates that the haplotype relationship has been determined."
   },
   {
     "objectID": "week2/human-genomics/long-read-snv-analysis/ont/ont-analysis-practical-1.html#examine-phased-variants",
     "href": "week2/human-genomics/long-read-snv-analysis/ont/ont-analysis-practical-1.html#examine-phased-variants",
-    "title": "Oxford Nanopore Read Alignment, Variant Calling and Phasing",
+    "title": "3. Datasets",
     "section": "Examine phased variants",
     "text": "Examine phased variants\nDisplay genotype and phase-set information:\nbcftools query \\\n    -f '%CHROM\\t%POS[\\t%GT\\t%PS]\\n' \\\n    phasing/HG02562.phased.vcf.gz \\\n    | head -20\nLook for genotypes such as:\n0|1\nand:\n1|0\nrather than:\n0/1\nThe PS field identifies variants belonging to the same phase set or phased block."
   },

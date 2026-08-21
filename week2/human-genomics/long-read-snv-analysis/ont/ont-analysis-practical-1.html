@@ -166,8 +166,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#oxford-nanopore-read-alignment-variant-calling-and-phasing" id="toc-oxford-nanopore-read-alignment-variant-calling-and-phasing" class="nav-link active" data-scroll-target="#oxford-nanopore-read-alignment-variant-calling-and-phasing">Oxford Nanopore Read Alignment, Variant Calling and Phasing</a></li>
   <li><a href="#learning-objectives" id="toc-learning-objectives" class="nav-link" data-scroll-target="#learning-objectives">1. Learning objectives</a></li>
   <li><a href="#software" id="toc-software" class="nav-link" data-scroll-target="#software">2. Software</a></li>
-  <li><a href="#datasets" id="toc-datasets" class="nav-link" data-scroll-target="#datasets">3. Datasets</a></li>
+  <li><a href="#datasets" id="toc-datasets" class="nav-link" data-scroll-target="#datasets">3. Datasets</a>
+  <ul class="collapse">
   <li><a href="#set-up-the-working-directory" id="toc-set-up-the-working-directory" class="nav-link" data-scroll-target="#set-up-the-working-directory">4. Set up the working directory</a></li>
+  </ul></li>
   <li><a href="#part-ii-ont-read-alignment" id="toc-part-ii-ont-read-alignment" class="nav-link" data-scroll-target="#part-ii-ont-read-alignment">PART II — ONT read alignment</a>
   <ul class="collapse">
   <li><a href="#align-ont-reads-with-minimap2" id="toc-align-ont-reads-with-minimap2" class="nav-link" data-scroll-target="#align-ont-reads-with-minimap2">5. Align ONT reads with minimap2</a>
@@ -230,8 +232,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 
-<section id="oxford-nanopore-read-alignment-variant-calling-and-phasing" class="level1">
-<h1>Oxford Nanopore Read Alignment, Variant Calling and Phasing</h1>
+<section id="oxford-nanopore-read-alignment-variant-calling-and-phasing" class="level2">
+<h2 class="anchored" data-anchor-id="oxford-nanopore-read-alignment-variant-calling-and-phasing">Oxford Nanopore Read Alignment, Variant Calling and Phasing</h2>
 <p>This tutorial introduces a basic workflow for analysing <strong>Oxford Nanopore Technologies (ONT) long-read sequencing data</strong>, focusing on:</p>
 <ol type="1">
 <li>aligning ONT reads to a reference genome;</li>
@@ -242,21 +244,21 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ol>
 <hr>
 </section>
-<section id="learning-objectives" class="level1">
-<h1>1. Learning objectives</h1>
+<section id="learning-objectives" class="level2">
+<h2 class="anchored" data-anchor-id="learning-objectives">1. Learning objectives</h2>
 <p>By the end of this practical, you should be able to:</p>
 <ul>
 <li>explain how ONT reads are aligned to a reference genome;</li>
-<li>inspect and manipulate CRAM/BAM files using <code>samtools</code>;</li>
+<li>inspect and manipulate long-read CRAM/BAM files using <code>samtools</code>;</li>
 <li>call small variants from ONT reads;</li>
-<li>distinguish single-sample from multi-sample variant calling;</li>
+<li>distinguish single-sample from multi-sample ONT variant calling;</li>
 <li>phase heterozygous variants using long reads;</li>
 <li>interpret basic VCF genotype and phasing information.</li>
 </ul>
 <hr>
 </section>
-<section id="software" class="level1">
-<h1>2. Software</h1>
+<section id="software" class="level2">
+<h2 class="anchored" data-anchor-id="software">2. Software</h2>
 <p>The practical uses:</p>
 <ul>
 <li><a href="https://www.htslib.org/">samtools</a></li>
@@ -293,27 +295,27 @@ NA19207
 NA19338
 NA19393</code></pre>
 <hr>
-</section>
-<section id="set-up-the-working-directory" class="level1">
-<h1>4. Set up the working directory</h1>
+<section id="set-up-the-working-directory" class="level2">
+<h2 class="anchored" data-anchor-id="set-up-the-working-directory">4. Set up the working directory</h2>
 <p>Create directories for the different stages of the analysis.</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> long-read-analysis</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> long-read-analysis</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> <span class="at">-p</span> alignment variants multisample phasing</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Define the reference genome.</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="va">REF</span><span class="op">=</span>reference.fa</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="va">REF</span><span class="op">=</span>/etc/ace-data/genomics-resources/hg38/Homo_sapiens_assembly38.fasta</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Check that it exists:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> <span class="at">-lh</span> <span class="va">$REF</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Index it if necessary:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="ex">samtools</span> faidx <span class="va">$REF</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <hr>
 </section>
+</section>
 <section id="part-ii-ont-read-alignment" class="level1">
 <h1>PART II — ONT read alignment</h1>
 <p>Inspect the fastq files:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span> /path/to/HG02562.fastq</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span> /etc/ace-data/ABI-SummerSchool-26/human-genomics/data/reads/long-read/HG02562.fastq</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Count the reads:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">grep</span> <span class="at">-c</span> <span class="st">'^@'</span> /path/to/HG02562.fastq</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">grep</span> <span class="at">-c</span> <span class="st">'^@'</span> /etc/ace-data/ABI-SummerSchool-26/human-genomics/data/reads/long-read/HG02562.fastq</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <hr>
 <section id="align-ont-reads-with-minimap2" class="level2">
 <h2 class="anchored" data-anchor-id="align-ont-reads-with-minimap2">5. Align ONT reads with minimap2</h2>
@@ -323,7 +325,7 @@ NA19393</code></pre>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>    <span class="at">-ax</span> map-ont <span class="dt">\</span></span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">-t</span> 4 <span class="dt">\</span></span>
 <span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>    <span class="va">$REF</span> <span class="dt">\</span></span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>    /path/to/HG02562.fastq <span class="dt">\</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>    /etc/ace-data/ABI-SummerSchool-26/human-genomics/data/reads/long-read/HG02562.fastq <span class="dt">\</span></span>
 <span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>    <span class="op">&gt;</span> alignment/HG02562.sam</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <section id="what-do-the-options-mean" class="level3">
 <h3 class="anchored" data-anchor-id="what-do-the-options-mean">What do the options mean?</h3>
@@ -410,13 +412,12 @@ NA19393</code></pre>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb22"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="va">MODEL</span><span class="op">=</span>/path/to/clair3/model</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Then run:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb23"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="ex">run_clair3.sh</span> <span class="dt">\</span></span>
-<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>    <span class="at">--bam_fn</span><span class="op">=</span>HG02562_subset_lr.cram <span class="dt">\</span></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>    <span class="at">--bam_fn</span><span class="op">=</span>alignment/HG02562_subset_lr.cram <span class="dt">\</span></span>
 <span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">--ref_fn</span><span class="op">=</span><span class="va">$REF</span> <span class="dt">\</span></span>
 <span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">--threads</span><span class="op">=</span>4 <span class="dt">\</span></span>
 <span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">--platform</span><span class="op">=</span>ont <span class="dt">\</span></span>
 <span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">--model_path</span><span class="op">=</span><span class="va">$MODEL</span> <span class="dt">\</span></span>
 <span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">--output</span><span class="op">=</span>variants/HG02562</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>NB: Clair3 can also be run through a container</p>
 <hr>
 <section id="examine-the-resulting-vcf" class="level2">
 <h2 class="anchored" data-anchor-id="examine-the-resulting-vcf">Examine the resulting VCF</h2>
@@ -484,7 +485,7 @@ NA19393</code></pre>
 </section>
 <section id="call-variants-for-several-samples" class="level1">
 <h1>9. Call variants for several samples</h1>
-<p>For teaching purposes, we will use four samples:</p>
+<p>For this tutorial, we will use four samples:</p>
 <pre class="text"><code>HG02562
 HG02938
 HG03394
