@@ -163,21 +163,69 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#day-1-practical-part-2-qiime2-amplicon-analysis-pipeline" id="toc-day-1-practical-part-2-qiime2-amplicon-analysis-pipeline" class="nav-link active" data-scroll-target="#day-1-practical-part-2-qiime2-amplicon-analysis-pipeline">Day 1 Practical — Part 2: QIIME2 Amplicon Analysis Pipeline</a>
+  <li><a href="#day-1-practical-part-2-qiime-2-amplicon-analysis-pipeline" id="toc-day-1-practical-part-2-qiime-2-amplicon-analysis-pipeline" class="nav-link active" data-scroll-target="#day-1-practical-part-2-qiime-2-amplicon-analysis-pipeline">Day 1 Practical — Part 2: QIIME 2 Amplicon Analysis Pipeline</a>
   <ul class="collapse">
   <li><a href="#purpose" id="toc-purpose" class="nav-link" data-scroll-target="#purpose">Purpose</a></li>
-  <li><a href="#setup-and-pre-flight-check" id="toc-setup-and-pre-flight-check" class="nav-link" data-scroll-target="#setup-and-pre-flight-check">Setup and Pre-flight Check</a></li>
-  <li><a href="#step-1-import-paired-end-reads-into-qiime2" id="toc-step-1-import-paired-end-reads-into-qiime2" class="nav-link" data-scroll-target="#step-1-import-paired-end-reads-into-qiime2">Step 1 — Import paired-end reads into QIIME2</a></li>
-  <li><a href="#step-2-visualise-demultiplexed-read-quality" id="toc-step-2-visualise-demultiplexed-read-quality" class="nav-link" data-scroll-target="#step-2-visualise-demultiplexed-read-quality">Step 2 — Visualise demultiplexed read quality</a></li>
-  <li><a href="#step-3-dada2-denoising-error-correction-chimera-removal" id="toc-step-3-dada2-denoising-error-correction-chimera-removal" class="nav-link" data-scroll-target="#step-3-dada2-denoising-error-correction-chimera-removal">Step 3 — DADA2: Denoising, error correction, chimera removal</a></li>
-  <li><a href="#step-4-feature-table-summary" id="toc-step-4-feature-table-summary" class="nav-link" data-scroll-target="#step-4-feature-table-summary">Step 4 — Feature table summary</a></li>
-  <li><a href="#step-5-phylogenetic-tree-needed-for-unifrac-on-day-2" id="toc-step-5-phylogenetic-tree-needed-for-unifrac-on-day-2" class="nav-link" data-scroll-target="#step-5-phylogenetic-tree-needed-for-unifrac-on-day-2">Step 5 — Phylogenetic tree (needed for UniFrac on Day 2)</a></li>
-  <li><a href="#step-6-taxonomy-assignment-with-the-silva-classifier" id="toc-step-6-taxonomy-assignment-with-the-silva-classifier" class="nav-link" data-scroll-target="#step-6-taxonomy-assignment-with-the-silva-classifier">Step 6 — Taxonomy assignment with the SILVA classifier</a></li>
-  <li><a href="#step-7-taxonomy-bar-plots" id="toc-step-7-taxonomy-bar-plots" class="nav-link" data-scroll-target="#step-7-taxonomy-bar-plots">Step 7 — Taxonomy bar plots</a></li>
-  <li><a href="#export-preparing-artifacts-for-r-analysis-day-2" id="toc-export-preparing-artifacts-for-r-analysis-day-2" class="nav-link" data-scroll-target="#export-preparing-artifacts-for-r-analysis-day-2">Export — Preparing artifacts for R analysis (Day 2)</a></li>
+  </ul></li>
+  <li><a href="#workflow-directory-structure" id="toc-workflow-directory-structure" class="nav-link" data-scroll-target="#workflow-directory-structure">Workflow Directory Structure</a></li>
+  <li><a href="#section-1-importing-paired-end-reads-into-qiime-2" id="toc-section-1-importing-paired-end-reads-into-qiime-2" class="nav-link" data-scroll-target="#section-1-importing-paired-end-reads-into-qiime-2">Section 1 — Importing Paired-End Reads into QIIME 2</a>
+  <ul class="collapse">
+  <li><a href="#slurm-job-settings" id="toc-slurm-job-settings" class="nav-link" data-scroll-target="#slurm-job-settings">Slurm Job Settings</a></li>
+  <li><a href="#loading-qiime-2" id="toc-loading-qiime-2" class="nav-link" data-scroll-target="#loading-qiime-2">Loading QIIME 2</a></li>
+  <li><a href="#defining-input-and-output-directories" id="toc-defining-input-and-output-directories" class="nav-link" data-scroll-target="#defining-input-and-output-directories">Defining Input and Output Directories</a></li>
+  <li><a href="#creating-the-manifest-file" id="toc-creating-the-manifest-file" class="nav-link" data-scroll-target="#creating-the-manifest-file">Creating the Manifest File</a></li>
+  <li><a href="#importing-the-reads" id="toc-importing-the-reads" class="nav-link" data-scroll-target="#importing-the-reads">Importing the Reads</a></li>
+  <li><a href="#submitting-the-import-job" id="toc-submitting-the-import-job" class="nav-link" data-scroll-target="#submitting-the-import-job">Submitting the Import Job</a></li>
+  </ul></li>
+  <li><a href="#section-2-dada2-denoising" id="toc-section-2-dada2-denoising" class="nav-link" data-scroll-target="#section-2-dada2-denoising">Section 2 — DADA2 Denoising</a>
+  <ul class="collapse">
+  <li><a href="#computational-resources" id="toc-computational-resources" class="nav-link" data-scroll-target="#computational-resources">Computational Resources</a></li>
+  <li><a href="#configuring-the-environment" id="toc-configuring-the-environment" class="nav-link" data-scroll-target="#configuring-the-environment">Configuring the Environment</a></li>
+  <li><a href="#checking-the-input-file" id="toc-checking-the-input-file" class="nav-link" data-scroll-target="#checking-the-input-file">Checking the Input File</a></li>
+  <li><a href="#running-dada2" id="toc-running-dada2" class="nav-link" data-scroll-target="#running-dada2">Running DADA2</a></li>
+  <li><a href="#dada2-outputs" id="toc-dada2-outputs" class="nav-link" data-scroll-target="#dada2-outputs">DADA2 Outputs</a>
+  <ul class="collapse">
+  <li><a href="#feature-table" id="toc-feature-table" class="nav-link" data-scroll-target="#feature-table">Feature Table</a></li>
+  <li><a href="#representative-sequences" id="toc-representative-sequences" class="nav-link" data-scroll-target="#representative-sequences">Representative Sequences</a></li>
+  <li><a href="#denoising-statistics" id="toc-denoising-statistics" class="nav-link" data-scroll-target="#denoising-statistics">Denoising Statistics</a></li>
+  <li><a href="#base-transition-statistics" id="toc-base-transition-statistics" class="nav-link" data-scroll-target="#base-transition-statistics">Base Transition Statistics</a></li>
+  </ul></li>
+  <li><a href="#submitting-the-dada2-job" id="toc-submitting-the-dada2-job" class="nav-link" data-scroll-target="#submitting-the-dada2-job">Submitting the DADA2 Job</a></li>
+  </ul></li>
+  <li><a href="#section-3-summarising-the-dada2-results" id="toc-section-3-summarising-the-dada2-results" class="nav-link" data-scroll-target="#section-3-summarising-the-dada2-results">Section 3 — Summarising the DADA2 Results</a>
+  <ul class="collapse">
+  <li><a href="#summarising-the-feature-table" id="toc-summarising-the-feature-table" class="nav-link" data-scroll-target="#summarising-the-feature-table">Summarising the Feature Table</a></li>
+  <li><a href="#viewing-representative-sequences" id="toc-viewing-representative-sequences" class="nav-link" data-scroll-target="#viewing-representative-sequences">Viewing Representative Sequences</a></li>
+  <li><a href="#viewing-dada2-denoising-statistics" id="toc-viewing-dada2-denoising-statistics" class="nav-link" data-scroll-target="#viewing-dada2-denoising-statistics">Viewing DADA2 Denoising Statistics</a></li>
+  <li><a href="#submitting-the-summary-job" id="toc-submitting-the-summary-job" class="nav-link" data-scroll-target="#submitting-the-summary-job">Submitting the Summary Job</a></li>
+  </ul></li>
+  <li><a href="#section-4-taxonomic-classification" id="toc-section-4-taxonomic-classification" class="nav-link" data-scroll-target="#section-4-taxonomic-classification">Section 4 — Taxonomic Classification</a>
+  <ul class="collapse">
+  <li><a href="#running-the-classifier" id="toc-running-the-classifier" class="nav-link" data-scroll-target="#running-the-classifier">Running the Classifier</a></li>
+  <li><a href="#submitting-the-taxonomy-job" id="toc-submitting-the-taxonomy-job" class="nav-link" data-scroll-target="#submitting-the-taxonomy-job">Submitting the Taxonomy Job</a></li>
+  </ul></li>
+  <li><a href="#section-5-visualising-taxonomic-composition" id="toc-section-5-visualising-taxonomic-composition" class="nav-link" data-scroll-target="#section-5-visualising-taxonomic-composition">Section 5 — Visualising Taxonomic Composition</a>
+  <ul class="collapse">
+  <li><a href="#submitting-the-taxonomic-bar-plot-job" id="toc-submitting-the-taxonomic-bar-plot-job" class="nav-link" data-scroll-target="#submitting-the-taxonomic-bar-plot-job">Submitting the Taxonomic Bar Plot Job</a></li>
+  </ul></li>
+  <li><a href="#section-6-constructing-a-phylogenetic-tree" id="toc-section-6-constructing-a-phylogenetic-tree" class="nav-link" data-scroll-target="#section-6-constructing-a-phylogenetic-tree">Section 6 — Constructing a Phylogenetic Tree</a>
+  <ul class="collapse">
+  <li><a href="#multiple-sequence-alignment" id="toc-multiple-sequence-alignment" class="nav-link" data-scroll-target="#multiple-sequence-alignment">Multiple Sequence Alignment</a></li>
+  <li><a href="#alignment-masking" id="toc-alignment-masking" class="nav-link" data-scroll-target="#alignment-masking">Alignment Masking</a></li>
+  <li><a href="#unrooted-tree" id="toc-unrooted-tree" class="nav-link" data-scroll-target="#unrooted-tree">Unrooted Tree</a></li>
+  <li><a href="#rooted-tree" id="toc-rooted-tree" class="nav-link" data-scroll-target="#rooted-tree">Rooted Tree</a></li>
+  <li><a href="#submitting-the-tree-construction-job" id="toc-submitting-the-tree-construction-job" class="nav-link" data-scroll-target="#submitting-the-tree-construction-job">Submitting the Tree Construction Job</a></li>
+  </ul></li>
+  <li><a href="#section-7-exporting-results-for-downstream-analysis" id="toc-section-7-exporting-results-for-downstream-analysis" class="nav-link" data-scroll-target="#section-7-exporting-results-for-downstream-analysis">Section 7 — Exporting Results for Downstream Analysis</a>
+  <ul class="collapse">
+  <li><a href="#exporting-the-feature-table" id="toc-exporting-the-feature-table" class="nav-link" data-scroll-target="#exporting-the-feature-table">Exporting the Feature Table</a></li>
+  <li><a href="#exporting-the-taxonomy-table" id="toc-exporting-the-taxonomy-table" class="nav-link" data-scroll-target="#exporting-the-taxonomy-table">Exporting the Taxonomy Table</a></li>
+  <li><a href="#exporting-the-rooted-phylogenetic-tree" id="toc-exporting-the-rooted-phylogenetic-tree" class="nav-link" data-scroll-target="#exporting-the-rooted-phylogenetic-tree">Exporting the Rooted Phylogenetic Tree</a></li>
+  <li><a href="#submitting-the-export-job" id="toc-submitting-the-export-job" class="nav-link" data-scroll-target="#submitting-the-export-job">Submitting the Export Job</a></li>
+  </ul></li>
+  <li><a href="#recommended-order-for-running-the-workflow" id="toc-recommended-order-for-running-the-workflow" class="nav-link" data-scroll-target="#recommended-order-for-running-the-workflow">Recommended Order for Running the Workflow</a></li>
   <li><a href="#key-outputs" id="toc-key-outputs" class="nav-link" data-scroll-target="#key-outputs">Key Outputs</a></li>
   <li><a href="#discussion-questions" id="toc-discussion-questions" class="nav-link" data-scroll-target="#discussion-questions">Discussion Questions</a></li>
-  </ul></li>
   </ul>
 </nav>
     </div>
@@ -247,199 +295,786 @@ code span.er {
 }
 </style>
 <hr>
-<section id="day-1-practical-part-2-qiime2-amplicon-analysis-pipeline" class="level1">
-<h1>Day 1 Practical — Part 2: QIIME2 Amplicon Analysis Pipeline</h1>
+<section id="day-1-practical-part-2-qiime-2-amplicon-analysis-pipeline" class="level1">
+<h1>Day 1 Practical — Part 2: QIIME 2 Amplicon Analysis Pipeline</h1>
 <section id="purpose" class="level2">
 <h2 class="anchored" data-anchor-id="purpose">Purpose</h2>
-<p>This practical takes the QC-passed reads from Part 1 through a complete amplicon sequence variant (ASV) workflow in <strong>QIIME2</strong>: importing paired-end reads, denoising with DADA2, building a phylogenetic tree, assigning taxonomy, and exporting everything for downstream diversity analysis in R (Day 2).</p>
-</section>
-<section id="setup-and-pre-flight-check" class="level2">
-<h2 class="anchored" data-anchor-id="setup-and-pre-flight-check">Setup and Pre-flight Check</h2>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="bu">set</span> <span class="at">-euo</span> pipefail</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="va">DATA_DIR</span><span class="op">=</span><span class="st">"../../data/amplicon/gut"</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="va">REF_DIR</span><span class="op">=</span><span class="st">"../../data/reference"</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="va">OUT_DIR</span><span class="op">=</span><span class="st">"day1_results/qiime2"</span></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="va">MANIFEST</span><span class="op">=</span><span class="st">"manifest.tsv"</span></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="va">METADATA</span><span class="op">=</span><span class="st">"metadata.tsv"</span></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="va">CLASSIFIER</span><span class="op">=</span><span class="st">"</span><span class="va">${REF_DIR}</span><span class="st">/silva-138-99-seqs-515-806-classifier.qza"</span></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="va">THREADS</span><span class="op">=</span>4</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Paths and the SILVA classifier location are defined up front.</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="bu">[</span> <span class="ot">!</span> <span class="ot">-f</span> <span class="st">"</span><span class="va">${CLASSIFIER}</span><span class="st">"</span> <span class="bu">]</span><span class="kw">;</span> <span class="cf">then</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">echo</span> <span class="st">"ERROR: SILVA classifier not found..."</span></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    <span class="bu">exit</span> 1</span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="cf">fi</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>The script fails fast with a clear message (and the download URL) if the pre-trained taxonomy classifier hasn’t been downloaded yet, rather than running for an hour and failing at Step 6.</p>
-<hr>
-</section>
-<section id="step-1-import-paired-end-reads-into-qiime2" class="level2">
-<h2 class="anchored" data-anchor-id="step-1-import-paired-end-reads-into-qiime2">Step 1 — Import paired-end reads into QIIME2</h2>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="bu">[</span> <span class="ot">!</span> <span class="ot">-f</span> <span class="st">"</span><span class="va">${MANIFEST}</span><span class="st">"</span> <span class="bu">]</span><span class="kw">;</span> <span class="cf">then</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">echo</span> <span class="at">-e</span> <span class="st">"sample-id\tforward-absolute-filepath\treverse-absolute-filepath"</span> <span class="op">&gt;</span> <span class="va">${MANIFEST}</span></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> R1 <span class="kw">in</span> <span class="va">${DATA_DIR}</span>/<span class="pp">*</span>_R1.fastq.gz<span class="kw">;</span> <span class="cf">do</span></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>        <span class="va">SAMPLE</span><span class="op">=</span><span class="va">$(</span><span class="fu">basename</span> <span class="va">${R1}</span> _R1.fastq.gz<span class="va">)</span></span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>        <span class="va">R2</span><span class="op">=</span><span class="st">"</span><span class="va">${DATA_DIR}</span><span class="st">/</span><span class="va">${SAMPLE}</span><span class="st">_R2.fastq.gz"</span></span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="bu">[</span> <span class="ot">-f</span> <span class="st">"</span><span class="va">${R2}</span><span class="st">"</span> <span class="bu">]</span><span class="kw">;</span> <span class="cf">then</span></span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>            <span class="bu">echo</span> <span class="at">-e</span> <span class="st">"</span><span class="va">${SAMPLE}</span><span class="st">\t</span><span class="va">$(</span><span class="fu">realpath</span> <span class="va">${R1})</span><span class="st">\t</span><span class="va">$(</span><span class="fu">realpath</span> <span class="va">${R2})</span><span class="st">"</span> <span class="op">&gt;&gt;</span> <span class="va">${MANIFEST}</span></span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>        <span class="cf">fi</span></span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>    <span class="cf">done</span></span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a><span class="cf">fi</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>QIIME2 needs a <strong>manifest file</strong> mapping each sample ID to the absolute paths of its forward/reverse FASTQ files. This block auto-generates that manifest by pairing up <code>_R1</code>/<code>_R2</code> files, but only if a manifest doesn’t already exist — so you can hand-edit it once and re-run the script without it being overwritten.</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">qiime</span> tools import <span class="dt">\</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    <span class="at">--type</span> <span class="st">'SampleData[PairedEndSequencesWithQuality]'</span> <span class="dt">\</span></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">--input-path</span> <span class="va">${MANIFEST}</span> <span class="dt">\</span></span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">--output-path</span> <span class="va">${OUT_DIR}</span>/paired-end-demux.qza <span class="dt">\</span></span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">--input-format</span> PairedEndFastqManifestPhred33V2</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>This imports the raw reads into QIIME2’s native <code>.qza</code> (QIIME Zipped Artifact) format, using the manifest to associate files with sample IDs. <code>PairedEndFastqManifestPhred33V2</code> specifies both the manifest format version and that quality scores use the standard Phred+33 encoding.</p>
-<hr>
-</section>
-<section id="step-2-visualise-demultiplexed-read-quality" class="level2">
-<h2 class="anchored" data-anchor-id="step-2-visualise-demultiplexed-read-quality">Step 2 — Visualise demultiplexed read quality</h2>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">qiime</span> demux summarize <span class="dt">\</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>    <span class="at">--i-data</span> <span class="va">${OUT_DIR}</span>/paired-end-demux.qza <span class="dt">\</span></span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">--o-visualization</span> <span class="va">${OUT_DIR}</span>/demux-summary.qzv</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Produces a <code>.qzv</code> (QIIME Zipped Visualization) with interactive per-base quality plots for forward and reverse reads. <strong>This is the step that determines the truncation lengths used in DADA2 below</strong> — you inspect where quality drops off and truncate before that point. View any <code>.qzv</code> file at https://view.qiime2.org by uploading it.</p>
-<hr>
-</section>
-<section id="step-3-dada2-denoising-error-correction-chimera-removal" class="level2">
-<h2 class="anchored" data-anchor-id="step-3-dada2-denoising-error-correction-chimera-removal">Step 3 — DADA2: Denoising, error correction, chimera removal</h2>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="ex">qiime</span> dada2 denoise-paired <span class="dt">\</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>    <span class="at">--i-demultiplexed-seqs</span> <span class="va">${OUT_DIR}</span>/paired-end-demux.qza <span class="dt">\</span></span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">--p-trim-left-f</span> 0 <span class="dt">\</span></span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">--p-trim-left-r</span> 0 <span class="dt">\</span></span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">--p-trunc-len-f</span> 240 <span class="dt">\</span></span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">--p-trunc-len-r</span> 200 <span class="dt">\</span></span>
-<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">--p-n-threads</span> <span class="va">${THREADS}</span> <span class="dt">\</span></span>
-<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">--o-table</span> <span class="va">${OUT_DIR}</span>/table.qza <span class="dt">\</span></span>
-<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">--o-representative-sequences</span> <span class="va">${OUT_DIR}</span>/rep-seqs.qza <span class="dt">\</span></span>
-<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">--o-denoising-stats</span> <span class="va">${OUT_DIR}</span>/dada2-stats.qza <span class="dt">\</span></span>
-<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">--verbose</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>DADA2 models the error profile of the sequencing run to correct errors and infer exact <strong>amplicon sequence variants (ASVs)</strong> — a higher-resolution alternative to OTU clustering — and removes chimeric sequences.</p>
+<p>In Part 1, we assessed the quality of the raw sequencing reads using FastQC and MultiQC.</p>
+<p>In this practical, we will process the paired-end amplicon sequencing data using <strong>QIIME 2</strong>. The workflow will import the sequencing reads into QIIME 2, denoise them using DADA2 to generate amplicon sequence variants (ASVs), examine the resulting feature table and denoising statistics, assign taxonomy, visualise taxonomic composition, construct a phylogenetic tree, and export the results for downstream analysis.</p>
+<p>Unlike a single monolithic pipeline, this workflow is divided into separate scripts. Each major step is submitted independently to the Slurm scheduler. This approach makes it easier to:</p>
 <ul>
-<li><code>--p-trim-left-f/-r 0</code>: bases to trim from the 5′ end (e.g.&nbsp;primers); set to 0 here because primers were presumably already removed, or none are present.</li>
-<li><code>--p-trunc-len-f 240</code> / <code>--p-trunc-len-r 200</code>: truncate forward reads at 240 bp and reverse reads at 200 bp, based on where quality drops in the Step 2 plots. Reverse reads typically degrade faster, hence the shorter truncation length.</li>
-<li>Outputs: a <strong>feature table</strong> (<code>table.qza</code>, ASV × sample counts), <strong>representative sequences</strong> (<code>rep-seqs.qza</code>, one sequence per ASV), and <strong>denoising stats</strong> (read counts retained at each filtering stage).</li>
+<li>Monitor individual analysis steps.</li>
+<li>Identify where errors occur.</li>
+<li>Inspect intermediate results.</li>
+<li>Adjust parameters without repeating the entire workflow.</li>
 </ul>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="ex">qiime</span> metadata tabulate <span class="dt">\</span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>    <span class="at">--m-input-file</span> <span class="va">${OUT_DIR}</span>/dada2-stats.qza <span class="dt">\</span></span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">--o-visualization</span> <span class="va">${OUT_DIR}</span>/dada2-stats.qzv</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Turns the denoising stats artifact into a browsable table — check what fraction of raw reads survived filtering, denoising, merging, and chimera removal at each stage.</p>
+<p>The workflow consists of the following steps:</p>
+<pre class="text"><code>Paired-end FASTQ files
+        │
+        ▼
+1. Import into QIIME 2
+        │
+        ▼
+paired-end-demux.qza
+        │
+        ▼
+2. DADA2 denoising
+        │
+        ├── Feature table
+        ├── Representative sequences
+        ├── Denoising statistics
+        └── Base transition statistics
+        │
+        ▼
+3. Summarise DADA2 results
+        │
+        ▼
+4. Taxonomic classification
+        │
+        ▼
+5. Taxonomic bar plots
+        │
+        ▼
+6. Phylogenetic tree construction
+        │
+        ▼
+7. Export results for downstream analysis</code></pre>
 <hr>
 </section>
-<section id="step-4-feature-table-summary" class="level2">
-<h2 class="anchored" data-anchor-id="step-4-feature-table-summary">Step 4 — Feature table summary</h2>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="ex">qiime</span> feature-table summarize <span class="dt">\</span></span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>    <span class="at">--i-table</span> <span class="va">${OUT_DIR}</span>/table.qza <span class="dt">\</span></span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">--o-visualization</span> <span class="va">${OUT_DIR}</span>/table-summary.qzv <span class="dt">\</span></span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">--m-sample-metadata-file</span> <span class="va">${METADATA}</span></span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a><span class="ex">qiime</span> feature-table tabulate-seqs <span class="dt">\</span></span>
-<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">--i-data</span> <span class="va">${OUT_DIR}</span>/rep-seqs.qza <span class="dt">\</span></span>
-<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">--o-visualization</span> <span class="va">${OUT_DIR}</span>/rep-seqs.qzv</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p><code>feature-table summarize</code> reports the number of ASVs, per-sample read count distribution, and frequency histograms — useful for spotting samples with very low sequencing depth that may need to be excluded before rarefaction. <code>tabulate-seqs</code> lists each ASV’s sequence and length, with a BLAST link for quick identification.</p>
+</section>
+<section id="workflow-directory-structure" class="level1">
+<h1>Workflow Directory Structure</h1>
+<p>The workflow uses the following directory structure:</p>
+<pre class="text"><code>.
+├── data/
+│   ├── sample_1.fastq.gz
+│   ├── sample_2.fastq.gz
+│   └── metadata.tsv
+│
+├── databases/
+│   └── silva-138-99-nb-classifier-2026.7.qza
+│
+├── results/
+│   └── qiime2/
+│       ├── paired-end-demux.qza
+│       ├── dada2/
+│       ├── taxonomy/
+│       ├── phylogeny/
+│       └── exported/
+│
+├── import.sh
+├── dada2.sh
+├── inspect_dada2.sh
+├── taxonomy.sh
+├── taxaplots.sh
+├── tree.sh
+└── export.sh</code></pre>
+<p>The input sequencing files are stored in the <code>data/</code> directory, while all QIIME 2 results are organised under:</p>
+<pre class="text"><code>results/qiime2/</code></pre>
 <hr>
 </section>
-<section id="step-5-phylogenetic-tree-needed-for-unifrac-on-day-2" class="level2">
-<h2 class="anchored" data-anchor-id="step-5-phylogenetic-tree-needed-for-unifrac-on-day-2">Step 5 — Phylogenetic tree (needed for UniFrac on Day 2)</h2>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="ex">qiime</span> phylogeny align-to-tree-mafft-fasttree <span class="dt">\</span></span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>    <span class="at">--i-sequences</span> <span class="va">${OUT_DIR}</span>/rep-seqs.qza <span class="dt">\</span></span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">--o-alignment</span> <span class="va">${OUT_DIR}</span>/aligned-rep-seqs.qza <span class="dt">\</span></span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">--o-masked-alignment</span> <span class="va">${OUT_DIR}</span>/masked-aligned-rep-seqs.qza <span class="dt">\</span></span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">--o-tree</span> <span class="va">${OUT_DIR}</span>/unrooted-tree.qza <span class="dt">\</span></span>
-<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">--o-rooted-tree</span> <span class="va">${OUT_DIR}</span>/rooted-tree.qza <span class="dt">\</span></span>
-<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">--p-n-threads</span> <span class="va">${THREADS}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>This convenience action chains four steps: MAFFT multiple sequence alignment of all ASVs, masking of highly variable/uninformative alignment columns, FastTree construction of an unrooted tree, and midpoint rooting to produce a rooted tree. The rooted tree is required for phylogenetically-aware beta diversity metrics (e.g.&nbsp;weighted/unweighted UniFrac) used in Day 2.</p>
+<section id="section-1-importing-paired-end-reads-into-qiime-2" class="level1">
+<h1>Section 1 — Importing Paired-End Reads into QIIME 2</h1>
+<p>The first step is to import the paired-end FASTQ files into QIIME 2.</p>
+<p>Save the import workflow as:</p>
+<pre class="text"><code>import.sh</code></pre>
+<section id="slurm-job-settings" class="level2">
+<h2 class="anchored" data-anchor-id="slurm-job-settings">Slurm Job Settings</h2>
+<p>The script begins by requesting computational resources from Slurm.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --job-name=QiimeImport</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --output=job_%j.out</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --error=job_%j.err</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --time=01:00:00</span></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --nodes=1</span></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --ntasks=4</span></span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --mem=8G</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>These settings request:</p>
+<ul>
+<li>One compute node.</li>
+<li>Four tasks.</li>
+<li>8 GB of memory.</li>
+<li>A maximum runtime of one hour.</li>
+</ul>
+<p>The job output and error messages are stored in files containing the Slurm job ID.</p>
 <hr>
 </section>
-<section id="step-6-taxonomy-assignment-with-the-silva-classifier" class="level2">
-<h2 class="anchored" data-anchor-id="step-6-taxonomy-assignment-with-the-silva-classifier">Step 6 — Taxonomy assignment with the SILVA classifier</h2>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="ex">qiime</span> feature-classifier classify-sklearn <span class="dt">\</span></span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>    <span class="at">--i-classifier</span> <span class="va">${CLASSIFIER}</span> <span class="dt">\</span></span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">--i-reads</span> <span class="va">${OUT_DIR}</span>/rep-seqs.qza <span class="dt">\</span></span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">--o-classification</span> <span class="va">${OUT_DIR}</span>/taxonomy.qza <span class="dt">\</span></span>
-<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">--p-n-jobs</span> <span class="va">${THREADS}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Uses a pre-trained naive Bayes classifier (trained on the SILVA 138.1 database, restricted to the 515F/806R V4 primer region) to assign taxonomy to each ASV.</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="ex">qiime</span> metadata tabulate <span class="dt">\</span></span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>    <span class="at">--m-input-file</span> <span class="va">${OUT_DIR}</span>/taxonomy.qza <span class="dt">\</span></span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">--o-visualization</span> <span class="va">${OUT_DIR}</span>/taxonomy.qzv</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Makes the taxonomy assignments browsable alongside each ASV’s confidence score.</p>
+<section id="loading-qiime-2" class="level2">
+<h2 class="anchored" data-anchor-id="loading-qiime-2">Loading QIIME 2</h2>
+<p>The workflow loads the QIIME 2 module:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="ex">module</span> load qiime2</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>The workflow then defines the QIIME 2 Apptainer container:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="va">QIIME_CONTAINER</span><span class="op">=</span><span class="st">"/etc/ace-data/rgc/containers/qiime2/qiime2-2026.7.sif"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>A Bash function is used to run QIIME 2 commands inside the container:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">qiime()</span> <span class="kw">{</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>    <span class="ex">/usr/bin/apptainer</span> exec <span class="dt">\</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>        <span class="st">"</span><span class="va">${QIIME_CONTAINER}</span><span class="st">"</span> <span class="dt">\</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>        qiime <span class="st">"</span><span class="va">$@</span><span class="st">"</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="kw">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>This allows QIIME 2 commands to be run normally in the script. For example:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="ex">qiime</span> tools import</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>The function automatically executes the command inside the QIIME 2 container.</p>
 <hr>
 </section>
-<section id="step-7-taxonomy-bar-plots" class="level2">
-<h2 class="anchored" data-anchor-id="step-7-taxonomy-bar-plots">Step 7 — Taxonomy bar plots</h2>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="ex">qiime</span> taxa barplot <span class="dt">\</span></span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>    <span class="at">--i-table</span> <span class="va">${OUT_DIR}</span>/table.qza <span class="dt">\</span></span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">--i-taxonomy</span> <span class="va">${OUT_DIR}</span>/taxonomy.qza <span class="dt">\</span></span>
-<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">--m-metadata-file</span> <span class="va">${METADATA}</span> <span class="dt">\</span></span>
-<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">--o-visualization</span> <span class="va">${OUT_DIR}</span>/taxa-bar-plots.qzv</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Generates an interactive stacked bar plot of relative taxonomic composition per sample, adjustable to any taxonomic level (Phylum, Family, Genus, etc.) directly in the qiime2 viewer.</p>
+<section id="defining-input-and-output-directories" class="level2">
+<h2 class="anchored" data-anchor-id="defining-input-and-output-directories">Defining Input and Output Directories</h2>
+<p>The workflow defines the locations of the sequencing files and the QIIME 2 output directory.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="va">DATA_DIR</span><span class="op">=</span><span class="st">"data"</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="va">OUT_DIR</span><span class="op">=</span><span class="st">"results/qiime2"</span></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="va">MANIFEST</span><span class="op">=</span><span class="st">"manifest.tsv"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>The output directory is created if it does not already exist:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> <span class="at">-p</span> <span class="st">"</span><span class="va">${OUT_DIR}</span><span class="st">"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <hr>
 </section>
-<section id="export-preparing-artifacts-for-r-analysis-day-2" class="level2">
-<h2 class="anchored" data-anchor-id="export-preparing-artifacts-for-r-analysis-day-2">Export — Preparing artifacts for R analysis (Day 2)</h2>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> <span class="at">-p</span> <span class="va">${OUT_DIR}</span>/exported</span>
+<section id="creating-the-manifest-file" class="level2">
+<h2 class="anchored" data-anchor-id="creating-the-manifest-file">Creating the Manifest File</h2>
+<p>QIIME 2 requires a manifest file to associate each sample ID with its corresponding forward and reverse sequencing files.</p>
+<p>The manifest contains three columns:</p>
+<pre class="text"><code>sample-id
+forward-absolute-filepath
+reverse-absolute-filepath</code></pre>
+<p>The workflow automatically creates this file if it does not already exist:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="bu">[</span> <span class="ot">!</span> <span class="ot">-f</span> <span class="st">"</span><span class="va">${MANIFEST}</span><span class="st">"</span> <span class="bu">]</span><span class="kw">;</span> <span class="cf">then</span></span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="ex">qiime</span> tools export <span class="at">--input-path</span> <span class="va">${OUT_DIR}</span>/table.qza <span class="dt">\</span></span>
-<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">--output-path</span> <span class="va">${OUT_DIR}</span>/exported/feature_table</span>
-<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a><span class="ex">biom</span> convert <span class="at">-i</span> <span class="va">${OUT_DIR}</span>/exported/feature_table/feature-table.biom <span class="dt">\</span></span>
-<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">-o</span> <span class="va">${OUT_DIR}</span>/exported/feature_table/feature-table.tsv <span class="at">--to-tsv</span></span>
-<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a><span class="ex">qiime</span> tools export <span class="at">--input-path</span> <span class="va">${OUT_DIR}</span>/taxonomy.qza <span class="dt">\</span></span>
-<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">--output-path</span> <span class="va">${OUT_DIR}</span>/exported/taxonomy</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>    <span class="bu">echo</span> <span class="at">-e</span> <span class="st">"sample-id\tforward-absolute-filepath\treverse-absolute-filepath"</span> <span class="op">&gt;</span> <span class="st">"</span><span class="va">${MANIFEST}</span><span class="st">"</span></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> R1 <span class="kw">in</span> <span class="st">"</span><span class="va">${DATA_DIR}</span><span class="st">"</span>/<span class="pp">*</span>_1.fastq.gz<span class="kw">;</span> <span class="cf">do</span></span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>        <span class="bu">[</span> <span class="ot">-e</span> <span class="st">"</span><span class="va">${R1}</span><span class="st">"</span> <span class="bu">]</span> <span class="kw">||</span> <span class="cf">continue</span></span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>        <span class="va">SAMPLE</span><span class="op">=</span><span class="va">$(</span><span class="fu">basename</span> <span class="st">"</span><span class="va">${R1}</span><span class="st">"</span> _1.fastq.gz<span class="va">)</span></span>
 <span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a><span class="ex">qiime</span> tools export <span class="at">--input-path</span> <span class="va">${OUT_DIR}</span>/rooted-tree.qza <span class="dt">\</span></span>
-<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">--output-path</span> <span class="va">${OUT_DIR}</span>/exported/tree</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>QIIME2 artifacts (<code>.qza</code>) are opaque zip containers — R packages like <code>phyloseq</code> need plain-text/BIOM inputs. This block exports the feature table (converting the binary BIOM format to TSV with <code>biom convert</code>), taxonomy table, and phylogenetic tree (Newick format) into <code>exported/</code>, which is exactly what Day 2’s <code>phyloseq</code> workflow loads.</p>
+<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a>        <span class="va">R2</span><span class="op">=</span><span class="st">"</span><span class="va">${DATA_DIR}</span><span class="st">/</span><span class="va">${SAMPLE}</span><span class="st">_2.fastq.gz"</span></span>
+<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-13"><a href="#cb13-13" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="bu">[</span> <span class="ot">-f</span> <span class="st">"</span><span class="va">${R2}</span><span class="st">"</span> <span class="bu">]</span><span class="kw">;</span> <span class="cf">then</span></span>
+<span id="cb13-14"><a href="#cb13-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-15"><a href="#cb13-15" aria-hidden="true" tabindex="-1"></a>            <span class="bu">echo</span> <span class="at">-e</span> <span class="st">"</span><span class="va">${SAMPLE}</span><span class="st">\t</span><span class="va">$(</span><span class="fu">realpath</span> <span class="st">"</span><span class="va">${R1}</span><span class="st">"</span><span class="va">)</span><span class="st">\t</span><span class="va">$(</span><span class="fu">realpath</span> <span class="st">"</span><span class="va">${R2}</span><span class="st">"</span><span class="va">)</span><span class="st">"</span> <span class="dt">\</span></span>
+<span id="cb13-16"><a href="#cb13-16" aria-hidden="true" tabindex="-1"></a>                <span class="op">&gt;&gt;</span> <span class="st">"</span><span class="va">${MANIFEST}</span><span class="st">"</span></span>
+<span id="cb13-17"><a href="#cb13-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-18"><a href="#cb13-18" aria-hidden="true" tabindex="-1"></a>        <span class="cf">else</span></span>
+<span id="cb13-19"><a href="#cb13-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-20"><a href="#cb13-20" aria-hidden="true" tabindex="-1"></a>            <span class="bu">echo</span> <span class="st">"WARNING: Reverse read not found for </span><span class="va">${SAMPLE}</span><span class="st">"</span></span>
+<span id="cb13-21"><a href="#cb13-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-22"><a href="#cb13-22" aria-hidden="true" tabindex="-1"></a>        <span class="cf">fi</span></span>
+<span id="cb13-23"><a href="#cb13-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-24"><a href="#cb13-24" aria-hidden="true" tabindex="-1"></a>    <span class="cf">done</span></span>
+<span id="cb13-25"><a href="#cb13-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-26"><a href="#cb13-26" aria-hidden="true" tabindex="-1"></a><span class="cf">fi</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>The script identifies all forward reads ending in:</p>
+<pre class="text"><code>_1.fastq.gz</code></pre>
+<p>For each forward read, it searches for the corresponding reverse read ending in:</p>
+<pre class="text"><code>_2.fastq.gz</code></pre>
+<p>For example:</p>
+<pre class="text"><code>data/
+├── Sample01_1.fastq.gz
+├── Sample01_2.fastq.gz
+├── Sample02_1.fastq.gz
+└── Sample02_2.fastq.gz</code></pre>
+<p>The resulting manifest will look similar to:</p>
+<pre class="text"><code>sample-id    forward-absolute-filepath    reverse-absolute-filepath
+Sample01     /full/path/data/Sample01_1.fastq.gz    /full/path/data/Sample01_2.fastq.gz
+Sample02     /full/path/data/Sample02_1.fastq.gz    /full/path/data/Sample02_2.fastq.gz</code></pre>
+<p>If a reverse read is missing, the script produces a warning.</p>
 <hr>
 </section>
-<section id="key-outputs" class="level2">
-<h2 class="anchored" data-anchor-id="key-outputs">Key Outputs</h2>
+<section id="importing-the-reads" class="level2">
+<h2 class="anchored" data-anchor-id="importing-the-reads">Importing the Reads</h2>
+<p>The paired-end reads are imported using:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb18"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="ex">qiime</span> tools import <span class="dt">\</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>    <span class="at">--type</span> <span class="st">'SampleData[PairedEndSequencesWithQuality]'</span> <span class="dt">\</span></span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">--input-path</span> <span class="st">"</span><span class="va">${MANIFEST}</span><span class="st">"</span> <span class="dt">\</span></span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">--output-path</span> <span class="st">"</span><span class="va">${OUT_DIR}</span><span class="st">/paired-end-demux.qza"</span> <span class="dt">\</span></span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">--input-format</span> PairedEndFastqManifestPhred33V2</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>QIIME 2 stores the imported sequencing data as:</p>
+<pre class="text"><code>results/qiime2/paired-end-demux.qza</code></pre>
+<p>The <code>.qza</code> extension represents a QIIME 2 artifact.</p>
+<p>This artifact will be used as the input for DADA2 in the next step.</p>
+<hr>
+</section>
+<section id="submitting-the-import-job" class="level2">
+<h2 class="anchored" data-anchor-id="submitting-the-import-job">Submitting the Import Job</h2>
+<p>Submit the script using:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb20"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="ex">sbatch</span> import.sh</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>After the job finishes, confirm that the following file has been created:</p>
+<pre class="text"><code>results/qiime2/paired-end-demux.qza</code></pre>
+<hr>
+</section>
+</section>
+<section id="section-2-dada2-denoising" class="level1">
+<h1>Section 2 — DADA2 Denoising</h1>
+<p>The next step is to process the imported reads using DADA2.</p>
+<p>DADA2 performs several important functions:</p>
+<ul>
+<li>Quality filtering.</li>
+<li>Error modelling.</li>
+<li>Sequence denoising.</li>
+<li>Paired-end read merging.</li>
+<li>Chimera detection and removal.</li>
+<li>Inference of amplicon sequence variants (ASVs).</li>
+</ul>
+<p>Save this workflow as:</p>
+<pre class="text"><code>dada2.sh</code></pre>
+<hr>
+<section id="computational-resources" class="level2">
+<h2 class="anchored" data-anchor-id="computational-resources">Computational Resources</h2>
+<p>The DADA2 workflow requests:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb23"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --job-name=QiimeDADA2</span></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --output=dada2_%j.out</span></span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --error=dada2_%j.err</span></span>
+<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --time=04:00:00</span></span>
+<span id="cb23-8"><a href="#cb23-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-9"><a href="#cb23-9" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --nodes=1</span></span>
+<span id="cb23-10"><a href="#cb23-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-11"><a href="#cb23-11" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --ntasks=1</span></span>
+<span id="cb23-12"><a href="#cb23-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-13"><a href="#cb23-13" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --cpus-per-task=4</span></span>
+<span id="cb23-14"><a href="#cb23-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-15"><a href="#cb23-15" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --mem=8G</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>DADA2 is allocated four CPUs using:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb24"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --cpus-per-task=4</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>The number of available CPUs is stored automatically by Slurm and accessed through:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb25"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="va">THREADS</span><span class="op">=</span><span class="st">"</span><span class="va">${SLURM_CPUS_PER_TASK}</span><span class="st">"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>This allows the script to pass the allocated number of CPUs directly to DADA2.</p>
+<hr>
+</section>
+<section id="configuring-the-environment" class="level2">
+<h2 class="anchored" data-anchor-id="configuring-the-environment">Configuring the Environment</h2>
+<p>The workflow defines temporary directories for software that requires writable cache locations:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb26"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="bu">export</span> <span class="va">MPLCONFIGDIR</span><span class="op">=</span><span class="st">"/tmp/</span><span class="va">${USER}</span><span class="st">-matplotlib"</span></span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> <span class="at">-p</span> <span class="st">"</span><span class="va">${MPLCONFIGDIR}</span><span class="st">"</span></span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a><span class="bu">export</span> <span class="va">NUMBA_CACHE_DIR</span><span class="op">=</span><span class="st">"/tmp/</span><span class="va">${USER}</span><span class="st">-numba"</span></span>
+<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-7"><a href="#cb26-7" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> <span class="at">-p</span> <span class="st">"</span><span class="va">${NUMBA_CACHE_DIR}</span><span class="st">"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>These directories are created in temporary storage for the duration of the analysis.</p>
+<hr>
+</section>
+<section id="checking-the-input-file" class="level2">
+<h2 class="anchored" data-anchor-id="checking-the-input-file">Checking the Input File</h2>
+<p>The DADA2 workflow requires the imported QIIME 2 artifact:</p>
+<pre class="text"><code>results/qiime2/paired-end-demux.qza</code></pre>
+<p>The script checks whether this file exists:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb28"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="va">INPUT</span><span class="op">=</span><span class="st">"results/qiime2/paired-end-demux.qza"</span></span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="bu">[</span> <span class="ot">!</span> <span class="ot">-f</span> <span class="st">"</span><span class="va">${INPUT}</span><span class="st">"</span> <span class="bu">]</span><span class="kw">;</span> <span class="cf">then</span></span>
+<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a>    <span class="bu">echo</span> <span class="st">"ERROR: Input file not found: </span><span class="va">${INPUT}</span><span class="st">"</span></span>
+<span id="cb28-6"><a href="#cb28-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-7"><a href="#cb28-7" aria-hidden="true" tabindex="-1"></a>    <span class="bu">exit</span> 1</span>
+<span id="cb28-8"><a href="#cb28-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-9"><a href="#cb28-9" aria-hidden="true" tabindex="-1"></a><span class="cf">fi</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>If the import step has not completed successfully, the DADA2 job stops immediately.</p>
+<hr>
+</section>
+<section id="running-dada2" class="level2">
+<h2 class="anchored" data-anchor-id="running-dada2">Running DADA2</h2>
+<p>The denoising command is:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb29"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="ex">qiime</span> dada2 denoise-paired <span class="dt">\</span></span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>    <span class="at">--i-demultiplexed-seqs</span> <span class="st">"</span><span class="va">${INPUT}</span><span class="st">"</span> <span class="dt">\</span></span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">--p-trim-left-f</span> 0 <span class="dt">\</span></span>
+<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">--p-trim-left-r</span> 0 <span class="dt">\</span></span>
+<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">--p-trunc-len-f</span> 280 <span class="dt">\</span></span>
+<span id="cb29-6"><a href="#cb29-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">--p-trunc-len-r</span> 280 <span class="dt">\</span></span>
+<span id="cb29-7"><a href="#cb29-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">--p-n-threads</span> <span class="st">"</span><span class="va">${THREADS}</span><span class="st">"</span> <span class="dt">\</span></span>
+<span id="cb29-8"><a href="#cb29-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">--o-table</span> <span class="st">"</span><span class="va">${OUT_DIR}</span><span class="st">/table.qza"</span> <span class="dt">\</span></span>
+<span id="cb29-9"><a href="#cb29-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">--o-representative-sequences</span> <span class="st">"</span><span class="va">${OUT_DIR}</span><span class="st">/rep-seqs.qza"</span> <span class="dt">\</span></span>
+<span id="cb29-10"><a href="#cb29-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">--o-denoising-stats</span> <span class="st">"</span><span class="va">${OUT_DIR}</span><span class="st">/dada2-stats.qza"</span> <span class="dt">\</span></span>
+<span id="cb29-11"><a href="#cb29-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">--o-base-transition-stats</span> <span class="st">"</span><span class="va">${OUT_DIR}</span><span class="st">/base-transition-stats.qza"</span> <span class="dt">\</span></span>
+<span id="cb29-12"><a href="#cb29-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">--verbose</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>The forward and reverse reads are truncated at:</p>
+<pre class="text"><code>Forward reads: 280 bp
+Reverse reads: 280 bp</code></pre>
+<p>The trimming parameters are:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb31"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="ex">--p-trim-left-f</span> 0</span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a><span class="ex">--p-trim-left-r</span> 0</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>This means that no bases are removed from the beginning of either the forward or reverse reads during this step.</p>
+<p>The truncation lengths determine how many bases are retained from each read.</p>
+<hr>
+</section>
+<section id="dada2-outputs" class="level2">
+<h2 class="anchored" data-anchor-id="dada2-outputs">DADA2 Outputs</h2>
+<p>DADA2 produces four main outputs.</p>
+<section id="feature-table" class="level3">
+<h3 class="anchored" data-anchor-id="feature-table">Feature Table</h3>
+<pre class="text"><code>results/qiime2/dada2/table.qza</code></pre>
+<p>This contains the abundance of each ASV in each sample.</p>
+<p>Conceptually, the table looks like:</p>
 <table class="caption-top table">
-<colgroup>
-<col style="width: 50%">
-<col style="width: 50%">
-</colgroup>
 <thead>
 <tr class="header">
-<th>Output</th>
-<th>Path</th>
+<th>ASV</th>
+<th style="text-align: right;">Sample 1</th>
+<th style="text-align: right;">Sample 2</th>
+<th style="text-align: right;">Sample 3</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td>Quality check</td>
-<td><code>${OUT_DIR}/demux-summary.qzv</code></td>
+<td>ASV1</td>
+<td style="text-align: right;">120</td>
+<td style="text-align: right;">54</td>
+<td style="text-align: right;">80</td>
 </tr>
 <tr class="even">
-<td>DADA2 stats</td>
-<td><code>${OUT_DIR}/dada2-stats.qzv</code></td>
+<td>ASV2</td>
+<td style="text-align: right;">45</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">21</td>
 </tr>
 <tr class="odd">
-<td>Feature table summary</td>
-<td><code>${OUT_DIR}/table-summary.qzv</code></td>
-</tr>
-<tr class="even">
-<td>Taxonomy bar plots</td>
-<td><code>${OUT_DIR}/taxa-bar-plots.qzv</code></td>
-</tr>
-<tr class="odd">
-<td>Exported for Day 2</td>
-<td><code>${OUT_DIR}/exported/</code> (feature table, taxonomy, tree)</td>
+<td>ASV3</td>
+<td style="text-align: right;">10</td>
+<td style="text-align: right;">32</td>
+<td style="text-align: right;">7</td>
 </tr>
 </tbody>
 </table>
+<hr>
 </section>
-<section id="discussion-questions" class="level2">
-<h2 class="anchored" data-anchor-id="discussion-questions">Discussion Questions</h2>
+<section id="representative-sequences" class="level3">
+<h3 class="anchored" data-anchor-id="representative-sequences">Representative Sequences</h3>
+<pre class="text"><code>results/qiime2/dada2/rep-seqs.qza</code></pre>
+<p>This contains one representative DNA sequence for each ASV.</p>
+<p>These sequences are used for:</p>
+<ul>
+<li>Taxonomic classification.</li>
+<li>Multiple sequence alignment.</li>
+<li>Phylogenetic tree construction.</li>
+</ul>
+<hr>
+</section>
+<section id="denoising-statistics" class="level3">
+<h3 class="anchored" data-anchor-id="denoising-statistics">Denoising Statistics</h3>
+<pre class="text"><code>results/qiime2/dada2/dada2-stats.qza</code></pre>
+<p>These statistics show how many reads remain after the different stages of DADA2 processing.</p>
+<p>The stages include:</p>
+<ul>
+<li>Input reads.</li>
+<li>Filtered reads.</li>
+<li>Denoised reads.</li>
+<li>Merged reads.</li>
+<li>Non-chimeric reads.</li>
+</ul>
+<hr>
+</section>
+<section id="base-transition-statistics" class="level3">
+<h3 class="anchored" data-anchor-id="base-transition-statistics">Base Transition Statistics</h3>
+<pre class="text"><code>results/qiime2/dada2/base-transition-stats.qza</code></pre>
+<p>This artifact contains information related to nucleotide transitions observed during the DADA2 error-learning process.</p>
+<hr>
+</section>
+</section>
+<section id="submitting-the-dada2-job" class="level2">
+<h2 class="anchored" data-anchor-id="submitting-the-dada2-job">Submitting the DADA2 Job</h2>
+<p>Run:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb36"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="ex">sbatch</span> dada2.sh</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>DADA2 may take longer than the import step because it performs quality filtering, error modelling, denoising, paired-end merging, and chimera removal.</p>
+<hr>
+</section>
+</section>
+<section id="section-3-summarising-the-dada2-results" class="level1">
+<h1>Section 3 — Summarising the DADA2 Results</h1>
+<p>After DADA2 has completed, the resulting artifacts should be inspected before proceeding.</p>
+<p>Save this script as:</p>
+<pre class="text"><code>qiime2_summary.sh</code></pre>
+<p>The workflow checks that the following files exist:</p>
+<pre class="text"><code>results/qiime2/dada2/table.qza
+
+results/qiime2/dada2/rep-seqs.qza
+
+results/qiime2/dada2/dada2-stats.qza
+
+data/metadata.tsv</code></pre>
+<p>If any required file is missing, the workflow stops with an error.</p>
+<hr>
+<section id="summarising-the-feature-table" class="level2">
+<h2 class="anchored" data-anchor-id="summarising-the-feature-table">Summarising the Feature Table</h2>
+<p>The feature table is summarised using:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb39"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="ex">qiime</span> feature-table summarize <span class="dt">\</span></span>
+<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>    <span class="at">--i-table</span> <span class="st">"</span><span class="va">${OUT_DIR}</span><span class="st">/table.qza"</span> <span class="dt">\</span></span>
+<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">--o-feature-frequencies</span> <span class="st">"</span><span class="va">${OUT_DIR}</span><span class="st">/feature-table-summary.qza"</span> <span class="dt">\</span></span>
+<span id="cb39-4"><a href="#cb39-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">--o-sample-frequencies</span> <span class="st">"</span><span class="va">${OUT_DIR}</span><span class="st">/sample-table-summary.qza"</span> <span class="dt">\</span></span>
+<span id="cb39-5"><a href="#cb39-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">--o-summary</span> <span class="st">"</span><span class="va">${OUT_DIR}</span><span class="st">/overall-table-summary.qzv"</span> <span class="dt">\</span></span>
+<span id="cb39-6"><a href="#cb39-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">--m-metadata-file</span> <span class="st">"</span><span class="va">${METADATA}</span><span class="st">"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>This produces:</p>
+<pre class="text"><code>feature-table-summary.qza
+
+sample-table-summary.qza
+
+overall-table-summary.qzv</code></pre>
+<p>The <code>.qzv</code> file provides an interactive summary of the feature table.</p>
+<p>It can be inspected using the QIIME 2 viewer:</p>
+<p><a href="https://view.qiime2.org">QIIME 2 View</a></p>
+<p>The summary can be used to examine:</p>
+<ul>
+<li>The number of samples.</li>
+<li>The number of ASVs.</li>
+<li>Sequencing depth across samples.</li>
+<li>Samples with unusually low read counts.</li>
+<li>The distribution of feature frequencies.</li>
+</ul>
+<hr>
+</section>
+<section id="viewing-representative-sequences" class="level2">
+<h2 class="anchored" data-anchor-id="viewing-representative-sequences">Viewing Representative Sequences</h2>
+<p>Representative sequences are tabulated using:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb41"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="ex">qiime</span> feature-table tabulate-seqs <span class="dt">\</span></span>
+<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>    <span class="at">--i-data</span> <span class="st">"</span><span class="va">${OUT_DIR}</span><span class="st">/rep-seqs.qza"</span> <span class="dt">\</span></span>
+<span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">--o-visualization</span> <span class="st">"</span><span class="va">${OUT_DIR}</span><span class="st">/rep-seqs.qzv"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>This produces:</p>
+<pre class="text"><code>results/qiime2/dada2/rep-seqs.qzv</code></pre>
+<p>The visualisation allows the ASV sequences to be inspected.</p>
+<hr>
+</section>
+<section id="viewing-dada2-denoising-statistics" class="level2">
+<h2 class="anchored" data-anchor-id="viewing-dada2-denoising-statistics">Viewing DADA2 Denoising Statistics</h2>
+<p>The DADA2 statistics are converted into a visualisation using:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb43"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="ex">qiime</span> metadata tabulate <span class="dt">\</span></span>
+<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a>    <span class="at">--m-input-file</span> <span class="st">"</span><span class="va">${OUT_DIR}</span><span class="st">/dada2-stats.qza"</span> <span class="dt">\</span></span>
+<span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">--o-visualization</span> <span class="st">"</span><span class="va">${OUT_DIR}</span><span class="st">/dada2-stats.qzv"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>The output is:</p>
+<pre class="text"><code>results/qiime2/dada2/dada2-stats.qzv</code></pre>
+<p>This table shows how many reads remain after each DADA2 processing stage.</p>
+<p>When examining the results, pay particular attention to:</p>
+<ul>
+<li>The proportion of reads retained after filtering.</li>
+<li>The proportion of reads successfully merged.</li>
+<li>The number of reads remaining after chimera removal.</li>
+<li>Samples with unusually low retention rates.</li>
+</ul>
+<hr>
+</section>
+<section id="submitting-the-summary-job" class="level2">
+<h2 class="anchored" data-anchor-id="submitting-the-summary-job">Submitting the Summary Job</h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb45"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="ex">sbatch</span> inspect_dada2.sh</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<hr>
+</section>
+</section>
+<section id="section-4-taxonomic-classification" class="level1">
+<h1>Section 4 — Taxonomic Classification</h1>
+<p>The representative ASV sequences are assigned taxonomy using a pre-trained SILVA classifier.</p>
+<p>Save the workflow as:</p>
+<pre class="text"><code>taxonomy.sh</code></pre>
+<p>The relevant variables are:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb47"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="va">IN_DIR</span><span class="op">=</span><span class="st">"results/qiime2/dada2"</span></span>
+<span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb47-3"><a href="#cb47-3" aria-hidden="true" tabindex="-1"></a><span class="va">OUT_DIR</span><span class="op">=</span><span class="st">"results/qiime2/taxonomy"</span></span>
+<span id="cb47-4"><a href="#cb47-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb47-5"><a href="#cb47-5" aria-hidden="true" tabindex="-1"></a><span class="va">CLASSIFIER</span><span class="op">=</span><span class="st">"databases/silva-138-99-nb-classifier-2026.7.qza"</span></span>
+<span id="cb47-6"><a href="#cb47-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb47-7"><a href="#cb47-7" aria-hidden="true" tabindex="-1"></a><span class="va">THREADS</span><span class="op">=</span><span class="st">"</span><span class="va">${SLURM_CPUS_PER_TASK}</span><span class="st">"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>The taxonomy results will be stored in:</p>
+<pre class="text"><code>results/qiime2/taxonomy/</code></pre>
+<hr>
+<section id="running-the-classifier" class="level2">
+<h2 class="anchored" data-anchor-id="running-the-classifier">Running the Classifier</h2>
+<p>Taxonomic classification is performed using:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb49"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="ex">qiime</span> feature-classifier classify-sklearn <span class="dt">\</span></span>
+<span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a>    <span class="at">--i-classifier</span> <span class="st">"</span><span class="va">${CLASSIFIER}</span><span class="st">"</span> <span class="dt">\</span></span>
+<span id="cb49-3"><a href="#cb49-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">--i-reads</span> <span class="st">"</span><span class="va">${IN_DIR}</span><span class="st">/rep-seqs.qza"</span> <span class="dt">\</span></span>
+<span id="cb49-4"><a href="#cb49-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">--p-n-jobs</span> <span class="st">"</span><span class="va">${THREADS}</span><span class="st">"</span> <span class="dt">\</span></span>
+<span id="cb49-5"><a href="#cb49-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">--o-classification</span> <span class="st">"</span><span class="va">${OUT_DIR}</span><span class="st">/taxonomy.qza"</span> <span class="dt">\</span></span>
+<span id="cb49-6"><a href="#cb49-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">--verbose</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>The classifier compares each representative ASV sequence against the taxonomic information contained in the pre-trained SILVA classifier.</p>
+<p>The output is:</p>
+<pre class="text"><code>results/qiime2/taxonomy/taxonomy.qza</code></pre>
+<p>Each ASV receives a taxonomic classification and an associated confidence value.</p>
+<hr>
+</section>
+<section id="submitting-the-taxonomy-job" class="level2">
+<h2 class="anchored" data-anchor-id="submitting-the-taxonomy-job">Submitting the Taxonomy Job</h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb51"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="ex">sbatch</span> taxonomy.sh</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<hr>
+</section>
+</section>
+<section id="section-5-visualising-taxonomic-composition" class="level1">
+<h1>Section 5 — Visualising Taxonomic Composition</h1>
+<p>After taxonomy has been assigned, taxonomic composition can be visualised using QIIME 2 taxonomic bar plots.</p>
+<p>Save the workflow as:</p>
+<pre class="text"><code>taxaplots.sh</code></pre>
+<p>The script uses:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb53"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="va">TAX_DIR</span><span class="op">=</span><span class="st">"results/qiime2/taxonomy"</span></span>
+<span id="cb53-2"><a href="#cb53-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb53-3"><a href="#cb53-3" aria-hidden="true" tabindex="-1"></a><span class="va">ASV_DIR</span><span class="op">=</span><span class="st">"results/qiime2/dada2"</span></span>
+<span id="cb53-4"><a href="#cb53-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb53-5"><a href="#cb53-5" aria-hidden="true" tabindex="-1"></a><span class="va">METADATA</span><span class="op">=</span><span class="st">"data/metadata.tsv"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>The taxonomic bar plot is generated using:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb54"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="ex">qiime</span> taxa barplot <span class="dt">\</span></span>
+<span id="cb54-2"><a href="#cb54-2" aria-hidden="true" tabindex="-1"></a>    <span class="at">--i-table</span> <span class="st">"</span><span class="va">${ASV_DIR}</span><span class="st">/table.qza"</span> <span class="dt">\</span></span>
+<span id="cb54-3"><a href="#cb54-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">--i-taxonomy</span> <span class="st">"</span><span class="va">${TAX_DIR}</span><span class="st">/taxonomy.qza"</span> <span class="dt">\</span></span>
+<span id="cb54-4"><a href="#cb54-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">--m-metadata-file</span> <span class="st">"</span><span class="va">${METADATA}</span><span class="st">"</span> <span class="dt">\</span></span>
+<span id="cb54-5"><a href="#cb54-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">--o-visualization</span> <span class="st">"</span><span class="va">${TAX_DIR}</span><span class="st">/taxa-bar-plots.qzv"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>The output is:</p>
+<pre class="text"><code>results/qiime2/taxonomy/taxa-bar-plots.qzv</code></pre>
+<p>The visualisation shows the relative abundance of taxa across samples.</p>
+<p>The taxonomic level can be changed interactively in the QIIME 2 viewer to examine composition at different levels, such as:</p>
+<ul>
+<li>Phylum.</li>
+<li>Class.</li>
+<li>Order.</li>
+<li>Family.</li>
+<li>Genus.</li>
+</ul>
+<hr>
+<section id="submitting-the-taxonomic-bar-plot-job" class="level2">
+<h2 class="anchored" data-anchor-id="submitting-the-taxonomic-bar-plot-job">Submitting the Taxonomic Bar Plot Job</h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb56"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a><span class="ex">sbatch</span> taxaplots.sh</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<hr>
+</section>
+</section>
+<section id="section-6-constructing-a-phylogenetic-tree" class="level1">
+<h1>Section 6 — Constructing a Phylogenetic Tree</h1>
+<p>A phylogenetic tree is required for phylogenetically informed diversity analyses.</p>
+<p>Save this workflow as:</p>
+<pre class="text"><code>tree.sh</code></pre>
+<p>The workflow uses the representative sequences produced by DADA2:</p>
+<pre class="text"><code>results/qiime2/dada2/rep-seqs.qza</code></pre>
+<p>The analysis is performed using:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb59"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true" tabindex="-1"></a><span class="ex">qiime</span> phylogeny align-to-tree-mafft-fasttree <span class="dt">\</span></span>
+<span id="cb59-2"><a href="#cb59-2" aria-hidden="true" tabindex="-1"></a>    <span class="at">--i-sequences</span> <span class="st">"</span><span class="va">${IN_DIR}</span><span class="st">/rep-seqs.qza"</span> <span class="dt">\</span></span>
+<span id="cb59-3"><a href="#cb59-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">--o-alignment</span> <span class="st">"</span><span class="va">${OUT_DIR}</span><span class="st">/aligned-rep-seqs.qza"</span> <span class="dt">\</span></span>
+<span id="cb59-4"><a href="#cb59-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">--o-masked-alignment</span> <span class="st">"</span><span class="va">${OUT_DIR}</span><span class="st">/masked-aligned-rep-seqs.qza"</span> <span class="dt">\</span></span>
+<span id="cb59-5"><a href="#cb59-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">--o-tree</span> <span class="st">"</span><span class="va">${OUT_DIR}</span><span class="st">/unrooted-tree.qza"</span> <span class="dt">\</span></span>
+<span id="cb59-6"><a href="#cb59-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">--o-rooted-tree</span> <span class="st">"</span><span class="va">${OUT_DIR}</span><span class="st">/rooted-tree.qza"</span> <span class="dt">\</span></span>
+<span id="cb59-7"><a href="#cb59-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">--p-n-threads</span> <span class="st">"</span><span class="va">${THREADS}</span><span class="st">"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>This workflow performs several steps.</p>
+<section id="multiple-sequence-alignment" class="level3">
+<h3 class="anchored" data-anchor-id="multiple-sequence-alignment">Multiple Sequence Alignment</h3>
+<p>The representative ASV sequences are aligned using MAFFT.</p>
+<p>Output:</p>
+<pre class="text"><code>aligned-rep-seqs.qza</code></pre>
+</section>
+<section id="alignment-masking" class="level3">
+<h3 class="anchored" data-anchor-id="alignment-masking">Alignment Masking</h3>
+<p>Highly variable or uninformative alignment positions are masked.</p>
+<p>Output:</p>
+<pre class="text"><code>masked-aligned-rep-seqs.qza</code></pre>
+</section>
+<section id="unrooted-tree" class="level3">
+<h3 class="anchored" data-anchor-id="unrooted-tree">Unrooted Tree</h3>
+<p>An unrooted phylogenetic tree is constructed.</p>
+<p>Output:</p>
+<pre class="text"><code>unrooted-tree.qza</code></pre>
+</section>
+<section id="rooted-tree" class="level3">
+<h3 class="anchored" data-anchor-id="rooted-tree">Rooted Tree</h3>
+<p>The phylogenetic tree is rooted.</p>
+<p>Output:</p>
+<pre class="text"><code>rooted-tree.qza</code></pre>
+<p>The rooted tree can be used in downstream analyses involving phylogenetic diversity and phylogenetically informed beta diversity metrics.</p>
+<hr>
+</section>
+<section id="submitting-the-tree-construction-job" class="level2">
+<h2 class="anchored" data-anchor-id="submitting-the-tree-construction-job">Submitting the Tree Construction Job</h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb64"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb64-1"><a href="#cb64-1" aria-hidden="true" tabindex="-1"></a><span class="ex">sbatch</span> tree.sh</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<hr>
+</section>
+</section>
+<section id="section-7-exporting-results-for-downstream-analysis" class="level1">
+<h1>Section 7 — Exporting Results for Downstream Analysis</h1>
+<p>The final step is to export the main QIIME 2 artifacts into formats that can be used for downstream analysis.</p>
+<p>Save this workflow as:</p>
+<pre class="text"><code>export.sh</code></pre>
+<p>The script also loads the BIOM format tools:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb66"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb66-1"><a href="#cb66-1" aria-hidden="true" tabindex="-1"></a><span class="ex">module</span> load biom-format</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>The workflow uses results from the following directories:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb67"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb67-1"><a href="#cb67-1" aria-hidden="true" tabindex="-1"></a><span class="va">ASV_DIR</span><span class="op">=</span><span class="st">"results/qiime2/dada2"</span></span>
+<span id="cb67-2"><a href="#cb67-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb67-3"><a href="#cb67-3" aria-hidden="true" tabindex="-1"></a><span class="va">TAX_DIR</span><span class="op">=</span><span class="st">"results/qiime2/taxonomy"</span></span>
+<span id="cb67-4"><a href="#cb67-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb67-5"><a href="#cb67-5" aria-hidden="true" tabindex="-1"></a><span class="va">TREE_DIR</span><span class="op">=</span><span class="st">"results/qiime2/phylogeny"</span></span>
+<span id="cb67-6"><a href="#cb67-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb67-7"><a href="#cb67-7" aria-hidden="true" tabindex="-1"></a><span class="va">OUT_DIR</span><span class="op">=</span><span class="st">"results/qiime2/exported"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>The export directory is created using:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb68"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb68-1"><a href="#cb68-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> <span class="at">-p</span> <span class="st">"</span><span class="va">${OUT_DIR}</span><span class="st">"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<hr>
+<section id="exporting-the-feature-table" class="level2">
+<h2 class="anchored" data-anchor-id="exporting-the-feature-table">Exporting the Feature Table</h2>
+<p>The QIIME 2 feature table is exported using:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb69"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb69-1"><a href="#cb69-1" aria-hidden="true" tabindex="-1"></a><span class="ex">qiime</span> tools export <span class="dt">\</span></span>
+<span id="cb69-2"><a href="#cb69-2" aria-hidden="true" tabindex="-1"></a>    <span class="at">--input-path</span> <span class="st">"</span><span class="va">${ASV_DIR}</span><span class="st">/table.qza"</span> <span class="dt">\</span></span>
+<span id="cb69-3"><a href="#cb69-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">--output-path</span> <span class="st">"</span><span class="va">${OUT_DIR}</span><span class="st">"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>This produces:</p>
+<pre class="text"><code>feature-table.biom</code></pre>
+<p>The BIOM file is then converted to TSV format:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb71"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb71-1"><a href="#cb71-1" aria-hidden="true" tabindex="-1"></a><span class="ex">biom</span> convert <span class="dt">\</span></span>
+<span id="cb71-2"><a href="#cb71-2" aria-hidden="true" tabindex="-1"></a>    <span class="at">-i</span> <span class="st">"</span><span class="va">${OUT_DIR}</span><span class="st">/feature-table.biom"</span> <span class="dt">\</span></span>
+<span id="cb71-3"><a href="#cb71-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">-o</span> <span class="st">"</span><span class="va">${OUT_DIR}</span><span class="st">/feature-table.tsv"</span> <span class="dt">\</span></span>
+<span id="cb71-4"><a href="#cb71-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">--to-tsv</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>The resulting file is:</p>
+<pre class="text"><code>results/qiime2/exported/feature-table.tsv</code></pre>
+<hr>
+</section>
+<section id="exporting-the-taxonomy-table" class="level2">
+<h2 class="anchored" data-anchor-id="exporting-the-taxonomy-table">Exporting the Taxonomy Table</h2>
+<p>Taxonomy is exported using:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb73"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb73-1"><a href="#cb73-1" aria-hidden="true" tabindex="-1"></a><span class="ex">qiime</span> tools export <span class="dt">\</span></span>
+<span id="cb73-2"><a href="#cb73-2" aria-hidden="true" tabindex="-1"></a>    <span class="at">--input-path</span> <span class="st">"</span><span class="va">${TAX_DIR}</span><span class="st">/taxonomy.qza"</span> <span class="dt">\</span></span>
+<span id="cb73-3"><a href="#cb73-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">--output-path</span> <span class="st">"</span><span class="va">${OUT_DIR}</span><span class="st">"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>This exports the taxonomy information into the export directory.</p>
+<hr>
+</section>
+<section id="exporting-the-rooted-phylogenetic-tree" class="level2">
+<h2 class="anchored" data-anchor-id="exporting-the-rooted-phylogenetic-tree">Exporting the Rooted Phylogenetic Tree</h2>
+<p>The rooted phylogenetic tree is exported using:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb74"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb74-1"><a href="#cb74-1" aria-hidden="true" tabindex="-1"></a><span class="ex">qiime</span> tools export <span class="dt">\</span></span>
+<span id="cb74-2"><a href="#cb74-2" aria-hidden="true" tabindex="-1"></a>    <span class="at">--input-path</span> <span class="st">"</span><span class="va">${TREE_DIR}</span><span class="st">/rooted-tree.qza"</span> <span class="dt">\</span></span>
+<span id="cb74-3"><a href="#cb74-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">--output-path</span> <span class="st">"</span><span class="va">${OUT_DIR}</span><span class="st">"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>The exported tree can be used for downstream phylogenetic diversity analysis.</p>
+<hr>
+</section>
+<section id="submitting-the-export-job" class="level2">
+<h2 class="anchored" data-anchor-id="submitting-the-export-job">Submitting the Export Job</h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb75"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb75-1"><a href="#cb75-1" aria-hidden="true" tabindex="-1"></a><span class="ex">sbatch</span> export.sh</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>After the export step, the main results required for downstream analysis are stored in:</p>
+<pre class="text"><code>results/qiime2/exported/</code></pre>
+<hr>
+</section>
+</section>
+<section id="recommended-order-for-running-the-workflow" class="level1">
+<h1>Recommended Order for Running the Workflow</h1>
+<p>Because the scripts depend on outputs produced by earlier steps, they should be run in the following order:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb77"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb77-1"><a href="#cb77-1" aria-hidden="true" tabindex="-1"></a><span class="ex">sbatch</span> import.sh</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Wait for the import job to finish successfully, then run:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb78"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb78-1"><a href="#cb78-1" aria-hidden="true" tabindex="-1"></a><span class="ex">sbatch</span> dada2.sh</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>After DADA2 has completed:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb79"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb79-1"><a href="#cb79-1" aria-hidden="true" tabindex="-1"></a><span class="ex">sbatch</span> inspect_dada2.sh</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Then assign taxonomy:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb80"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb80-1"><a href="#cb80-1" aria-hidden="true" tabindex="-1"></a><span class="ex">sbatch</span> taxonomy.sh</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Generate taxonomic bar plots:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb81"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb81-1"><a href="#cb81-1" aria-hidden="true" tabindex="-1"></a><span class="ex">sbatch</span> taxaplots.sh</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Construct the phylogenetic tree:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb82"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb82-1"><a href="#cb82-1" aria-hidden="true" tabindex="-1"></a><span class="ex">sbatch</span> tree.sh</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Finally, export the results:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb83"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb83-1"><a href="#cb83-1" aria-hidden="true" tabindex="-1"></a><span class="ex">sbatch</span> export.sh</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>The workflow can be summarised as:</p>
+<pre class="text"><code>import.sh
+    │
+    ▼
+paired-end-demux.qza
+    │
+    ▼
+dada2.sh
+    │
+    ├── table.qza
+    ├── rep-seqs.qza
+    ├── dada2-stats.qza
+    └── base-transition-stats.qza
+    │
+    ├──────────────────────┐
+    ▼                      ▼
+qiime2_summary.sh       tree.sh
+    │                      │
+    ▼                      ▼
+Review ASVs              rooted-tree.qza
+    │                      │
+    ▼                      │
+taxonomy.sh               │
+    │                      │
+    ▼                      │
+taxonomy.qza              │
+    │                      │
+    ▼                      │
+taxaplots.sh              │
+    │                      │
+    ▼                      ▼
+taxa-bar-plots.qzv      export.sh
+                              │
+                              ▼
+                  Results for downstream analysis</code></pre>
+<hr>
+</section>
+<section id="key-outputs" class="level1">
+<h1>Key Outputs</h1>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 39%">
+<col style="width: 60%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Analysis step</th>
+<th>Main output</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>QIIME 2 import</td>
+<td><code>results/qiime2/paired-end-demux.qza</code></td>
+</tr>
+<tr class="even">
+<td>DADA2 feature table</td>
+<td><code>results/qiime2/dada2/table.qza</code></td>
+</tr>
+<tr class="odd">
+<td>Representative sequences</td>
+<td><code>results/qiime2/dada2/rep-seqs.qza</code></td>
+</tr>
+<tr class="even">
+<td>DADA2 statistics</td>
+<td><code>results/qiime2/dada2/dada2-stats.qza</code></td>
+</tr>
+<tr class="odd">
+<td>Feature table summary</td>
+<td><code>results/qiime2/dada2/overall-table-summary.qzv</code></td>
+</tr>
+<tr class="even">
+<td>Representative sequence summary</td>
+<td><code>results/qiime2/dada2/rep-seqs.qzv</code></td>
+</tr>
+<tr class="odd">
+<td>DADA2 statistics visualisation</td>
+<td><code>results/qiime2/dada2/dada2-stats.qzv</code></td>
+</tr>
+<tr class="even">
+<td>Taxonomy assignments</td>
+<td><code>results/qiime2/taxonomy/taxonomy.qza</code></td>
+</tr>
+<tr class="odd">
+<td>Taxonomic bar plots</td>
+<td><code>results/qiime2/taxonomy/taxa-bar-plots.qzv</code></td>
+</tr>
+<tr class="even">
+<td>Rooted phylogenetic tree</td>
+<td><code>results/qiime2/phylogeny/rooted-tree.qza</code></td>
+</tr>
+<tr class="odd">
+<td>Exported results</td>
+<td><code>results/qiime2/exported/</code></td>
+</tr>
+</tbody>
+</table>
+<hr>
+</section>
+<section id="discussion-questions" class="level1">
+<h1>Discussion Questions</h1>
 <ol type="1">
-<li>How many ASVs were detected? How does this compare to OTU-based methods?</li>
-<li>What fraction of reads passed DADA2 filtering? Is this expected?</li>
-<li>What are the dominant phyla in the gut samples?</li>
-<li>Are there differences between samples visible in the bar plot?</li>
+<li><p>How many paired-end sequencing samples were successfully imported into QIIME 2?</p></li>
+<li><p>How many reads were retained after DADA2 filtering and denoising?</p></li>
+<li><p>What proportion of reads were successfully merged?</p></li>
+<li><p>Were there any samples with substantially lower read retention than the others?</p></li>
+<li><p>How many ASVs were identified in the dataset?</p></li>
+<li><p>Why might ASVs provide higher resolution than traditional OTU clustering approaches?</p></li>
+<li><p>Which samples have the lowest sequencing depth after DADA2 processing?</p></li>
+<li><p>What are the dominant taxonomic groups in the dataset?</p></li>
+<li><p>Are there visible differences in taxonomic composition between samples or metadata groups?</p></li>
+<li><p>Why is a phylogenetic tree useful for downstream diversity analysis?</p></li>
+<li><p>Which exported files will be required for the downstream analysis?</p></li>
 </ol>
 
 
-</section>
 </section>
 
 </main> <!-- /main -->
