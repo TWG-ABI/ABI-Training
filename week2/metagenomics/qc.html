@@ -163,28 +163,51 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#day-1-practical-part-1-quality-control-with-fastqc-seqkit" id="toc-day-1-practical-part-1-quality-control-with-fastqc-seqkit" class="nav-link active" data-scroll-target="#day-1-practical-part-1-quality-control-with-fastqc-seqkit">Day 1 Practical — Part 1: Quality Control with FastQC &amp; SeqKit</a>
+  <li><a href="#day-1-practical-part-1-quality-control-with-fastqc-and-multiqc" id="toc-day-1-practical-part-1-quality-control-with-fastqc-and-multiqc" class="nav-link active" data-scroll-target="#day-1-practical-part-1-quality-control-with-fastqc-and-multiqc">Day 1 Practical — Part 1: Quality Control with FastQC and MultiQC</a>
   <ul class="collapse">
   <li><a href="#purpose" id="toc-purpose" class="nav-link" data-scroll-target="#purpose">Purpose</a></li>
-  <li><a href="#setup" id="toc-setup" class="nav-link" data-scroll-target="#setup">Setup</a></li>
-  <li><a href="#section-1-seqkit-exploring-your-fastq-files" id="toc-section-1-seqkit-exploring-your-fastq-files" class="nav-link" data-scroll-target="#section-1-seqkit-exploring-your-fastq-files">Section 1 — SeqKit: Exploring your FASTQ files</a>
-  <ul class="collapse">
-  <li><a href="#a.-summary-statistics-for-all-samples" id="toc-a.-summary-statistics-for-all-samples" class="nav-link" data-scroll-target="#a.-summary-statistics-for-all-samples">1a. Summary statistics for all samples</a></li>
-  <li><a href="#b.-gc-content-per-file" id="toc-b.-gc-content-per-file" class="nav-link" data-scroll-target="#b.-gc-content-per-file">1b. GC content per file</a></li>
-  <li><a href="#c.-read-length-distribution-first-sample" id="toc-c.-read-length-distribution-first-sample" class="nav-link" data-scroll-target="#c.-read-length-distribution-first-sample">1c. Read length distribution (first sample)</a></li>
-  <li><a href="#d.-subsampling-for-the-fastqc-demo" id="toc-d.-subsampling-for-the-fastqc-demo" class="nav-link" data-scroll-target="#d.-subsampling-for-the-fastqc-demo">1d. Subsampling for the FastQC demo</a></li>
+  <li><a href="#workflow-overview" id="toc-workflow-overview" class="nav-link" data-scroll-target="#workflow-overview">Workflow Overview</a></li>
   </ul></li>
-  <li><a href="#section-2-fastqc-per-sample-quality-reports" id="toc-section-2-fastqc-per-sample-quality-reports" class="nav-link" data-scroll-target="#section-2-fastqc-per-sample-quality-reports">Section 2 — FastQC: Per-sample quality reports</a></li>
-  <li><a href="#section-3-multiqc-aggregating-fastqc-reports" id="toc-section-3-multiqc-aggregating-fastqc-reports" class="nav-link" data-scroll-target="#section-3-multiqc-aggregating-fastqc-reports">Section 3 — MultiQC: Aggregating FastQC reports</a></li>
-  <li><a href="#section-4-seqkit-advanced-filtering-and-manipulation" id="toc-section-4-seqkit-advanced-filtering-and-manipulation" class="nav-link" data-scroll-target="#section-4-seqkit-advanced-filtering-and-manipulation">Section 4 — SeqKit: Advanced filtering and manipulation</a>
+  <li><a href="#section-1-understanding-the-slurm-script" id="toc-section-1-understanding-the-slurm-script" class="nav-link" data-scroll-target="#section-1-understanding-the-slurm-script">Section 1 — Understanding the Slurm Script</a>
   <ul class="collapse">
-  <li><a href="#a.-filter-reads-below-a-minimum-length" id="toc-a.-filter-reads-below-a-minimum-length" class="nav-link" data-scroll-target="#a.-filter-reads-below-a-minimum-length">4a. Filter reads below a minimum length</a></li>
-  <li><a href="#b.-count-filtered-reads" id="toc-b.-count-filtered-reads" class="nav-link" data-scroll-target="#b.-count-filtered-reads">4b. Count filtered reads</a></li>
-  <li><a href="#c.-convert-fastq-to-fasta" id="toc-c.-convert-fastq-to-fasta" class="nav-link" data-scroll-target="#c.-convert-fastq-to-fasta">4c. Convert FASTQ to FASTA</a></li>
+  <li><a href="#slurm-job-settings" id="toc-slurm-job-settings" class="nav-link" data-scroll-target="#slurm-job-settings">Slurm Job Settings</a>
+  <ul class="collapse">
+  <li><a href="#explanation" id="toc-explanation" class="nav-link" data-scroll-target="#explanation">Explanation</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#section-2-loading-the-required-software" id="toc-section-2-loading-the-required-software" class="nav-link" data-scroll-target="#section-2-loading-the-required-software">Section 2 — Loading the Required Software</a>
+  <ul class="collapse">
+  <li><a href="#fastqc" id="toc-fastqc" class="nav-link" data-scroll-target="#fastqc">FastQC</a></li>
+  <li><a href="#multiqc" id="toc-multiqc" class="nav-link" data-scroll-target="#multiqc">MultiQC</a></li>
+  </ul></li>
+  <li><a href="#section-3-defining-input-and-output-directories" id="toc-section-3-defining-input-and-output-directories" class="nav-link" data-scroll-target="#section-3-defining-input-and-output-directories">Section 3 — Defining Input and Output Directories</a>
+  <ul class="collapse">
+  <li><a href="#input-directory" id="toc-input-directory" class="nav-link" data-scroll-target="#input-directory">Input Directory</a></li>
+  <li><a href="#output-directory" id="toc-output-directory" class="nav-link" data-scroll-target="#output-directory">Output Directory</a></li>
+  </ul></li>
+  <li><a href="#section-4-creating-the-output-directory" id="toc-section-4-creating-the-output-directory" class="nav-link" data-scroll-target="#section-4-creating-the-output-directory">Section 4 — Creating the Output Directory</a></li>
+  <li><a href="#section-5-running-fastqc" id="toc-section-5-running-fastqc" class="nav-link" data-scroll-target="#section-5-running-fastqc">Section 5 — Running FastQC</a>
+  <ul class="collapse">
+  <li><a href="#breaking-down-the-command" id="toc-breaking-down-the-command" class="nav-link" data-scroll-target="#breaking-down-the-command">Breaking Down the Command</a></li>
+  </ul></li>
+  <li><a href="#section-6-running-multiqc" id="toc-section-6-running-multiqc" class="nav-link" data-scroll-target="#section-6-running-multiqc">Section 6 — Running MultiQC</a>
+  <ul class="collapse">
+  <li><a href="#breaking-down-the-command-1" id="toc-breaking-down-the-command-1" class="nav-link" data-scroll-target="#breaking-down-the-command-1">Breaking Down the Command</a></li>
+  </ul></li>
+  <li><a href="#section-7-the-complete-qc-workflow" id="toc-section-7-the-complete-qc-workflow" class="nav-link" data-scroll-target="#section-7-the-complete-qc-workflow">Section 7 — The Complete QC Workflow</a></li>
+  <li><a href="#section-8-submitting-the-qc-job" id="toc-section-8-submitting-the-qc-job" class="nav-link" data-scroll-target="#section-8-submitting-the-qc-job">Section 8 — Submitting the QC Job</a></li>
+  <li><a href="#section-9-interpreting-the-qc-results" id="toc-section-9-interpreting-the-qc-results" class="nav-link" data-scroll-target="#section-9-interpreting-the-qc-results">Section 9 — Interpreting the QC Results</a>
+  <ul class="collapse">
+  <li><a href="#per-base-sequence-quality" id="toc-per-base-sequence-quality" class="nav-link" data-scroll-target="#per-base-sequence-quality">Per-base sequence quality</a></li>
+  <li><a href="#per-sequence-quality-scores" id="toc-per-sequence-quality-scores" class="nav-link" data-scroll-target="#per-sequence-quality-scores">Per-sequence quality scores</a></li>
+  <li><a href="#sequence-length-distribution" id="toc-sequence-length-distribution" class="nav-link" data-scroll-target="#sequence-length-distribution">Sequence length distribution</a></li>
+  <li><a href="#per-base-sequence-content" id="toc-per-base-sequence-content" class="nav-link" data-scroll-target="#per-base-sequence-content">Per-base sequence content</a></li>
+  <li><a href="#per-sequence-gc-content" id="toc-per-sequence-gc-content" class="nav-link" data-scroll-target="#per-sequence-gc-content">Per-sequence GC content</a></li>
+  <li><a href="#adapter-content" id="toc-adapter-content" class="nav-link" data-scroll-target="#adapter-content">Adapter content</a></li>
+  <li><a href="#overrepresented-sequences" id="toc-overrepresented-sequences" class="nav-link" data-scroll-target="#overrepresented-sequences">Overrepresented sequences</a></li>
   </ul></li>
   <li><a href="#key-outputs" id="toc-key-outputs" class="nav-link" data-scroll-target="#key-outputs">Key Outputs</a></li>
   <li><a href="#discussion-questions" id="toc-discussion-questions" class="nav-link" data-scroll-target="#discussion-questions">Discussion Questions</a></li>
-  </ul></li>
   </ul>
 </nav>
     </div>
@@ -253,138 +276,385 @@ code span.er {
   font-weight: 600 !important;
 }
 </style>
-<section id="day-1-practical-part-1-quality-control-with-fastqc-seqkit" class="level1">
-<h1>Day 1 Practical — Part 1: Quality Control with FastQC &amp; SeqKit</h1>
+<section id="day-1-practical-part-1-quality-control-with-fastqc-and-multiqc" class="level1">
+<h1>Day 1 Practical — Part 1: Quality Control with FastQC and MultiQC</h1>
 <section id="purpose" class="level2">
 <h2 class="anchored" data-anchor-id="purpose">Purpose</h2>
-<p>Before any downstream analysis (denoising, assembly, taxonomic classification), raw sequencing reads must be inspected for quality, length distribution, and composition. This practical introduces two complementary QC tools:</p>
+<p>Before proceeding to downstream analysis, raw sequencing reads should be assessed to determine their overall quality. Quality control helps identify potential problems such as low-quality bases, unusual GC content, sequence duplication, overrepresented sequences, and possible adapter contamination.</p>
+<p>In this practical, we will use two tools:</p>
 <ul>
-<li><strong>SeqKit</strong> — a fast command-line toolkit for FASTA/FASTQ manipulation and summary statistics</li>
-<li><strong>FastQC / MultiQC</strong> — per-base quality visualisation and aggregated reporting across samples</li>
+<li><strong>FastQC</strong> — to assess the quality of individual sequencing files.</li>
+<li><strong>MultiQC</strong> — to combine the results from multiple FastQC reports into a single interactive report.</li>
 </ul>
-<p>By the end of this session you should be able to explain <em>why</em> a dataset does or doesn’t need trimming, and <em>where</em> to look for adapter contamination or low-quality tails.</p>
-</section>
-<section id="setup" class="level2">
-<h2 class="anchored" data-anchor-id="setup">Setup</h2>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="bu">set</span> <span class="at">-euo</span> pipefail</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p><code>set -euo pipefail</code> makes the script stop immediately on any error (<code>-e</code>), treat unset variables as errors (<code>-u</code>), and fail if any command in a pipe fails (<code>-o pipefail</code>) — good practice for reproducible pipelines.</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="va">DATA_DIR</span><span class="op">=</span><span class="st">"data/amplicon/gut"</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="va">OUT_DIR</span><span class="op">=</span><span class="st">"day1_results/qc"</span></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="va">THREADS</span><span class="op">=</span>4</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Paths and thread count are defined once at the top so they’re easy to adjust for a different dataset or machine.</p>
-<hr>
-</section>
-<section id="section-1-seqkit-exploring-your-fastq-files" class="level2">
-<h2 class="anchored" data-anchor-id="section-1-seqkit-exploring-your-fastq-files">Section 1 — SeqKit: Exploring your FASTQ files</h2>
-<section id="a.-summary-statistics-for-all-samples" class="level3">
-<h3 class="anchored" data-anchor-id="a.-summary-statistics-for-all-samples">1a. Summary statistics for all samples</h3>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">seqkit</span> stats <span class="at">--all</span> <span class="at">--tabular</span> <span class="at">--threads</span> <span class="va">${THREADS}</span> <span class="va">${DATA_DIR}</span>/<span class="pp">*</span>.fastq.gz <span class="dt">\</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    <span class="op">&gt;</span> <span class="va">${OUT_DIR}</span>/seqkit_stats.tsv</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>By the end of this practical, you should be able to:</p>
 <ul>
-<li><code>--all</code> reports extended stats (min/avg/max length, N50, GC%, Q20/Q30 rates) rather than just read counts.</li>
-<li><code>--tabular</code> outputs machine-readable TSV instead of a formatted table — useful for downstream parsing in R or Excel.</li>
-<li>Running this across <code>*.fastq.gz</code> in one call lets SeqKit process all samples in a single pass rather than looping manually.</li>
+<li>Run quality control on multiple compressed FASTQ files.</li>
+<li>Interpret the main sections of a FastQC report.</li>
+<li>Use MultiQC to compare quality across multiple samples.</li>
+<li>Identify whether there are quality issues that may need to be addressed before downstream analysis.</li>
 </ul>
-<p><strong>What to look for:</strong> number of reads per sample (are libraries balanced?), average read length (does it match the expected amplicon/read length?), and Q20/Q30 percentages (a rough proxy for overall quality before you even open FastQC).</p>
+<hr>
 </section>
-<section id="b.-gc-content-per-file" class="level3">
-<h3 class="anchored" data-anchor-id="b.-gc-content-per-file">1b. GC content per file</h3>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">seqkit</span> fx2tab <span class="at">--name</span> <span class="at">--gc</span> <span class="va">${DATA_DIR}</span>/<span class="pp">*</span>.fastq.gz <span class="kw">|</span> <span class="dt">\</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">awk</span> <span class="st">'{sum+=$3; n++} END {printf "Mean GC: %.1f%%\n", sum/n}'</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p><code>fx2tab</code> converts FASTQ/FASTA records to a simple tabular format; here <code>--gc</code> adds a GC% column per read. The <code>awk</code> command averages that column across all reads to give a single mean GC% for the dataset — a quick sanity check (e.g.&nbsp;gut 16S amplicons are typically in the 45–55% GC range; strong deviations can indicate contamination or the wrong reference).</p>
-</section>
-<section id="c.-read-length-distribution-first-sample" class="level3">
-<h3 class="anchored" data-anchor-id="c.-read-length-distribution-first-sample">1c. Read length distribution (first sample)</h3>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="va">FIRST_SAMPLE</span><span class="op">=</span><span class="va">$(</span><span class="fu">ls</span> <span class="va">${DATA_DIR}</span>/<span class="pp">*</span>.fastq.gz <span class="kw">|</span> <span class="fu">head</span> <span class="at">-1</span><span class="va">)</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="ex">seqkit</span> fx2tab <span class="at">--name</span> <span class="at">--length</span> <span class="va">${FIRST_SAMPLE}</span> <span class="kw">|</span> <span class="dt">\</span></span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">awk</span> <span class="st">'{len[$2]++} END {for (l in len) print l"\t"len[l]}'</span> <span class="kw">|</span> <span class="dt">\</span></span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">sort</span> <span class="at">-n</span> <span class="kw">|</span> <span class="dt">\</span></span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">awk</span> <span class="st">'{printf "Length %s bp: %d reads\n", $1, $2}'</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>This builds a histogram of read lengths for one representative sample: <code>fx2tab --length</code> adds a length column, the first <code>awk</code> tallies how many reads fall at each length, and the final <code>sort</code>/<code>awk</code> pair prints it in ascending, human-readable order. For amplicon data you generally expect a tight peak at the expected amplicon length (e.g.&nbsp;~250 bp for V4 16S); a broad or bimodal distribution can flag primer-trimming issues.</p>
-</section>
-<section id="d.-subsampling-for-the-fastqc-demo" class="level3">
-<h3 class="anchored" data-anchor-id="d.-subsampling-for-the-fastqc-demo">1d. Subsampling for the FastQC demo</h3>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="ex">seqkit</span> sample <span class="at">--proportion</span> 0.1 <span class="at">--rand-seed</span> 42 <span class="va">${FIRST_SAMPLE}</span> <span class="dt">\</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>    <span class="at">--out-file</span> <span class="va">${OUT_DIR}</span>/demo_sample_sub.fastq.gz</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p><code>--proportion 0.1</code> randomly keeps ~10% of reads; <code>--rand-seed 42</code> makes the subsampling reproducible. This is purely a <em>teaching convenience</em> to make FastQC run quickly during the course — in a real analysis you would run FastQC on the full file.</p>
+<section id="workflow-overview" class="level2">
+<h2 class="anchored" data-anchor-id="workflow-overview">Workflow Overview</h2>
+<p>The quality control workflow consists of two main steps:</p>
+<pre class="text"><code>Compressed FASTQ files
+        │
+        ▼
+      FastQC
+        │
+        ▼
+Individual QC reports
+        │
+        ▼
+      MultiQC
+        │
+        ▼
+Combined QC report</code></pre>
+<p>The workflow is submitted to the high-performance computing cluster using a <strong>Slurm batch script</strong>.</p>
 <hr>
 </section>
 </section>
-<section id="section-2-fastqc-per-sample-quality-reports" class="level2">
-<h2 class="anchored" data-anchor-id="section-2-fastqc-per-sample-quality-reports">Section 2 — FastQC: Per-sample quality reports</h2>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="ex">fastqc</span> <span class="at">--outdir</span> <span class="va">${OUT_DIR}</span>/fastqc <span class="at">--threads</span> <span class="va">${THREADS}</span> <span class="at">--quiet</span> <span class="va">${DATA_DIR}</span>/<span class="pp">*</span>.fastq.gz</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>FastQC generates an HTML report per FASTQ file covering per-base quality scores, GC content distribution, sequence duplication levels, adapter content, and overrepresented sequences. <code>--quiet</code> suppresses per-file progress messages so the log stays readable when processing many samples at once.</p>
+<section id="section-1-understanding-the-slurm-script" class="level1">
+<h1>Section 1 — Understanding the Slurm Script</h1>
+<p>The workflow begins with the following interpreter line:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/bin/bash</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>This tells the system that the script should be executed using the Bash shell.</p>
+<hr>
+<section id="slurm-job-settings" class="level2">
+<h2 class="anchored" data-anchor-id="slurm-job-settings">Slurm Job Settings</h2>
+<p>The following lines define the computing resources requested from the cluster.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --job-name=QC</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --output=qc_%j.out</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --error=qc_%j.err</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --time=01:00:00</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --nodes=1</span></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --ntasks=4</span></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --mem=8G</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<section id="explanation" class="level3">
+<h3 class="anchored" data-anchor-id="explanation">Explanation</h3>
+<ul>
+<li><p><code>--job-name=QC</code> Assigns the name <strong>QC</strong> to the job.</p></li>
+<li><p><code>--output=qc_%j.out</code> Stores standard output from the job in a file. <code>%j</code> is replaced with the Slurm job ID.</p></li>
+<li><p><code>--error=qc_%j.err</code> Stores error messages in a separate file.</p></li>
+<li><p><code>--time=01:00:00</code> Requests a maximum runtime of one hour.</p></li>
+<li><p><code>--nodes=1</code> Requests one compute node.</p></li>
+<li><p><code>--ntasks=4</code> Requests four tasks or CPU resources for the job.</p></li>
+<li><p><code>--mem=8G</code> Requests 8 GB of memory.</p></li>
+</ul>
+<p>These settings may need to be adjusted depending on the size and number of sequencing files being analysed.</p>
 <hr>
 </section>
-<section id="section-3-multiqc-aggregating-fastqc-reports" class="level2">
-<h2 class="anchored" data-anchor-id="section-3-multiqc-aggregating-fastqc-reports">Section 3 — MultiQC: Aggregating FastQC reports</h2>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="ex">multiqc</span> <span class="va">${OUT_DIR}</span>/fastqc/ <span class="at">--outdir</span> <span class="va">${OUT_DIR}</span>/multiqc <span class="dt">\</span></span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>    <span class="at">--filename</span> <span class="st">"multiqc_day1_amplicon"</span> <span class="at">--quiet</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>MultiQC scans a directory of tool outputs (here, all the FastQC reports) and produces a single interactive HTML dashboard. This is essential once you have more than a handful of samples — comparing 20 separate FastQC pages by eye doesn’t scale, but MultiQC overlays all per-base quality curves and duplication rates on one page.</p>
+</section>
+</section>
+<section id="section-2-loading-the-required-software" class="level1">
+<h1>Section 2 — Loading the Required Software</h1>
+<p>Before running the analysis, the required software must be made available in the computing environment.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">module</span> load fastqc</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="ex">module</span> load multiqc</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<section id="fastqc" class="level3">
+<h3 class="anchored" data-anchor-id="fastqc">FastQC</h3>
+<p>FastQC performs quality assessment of sequencing reads.</p>
+<p>It generates a report for each FASTQ file containing information such as:</p>
+<ul>
+<li>Per-base sequence quality.</li>
+<li>Per-sequence quality scores.</li>
+<li>Per-base sequence content.</li>
+<li>GC content.</li>
+<li>Sequence length distribution.</li>
+<li>Sequence duplication levels.</li>
+<li>Overrepresented sequences.</li>
+<li>Adapter content.</li>
+</ul>
+</section>
+<section id="multiqc" class="level3">
+<h3 class="anchored" data-anchor-id="multiqc">MultiQC</h3>
+<p>MultiQC collects results from multiple analysis tools and combines them into a single report.</p>
+<p>In this workflow, MultiQC collects the FastQC results from all samples and allows us to compare sequencing quality across the entire dataset.</p>
 <hr>
 </section>
-<section id="section-4-seqkit-advanced-filtering-and-manipulation" class="level2">
-<h2 class="anchored" data-anchor-id="section-4-seqkit-advanced-filtering-and-manipulation">Section 4 — SeqKit: Advanced filtering and manipulation</h2>
-<section id="a.-filter-reads-below-a-minimum-length" class="level3">
-<h3 class="anchored" data-anchor-id="a.-filter-reads-below-a-minimum-length">4a. Filter reads below a minimum length</h3>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="ex">seqkit</span> seq <span class="at">--min-len</span> 200 <span class="va">${FIRST_SAMPLE}</span> <span class="at">--out-file</span> <span class="va">${OUT_DIR}</span>/filtered_min200.fastq.gz</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p><code>seqkit seq</code> is a general sequence-filtering command; <code>--min-len 200</code> discards any read shorter than 200 bp. Short fragments are often adapter dimers or degraded reads that add noise to downstream clustering/denoising.</p>
 </section>
-<section id="b.-count-filtered-reads" class="level3">
-<h3 class="anchored" data-anchor-id="b.-count-filtered-reads">4b. Count filtered reads</h3>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="va">ORIG</span><span class="op">=</span><span class="va">$(</span><span class="ex">seqkit</span> stats <span class="va">${FIRST_SAMPLE}</span> <span class="kw">|</span> <span class="fu">awk</span> <span class="st">'NR==2{print $4}'</span><span class="va">)</span></span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="va">FILT</span><span class="op">=</span><span class="va">$(</span><span class="ex">seqkit</span> stats <span class="va">${OUT_DIR}</span>/filtered_min200.fastq.gz <span class="kw">|</span> <span class="fu">awk</span> <span class="st">'NR==2{print $4}'</span><span class="va">)</span></span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"Original reads: </span><span class="va">${ORIG}</span><span class="st">"</span></span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"After length filter (≥200 bp): </span><span class="va">${FILT}</span><span class="st">"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p><code>seqkit stats</code> without <code>--tabular</code> prints a formatted table; column 4 (<code>NR==2</code>, i.e.&nbsp;the first data row) is the read count. Comparing before/after gives a quick sense of how much data the length filter removes.</p>
+<section id="section-3-defining-input-and-output-directories" class="level1">
+<h1>Section 3 — Defining Input and Output Directories</h1>
+<p>The workflow defines the locations of the input sequencing files and the output directory.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="va">DATA_DIR</span><span class="op">=</span><span class="st">"data"</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="va">OUT_DIR</span><span class="op">=</span><span class="st">"results/qc"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<section id="input-directory" class="level3">
+<h3 class="anchored" data-anchor-id="input-directory">Input Directory</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="va">DATA_DIR</span><span class="op">=</span><span class="st">"data"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>This directory contains the compressed sequencing files that will be analysed.</p>
+<p>For example:</p>
+<pre class="text"><code>data/
+├── sample1_R1.fastq.gz
+├── sample1_R2.fastq.gz
+├── sample2_R1.fastq.gz
+├── sample2_R2.fastq.gz
+└── ...</code></pre>
+<p>The workflow searches for compressed files ending in <code>.gz</code>.</p>
 </section>
-<section id="c.-convert-fastq-to-fasta" class="level3">
-<h3 class="anchored" data-anchor-id="c.-convert-fastq-to-fasta">4c. Convert FASTQ to FASTA</h3>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="ex">seqkit</span> fq2fa <span class="va">${FIRST_SAMPLE}</span> <span class="at">--out-file</span> <span class="va">${OUT_DIR}</span>/demo_sample.fasta.gz</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Some downstream tools (e.g.&nbsp;certain taxonomy classifiers, BLAST-based searches) require FASTA rather than FASTQ input, since they don’t use quality scores. <code>fq2fa</code> strips the quality lines and keeps only sequence + header.</p>
+<section id="output-directory" class="level3">
+<h3 class="anchored" data-anchor-id="output-directory">Output Directory</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="va">OUT_DIR</span><span class="op">=</span><span class="st">"results/qc"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>All quality control results will be stored in this directory.</p>
+<p>Keeping outputs organised in a dedicated results directory helps make the workflow easier to manage and reproduce.</p>
 <hr>
 </section>
 </section>
-<section id="key-outputs" class="level2">
-<h2 class="anchored" data-anchor-id="key-outputs">Key Outputs</h2>
+<section id="section-4-creating-the-output-directory" class="level1">
+<h1>Section 4 — Creating the Output Directory</h1>
+<p>Before running the analysis, the script ensures that the output directory exists.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> <span class="at">-p</span> <span class="st">"</span><span class="va">${OUT_DIR}</span><span class="st">"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>The <code>mkdir</code> command creates a directory.</p>
+<p>The <code>-p</code> option means that:</p>
+<ul>
+<li>The directory will be created if it does not already exist.</li>
+<li>Any required parent directories will also be created.</li>
+<li>The command will not produce an error if the directory already exists.</li>
+</ul>
+<p>After running this command, the directory structure will look similar to:</p>
+<pre class="text"><code>results/
+└── qc/</code></pre>
+<hr>
+</section>
+<section id="section-5-running-fastqc" class="level1">
+<h1>Section 5 — Running FastQC</h1>
+<p>The following command runs FastQC on all compressed sequencing files in the input directory.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="ex">fastqc</span> <span class="st">"</span><span class="va">${DATA_DIR}</span><span class="st">"</span>/<span class="pp">*</span>.gz <span class="at">-o</span> <span class="st">"</span><span class="va">${OUT_DIR}</span><span class="st">"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<section id="breaking-down-the-command" class="level3">
+<h3 class="anchored" data-anchor-id="breaking-down-the-command">Breaking Down the Command</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="st">"</span><span class="va">${DATA_DIR}</span><span class="st">"</span><span class="ex">/*.gz</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>This selects all compressed files ending in <code>.gz</code> from the <code>data</code> directory.</p>
+<p>For example:</p>
+<pre class="text"><code>data/sample1_R1.fastq.gz
+data/sample1_R2.fastq.gz
+data/sample2_R1.fastq.gz
+data/sample2_R2.fastq.gz</code></pre>
+<p>FastQC will analyse each file individually.</p>
+<p>The option:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="ex">-o</span> <span class="st">"</span><span class="va">${OUT_DIR}</span><span class="st">"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>tells FastQC to store the results in:</p>
+<pre class="text"><code>results/qc/</code></pre>
+<p>For each sequencing file, FastQC typically generates:</p>
+<pre class="text"><code>sample1_R1_fastqc.html
+sample1_R1_fastqc.zip</code></pre>
+<p>The HTML file contains the interactive quality report, while the ZIP file contains the underlying FastQC results.</p>
+<p>After FastQC has completed, the output directory may look like:</p>
+<pre class="text"><code>results/qc/
+├── sample1_R1_fastqc.html
+├── sample1_R1_fastqc.zip
+├── sample1_R2_fastqc.html
+├── sample1_R2_fastqc.zip
+├── sample2_R1_fastqc.html
+├── sample2_R1_fastqc.zip
+└── ...</code></pre>
+<hr>
+</section>
+</section>
+<section id="section-6-running-multiqc" class="level1">
+<h1>Section 6 — Running MultiQC</h1>
+<p>Once FastQC has analysed all sequencing files, MultiQC is used to combine the results.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb18"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="ex">multiqc</span> <span class="st">"</span><span class="va">${OUT_DIR}</span><span class="st">"</span>/<span class="pp">*</span> <span class="at">-o</span> <span class="st">"</span><span class="va">${OUT_DIR}</span><span class="st">"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<section id="breaking-down-the-command-1" class="level3">
+<h3 class="anchored" data-anchor-id="breaking-down-the-command-1">Breaking Down the Command</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb19"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="st">"</span><span class="va">${OUT_DIR}</span><span class="st">"</span><span class="ex">/*</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>This instructs MultiQC to scan all files in the quality control output directory.</p>
+<p>MultiQC automatically detects compatible output files, including FastQC results.</p>
+<p>The option:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb20"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="ex">-o</span> <span class="st">"</span><span class="va">${OUT_DIR}</span><span class="st">"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>specifies that the MultiQC report should also be written to the same QC results directory.</p>
+<p>The final directory will contain both the individual FastQC reports and the combined MultiQC report.</p>
+<p>For example:</p>
+<pre class="text"><code>results/qc/
+├── sample1_R1_fastqc.html
+├── sample1_R1_fastqc.zip
+├── sample1_R2_fastqc.html
+├── sample1_R2_fastqc.zip
+├── sample2_R1_fastqc.html
+├── sample2_R1_fastqc.zip
+├── multiqc_report.html
+└── multiqc_data/</code></pre>
+<p>The main file to inspect is:</p>
+<pre class="text"><code>results/qc/multiqc_report.html</code></pre>
+<p>This file can be downloaded or opened in a web browser.</p>
+<hr>
+</section>
+</section>
+<section id="section-7-the-complete-qc-workflow" class="level1">
+<h1>Section 7 — The Complete QC Workflow</h1>
+<p>The complete analysis section of the script is:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb23"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load required software</span></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="ex">module</span> load fastqc</span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a><span class="ex">module</span> load multiqc</span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Define input and output directories</span></span>
+<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a><span class="va">DATA_DIR</span><span class="op">=</span><span class="st">"data"</span></span>
+<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a><span class="va">OUT_DIR</span><span class="op">=</span><span class="st">"results/qc"</span></span>
+<span id="cb23-8"><a href="#cb23-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-9"><a href="#cb23-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Create output directory</span></span>
+<span id="cb23-10"><a href="#cb23-10" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> <span class="at">-p</span> <span class="st">"</span><span class="va">${OUT_DIR}</span><span class="st">"</span></span>
+<span id="cb23-11"><a href="#cb23-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-12"><a href="#cb23-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Run FastQC on all compressed sequencing files</span></span>
+<span id="cb23-13"><a href="#cb23-13" aria-hidden="true" tabindex="-1"></a><span class="ex">fastqc</span> <span class="st">"</span><span class="va">${DATA_DIR}</span><span class="st">"</span>/<span class="pp">*</span>.gz <span class="at">-o</span> <span class="st">"</span><span class="va">${OUT_DIR}</span><span class="st">"</span></span>
+<span id="cb23-14"><a href="#cb23-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-15"><a href="#cb23-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Combine FastQC reports using MultiQC</span></span>
+<span id="cb23-16"><a href="#cb23-16" aria-hidden="true" tabindex="-1"></a><span class="ex">multiqc</span> <span class="st">"</span><span class="va">${OUT_DIR}</span><span class="st">"</span>/<span class="pp">*</span> <span class="at">-o</span> <span class="st">"</span><span class="va">${OUT_DIR}</span><span class="st">"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>The workflow follows this sequence:</p>
+<ol type="1">
+<li>Load FastQC and MultiQC.</li>
+<li>Define the location of the sequencing files.</li>
+<li>Define where the QC results will be stored.</li>
+<li>Create the output directory.</li>
+<li>Run FastQC on all compressed sequencing files.</li>
+<li>Collect the FastQC results using MultiQC.</li>
+<li>Inspect the combined MultiQC report.</li>
+</ol>
+<hr>
+</section>
+<section id="section-8-submitting-the-qc-job" class="level1">
+<h1>Section 8 — Submitting the QC Job</h1>
+<p>Save the script, for example, as:</p>
+<pre class="text"><code>qc.sh</code></pre>
+<p>The job can then be submitted to the Slurm scheduler using:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb25"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="ex">sbatch</span> qc.sh</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Slurm will return a job ID, for example:</p>
+<pre class="text"><code>Submitted batch job 123456</code></pre>
+<p>You can check the status of your job using:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb27"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="ex">squeue</span> <span class="at">-u</span> <span class="va">$USER</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>The output and error files will be named according to the job ID:</p>
+<pre class="text"><code>qc_123456.out
+qc_123456.err</code></pre>
+<p>These files can be inspected if the workflow produces unexpected results or errors.</p>
+<hr>
+</section>
+<section id="section-9-interpreting-the-qc-results" class="level1">
+<h1>Section 9 — Interpreting the QC Results</h1>
+<p>After the job has completed successfully, the main results are found in:</p>
+<pre class="text"><code>results/qc/</code></pre>
+<p>The most useful file for comparing all samples is:</p>
+<pre class="text"><code>results/qc/multiqc_report.html</code></pre>
+<p>When inspecting the FastQC and MultiQC reports, pay particular attention to the following sections.</p>
+<section id="per-base-sequence-quality" class="level3">
+<h3 class="anchored" data-anchor-id="per-base-sequence-quality">Per-base sequence quality</h3>
+<p>This shows how sequencing quality changes across the length of the reads.</p>
+<p>Look for:</p>
+<ul>
+<li>High-quality scores across most positions.</li>
+<li>A decline in quality towards the end of reads.</li>
+<li>Samples with substantially poorer quality than the rest of the dataset.</li>
+</ul>
+</section>
+<section id="per-sequence-quality-scores" class="level3">
+<h3 class="anchored" data-anchor-id="per-sequence-quality-scores">Per-sequence quality scores</h3>
+<p>This summarises the overall quality distribution of reads within each sample.</p>
+<p>A large number of low-quality reads may indicate that filtering or trimming is required.</p>
+</section>
+<section id="sequence-length-distribution" class="level3">
+<h3 class="anchored" data-anchor-id="sequence-length-distribution">Sequence length distribution</h3>
+<p>This shows the distribution of read lengths.</p>
+<p>For paired-end amplicon sequencing, read lengths should generally be consistent with the sequencing run configuration, although the exact interpretation depends on the sequencing platform and library preparation.</p>
+</section>
+<section id="per-base-sequence-content" class="level3">
+<h3 class="anchored" data-anchor-id="per-base-sequence-content">Per-base sequence content</h3>
+<p>This shows the proportion of A, T, G, and C bases at each position along the reads.</p>
+<p>Strong differences between bases, particularly near the beginning of reads, may reflect primer or library preparation effects.</p>
+</section>
+<section id="per-sequence-gc-content" class="level3">
+<h3 class="anchored" data-anchor-id="per-sequence-gc-content">Per-sequence GC content</h3>
+<p>This shows the GC content distribution of reads.</p>
+<p>Samples with substantially different distributions from the rest of the dataset may require further investigation.</p>
+</section>
+<section id="adapter-content" class="level3">
+<h3 class="anchored" data-anchor-id="adapter-content">Adapter content</h3>
+<p>This identifies sequences matching known sequencing adapters.</p>
+<p>High adapter content may indicate that adapter trimming is required.</p>
+</section>
+<section id="overrepresented-sequences" class="level3">
+<h3 class="anchored" data-anchor-id="overrepresented-sequences">Overrepresented sequences</h3>
+<p>This identifies sequences that occur unusually frequently.</p>
+<p>These may represent:</p>
+<ul>
+<li>Primers.</li>
+<li>Adapters.</li>
+<li>Other technical sequences.</li>
+<li>Highly abundant biological sequences.</li>
+</ul>
+<hr>
+</section>
+</section>
+<section id="key-outputs" class="level1">
+<h1>Key Outputs</h1>
 <table class="caption-top table">
 <colgroup>
-<col style="width: 50%">
-<col style="width: 50%">
+<col style="width: 20%">
+<col style="width: 30%">
+<col style="width: 48%">
 </colgroup>
 <thead>
 <tr class="header">
 <th>Output</th>
-<th>Path</th>
+<th>Location</th>
+<th>Description</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td>SeqKit stats</td>
-<td><code>${OUT_DIR}/seqkit_stats.tsv</code></td>
+<td>FastQC HTML reports</td>
+<td><code>${OUT_DIR}/*_fastqc.html</code></td>
+<td>Individual quality reports for each sequencing file</td>
 </tr>
 <tr class="even">
-<td>FastQC reports</td>
-<td><code>${OUT_DIR}/fastqc/</code></td>
+<td>FastQC result archives</td>
+<td><code>${OUT_DIR}/*_fastqc.zip</code></td>
+<td>Detailed FastQC output files</td>
 </tr>
 <tr class="odd">
 <td>MultiQC report</td>
-<td><code>${OUT_DIR}/multiqc/multiqc_day1_amplicon.html</code> — open in a browser</td>
+<td><code>${OUT_DIR}/multiqc_report.html</code></td>
+<td>Combined quality report for all samples</td>
+</tr>
+<tr class="even">
+<td>MultiQC data</td>
+<td><code>${OUT_DIR}/multiqc_data/</code></td>
+<td>Data used to generate the MultiQC report</td>
+</tr>
+<tr class="odd">
+<td>Standard output log</td>
+<td><code>qc_&lt;jobID&gt;.out</code></td>
+<td>Messages produced during job execution</td>
+</tr>
+<tr class="even">
+<td>Error log</td>
+<td><code>qc_&lt;jobID&gt;.err</code></td>
+<td>Error messages generated during job execution</td>
 </tr>
 </tbody>
 </table>
+<hr>
 </section>
-<section id="discussion-questions" class="level2">
-<h2 class="anchored" data-anchor-id="discussion-questions">Discussion Questions</h2>
+<section id="discussion-questions" class="level1">
+<h1>Discussion Questions</h1>
 <ol type="1">
-<li>What is the average read length? Is this expected for V4 amplicons?</li>
-<li>Are there any samples with poor quality? How would you identify them?</li>
-<li>Is there significant adapter contamination?</li>
-<li>What does the GC content plot look like? Any outliers?</li>
+<li><p>How many sequencing files were analysed?</p></li>
+<li><p>Do all samples show similar sequencing quality profiles?</p></li>
+<li><p>At which positions along the reads does the sequencing quality begin to decline?</p></li>
+<li><p>Are there any samples that show substantially lower quality than the others?</p></li>
+<li><p>Does the sequence length distribution match the expected sequencing read length?</p></li>
+<li><p>Is there evidence of adapter contamination?</p></li>
+<li><p>Are any sequences reported as highly overrepresented?</p></li>
+<li><p>Based on the QC results, would you recommend proceeding directly to the next step, or should trimming and filtering be considered?</p></li>
+<li><p>Why is MultiQC useful when analysing many sequencing samples?</p></li>
+<li><p>How would you identify a potentially problematic sample from the combined MultiQC report?</p></li>
 </ol>
 
 
-</section>
 </section>
 
 </main> <!-- /main -->
