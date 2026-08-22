@@ -959,41 +959,6 @@ overall-table-summary.qzv</code></pre>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb82"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb82-1"><a href="#cb82-1" aria-hidden="true" tabindex="-1"></a><span class="ex">sbatch</span> tree.sh</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Finally, export the results:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb83"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb83-1"><a href="#cb83-1" aria-hidden="true" tabindex="-1"></a><span class="ex">sbatch</span> export.sh</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>The workflow can be summarised as:</p>
-<pre class="text"><code>import.sh
-    │
-    ▼
-paired-end-demux.qza
-    │
-    ▼
-dada2.sh
-    │
-    ├── table.qza
-    ├── rep-seqs.qza
-    ├── dada2-stats.qza
-    └── base-transition-stats.qza
-    │
-    ├──────────────────────┐
-    ▼                      ▼
-qiime2_summary.sh       tree.sh
-    │                      │
-    ▼                      ▼
-Review ASVs              rooted-tree.qza
-    │                      │
-    ▼                      │
-taxonomy.sh               │
-    │                      │
-    ▼                      │
-taxonomy.qza              │
-    │                      │
-    ▼                      │
-taxaplots.sh              │
-    │                      │
-    ▼                      ▼
-taxa-bar-plots.qzv      export.sh
-                              │
-                              ▼
-                  Results for downstream analysis</code></pre>
 <hr>
 </section>
 <section id="key-outputs" class="level1">
