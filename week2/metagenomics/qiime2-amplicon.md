@@ -591,7 +591,7 @@ After DADA2 has completed, the resulting artifacts should be inspected before pr
 Save this script as:
 
 ```text
-qiime2_summary.sh
+inspect_dada2.sh
 ```
 
 The workflow checks that the following files exist:
