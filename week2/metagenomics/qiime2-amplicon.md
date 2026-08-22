@@ -1060,45 +1060,6 @@ Finally, export the results:
 sbatch export.sh
 ```
 
-The workflow can be summarised as:
-
-```text
-import.sh
-    │
-    ▼
-paired-end-demux.qza
-    │
-    ▼
-dada2.sh
-    │
-    ├── table.qza
-    ├── rep-seqs.qza
-    ├── dada2-stats.qza
-    └── base-transition-stats.qza
-    │
-    ├──────────────────────┐
-    ▼                      ▼
-qiime2_summary.sh       tree.sh
-    │                      │
-    ▼                      ▼
-Review ASVs              rooted-tree.qza
-    │                      │
-    ▼                      │
-taxonomy.sh               │
-    │                      │
-    ▼                      │
-taxonomy.qza              │
-    │                      │
-    ▼                      │
-taxaplots.sh              │
-    │                      │
-    ▼                      ▼
-taxa-bar-plots.qzv      export.sh
-                              │
-                              ▼
-                  Results for downstream analysis
-```
-
 ---
 
 # Key Outputs
