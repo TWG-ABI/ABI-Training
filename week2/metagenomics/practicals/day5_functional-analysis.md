@@ -79,7 +79,12 @@ DAY3_DIR="../day3/day3_results"
 DAY4_DIR="../day4/day4_results"
 OUT_DIR="day5_results"
 THREADS=8
-HUMANN_DB="${HUMANN_DB_PATH:-../../data/reference/humann3}"
+COURSE_DBS="${COURSE_DBS:-/etc/ace-data/ABI-SummerSchool-26/metagenomics/databases}"
+HUMANN_DB="${HUMANN_DB_PATH:-${COURSE_DBS}/humann3}"
+METAPHLAN_DB="${METAPHLAN_DB:-${COURSE_DBS}/metaphlanDB}"
+EGGNOG_DATA_DIR="${EGGNOG_DATA_DIR:-${COURSE_DBS}/eggnog}"
+AMRFINDER_DB="${AMRFINDER_DB:-${COURSE_DBS}/amrfinder/latest}"
+export EGGNOG_DATA_DIR
 
 MAG_DIR="${DAY4_DIR}/das_tool/DAS_output_DASTool_bins"
 if [ ! -d "${MAG_DIR}" ]; then
@@ -90,7 +95,9 @@ mkdir -p ${OUT_DIR}/{prokka,eggnog,humann3,amr}
 ```
 Prefers the DAS_Tool-refined MAGs from Day 4 as the highest-quality bin set, falling back
 to raw MetaBAT2 bins if refinement wasn't run — the same fallback pattern used throughout
-Day 4.
+Day 4. Database paths default to
+`/etc/ace-data/ABI-SummerSchool-26/metagenomics/databases`
+(so eggNOG is at `${COURSE_DBS}/eggnog`).
 
 ---
 
@@ -155,6 +162,7 @@ if [ -f "${OUT_DIR}/prokka/all_MAGs.faa" ] && [ ${TOTAL_GENES} -gt 0 ]; then
             -i ${OUT_DIR}/prokka/all_MAGs.faa \
             -o ${OUT_DIR}/eggnog/all_MAGs_eggnog \
             --cpu ${THREADS} \
+            --data_dir "${EGGNOG_DATA_DIR}" \
             --output_dir ${OUT_DIR}/eggnog \
             --override \
             --no_annot --no_file_comments \
@@ -163,6 +171,7 @@ if [ -f "${OUT_DIR}/prokka/all_MAGs.faa" ] && [ ${TOTAL_GENES} -gt 0 ]; then
             -i ${OUT_DIR}/prokka/all_MAGs.faa \
             -o all_MAGs_eggnog \
             --output_dir ${OUT_DIR}/eggnog \
+            --data_dir "${EGGNOG_DATA_DIR}" \
             --cpu ${THREADS} \
             2>${OUT_DIR}/eggnog/eggnog.log
 ```
@@ -204,11 +213,12 @@ generically trimmed reads if host-filtered ones aren't found.
 
 ```bash
 if command -v humann &> /dev/null && [ -n "${DEMO_READS}" ]; then
+    # Explicit DB paths — do not rely on humann_config (often unwritable in modules)
     humann \
         --input ${DEMO_READS} \
         --output ${OUT_DIR}/humann3/${SAMPLE_NAME} \
         --threads ${THREADS} \
-        --metaphlan-options "--bowtie2db ${HUMANN_DB}/metaphlan_db" \
+        --metaphlan-options "--db_dir ${METAPHLAN_DB}" \
         --nucleotide-database ${HUMANN_DB}/chocophlan \
         --protein-database ${HUMANN_DB}/uniref
 ```
@@ -220,6 +230,8 @@ pangenome — producing gene family and pathway abundance profiles for the whole
 Note only a single sample's forward reads (`--input ${DEMO_READS}`, not paired) are
 processed here as a time-limited course demo — HUMAnN3 is typically run on single-end
 or concatenated reads per sample, and a full analysis would loop over all samples.
+Paths are passed on the command line so a shared/module install that cannot write
+`humann_config` still works.
 
 ```bash
     humann_renorm_table \
@@ -282,13 +294,15 @@ most frequent resistance categories found across all annotated MAGs.
 elif command -v amrfinder &> /dev/null && [ -f "${OUT_DIR}/prokka/all_MAGs.faa" ]; then
     amrfinder \
         -p ${OUT_DIR}/prokka/all_MAGs.faa \
+        -d "${AMRFINDER_DB}" \
         -o ${OUT_DIR}/amr/amrfinder_output.tsv \
         --plus \
         --threads ${THREADS}
 ```
 **AMRFinderPlus** (NCBI's alternative AMR screening tool) is used if RGI isn't
 available — `--plus` additionally screens for virulence factors and stress-response
-genes beyond core AMR determinants. The two tools are treated as interchangeable
+genes beyond core AMR determinants. `-d` points at the shared ACE DB
+(`${COURSE_DBS}/amrfinder/latest`). The two tools are treated as interchangeable
 alternatives (`elif`) since either gives a reasonable AMR profile.
 
 ```bash

@@ -1,47 +1,84 @@
 # ABI Summer School: Metagenomics Analysis Practicals
 
+Week 2 materials in [TWG-ABI/ABI-Training](https://github.com/TWG-ABI/ABI-Training) — `week2/metagenomics/`.
 
 ## What this is
 
-This is an annotated set of teaching materials for a 5-day hands-on bioinformatics
-course covering the full journey from raw sequencing reads to biological/functional
-interpretation, across both **amplicon (16S)** and **shotgun metagenomics** approaches.
-Each Markdown doc explains *what* each command does and *why* it's there, parameters, rationale, and
-expected outputs.
+A 5-day course (amplicon → shotgun → MAGs → function) with three layers:
 
-## Contents
+| Folder | Contents |
+|--------|----------|
+| `lectures/` | Slide decks as **PDF** (open anywhere; no PowerPoint required) |
+| `practicals/` | Annotated teaching Markdown (*what* / *why*) |
+| `scripts/` | Runnable `.sh` (and later `.R` / `.Rmd`) for ACE |
 
-| Day | File | Covers |
-|---|---|---|
-| 1 | `qc.md` | Raw read QC: SeqKit stats, FastQC, MultiQC, length/GC filtering |
-| 1 | `qiime2-amplicon.md` | QIIME2 amplicon workflow: import → DADA2 denoising → tree → SILVA taxonomy → export |
-| 2 | `diversity-analysis.md` | R/phyloseq: alpha & beta diversity, PCoA/NMDS, PERMANOVA, taxonomy plots, ANCOM-BC |
-| 3 | `shortgun-metagenomics.md` | Shotgun QC/trimming, human host removal, Kraken2/Bracken classification, MEGAHIT assembly, QUAST |
-| 4 | `metagenome-assembled-genomes.md` | Read mapping/coverage, MetaBAT2 & MaxBin2 binning, DAS_Tool refinement, CheckM2, GTDB-Tk taxonomy |
-| 5 | `functional-analysis.md` | Prokka annotation, eggNOG-mapper, HUMAnN3 community pathways, AMR gene screening |
-| 5 | `functional-analysis-visualisation.md` | Visualising Day 4/5 outputs (MAG quality, COG categories, pathway heatmaps, AMR) + mini-project template |
+Plus root helpers: `course_env.sh`, `PARTICIPANT_QUICKSTART.md`, `README.md`.
 
-## How the week is structured
+## Directory layout
 
-1. **Day 1** — Amplicon sequencing: raw QC → QIIME2 ASV pipeline → taxonomy.
-2. **Day 2** — Diversity analysis in R on the Day 1 outputs.
-3. **Day 3** — Shotgun metagenomics: QC → host removal → taxonomic classification → assembly.
-4. **Day 4** — Recovering draft genomes (MAGs) from the Day 3 assembly via binning.
-5. **Day 5** — Functional annotation of MAGs and communities, then visualisation and a
-   mini-project template for participants to apply the full workflow to their own data.
+```
+week2/metagenomics/
+├── README.md
+├── PARTICIPANT_QUICKSTART.md
+├── course_env.sh                 # source this on ACE (no #SBATCH here)
+├── .gitignore                    # ignores *.pptx
+├── lectures/
+│   ├── Day1_Foundations_Amplicon.pdf
+│   ├── Day2_Diversity_Analysis.pdf
+│   ├── Day3_Shotgun_Assembly.pdf
+│   ├── Day4_MAGs.pdf
+│   └── Day5_Functional_Analysis.pdf
+├── practicals/
+│   ├── day1_qc.md
+│   ├── day1_qiime2-amplicon.md
+│   ├── day2_diversity-analysis.md
+│   ├── day3_shotgun-metagenomics.md
+│   ├── day4_metagenome-assembled-genomes.md
+│   ├── day5_functional-analysis.md
+│   ├── day5_functional-analysis-visualisation.md
+│   └── data-overview.md          # dataset provenance (not a download task)
+└── scripts/
+    ├── day3_shotgun.sh / sbatch_day3.sh
+    ├── day4_mags.sh    / sbatch_day4.sh
+    └── day5_functional.sh / sbatch_day5.sh
+```
 
-Each day generally builds on the previous day's output directory (e.g. Day 4 reads from
-`day3_results/`, Day 5 from `day4_results/`), so they're meant to be worked through in
-order.
+**Why `practicals/`?** Matches the Kampala course wording and “hands-on lab” language. Alternatives you might see elsewhere: `tutorials/`, `labs/`, `guides/` — `practicals/` is the clearest for this summer school.
 
-## Environments
+Editable `.pptx` stay on instructors’ machines (gitignored); publish PDFs only.
 
-Two conda environments are used across the week:
-- `qiime2` — Day 1 amplicon pipeline
-- `metagenomics` — Days 1 (QC), 3, 4, 5
+## Contents by day
 
-## Discussion questions
+| Day | Lecture | Practical(s) | Script |
+|-----|---------|--------------|--------|
+| 1 | `lectures/Day1_…pdf` | `practicals/day1_qc.md`, `day1_qiime2-amplicon.md` | — |
+| 2 | `lectures/Day2_…pdf` | `practicals/day2_diversity-analysis.md` | R in the Markdown (extract to `scripts/` later if useful) |
+| 3 | `lectures/Day3_…pdf` | `practicals/day3_shotgun-metagenomics.md` | `scripts/day3_shotgun.sh` |
+| 4 | `lectures/Day4_…pdf` | `practicals/day4_metagenome-assembled-genomes.md` | `scripts/day4_mags.sh` |
+| 5 | `lectures/Day5_…pdf` | `practicals/day5_functional-analysis.md` (+ visualisation) | `scripts/day5_functional.sh` |
 
-Every practical ends with a short set of discussion questions to check understanding of
-the biological interpretation, not just the commands run (Day 5 Part 1 is the one
-exception — no questions were included in the original script).
+## How participants update a local clone
+
+```bash
+cd /path/to/ABI-Training
+git pull origin main
+```
+
+## Shared environment (ACE)
+
+```bash
+source /etc/ace-data/ABI-SummerSchool-26/metagenomics/course_env.sh
+# or from this folder: source ./course_env.sh
+```
+
+Put the same `source` **inside** every `#SBATCH` job after the SLURM headers.  
+Write outputs under `${COURSE_WORK_DIR}` — never into shared `COURSE_DBS`.
+
+See **`PARTICIPANT_QUICKSTART.md`** for Day 3–5 run commands.
+
+## Instructor: stage `course_env.sh` on ACE
+
+```bash
+cp course_env.sh /etc/ace-data/ABI-SummerSchool-26/metagenomics/course_env.sh
+chmod a+rX /etc/ace-data/ABI-SummerSchool-26/metagenomics/course_env.sh
+```

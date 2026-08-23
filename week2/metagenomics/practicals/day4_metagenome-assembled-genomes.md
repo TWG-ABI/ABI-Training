@@ -80,16 +80,19 @@ set -euo pipefail
 DAY3_DIR="../day3/day3_results"
 OUT_DIR="day4_results"
 THREADS=8
-ASSEMBLY="${DAY3_DIR}/assembly/soil_SRR6868006/contigs_min1500.fa"
-READS_R1="${DAY3_DIR}/host_removed/soil_SRR6868006_clean_1.fastq.gz"
-READS_R2="${DAY3_DIR}/host_removed/soil_SRR6868006_clean_2.fastq.gz"
-GTDBTK_DATA="${GTDBTK_DATA_PATH:-/path/to/gtdbtk_r214_data}"
+ASSEMBLY="${DAY3_DIR}/assembly/SRR27027606/contigs_min1500.fa"
+READS_R1="${DAY3_DIR}/host_removed/SRR27027606_clean_1.fastq.gz"
+READS_R2="${DAY3_DIR}/host_removed/SRR27027606_clean_2.fastq.gz"
+# Edit if Day 3 assembled a different gut sample from gut_sample/
+GTDBTK_DATA="${GTDBTK_DATA_PATH:-/etc/ace-data/ABI-SummerSchool-26/metagenomics/databases/gtdbtk/release226}"
+CHECKM2DB="${CHECKM2DB:-/etc/ace-data/ABI-SummerSchool-26/metagenomics/databases/checkm2/CheckM2_database/uniref100.KO.1.dmnd}"
 
 mkdir -p ${OUT_DIR}/{mapping,metabat2,maxbin2,das_tool,checkm2,gtdbtk}
 ```
-This continues directly from the Day 3 demo assembly of one soil sample. `GTDBTK_DATA`
-falls back to a placeholder path unless the `GTDBTK_DATA_PATH` environment variable is
-already set — a reminder that this large reference database needs configuring separately.
+This continues directly from the Day 3 demo assembly of one **gut** sample from
+`gut_sample/`. Database paths default to the shared ACE course tree
+(`/etc/ace-data/ABI-SummerSchool-26/metagenomics/databases`); override with
+`GTDBTK_DATA_PATH` / `CHECKM2DB` if needed.
 
 ```bash
 if [ ! -f "${ASSEMBLY}" ]; then
@@ -263,16 +266,22 @@ bins so the workflow can still complete.
 
 ```bash
 if command -v checkm2 &> /dev/null; then
+    CHECKM2_DB_ARGS=()
+    if [ -n "${CHECKM2DB:-}" ]; then
+        CHECKM2_DB_ARGS+=(--database_path "${CHECKM2DB}")
+    fi
     checkm2 predict \
         --input ${BIN_DIR} \
         --output-directory ${OUT_DIR}/checkm2 \
         --extension fa \
-        --threads ${THREADS}
+        --threads ${THREADS} \
+        "${CHECKM2_DB_ARGS[@]}"
 ```
 **CheckM2** estimates each bin's **completeness** (% of expected single-copy genes
 present) and **contamination** (% suggesting mixed-genome content) using a machine-learning
 model trained on genome quality — the standard metrics for judging whether a MAG is
-usable.
+usable. Under Apptainer/Singularity, pass `--database_path` (via `CHECKM2DB`) because the
+container cannot write its internal `diamond_path.json`.
 
 ```bash
         awk -F'\t' 'NR>1{

@@ -1,0 +1,5 @@
+﻿# Editable slides may live under lectures/ locally; publish PDFs only
+*.pptx
+
+# Scratch / instructor notes — keep local
+day3_practicals.txt
