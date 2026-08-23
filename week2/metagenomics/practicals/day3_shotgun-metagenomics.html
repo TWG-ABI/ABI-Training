@@ -1,0 +1,954 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.10.18">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>day3_shotgun-metagenomics – ABI-ITWG</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../../">
+<script src="../../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-bb62276ab45c84d9efd712f51ff97b5a.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../../site_libs/bootstrap/bootstrap-4ab0624560ed8065de672b5a54abdb89.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<style>html{ scroll-behavior: smooth; }</style>
+
+
+<link rel="stylesheet" href="../../../styles.css">
+</head>
+
+<body class="nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="../../../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../../../✦" alt="" class="navbar-logo light-content">
+    <img src="../../../✦" alt="" class="navbar-logo dark-content">
+    </a>
+    <a class="navbar-brand" href="../../../index.html">
+    <span class="navbar-title">ABI-ITWG</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../../index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../../abisumschool26.html"> 
+<span class="menu-text">Training Materials</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../../about.html"> 
+<span class="menu-text">About</span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#day-3-practical-shotgun-metagenomics-pipeline" id="toc-day-3-practical-shotgun-metagenomics-pipeline" class="nav-link active" data-scroll-target="#day-3-practical-shotgun-metagenomics-pipeline">Day 3 Practical: Shotgun Metagenomics Pipeline</a>
+  <ul class="collapse">
+  <li><a href="#purpose" id="toc-purpose" class="nav-link" data-scroll-target="#purpose">Purpose</a></li>
+  <li><a href="#dataset" id="toc-dataset" class="nav-link" data-scroll-target="#dataset">Dataset</a></li>
+  <li><a href="#setup" id="toc-setup" class="nav-link" data-scroll-target="#setup">Setup</a></li>
+  <li><a href="#section-1-quality-control-fastqc-multiqc" id="toc-section-1-quality-control-fastqc-multiqc" class="nav-link" data-scroll-target="#section-1-quality-control-fastqc-multiqc">Section 1 — Quality Control (FastQC + MultiQC)</a></li>
+  <li><a href="#section-2-trimming-with-fastp" id="toc-section-2-trimming-with-fastp" class="nav-link" data-scroll-target="#section-2-trimming-with-fastp">Section 2 — Trimming with fastp</a></li>
+  <li><a href="#section-3-host-read-removal" id="toc-section-3-host-read-removal" class="nav-link" data-scroll-target="#section-3-host-read-removal">Section 3 — Host Read Removal</a></li>
+  <li><a href="#section-4-taxonomic-classification-route-a-kraken2-bracken" id="toc-section-4-taxonomic-classification-route-a-kraken2-bracken" class="nav-link" data-scroll-target="#section-4-taxonomic-classification-route-a-kraken2-bracken">Section 4 — Taxonomic Classification, Route A: Kraken2 + Bracken</a>
+  <ul class="collapse">
+  <li><a href="#merging-and-analysing-the-bracken-output" id="toc-merging-and-analysing-the-bracken-output" class="nav-link" data-scroll-target="#merging-and-analysing-the-bracken-output">Merging and analysing the Bracken output</a></li>
+  </ul></li>
+  <li><a href="#section-5-taxonomic-classification-route-b-metaphlan4-paper-style" id="toc-section-5-taxonomic-classification-route-b-metaphlan4-paper-style" class="nav-link" data-scroll-target="#section-5-taxonomic-classification-route-b-metaphlan4-paper-style">Section 5 — Taxonomic Classification, Route B: MetaPhlAn4 (paper-style)</a></li>
+  <li><a href="#section-6-de-novo-assembly-with-megahit-quast" id="toc-section-6-de-novo-assembly-with-megahit-quast" class="nav-link" data-scroll-target="#section-6-de-novo-assembly-with-megahit-quast">Section 6 — De Novo Assembly with MEGAHIT + QUAST</a></li>
+  <li><a href="#key-outputs" id="toc-key-outputs" class="nav-link" data-scroll-target="#key-outputs">Key Outputs</a></li>
+  <li><a href="#discussion-questions" id="toc-discussion-questions" class="nav-link" data-scroll-target="#discussion-questions">Discussion Questions</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
+
+
+
+
+<style>
+/* Clean, modern, high-contrast code blocks with pretty borders */
+div.sourceCode, pre.sourceCode, pre, pre code, div.cell-code pre {
+  background-color: #f8f9fa !important;
+  color: #212529 !important;
+  border: 1px solid #dee2e6 !important;
+  border-left: 4px solid #31BAE9 !important;
+  border-radius: 6px !important;
+}
+
+/* Base text (plain tokens, punctuation) */
+code span {
+  color: #212529 !important;
+}
+
+/* Comments / shebangs */
+code span.co, code span.c, code span.ch, code span.cm, code span.c1 {
+  color: #2e7d32 !important; /* green */
+  font-weight: 600 !important;
+  opacity: 1 !important;
+}
+
+/* Strings */
+code span.st, code span.s, code span.s1, code span.s2 {
+  color: #c2410c !important; /* burnt orange */
+}
+
+/* Keywords (set, if, for, function, etc.) */
+code span.kw {
+  color: #7c3aed !important; /* purple */
+  font-weight: 600 !important;
+}
+
+/* Variables ($VAR, DATA_DIR, etc.) */
+code span.va {
+  color: #0369a1 !important; /* blue */
+}
+
+/* Function / command names */
+code span.fu {
+  color: #b91c1c !important; /* red */
+}
+
+/* Numbers */
+code span.dv, code span.fl, code span.bn, code span.cn {
+  color: #b45309 !important; /* amber */
+}
+
+/* Operators, flags like -e, -u, -o */
+code span.op {
+  color: #495057 !important;
+}
+
+/* Errors / special tokens Pandoc sometimes flags */
+code span.er {
+  color: #dc2626 !important;
+  font-weight: 600 !important;
+}
+</style>
+<hr>
+<section id="day-3-practical-shotgun-metagenomics-pipeline" class="level1">
+<h1>Day 3 Practical: Shotgun Metagenomics Pipeline</h1>
+<section id="purpose" class="level2">
+<h2 class="anchored" data-anchor-id="purpose">Purpose</h2>
+<p>Unlike amplicon sequencing (Day 1), shotgun metagenomics sequences all DNA in a sample, enabling species-level taxonomic profiling <em>and</em> functional/genomic content (assembly, binning — covered Days 4–5). This practical walks through the standard shotgun workflow: QC → adapter/quality trimming → host DNA removal → taxonomic classification (two parallel routes) → de novo assembly and assessment.</p>
+</section>
+<section id="dataset" class="level2">
+<h2 class="anchored" data-anchor-id="dataset">Dataset</h2>
+<p>All six gut samples from the course’s TransplantLines subset (3 LTR + 3 HC) are used today, each subsampled to 1M read pairs, staged under <code>data/shotgun/gut_sample/</code>. Two of them — <code>SRR27027652</code> (LTR) and <code>SRR27027756</code> (HC) — also have a full-depth copy under <code>data/shotgun/gut_miniproject/</code>, set aside for homework / the Day 5 mini-project rather than today’s practical. See <code>data-overview.md</code> for the full provenance, accessions, and why this depth was chosen.</p>
+<p>There is <strong>no soil sample in Day 3.</strong> Soil tillage data live under <code>data/shotgun/soil_miniproject/</code> for the Day 5 mini-project. Today’s assembly demo (Section 6) runs on a gut sample instead — the point of the demo (what a de Bruijn graph assembler does, how to read QUAST output) doesn’t depend on sample type.</p>
+</section>
+<section id="setup" class="level2">
+<h2 class="anchored" data-anchor-id="setup">Setup</h2>
+<p>Before starting, load the shared course environment (databases are shared — do not download your own copy). <strong>No git clone is required</strong> — follow this document (<code>week2/metagenomics/practicals/day3_shotgun-metagenomics.md</code>) and write outputs under your home area.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="bu">source</span> /etc/ace-data/ABI-SummerSchool-26/metagenomics/course_env.sh</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>If submitting with SLURM, put that <code>source</code> line <strong>inside</strong> the job script after the <code>#SBATCH</code> headers.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="bu">set</span> <span class="at">-euo</span> pipefail</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="co"># From course_env.sh (re-stated here for clarity; trailing / required for concat style)</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="va">IN_DIR</span><span class="op">=</span><span class="st">"</span><span class="va">${GUT_DIR}</span><span class="st">/"</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="va">OUT_DIR</span><span class="op">=</span><span class="st">"</span><span class="va">${COURSE_WORK_DIR}</span><span class="st">/day3_results/"</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="va">databases</span><span class="op">=</span><span class="st">"</span><span class="va">${COURSE_DBS}</span><span class="st">/"</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="va">kraken_DB</span><span class="op">=</span><span class="st">"</span><span class="va">${KRAKEN_DB}</span><span class="st">"</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="va">metaphlan_DB</span><span class="op">=</span><span class="st">"</span><span class="va">${METAPHLAN_DB}</span><span class="st">"</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="va">HOST_IDX</span><span class="op">=</span><span class="st">"</span><span class="va">${HOST_IDX}</span><span class="st">"</span></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Singularity images for Bracken / MetaPhlAn (confirm path on ACE)</span></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="va">IMAGES_DIR</span><span class="op">=</span><span class="st">"</span><span class="va">${COURSE_DBS}</span><span class="st">/images/"</span></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a><span class="va">THREADS</span><span class="op">=</span>8</span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> <span class="at">-p</span> <span class="va">${OUT_DIR}</span><span class="dt">{qc</span><span class="op">,</span><span class="dt">trimmed</span><span class="op">,</span><span class="dt">host_removed</span><span class="op">,</span><span class="dt">kraken2</span><span class="op">,</span><span class="dt">metaphlan</span><span class="op">,</span><span class="dt">tables</span><span class="op">,</span><span class="dt">assembly</span><span class="op">,</span><span class="dt">quast}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<blockquote class="blockquote">
+<p><strong>Shotgun layout on ACE.</strong> Class FASTQs: <code>${GUT_DIR}</code> (<code>.../data/shotgun/gut_sample/</code>). Mini-project folders: <code>${GUT_MINIPROJECT_DIR}</code>, <code>${SOIL_MINIPROJECT_DIR}</code> — do not use those for Day 3.</p>
+<p><strong>Trailing slashes matter</strong> if you concatenate (<code>${IN_DIR}*_1.fastq.gz</code>). Prefer <code>"${IN_DIR}"/*_1.fastq.gz</code> with quotes if you drop the trailing slash.</p>
+<p>Confirm <code>HOST_IDX</code> and <code>IMAGES_DIR</code> with <code>ls</code> before class if needed.</p>
+</blockquote>
+<p><strong>Day 3 modules only</strong> (load these; do not load Day 4/5 stacks yet):</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">module</span> load fastqc</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="ex">module</span> load multiqc</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="ex">module</span> load fastp</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="ex">module</span> load bowtie2</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="ex">module</span> load kraken2</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="ex">module</span> load megahit</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="ex">module</span> load quast</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="ex">module</span> load seqkit</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Bracken + MetaPhlAn4: singularity images under IMAGES_DIR (not modules)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<blockquote class="blockquote">
+<p>Run <code>module avail &lt;tool&gt;</code> if a name differs on ACE.</p>
+</blockquote>
+<hr>
+</section>
+<section id="section-1-quality-control-fastqc-multiqc" class="level2">
+<h2 class="anchored" data-anchor-id="section-1-quality-control-fastqc-multiqc">Section 1 — Quality Control (FastQC + MultiQC)</h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">fastqc</span> <span class="at">--outdir</span> <span class="va">${OUT_DIR}</span>qc/ <span class="at">--threads</span> <span class="va">${THREADS}</span> <span class="at">--quiet</span> <span class="va">${IN_DIR}</span><span class="pp">*</span>.gz</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="ex">multiqc</span> <span class="va">${OUT_DIR}</span>qc/ <span class="at">--filename</span> <span class="st">"metagenomes_multiqc"</span> <span class="at">--quiet</span> <span class="at">-o</span> <span class="va">${OUT_DIR}</span>qc/</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>FastQC runs once across every FASTQ in <code>IN_DIR</code> (all 6 subsampled gut samples, R1 and R2 together) rather than looping sample-by-sample — a single glob is simpler here since there’s no soil subset to keep separate anymore. MultiQC then aggregates all of those per-file reports into one dashboard, named explicitly (<code>metagenomes_multiqc</code>) so it doesn’t collide with other MultiQC runs in the same <code>OUT_DIR</code>.</p>
+<hr>
+</section>
+<section id="section-2-trimming-with-fastp" class="level2">
+<h2 class="anchored" data-anchor-id="section-2-trimming-with-fastp">Section 2 — Trimming with fastp</h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> file <span class="kw">in</span> <span class="va">$(</span><span class="fu">ls</span> <span class="va">${IN_DIR}</span><span class="pp">*</span>_1.fastq.gz<span class="va">)</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="cf">do</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  <span class="va">sample</span><span class="op">=</span><span class="va">$(</span><span class="fu">basename</span> <span class="va">${file}</span> _1.fastq.gz<span class="va">)</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>  <span class="ex">fastp</span> <span class="dt">\</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">--in1</span> <span class="va">${IN_DIR}${sample}</span>_1.fastq.gz <span class="dt">\</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">--in2</span> <span class="va">${IN_DIR}${sample}</span>_2.fastq.gz <span class="dt">\</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">--out1</span> <span class="va">${OUT_DIR}</span>trimmed/<span class="va">${sample}</span>_trimmed_1.fastq.gz <span class="dt">\</span></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">--out2</span> <span class="va">${OUT_DIR}</span>trimmed/<span class="va">${sample}</span>_trimmed_2.fastq.gz <span class="dt">\</span></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">--qualified_quality_phred</span> 20 <span class="dt">\</span></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">--length_required</span> 50 <span class="dt">\</span></span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">--detect_adapter_for_pe</span> <span class="dt">\</span></span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">--thread</span> <span class="va">${THREADS}</span> <span class="dt">\</span></span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">--json</span> <span class="va">${OUT_DIR}</span>trimmed/<span class="va">${sample}</span>_fastp.json <span class="dt">\</span></span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">--html</span> <span class="va">${OUT_DIR}</span>trimmed/<span class="va">${sample}</span>_fastp.html</span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a><span class="cf">done</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Same fastp parameters as before — Q20 quality filtering, 50 bp minimum length, auto-detected paired-end adapters. The naming here (<code>_1.fastq.gz</code>/<code>_2.fastq.gz</code>) matches what <code>fastq-dump --split-files</code> produces directly (see <code>data-overview.md</code>), so there’s no rename step between download and this loop.</p>
+<hr>
+</section>
+<section id="section-3-host-read-removal" class="level2">
+<h2 class="anchored" data-anchor-id="section-3-host-read-removal">Section 3 — Host Read Removal</h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> R1 <span class="kw">in</span> <span class="va">${OUT_DIR}</span>trimmed/<span class="pp">*</span>_trimmed_1.fastq.gz<span class="kw">;</span> <span class="cf">do</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>    <span class="va">SAMPLE</span><span class="op">=</span><span class="va">$(</span><span class="fu">basename</span> <span class="va">${R1}</span> _trimmed_1.fastq.gz<span class="va">)</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>    <span class="va">R2</span><span class="op">=</span><span class="st">"</span><span class="va">${OUT_DIR}</span><span class="st">trimmed/</span><span class="va">${SAMPLE}</span><span class="st">_trimmed_2.fastq.gz"</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>    <span class="bu">echo</span> <span class="st">"  bowtie2 host filter: </span><span class="va">${SAMPLE}</span><span class="st">"</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>    <span class="ex">bowtie2</span> <span class="dt">\</span></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>        <span class="at">-x</span> <span class="va">${HOST_IDX}</span> <span class="dt">\</span></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>        <span class="at">-1</span> <span class="va">${R1}</span> <span class="dt">\</span></span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>        <span class="at">-2</span> <span class="va">${R2}</span> <span class="dt">\</span></span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>        <span class="at">--un-conc-gz</span> <span class="va">${OUT_DIR}</span>host_removed/<span class="va">${SAMPLE}</span>_clean_%.fastq.gz <span class="dt">\</span></span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>        <span class="at">--threads</span> <span class="va">${THREADS}</span> <span class="dt">\</span></span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>        <span class="at">--very-sensitive</span> <span class="dt">\</span></span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>        <span class="at">-S</span> /dev/null <span class="dt">\</span></span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>        <span class="dv">2</span><span class="op">&gt;</span><span class="va">${OUT_DIR}</span>host_removed/<span class="va">${SAMPLE}</span>_bowtie2.log</span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a>    <span class="va">HOST_RATE</span><span class="op">=</span><span class="va">$(</span><span class="fu">grep</span> <span class="st">"overall alignment rate"</span> <span class="dt">\</span></span>
+<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a>        <span class="va">${OUT_DIR}</span>host_removed/<span class="va">${SAMPLE}</span>_bowtie2.log <span class="kw">|</span> <span class="fu">awk</span> <span class="st">'{print $1}'</span><span class="va">)</span></span>
+<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a>    <span class="bu">echo</span> <span class="st">"    Host alignment rate: </span><span class="va">${SAMPLE}</span><span class="st">: </span><span class="va">${HOST_RATE}</span><span class="st">"</span></span>
+<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a><span class="cf">done</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>All six samples are gut, so every one goes through host removal this time (no soil branch to skip it for). <code>-S /dev/null</code> discards the alignment stream directly instead of piping through <code>samtools view</code> — we only need <code>--un-conc-gz</code>’s output (the reads that <em>didn’t</em> map to the human genome), not the alignments themselves. The per-sample host alignment rate printed here is worth comparing across the 6 samples as a QC check: a sample with an unusually high or low % human DNA relative to the others is worth a second look before trusting its downstream taxonomy.</p>
+<hr>
+</section>
+<section id="section-4-taxonomic-classification-route-a-kraken2-bracken" class="level2">
+<h2 class="anchored" data-anchor-id="section-4-taxonomic-classification-route-a-kraken2-bracken">Section 4 — Taxonomic Classification, Route A: Kraken2 + Bracken</h2>
+<p>The course teaching path — fast k-mer classification, in wide use, good for building intuition about LCA assignment and database-dependent classification rates.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> R1 <span class="kw">in</span> <span class="va">${OUT_DIR}</span>host_removed/<span class="pp">*</span>_clean_1.fastq.gz<span class="kw">;</span> <span class="cf">do</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>    <span class="va">SAMPLE</span><span class="op">=</span><span class="va">$(</span><span class="fu">basename</span> <span class="va">${R1}</span> _clean_1.fastq.gz<span class="va">)</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>    <span class="va">R2</span><span class="op">=</span><span class="st">"</span><span class="va">${OUT_DIR}</span><span class="st">host_removed/</span><span class="va">${SAMPLE}</span><span class="st">_clean_2.fastq.gz"</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>    <span class="ex">kraken2</span> <span class="dt">\</span></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>        <span class="at">--db</span> <span class="va">${kraken_DB}</span> <span class="dt">\</span></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>        <span class="at">--paired</span> <span class="va">${R1}</span> <span class="va">${R2}</span> <span class="dt">\</span></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>        <span class="at">--threads</span> <span class="va">${THREADS}</span> <span class="dt">\</span></span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>        <span class="at">--report</span> <span class="va">${OUT_DIR}</span>kraken2/<span class="va">${SAMPLE}</span>.report <span class="dt">\</span></span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>        <span class="at">--output</span> <span class="va">${OUT_DIR}</span>kraken2/<span class="va">${SAMPLE}</span>.out <span class="dt">\</span></span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>        <span class="at">--gzip-compressed</span> <span class="dt">\</span></span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>        <span class="dv">2</span><span class="op">&gt;</span><span class="va">${OUT_DIR}</span>kraken2/<span class="va">${SAMPLE}</span>_kraken2.log</span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a><span class="cf">done</span></span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> REPORT <span class="kw">in</span> <span class="va">${OUT_DIR}</span>kraken2/<span class="pp">*</span>.report</span>
+<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a><span class="cf">do</span></span>
+<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a>    <span class="va">SAMPLE</span><span class="op">=</span><span class="va">$(</span><span class="fu">basename</span> <span class="va">${REPORT}</span> .report<span class="va">)</span></span>
+<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a>    <span class="ex">singularity</span> exec <span class="va">${IMAGES_DIR}</span>bracken_3.1.simg bracken <span class="dt">\</span></span>
+<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a>        <span class="at">-d</span> <span class="va">${kraken_DB}</span> <span class="dt">\</span></span>
+<span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a>        <span class="at">-i</span> <span class="va">${REPORT}</span> <span class="dt">\</span></span>
+<span id="cb7-21"><a href="#cb7-21" aria-hidden="true" tabindex="-1"></a>        <span class="at">-o</span> <span class="va">${OUT_DIR}</span>kraken2/<span class="va">${SAMPLE}</span>_bracken.txt <span class="dt">\</span></span>
+<span id="cb7-22"><a href="#cb7-22" aria-hidden="true" tabindex="-1"></a>        <span class="at">-r</span> 150 <span class="dt">\</span></span>
+<span id="cb7-23"><a href="#cb7-23" aria-hidden="true" tabindex="-1"></a>        <span class="at">-l</span> S</span>
+<span id="cb7-24"><a href="#cb7-24" aria-hidden="true" tabindex="-1"></a><span class="cf">done</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Kraken2 classifies each read pair by k-mer matching against <code>kraken_DB</code>, assigning the lowest common ancestor across matching taxa. Bracken then re-estimates species-level (<code>-l S</code>) abundances from those raw counts using the average read length (<code>-r 150</code>) — it runs from a Singularity image here rather than a module, so each call is wrapped in <code>singularity exec ${IMAGES_DIR}bracken_3.1.simg bracken ...</code> instead of calling <code>bracken</code> directly.</p>
+<section id="merging-and-analysing-the-bracken-output" class="level3">
+<h3 class="anchored" data-anchor-id="merging-and-analysing-the-bracken-output">Merging and analysing the Bracken output</h3>
+<p>Combine every sample’s Bracken table into one species-by-sample matrix, then run the R diversity/differential-abundance analysis — both reuse the scripts already built for this in the main course repo (<code>metagenomics_course_kampala/practicals/day3/</code>):</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">bash</span> /path/to/metagenomics_course_kampala/practicals/day3/03_merge_abundance_tables.sh <span class="dt">\</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  <span class="va">${OUT_DIR}</span>kraken2 <span class="dt">\</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>  <span class="va">${OUT_DIR}</span>tables/bracken_species_counts.tsv</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="ex">Rscript</span> /path/to/metagenomics_course_kampala/practicals/day3/04_abundance_analysis.R <span class="dt">\</span></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>  <span class="va">${OUT_DIR}</span>tables/bracken_species_counts.tsv <span class="dt">\</span></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>  <span class="va">${SHOTGUN_DIR</span><span class="op">:-</span>/etc/ace-data/ABI-SummerSchool-26/metagenomics/data/shotgun<span class="va">}</span>/gut_metadata.tsv <span class="dt">\</span></span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>  <span class="va">${OUT_DIR}</span>analysis_bracken</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><code>03_merge_abundance_tables.sh</code> joins all <code>*_bracken.txt</code> files on taxon name into one wide table (<code>combine_bracken_outputs.py</code> if available, a Python fallback otherwise). <code>04_abundance_analysis.R</code> then computes Shannon diversity, an Aitchison-distance PCA, and a simple CLR-based differential abundance comparison between the LTR and HC groups — replace <code>/path/to/</code> with wherever the kampala course repo is checked out on this cluster.</p>
+<hr>
+</section>
+</section>
+<section id="section-5-taxonomic-classification-route-b-metaphlan4-paper-style" class="level2">
+<h2 class="anchored" data-anchor-id="section-5-taxonomic-classification-route-b-metaphlan4-paper-style">Section 5 — Taxonomic Classification, Route B: MetaPhlAn4 (paper-style)</h2>
+<p>The TransplantLines paper this gut dataset comes from (Zhang et al.&nbsp;2024, <em>mSystems</em>, doi:10.1128/msystems.01312-23) profiled species abundance with MetaPhlAn rather than Kraken2/Bracken. Running both routes on the same samples lets participants compare a marker-gene profiler against a k-mer classifier on identical input.</p>
+<p>MetaPhlAn’s database is large and slow to build — it’s pre-staged at <code>metaphlan_DB</code> as a one-time course-prep step, not something participants install:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Course prep only — do not run this during the practical</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> <span class="at">-p</span> <span class="va">${metaphlan_DB}</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="ex">singularity</span> exec <span class="va">${IMAGES_DIR}</span>metaphlan_4.2.6.simg <span class="dt">\</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>  metaphlan <span class="at">--install</span> <span class="dt">\</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">--db_dir</span> <span class="va">${metaphlan_DB}</span> <span class="dt">\</span></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">-x</span> mpa_vJun23_CHOCOPhlAnSGB_202403</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>The actual per-sample profiling participants run:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="va">INDEX</span><span class="op">=</span><span class="st">"mpa_vJun23_CHOCOPhlAnSGB_202403"</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="va">PROFILE_LIST</span><span class="op">=</span><span class="st">"</span><span class="va">${OUT_DIR}</span><span class="st">metaphlan/profile_list.txt"</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="bu">:</span> <span class="op">&gt;</span> <span class="va">${PROFILE_LIST}</span></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> R1 <span class="kw">in</span> <span class="va">${OUT_DIR}</span>host_removed/<span class="pp">*</span>_clean_1.fastq.gz<span class="kw">;</span> <span class="cf">do</span></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>    <span class="va">SAMPLE</span><span class="op">=</span><span class="va">$(</span><span class="fu">basename</span> <span class="va">${R1}</span> _clean_1.fastq.gz<span class="va">)</span></span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>    <span class="va">R2</span><span class="op">=</span><span class="st">"</span><span class="va">${OUT_DIR}</span><span class="st">host_removed/</span><span class="va">${SAMPLE}</span><span class="st">_clean_2.fastq.gz"</span></span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>    <span class="bu">echo</span> <span class="st">"  MetaPhlAn: </span><span class="va">${SAMPLE}</span><span class="st">"</span></span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a>    <span class="ex">singularity</span> exec <span class="dt">\</span></span>
+<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a>      <span class="at">-B</span> <span class="va">${OUT_DIR}</span>:<span class="va">${OUT_DIR}</span> <span class="dt">\</span></span>
+<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a>      <span class="at">-B</span> <span class="va">${metaphlan_DB}</span>:<span class="va">${metaphlan_DB}</span> <span class="dt">\</span></span>
+<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a>      <span class="va">${IMAGES_DIR}</span>metaphlan_4.2.6.simg <span class="dt">\</span></span>
+<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a>      metaphlan <span class="dt">\</span></span>
+<span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a>        <span class="st">"</span><span class="va">${R1}</span><span class="st">,</span><span class="va">${R2}</span><span class="st">"</span> <span class="dt">\</span></span>
+<span id="cb10-17"><a href="#cb10-17" aria-hidden="true" tabindex="-1"></a>        <span class="at">--input_type</span> fastq <span class="dt">\</span></span>
+<span id="cb10-18"><a href="#cb10-18" aria-hidden="true" tabindex="-1"></a>        <span class="at">--nproc</span> <span class="va">${THREADS}</span> <span class="dt">\</span></span>
+<span id="cb10-19"><a href="#cb10-19" aria-hidden="true" tabindex="-1"></a>        <span class="at">--db_dir</span> <span class="va">${metaphlan_DB}</span> <span class="dt">\</span></span>
+<span id="cb10-20"><a href="#cb10-20" aria-hidden="true" tabindex="-1"></a>        <span class="at">-x</span> <span class="va">${INDEX}</span> <span class="dt">\</span></span>
+<span id="cb10-21"><a href="#cb10-21" aria-hidden="true" tabindex="-1"></a>        <span class="at">--mapout</span> <span class="va">${OUT_DIR}</span>metaphlan/<span class="va">${SAMPLE}</span>.bowtie2.bz2 <span class="dt">\</span></span>
+<span id="cb10-22"><a href="#cb10-22" aria-hidden="true" tabindex="-1"></a>        <span class="at">-o</span> <span class="va">${OUT_DIR}</span>metaphlan/<span class="va">${SAMPLE}</span>_profile.txt</span>
+<span id="cb10-23"><a href="#cb10-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-24"><a href="#cb10-24" aria-hidden="true" tabindex="-1"></a>    <span class="bu">echo</span> <span class="at">-e</span> <span class="st">"</span><span class="va">${SAMPLE}</span><span class="st">\t</span><span class="va">${OUT_DIR}</span><span class="st">metaphlan/</span><span class="va">${SAMPLE}</span><span class="st">_profile.txt"</span> <span class="op">&gt;&gt;</span> <span class="va">${PROFILE_LIST}</span></span>
+<span id="cb10-25"><a href="#cb10-25" aria-hidden="true" tabindex="-1"></a><span class="cf">done</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Each Singularity call binds <code>OUT_DIR</code> and <code>metaphlan_DB</code> explicitly with <code>-B</code> — inside the container’s isolated filesystem, paths outside those two binds aren’t visible, so both need to be mounted for MetaPhlAn to read the cleaned reads and write its output. <code>--mapout</code> saves the raw Bowtie2 mapping (useful for troubleshooting/reruns); <code>-o</code> writes the human-readable species profile.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="ex">singularity</span> exec <span class="dt">\</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">-B</span> <span class="va">${OUT_DIR}</span>:<span class="va">${OUT_DIR}</span> <span class="dt">\</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>  <span class="va">${IMAGES_DIR}</span>metaphlan_4.2.6.simg <span class="dt">\</span></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>  merge_metaphlan_tables.py <span class="dt">\</span></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>    <span class="va">${OUT_DIR}</span>metaphlan/<span class="pp">*</span>_profile.txt <span class="dt">\</span></span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>    <span class="op">&gt;</span> <span class="va">${OUT_DIR}</span>tables/metaphlan_merged_all_levels.tsv</span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Species-only relative abundances (for R / paper-like analyses)</span></span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a><span class="fu">awk</span> <span class="at">-F</span><span class="st">'\t'</span> <span class="st">'NR==1 || $1 ~ /s__/'</span> <span class="dt">\</span></span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a>    <span class="va">${OUT_DIR}</span>tables/metaphlan_merged_all_levels.tsv <span class="dt">\</span></span>
+<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a>    <span class="op">&gt;</span> <span class="va">${OUT_DIR}</span>tables/metaphlan_species_relab.tsv</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><code>merge_metaphlan_tables.py</code> (bundled in the MetaPhlAn image) joins all six per-sample profiles into one table across every taxonomic level; the <code>awk</code> filter keeps only rows whose clade name includes <code>s__</code> (MetaPhlAn’s species-level marker), giving a clean species × sample relative-abundance matrix directly comparable to the Bracken one from Section 4 — same 6 samples, two independent profiling methods.</p>
+<blockquote class="blockquote">
+<p>Optional, not run today: HUMAnN3 pathway profiling on the cleaned reads (paper-style functional analysis) is covered in Day 5 (<code>day5_functional-analysis.md</code>).</p>
+</blockquote>
+<hr>
+</section>
+<section id="section-6-de-novo-assembly-with-megahit-quast" class="level2">
+<h2 class="anchored" data-anchor-id="section-6-de-novo-assembly-with-megahit-quast">Section 6 — De Novo Assembly with MEGAHIT + QUAST</h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="va">DEMO_SAMPLE</span><span class="op">=</span><span class="va">$(</span><span class="fu">ls</span> <span class="va">${OUT_DIR}</span>host_removed/<span class="pp">*</span>_clean_1.fastq.gz <span class="dv">2</span><span class="op">&gt;</span>/dev/null <span class="kw">|</span> <span class="fu">head</span> <span class="at">-1</span><span class="va">)</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="va">SAMPLE_NAME</span><span class="op">=</span><span class="va">$(</span><span class="fu">basename</span> <span class="va">${DEMO_SAMPLE}</span> _clean_1.fastq.gz<span class="va">)</span></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="va">R2</span><span class="op">=</span><span class="st">"</span><span class="va">${OUT_DIR}</span><span class="st">host_removed/</span><span class="va">${SAMPLE_NAME}</span><span class="st">_clean_2.fastq.gz"</span></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a><span class="ex">megahit</span> <span class="dt">\</span></span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">-1</span> <span class="va">${DEMO_SAMPLE}</span> <span class="dt">\</span></span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">-2</span> <span class="va">${R2}</span> <span class="dt">\</span></span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">-o</span> <span class="va">${OUT_DIR}</span>assembly/<span class="va">${SAMPLE_NAME}</span> <span class="dt">\</span></span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">--threads</span> <span class="va">${THREADS}</span> <span class="dt">\</span></span>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">--min-contig-len</span> 1000 <span class="dt">\</span></span>
+<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">--memory</span> 0.5</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Assembly is computationally expensive, so — for course time — only one sample is assembled as a worked demonstration: whichever gut sample sorts first alphabetically among the host-removed files. (Previously this demo ran on a soil sample specifically to avoid re-using gut reads that had just been through host filtering; with no soil sample in the course anymore, a gut sample works fine for the same teaching purpose — the point is de Bruijn graph mechanics and reading QUAST output, not the sample’s biology.) Note this sample is subsampled to 1M read pairs, same as everything else today — don’t expect a highly complete assembly at this depth; that’s itself worth discussing (see Discussion Questions).</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="ex">seqkit</span> stats <span class="at">--all</span> <span class="va">${OUT_DIR}</span>assembly/<span class="va">${SAMPLE_NAME}</span>/final.contigs.fa <span class="kw">|</span> <span class="ex">column</span> <span class="at">-t</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="ex">seqkit</span> seq <span class="at">--min-len</span> 1500 <span class="dt">\</span></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>    <span class="va">${OUT_DIR}</span>assembly/<span class="va">${SAMPLE_NAME}</span>/final.contigs.fa <span class="dt">\</span></span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>    <span class="op">&gt;</span> <span class="va">${OUT_DIR}</span>assembly/<span class="va">${SAMPLE_NAME}</span>/contigs_min1500.fa</span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a><span class="ex">quast.py</span> <span class="dt">\</span></span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>    <span class="va">${OUT_DIR}</span>assembly/<span class="va">${SAMPLE_NAME}</span>/contigs_min1500.fa <span class="dt">\</span></span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">--output-dir</span> <span class="va">${OUT_DIR}</span>quast/<span class="va">${SAMPLE_NAME}</span> <span class="dt">\</span></span>
+<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">--threads</span> <span class="va">${THREADS}</span> <span class="dt">\</span></span>
+<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">--no-check-install</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Same filtering/QC logic as before: a ≥1500 bp filter prepares contigs for Day 4 binning, and QUAST reports N50 (higher is better), L50 (lower is better), and total assembled length against the community’s expected size.</p>
+<hr>
+</section>
+<section id="key-outputs" class="level2">
+<h2 class="anchored" data-anchor-id="key-outputs">Key Outputs</h2>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Output</th>
+<th>Path</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>MultiQC (raw QC)</td>
+<td><code>${OUT_DIR}qc/multiqc_report.html</code></td>
+</tr>
+<tr class="even">
+<td>Cleaned (host-filtered) reads</td>
+<td><code>${OUT_DIR}host_removed/</code></td>
+</tr>
+<tr class="odd">
+<td>Kraken2/Bracken classifications</td>
+<td><code>${OUT_DIR}kraken2/</code>, merged table in <code>${OUT_DIR}tables/bracken_species_counts.tsv</code></td>
+</tr>
+<tr class="even">
+<td>MetaPhlAn4 profiles</td>
+<td><code>${OUT_DIR}metaphlan/</code>, merged table in <code>${OUT_DIR}tables/metaphlan_species_relab.tsv</code></td>
+</tr>
+<tr class="odd">
+<td>Assembly (demo sample)</td>
+<td><code>${OUT_DIR}assembly/</code></td>
+</tr>
+<tr class="even">
+<td>QUAST report</td>
+<td><code>${OUT_DIR}quast/</code></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="discussion-questions" class="level2">
+<h2 class="anchored" data-anchor-id="discussion-questions">Discussion Questions</h2>
+<ol type="1">
+<li>What % of each sample’s reads were human DNA? Does it vary much across the 6 samples?</li>
+<li>Do Kraken2/Bracken and MetaPhlAn4 agree on the most abundant species per sample? Where do they disagree, and why might a k-mer classifier and a marker-gene profiler give different answers on the same reads?</li>
+<li>Do LTR and HC samples separate on species composition, even by eye, at this depth?</li>
+<li>What is the N50 of the demo assembly? Given it’s built from only 1M read pairs, how does that compare to what you’d expect from the two full-depth samples set aside for homework (<code>SRR27027652</code>, <code>SRR27027756</code>) — would you expect a meaningfully better assembly from those, and why?</li>
+</ol>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/TWG-ABI\.github\.io\/ABI-Training\/");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>© 2026 ABI-ITWG. CC BY</p>
+</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    </div>
+    <div class="nav-footer-right">
+      &nbsp;
+    </div>
+  </div>
+</footer>
+
+
+
+
+<script src="../../../site_libs/quarto-html/zenscroll-min.js"></script>
+</body></html>

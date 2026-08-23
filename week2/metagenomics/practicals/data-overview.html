@@ -6,9 +6,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="description" content="Materials for the Summer School 08 - 19 June 2026">
 
-<title>ABI Summer School 2026 – ABI-ITWG</title>
+<title>data-overview – ABI-ITWG</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -27,26 +26,61 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<script src="site_libs/quarto-html/quarto.js" type="module"></script>
-<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-bb62276ab45c84d9efd712f51ff97b5a.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-4ab0624560ed8065de672b5a54abdb89.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="../../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../../">
+<script src="../../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-bb62276ab45c84d9efd712f51ff97b5a.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../../site_libs/bootstrap/bootstrap-4ab0624560ed8065de672b5a54abdb89.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -77,7 +111,7 @@ ul.task-list li input[type="checkbox"] {
 <style>html{ scroll-behavior: smooth; }</style>
 
 
-<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="../../../styles.css">
 </head>
 
 <body class="nav-fixed quarto-light">
@@ -87,11 +121,11 @@ ul.task-list li input[type="checkbox"] {
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a href="./index.html" class="navbar-brand navbar-brand-logo">
-    <img src="./✦" alt="" class="navbar-logo light-content">
-    <img src="./✦" alt="" class="navbar-logo dark-content">
+    <a href="../../../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../../../✦" alt="" class="navbar-logo light-content">
+    <img src="../../../✦" alt="" class="navbar-logo dark-content">
     </a>
-    <a class="navbar-brand" href="./index.html">
+    <a class="navbar-brand" href="../../../index.html">
     <span class="navbar-title">ABI-ITWG</span>
     </a>
   </div>
@@ -102,15 +136,15 @@ ul.task-list li input[type="checkbox"] {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="./index.html"> 
+    <a class="nav-link" href="../../../index.html"> 
 <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="./abisumschool26.html" aria-current="page"> 
+    <a class="nav-link" href="../../../abisumschool26.html"> 
 <span class="menu-text">Training Materials</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./about.html"> 
+    <a class="nav-link" href="../../../about.html"> 
 <span class="menu-text">About</span></a>
   </li>  
 </ul>
@@ -129,278 +163,177 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#about-the-event" id="toc-about-the-event" class="nav-link active" data-scroll-target="#about-the-event">About the event:</a></li>
-  <li><a href="#course-content" id="toc-course-content" class="nav-link" data-scroll-target="#course-content">Course Content:</a>
+  <li><a href="#gut-metagenome-dataset-background-provenance" id="toc-gut-metagenome-dataset-background-provenance" class="nav-link active" data-scroll-target="#gut-metagenome-dataset-background-provenance">Gut Metagenome Dataset — Background &amp; Provenance</a>
   <ul class="collapse">
-  <li><a href="#week-1" id="toc-week-1" class="nav-link" data-scroll-target="#week-1">Week 1:</a></li>
-  <li><a href="#week-2" id="toc-week-2" class="nav-link" data-scroll-target="#week-2">Week 2</a></li>
+  <li><a href="#source-study" id="toc-source-study" class="nav-link" data-scroll-target="#source-study">Source study</a></li>
+  <li><a href="#this-courses-subset-6-samples-3-ltr-3-hc" id="toc-this-courses-subset-6-samples-3-ltr-3-hc" class="nav-link" data-scroll-target="#this-courses-subset-6-samples-3-ltr-3-hc">This course’s subset — 6 samples (3 LTR + 3 HC)</a>
+  <ul class="collapse">
+  <li><a href="#metadata" id="toc-metadata" class="nav-link" data-scroll-target="#metadata">Metadata</a></li>
   </ul></li>
-  <li><a href="#trainer-info" id="toc-trainer-info" class="nav-link" data-scroll-target="#trainer-info">Trainer Info</a></li>
+  <li><a href="#subsampled-depth-1m-read-pairs-per-sample-all-6" id="toc-subsampled-depth-1m-read-pairs-per-sample-all-6" class="nav-link" data-scroll-target="#subsampled-depth-1m-read-pairs-per-sample-all-6">Subsampled depth: 1M read pairs per sample (all 6)</a>
+  <ul class="collapse">
+  <li><a href="#command-used-to-prepare-the-6-subsampled-fastqs-course-prep-only" id="toc-command-used-to-prepare-the-6-subsampled-fastqs-course-prep-only" class="nav-link" data-scroll-target="#command-used-to-prepare-the-6-subsampled-fastqs-course-prep-only">Command used to prepare the 6 subsampled FASTQs (course prep only)</a></li>
+  </ul></li>
+  <li><a href="#full-depth-copies-for-homework-mini-project-srr27027652-srr27027756" id="toc-full-depth-copies-for-homework-mini-project-srr27027652-srr27027756" class="nav-link" data-scroll-target="#full-depth-copies-for-homework-mini-project-srr27027652-srr27027756">Full-depth copies for homework / mini-project: SRR27027652, SRR27027756</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
-
-<header id="title-block-header" class="quarto-title-block default">
-<div class="quarto-title">
-<h1 class="title">ABI Summer School 2026</h1>
-</div>
-
-<div>
-  <div class="description">
-    Materials for the Summer School 08 - 19 June 2026
-  </div>
-</div>
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
 
 
-<div class="quarto-title-meta">
-
-    
-  
-    
-  </div>
-  
 
 
-</header>
-
-
-<section id="about-the-event" class="level2">
-<h2 class="anchored" data-anchor-id="about-the-event">About the event:</h2>
-<p>The aim is to provide comprehensive training on bioinformatics computational resources, and domain-specific tools and workflows to improve participants’ proficiency in executing, interpreting, and communicating analyses for major bioinformatics studies, with a special focus on genomics.</p>
-<hr>
+<section id="gut-metagenome-dataset-background-provenance" class="level1">
+<h1>Gut Metagenome Dataset — Background &amp; Provenance</h1>
+<p><strong>This file is informational only.</strong> It explains where the Day 3/Day 5 gut shotgun samples came from and why they were chosen, so participants understand the dataset they’re working with. It is <strong>not</strong> something participants run during the course — the FASTQs are already staged on the training cluster at:</p>
+<pre><code>/etc/ace-data/ABI-SummerSchool-26/metagenomics/data/shotgun/
+├── gut_sample/        # Day 3 class (6 subsampled gut FASTQs) — IN_DIR
+├── gut_miniproject/   # full-depth gut homework / mini-project option
+├── soil_miniproject/  # Day 5 soil tillage mini-project
+├── gut_metadata.tsv
+└── soil_metadata.tsv</code></pre>
+<p>(<code>gut_sample/</code> is the <code>IN_DIR</code> used throughout <code>day3_shotgun-metagenomics.md</code>). The download/ subsampling commands below are a one-time course-prep task, not a participant exercise.</p>
+<section id="source-study" class="level2">
+<h2 class="anchored" data-anchor-id="source-study">Source study</h2>
+<ul>
+<li><strong>BioProject:</strong> <a href="https://www.ncbi.nlm.nih.gov/bioproject/PRJNA1047900">PRJNA1047900</a></li>
+<li><strong>Publication:</strong> TransplantLines gut microbiome study — <a href="https://journals.asm.org/doi/10.1128/msystems.01312-23">doi:10.1128/msystems.01312-23</a></li>
+<li><strong>Design:</strong> fecal shotgun metagenomes from end-stage lung disease (ESLD) patients, lung transplant recipients (LTR), and healthy controls (HC); 350 SRA runs total.</li>
+<li><strong>Platform:</strong> MGI/DNBSEQ (Million Microbiome of Humans Project), paired-end.</li>
+<li><strong>Data volume:</strong> ⚠️ very deep — ~15–24 Gbases <em>per sample</em> at full depth (avg ~19.5 Gbases across all 350 runs). Full runs are far too large for everyday course use; the 6 course samples are read-limited at download instead of pulling the full accession and subsampling afterward.</li>
+</ul>
+<blockquote class="blockquote">
+<p><strong>Group (LTR vs.&nbsp;HC) is public — detailed clinical metadata is not.</strong> The individual BioSample page for a run only shows <code>host</code>/<code>isolation source</code>/<code>collection date</code>/<code>geo location</code>. Group comes instead from the project-level SRA Run Table’s <code>Library Name</code> column, which encodes it as a name prefix — <code>LO_...</code> for lung transplant recipients (LTR, n=282) and <code>ND_...</code> for healthy controls (HC, n=68) — matching the paper’s abstract (282 LTR + 68 HC) exactly. Deeper clinical fields (CLAD stage, medications, ESLD sub-status) require a data access request to <code>datarequest.transplantlines@umcg.nl</code> (allow ~2 weeks).</p>
+</blockquote>
 </section>
-<section id="course-content" class="level2">
-<h2 class="anchored" data-anchor-id="course-content">Course Content:</h2>
-<section id="week-1" class="level3">
-<h3 class="anchored" data-anchor-id="week-1">Week 1:</h3>
-<section id="linux-and-high-performance-computing" class="level4">
-<h4 class="anchored" data-anchor-id="linux-and-high-performance-computing">Linux and High Performance Computing</h4>
-<ol type="1">
-<li><a href="./week1/unix-and-HPC/intro_to_linux.html">Introduction to Linux &amp; HPC</a></li>
-<li><a href="./week1/unix-and-HPC/Linux_Basics_Recap.html">Linux Basics Recap</a></li>
-<li><a href="./week1/unix-and-HPC/Bash_scripting_I_and_HPC_Job_Submission.html">Bash Scripting I &amp; HPC Job Submission</a></li>
-<li><a href="./week1/unix-and-HPC/file-processing-sed.html">File processing with sed</a></li>
-<li><a href="./week1/unix-and-HPC/file-processing-awk.html">File processing with awk</a></li>
-<li><a href="./week1/unix-and-HPC/Bash_scripting_II.html">Bash Scripting II</a></li>
-<li><a href="./week1/unix-and-HPC/Containers.html">Containers</a></li>
-<li><a href="./week1/unix-and-HPC/Day_1_Assignment.html">Day One Assignment</a></li>
-</ol>
-</section>
-<section id="r-programming" class="level4">
-<h4 class="anchored" data-anchor-id="r-programming">R programming</h4>
-</section>
-<section id="intro-to-ngs" class="level4">
-<h4 class="anchored" data-anchor-id="intro-to-ngs">Intro to NGS</h4>
-<hr>
-</section>
-</section>
-<section id="week-2" class="level3">
-<h3 class="anchored" data-anchor-id="week-2">Week 2</h3>
-<section id="human-genomics" class="level4">
-<h4 class="anchored" data-anchor-id="human-genomics">Human Genomics</h4>
-<ol type="1">
-<li>[Introduction to Human Genomics: Overview of Data QC and Analysis Workflow]</li>
-<li>[Practical: Read alignment using BWA-MEM and QC]</li>
-<li>[Principles of Human Variant Calling]</li>
-<li><a href="./week2/human-genomics/short-read-snv-analysis/variant-calling-brca1-tutorial.html">Variant Calling Practical using GATK HaplotypeCaller</a></li>
-<li>[Variant Filtering and Exploration — Single-sample and Multi-sample VCF Files]</li>
-<li>[Introduction to Workflow Automation using Nextflow]</li>
-<li>[Practical: Human Variant Calling Workflow Automation using Nextflow]</li>
-<li>[Principles of Variant Annotation and Variant Effect Prediction]</li>
-<li>[Practical: Variant Annotation/Prioritisation]</li>
-<li>[Statistical Phasing Concepts and Practical Example using 1000 Genomes Project data]</li>
-<li>[Overview of long-read sequencing technologies and data analysis tools]</li>
-<li><a href="./week2/human-genomics/long-read-snv-analysis/ont/ont-analysis-practical-1.html">Practical: Oxford Nanopore read alignment and variant calling</a></li>
-<li>[Introduction to Structural Variation Analysis]</li>
-<li>[Practical: Structural variant calling and annotation]</li>
-<li>[Course assessment]</li>
-</ol>
-</section>
-<section id="pathogen-genomics" class="level4">
-<h4 class="anchored" data-anchor-id="pathogen-genomics">Pathogen Genomics</h4>
-<ol type="1">
-<li><a href="./week2/pathogen_genomics/Day_1/basics.html">Basics of Bacterial Genomes</a></li>
-<li><a href="./week2/pathogen_genomics/Day_1/qc.html">Quality Control of Sequencing Data</a></li>
-<li><a href="./week2/pathogen_genomics/Day_2/assembly_principles.html">Assembly Principles: Reference Vs De Novo</a></li>
-<li><a href="./week2/pathogen_genomics/Day_2/genome.html">Genome Alignment &amp; Variant Calling</a></li>
-<li><a href="./week2/pathogen_genomics/Day_3/annotation.html">Bacterial Genome Annotation</a></li>
-<li><a href="./week2/pathogen_genomics/Day_3/pangenome.html">Pan-genome Analysis &amp; Multilocus Sequence Typing</a></li>
-<li><a href="./week2/pathogen_genomics/Day_4/mechanisms.html">Mechanisms of AMR &amp; Virulence</a></li>
-<li><a href="./week2/pathogen_genomics/Day_4/mge.html">Horizontal Gene Transfer &amp; Mobile Genetic Elements</a></li>
-<li><a href="./week2/pathogen_genomics/Day_5/applications.html">Applications of Bacterial Genomics: AMR Surveillance</a></li>
-</ol>
-</section>
-<section id="metagenomics" class="level4">
-<h4 class="anchored" data-anchor-id="metagenomics">Metagenomics</h4>
-<ol type="1">
-<li><a href="week2/metagenomics/qc.md">Quality Control</a></li>
-<li><a href="week2/metagenomics/qiime2-amplicon.md">Amplicon Data Analysis</a></li>
-<li><a href="week2/metagenomics/diversity-analysis.md">Diversity Analysis</a></li>
-<li><a href="week2/metagenomics/shortgun-metagenomics.md">Shotgun Metagenomics</a></li>
-<li><a href="week2/metagenomics/metagenome-assembled-genomes.md">Metagenome-Assembled Genomes</a></li>
-<li><a href="week2/metagenomics/functional-analysis.md">Functional Analysis</a></li>
-<li><a href="week2/metagenomics/functional-analysis-visualisation.md">Visualisation &amp; Mini-Project</a></li>
-</ol>
-<hr>
-</section>
-</section>
-</section>
-<section id="trainer-info" class="level2">
-<h2 class="anchored" data-anchor-id="trainer-info">Trainer Info</h2>
+<section id="this-courses-subset-6-samples-3-ltr-3-hc" class="level2">
+<h2 class="anchored" data-anchor-id="this-courses-subset-6-samples-3-ltr-3-hc">This course’s subset — 6 samples (3 LTR + 3 HC)</h2>
+<p>Picked close to each group’s median sequencing depth to avoid outliers:</p>
 <table class="caption-top table">
 <colgroup>
-<col style="width: 18%">
-<col style="width: 39%">
-<col style="width: 18%">
-<col style="width: 24%">
+<col style="width: 16%">
+<col style="width: 16%">
+<col style="width: 16%">
+<col style="width: 16%">
+<col style="width: 16%">
+<col style="width: 16%">
 </colgroup>
 <thead>
 <tr class="header">
-<th>Name</th>
-<th>Affiliation</th>
-<th>Role</th>
-<th>Stream</th>
+<th>Group</th>
+<th>Run</th>
+<th>BioSample</th>
+<th>Library Name</th>
+<th>Bases (full depth)</th>
+<th>Full-depth copy also staged?</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td>Gloria Nakabiri</td>
-<td>African Center of Excellence in Bioinformatics and Data Intensive Sciences</td>
-<td>Lead trainer</td>
-<td>Unix</td>
+<td>LTR</td>
+<td>SRR27027606</td>
+<td>SAMN38598790</td>
+<td>LO_105_1105</td>
+<td>18.5 Gb</td>
+<td>No</td>
 </tr>
 <tr class="even">
-<td>Peter van Heusden</td>
-<td>South African National Bioinformatics Institute (SANBI)</td>
-<td>Lead trainer</td>
-<td>R</td>
+<td>LTR</td>
+<td>SRR27027652</td>
+<td>SAMN38598728</td>
+<td>LO_467_1338</td>
+<td>18.5 Gb</td>
+<td><strong>Yes — homework/mini-project</strong></td>
 </tr>
 <tr class="odd">
-<td>Ian Wasukira</td>
-<td>African Center of Excellence in Bioinformatics and Data-Intensive Sciences</td>
-<td>Lead Trainer</td>
-<td>Unix/HPC</td>
+<td>LTR</td>
+<td>SRR27027722</td>
+<td>SAMN38598828</td>
+<td>LO_245_1248</td>
+<td>18.5 Gb</td>
+<td>No</td>
 </tr>
 <tr class="even">
-<td>Ronald Galiwango</td>
-<td>African Center of Excellence in Bioinformatics and Data-Intensive Sciences</td>
-<td>Lead trainer</td>
-<td>R</td>
+<td>HC</td>
+<td>SRR27027691</td>
+<td>SAMN38598899</td>
+<td>ND_1160_809</td>
+<td>20.6 Gb</td>
+<td>No</td>
 </tr>
 <tr class="odd">
-<td>Musalula Sinkala</td>
-<td>University of Cape Town</td>
-<td>Lead trainer</td>
-<td>Human Genomics</td>
+<td>HC</td>
+<td>SRR27027756</td>
+<td>SAMN38598991</td>
+<td>ND_452_622</td>
+<td>20.6 Gb</td>
+<td><strong>Yes — homework/mini-project</strong></td>
 </tr>
 <tr class="even">
-<td>Dayna Adrienne Croock</td>
-<td>Stellenbosch University</td>
-<td>Lead trainer</td>
-<td>Human Genomics</td>
-</tr>
-<tr class="odd">
-<td>John Juma</td>
-<td>International Livestock Research Institute (ILRI)</td>
-<td>Lead trainer</td>
-<td>Pathogen Genomics</td>
-</tr>
-<tr class="even">
-<td>Damien Tully</td>
-<td>MRC/UVRI &amp; LSHTM Uganda Research Unit</td>
-<td>Lead Trainer</td>
-<td>Pathogen Genomics</td>
-</tr>
-<tr class="odd">
-<td>Alfred Ssekagiri</td>
-<td>Uganda Virus Research Institute</td>
-<td>Lead trainer</td>
-<td>Metagenomics</td>
-</tr>
-<tr class="even">
-<td>Yohannes Gedamu Gebre</td>
-<td>Bio and Emerging Technology Institute (BETin); former Ethiopia Biotechnology Institute (EBTi)</td>
-<td>Co-trainer</td>
-<td>Unix/R/Pathogen Genomics</td>
-</tr>
-<tr class="odd">
-<td>Keaghan Brown</td>
-<td>PHA4GE</td>
-<td>Co-trainer</td>
-<td>Pathogen Genomics</td>
-</tr>
-<tr class="even">
-<td>Amadou Diallo</td>
-<td>Pioneer Bio-Analytics</td>
-<td>Co-trainer</td>
-<td>Metagenomics</td>
-</tr>
-<tr class="odd">
-<td>Ephifania Geza</td>
-<td>University of Cape Town</td>
-<td>Lead trainer</td>
-<td>Metagenomics</td>
-</tr>
-<tr class="even">
-<td>Patricia Nabisubi</td>
-<td>The African Centre of Excellence in Bioinformatics and Data Intensive Sciences</td>
-<td>Co-trainer</td>
-<td>Unix/R/NGS basics</td>
-</tr>
-<tr class="odd">
-<td>Trushar Shah</td>
-<td>International Livestock Research Institute (Kenya)</td>
-<td>Co-trainer</td>
-<td>Human Genomics/Unix</td>
-</tr>
-<tr class="even">
-<td>Daria Sokolova</td>
-<td>European Bioinformatics Institute (EBI)</td>
-<td>Core organiser/support</td>
-<td></td>
-</tr>
-<tr class="odd">
-<td>Grace Kebirungi</td>
-<td>African Center of Excellence in Bioinformatics and Data-Intensive Sciences</td>
-<td>Core organiser/support</td>
-<td></td>
-</tr>
-<tr class="even">
-<td>David Twesigomwe</td>
-<td>MRC/UVRI &amp; LSHTM Uganda Research Unit</td>
-<td>Core organiser/support</td>
-<td></td>
-</tr>
-<tr class="odd">
-<td>Verena Ras</td>
-<td>African Bioinformatics Institute / University of Cape Town</td>
-<td>Core organiser/support</td>
-<td></td>
-</tr>
-<tr class="even">
-<td>Shaun Aron</td>
-<td>Sydney Brenner Institute for Molecular Bioscience (SBIMB) / University of Witwatersrand</td>
-<td>Core organiser/support</td>
-<td></td>
-</tr>
-<tr class="odd">
-<td>Melek Chaouch</td>
-<td>Institut Pasteur, Tunis</td>
-<td>Core organiser/support</td>
-<td></td>
-</tr>
-<tr class="even">
-<td>Jorge da Rocha</td>
-<td>European Bioinformatics Institute (EBI)</td>
-<td>Core organiser/support</td>
-<td></td>
+<td>HC</td>
+<td>SRR27027504</td>
+<td>SAMN38598947</td>
+<td>ND_872_522</td>
+<td>20.6 Gb</td>
+<td>No</td>
 </tr>
 </tbody>
 </table>
+<p>All 6 are subsampled to 1M read pairs for the Day 3/5 practicals. Two of them — <code>SRR27027652</code> (LTR) and <code>SRR27027756</code> (HC) — additionally have a <strong>full-depth (unsubsampled) copy</strong> staged separately, set aside for homework and the Day 5 mini-project rather than the in-class practical. Picking one LTR + one HC keeps that homework subset group-balanced too.</p>
+<section id="metadata" class="level3">
+<h3 class="anchored" data-anchor-id="metadata">Metadata</h3>
+<pre><code>sample-id     group    age    sex    bmi
+SRR27027606   LTR      &lt;NA&gt;   &lt;NA&gt;   &lt;NA&gt;
+SRR27027652   LTR      &lt;NA&gt;   &lt;NA&gt;   &lt;NA&gt;
+SRR27027722   LTR      &lt;NA&gt;   &lt;NA&gt;   &lt;NA&gt;
+SRR27027691   HC       &lt;NA&gt;   &lt;NA&gt;   &lt;NA&gt;
+SRR27027756   HC       &lt;NA&gt;   &lt;NA&gt;   &lt;NA&gt;
+SRR27027504   HC       &lt;NA&gt;   &lt;NA&gt;   &lt;NA&gt;</code></pre>
+<p><code>group</code> comes from the <code>LO_</code>/<code>ND_</code> Library Name prefix (public). Age/sex/BMI require the data access request above — treat as unavailable until then.</p>
+</section>
+</section>
+<section id="subsampled-depth-1m-read-pairs-per-sample-all-6" class="level2">
+<h2 class="anchored" data-anchor-id="subsampled-depth-1m-read-pairs-per-sample-all-6">Subsampled depth: 1M read pairs per sample (all 6)</h2>
+<p>Each of the 6 course samples is read-limited to <strong>1,000,000 read pairs (2M reads total)</strong>, same depth across all six for a fair group comparison. Why this depth:</p>
+<ul>
+<li><strong>Kraken2/Bracken and MetaPhlAn4</strong> (taxonomic classification, both routes taught in Day 3) saturate well below this — dominant gut genera/species show stable relative abundance long before 1M pairs.</li>
+<li><strong>HUMAnN3</strong> (community functional profiling, Day 5) is the real bottleneck: much below 1M pairs its pathway output is dominated by UNMAPPED/UNINTEGRATED reads and stops being useful to look at; much above it, the translated UniRef90 search risks running long even on cluster hardware.</li>
+<li><strong>Uniform depth across samples</strong> matters for the LTR-vs-HC diversity comparison — uneven depth would confound it, and it’s worth flagging to participants as a reason real studies rarefy/normalize before comparing diversity across samples.</li>
+</ul>
+<section id="command-used-to-prepare-the-6-subsampled-fastqs-course-prep-only" class="level3">
+<h3 class="anchored" data-anchor-id="command-used-to-prepare-the-6-subsampled-fastqs-course-prep-only">Command used to prepare the 6 subsampled FASTQs (course prep only)</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> <span class="at">-p</span> data/shotgun/gut_sample</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> data/shotgun/gut_sample</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="co"># </span><span class="al">NOTE</span><span class="co">: use fastq-dump here, not fasterq-dump. fasterq-dump has no -X /</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="co"># --maxSpotId option at all and always pulls the entire accession (confirmed</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="co"># on the sra-tools wiki), which would mean downloading the full 15-24 Gbases</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="co"># per sample. fastq-dump supports -X directly against the accession, so it</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="co"># only fetches the requested read range instead of the whole run.</span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="co"># (fastq-dump is single-threaded — no --threads/-e flag, unlike fasterq-dump.)</span></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> acc <span class="kw">in</span> SRR27027606 SRR27027652 SRR27027722 SRR27027691 SRR27027756 SRR27027504<span class="kw">;</span> <span class="cf">do</span></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>  <span class="ex">fastq-dump</span> <span class="at">--split-files</span> <span class="at">-X</span> 1000000 <span class="at">--outdir</span> . <span class="va">$acc</span></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a><span class="cf">done</span></span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a><span class="fu">gzip</span> <span class="pp">*</span>.fastq</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>This produces <code>&lt;accession&gt;_1.fastq.gz</code> / <code>&lt;accession&gt;_2.fastq.gz</code> per sample — the naming <code>day3_shotgun-metagenomics.md</code>’s loops already expect (<code>${IN_DIR}*_1.fastq.gz</code>), so no renaming step is needed once these land in <code>data/shotgun/gut_sample/</code> on the cluster.</p>
+</section>
+</section>
+<section id="full-depth-copies-for-homework-mini-project-srr27027652-srr27027756" class="level2">
+<h2 class="anchored" data-anchor-id="full-depth-copies-for-homework-mini-project-srr27027652-srr27027756">Full-depth copies for homework / mini-project: SRR27027652, SRR27027756</h2>
+<p>Unlike the 6 subsampled copies above, these two are pulled at <strong>full depth</strong> — no <code>-X</code> needed, so <code>fasterq-dump</code> (faster, multi-threaded) is the right tool here rather than <code>fastq-dump</code>:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> <span class="at">-p</span> data/shotgun/gut_miniproject</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> data/shotgun/gut_miniproject</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> acc <span class="kw">in</span> SRR27027652 SRR27027756<span class="kw">;</span> <span class="cf">do</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>  <span class="ex">fasterq-dump</span> <span class="at">--split-files</span> <span class="at">--outdir</span> . <span class="at">--threads</span> 8 <span class="va">$acc</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="cf">done</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="fu">gzip</span> <span class="pp">*</span>.fastq</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>⚠️ At ~18.5–20.6 Gbases each, expect this to take a while and consume real disk space (tens of GB uncompressed per sample before gzip) — this is a course-prep step to run with time and storage budgeted for it, not something to kick off casually. Keep these in <code>gut_miniproject/</code> so the Day 3 practical’s globs over <code>gut_sample/*_1.fastq.gz</code> don’t accidentally pick them up alongside the subsampled versions.</p>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->
@@ -822,5 +755,5 @@ ul.task-list li input[type="checkbox"] {
 
 
 
-<script src="site_libs/quarto-html/zenscroll-min.js"></script>
+<script src="../../../site_libs/quarto-html/zenscroll-min.js"></script>
 </body></html>
