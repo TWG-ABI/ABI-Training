@@ -17,8 +17,14 @@ export AMRFINDER_DB="${COURSE_DBS}/amrfinder/latest"
 export METAPHLAN_DB="${COURSE_DBS}/metaphlanDB"
 export KRAKEN_DB="${COURSE_DBS}/krakenDB"
 
+# Silva
+export SILVA_CLASSIFIER="${COURSE_DBS}/silva-138-99-nb-classifier-2026.7.qza"
+
 # Host genome Bowtie2 index (on ACE this sits next to databases/, spelling GRCH38)
 export HOST_IDX="/etc/ace-data/ABI-SummerSchool-26/metagenomics/GRCH38_index/GRCh38_noalt_as"
+
+# Shared amplicon FASTQs
+export AMPLICON_DIR="/etc/ace-data/ABI-SummerSchool-26/metagenomics/amplicon"
 
 # Shared shotgun FASTQs
 export SHOTGUN_DIR="/etc/ace-data/ABI-SummerSchool-26/metagenomics/data/shotgun"
