@@ -2,142 +2,142 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://TWG-ABI.github.io/ABI-Training/moduletemplate.html</loc>
-    <lastmod>2026-08-24T07:45:40.448Z</lastmod>
+    <lastmod>2026-08-24T09:00:55.594Z</lastmod>
   </url>
   <url>
     <loc>https://TWG-ABI.github.io/ABI-Training/week1/unix-and-HPC/file-processing-sed.html</loc>
-    <lastmod>2026-08-24T07:45:40.477Z</lastmod>
+    <lastmod>2026-08-24T09:00:55.628Z</lastmod>
   </url>
   <url>
     <loc>https://TWG-ABI.github.io/ABI-Training/week1/unix-and-HPC/Day_1_Assignment.html</loc>
-    <lastmod>2026-08-24T07:45:40.472Z</lastmod>
+    <lastmod>2026-08-24T09:00:55.623Z</lastmod>
   </url>
   <url>
     <loc>https://TWG-ABI.github.io/ABI-Training/week1/unix-and-HPC/Bash_scripting_II.html</loc>
-    <lastmod>2026-08-24T07:45:40.472Z</lastmod>
+    <lastmod>2026-08-24T09:00:55.623Z</lastmod>
   </url>
   <url>
     <loc>https://TWG-ABI.github.io/ABI-Training/week1/unix-and-HPC/intro_to_linux.html</loc>
-    <lastmod>2026-08-24T07:45:40.477Z</lastmod>
+    <lastmod>2026-08-24T09:00:55.628Z</lastmod>
   </url>
   <url>
     <loc>https://TWG-ABI.github.io/ABI-Training/week1/NGS-intro/test.html</loc>
-    <lastmod>2026-08-24T07:45:40.452Z</lastmod>
+    <lastmod>2026-08-24T09:00:55.600Z</lastmod>
   </url>
   <url>
     <loc>https://TWG-ABI.github.io/ABI-Training/week2/human-genomics/long-read-snv-analysis/ont/ont-analysis-practical-1.html</loc>
-    <lastmod>2026-08-24T07:45:40.482Z</lastmod>
+    <lastmod>2026-08-24T09:00:55.633Z</lastmod>
   </url>
   <url>
     <loc>https://TWG-ABI.github.io/ABI-Training/week2/metagenomics/PARTICIPANT_QUICKSTART.html</loc>
-    <lastmod>2026-08-24T07:45:40.483Z</lastmod>
+    <lastmod>2026-08-24T09:00:55.634Z</lastmod>
   </url>
   <url>
     <loc>https://TWG-ABI.github.io/ABI-Training/week2/metagenomics/practicals/data-overview.html</loc>
-    <lastmod>2026-08-24T07:45:40.488Z</lastmod>
+    <lastmod>2026-08-24T09:00:55.640Z</lastmod>
   </url>
   <url>
     <loc>https://TWG-ABI.github.io/ABI-Training/week2/metagenomics/practicals/day1_qiime2-amplicon.html</loc>
-    <lastmod>2026-08-24T07:45:40.490Z</lastmod>
+    <lastmod>2026-08-24T09:00:55.641Z</lastmod>
   </url>
   <url>
     <loc>https://TWG-ABI.github.io/ABI-Training/week2/metagenomics/practicals/day2_diversity-analysis.html</loc>
-    <lastmod>2026-08-24T07:45:40.490Z</lastmod>
+    <lastmod>2026-08-24T09:00:55.641Z</lastmod>
   </url>
   <url>
     <loc>https://TWG-ABI.github.io/ABI-Training/week2/metagenomics/practicals/day5_functional-analysis.html</loc>
-    <lastmod>2026-08-24T07:45:40.490Z</lastmod>
+    <lastmod>2026-08-24T09:00:55.641Z</lastmod>
   </url>
   <url>
     <loc>https://TWG-ABI.github.io/ABI-Training/week2/pathogen_genomics/Day_2/assembly_principles.html</loc>
-    <lastmod>2026-08-24T07:45:40.512Z</lastmod>
+    <lastmod>2026-08-24T09:00:55.665Z</lastmod>
   </url>
   <url>
     <loc>https://TWG-ABI.github.io/ABI-Training/week2/pathogen_genomics/Day_3/annotation.html</loc>
-    <lastmod>2026-08-24T07:45:40.528Z</lastmod>
+    <lastmod>2026-08-24T09:00:55.679Z</lastmod>
   </url>
   <url>
     <loc>https://TWG-ABI.github.io/ABI-Training/week2/pathogen_genomics/Day_1/qc.html</loc>
-    <lastmod>2026-08-24T07:45:40.503Z</lastmod>
+    <lastmod>2026-08-24T09:00:55.656Z</lastmod>
   </url>
   <url>
     <loc>https://TWG-ABI.github.io/ABI-Training/week2/pathogen_genomics/Day_4/mechanisms.html</loc>
-    <lastmod>2026-08-24T07:45:40.548Z</lastmod>
+    <lastmod>2026-08-24T09:00:55.697Z</lastmod>
   </url>
   <url>
     <loc>https://TWG-ABI.github.io/ABI-Training/abisumschool26.html</loc>
-    <lastmod>2026-08-24T07:45:40.448Z</lastmod>
+    <lastmod>2026-08-24T09:00:55.594Z</lastmod>
   </url>
   <url>
     <loc>https://TWG-ABI.github.io/ABI-Training/projects.html</loc>
-    <lastmod>2026-08-24T07:45:40.448Z</lastmod>
+    <lastmod>2026-08-24T09:00:55.594Z</lastmod>
   </url>
   <url>
     <loc>https://TWG-ABI.github.io/ABI-Training/about.html</loc>
-    <lastmod>2026-08-24T07:45:40.448Z</lastmod>
+    <lastmod>2026-08-24T09:00:55.594Z</lastmod>
   </url>
   <url>
     <loc>https://TWG-ABI.github.io/ABI-Training/week2/pathogen_genomics/Day_4/mge.html</loc>
-    <lastmod>2026-08-24T07:45:40.548Z</lastmod>
+    <lastmod>2026-08-24T09:00:55.697Z</lastmod>
   </url>
   <url>
     <loc>https://TWG-ABI.github.io/ABI-Training/week2/pathogen_genomics/Day_1/basics.html</loc>
-    <lastmod>2026-08-24T07:45:40.503Z</lastmod>
+    <lastmod>2026-08-24T09:00:55.656Z</lastmod>
   </url>
   <url>
     <loc>https://TWG-ABI.github.io/ABI-Training/week2/pathogen_genomics/Day_3/pangenome.html</loc>
-    <lastmod>2026-08-24T07:45:40.528Z</lastmod>
+    <lastmod>2026-08-24T09:00:55.679Z</lastmod>
   </url>
   <url>
     <loc>https://TWG-ABI.github.io/ABI-Training/week2/pathogen_genomics/Day_2/genome.html</loc>
-    <lastmod>2026-08-24T07:45:40.512Z</lastmod>
+    <lastmod>2026-08-24T09:00:55.665Z</lastmod>
   </url>
   <url>
     <loc>https://TWG-ABI.github.io/ABI-Training/week2/pathogen_genomics/Day_5/applications.html</loc>
-    <lastmod>2026-08-24T07:45:40.557Z</lastmod>
+    <lastmod>2026-08-24T09:00:55.705Z</lastmod>
   </url>
   <url>
     <loc>https://TWG-ABI.github.io/ABI-Training/week2/metagenomics/practicals/day1_qc.html</loc>
-    <lastmod>2026-08-24T07:45:40.490Z</lastmod>
+    <lastmod>2026-08-24T09:00:55.641Z</lastmod>
   </url>
   <url>
     <loc>https://TWG-ABI.github.io/ABI-Training/week2/metagenomics/practicals/day5_functional-analysis-visualisation.html</loc>
-    <lastmod>2026-08-24T07:45:40.490Z</lastmod>
+    <lastmod>2026-08-24T09:00:55.641Z</lastmod>
   </url>
   <url>
     <loc>https://TWG-ABI.github.io/ABI-Training/week2/metagenomics/practicals/day3_shotgun-metagenomics.html</loc>
-    <lastmod>2026-08-24T07:45:40.490Z</lastmod>
+    <lastmod>2026-08-24T09:00:55.641Z</lastmod>
   </url>
   <url>
     <loc>https://TWG-ABI.github.io/ABI-Training/week2/metagenomics/practicals/day4_metagenome-assembled-genomes.html</loc>
-    <lastmod>2026-08-24T07:45:40.490Z</lastmod>
+    <lastmod>2026-08-24T09:00:55.641Z</lastmod>
   </url>
   <url>
     <loc>https://TWG-ABI.github.io/ABI-Training/week2/human-genomics/short-read-snv-analysis/variant-calling-brca1-tutorial.html</loc>
-    <lastmod>2026-08-24T07:45:40.482Z</lastmod>
+    <lastmod>2026-08-24T09:00:55.633Z</lastmod>
   </url>
   <url>
     <loc>https://TWG-ABI.github.io/ABI-Training/index.html</loc>
-    <lastmod>2026-08-24T07:45:40.448Z</lastmod>
+    <lastmod>2026-08-24T09:00:55.594Z</lastmod>
   </url>
   <url>
     <loc>https://TWG-ABI.github.io/ABI-Training/week1/unix-and-HPC/Containers.html</loc>
-    <lastmod>2026-08-24T07:45:40.472Z</lastmod>
+    <lastmod>2026-08-24T09:00:55.623Z</lastmod>
   </url>
   <url>
     <loc>https://TWG-ABI.github.io/ABI-Training/week1/unix-and-HPC/Linux_Basics_Recap.html</loc>
-    <lastmod>2026-08-24T07:45:40.476Z</lastmod>
+    <lastmod>2026-08-24T09:00:55.626Z</lastmod>
   </url>
   <url>
     <loc>https://TWG-ABI.github.io/ABI-Training/week1/unix-and-HPC/Bash_scripting_I_and_HPC_Job_Submission.html</loc>
-    <lastmod>2026-08-24T07:45:40.472Z</lastmod>
+    <lastmod>2026-08-24T09:00:55.623Z</lastmod>
   </url>
   <url>
     <loc>https://TWG-ABI.github.io/ABI-Training/week1/unix-and-HPC/file-processing-awk.html</loc>
-    <lastmod>2026-08-24T07:45:40.477Z</lastmod>
+    <lastmod>2026-08-24T09:00:55.628Z</lastmod>
   </url>
   <url>
     <loc>https://TWG-ABI.github.io/ABI-Training/week1/base.html</loc>
-    <lastmod>2026-08-24T07:45:40.452Z</lastmod>
+    <lastmod>2026-08-24T09:00:55.600Z</lastmod>
   </url>
 </urlset>
