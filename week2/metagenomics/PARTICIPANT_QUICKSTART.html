@@ -226,12 +226,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="day-3-shotgun" class="level2">
 <h2 class="anchored" data-anchor-id="day-3-shotgun">Day 3 — shotgun</h2>
-<p><strong>Read:</strong> <code>practicals/day3_shotgun-metagenomics.md</code><br>
-<strong>Run:</strong></p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">bash</span> scripts/day3_shotgun.sh</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="co"># or: sbatch scripts/sbatch_day3.sh</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Outputs: <code>${COURSE_WORK_DIR}/day3_results/</code><br>
-Note the assembled sample under <code>assembly/&lt;SAMPLE&gt;/</code> for Day 4.</p>
+<p><strong>Read:</strong> <code>practicals/day3_shotgun-metagenomics.md</code></p>
+<p><strong>Preferred (step-by-step):</strong></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">sbatch</span> scripts/01_raw_qc.sh          <span class="co"># wait / check MultiQC</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="ex">sbatch</span> scripts/02_qc-trim.sh</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="ex">sbatch</span> scripts/03_host-read_removal.sh</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="ex">sbatch</span> scripts/04_kraken2.sh</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="ex">sbatch</span> scripts/05_species_abundance.sh</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="ex">sbatch</span> scripts/06_assembly.sh</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="co"># optional: DEMO_SAMPLE=SRR27027504 sbatch scripts/06_assembly.sh</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>Optional all-in-one:</strong> <code>sbatch scripts/sbatch_day3.sh</code> (or <code>bash scripts/day3_shotgun.sh</code>)</p>
+<p>Outputs: <code>${COURSE_WORK_DIR}/day3_results/</code> (<code>01_qc</code> … <code>06_quast</code>)<br>
+Note an assembled sample under <code>06_assembly/&lt;SAMPLE&gt;/</code> for Day 4.</p>
 </section>
 <section id="day-4-mags" class="level2">
 <h2 class="anchored" data-anchor-id="day-4-mags">Day 4 — MAGs</h2>

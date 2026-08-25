@@ -167,16 +167,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <ul class="collapse">
   <li><a href="#purpose" id="toc-purpose" class="nav-link" data-scroll-target="#purpose">Purpose</a></li>
   <li><a href="#dataset" id="toc-dataset" class="nav-link" data-scroll-target="#dataset">Dataset</a></li>
-  <li><a href="#setup" id="toc-setup" class="nav-link" data-scroll-target="#setup">Setup</a></li>
-  <li><a href="#section-1-quality-control-fastqc-multiqc" id="toc-section-1-quality-control-fastqc-multiqc" class="nav-link" data-scroll-target="#section-1-quality-control-fastqc-multiqc">Section 1 — Quality Control (FastQC + MultiQC)</a></li>
-  <li><a href="#section-2-trimming-with-fastp" id="toc-section-2-trimming-with-fastp" class="nav-link" data-scroll-target="#section-2-trimming-with-fastp">Section 2 — Trimming with fastp</a></li>
-  <li><a href="#section-3-host-read-removal" id="toc-section-3-host-read-removal" class="nav-link" data-scroll-target="#section-3-host-read-removal">Section 3 — Host Read Removal</a></li>
-  <li><a href="#section-4-taxonomic-classification-route-a-kraken2-bracken" id="toc-section-4-taxonomic-classification-route-a-kraken2-bracken" class="nav-link" data-scroll-target="#section-4-taxonomic-classification-route-a-kraken2-bracken">Section 4 — Taxonomic Classification, Route A: Kraken2 + Bracken</a>
-  <ul class="collapse">
-  <li><a href="#merging-and-analysing-the-bracken-output" id="toc-merging-and-analysing-the-bracken-output" class="nav-link" data-scroll-target="#merging-and-analysing-the-bracken-output">Merging and analysing the Bracken output</a></li>
-  </ul></li>
-  <li><a href="#section-5-taxonomic-classification-route-b-metaphlan4-paper-style" id="toc-section-5-taxonomic-classification-route-b-metaphlan4-paper-style" class="nav-link" data-scroll-target="#section-5-taxonomic-classification-route-b-metaphlan4-paper-style">Section 5 — Taxonomic Classification, Route B: MetaPhlAn4 (paper-style)</a></li>
-  <li><a href="#section-6-de-novo-assembly-with-megahit-quast" id="toc-section-6-de-novo-assembly-with-megahit-quast" class="nav-link" data-scroll-target="#section-6-de-novo-assembly-with-megahit-quast">Section 6 — De Novo Assembly with MEGAHIT + QUAST</a></li>
+  <li><a href="#setup-every-session-every-sbatch-job" id="toc-setup-every-session-every-sbatch-job" class="nav-link" data-scroll-target="#setup-every-session-every-sbatch-job">Setup (every session / every <code>#SBATCH</code> job)</a></li>
+  <li><a href="#section-1-quality-control-01_raw_qc.sh" id="toc-section-1-quality-control-01_raw_qc.sh" class="nav-link" data-scroll-target="#section-1-quality-control-01_raw_qc.sh">Section 1 — Quality Control (<code>01_raw_qc.sh</code>)</a></li>
+  <li><a href="#section-2-trimming-02_qc-trim.sh" id="toc-section-2-trimming-02_qc-trim.sh" class="nav-link" data-scroll-target="#section-2-trimming-02_qc-trim.sh">Section 2 — Trimming (<code>02_qc-trim.sh</code>)</a></li>
+  <li><a href="#section-3-host-removal-03_host-read_removal.sh" id="toc-section-3-host-removal-03_host-read_removal.sh" class="nav-link" data-scroll-target="#section-3-host-removal-03_host-read_removal.sh">Section 3 — Host removal (<code>03_host-read_removal.sh</code>)</a></li>
+  <li><a href="#section-4-kraken2-bracken-04_kraken2.sh" id="toc-section-4-kraken2-bracken-04_kraken2.sh" class="nav-link" data-scroll-target="#section-4-kraken2-bracken-04_kraken2.sh">Section 4 — Kraken2 + Bracken (<code>04_kraken2.sh</code>)</a></li>
+  <li><a href="#section-5-metaphlan4-05_species_abundance.sh" id="toc-section-5-metaphlan4-05_species_abundance.sh" class="nav-link" data-scroll-target="#section-5-metaphlan4-05_species_abundance.sh">Section 5 — MetaPhlAn4 (<code>05_species_abundance.sh</code>)</a></li>
+  <li><a href="#section-6-assembly-quast-06_assembly.sh" id="toc-section-6-assembly-quast-06_assembly.sh" class="nav-link" data-scroll-target="#section-6-assembly-quast-06_assembly.sh">Section 6 — Assembly + QUAST (<code>06_assembly.sh</code>)</a></li>
   <li><a href="#key-outputs" id="toc-key-outputs" class="nav-link" data-scroll-target="#key-outputs">Key Outputs</a></li>
   <li><a href="#discussion-questions" id="toc-discussion-questions" class="nav-link" data-scroll-target="#discussion-questions">Discussion Questions</a></li>
   </ul></li>
@@ -198,292 +195,221 @@ div.sourceCode, pre.sourceCode, pre, pre code, div.cell-code pre {
   border-left: 4px solid #31BAE9 !important;
   border-radius: 6px !important;
 }
-
-/* Base text (plain tokens, punctuation) */
-code span {
-  color: #212529 !important;
-}
-
-/* Comments / shebangs */
+code span { color: #212529 !important; }
 code span.co, code span.c, code span.ch, code span.cm, code span.c1 {
-  color: #2e7d32 !important; /* green */
-  font-weight: 600 !important;
-  opacity: 1 !important;
+  color: #2e7d32 !important; font-weight: 600 !important; opacity: 1 !important;
 }
-
-/* Strings */
-code span.st, code span.s, code span.s1, code span.s2 {
-  color: #c2410c !important; /* burnt orange */
-}
-
-/* Keywords (set, if, for, function, etc.) */
-code span.kw {
-  color: #7c3aed !important; /* purple */
-  font-weight: 600 !important;
-}
-
-/* Variables ($VAR, DATA_DIR, etc.) */
-code span.va {
-  color: #0369a1 !important; /* blue */
-}
-
-/* Function / command names */
-code span.fu {
-  color: #b91c1c !important; /* red */
-}
-
-/* Numbers */
-code span.dv, code span.fl, code span.bn, code span.cn {
-  color: #b45309 !important; /* amber */
-}
-
-/* Operators, flags like -e, -u, -o */
-code span.op {
-  color: #495057 !important;
-}
-
-/* Errors / special tokens Pandoc sometimes flags */
-code span.er {
-  color: #dc2626 !important;
-  font-weight: 600 !important;
-}
+code span.st, code span.s, code span.s1, code span.s2 { color: #c2410c !important; }
+code span.kw { color: #7c3aed !important; font-weight: 600 !important; }
+code span.va { color: #0369a1 !important; }
+code span.fu { color: #b91c1c !important; }
+code span.dv, code span.fl, code span.bn, code span.cn { color: #b45309 !important; }
+code span.op { color: #495057 !important; }
+code span.er { color: #dc2626 !important; font-weight: 600 !important; }
 </style>
 <hr>
 <section id="day-3-practical-shotgun-metagenomics-pipeline" class="level1">
 <h1>Day 3 Practical: Shotgun Metagenomics Pipeline</h1>
 <section id="purpose" class="level2">
 <h2 class="anchored" data-anchor-id="purpose">Purpose</h2>
-<p>Unlike amplicon sequencing (Day 1), shotgun metagenomics sequences all DNA in a sample, enabling species-level taxonomic profiling <em>and</em> functional/genomic content (assembly, binning — covered Days 4–5). This practical walks through the standard shotgun workflow: QC → adapter/quality trimming → host DNA removal → taxonomic classification (two parallel routes) → de novo assembly and assessment.</p>
+<p>Unlike amplicon sequencing (Day 1), shotgun metagenomics sequences all DNA in a sample, enabling species-level taxonomic profiling <em>and</em> functional/genomic content (assembly, binning — covered Days 4–5). This practical walks through the standard shotgun workflow:</p>
+<p><strong>QC → trim → host DNA removal → Kraken2/Bracken → MetaPhlAn → assembly + QUAST</strong></p>
+<p>Runnable code lives under <code>scripts/</code> as six SLURM-ready step scripts (preferred over one monolithic job). Read this document for <em>why</em>; submit the matching script for <em>how</em>.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 8%">
+<col style="width: 11%">
+<col style="width: 79%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Step</th>
+<th>Script</th>
+<th>Main outputs under <code>${COURSE_WORK_DIR}/day3_results/</code></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1</td>
+<td><code>scripts/01_raw_qc.sh</code></td>
+<td><code>01_qc/</code>, <code>01_qc/multiqc/</code></td>
+</tr>
+<tr class="even">
+<td>2</td>
+<td><code>scripts/02_qc-trim.sh</code></td>
+<td><code>02_trimmed/*_R1_trimmed.fastq.gz</code></td>
+</tr>
+<tr class="odd">
+<td>3</td>
+<td><code>scripts/03_host-read_removal.sh</code></td>
+<td><code>03_host_removed/*_clean_{1,2}.fastq.gz</code></td>
+</tr>
+<tr class="even">
+<td>4</td>
+<td><code>scripts/04_kraken2.sh</code></td>
+<td><code>04_kraken2/*.report</code>, <code>*_bracken.txt</code></td>
+</tr>
+<tr class="odd">
+<td>5</td>
+<td><code>scripts/05_species_abundance.sh</code></td>
+<td><code>05_species_abundance/*_profile.txt</code></td>
+</tr>
+<tr class="even">
+<td>6</td>
+<td><code>scripts/06_assembly.sh</code></td>
+<td><code>06_assembly/</code>, <code>06_quast/</code></td>
+</tr>
+</tbody>
+</table>
 </section>
 <section id="dataset" class="level2">
 <h2 class="anchored" data-anchor-id="dataset">Dataset</h2>
-<p>All six gut samples from the course’s TransplantLines subset (3 LTR + 3 HC) are used today, each subsampled to 1M read pairs, staged under <code>data/shotgun/gut_sample/</code>. Two of them — <code>SRR27027652</code> (LTR) and <code>SRR27027756</code> (HC) — also have a full-depth copy under <code>data/shotgun/gut_miniproject/</code>, set aside for homework / the Day 5 mini-project rather than today’s practical. See <code>data-overview.md</code> for the full provenance, accessions, and why this depth was chosen.</p>
-<p>There is <strong>no soil sample in Day 3.</strong> Soil tillage data live under <code>data/shotgun/soil_miniproject/</code> for the Day 5 mini-project. Today’s assembly demo (Section 6) runs on a gut sample instead — the point of the demo (what a de Bruijn graph assembler does, how to read QUAST output) doesn’t depend on sample type.</p>
+<p>All six gut samples from the course’s TransplantLines subset (3 LTR + 3 HC), each subsampled to 1M read pairs, under <code>${GUT_DIR}</code> (<code>.../data/shotgun/gut_sample/</code>). See <code>data-overview.md</code> for provenance. <strong>No soil sample in Day 3.</strong></p>
 </section>
-<section id="setup" class="level2">
-<h2 class="anchored" data-anchor-id="setup">Setup</h2>
-<p>Before starting, load the shared course environment (databases are shared — do not download your own copy). <strong>No git clone is required</strong> — follow this document (<code>week2/metagenomics/practicals/day3_shotgun-metagenomics.md</code>) and write outputs under your home area.</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="bu">source</span> /etc/ace-data/ABI-SummerSchool-26/metagenomics/course_env.sh</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>If submitting with SLURM, put that <code>source</code> line <strong>inside</strong> the job script after the <code>#SBATCH</code> headers.</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="bu">set</span> <span class="at">-euo</span> pipefail</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="co"># From course_env.sh (re-stated here for clarity; trailing / required for concat style)</span></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="va">IN_DIR</span><span class="op">=</span><span class="st">"</span><span class="va">${GUT_DIR}</span><span class="st">/"</span></span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="va">OUT_DIR</span><span class="op">=</span><span class="st">"</span><span class="va">${COURSE_WORK_DIR}</span><span class="st">/day3_results/"</span></span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="va">databases</span><span class="op">=</span><span class="st">"</span><span class="va">${COURSE_DBS}</span><span class="st">/"</span></span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="va">kraken_DB</span><span class="op">=</span><span class="st">"</span><span class="va">${KRAKEN_DB}</span><span class="st">"</span></span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="va">metaphlan_DB</span><span class="op">=</span><span class="st">"</span><span class="va">${METAPHLAN_DB}</span><span class="st">"</span></span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="va">HOST_IDX</span><span class="op">=</span><span class="st">"</span><span class="va">${HOST_IDX}</span><span class="st">"</span></span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Singularity images for Bracken / MetaPhlAn (confirm path on ACE)</span></span>
-<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="va">IMAGES_DIR</span><span class="op">=</span><span class="st">"</span><span class="va">${COURSE_DBS}</span><span class="st">/images/"</span></span>
-<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a><span class="va">THREADS</span><span class="op">=</span>8</span>
-<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> <span class="at">-p</span> <span class="va">${OUT_DIR}</span><span class="dt">{qc</span><span class="op">,</span><span class="dt">trimmed</span><span class="op">,</span><span class="dt">host_removed</span><span class="op">,</span><span class="dt">kraken2</span><span class="op">,</span><span class="dt">metaphlan</span><span class="op">,</span><span class="dt">tables</span><span class="op">,</span><span class="dt">assembly</span><span class="op">,</span><span class="dt">quast}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<section id="setup-every-session-every-sbatch-job" class="level2">
+<h2 class="anchored" data-anchor-id="setup-every-session-every-sbatch-job">Setup (every session / every <code>#SBATCH</code> job)</h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="bu">source</span> /etc/ace-data/ABI-SummerSchool-26/metagenomics/course_env.sh</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> /path/to/ABI-Training/week2/metagenomics</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><code>course_env.sh</code> sets shared paths only (<code>GUT_DIR</code>, <code>HOST_IDX</code>, <code>KRAKEN_DB</code>, <code>METAPHLAN_DB</code>, <code>IMAGES_DIR</code>, <code>COURSE_WORK_DIR</code>). It has <strong>no</strong> <code>#SBATCH</code> lines.</p>
+<p>Each step script sets threads as:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="va">THREADS</span><span class="op">=</span><span class="st">"</span><span class="va">${THREADS</span><span class="op">:-</span><span class="va">${SLURM_CPUS_PER_TASK</span><span class="op">:-</span>8<span class="va">}}</span><span class="st">"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Use <code>THREADS</code> if you already exported it; else SLURM’s <code>--cpus-per-task</code>; else <code>8</code>.</p>
+<p>Submit from <code>week2/metagenomics/</code> so relative log names land next to the scripts:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">sbatch</span> scripts/01_raw_qc.sh</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="co"># after 01 finishes:</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="ex">sbatch</span> scripts/02_qc-trim.sh</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="co"># … then 03 → 04 → 05 → 06</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <blockquote class="blockquote">
-<p><strong>Shotgun layout on ACE.</strong> Class FASTQs: <code>${GUT_DIR}</code> (<code>.../data/shotgun/gut_sample/</code>). Mini-project folders: <code>${GUT_MINIPROJECT_DIR}</code>, <code>${SOIL_MINIPROJECT_DIR}</code> — do not use those for Day 3.</p>
-<p><strong>Trailing slashes matter</strong> if you concatenate (<code>${IN_DIR}*_1.fastq.gz</code>). Prefer <code>"${IN_DIR}"/*_1.fastq.gz</code> with quotes if you drop the trailing slash.</p>
-<p>Confirm <code>HOST_IDX</code> and <code>IMAGES_DIR</code> with <code>ls</code> before class if needed.</p>
-</blockquote>
-<p><strong>Day 3 modules only</strong> (load these; do not load Day 4/5 stacks yet):</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">module</span> load fastqc</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="ex">module</span> load multiqc</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="ex">module</span> load fastp</span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="ex">module</span> load bowtie2</span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="ex">module</span> load kraken2</span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="ex">module</span> load megahit</span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="ex">module</span> load quast</span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="ex">module</span> load seqkit</span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Bracken + MetaPhlAn4: singularity images under IMAGES_DIR (not modules)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<blockquote class="blockquote">
-<p>Run <code>module avail &lt;tool&gt;</code> if a name differs on ACE.</p>
+<p>Optional one-shot (interactive or inside a large allocation): the older <code>scripts/day3_shotgun.sh</code> still exists, but the <strong>step scripts above are the teaching path</strong> and match the folder layout used in class.</p>
 </blockquote>
 <hr>
 </section>
-<section id="section-1-quality-control-fastqc-multiqc" class="level2">
-<h2 class="anchored" data-anchor-id="section-1-quality-control-fastqc-multiqc">Section 1 — Quality Control (FastQC + MultiQC)</h2>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">fastqc</span> <span class="at">--outdir</span> <span class="va">${OUT_DIR}</span>qc/ <span class="at">--threads</span> <span class="va">${THREADS}</span> <span class="at">--quiet</span> <span class="va">${IN_DIR}</span><span class="pp">*</span>.gz</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="ex">multiqc</span> <span class="va">${OUT_DIR}</span>qc/ <span class="at">--filename</span> <span class="st">"metagenomes_multiqc"</span> <span class="at">--quiet</span> <span class="at">-o</span> <span class="va">${OUT_DIR}</span>qc/</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>FastQC runs once across every FASTQ in <code>IN_DIR</code> (all 6 subsampled gut samples, R1 and R2 together) rather than looping sample-by-sample — a single glob is simpler here since there’s no soil subset to keep separate anymore. MultiQC then aggregates all of those per-file reports into one dashboard, named explicitly (<code>metagenomes_multiqc</code>) so it doesn’t collide with other MultiQC runs in the same <code>OUT_DIR</code>.</p>
+<section id="section-1-quality-control-01_raw_qc.sh" class="level2">
+<h2 class="anchored" data-anchor-id="section-1-quality-control-01_raw_qc.sh">Section 1 — Quality Control (<code>01_raw_qc.sh</code>)</h2>
+<p><strong>What it does:</strong> runs FastQC on every raw PE pair in <code>${GUT_DIR}</code>, then MultiQC.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">sbatch</span> scripts/01_raw_qc.sh</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Core logic (see the script for full <code>#SBATCH</code> headers):</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="bu">source</span> /etc/ace-data/ABI-SummerSchool-26/metagenomics/course_env.sh</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="va">THREADS</span><span class="op">=</span><span class="st">"</span><span class="va">${THREADS</span><span class="op">:-</span><span class="va">${SLURM_CPUS_PER_TASK</span><span class="op">:-</span>8<span class="va">}}</span><span class="st">"</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="va">OUT_DIR</span><span class="op">=</span><span class="st">"</span><span class="va">${COURSE_WORK_DIR}</span><span class="st">/day3_results"</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> <span class="at">-p</span> <span class="st">"</span><span class="va">${OUT_DIR}</span><span class="st">/01_qc"</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> R1 <span class="kw">in</span> <span class="st">"</span><span class="va">${GUT_DIR}</span><span class="st">"</span>/<span class="pp">*</span>_1.fastq.gz<span class="kw">;</span> <span class="cf">do</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>  <span class="va">SAMPLE</span><span class="op">=</span><span class="va">$(</span><span class="fu">basename</span> <span class="st">"</span><span class="va">${R1}</span><span class="st">"</span> _1.fastq.gz<span class="va">)</span></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>  <span class="va">R2</span><span class="op">=</span><span class="st">"</span><span class="va">${GUT_DIR}</span><span class="st">/</span><span class="va">${SAMPLE}</span><span class="st">_2.fastq.gz"</span></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>  <span class="ex">fastqc</span> <span class="at">--outdir</span> <span class="st">"</span><span class="va">${OUT_DIR}</span><span class="st">/01_qc"</span> <span class="at">--threads</span> <span class="st">"</span><span class="va">${THREADS}</span><span class="st">"</span> <span class="at">--quiet</span> <span class="st">"</span><span class="va">${R1}</span><span class="st">"</span> <span class="st">"</span><span class="va">${R2}</span><span class="st">"</span></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a><span class="cf">done</span></span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a><span class="ex">multiqc</span> <span class="st">"</span><span class="va">${OUT_DIR}</span><span class="st">/01_qc/"</span> <span class="at">--outdir</span> <span class="st">"</span><span class="va">${OUT_DIR}</span><span class="st">/01_qc/multiqc"</span> <span class="at">--quiet</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>Why:</strong> catch adapter content, quality drops, and odd GC before spending cluster time on taxonomy/assembly. Open <code>01_qc/multiqc/multiqc_report.html</code>.</p>
 <hr>
 </section>
-<section id="section-2-trimming-with-fastp" class="level2">
-<h2 class="anchored" data-anchor-id="section-2-trimming-with-fastp">Section 2 — Trimming with fastp</h2>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> file <span class="kw">in</span> <span class="va">$(</span><span class="fu">ls</span> <span class="va">${IN_DIR}</span><span class="pp">*</span>_1.fastq.gz<span class="va">)</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="cf">do</span></span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  <span class="va">sample</span><span class="op">=</span><span class="va">$(</span><span class="fu">basename</span> <span class="va">${file}</span> _1.fastq.gz<span class="va">)</span></span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>  <span class="ex">fastp</span> <span class="dt">\</span></span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">--in1</span> <span class="va">${IN_DIR}${sample}</span>_1.fastq.gz <span class="dt">\</span></span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">--in2</span> <span class="va">${IN_DIR}${sample}</span>_2.fastq.gz <span class="dt">\</span></span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">--out1</span> <span class="va">${OUT_DIR}</span>trimmed/<span class="va">${sample}</span>_trimmed_1.fastq.gz <span class="dt">\</span></span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">--out2</span> <span class="va">${OUT_DIR}</span>trimmed/<span class="va">${sample}</span>_trimmed_2.fastq.gz <span class="dt">\</span></span>
-<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">--qualified_quality_phred</span> 20 <span class="dt">\</span></span>
-<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">--length_required</span> 50 <span class="dt">\</span></span>
-<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">--detect_adapter_for_pe</span> <span class="dt">\</span></span>
-<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">--thread</span> <span class="va">${THREADS}</span> <span class="dt">\</span></span>
-<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">--json</span> <span class="va">${OUT_DIR}</span>trimmed/<span class="va">${sample}</span>_fastp.json <span class="dt">\</span></span>
-<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">--html</span> <span class="va">${OUT_DIR}</span>trimmed/<span class="va">${sample}</span>_fastp.html</span>
-<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a><span class="cf">done</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Same fastp parameters as before — Q20 quality filtering, 50 bp minimum length, auto-detected paired-end adapters. The naming here (<code>_1.fastq.gz</code>/<code>_2.fastq.gz</code>) matches what <code>fastq-dump --split-files</code> produces directly (see <code>data-overview.md</code>), so there’s no rename step between download and this loop.</p>
+<section id="section-2-trimming-02_qc-trim.sh" class="level2">
+<h2 class="anchored" data-anchor-id="section-2-trimming-02_qc-trim.sh">Section 2 — Trimming (<code>02_qc-trim.sh</code>)</h2>
+<p><strong>What it does:</strong> <code>fastp</code> adapter detection + quality trimming; writes <code>${SAMPLE}_R1_trimmed.fastq.gz</code> / <code>_R2_trimmed.fastq.gz</code>; MultiQC on the JSON/HTML reports.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="ex">sbatch</span> scripts/02_qc-trim.sh</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="ex">fastp</span> <span class="dt">\</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">-i</span> <span class="st">"</span><span class="va">${R1}</span><span class="st">"</span> <span class="at">-I</span> <span class="st">"</span><span class="va">${R2}</span><span class="st">"</span> <span class="dt">\</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">-o</span> <span class="st">"</span><span class="va">${OUT_DIR}</span><span class="st">/02_trimmed/</span><span class="va">${SAMPLE}</span><span class="st">_R1_trimmed.fastq.gz"</span> <span class="dt">\</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">-O</span> <span class="st">"</span><span class="va">${OUT_DIR}</span><span class="st">/02_trimmed/</span><span class="va">${SAMPLE}</span><span class="st">_R2_trimmed.fastq.gz"</span> <span class="dt">\</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">--detect_adapter_for_pe</span> <span class="dt">\</span></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">-M</span> 25 <span class="at">-5</span> <span class="at">-r</span> <span class="at">--correction</span> <span class="dt">\</span></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">-w</span> <span class="st">"</span><span class="va">${THREADS}</span><span class="st">"</span> <span class="dt">\</span></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">-j</span> <span class="st">"</span><span class="va">${OUT_DIR}</span><span class="st">/02_trimmed/</span><span class="va">${SAMPLE}</span><span class="st">_fastp.json"</span> <span class="dt">\</span></span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">-h</span> <span class="st">"</span><span class="va">${OUT_DIR}</span><span class="st">/02_trimmed/</span><span class="va">${SAMPLE}</span><span class="st">_fastp.html"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>Why:</strong> remove adapters and low-quality bases so k-mers and contigs reflect biology. Expect most discarded reads under “too short” after adapter clip — that is normal.</p>
+<p>Naming note: trimmed files use <code>_R1_trimmed</code> / <code>_R2_trimmed</code>. Host-removed files later use Bowtie2’s <code>--un-conc-gz</code> pattern (<code>_clean_1</code> / <code>_clean_2</code>).</p>
 <hr>
 </section>
-<section id="section-3-host-read-removal" class="level2">
-<h2 class="anchored" data-anchor-id="section-3-host-read-removal">Section 3 — Host Read Removal</h2>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> R1 <span class="kw">in</span> <span class="va">${OUT_DIR}</span>trimmed/<span class="pp">*</span>_trimmed_1.fastq.gz<span class="kw">;</span> <span class="cf">do</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>    <span class="va">SAMPLE</span><span class="op">=</span><span class="va">$(</span><span class="fu">basename</span> <span class="va">${R1}</span> _trimmed_1.fastq.gz<span class="va">)</span></span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>    <span class="va">R2</span><span class="op">=</span><span class="st">"</span><span class="va">${OUT_DIR}</span><span class="st">trimmed/</span><span class="va">${SAMPLE}</span><span class="st">_trimmed_2.fastq.gz"</span></span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>    <span class="bu">echo</span> <span class="st">"  bowtie2 host filter: </span><span class="va">${SAMPLE}</span><span class="st">"</span></span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>    <span class="ex">bowtie2</span> <span class="dt">\</span></span>
-<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>        <span class="at">-x</span> <span class="va">${HOST_IDX}</span> <span class="dt">\</span></span>
-<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>        <span class="at">-1</span> <span class="va">${R1}</span> <span class="dt">\</span></span>
-<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>        <span class="at">-2</span> <span class="va">${R2}</span> <span class="dt">\</span></span>
-<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>        <span class="at">--un-conc-gz</span> <span class="va">${OUT_DIR}</span>host_removed/<span class="va">${SAMPLE}</span>_clean_%.fastq.gz <span class="dt">\</span></span>
-<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>        <span class="at">--threads</span> <span class="va">${THREADS}</span> <span class="dt">\</span></span>
-<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>        <span class="at">--very-sensitive</span> <span class="dt">\</span></span>
-<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>        <span class="at">-S</span> /dev/null <span class="dt">\</span></span>
-<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>        <span class="dv">2</span><span class="op">&gt;</span><span class="va">${OUT_DIR}</span>host_removed/<span class="va">${SAMPLE}</span>_bowtie2.log</span>
-<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a>    <span class="va">HOST_RATE</span><span class="op">=</span><span class="va">$(</span><span class="fu">grep</span> <span class="st">"overall alignment rate"</span> <span class="dt">\</span></span>
-<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a>        <span class="va">${OUT_DIR}</span>host_removed/<span class="va">${SAMPLE}</span>_bowtie2.log <span class="kw">|</span> <span class="fu">awk</span> <span class="st">'{print $1}'</span><span class="va">)</span></span>
-<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a>    <span class="bu">echo</span> <span class="st">"    Host alignment rate: </span><span class="va">${SAMPLE}</span><span class="st">: </span><span class="va">${HOST_RATE}</span><span class="st">"</span></span>
-<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a><span class="cf">done</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>All six samples are gut, so every one goes through host removal this time (no soil branch to skip it for). <code>-S /dev/null</code> discards the alignment stream directly instead of piping through <code>samtools view</code> — we only need <code>--un-conc-gz</code>’s output (the reads that <em>didn’t</em> map to the human genome), not the alignments themselves. The per-sample host alignment rate printed here is worth comparing across the 6 samples as a QC check: a sample with an unusually high or low % human DNA relative to the others is worth a second look before trusting its downstream taxonomy.</p>
+<section id="section-3-host-removal-03_host-read_removal.sh" class="level2">
+<h2 class="anchored" data-anchor-id="section-3-host-removal-03_host-read_removal.sh">Section 3 — Host removal (<code>03_host-read_removal.sh</code>)</h2>
+<p><strong>What it does:</strong> map trimmed pairs to GRCh38 (<code>${HOST_IDX}</code>); keep non-host pairs; optionally write a host BAM; summarise alignment rates.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="ex">sbatch</span> scripts/03_host-read_removal.sh</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="ex">bowtie2</span> <span class="dt">\</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">-x</span> <span class="st">"</span><span class="va">${HOST_IDX}</span><span class="st">"</span> <span class="dt">\</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">-1</span> <span class="st">"</span><span class="va">${R1}</span><span class="st">"</span> <span class="at">-2</span> <span class="st">"</span><span class="va">${R2}</span><span class="st">"</span> <span class="dt">\</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">--un-conc-gz</span> <span class="st">"</span><span class="va">${OUT_DIR}</span><span class="st">/03_host_removed/</span><span class="va">${SAMPLE}</span><span class="st">_clean_%.fastq.gz"</span> <span class="dt">\</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">--threads</span> <span class="st">"</span><span class="va">${THREADS}</span><span class="st">"</span> <span class="dt">\</span></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">--very-sensitive</span> <span class="dt">\</span></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>  <span class="dv">2</span><span class="op">&gt;</span><span class="st">"</span><span class="va">${OUT_DIR}</span><span class="st">/03_host_removed/</span><span class="va">${SAMPLE}</span><span class="st">_bowtie2.log"</span> <span class="dt">\</span></span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>  <span class="kw">|</span> <span class="ex">samtools</span> sort <span class="at">-@</span> <span class="st">"</span><span class="va">${THREADS}</span><span class="st">"</span> <span class="at">-o</span> <span class="st">"</span><span class="va">${OUT_DIR}</span><span class="st">/03_host_removed/</span><span class="va">${SAMPLE}</span><span class="st">_host.bam"</span> <span class="at">-</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><code>--un-conc-gz</code> writes the <strong>unmapped</strong> concordant pairs (microbiome reads). The BAM is optional for Day 3 taxonomy; the clean FASTQs are required for steps 4–6.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">grep</span> <span class="st">"overall alignment rate"</span> <span class="st">"</span><span class="va">${OUT_DIR}</span><span class="st">/03_host_removed/"</span><span class="pp">*</span>_bowtie2.log <span class="dt">\</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  <span class="op">&gt;</span> <span class="st">"</span><span class="va">${OUT_DIR}</span><span class="st">/03_host_removed/sample-specific_host.txt"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>Why:</strong> fecal libraries can contain human DNA. Even if host % is low (~1% or less), filtering documents that residual human signal is negligible before Kraken/MetaPhlAn.</p>
 <hr>
 </section>
-<section id="section-4-taxonomic-classification-route-a-kraken2-bracken" class="level2">
-<h2 class="anchored" data-anchor-id="section-4-taxonomic-classification-route-a-kraken2-bracken">Section 4 — Taxonomic Classification, Route A: Kraken2 + Bracken</h2>
-<p>The course teaching path — fast k-mer classification, in wide use, good for building intuition about LCA assignment and database-dependent classification rates.</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> R1 <span class="kw">in</span> <span class="va">${OUT_DIR}</span>host_removed/<span class="pp">*</span>_clean_1.fastq.gz<span class="kw">;</span> <span class="cf">do</span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>    <span class="va">SAMPLE</span><span class="op">=</span><span class="va">$(</span><span class="fu">basename</span> <span class="va">${R1}</span> _clean_1.fastq.gz<span class="va">)</span></span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>    <span class="va">R2</span><span class="op">=</span><span class="st">"</span><span class="va">${OUT_DIR}</span><span class="st">host_removed/</span><span class="va">${SAMPLE}</span><span class="st">_clean_2.fastq.gz"</span></span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>    <span class="ex">kraken2</span> <span class="dt">\</span></span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>        <span class="at">--db</span> <span class="va">${kraken_DB}</span> <span class="dt">\</span></span>
-<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>        <span class="at">--paired</span> <span class="va">${R1}</span> <span class="va">${R2}</span> <span class="dt">\</span></span>
-<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>        <span class="at">--threads</span> <span class="va">${THREADS}</span> <span class="dt">\</span></span>
-<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>        <span class="at">--report</span> <span class="va">${OUT_DIR}</span>kraken2/<span class="va">${SAMPLE}</span>.report <span class="dt">\</span></span>
-<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>        <span class="at">--output</span> <span class="va">${OUT_DIR}</span>kraken2/<span class="va">${SAMPLE}</span>.out <span class="dt">\</span></span>
-<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>        <span class="at">--gzip-compressed</span> <span class="dt">\</span></span>
-<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>        <span class="dv">2</span><span class="op">&gt;</span><span class="va">${OUT_DIR}</span>kraken2/<span class="va">${SAMPLE}</span>_kraken2.log</span>
-<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a><span class="cf">done</span></span>
-<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> REPORT <span class="kw">in</span> <span class="va">${OUT_DIR}</span>kraken2/<span class="pp">*</span>.report</span>
-<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a><span class="cf">do</span></span>
-<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a>    <span class="va">SAMPLE</span><span class="op">=</span><span class="va">$(</span><span class="fu">basename</span> <span class="va">${REPORT}</span> .report<span class="va">)</span></span>
-<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a>    <span class="ex">singularity</span> exec <span class="va">${IMAGES_DIR}</span>bracken_3.1.simg bracken <span class="dt">\</span></span>
-<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a>        <span class="at">-d</span> <span class="va">${kraken_DB}</span> <span class="dt">\</span></span>
-<span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a>        <span class="at">-i</span> <span class="va">${REPORT}</span> <span class="dt">\</span></span>
-<span id="cb7-21"><a href="#cb7-21" aria-hidden="true" tabindex="-1"></a>        <span class="at">-o</span> <span class="va">${OUT_DIR}</span>kraken2/<span class="va">${SAMPLE}</span>_bracken.txt <span class="dt">\</span></span>
-<span id="cb7-22"><a href="#cb7-22" aria-hidden="true" tabindex="-1"></a>        <span class="at">-r</span> 150 <span class="dt">\</span></span>
-<span id="cb7-23"><a href="#cb7-23" aria-hidden="true" tabindex="-1"></a>        <span class="at">-l</span> S</span>
-<span id="cb7-24"><a href="#cb7-24" aria-hidden="true" tabindex="-1"></a><span class="cf">done</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Kraken2 classifies each read pair by k-mer matching against <code>kraken_DB</code>, assigning the lowest common ancestor across matching taxa. Bracken then re-estimates species-level (<code>-l S</code>) abundances from those raw counts using the average read length (<code>-r 150</code>) — it runs from a Singularity image here rather than a module, so each call is wrapped in <code>singularity exec ${IMAGES_DIR}bracken_3.1.simg bracken ...</code> instead of calling <code>bracken</code> directly.</p>
-<section id="merging-and-analysing-the-bracken-output" class="level3">
-<h3 class="anchored" data-anchor-id="merging-and-analysing-the-bracken-output">Merging and analysing the Bracken output</h3>
-<p>Combine every sample’s Bracken table into one species-by-sample matrix, then run the R diversity/differential-abundance analysis — both reuse the scripts already built for this in the main course repo (<code>metagenomics_course_kampala/practicals/day3/</code>):</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">bash</span> /path/to/metagenomics_course_kampala/practicals/day3/03_merge_abundance_tables.sh <span class="dt">\</span></span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  <span class="va">${OUT_DIR}</span>kraken2 <span class="dt">\</span></span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>  <span class="va">${OUT_DIR}</span>tables/bracken_species_counts.tsv</span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="ex">Rscript</span> /path/to/metagenomics_course_kampala/practicals/day3/04_abundance_analysis.R <span class="dt">\</span></span>
-<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>  <span class="va">${OUT_DIR}</span>tables/bracken_species_counts.tsv <span class="dt">\</span></span>
-<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>  <span class="va">${SHOTGUN_DIR</span><span class="op">:-</span>/etc/ace-data/ABI-SummerSchool-26/metagenomics/data/shotgun<span class="va">}</span>/gut_metadata.tsv <span class="dt">\</span></span>
-<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>  <span class="va">${OUT_DIR}</span>analysis_bracken</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p><code>03_merge_abundance_tables.sh</code> joins all <code>*_bracken.txt</code> files on taxon name into one wide table (<code>combine_bracken_outputs.py</code> if available, a Python fallback otherwise). <code>04_abundance_analysis.R</code> then computes Shannon diversity, an Aitchison-distance PCA, and a simple CLR-based differential abundance comparison between the LTR and HC groups — replace <code>/path/to/</code> with wherever the kampala course repo is checked out on this cluster.</p>
+<section id="section-4-kraken2-bracken-04_kraken2.sh" class="level2">
+<h2 class="anchored" data-anchor-id="section-4-kraken2-bracken-04_kraken2.sh">Section 4 — Kraken2 + Bracken (<code>04_kraken2.sh</code>)</h2>
+<p><strong>What it does:</strong> k-mer classification of cleaned pairs against <code>${KRAKEN_DB}</code>; optional Bracken species re-estimation (<code>-r 150 -l S</code>).</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="ex">sbatch</span> scripts/04_kraken2.sh</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="ex">kraken2</span> <span class="dt">\</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">--db</span> <span class="st">"</span><span class="va">${KRAKEN_DB}</span><span class="st">"</span> <span class="dt">\</span></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">--paired</span> <span class="st">"</span><span class="va">${R1}</span><span class="st">"</span> <span class="st">"</span><span class="va">${R2}</span><span class="st">"</span> <span class="dt">\</span></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">--threads</span> <span class="st">"</span><span class="va">${THREADS}</span><span class="st">"</span> <span class="dt">\</span></span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">--report</span> <span class="st">"</span><span class="va">${OUT_DIR}</span><span class="st">/04_kraken2/</span><span class="va">${SAMPLE}</span><span class="st">.report"</span> <span class="dt">\</span></span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">--output</span> <span class="st">"</span><span class="va">${OUT_DIR}</span><span class="st">/04_kraken2/</span><span class="va">${SAMPLE}</span><span class="st">.out"</span> <span class="dt">\</span></span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">--gzip-compressed</span> <span class="dt">\</span></span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>  <span class="dv">2</span><span class="op">&gt;</span><span class="st">"</span><span class="va">${OUT_DIR}</span><span class="st">/04_kraken2/</span><span class="va">${SAMPLE}</span><span class="st">_kraken2.log"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Bracken runs from <code>${IMAGES_DIR}/bracken_3.1.simg</code> when present (else a <code>bracken</code> module).</p>
+<p><strong>Why:</strong> fast, widely used LCA classifier — good intuition for database-dependent classification rates. Unclassified reads are normal for gut metagenomes.</p>
 <hr>
 </section>
-</section>
-<section id="section-5-taxonomic-classification-route-b-metaphlan4-paper-style" class="level2">
-<h2 class="anchored" data-anchor-id="section-5-taxonomic-classification-route-b-metaphlan4-paper-style">Section 5 — Taxonomic Classification, Route B: MetaPhlAn4 (paper-style)</h2>
-<p>The TransplantLines paper this gut dataset comes from (Zhang et al.&nbsp;2024, <em>mSystems</em>, doi:10.1128/msystems.01312-23) profiled species abundance with MetaPhlAn rather than Kraken2/Bracken. Running both routes on the same samples lets participants compare a marker-gene profiler against a k-mer classifier on identical input.</p>
-<p>MetaPhlAn’s database is large and slow to build — it’s pre-staged at <code>metaphlan_DB</code> as a one-time course-prep step, not something participants install:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Course prep only — do not run this during the practical</span></span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> <span class="at">-p</span> <span class="va">${metaphlan_DB}</span></span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="ex">singularity</span> exec <span class="va">${IMAGES_DIR}</span>metaphlan_4.2.6.simg <span class="dt">\</span></span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>  metaphlan <span class="at">--install</span> <span class="dt">\</span></span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">--db_dir</span> <span class="va">${metaphlan_DB}</span> <span class="dt">\</span></span>
-<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">-x</span> mpa_vJun23_CHOCOPhlAnSGB_202403</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>The actual per-sample profiling participants run:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="va">INDEX</span><span class="op">=</span><span class="st">"mpa_vJun23_CHOCOPhlAnSGB_202403"</span></span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="va">PROFILE_LIST</span><span class="op">=</span><span class="st">"</span><span class="va">${OUT_DIR}</span><span class="st">metaphlan/profile_list.txt"</span></span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="bu">:</span> <span class="op">&gt;</span> <span class="va">${PROFILE_LIST}</span></span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> R1 <span class="kw">in</span> <span class="va">${OUT_DIR}</span>host_removed/<span class="pp">*</span>_clean_1.fastq.gz<span class="kw">;</span> <span class="cf">do</span></span>
-<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>    <span class="va">SAMPLE</span><span class="op">=</span><span class="va">$(</span><span class="fu">basename</span> <span class="va">${R1}</span> _clean_1.fastq.gz<span class="va">)</span></span>
-<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>    <span class="va">R2</span><span class="op">=</span><span class="st">"</span><span class="va">${OUT_DIR}</span><span class="st">host_removed/</span><span class="va">${SAMPLE}</span><span class="st">_clean_2.fastq.gz"</span></span>
-<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>    <span class="bu">echo</span> <span class="st">"  MetaPhlAn: </span><span class="va">${SAMPLE}</span><span class="st">"</span></span>
-<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a>    <span class="ex">singularity</span> exec <span class="dt">\</span></span>
-<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a>      <span class="at">-B</span> <span class="va">${OUT_DIR}</span>:<span class="va">${OUT_DIR}</span> <span class="dt">\</span></span>
-<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a>      <span class="at">-B</span> <span class="va">${metaphlan_DB}</span>:<span class="va">${metaphlan_DB}</span> <span class="dt">\</span></span>
-<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a>      <span class="va">${IMAGES_DIR}</span>metaphlan_4.2.6.simg <span class="dt">\</span></span>
-<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a>      metaphlan <span class="dt">\</span></span>
-<span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a>        <span class="st">"</span><span class="va">${R1}</span><span class="st">,</span><span class="va">${R2}</span><span class="st">"</span> <span class="dt">\</span></span>
-<span id="cb10-17"><a href="#cb10-17" aria-hidden="true" tabindex="-1"></a>        <span class="at">--input_type</span> fastq <span class="dt">\</span></span>
-<span id="cb10-18"><a href="#cb10-18" aria-hidden="true" tabindex="-1"></a>        <span class="at">--nproc</span> <span class="va">${THREADS}</span> <span class="dt">\</span></span>
-<span id="cb10-19"><a href="#cb10-19" aria-hidden="true" tabindex="-1"></a>        <span class="at">--db_dir</span> <span class="va">${metaphlan_DB}</span> <span class="dt">\</span></span>
-<span id="cb10-20"><a href="#cb10-20" aria-hidden="true" tabindex="-1"></a>        <span class="at">-x</span> <span class="va">${INDEX}</span> <span class="dt">\</span></span>
-<span id="cb10-21"><a href="#cb10-21" aria-hidden="true" tabindex="-1"></a>        <span class="at">--mapout</span> <span class="va">${OUT_DIR}</span>metaphlan/<span class="va">${SAMPLE}</span>.bowtie2.bz2 <span class="dt">\</span></span>
-<span id="cb10-22"><a href="#cb10-22" aria-hidden="true" tabindex="-1"></a>        <span class="at">-o</span> <span class="va">${OUT_DIR}</span>metaphlan/<span class="va">${SAMPLE}</span>_profile.txt</span>
-<span id="cb10-23"><a href="#cb10-23" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-24"><a href="#cb10-24" aria-hidden="true" tabindex="-1"></a>    <span class="bu">echo</span> <span class="at">-e</span> <span class="st">"</span><span class="va">${SAMPLE}</span><span class="st">\t</span><span class="va">${OUT_DIR}</span><span class="st">metaphlan/</span><span class="va">${SAMPLE}</span><span class="st">_profile.txt"</span> <span class="op">&gt;&gt;</span> <span class="va">${PROFILE_LIST}</span></span>
-<span id="cb10-25"><a href="#cb10-25" aria-hidden="true" tabindex="-1"></a><span class="cf">done</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Each Singularity call binds <code>OUT_DIR</code> and <code>metaphlan_DB</code> explicitly with <code>-B</code> — inside the container’s isolated filesystem, paths outside those two binds aren’t visible, so both need to be mounted for MetaPhlAn to read the cleaned reads and write its output. <code>--mapout</code> saves the raw Bowtie2 mapping (useful for troubleshooting/reruns); <code>-o</code> writes the human-readable species profile.</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="ex">singularity</span> exec <span class="dt">\</span></span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">-B</span> <span class="va">${OUT_DIR}</span>:<span class="va">${OUT_DIR}</span> <span class="dt">\</span></span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>  <span class="va">${IMAGES_DIR}</span>metaphlan_4.2.6.simg <span class="dt">\</span></span>
-<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>  merge_metaphlan_tables.py <span class="dt">\</span></span>
-<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>    <span class="va">${OUT_DIR}</span>metaphlan/<span class="pp">*</span>_profile.txt <span class="dt">\</span></span>
-<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>    <span class="op">&gt;</span> <span class="va">${OUT_DIR}</span>tables/metaphlan_merged_all_levels.tsv</span>
-<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Species-only relative abundances (for R / paper-like analyses)</span></span>
-<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a><span class="fu">awk</span> <span class="at">-F</span><span class="st">'\t'</span> <span class="st">'NR==1 || $1 ~ /s__/'</span> <span class="dt">\</span></span>
-<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a>    <span class="va">${OUT_DIR}</span>tables/metaphlan_merged_all_levels.tsv <span class="dt">\</span></span>
-<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a>    <span class="op">&gt;</span> <span class="va">${OUT_DIR}</span>tables/metaphlan_species_relab.tsv</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p><code>merge_metaphlan_tables.py</code> (bundled in the MetaPhlAn image) joins all six per-sample profiles into one table across every taxonomic level; the <code>awk</code> filter keeps only rows whose clade name includes <code>s__</code> (MetaPhlAn’s species-level marker), giving a clean species × sample relative-abundance matrix directly comparable to the Bracken one from Section 4 — same 6 samples, two independent profiling methods.</p>
-<blockquote class="blockquote">
-<p>Optional, not run today: HUMAnN3 pathway profiling on the cleaned reads (paper-style functional analysis) is covered in Day 5 (<code>day5_functional-analysis.md</code>).</p>
-</blockquote>
+<section id="section-5-metaphlan4-05_species_abundance.sh" class="level2">
+<h2 class="anchored" data-anchor-id="section-5-metaphlan4-05_species_abundance.sh">Section 5 — MetaPhlAn4 (<code>05_species_abundance.sh</code>)</h2>
+<p><strong>What it does:</strong> marker-gene species profiling (paper-style route for this dataset), then merge profiles into all-level and species-only tables.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="ex">sbatch</span> scripts/05_species_abundance.sh</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="va">INDEX</span><span class="op">=</span><span class="st">"mpa_vJun23_CHOCOPhlAnSGB_202403"</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="va">SIF</span><span class="op">=</span><span class="st">"</span><span class="va">${IMAGES_DIR}</span><span class="st">/metaphlan_4.2.6.simg"</span></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="ex">singularity</span> exec <span class="dt">\</span></span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">-B</span> <span class="st">"</span><span class="va">${OUT_DIR}</span><span class="st">:</span><span class="va">${OUT_DIR}</span><span class="st">"</span> <span class="dt">\</span></span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">-B</span> <span class="st">"</span><span class="va">${METAPHLAN_DB}</span><span class="st">:</span><span class="va">${METAPHLAN_DB}</span><span class="st">"</span> <span class="dt">\</span></span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>  <span class="st">"</span><span class="va">${SIF}</span><span class="st">"</span> <span class="dt">\</span></span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>  metaphlan <span class="dt">\</span></span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a>    <span class="st">"</span><span class="va">${R1}</span><span class="st">,</span><span class="va">${R2}</span><span class="st">"</span> <span class="dt">\</span></span>
+<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">--input_type</span> fastq <span class="dt">\</span></span>
+<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">--nproc</span> <span class="st">"</span><span class="va">${THREADS}</span><span class="st">"</span> <span class="dt">\</span></span>
+<span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">--db_dir</span> <span class="st">"</span><span class="va">${METAPHLAN_DB}</span><span class="st">"</span> <span class="dt">\</span></span>
+<span id="cb14-13"><a href="#cb14-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">-x</span> <span class="st">"</span><span class="va">${INDEX}</span><span class="st">"</span> <span class="dt">\</span></span>
+<span id="cb14-14"><a href="#cb14-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">--mapout</span> <span class="st">"</span><span class="va">${OUT_DIR}</span><span class="st">/05_species_abundance/</span><span class="va">${SAMPLE}</span><span class="st">.bowtie2.bz2"</span> <span class="dt">\</span></span>
+<span id="cb14-15"><a href="#cb14-15" aria-hidden="true" tabindex="-1"></a>    <span class="at">-o</span> <span class="st">"</span><span class="va">${OUT_DIR}</span><span class="st">/05_species_abundance/</span><span class="va">${SAMPLE}</span><span class="st">_profile.txt"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><code>-B</code> bind-mounts are required so the container can see your results directory and the shared MetaPhlAn database. After all samples:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb15"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="ex">merge_metaphlan_tables.py</span> ... <span class="op">&gt;</span> metaphlan_merged_all_levels.tsv</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="fu">awk</span> <span class="at">-F</span><span class="st">'\t'</span> <span class="st">'NR==1 || $1 ~ /s__/'</span> ... <span class="op">&gt;</span> metaphlan_species_relab.tsv</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>Why:</strong> the TransplantLines gut paper used MetaPhlAn-style profiling. Comparing Kraken (k-mers) vs MetaPhlAn (markers) on the same cleaned reads is a core learning goal. HUMAnN3 pathways are Day 5 (<code>day5_functional-analysis.md</code>).</p>
 <hr>
 </section>
-<section id="section-6-de-novo-assembly-with-megahit-quast" class="level2">
-<h2 class="anchored" data-anchor-id="section-6-de-novo-assembly-with-megahit-quast">Section 6 — De Novo Assembly with MEGAHIT + QUAST</h2>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="va">DEMO_SAMPLE</span><span class="op">=</span><span class="va">$(</span><span class="fu">ls</span> <span class="va">${OUT_DIR}</span>host_removed/<span class="pp">*</span>_clean_1.fastq.gz <span class="dv">2</span><span class="op">&gt;</span>/dev/null <span class="kw">|</span> <span class="fu">head</span> <span class="at">-1</span><span class="va">)</span></span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="va">SAMPLE_NAME</span><span class="op">=</span><span class="va">$(</span><span class="fu">basename</span> <span class="va">${DEMO_SAMPLE}</span> _clean_1.fastq.gz<span class="va">)</span></span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="va">R2</span><span class="op">=</span><span class="st">"</span><span class="va">${OUT_DIR}</span><span class="st">host_removed/</span><span class="va">${SAMPLE_NAME}</span><span class="st">_clean_2.fastq.gz"</span></span>
-<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a><span class="ex">megahit</span> <span class="dt">\</span></span>
-<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">-1</span> <span class="va">${DEMO_SAMPLE}</span> <span class="dt">\</span></span>
-<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">-2</span> <span class="va">${R2}</span> <span class="dt">\</span></span>
-<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">-o</span> <span class="va">${OUT_DIR}</span>assembly/<span class="va">${SAMPLE_NAME}</span> <span class="dt">\</span></span>
-<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">--threads</span> <span class="va">${THREADS}</span> <span class="dt">\</span></span>
-<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">--min-contig-len</span> 1000 <span class="dt">\</span></span>
-<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">--memory</span> 0.5</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Assembly is computationally expensive, so — for course time — only one sample is assembled as a worked demonstration: whichever gut sample sorts first alphabetically among the host-removed files. (Previously this demo ran on a soil sample specifically to avoid re-using gut reads that had just been through host filtering; with no soil sample in the course anymore, a gut sample works fine for the same teaching purpose — the point is de Bruijn graph mechanics and reading QUAST output, not the sample’s biology.) Note this sample is subsampled to 1M read pairs, same as everything else today — don’t expect a highly complete assembly at this depth; that’s itself worth discussing (see Discussion Questions).</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="ex">seqkit</span> stats <span class="at">--all</span> <span class="va">${OUT_DIR}</span>assembly/<span class="va">${SAMPLE_NAME}</span>/final.contigs.fa <span class="kw">|</span> <span class="ex">column</span> <span class="at">-t</span></span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="ex">seqkit</span> seq <span class="at">--min-len</span> 1500 <span class="dt">\</span></span>
-<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>    <span class="va">${OUT_DIR}</span>assembly/<span class="va">${SAMPLE_NAME}</span>/final.contigs.fa <span class="dt">\</span></span>
-<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>    <span class="op">&gt;</span> <span class="va">${OUT_DIR}</span>assembly/<span class="va">${SAMPLE_NAME}</span>/contigs_min1500.fa</span>
-<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a><span class="ex">quast.py</span> <span class="dt">\</span></span>
-<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>    <span class="va">${OUT_DIR}</span>assembly/<span class="va">${SAMPLE_NAME}</span>/contigs_min1500.fa <span class="dt">\</span></span>
-<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">--output-dir</span> <span class="va">${OUT_DIR}</span>quast/<span class="va">${SAMPLE_NAME}</span> <span class="dt">\</span></span>
-<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">--threads</span> <span class="va">${THREADS}</span> <span class="dt">\</span></span>
-<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">--no-check-install</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Same filtering/QC logic as before: a ≥1500 bp filter prepares contigs for Day 4 binning, and QUAST reports N50 (higher is better), L50 (lower is better), and total assembled length against the community’s expected size.</p>
+<section id="section-6-assembly-quast-06_assembly.sh" class="level2">
+<h2 class="anchored" data-anchor-id="section-6-assembly-quast-06_assembly.sh">Section 6 — Assembly + QUAST (<code>06_assembly.sh</code>)</h2>
+<p><strong>What it does:</strong> MEGAHIT (≥1000 bp), keep contigs ≥1500 bp with seqkit, QUAST QC.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb16"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># all cleaned samples:</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="ex">sbatch</span> scripts/06_assembly.sh</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a><span class="co"># or one demo sample only:</span></span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a><span class="va">DEMO_SAMPLE</span><span class="op">=</span>SRR27027504 <span class="ex">sbatch</span> scripts/06_assembly.sh</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb17"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="ex">megahit</span> <span class="dt">\</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">-1</span> <span class="st">"</span><span class="va">${R1}</span><span class="st">"</span> <span class="at">-2</span> <span class="st">"</span><span class="va">${R2}</span><span class="st">"</span> <span class="dt">\</span></span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">-o</span> <span class="st">"</span><span class="va">${OUT_DIR}</span><span class="st">/06_assembly/</span><span class="va">${SAMPLE}</span><span class="st">"</span> <span class="dt">\</span></span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">--num-cpu-threads</span> <span class="st">"</span><span class="va">${THREADS}</span><span class="st">"</span> <span class="dt">\</span></span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">--min-contig-len</span> 1000 <span class="dt">\</span></span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">--memory</span> 0.5</span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a><span class="ex">seqkit</span> seq <span class="at">--min-len</span> 1500 <span class="dt">\</span></span>
+<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a>  <span class="st">"</span><span class="va">${OUT_DIR}</span><span class="st">/06_assembly/</span><span class="va">${SAMPLE}</span><span class="st">/final.contigs.fa"</span> <span class="dt">\</span></span>
+<span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">-o</span> <span class="st">"</span><span class="va">${OUT_DIR}</span><span class="st">/06_assembly/</span><span class="va">${SAMPLE}</span><span class="st">/contigs_min1500.fa"</span></span>
+<span id="cb17-11"><a href="#cb17-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-12"><a href="#cb17-12" aria-hidden="true" tabindex="-1"></a><span class="ex">quast</span> <span class="dt">\</span></span>
+<span id="cb17-13"><a href="#cb17-13" aria-hidden="true" tabindex="-1"></a>  <span class="st">"</span><span class="va">${OUT_DIR}</span><span class="st">/06_assembly/</span><span class="va">${SAMPLE}</span><span class="st">/contigs_min1500.fa"</span> <span class="dt">\</span></span>
+<span id="cb17-14"><a href="#cb17-14" aria-hidden="true" tabindex="-1"></a>  <span class="at">-o</span> <span class="st">"</span><span class="va">${OUT_DIR}</span><span class="st">/06_quast/</span><span class="va">${SAMPLE}</span><span class="st">"</span> <span class="dt">\</span></span>
+<span id="cb17-15"><a href="#cb17-15" aria-hidden="true" tabindex="-1"></a>  <span class="at">-t</span> <span class="st">"</span><span class="va">${THREADS}</span><span class="st">"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>Why:</strong> introduce de Bruijn assembly and how to read N50 / total length. At 1M pairs, expect modest contiguity — enough for Day 4 MAG demos, not complete genomes.</p>
+<p>Note the last assembled sample ID for Day 4 (<code>DEMO_SAMPLE=</code>).</p>
 <hr>
 </section>
 <section id="key-outputs" class="level2">
 <h2 class="anchored" data-anchor-id="key-outputs">Key Outputs</h2>
 <table class="caption-top table">
-<colgroup>
-<col style="width: 50%">
-<col style="width: 50%">
-</colgroup>
 <thead>
 <tr class="header">
 <th>Output</th>
@@ -492,28 +418,28 @@ code span.er {
 </thead>
 <tbody>
 <tr class="odd">
-<td>MultiQC (raw QC)</td>
-<td><code>${OUT_DIR}qc/multiqc_report.html</code></td>
+<td>Raw MultiQC</td>
+<td><code>${COURSE_WORK_DIR}/day3_results/01_qc/multiqc/</code></td>
 </tr>
 <tr class="even">
-<td>Cleaned (host-filtered) reads</td>
-<td><code>${OUT_DIR}host_removed/</code></td>
+<td>Trimmed reads</td>
+<td><code>.../02_trimmed/</code></td>
 </tr>
 <tr class="odd">
-<td>Kraken2/Bracken classifications</td>
-<td><code>${OUT_DIR}kraken2/</code>, merged table in <code>${OUT_DIR}tables/bracken_species_counts.tsv</code></td>
+<td>Host rates + clean FASTQs</td>
+<td><code>.../03_host_removed/</code></td>
 </tr>
 <tr class="even">
-<td>MetaPhlAn4 profiles</td>
-<td><code>${OUT_DIR}metaphlan/</code>, merged table in <code>${OUT_DIR}tables/metaphlan_species_relab.tsv</code></td>
+<td>Kraken2 / Bracken</td>
+<td><code>.../04_kraken2/</code></td>
 </tr>
 <tr class="odd">
-<td>Assembly (demo sample)</td>
-<td><code>${OUT_DIR}assembly/</code></td>
+<td>MetaPhlAn tables</td>
+<td><code>.../05_species_abundance/</code></td>
 </tr>
 <tr class="even">
-<td>QUAST report</td>
-<td><code>${OUT_DIR}quast/</code></td>
+<td>Contigs + QUAST</td>
+<td><code>.../06_assembly/</code>, <code>.../06_quast/</code></td>
 </tr>
 </tbody>
 </table>
@@ -521,10 +447,10 @@ code span.er {
 <section id="discussion-questions" class="level2">
 <h2 class="anchored" data-anchor-id="discussion-questions">Discussion Questions</h2>
 <ol type="1">
-<li>What % of each sample’s reads were human DNA? Does it vary much across the 6 samples?</li>
-<li>Do Kraken2/Bracken and MetaPhlAn4 agree on the most abundant species per sample? Where do they disagree, and why might a k-mer classifier and a marker-gene profiler give different answers on the same reads?</li>
-<li>Do LTR and HC samples separate on species composition, even by eye, at this depth?</li>
-<li>What is the N50 of the demo assembly? Given it’s built from only 1M read pairs, how does that compare to what you’d expect from the two full-depth samples set aside for homework (<code>SRR27027652</code>, <code>SRR27027756</code>) — would you expect a meaningfully better assembly from those, and why?</li>
+<li>What % of each sample’s reads mapped to human? Does it vary across the 6 samples?</li>
+<li>Do Kraken2/Bracken and MetaPhlAn agree on dominant species? Where do they disagree, and why?</li>
+<li>Do LTR and HC samples separate on species composition at this depth?</li>
+<li>What is the N50 of your assembly? How would full-depth <code>gut_miniproject</code> samples change that?</li>
 </ol>
 
 
