@@ -303,7 +303,7 @@ We run HaplotypeCaller in **GVCF mode** (`-ERC GVCF`). A GVCF records genotype l
 mkdir -p gvcf
 gatk HaplotypeCaller \
   -R ${REF} \
-  -I bam/qc/HG02562.recal.bam \
+  -I bam/HG02562.recal.bam \
   -L ${BRCA1} \
   -ERC GVCF \
   -O gvcf/HG02562.g.vcf.gz
