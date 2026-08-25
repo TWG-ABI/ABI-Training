@@ -1,11 +1,7 @@
 #!/bin/bash
 # /etc/ace-data/ABI-SummerSchool-26/metagenomics/course_env.sh
-# Usage (interactive OR inside every #SBATCH job script after the headers):
-#   source /etc/ace-data/ABI-SummerSchool-26/metagenomics/course_env.sh
-#
-# No #SBATCH lines in this file. Shared DBs are read-only — do not download
-# personal copies. Write outputs under $COURSE_WORK_DIR / $HOME.
-# =============================================================================
+# Usage: source /etc/ace-data/ABI-SummerSchool-26/metagenomics/course_env.sh
+
 
 # Shared databases
 export COURSE_DBS="/etc/ace-data/ABI-SummerSchool-26/metagenomics/databases"
@@ -16,10 +12,15 @@ export HUMANN_DB_PATH="${COURSE_DBS}/humann3"
 export AMRFINDER_DB="${COURSE_DBS}/amrfinder/latest"
 export METAPHLAN_DB="${COURSE_DBS}/metaphlanDB"
 export KRAKEN_DB="${COURSE_DBS}/krakenDB"
-export IMAGES_DIR="${COURSE_DBS}/images"
+
+# Silva
+export SILVA_CLASSIFIER="${COURSE_DBS}/silva-138-99-nb-classifier-2026.7.qza"
 
 # Host genome Bowtie2 index (on ACE this sits next to databases/, spelling GRCH38)
 export HOST_IDX="/etc/ace-data/ABI-SummerSchool-26/metagenomics/GRCH38_index/GRCh38_noalt_as"
+
+# Shared amplicon FASTQs
+export AMPLICON_DIR="/etc/ace-data/ABI-SummerSchool-26/metagenomics/amplicon"
 
 # Shared shotgun FASTQs
 export SHOTGUN_DIR="/etc/ace-data/ABI-SummerSchool-26/metagenomics/data/shotgun"
@@ -27,6 +28,11 @@ export GUT_DIR="${SHOTGUN_DIR}/gut_sample"
 export GUT_MINIPROJECT_DIR="${SHOTGUN_DIR}/gut_miniproject"
 export SOIL_MINIPROJECT_DIR="${SHOTGUN_DIR}/soil_miniproject"
 
+export IMAGES_DIR="/etc/ace-data/ABI-SummerSchool-26/metagenomics/images"
+
 # Personal writable area for job outputs
-export COURSE_WORK_DIR="${COURSE_WORK_DIR:-/etc/ace-data/home/${USER}}"
+export COURSE_WORK_DIR="${COURSE_WORK_DIR:-/etc/ace-data/home/${USER}/metagenomics/shotgun}"
+
 mkdir -p "${COURSE_WORK_DIR}" 2>/dev/null || true
+
+
