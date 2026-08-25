@@ -29,15 +29,23 @@ cd /path/to/ABI-Training/week2/metagenomics
 ## Day 3 — shotgun
 
 **Read:** `practicals/day3_shotgun-metagenomics.md`  
-**Run:**
+
+**Preferred (step-by-step):**
 
 ```bash
-bash scripts/day3_shotgun.sh
-# or: sbatch scripts/sbatch_day3.sh
+sbatch scripts/01_raw_qc.sh          # wait / check MultiQC
+sbatch scripts/02_qc-trim.sh
+sbatch scripts/03_host-read_removal.sh
+sbatch scripts/04_kraken2.sh
+sbatch scripts/05_species_abundance.sh
+sbatch scripts/06_assembly.sh
+# optional: DEMO_SAMPLE=SRR27027504 sbatch scripts/06_assembly.sh
 ```
 
-Outputs: `${COURSE_WORK_DIR}/day3_results/`  
-Note the assembled sample under `assembly/<SAMPLE>/` for Day 4.
+**Optional all-in-one:** `sbatch scripts/sbatch_day3.sh` (or `bash scripts/day3_shotgun.sh`)
+
+Outputs: `${COURSE_WORK_DIR}/day3_results/` (`01_qc` … `06_quast`)  
+Note an assembled sample under `06_assembly/<SAMPLE>/` for Day 4.
 
 ## Day 4 — MAGs
 

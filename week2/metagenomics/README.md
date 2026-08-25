@@ -38,7 +38,8 @@ week2/metagenomics/
 │   ├── day5_functional-analysis-visualisation.md
 │   └── data-overview.md          # dataset provenance (not a download task)
 └── scripts/
-    ├── day3_shotgun.sh / sbatch_day3.sh
+    ├── 01_raw_qc.sh … 06_assembly.sh   # Day 3 step scripts (preferred)
+    ├── day3_shotgun.sh / sbatch_day3.sh  # optional all-in-one
     ├── day4_mags.sh    / sbatch_day4.sh
     └── day5_functional.sh / sbatch_day5.sh
 ```
@@ -53,7 +54,7 @@ Editable `.pptx` stay on instructors’ machines (gitignored); publish PDFs only
 |-----|---------|--------------|--------|
 | 1 | `lectures/Day1_…pdf` | `practicals/day1_qc.md`, `day1_qiime2-amplicon.md` | — |
 | 2 | `lectures/Day2_…pdf` | `practicals/day2_diversity-analysis.md` | R in the Markdown (extract to `scripts/` later if useful) |
-| 3 | `lectures/Day3_…pdf` | `practicals/day3_shotgun-metagenomics.md` | `scripts/day3_shotgun.sh` |
+| 3 | `lectures/Day3_…pdf` | `practicals/day3_shotgun-metagenomics.md` | `scripts/01_…`–`06_….sh` (or all-in-one) |
 | 4 | `lectures/Day4_…pdf` | `practicals/day4_metagenome-assembled-genomes.md` | `scripts/day4_mags.sh` |
 | 5 | `lectures/Day5_…pdf` | `practicals/day5_functional-analysis.md` (+ visualisation) | `scripts/day5_functional.sh` |
 

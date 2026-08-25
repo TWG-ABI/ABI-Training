@@ -107,7 +107,13 @@ fi
 
 # ── 3. HUMAnN3 (one demo sample) ──────────────────────────────────────────────
 echo "[3/4] HUMAnN3"
-DEMO_READS=$(ls "${DAY3_DIR}"/host_removed/*_clean_1.fastq.gz 2>/dev/null | head -1 || true)
+DEMO_READS=$(ls "${DAY3_DIR}"/03_host_removed/*_clean_1.fastq.gz 2>/dev/null | head -1 || true)
+if [ -z "${DEMO_READS}" ]; then
+  DEMO_READS=$(ls "${DAY3_DIR}"/host_removed/*_clean_1.fastq.gz 2>/dev/null | head -1 || true)
+fi
+if [ -z "${DEMO_READS}" ]; then
+  DEMO_READS=$(ls "${DAY3_DIR}"/02_trimmed/*_R1_trimmed.fastq.gz 2>/dev/null | head -1 || true)
+fi
 if [ -z "${DEMO_READS}" ]; then
   DEMO_READS=$(ls "${DAY3_DIR}"/trimmed/*_trimmed_1.fastq.gz 2>/dev/null | head -1 || true)
 fi

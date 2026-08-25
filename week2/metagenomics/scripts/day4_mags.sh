@@ -36,18 +36,41 @@ CHECKM2DB="${CHECKM2DB:-${COURSE_DBS}/checkm2/CheckM2_database/uniref100.KO.1.dm
 
 # Auto-pick Day 3 assembly sample unless DEMO_SAMPLE is set
 if [ -z "${DEMO_SAMPLE:-}" ]; then
-  if [ -d "${DAY3_DIR}/assembly" ]; then
-    DEMO_SAMPLE=$(ls -1 "${DAY3_DIR}/assembly" 2>/dev/null | head -1 || true)
-  fi
+  for _cand in "${DAY3_DIR}/06_assembly" "${DAY3_DIR}/assembly"; do
+    if [ -d "${_cand}" ]; then
+      DEMO_SAMPLE=$(ls -1 "${_cand}" 2>/dev/null | head -1 || true)
+      [ -n "${DEMO_SAMPLE}" ] && break
+    fi
+  done
 fi
-DEMO_SAMPLE="${DEMO_SAMPLE:-SRR27027606}"
+DEMO_SAMPLE="${DEMO_SAMPLE:-SRR27027504}"
 
-ASSEMBLY="${DAY3_DIR}/assembly/${DEMO_SAMPLE}/contigs_min1500.fa"
-if [ ! -f "${ASSEMBLY}" ]; then
-  ASSEMBLY="${DAY3_DIR}/assembly/${DEMO_SAMPLE}/final.contigs.fa"
+ASSEMBLY=""
+for _base in \
+  "${DAY3_DIR}/06_assembly/${DEMO_SAMPLE}/contigs_min1500.fa" \
+  "${DAY3_DIR}/06_assembly/${DEMO_SAMPLE}/final.contigs.fa" \
+  "${DAY3_DIR}/assembly/${DEMO_SAMPLE}/contigs_min1500.fa" \
+  "${DAY3_DIR}/assembly/${DEMO_SAMPLE}/final.contigs.fa"
+do
+  if [ -f "${_base}" ]; then ASSEMBLY="${_base}"; break; fi
+done
+READS_R1=""
+READS_R2=""
+for _r1 in \
+  "${DAY3_DIR}/03_host_removed/${DEMO_SAMPLE}_clean_1.fastq.gz" \
+  "${DAY3_DIR}/host_removed/${DEMO_SAMPLE}_clean_1.fastq.gz"
+do
+  if [ -f "${_r1}" ]; then
+    READS_R1="${_r1}"
+    READS_R2="${_r1/_clean_1.fastq.gz/_clean_2.fastq.gz}"
+    break
+  fi
+done
+if [ -z "${ASSEMBLY}" ] || [ -z "${READS_R1}" ]; then
+  echo "ERROR: Day 3 assembly/reads not found for ${DEMO_SAMPLE} under ${DAY3_DIR}"
+  echo "  Expected 06_assembly/ + 03_host_removed/ (or legacy assembly/ + host_removed/)"
+  exit 1
 fi
-READS_R1="${DAY3_DIR}/host_removed/${DEMO_SAMPLE}_clean_1.fastq.gz"
-READS_R2="${DAY3_DIR}/host_removed/${DEMO_SAMPLE}_clean_2.fastq.gz"
 
 mkdir -p "${OUT_DIR}"/{mapping,metabat2,maxbin2,das_tool,checkm2,gtdbtk}
 

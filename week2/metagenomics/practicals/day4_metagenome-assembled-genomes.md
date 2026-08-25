@@ -77,13 +77,13 @@ completeness/contamination assessment → taxonomic classification.
 ```bash
 set -euo pipefail
 
-DAY3_DIR="../day3/day3_results"
-OUT_DIR="day4_results"
+DAY3_DIR="${COURSE_WORK_DIR}/day3_results"
+OUT_DIR="${COURSE_WORK_DIR}/day4_results"
 THREADS=8
-ASSEMBLY="${DAY3_DIR}/assembly/SRR27027606/contigs_min1500.fa"
-READS_R1="${DAY3_DIR}/host_removed/SRR27027606_clean_1.fastq.gz"
-READS_R2="${DAY3_DIR}/host_removed/SRR27027606_clean_2.fastq.gz"
-# Edit if Day 3 assembled a different gut sample from gut_sample/
+ASSEMBLY="${DAY3_DIR}/06_assembly/SRR27027504/contigs_min1500.fa"
+READS_R1="${DAY3_DIR}/03_host_removed/SRR27027504_clean_1.fastq.gz"
+READS_R2="${DAY3_DIR}/03_host_removed/SRR27027504_clean_2.fastq.gz"
+# Edit DEMO paths if Day 3 assembled a different gut sample
 GTDBTK_DATA="${GTDBTK_DATA_PATH:-/etc/ace-data/ABI-SummerSchool-26/metagenomics/databases/gtdbtk/release226}"
 CHECKM2DB="${CHECKM2DB:-/etc/ace-data/ABI-SummerSchool-26/metagenomics/databases/checkm2/CheckM2_database/uniref100.KO.1.dmnd}"
 
