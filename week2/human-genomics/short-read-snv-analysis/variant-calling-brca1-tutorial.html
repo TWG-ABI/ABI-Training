@@ -758,8 +758,10 @@ Mills_and_1000G_gold_standard.indels.hg38.vcf.gz.tbi </code></pre>
 <span id="cb22-27"><a href="#cb22-27" aria-hidden="true" tabindex="-1"></a>  <span class="at">-I</span> vcf/cohort.snps.filtered.vcf.gz <span class="dt">\</span></span>
 <span id="cb22-28"><a href="#cb22-28" aria-hidden="true" tabindex="-1"></a>  <span class="at">-I</span> vcf/cohort.indels.filtered.vcf.gz <span class="dt">\</span></span>
 <span id="cb22-29"><a href="#cb22-29" aria-hidden="true" tabindex="-1"></a>  <span class="at">-O</span> vcf/cohort.filtered.vcf.gz</span>
-<span id="cb22-30"><a href="#cb22-30" aria-hidden="true" tabindex="-1"></a><span class="ex">bcftools</span> view <span class="at">-f</span> PASS vcf/cohort.filtered.vcf.gz <span class="at">-Oz</span> <span class="at">-o</span> vcf/cohort.pass.vcf.gz</span>
-<span id="cb22-31"><a href="#cb22-31" aria-hidden="true" tabindex="-1"></a><span class="ex">bcftools</span> index <span class="at">-t</span> vcf/cohort.pass.vcf.gz</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb22-30"><a href="#cb22-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-31"><a href="#cb22-31" aria-hidden="true" tabindex="-1"></a><span class="ex">bcftools</span> view <span class="at">-f</span> PASS vcf/cohort.filtered.vcf.gz <span class="at">-Oz</span> <span class="at">-o</span> vcf/cohort.pass.vcf.gz</span>
+<span id="cb22-32"><a href="#cb22-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-33"><a href="#cb22-33" aria-hidden="true" tabindex="-1"></a><span class="ex">bcftools</span> index <span class="at">-t</span> vcf/cohort.pass.vcf.gz</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section id="annotation-with-vep" class="level3">
 <h3 class="anchored" data-anchor-id="annotation-with-vep">5. Annotation with VEP</h3>
