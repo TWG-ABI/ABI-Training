@@ -495,7 +495,9 @@ gatk MergeVcfs \
   -I vcf/cohort.snps.filtered.vcf.gz \
   -I vcf/cohort.indels.filtered.vcf.gz \
   -O vcf/cohort.filtered.vcf.gz
+
 bcftools view -f PASS vcf/cohort.filtered.vcf.gz -Oz -o vcf/cohort.pass.vcf.gz
+
 bcftools index -t vcf/cohort.pass.vcf.gz
 ```
 
