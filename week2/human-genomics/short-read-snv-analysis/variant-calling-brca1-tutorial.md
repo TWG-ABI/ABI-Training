@@ -469,6 +469,7 @@ Identical strategy to the single-sample case — split by type, apply GATK-recom
 # SNVs
 gatk SelectVariants -R ${REF} -V vcf/cohort.raw.vcf.gz \
   --select-type-to-include SNP -O vcf/cohort.snps.vcf.gz
+
 gatk VariantFiltration -R ${REF} -V vcf/cohort.snps.vcf.gz \
   --filter-expression "QD < 2.0"              --filter-name "QD2" \
   --filter-expression "FS > 60.0"             --filter-name "FS60" \
@@ -481,6 +482,7 @@ gatk VariantFiltration -R ${REF} -V vcf/cohort.snps.vcf.gz \
 # Indels
 gatk SelectVariants -R ${REF} -V vcf/cohort.raw.vcf.gz \
   --select-type-to-include INDEL -O vcf/cohort.indels.vcf.gz
+
 gatk VariantFiltration -R ${REF} -V vcf/cohort.indels.vcf.gz \
   --filter-expression "QD < 2.0"               --filter-name "QD2" \
   --filter-expression "FS > 200.0"             --filter-name "FS200" \
